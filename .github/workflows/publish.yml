@@ -6,38 +6,19 @@ concurrency:
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 1 * * *'
+    - cron: '0 10 * * *'
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-#    - name: Install dependencies
-#      run: sudo apt-get install -y python3-paramiko
+    - name: Install dependencies
+      run: sudo apt-get install -y python3-paramiko
 
     - uses: actions/checkout@v3.6.0
       with:
         submodules: 'recursive'
-
-    # Corvax-Secrets-Start
-    - name: Setup secrets
-      env:
-        SSH_KEY: ${{ secrets.SECRETS_PRIVATE_KEY }}
-      if: ${{ env.SSH_KEY != '' }}
-      run: |
-        mkdir ~/.ssh
-        echo "${{ secrets.SECRETS_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
-        echo "HOST *" > ~/.ssh/config
-        echo "StrictHostKeyChecking no" >> ~/.ssh/config
-        git -c submodule.Secrets.update=checkout submodule update --init
-        cp -R Secrets/Resources/Prototypes Resources/Prototypes/CorvaxSecrets
-        cp -R Secrets/Resources/ServerPrototypes Resources/Prototypes/CorvaxSecretsServer
-        cp -R Secrets/Resources/Locale Resources/Locale/ru-RU/corvax-secrets
-        cp -R Secrets/Resources/Textures Resources/Textures/CorvaxSecrets
-    # Corvax-Secrets-End
-
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v3.2.0
       with:
@@ -48,14 +29,12 @@ jobs:
         cd RobustToolbox
         git fetch --depth=1
 
-    - name: Package all
+    - name: Package client
       run: |
         Tools/package_server_build.py -p win-x64 linux-x64 osx-x64 linux-arm64
         Tools/package_client_build.py
 
     - name: Update Build Info
-      env:
-        FORK_ID: ${{ vars.FORK_ID }}
       run: Tools/gen_build_info.py
 
     - name: Shuffle files around
@@ -63,32 +42,22 @@ jobs:
         mkdir "release/${{ github.sha }}"
         mv release/*.zip "release/${{ github.sha }}"
 
-    - name: Upload files to mothership
-      uses: burnett01/rsync-deployments@5.2
+    - name: Upload files to centcomm
+      uses: appleboy/scp-action@master
       with:
-        switches: -avzr --ignore-existing
-        path: "release/${{ github.sha }}"
-        remote_path: ${{ secrets.BUILDS_PATH }}
-        remote_host: ${{ secrets.BUILDS_HOST }}
-        remote_user: ${{ secrets.BUILDS_USERNAME }}
-        remote_key: ${{ secrets.BUILDS_SSH_KEY }}
+        host: 45.67.230.80
+        port: 1228
+        username: ss14
+        key: ${{ secrets.KEY123 }}
+        source: "release/${{ github.sha }}"
+        target: "/var/www/html/builds_dir/builds/"
+        strip_components: 1
 
     - name: Update manifest JSON
       uses: appleboy/ssh-action@master
       with:
-        host: ${{ secrets.BUILDS_HOST }}
-        username: ${{ secrets.BUILDS_USERNAME }}
-        key: ${{ secrets.BUILDS_SSH_KEY }}
-        script: node ~/scripts/push_to_manifest.js -fork ${{ vars.FORK_ID }} -id ${{ github.sha }}
-
-#    - name: Publish changelog (Discord)
-#      run: Tools/actions_changelogs_since_last_run.py
-#      env:
-#        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#        DISCORD_WEBHOOK_URL: ${{ secrets.CHANGELOG_DISCORD_WEBHOOK }}
-#        TRANSLATION_API_URL: ${{ secrets.CHANGELOG_TRANSLATION_API_URL }}
-#
-#    - name: Publish changelog (RSS)
-#      run: Tools/actions_changelog_rss.py
-#      env:
-#        CHANGELOG_RSS_KEY: ${{ secrets.CHANGELOG_RSS_KEY }}
+        host: 45.67.230.80
+        port: 1228
+        username: ss14
+        key: ${{ secrets.KEY123 }}
+        script: /var/www/html/push.ps1 ${{ github.sha }}
