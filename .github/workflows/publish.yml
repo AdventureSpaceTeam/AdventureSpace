@@ -60,4 +60,4 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
-        script: sudo ./var/www/html/push.ps1 ${{ github.sha }}
+        script: pwsh /var/www/html/push.ps1 ${{ github.sha }}
