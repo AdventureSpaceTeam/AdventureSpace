@@ -7,3 +7,6 @@
 	url = git@github.com:corvax-project/secrets.git
 	branch = master
 	update = none
+[submodule "space-station-12"]
+	path = space-station-12
+	url = https://github.com/AdventureSpace/space-station-12
