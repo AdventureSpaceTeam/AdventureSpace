@@ -53,6 +53,17 @@ jobs:
         target: "/var/www/html/builds_dir/builds/"
         strip_components: 1
 
+    - name: Upload files to centcomm 2
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+        source: "release/${{ github.sha }}/SS14.Client.zip"
+        target: "/var/www/html/ss14/"
+        strip_components: 1
+
     - name: Update manifest JSON
       uses: appleboy/ssh-action@master
       with:
