@@ -73,4 +73,42 @@ server-ban-string = { $admin } created a { $severity } severity server ban that 
 ban-panel-erase = Стереть сообщения в чате и игрока из раунда
 server-ban-string-never = никогда
 server-ban-string-no-pii = { $admin } установил серверный бан { $severity } тяжести, который истечёт { $expires } у { $name } с причиной: { $reason }
+server-time-ban = Временный бан на { $mins } { $mins ->
+        [one] минуту
+        [few] минуты
+       *[other] минут
+    }.
+server-perma-ban = Перманентный бан.
+server-role-ban = Временный джоб-бан на { $mins } { $mins ->
+        [one] минуту
+        [few] минуты
+       *[other] минут
+    }.
+server-perma-role-ban = Перманентный джоб-бан.
+server-time-ban-string =
+    > **Нарушитель:** ``{ $targetName }``
+    > **Администратор:** ``{ $adminName }``
+    > **Выдан:** { $TimeNow }
+    > **Истечет:** { $expiresString }
+    > **Причина:** { $reason }
+server-ban-footer = { $server } | Раунд: #{ $round }
+server-perma-ban-string =
+    > **Нарушитель:** ``{ $targetName }``
+    > **Администратор:** ``{ $adminName }``
+    > **Выдан:** { $TimeNow }
+    > **Причина:** { $reason }
+server-role-ban-string =
+    > **Нарушитель:** ``{ $targetName }``
+    > **Администратор:** ``{ $adminName }``
+    > **Выдан:** { $TimeNow }
+    > **Истечет:** { $expiresString }
+    > **Роли:** { $roles }
+    > **Причина:** { $reason }
+server-perma-role-ban-string =
+    > **Нарушитель:** ``{ $targetName }``
+    > **Администратор:** ``{ $adminName }``
+    > **Выдан:** { $TimeNow }
+    > **Роли:** { $roles }
+    > **Причина:** { $reason }
+server-ban-string-no-pii = { $admin } created a { $severity } severity server ban that expires { $expires } for { $name } with reason: { $reason }
 cmd-ban_exemption_get-arg-player = <player>
