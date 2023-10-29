@@ -356,12 +356,6 @@ namespace Content.Shared.CCVar
             CVarDef.Create("discord.ahelp_footer_icon", string.Empty, CVar.SERVERONLY);
 
         /// <summary>
-        /// URL of the Discord webhook which will relay all ban messages.
-        /// </summary>
-        public static readonly CVarDef<string> DiscordBanWebhook =
-            CVarDef.Create("discord.ban_webhook", string.Empty, CVar.SERVERONLY);
-
-        /// <summary>
         /// The avatar to use for the webhook. Should be an URL.
         /// </summary>
         public static readonly CVarDef<string> DiscordAHelpAvatar =
