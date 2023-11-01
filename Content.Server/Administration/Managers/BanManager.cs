@@ -22,8 +22,9 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
+using Content.Shared.AdventureSpace;
+using Content.Shared.CCVar;
 using Robust.Shared;
-using CCVars = Content.Shared.AdventureSpace.CCVars;
 
 namespace Content.Server.Administration.Managers;
 
@@ -59,7 +60,7 @@ public sealed class BanManager : IBanManager, IPostInjectInit
         _playerManager.PlayerStatusChanged += OnPlayerStatusChanged;
 
         _netManager.RegisterNetMessage<MsgRoleBans>();
-        _config.OnValueChanged(CCVars.DiscordBanWebhook, OnWebhookChanged, true); // SpaceStories ban track
+        _config.OnValueChanged(AccVars.DiscordBanWebhook, OnWebhookChanged, true); // SpaceStories ban track
         _config.OnValueChanged(CVars.GameHostName, OnServerNameChanged, true);
     }
     private void OnServerNameChanged(string obj)
