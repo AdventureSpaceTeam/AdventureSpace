@@ -1,0 +1,23 @@
+- type: ghostTheme
+  id: tier1
+  components:
+  - type: Ghost
+    color: "#0bda51"
+
+- type: ghostTheme
+  id: tier2
+  components:
+  - type: Ghost
+    color: "#9966cc"
+
+- type: ghostTheme
+  id: tier3
+  components:
+    - type: Ghost
+      color: "#ffd700"
+
+- type: ghostTheme
+  id: tier4
+  components:
+  - type: Ghost
+    color: "#ca3a27"
