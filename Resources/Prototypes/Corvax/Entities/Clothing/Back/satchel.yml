@@ -7,7 +7,8 @@
   - type: Sprite
     sprite: Corvax/Back/Satchels/military.rsi
   - type: Storage
-    capacity: 131
+    maxItemSize: Large
+    maxTotalWeight: 40
 
 - type: entity
   parent: ClothingBackpackSatchel
@@ -19,4 +20,5 @@
     sprite: Corvax/Back/Satchels/ce.rsi
     state: icon
   - type: Storage
-    capacity: 100
+    maxItemSize: Large
+    maxTotalWeight: 40
