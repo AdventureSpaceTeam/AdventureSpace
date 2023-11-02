@@ -93,6 +93,8 @@ server-time-ban-string =
     > **Истечет:** { $expiresString }
 
     > **Причина:** { $reason }
+
+    > **Тяжесть:** { $severity }
 server-ban-footer = { $server } | Раунд: #{ $round }
 server-perma-ban-string =
     > **Нарушитель:** ``{ $targetName }``
@@ -101,6 +103,8 @@ server-perma-ban-string =
     > **Выдан:** { $TimeNow }
 
     > **Причина:** { $reason }
+
+    > **Тяжесть:** { $severity }
 server-role-ban-string =
     > **Нарушитель:** ``{ $targetName }``
     > **Администратор:** ``{ $adminName }``
@@ -111,6 +115,8 @@ server-role-ban-string =
     > **Роли:** { $roles }
 
     > **Причина:** { $reason }
+
+    > **Тяжесть:** { $severity }
 server-perma-role-ban-string =
     > **Нарушитель:** ``{ $targetName }``
     > **Администратор:** ``{ $adminName }``
@@ -120,5 +126,7 @@ server-perma-role-ban-string =
     > **Роли:** { $roles }
 
     > **Причина:** { $reason }
+
+    > **Тяжесть:** { $severity }
 server-ban-string-no-pii = { $admin } created a { $severity } severity server ban that expires { $expires } for { $name } with reason: { $reason }
 cmd-ban_exemption_get-arg-player = <player>

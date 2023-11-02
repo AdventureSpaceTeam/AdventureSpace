@@ -50,7 +50,7 @@ public sealed class BanManager : IBanManager, IPostInjectInit
     private string _webhookUrl = string.Empty;
     private WebhookData? _webhookData;
     private string _webhookName = "Ban Machine";
-    private string _webhookAvatarUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCSDvjudwZh_G5qrZI5OrDNMLMmYzNBLYWP3Tl_cS_zQ&s";
+    private string _webhookAvatarUrl = "https://cdn-icons-png.flaticon.com/512/9724/9724976.png";
     // SpaceStories ban track - end
 
     private readonly Dictionary<NetUserId, HashSet<ServerRoleBanDef>> _cachedRoleBans = new();
@@ -394,6 +394,7 @@ public sealed class BanManager : IBanManager, IPostInjectInit
         var reason = banDef.Reason;
         var id = banDef.Id;
         var round = "" + banDef.RoundId;
+        var severity = "" + banDef.Severity;
         var serverName = _serverName[..Math.Min(_serverName.Length, 1500)];
         var timeNow = TimeZoneInfo.ConvertTimeFromUtc(
     DateTime.UtcNow,
@@ -418,7 +419,8 @@ public sealed class BanManager : IBanManager, IPostInjectInit
             ("TimeNow", timeNow),
             ("roles", rolesString),
             ("expiresString", expiresString),
-            ("reason", reason)),
+            ("reason", reason),
+            ("severity", severity)),
                         Color = 0x004281,
     Thumbnail = new EmbedThumbnail
                         {
@@ -453,7 +455,8 @@ public sealed class BanManager : IBanManager, IPostInjectInit
             ("TimeNow", timeNow),
             ("roles", rolesString),
             ("expiresString", expiresString),
-            ("reason", reason)),
+            ("reason", reason),
+            ("severity", severity)),
                         Color = 0xffb840,
     Thumbnail = new EmbedThumbnail
                         {
@@ -490,6 +493,7 @@ public sealed class BanManager : IBanManager, IPostInjectInit
         var reason = banDef.Reason;
         var id = banDef.Id;
         var round = "" + banDef.RoundId;
+        var severity = "" + banDef.Severity;
         var serverName = _serverName[..Math.Min(_serverName.Length, 1500)];
         var timeNow = TimeZoneInfo.ConvertTimeFromUtc(
     DateTime.UtcNow,
@@ -510,7 +514,8 @@ public sealed class BanManager : IBanManager, IPostInjectInit
             ("adminName", adminName),
             ("TimeNow", timeNow),
             ("expiresString", expiresString),
-            ("reason", reason)),
+            ("reason", reason),
+            ("severity", severity)),
                         Color = 0x803045,
     Thumbnail = new EmbedThumbnail
                         {
@@ -543,7 +548,8 @@ public sealed class BanManager : IBanManager, IPostInjectInit
             ("targetName", targetName),
             ("adminName", adminName),
             ("TimeNow", timeNow),
-            ("reason", reason)),
+            ("reason", reason),
+            ("severity", severity)),
                         Color = 0x8B0000,
     Thumbnail = new EmbedThumbnail
                         {
