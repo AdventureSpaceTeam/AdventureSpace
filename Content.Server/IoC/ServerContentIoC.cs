@@ -59,6 +59,12 @@ namespace Content.Server.IoC
             IoCManager.Register<ServerInfoManager>();
             IoCManager.Register<PoissonDiskSampler>();
             IoCManager.Register<DiscordWebhook>();
+
+            // Alteros-Sponsor
+            IoCManager.Register<Content.Corvax.Interfaces.Server.IServerSponsorsManager, Alteros.Sponsors.SponsorsManager>();
+            IoCManager.Register<Content.Corvax.Interfaces.Server.IServerDiscordAuthManager, Alteros.DiscordAuth.DiscordAuthManager>();
+            IoCManager.Register<Content.Corvax.Interfaces.Server.IServerJoinQueueManager, Alteros.JoinQueue.JoinQueueManager>();
+            // Alteros-Sponsor
         }
     }
 }

@@ -1,6 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Numerics;
+using Content.Corvax.Interfaces.Server;
 using Content.Server.Administration.Commands;
 using Content.Server.Chat.Managers;
 using Content.Server.Chat.Systems;
@@ -633,6 +634,7 @@ public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>
                 }
             }
 
+            var sponsors = IoCManager.Resolve<IServerSponsorsManager>(); // Alteros-Sponsors
             var numNukies = MathHelper.Clamp(_playerManager.PlayerCount / playersPerOperative, 1, maxOperatives);
 
             for (var i = 0; i < numNukies; i++)
@@ -653,19 +655,19 @@ public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>
                                     Logger.InfoS("preset", "Insufficient ready players to fill up with nukeops, stopping the selection");
                                     break;
                                 }
-                                nukeOp = _random.PickAndTake(everyone);
+                                nukeOp = sponsors.PickSession(everyone);
                                 Logger.InfoS("preset", "Insufficient preferred nukeop commanders, agents or nukies, picking at random.");
                             }
                             else
                             {
-                                nukeOp = _random.PickAndTake(prefList);
+                                nukeOp = sponsors.PickSession(prefList);
                                 everyone.Remove(nukeOp);
                                 Logger.InfoS("preset", "Insufficient preferred nukeop commander or agents, picking at random from regular op list.");
                             }
                         }
                         else
                         {
-                            nukeOp = _random.PickAndTake(medPrefList);
+                            nukeOp = sponsors.PickSession(medPrefList);
                             everyone.Remove(nukeOp);
                             prefList.Remove(nukeOp);
                             Logger.InfoS("preset", "Insufficient preferred nukeop commanders, picking an agent");
@@ -673,7 +675,7 @@ public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>
                     }
                     else
                     {
-                        nukeOp = _random.PickAndTake(cmdrPrefList);
+                        nukeOp = sponsors.PickSession(cmdrPrefList);
                         everyone.Remove(nukeOp);
                         prefList.Remove(nukeOp);
                         medPrefList.Remove(nukeOp);
@@ -691,19 +693,19 @@ public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>
                                 Logger.InfoS("preset", "Insufficient ready players to fill up with nukeops, stopping the selection");
                                 break;
                             }
-                            nukeOp = _random.PickAndTake(everyone);
+                            nukeOp = sponsors.PickSession(everyone);
                             Logger.InfoS("preset", "Insufficient preferred nukeop commanders, agents or nukies, picking at random.");
                         }
                         else
                         {
-                            nukeOp = _random.PickAndTake(prefList);
+                            nukeOp = sponsors.PickSession(prefList);
                             everyone.Remove(nukeOp);
                             Logger.InfoS("preset", "Insufficient preferred nukeop commander or agents, picking at random from regular op list.");
                         }
                     }
                     else
                     {
-                        nukeOp = _random.PickAndTake(medPrefList);
+                        nukeOp = sponsors.PickSession(medPrefList);
                         everyone.Remove(nukeOp);
                         Logger.InfoS("preset", "Insufficient preferred nukeop commanders, picking an agent");
                     }
@@ -711,7 +713,7 @@ public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>
                 }
                 else
                 {
-                    nukeOp = _random.PickAndTake(prefList);
+                    nukeOp = sponsors.PickSession(prefList);
                     everyone.Remove(nukeOp);
                     Logger.InfoS("preset", "Selected a preferred nukeop commander.");
                 }

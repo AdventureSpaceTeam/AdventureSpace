@@ -50,6 +50,12 @@ namespace Content.Client.IoC
             IoCManager.Register<JobRequirementsManager>();
             IoCManager.Register<DocumentParsingManager>();
             IoCManager.Register<ContentReplayPlaybackManager, ContentReplayPlaybackManager>();
+
+            // Alteros-Sponsor
+            IoCManager.Register<Content.Corvax.Interfaces.Client.IClientSponsorsManager,Alteros.Sponsors.SponsorsManager>();
+            IoCManager.Register<Content.Corvax.Interfaces.Client.IClientJoinQueueManager,Alteros.JoinQueue.JoinQueueManager>();
+            IoCManager.Register<Content.Corvax.Interfaces.Client.IClientDiscordAuthManager,Alteros.DiscordAuth.DiscordAuthManager>();
+            // Alteros-Sponsor
         }
     }
 }

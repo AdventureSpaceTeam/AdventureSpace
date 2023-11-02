@@ -10,6 +10,7 @@ using Content.Server.Mind;
 using Robust.Shared.Random;
 using Robust.Shared.Map;
 using System.Numerics;
+using Content.Corvax.Interfaces.Server;
 using Content.Shared.Inventory;
 using Content.Server.Storage.EntitySystems;
 using Robust.Shared.Audio;
@@ -127,7 +128,8 @@ public sealed class AntagSelectionSystem : GameRuleSystem<GameRuleComponent>
             }
             else
             {
-                chosenPlayer = _random.PickAndTake(prefList);
+                var sponsors = IoCManager.Resolve<IServerSponsorsManager>(); // Alteros-Sponsors
+                chosenPlayer = sponsors.PickSession(prefList);
                 playerList.Remove(chosenPlayer);
             }
 

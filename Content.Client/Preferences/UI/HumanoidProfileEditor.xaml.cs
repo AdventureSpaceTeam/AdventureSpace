@@ -6,6 +6,8 @@ using Content.Client.Message;
 using Content.Client.Players.PlayTimeTracking;
 using Content.Client.Stylesheets;
 using Content.Client.UserInterface.Controls;
+using Content.Corvax.Interfaces.Client;
+using Content.Corvax.Interfaces.Shared;
 using Content.Shared.CCVar;
 using Content.Shared.GameTicking;
 using Content.Shared.Humanoid;
@@ -587,8 +589,9 @@ namespace Content.Client.Preferences.UI
                 foreach (var job in jobs)
                 {
                     var selector = new JobPrioritySelector(job, _prototypeManager);
+                    var sponsors = IoCManager.Resolve<IClientSponsorsManager>(); // Alteros-Sponsors
 
-                    if (!_requirements.IsAllowed(job, out var reason))
+                    if (!_requirements.IsAllowed(job, out var reason) && !sponsors.OpenRoles && !sponsors.Prototypes.Contains(job.ID))
                     {
                         selector.LockRequirements(reason);
                     }
@@ -1351,7 +1354,8 @@ namespace Content.Client.Preferences.UI
                 // immediately lock requirements if they arent met.
                 // another function checks Disabled after creating the selector so this has to be done now
                 var requirements = IoCManager.Resolve<JobRequirementsManager>();
-                if (proto.Requirements != null && !requirements.CheckRoleTime(proto.Requirements, out var reason))
+                var sponsors = IoCManager.Resolve<IClientSponsorsManager>(); // Alteros-Sponsors
+                if (proto.Requirements != null && !requirements.CheckRoleTime(proto.Requirements, out var reason) && (!sponsors.OpenAntags))
                 {
                     LockRequirements(reason);
                 }

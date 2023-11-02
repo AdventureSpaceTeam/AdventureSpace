@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Corvax.Interfaces.Server;
 using Content.Server.Administration.Managers;
 using Content.Server.Players.PlayTimeTracking;
 using Content.Server.Station.Components;
@@ -244,8 +245,23 @@ public sealed partial class StationJobsSystem
                             if (!jobPlayerOptions.ContainsKey(job))
                                 continue;
 
-                            // Picking players it finds that have the job set.
+                            // Alteros-Sponsor
+                            List<NetUserId> priorityPlayers = new();
+                            foreach (var netUser in jobPlayerOptions[job])
+                            {
+                                var sponsors = IoCManager.Resolve<IServerSponsorsManager>(); // Alteros-Sponsors
+                                if (sponsors.HavePriorityRoles(netUser))
+                                    priorityPlayers.Add(netUser);
+                            }
+
                             var player = _random.Pick(jobPlayerOptions[job]);
+                            if (priorityPlayers.Count != 0)
+                            {
+                                player = _random.Pick(priorityPlayers);
+                            }
+                            // Alteros-Sponsor
+
+                            // Picking players it finds that have the job set.
                             AssignPlayer(player, job, station);
                             stationShares[station]--;
 
