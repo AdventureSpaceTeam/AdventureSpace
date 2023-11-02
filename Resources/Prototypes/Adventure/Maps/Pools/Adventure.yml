@@ -1,0 +1,16 @@
+- type: gameMapPool
+  id: AdventureMapPool
+  maps:
+  - CorvaxGelta
+  - CorvaxAvrite
+  - CorvaxSpectrum
+  - CorvaxDelta
+  - Bagel
+  - Aspid
+  - Box
+  - Cluster
+  - Fland
+  - Kettle
+  - Meta
+  - Omega
+  - Moose
