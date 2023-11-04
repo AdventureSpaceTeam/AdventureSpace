@@ -561,3 +561,5 @@
       tags:
         - DroneUsable
         - Mop
+    - type: Butcherable
+      butcheringType: Knife
