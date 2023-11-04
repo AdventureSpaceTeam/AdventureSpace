@@ -564,5 +564,5 @@
     - type: Butcherable
       butcheringType: Knife
       spawned:
-      - id: (айдишник того что выпадает)
-         amount: (количество)
+      - id: MaterialCloth1
+         amount: 1
