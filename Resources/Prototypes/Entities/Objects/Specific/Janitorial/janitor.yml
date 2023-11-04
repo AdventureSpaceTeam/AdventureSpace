@@ -563,3 +563,6 @@
         - Mop
     - type: Butcherable
       butcheringType: Knife
+      spawned:
+      - id: (айдишник того что выпадает)
+         amount: (количество)
