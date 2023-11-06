@@ -7,8 +7,7 @@
   - type: Sprite
     sprite: Corvax/Back/Backpacks/military.rsi
   - type: Storage
-    maxItemSize: Large
-    maxTotalWeight: 40
+    maxTotalWeight: 44
 
 - type: entity
   parent: ClothingBackpack
@@ -19,8 +18,7 @@
   - type: Sprite
     sprite: Corvax/Back/Backpacks/deathsquad-backpack.rsi
   - type: Storage
-    maxItemSize: Large
-    maxTotalWeight: 100
+    maxTotalWeight: 84
 
 - type: entity
   parent: ClothingBackpack
@@ -30,6 +28,3 @@
   components:
   - type: Sprite
     sprite: Corvax/Back/Backpacks/ce.rsi
-  - type: Storage
-    maxItemSize: Large
-    maxTotalWeight: 40
