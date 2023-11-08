@@ -1,5 +1,6 @@
 using System.Globalization;
 using System.Linq;
+using Content.Corvax.Interfaces.Server;
 using Content.Server.Actions;
 using Content.Server.Chat.Managers;
 using Content.Server.Chat.Systems;
@@ -296,12 +297,14 @@ public sealed class ZombieRuleSystem : GameRuleSystem<ZombieRuleComponent>
                     Log.Info("Insufficient number of players. stopping selection.");
                     break;
                 }
-                zombie = _random.Pick(playerList);
+                var sponsors = IoCManager.Resolve<IServerSponsorsManager>(); // Alteros-Sponsors
+                zombie = sponsors.PickSession(playerList);
                 Log.Info("Insufficient preferred patient 0, picking at random.");
             }
             else
             {
-                zombie = _random.Pick(prefList);
+                var sponsors = IoCManager.Resolve<IServerSponsorsManager>(); // Alteros-Sponsors
+                zombie = sponsors.PickSession(prefList);
                 Log.Info("Selected a patient 0.");
             }
 
