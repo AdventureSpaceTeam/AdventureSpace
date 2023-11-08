@@ -69,7 +69,7 @@ public static class ClientPackaging
             inputPass,
             contentDir,
             "Content.Client",
-            new[] { "Content.Client", "Content.Shared", "Content.Shared.Database" },
+            new[] { "Content.Client", "Content.Shared", "Content.Shared.Database", "Content.Corvax.Interfaces.Shared", "Content.Corvax.Interfaces.Client", "Content.Corvax.Shared", "Content.Corvax.Client" },
             cancel: cancel);
 
         await RobustClientPackaging.WriteClientResources(contentDir, pass, cancel);
