@@ -1,8 +1,7 @@
 ﻿name: "Labels: Changes"
 
 on:
-  pull_request_review:
-    types: [submitted]
+  workflow_dispatch:
 
 jobs:
   update_label:
