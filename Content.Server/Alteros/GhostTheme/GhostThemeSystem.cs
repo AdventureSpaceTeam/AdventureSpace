@@ -2,6 +2,7 @@ using Content.Corvax.Interfaces.Server;
 using Content.Shared.Alteros.GhostTheme;
 using Content.Shared.Ghost;
 using Robust.Server.GameObjects;
+using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.Manager;
 
