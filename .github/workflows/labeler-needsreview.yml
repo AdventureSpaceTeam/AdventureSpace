@@ -1,8 +1,7 @@
 ﻿name: "Labels: Review"
 
 on:
-  pull_request_target:
-    types: [review_requested]
+  workflow_dispatch:
 
 jobs:
   add_label:
