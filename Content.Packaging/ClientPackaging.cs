@@ -65,11 +65,15 @@ public static class ClientPackaging
 
         var inputPass = graph.Input;
 
+        // Corvax-Secrets-Start: Add Corvax interfaces to Magic ACZ
+        var assemblies = new List<string> { "Content.Client", "Content.Shared", "Content.Shared.Database", "Content.Corvax.Interfaces.Client", "Content.Corvax.Interfaces.Shared" };
+        // Corvax-Secrets-End
+
         await RobustSharedPackaging.WriteContentAssemblies(
             inputPass,
             contentDir,
             "Content.Client",
-            new[] { "Content.Client", "Content.Shared", "Content.Shared.Database", "Content.Corvax.Interfaces.Shared", "Content.Corvax.Interfaces.Client" },
+            assemblies, // Corvax-Secrets
             cancel: cancel);
 
         await RobustClientPackaging.WriteClientResources(contentDir, pass, cancel);
