@@ -5,7 +5,6 @@ using Content.Server.Administration.Notes;
 using Content.Server.Afk;
 using Content.Server.Chat.Managers;
 using Content.Server.Connection;
-using Content.Server.Corvax.TTS;
 using Content.Server.Database;
 using Content.Server.Discord;
 using Content.Server.EUI;
@@ -19,6 +18,7 @@ using Content.Server.Preferences.Managers;
 using Content.Server.ServerInfo;
 using Content.Server.ServerUpdates;
 using Content.Server.Voting.Managers;
+using Content.Server.White.TTS;
 using Content.Server.Worldgen.Tools;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Administration.Managers;
@@ -55,7 +55,7 @@ namespace Content.Server.IoC
             IoCManager.Register<IAdminLogManager, AdminLogManager>();
             IoCManager.Register<PlayTimeTrackingManager>();
             IoCManager.Register<UserDbDataManager>();
-            IoCManager.Register<TTSManager>(); // Corvax-TTS
+            IoCManager.Register<TTSManager>(); // White-TTS
             IoCManager.Register<ServerInfoManager>();
             IoCManager.Register<PoissonDiskSampler>();
             IoCManager.Register<DiscordWebhook>();

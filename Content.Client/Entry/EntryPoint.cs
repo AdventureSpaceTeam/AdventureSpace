@@ -1,8 +1,6 @@
 using Content.Client.Administration.Managers;
 using Content.Client.Changelog;
 using Content.Client.Chat.Managers;
-using Content.Client.Corvax.TTS;
-using Content.Client.Options;
 using Content.Client.Eui;
 using Content.Client.Flash;
 using Content.Client.Fullscreen;
@@ -23,6 +21,7 @@ using Content.Client.Singularity;
 using Content.Client.Stylesheets;
 using Content.Client.Viewport;
 using Content.Client.Voting;
+using Content.Client.White.TTS;
 using Content.Shared.Ame;
 using Content.Shared.Gravity;
 using Content.Shared.Localizations;
@@ -72,6 +71,10 @@ namespace Content.Client.Entry
         [Dependency] private readonly IResourceManager _resourceManager = default!;
         [Dependency] private readonly IReplayLoadManager _replayLoad = default!;
         [Dependency] private readonly ILogManager _logManager = default!;
+
+        //White
+        [Dependency] private readonly TTSManager _ttsManager = default!;
+        //
 
         public override void Init()
         {
@@ -164,6 +167,9 @@ namespace Content.Client.Entry
             _clientPreferencesManager.Initialize();
             _euiManager.Initialize();
             _voteManager.Initialize();
+            //WHITE
+            _ttsManager.Initialize();
+            //
             _userInterfaceManager.SetDefaultTheme("SS14DefaultTheme");
             _userInterfaceManager.SetActiveTheme(_configManager.GetCVar(CVars.InterfaceTheme));
             _documentParsingManager.Initialize();
