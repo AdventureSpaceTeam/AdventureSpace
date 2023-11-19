@@ -148,6 +148,12 @@ public sealed partial class TTSSystem : EntitySystem
         }
 
         var voiceId = component.VoicePrototypeId;
+
+        if (voiceId == null)
+        {
+            return;
+        }
+
         var voiceEv = new TransformSpeakerVoiceEvent(uid, voiceId);
         RaiseLocalEvent(uid, voiceEv);
         voiceId = voiceEv.VoiceId;

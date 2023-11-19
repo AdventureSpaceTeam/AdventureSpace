@@ -70,7 +70,7 @@
   - type: TypingIndicator
     proto: robot
   - type: TTS # Corvax-TTS
-    voice: TrainingRobot
+    voice: Glados
   - type: Speech
     speechVerb: Robotic
     speechSounds: Vending
@@ -2036,4 +2036,4 @@
     ejectDelay: 2
   - type: AccessReader
     access: [["SyndicateAgent"]]
-  
+
