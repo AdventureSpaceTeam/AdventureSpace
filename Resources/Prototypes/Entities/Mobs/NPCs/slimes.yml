@@ -121,7 +121,7 @@
   - type: Speech
     speechVerb: Slime
   - type: TTS # Corvax-TTS
-    voice: Chen
+    voice: Rexxar
 
 - type: entity
   name: blue slime
