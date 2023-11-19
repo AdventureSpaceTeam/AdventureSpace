@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
+using Content.Shared._White.TTS;
 using Content.Shared.CCVar;
 using Content.Shared.Corvax.CCCVars;
 using Content.Shared.White.TTS;
@@ -31,12 +32,27 @@ public sealed class TTSSystem : EntitySystem
 
     private readonly HashSet<AudioStream> _currentStreams = new();
     private readonly Dictionary<EntityUid, Queue<AudioStream>> _entityQueues = new();
+    private IClydeAudioSource? _currentLobbyPreview = default!;
 
     public override void Initialize()
     {
         _sawmill = Logger.GetSawmill("tts");
         _cfg.OnValueChanged(CCCVars.TTSVolume, OnTtsVolumeChanged, true);
         SubscribeNetworkEvent<PlayTTSEvent>(OnPlayTTS);
+        SubscribeNetworkEvent<PlayGlobalTTSEvent>(OnPlayGlobalTTS);
+    }
+
+    private void OnPlayGlobalTTS(PlayGlobalTTSEvent ev)
+    {
+        if (_currentLobbyPreview?.IsPlaying == true || !TryCreateAudioSource(ev.Data, out var source))
+        {
+            return;
+        }
+
+        _currentLobbyPreview = source;
+
+        source.SetGlobal();
+        source.StartPlaying();
     }
 
     public override void Shutdown()
