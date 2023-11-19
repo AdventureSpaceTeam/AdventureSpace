@@ -1,4 +1,5 @@
-﻿using Content.Shared.White.TTS;
+﻿using Content.Shared._White.TTS;
+using Content.Shared.White.TTS;
 using Robust.Shared.Network;
 
 namespace Content.Client.White.TTS;
@@ -18,5 +19,10 @@ public sealed class TTSManager
     {
         var msg = new MsgRequestTTS() { Text = text, Uid = uid, VoiceId = voiceId };
         _netMgr.ClientSendMessage(msg);
+    }
+
+    public void RequestGlobalTTS(string text, string voiceId, IEntityManager entityManager)
+    {
+        entityManager.EntityNetManager?.SendSystemNetworkMessage(new RequestGlobalTTSEvent(text, voiceId));
     }
 }

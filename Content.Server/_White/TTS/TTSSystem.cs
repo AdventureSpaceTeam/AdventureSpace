@@ -52,6 +52,8 @@ public sealed partial class TTSSystem : EntitySystem
 
         SubscribeLocalEvent<TTSAnnouncementEvent>(OnAnnounceRequest);
 
+        SubscribeNetworkEvent<RequestGlobalTTSEvent>(OnRequestGlobalTTS);
+
         _netMgr.RegisterNetMessage<MsgRequestTTS>(OnRequestTTS);
     }
 
@@ -117,6 +119,20 @@ public sealed partial class TTSSystem : EntitySystem
         }
     }
 
+    private async void OnRequestGlobalTTS(RequestGlobalTTSEvent ev, EntitySessionEventArgs args)
+    {
+        if (!_isEnabled ||
+            ev.Text.Length > MaxMessageChars ||
+            !_prototypeManager.TryIndex<TTSVoicePrototype>(ev.VoiceId, out var protoVoice))
+            return;
+
+        var soundData = await GenerateTTS(null, ev.Text, protoVoice.Speaker);
+        if (soundData is null)
+            return;
+
+        RaiseNetworkEvent(new PlayGlobalTTSEvent(soundData), Filter.SinglePlayer(args.SenderSession));
+    }
+
     private async void OnRequestTTS(MsgRequestTTS ev)
     {
         var url = _cfg.GetCVar(CCCVars.TTSApiUrl);
@@ -129,10 +145,15 @@ public sealed partial class TTSSystem : EntitySystem
 
         var soundData = await GenerateTTS(ev.Uid, ev.Text, protoVoice.Speaker);
         var entity = GetNetEntity(ev.Uid);
+
+        if (!entity.IsValid())
+        {
+            return;
+        }
+
         if (soundData != null)
         {
             RaiseNetworkEvent(new PlayTTSEvent(entity, soundData, false), Filter.SinglePlayer(session), false);
-
         }
     }
 
