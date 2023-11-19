@@ -75,6 +75,7 @@ public sealed partial class HumanoidProfileEditor
             return;
 
         _ttsSys.StopAllStreams();
-        _ttsMgr.RequestTTS(_previewDummy.Value, _random.Pick(_sampleText), Profile.Voice);
+
+        _ttsMgr.RequestGlobalTTS(_random.Pick(_sampleText), Profile.Voice, _entMan);
     }
 }
