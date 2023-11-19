@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading;
@@ -43,10 +44,16 @@ public sealed class TTSManager
 
     private ISawmill _sawmill = default!;
     private readonly Dictionary<string, byte[]?> _cache = new();
+    private string _apiToken = string.Empty;
 
     public void Initialize()
     {
         _sawmill = Logger.GetSawmill("tts");
+        _cfg.OnValueChanged(CCCVars.TTSApiToken, v =>
+        {
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", v);
+            _apiToken = v;
+        }, true);
     }
 
     /// <summary>
@@ -60,6 +67,7 @@ public sealed class TTSManager
     {
         var url = _cfg.GetCVar(CCCVars.TTSApiUrl);
         var maxCacheSize = _cfg.GetCVar(CCCVars.TTSMaxCache);
+
         if (string.IsNullOrWhiteSpace(url))
         {
             throw new Exception("TTS Api url not specified");
