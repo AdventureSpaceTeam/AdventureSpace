@@ -1,7 +1,7 @@
 ﻿using Content.Shared.Humanoid;
 using Robust.Shared.Prototypes;
 
-namespace Content.Shared.Corvax.TTS;
+namespace Content.Shared.White.TTS;
 
 /// <summary>
 /// Prototype represent available TTS voices
@@ -10,7 +10,7 @@ namespace Content.Shared.Corvax.TTS;
 // ReSharper disable once InconsistentNaming
 public sealed class TTSVoicePrototype : IPrototype
 {
-    [IdDataField]
+    [IdDataFieldAttribute]
     public string ID { get; } = default!;
 
     [DataField("name")]
@@ -31,4 +31,7 @@ public sealed class TTSVoicePrototype : IPrototype
 
     [DataField("sponsorOnly")]
     public bool SponsorOnly { get; } = false;
+
+    [DataField("borgVoice")]
+    public bool BorgVoice { get; } = false;
 }
