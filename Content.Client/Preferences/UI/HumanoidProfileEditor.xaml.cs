@@ -118,6 +118,7 @@ namespace Content.Client.Preferences.UI
             _preferencesManager = preferencesManager;
             _configurationManager = configurationManager;
             _markingManager = IoCManager.Resolve<MarkingManager>();
+            _random = IoCManager.Resolve<IRobustRandom>();
 
             #region Left
 

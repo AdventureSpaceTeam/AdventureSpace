@@ -1,14 +1,12 @@
 using System.Linq;
-using System.Globalization;
 using System.Text.RegularExpressions;
 using Content.Shared.CCVar;
-using Content.Shared.Corvax.TTS;
 using Content.Shared.GameTicking;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Prototypes;
-using Content.Shared.Random.Helpers;
 using Content.Shared.Roles;
 using Content.Shared.Traits;
+using Content.Shared.White.TTS;
 using Robust.Shared.Configuration;
 using Robust.Shared.Enums;
 using Robust.Shared.Prototypes;
@@ -182,12 +180,12 @@ namespace Content.Shared.Preferences
                 age = random.Next(speciesPrototype.MinAge, speciesPrototype.OldAge); // people don't look and keep making 119 year old characters with zero rp, cap it at middle aged
             }
 
-            // Corvax-TTS-Start
+            // White-TTS-Start
             var voiceId = random.Pick(prototypeManager
                 .EnumeratePrototypes<TTSVoicePrototype>()
                 .Where(o => CanHaveVoice(o, sex)).ToArray()
             ).ID;
-            // Corvax-TTS-End
+            // White-TTS-End
 
             var gender = sex == Sex.Male ? Gender.Male : Gender.Female;
 
@@ -534,13 +532,13 @@ namespace Content.Shared.Preferences
             // Corvax-TTS-End
         }
 
-        // Corvax-TTS-Start
+        // White-TTS-Start
         // MUST NOT BE PUBLIC, BUT....
         public static bool CanHaveVoice(TTSVoicePrototype voice, Sex sex)
         {
             return voice.RoundStart && sex == Sex.Unsexed || (voice.Sex == sex || voice.Sex == Sex.Unsexed);
         }
-        // Corvax-TTS-End
+        // White-TTS-End
 
         // sorry this is kind of weird and duplicated,
         /// working inside these non entity systems is a bit wack

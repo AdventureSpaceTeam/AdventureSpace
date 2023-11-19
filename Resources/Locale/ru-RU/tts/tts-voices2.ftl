@@ -1,0 +1,15 @@
+﻿tts-voice-name-tf-engineer = Инженер
+tts-voice-name-tf-heavy = Пулемётчик
+tts-voice-name-tf-medic = Медик
+tts-voice-name-tf-sniper = Снайпер
+tts-voice-name-tf-spy = Шпион
+tts-voice-name-tf-demoman = Подрывник
+tts-voice-name-valtos = Валтос
+tts-voice-name-khajiit = Каджит
+tts-voice-name-punisher = Каратель
+tts-voice-name-johnny = Джонни Сильверхенд
+tts-voice-name-panam = Панам Палмер
+tts-voice-name-dornan = Сержант Дорнан
+tts-voice-name-v-female = Ви
+tts-voice-name-officer-enclave = Офицер Анклава
+tts-voice-name-richardson = Дик Ричардсон

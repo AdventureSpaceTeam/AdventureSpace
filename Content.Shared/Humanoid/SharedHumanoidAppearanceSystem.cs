@@ -1,7 +1,7 @@
 using System.Linq;
+using Content.Shared._White.TTS;
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.Humanoid.Prototypes;
-using Content.Shared.Corvax.TTS;
 using Content.Shared.Decals;
 using Content.Shared.Preferences;
 using Robust.Shared.GameObjects.Components.Localization;
@@ -330,7 +330,7 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
         }
 
         EnsureDefaultMarkings(uid, humanoid);
-        SetTTSVoice(uid, profile.Voice, humanoid); // Corvax-TTS
+        SetTTSVoice(uid, profile.Voice, humanoid); // White-TTS
 
         humanoid.Gender = profile.Gender;
         if (TryComp<GrammarComponent>(uid, out var grammar))
@@ -416,7 +416,7 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
             Dirty(humanoid);
     }
 
-    // Corvax-TTS-Start
+    // White-TTS-Start
     // ReSharper disable once InconsistentNaming
     public void SetTTSVoice(EntityUid uid, string voiceId, HumanoidAppearanceComponent humanoid)
     {
