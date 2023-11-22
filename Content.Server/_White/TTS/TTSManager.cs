@@ -98,7 +98,7 @@ public sealed class TTSManager
         request:
         try
         {
-            var cts = new CancellationTokenSource(TimeSpan.FromSeconds(10));
+            var cts = new CancellationTokenSource(TimeSpan.FromSeconds(3));
             var response = await _httpClient.GetAsync(request, cts.Token);
 
             if (response.StatusCode == HttpStatusCode.TooManyRequests)
