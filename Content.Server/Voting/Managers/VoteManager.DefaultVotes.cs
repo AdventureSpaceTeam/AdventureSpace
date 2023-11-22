@@ -123,6 +123,14 @@ namespace Content.Server.Voting.Managers
                     : TimeSpan.FromSeconds(_cfg.GetCVar(CCVars.VoteTimerPreset))
             };
 
+            //DTS START
+            if (ActiveVotes.Any(x => x.Title == options.Title))
+            {
+                _chatManager.DispatchServerAnnouncement(Loc.GetString("ui-vote-game-mode-already-underway"));
+                return;
+            }
+            //DTS END
+
             if (alone)
                 options.InitiatorTimeout = TimeSpan.FromSeconds(10);
 
