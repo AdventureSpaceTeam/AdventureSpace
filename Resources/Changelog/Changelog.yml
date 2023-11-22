@@ -2895,3 +2895,8 @@ Entries:
   - {message: The reagent "egg" is now known as "cooked egg", type: Tweak}
   id: 5200
   time: '2023-11-22T04:32:35.0000000+00:00'
+- author: themias
+  changes:
+  - {message: You must now unlock a cyborg's panel to access it, type: Fix}
+  id: 5201
+  time: '2023-11-22T17:16:03.0000000+00:00'
