@@ -169,6 +169,15 @@ namespace Content.Server.Voting.Managers
                     : TimeSpan.FromSeconds(_cfg.GetCVar(CCVars.VoteTimerMap))
             };
 
+            //DTS START
+            if (ActiveVotes.Any(x => x.Title == options.Title))
+            {
+                _chatManager.DispatchServerAnnouncement(Loc.GetString("ui-vote-map-already-underway"));
+                return;
+            }
+
+            //DTS END
+
             if (alone)
                 options.InitiatorTimeout = TimeSpan.FromSeconds(10);
 
@@ -176,6 +185,8 @@ namespace Content.Server.Voting.Managers
             {
                 options.Options.Add((v, k));
             }
+
+            options.Options.Add((Loc.GetString("random-map-vote"), "Random")); // DTS
 
             WirePresetVoteInitiator(options, initiator);
 
@@ -190,6 +201,13 @@ namespace Content.Server.Voting.Managers
                     _chatManager.DispatchServerAnnouncement(
                         Loc.GetString("ui-vote-map-tie", ("picked", maps[picked])));
                 }
+                else if (args.Winner is string) // DTS START
+                {
+                    _gameMapManager.SelectMapRandom();
+                    picked = _gameMapManager.GetSelectedMap()!;
+                    _chatManager.DispatchServerAnnouncement(
+                        Loc.GetString("ui-vote-map-random", ("winner", maps[picked])));
+                } // DTS END
                 else
                 {
                     picked = (GameMapPrototype) args.Winner;
