@@ -215,19 +215,19 @@ namespace Content.Server.Voting.Managers
             vote.OnFinished += (_, args) =>
             {
                 GameMapPrototype picked;
-                if (args.Winner == null)
-                {
-                    picked = (GameMapPrototype) _random.Pick(args.Winners);
-                    _chatManager.DispatchServerAnnouncement(
-                        Loc.GetString("ui-vote-map-tie", ("picked", maps[picked])));
-                }
-                else if (args.Winner is string) // DTS START
+                if (args.Winner is string) // DTS START
                 {
                     _gameMapManager.SelectMapRandom();
                     picked = _gameMapManager.GetSelectedMap()!;
                     _chatManager.DispatchServerAnnouncement(
                         Loc.GetString("ui-vote-map-random", ("winner", maps[picked])));
                 } // DTS END
+                else if (args.Winner == null)
+                {
+                    picked = (GameMapPrototype) _random.Pick(args.Winners);
+                    _chatManager.DispatchServerAnnouncement(
+                        Loc.GetString("ui-vote-map-tie", ("picked", maps[picked])));
+                }
                 else
                 {
                     picked = (GameMapPrototype) args.Winner;
