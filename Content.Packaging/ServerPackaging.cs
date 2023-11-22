@@ -46,8 +46,6 @@ public static class ServerPackaging
         "Content.Server",
         "Content.Shared",
         "Content.Shared.Database",
-        "Content.Corvax.Interfaces.Shared",
-        "Content.Corvax.Interfaces.Server",
     };
 
     private static readonly List<string> ServerExtraAssemblies = new()
