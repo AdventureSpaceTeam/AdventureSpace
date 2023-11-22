@@ -1,8 +1,10 @@
 using System.Linq;
+using Content.Server.Administration;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Presets;
 using Content.Server.Maps;
 using Content.Server.RoundEnd;
+using Content.Shared.Administration;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
 using Content.Shared.Voting;
@@ -112,6 +114,11 @@ namespace Content.Server.Voting.Managers
 
         private void CreatePresetVote(ICommonSession? initiator)
         {
+            if (!HasAccess(initiator, AdminFlags.Admin))
+            {
+                _chatManager.DispatchServerMessage(initiator!, Loc.GetString("vote-no-access"));
+            }
+
             var presets = GetGamePresets();
 
             var alone = _playerManager.PlayerCount == 1 && initiator != null;
@@ -166,6 +173,11 @@ namespace Content.Server.Voting.Managers
 
         private void CreateMapVote(ICommonSession? initiator)
         {
+            if (!HasAccess(initiator, AdminFlags.Admin))
+            {
+                _chatManager.DispatchServerMessage(initiator!, Loc.GetString("vote-no-access"));
+            }
+
             var maps = _gameMapManager.CurrentlyEligibleMaps().ToDictionary(map => map, map => map.MapName);
 
             var alone = _playerManager.PlayerCount == 1 && initiator != null;
@@ -245,6 +257,16 @@ namespace Content.Server.Voting.Managers
                     }
                 }
             };
+        }
+
+        private bool HasAccess(ICommonSession? initiator, AdminFlags flags)
+        {
+            if (initiator == null)
+            {
+                return true;
+            }
+
+            return _adminMgr.HasAdminFlag(initiator, flags);
         }
 
         private void TimeoutStandardVote(StandardVoteType type)
