@@ -1814,6 +1814,13 @@ namespace Content.Shared.CCVar
             CVarDef.Create("replay.auto_record_temp_dir", "", CVar.SERVERONLY);
 
         /*
+         * Miscellaneous
+         */
+
+        public static readonly CVarDef<bool> GatewayGeneratorEnabled =
+            CVarDef.Create("gateway.generator_enabled", true);
+
+        /*
          * News
          */
 
