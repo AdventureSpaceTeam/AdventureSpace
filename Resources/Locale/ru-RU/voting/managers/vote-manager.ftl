@@ -16,6 +16,7 @@ ui-vote-map-tie = Ничья при голосовании за карту! Вы
 ui-vote-map-win = { $winner } выиграла голосование о выборе карты!
 ui-vote-map-random = { $winner } выиграла в случайном голосовании о выборе карты!
 ui-vote-map-already-underway = Голосование за смену карты уже идет.
+ui-vote-game-mode-already-underway = Голосование за смену режима уже идет.
 random-map-vote = Случайная карта
 ui-vote-map-notlobby = Голосование о выборе карты действует только в предраундовом лобби!
 ui-vote-map-notlobby-time = Голосование о выборе карты действует только в предраундовом лобби, когда осталось { $time }!
