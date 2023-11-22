@@ -472,6 +472,11 @@ namespace Content.Server.GameTicking
                 {
                     _voteManager.CreateStandardVote(null, StandardVoteType.Map);
                 }
+
+                if (_cfg.GetCVar(DTSCvars.AutoGameModVoteOnRoundEnd))
+                {
+                    _voteManager.CreateStandardVote(null, StandardVoteType.Preset);
+                }
                 //DTS END
 
                 SendStatusToAll();
