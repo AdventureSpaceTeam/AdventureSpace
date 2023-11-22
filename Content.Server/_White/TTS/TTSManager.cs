@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -6,9 +7,7 @@ using System.Text.Json.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
-using Content.Shared.CCVar;
 using Content.Shared.Corvax.CCCVars;
-using Content.Shared.White;
 using Prometheus;
 using Robust.Shared.Configuration;
 
@@ -68,6 +67,7 @@ public sealed class TTSManager
         var url = _cfg.GetCVar(CCCVars.TTSApiUrl);
         var maxCacheSize = _cfg.GetCVar(CCCVars.TTSMaxCache);
 
+
         if (string.IsNullOrWhiteSpace(url))
         {
             throw new Exception("TTS Api url not specified");
@@ -94,18 +94,27 @@ public sealed class TTSManager
         var request = CreateRequestLink(url, body);
 
         var reqTime = DateTime.UtcNow;
+        var tries = 0;
+        request:
         try
         {
             var cts = new CancellationTokenSource(TimeSpan.FromSeconds(10));
             var response = await _httpClient.GetAsync(request, cts.Token);
-            if (!response.IsSuccessStatusCode)
+
+            if (response.StatusCode == HttpStatusCode.TooManyRequests)
             {
+                tries++;
+                if (tries < 3)
+                {
+                    goto request;
+                }
+
                 throw new Exception($"TTS request returned bad status code: {response.StatusCode}");
             }
 
             var soundData = await response.Content.ReadAsByteArrayAsync(cts.Token);
 
-            if(_cache.Count > maxCacheSize)
+            if (_cache.Count > maxCacheSize)
             {
                 _cache.Remove(_cache.Last().Key);
             }
