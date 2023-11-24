@@ -48,6 +48,8 @@ namespace Content.Server.GameTicking
         [ViewVariables]
         private TimeSpan _roundStartTimeSpan;
 
+        public TimeSpan RoundStartTimeSpan => _roundStartTimeSpan;
+
         [ViewVariables]
         private bool _startingRound;
 
