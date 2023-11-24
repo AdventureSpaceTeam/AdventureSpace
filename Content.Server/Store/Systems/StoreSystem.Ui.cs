@@ -152,12 +152,16 @@ public sealed partial class StoreSystem
         foreach (var currency in listing.Cost)
         {
             component.Balance[currency.Key] -= currency.Value;
+            var ev = new SubtractCashEvent(buyer, currency.Key, currency.Value);
+            RaiseLocalEvent(buyer, ref ev);
         }
 
         //spawn entity
         if (listing.ProductEntity != null)
         {
             var product = Spawn(listing.ProductEntity, Transform(buyer).Coordinates);
+            var ev = new ItemPurchasedEvent(buyer);
+            RaiseLocalEvent(product, ref ev);
             _hands.PickupOrDrop(buyer, product);
         }
 
