@@ -1,6 +1,7 @@
 using System.Globalization;
 using System.Linq;
 using System.Numerics;
+using Content.Corvax.Interfaces.Server;
 using Content.Server.Administration.Managers;
 using Content.Server.Ghost;
 using Content.Server.Spawners.Components;
@@ -126,8 +127,9 @@ namespace Content.Server.GameTicking
             var jobBans = _banManager.GetJobBans(player.UserId);
             if (jobBans == null || jobId != null && jobBans.Contains(jobId))
                 return;
-
-            if (jobId != null && !_playTimeTrackings.IsAllowed(player, jobId))
+            var sponsors = IoCManager.Resolve<IServerSponsorsManager>(); // Alteros-Sponsors
+            sponsors.TryGetPrototypes(player.UserId, out var prototypes);
+            if (jobId != null && !_playTimeTrackings.IsAllowed(player, jobId) && !sponsors.OpenRoles(player.UserId) && !prototypes!.Contains(jobId))
                 return;
             SpawnPlayer(player, character, station, jobId, lateJoin, silent);
         }
