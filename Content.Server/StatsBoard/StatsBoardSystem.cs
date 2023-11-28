@@ -94,11 +94,15 @@ public sealed class StatsBoardSystem : EntitySystem
 
     private void OnAbsorbedPuddleEvent(EntityUid uid, StatsBoardComponent comp, ref AbsorberPudleEvent ev)
     {
+        if (!_statisticEntries.ContainsKey(uid))
+            return;
         _statisticEntries[uid].AbsorbedPuddleCount += 1;
     }
 
     private void OnCraftedEvent(EntityUid uid, StatsBoardComponent comp, ref ItemConstructionCreated ev)
     {
+        if (!_statisticEntries.ContainsKey(uid))
+            return;
         if (!TryComp<MetaDataComponent>(ev.Item, out var metaDataComponent))
             return;
         if (metaDataComponent.EntityPrototype == null)
@@ -114,6 +118,8 @@ public sealed class StatsBoardSystem : EntitySystem
 
     private void OnCuffedEvent(EntityUid uid, StatsBoardComponent comp, ref CuffedEvent ev)
     {
+        if (!_statisticEntries.ContainsKey(uid))
+            return;
         _statisticEntries[uid].CuffedCount += 1;
         if (_clownCuffed.clown != null)
             return;
@@ -125,6 +131,8 @@ public sealed class StatsBoardSystem : EntitySystem
 
     private void OnItemPurchasedEvent(EntityUid uid, StatsBoardComponent comp, ref SubtractCashEvent ev)
     {
+        if (!_statisticEntries.ContainsKey(uid))
+            return;
         if (ev.Currency != "Telecrystal")
             return;
         if (_statisticEntries[uid].SpentTk == null)
@@ -139,16 +147,22 @@ public sealed class StatsBoardSystem : EntitySystem
 
     private void OnElectrocuted(EntityUid uid, StatsBoardComponent comp, ElectrocutedEvent ev)
     {
+        if (!_statisticEntries.ContainsKey(uid))
+            return;
         _statisticEntries[uid].ElectrocutedCount += 1;
     }
 
     private void OnDoorEmagged(EntityUid uid, StatsBoardComponent comp, ref DoorEmaggedEvent ev)
     {
+        if (!_statisticEntries.ContainsKey(uid))
+            return;
         _statisticEntries[uid].DoorEmagedCount += 1;
     }
 
     private void OnInteractionAttempt(EntityUid uid, StatsBoardComponent component, InteractionAttemptEvent args)
     {
+        if (!_statisticEntries.ContainsKey(uid))
+            return;
         if (!HasComp<ItemComponent>(args.Target))
             return;
         if (MetaData(args.Target.Value).EntityPrototype == null)
@@ -163,11 +177,17 @@ public sealed class StatsBoardSystem : EntitySystem
 
     private void OnCreamedEvent(EntityUid uid, StatsBoardComponent comp, ref CreamedEvent ev)
     {
+        if (!_statisticEntries.ContainsKey(uid))
+            return;
+
         _statisticEntries[uid].CreamedCount += 1;
     }
 
     private void OnMobStateChanged(EntityUid uid, StatsBoardComponent component, MobStateChangedEvent args)
     {
+        if (!_statisticEntries.ContainsKey(uid))
+            return;
+
         switch (args.NewMobState)
         {
             case MobState.Dead:
@@ -213,6 +233,8 @@ public sealed class StatsBoardSystem : EntitySystem
 
     private void OnDamageModify(EntityUid uid, StatsBoardComponent comp, DamageChangedEvent ev)
     {
+        if (!_statisticEntries.ContainsKey(uid))
+            return;
         if (ev.DamageDelta == null)
             return;
         if (ev.DamageIncreased)
@@ -243,6 +265,8 @@ public sealed class StatsBoardSystem : EntitySystem
 
     private void OnSlippedEvent(EntityUid uid, StatsBoardComponent comp, ref SlippedEvent ev)
     {
+        if (!_statisticEntries.ContainsKey(uid))
+            return;
         _statisticEntries[uid].SlippedCount += 1;
     }
 
