@@ -448,6 +448,10 @@ namespace Content.Shared.Cuffs
 
             component.Container.Insert(handcuff);
             UpdateHeldItems(target, handcuff, component);
+
+            var ev = new CuffedEvent(user, target);
+            RaiseLocalEvent(target, ref ev);
+
             return true;
         }
 
@@ -617,6 +621,9 @@ namespace Content.Shared.Cuffs
         public void Uncuff(EntityUid target, EntityUid? user, EntityUid cuffsToRemove, CuffableComponent? cuffable = null, HandcuffComponent? cuff = null)
         {
             if (!Resolve(target, ref cuffable) || !Resolve(cuffsToRemove, ref cuff))
+                return;
+
+            if (TerminatingOrDeleted(cuffsToRemove) || TerminatingOrDeleted(target))
                 return;
 
             if (user != null)

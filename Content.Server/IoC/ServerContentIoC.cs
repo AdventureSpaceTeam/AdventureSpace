@@ -1,3 +1,4 @@
+using Content.Server._DTS;
 using Content.Server.Administration;
 using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
@@ -45,7 +46,7 @@ namespace Content.Server.IoC
             IoCManager.Register<IVoteManager, VoteManager>();
             IoCManager.Register<IPlayerLocator, PlayerLocator>();
             IoCManager.Register<IAfkManager, AfkManager>();
-            IoCManager.Register<IGameMapManager, GameMapManager>();
+            IoCManager.Register<IGameMapManager, DTSMapManager>(); // DTS EDIT
             IoCManager.Register<RulesManager, RulesManager>();
             IoCManager.Register<IBanManager, BanManager>();
             IoCManager.Register<ContentNetworkResourceManager>();

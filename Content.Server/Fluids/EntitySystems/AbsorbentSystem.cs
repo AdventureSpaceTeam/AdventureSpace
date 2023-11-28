@@ -162,7 +162,7 @@ public sealed class AbsorbentSystem : SharedAbsorbentSystem
             _popups.PopupEntity(Loc.GetString("mopping-system-target-container-empty-water", ("target", target)), user, user);
             return false;
         }
-        
+
         if (water.Volume > 0 && !_solutionContainerSystem.TryAddSolution(used, absorberSoln, water))
         {
             _popups.PopupEntity(Loc.GetString("mopping-system-full", ("used", used)), used, user);
@@ -263,6 +263,9 @@ public sealed class AbsorbentSystem : SharedAbsorbentSystem
         localPos = userXform.LocalRotation.RotateVec(localPos);
 
         _melee.DoLunge(user, used, Angle.Zero, localPos, null, false);
+
+        var ev = new AbsorberPudleEvent(user);
+        RaiseLocalEvent(user, ref ev);
 
         return true;
     }
