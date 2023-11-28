@@ -3292,14 +3292,6 @@ entities:
       pos: 19.5,-12.5
       parent: 1
       type: Transform
-- proto: BorgModuleLiteracy
-  entities:
-  - uid: 3353
-    components:
-    - rot: 3.141592653589793 rad
-      pos: 27.5,-13.5
-      parent: 1
-      type: Transform
 - proto: BorgModuleMining
   entities:
   - uid: 3084
@@ -3338,14 +3330,6 @@ entities:
     components:
     - rot: 1.5707963267948966 rad
       pos: 21.5,-16.5
-      parent: 1
-      type: Transform
-- proto: BorgModuleTrashCollection
-  entities:
-  - uid: 3327
-    components:
-    - rot: 1.5707963267948966 rad
-      pos: 18.5,-12.5
       parent: 1
       type: Transform
 - proto: BorgModuleTreatment
@@ -9603,22 +9587,6 @@ entities:
     components:
     - rot: 3.141592653589793 rad
       pos: -20.647314,-22.329975
-      parent: 1
-      type: Transform
-- proto: CombatMedipenCBURNSierra7
-  entities:
-  - uid: 850
-    components:
-    - rot: 3.141592653589793 rad
-      pos: -20.088673,-22.26516
-      parent: 1
-      type: Transform
-- proto: CombatMedipenDeathSquadEpslion7
-  entities:
-  - uid: 851
-    components:
-    - rot: 3.141592653589793 rad
-      pos: -20.6504,-22.471949
       parent: 1
       type: Transform
 - proto: ComputerAnalysisConsole
