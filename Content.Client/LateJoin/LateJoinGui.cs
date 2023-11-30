@@ -255,7 +255,8 @@ namespace Content.Client.LateJoin
                         jobButton.OnPressed += _ => SelectedId.Invoke((id, jobButton.JobId));
                         var sponsors = IoCManager.Resolve<IClientSponsorsManager>(); // Alteros-Sponsors
 
-                        if (!_jobRequirements.IsAllowed(prototype, out var reason) && (!sponsors.OpenRoles))
+                        if (!_jobRequirements.IsAllowed(prototype, out var reason) &&
+                            !sponsors.Prototypes.Contains(prototype.ID))
                         {
                             jobButton.Disabled = true;
 

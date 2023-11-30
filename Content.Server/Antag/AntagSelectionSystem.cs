@@ -129,7 +129,7 @@ public sealed class AntagSelectionSystem : GameRuleSystem<GameRuleComponent>
             else
             {
                 var sponsors = IoCManager.Resolve<IServerSponsorsManager>(); // Alteros-Sponsors
-                chosenPlayer = sponsors.PickSession(prefList);
+                chosenPlayer = sponsors.PickSession(prefList, antagPrototype);
                 playerList.Remove(chosenPlayer);
             }
 

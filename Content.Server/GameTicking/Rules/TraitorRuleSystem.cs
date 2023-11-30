@@ -1,6 +1,5 @@
 using System.Linq;
 using Content.Corvax.Interfaces.Server;
-using Content.Server.Alteros.Sponsors;
 using Content.Server.Chat.Managers;
 using Content.Server.GameTicking.Rules.Components;
 using Content.Server.Mind;
@@ -117,7 +116,7 @@ public sealed class TraitorRuleSystem : GameRuleSystem<TraitorRuleComponent>
 
         var numTraitors = MathHelper.Clamp(component.StartCandidates.Count / PlayersPerTraitor, 1, MaxTraitors);
         var traitorPool = FindPotentialTraitors(component.StartCandidates, component);
-        var selectedTraitors = PickTraitors(numTraitors, traitorPool);
+        var selectedTraitors = PickTraitors(numTraitors, traitorPool, component.TraitorPrototypeId);
 
         foreach (var traitor in selectedTraitors)
         {
@@ -190,7 +189,7 @@ public sealed class TraitorRuleSystem : GameRuleSystem<TraitorRuleComponent>
         return prefList;
     }
 
-    private List<ICommonSession> PickTraitors(int traitorCount, List<ICommonSession> prefList)
+    private List<ICommonSession> PickTraitors(int traitorCount, List<ICommonSession> prefList, string roleId)
     {
         var results = new List<ICommonSession>(traitorCount);
         if (prefList.Count == 0)
@@ -202,7 +201,7 @@ public sealed class TraitorRuleSystem : GameRuleSystem<TraitorRuleComponent>
         for (var i = 0; i < traitorCount; i++)
         {
             var sponsors = IoCManager.Resolve<IServerSponsorsManager>(); // Alteros-Sponsors
-            var traitor = sponsors.PickSession(prefList);
+            var traitor = sponsors.PickSession(prefList, roleId);
             results.Add(traitor);
             Log.Info("Selected a preferred traitor.");
         }

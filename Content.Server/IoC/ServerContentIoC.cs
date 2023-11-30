@@ -8,9 +8,11 @@ using Content.Server.Chat.Managers;
 using Content.Server.Connection;
 using Content.Server.Database;
 using Content.Server.Discord;
+using Content.Server.DiscordAuth;
 using Content.Server.EUI;
 using Content.Server.GhostKick;
 using Content.Server.Info;
+using Content.Server.JoinQueue;
 using Content.Server.Maps;
 using Content.Server.MoMMI;
 using Content.Server.NodeContainer.NodeGroups;
@@ -18,6 +20,7 @@ using Content.Server.Players.PlayTimeTracking;
 using Content.Server.Preferences.Managers;
 using Content.Server.ServerInfo;
 using Content.Server.ServerUpdates;
+using Content.Server.Sponsors;
 using Content.Server.Voting.Managers;
 using Content.Server.White.TTS;
 using Content.Server.Worldgen.Tools;
@@ -62,9 +65,9 @@ namespace Content.Server.IoC
             IoCManager.Register<DiscordWebhook>();
 
             // Alteros-Sponsor
-            IoCManager.Register<Content.Corvax.Interfaces.Server.IServerSponsorsManager, Alteros.Sponsors.SponsorsManager>();
-            IoCManager.Register<Content.Corvax.Interfaces.Server.IServerDiscordAuthManager, Alteros.DiscordAuth.DiscordAuthManager>();
-            IoCManager.Register<Content.Corvax.Interfaces.Server.IServerJoinQueueManager, Alteros.JoinQueue.JoinQueueManager>();
+            IoCManager.Register<Content.Corvax.Interfaces.Server.IServerSponsorsManager, SponsorsManager>();
+            IoCManager.Register<Content.Corvax.Interfaces.Server.IServerDiscordAuthManager, DiscordAuthManager>();
+            IoCManager.Register<Content.Corvax.Interfaces.Server.IServerJoinQueueManager, JoinQueueManager>();
             // Alteros-Sponsor
         }
     }

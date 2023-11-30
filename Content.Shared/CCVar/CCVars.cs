@@ -1835,5 +1835,39 @@ namespace Content.Shared.CCVar
         /// </summary>
         public static readonly CVarDef<int> NewsContentLimit =
             CVarDef.Create("news.content_limit", 2048, CVar.SERVER | CVar.REPLICATED);
+
+        /*
+        * New Life
+        */
+
+        public static readonly CVarDef<int> NewLifeTimeout =
+            CVarDef.Create("newlife.timeout", 30);
+
+        /*
+         * Discord Auth
+         */
+
+        public static readonly CVarDef<bool> DiscordAuthEnabled =
+            CVarDef.Create("discord_auth.enabled", false, CVar.SERVERONLY);
+
+        public static readonly CVarDef<string> DiscordAuthApiUrl =
+            CVarDef.Create("discord_auth.api_url", "", CVar.SERVERONLY);
+
+        public static readonly CVarDef<string> DiscordAuthApiKey =
+            CVarDef.Create("discord_auth.api_key", "", CVar.SERVERONLY | CVar.CONFIDENTIAL);
+
+        /*
+         * Queue
+         */
+
+        public static readonly CVarDef<bool>
+            QueueEnabled = CVarDef.Create("queue.enabled", false, CVar.SERVERONLY);
+
+        /*
+         * Sponsor API
+         */
+
+        public static readonly CVarDef<string> SponsorsApiUrl =
+            CVarDef.Create("sponsor.api_url", "", CVar.SERVERONLY);
     }
 }

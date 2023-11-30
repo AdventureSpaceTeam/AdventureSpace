@@ -1,5 +1,5 @@
 using Content.Corvax.Interfaces.Client;
-using Content.Shared.Alteros.Sponsors;
+using Content.Shared.Sponsors;
 using Robust.Shared.Network;
 
 namespace Content.Client.Alteros.Sponsors;
@@ -24,15 +24,13 @@ public sealed class SponsorsManager : IClientSponsorsManager
 
         OocColor = Color.TryFromHex(message.Info.OOCColor);
         Prototypes.AddRange(message.Info.AllowedMarkings);
-        Prototypes.AddRange(message.Info.AllowedRoles);
         Prototypes.AddRange(message.Info.AllowedSpecies);
+        Prototypes.AddRange(message.Info.OpenRoles);
+        Prototypes.AddRange(message.Info.OpenAntags);
         PriorityJoin = message.Info.HavePriorityJoin;
         ExtraCharSlots = message.Info.ExtraSlots;
         GhostTheme = message.Info.GhostTheme;
-        OpenRoles = message.Info.OpenRoles;
-        OpenAntags = message.Info.OpenAntags;
-        HavePriorityRoles = message.Info.HavePriorityRoles;
-        HavePriorityAntags = message.Info.HavePriorityAntags;
+        AllowedRespawn = message.Info.AllowedRespawn;
     }
 
     private void Reset()
@@ -42,10 +40,6 @@ public sealed class SponsorsManager : IClientSponsorsManager
         OocColor = null;
         ExtraCharSlots = 0;
         GhostTheme = null;
-        OpenRoles = false;
-        OpenAntags = false;
-        HavePriorityRoles = false;
-        HavePriorityAntags = false;
     }
 
 
@@ -54,8 +48,6 @@ public sealed class SponsorsManager : IClientSponsorsManager
     public Color? OocColor { get; private set; }
     public int ExtraCharSlots { get; private set; }
     public string? GhostTheme { get; private set; }
-    public bool OpenRoles { get; private set; }
-    public bool OpenAntags { get; private set; }
-    public bool HavePriorityRoles { get; private set; }
-    public bool HavePriorityAntags { get; private set; }
+    public bool AllowedRespawn { get; private set; }
+    public TimeSpan NextAllowRespawn { get; set; }
 }

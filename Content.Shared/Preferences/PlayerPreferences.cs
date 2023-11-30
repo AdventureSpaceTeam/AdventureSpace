@@ -30,10 +30,17 @@ namespace Content.Shared.Preferences
             return _characters[index];
         }
 
+        // Alteros-Sponsors-start
+        public void SetProfile(int index)
+        {
+            SelectedCharacterIndex = index;
+        }
+
         /// <summary>
         ///     Index of the currently selected character.
         /// </summary>
-        public int SelectedCharacterIndex { get; }
+        public int SelectedCharacterIndex { get; set; }
+        // Alteros-Sponsors-stop
 
         /// <summary>
         ///     The currently selected character.

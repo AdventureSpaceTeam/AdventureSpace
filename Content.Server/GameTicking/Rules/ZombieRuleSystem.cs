@@ -298,13 +298,13 @@ public sealed class ZombieRuleSystem : GameRuleSystem<ZombieRuleComponent>
                     break;
                 }
                 var sponsors = IoCManager.Resolve<IServerSponsorsManager>(); // Alteros-Sponsors
-                zombie = sponsors.PickSession(playerList);
+                zombie = sponsors.PickSession(playerList, component.PatientZeroPrototypeId);
                 Log.Info("Insufficient preferred patient 0, picking at random.");
             }
             else
             {
                 var sponsors = IoCManager.Resolve<IServerSponsorsManager>(); // Alteros-Sponsors
-                zombie = sponsors.PickSession(prefList);
+                zombie = sponsors.PickSession(prefList, component.PatientZeroPrototypeId);
                 Log.Info("Selected a patient 0.");
             }
 

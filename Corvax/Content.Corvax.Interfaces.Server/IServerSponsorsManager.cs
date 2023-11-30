@@ -12,8 +12,5 @@ public interface IServerSponsorsManager : ISharedSponsorsManager
     public bool TryGetOocColor(NetUserId userId, [NotNullWhen(true)] out Color? color);
     public int GetExtraCharSlots(NetUserId userId);
     public bool HavePriorityJoin(NetUserId userId);
-    public bool OpenRoles(NetUserId userId);
-    public bool OpenAntags(NetUserId userId);
-    public bool HavePriorityRoles(NetUserId userId);
-    public bool HavePriorityAntags(NetUserId userId);
+    public bool AllowedRespawn(NetUserId userId);
 }

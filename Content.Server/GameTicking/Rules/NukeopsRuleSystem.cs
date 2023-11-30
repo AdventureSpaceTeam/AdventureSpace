@@ -665,19 +665,19 @@ public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>
                                     Logger.InfoS("preset", "Insufficient ready players to fill up with nukeops, stopping the selection");
                                     break;
                                 }
-                                nukeOp = sponsors.PickSession(everyone);
+                                nukeOp = sponsors.PickSession(everyone, nukeops.CommanderRoleProto.Id);
                                 Logger.InfoS("preset", "Insufficient preferred nukeop commanders, agents or nukies, picking at random.");
                             }
                             else
                             {
-                                nukeOp = sponsors.PickSession(prefList);
+                                nukeOp = sponsors.PickSession(prefList, nukeops.CommanderRoleProto.Id);
                                 everyone.Remove(nukeOp);
                                 Logger.InfoS("preset", "Insufficient preferred nukeop commander or agents, picking at random from regular op list.");
                             }
                         }
                         else
                         {
-                            nukeOp = sponsors.PickSession(medPrefList);
+                            nukeOp = sponsors.PickSession(medPrefList, nukeops.CommanderRoleProto.Id);
                             everyone.Remove(nukeOp);
                             prefList.Remove(nukeOp);
                             Logger.InfoS("preset", "Insufficient preferred nukeop commanders, picking an agent");
@@ -685,7 +685,7 @@ public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>
                     }
                     else
                     {
-                        nukeOp = sponsors.PickSession(cmdrPrefList);
+                        nukeOp = sponsors.PickSession(cmdrPrefList, nukeops.CommanderRoleProto.Id);
                         everyone.Remove(nukeOp);
                         prefList.Remove(nukeOp);
                         medPrefList.Remove(nukeOp);
@@ -703,19 +703,19 @@ public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>
                                 Logger.InfoS("preset", "Insufficient ready players to fill up with nukeops, stopping the selection");
                                 break;
                             }
-                            nukeOp = sponsors.PickSession(everyone);
+                            nukeOp = sponsors.PickSession(everyone, nukeops.MedicRoleProto.Id);
                             Logger.InfoS("preset", "Insufficient preferred nukeop commanders, agents or nukies, picking at random.");
                         }
                         else
                         {
-                            nukeOp = sponsors.PickSession(prefList);
+                            nukeOp = sponsors.PickSession(prefList, nukeops.MedicRoleProto.Id);
                             everyone.Remove(nukeOp);
                             Logger.InfoS("preset", "Insufficient preferred nukeop commander or agents, picking at random from regular op list.");
                         }
                     }
                     else
                     {
-                        nukeOp = sponsors.PickSession(medPrefList);
+                        nukeOp = sponsors.PickSession(medPrefList, nukeops.OperativeRoleProto.Id);
                         everyone.Remove(nukeOp);
                         Logger.InfoS("preset", "Insufficient preferred nukeop commanders, picking an agent");
                     }
@@ -723,7 +723,7 @@ public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>
                 }
                 else
                 {
-                    nukeOp = sponsors.PickSession(prefList);
+                    nukeOp = sponsors.PickSession(prefList, nukeops.CommanderRoleProto.Id);
                     everyone.Remove(nukeOp);
                     Logger.InfoS("preset", "Selected a preferred nukeop commander.");
                 }
