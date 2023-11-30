@@ -4,15 +4,15 @@ using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 using Content.Corvax.Interfaces.Server;
-using Content.Shared.Alteros.CCVar;
-using Content.Shared.Alteros.Sponsors;
+using Content.Shared.CCVar;
+using Content.Shared.Sponsors;
 using Robust.Shared.Configuration;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
 
-namespace Content.Server.Alteros.Sponsors;
+namespace Content.Server.Sponsors;
 
 public sealed class SponsorsManager : IServerSponsorsManager
 {
@@ -44,9 +44,39 @@ public sealed class SponsorsManager : IServerSponsorsManager
         return _cachedSponsors.TryGetValue(userId, out sponsor);
     }
 
-    public ICommonSession PickSession(List<ICommonSession> sessions)
+    public void SetNextAllowRespawn(NetUserId userId, TimeSpan nextRespawnTime)
     {
-        var prioritySessions = PickPrioritySessions(sessions);
+        if (TryGetInfo(userId, out var sponsor))
+            sponsor.NextAllowRespawn = nextRespawnTime;
+    }
+
+    public void AddUsedCharactersForRespawn(NetUserId userId, int usedCharacter)
+    {
+        if (TryGetInfo(userId, out var sponsor))
+            sponsor.UsedCharactersForRespawn.Add(usedCharacter);
+    }
+
+    public bool TryGetUsedCharactersForRespawn(NetUserId userId, [NotNullWhen(true)] out List<int>? usedCharactersForRespawn)
+    {
+        usedCharactersForRespawn = null;
+        if (!TryGetInfo(userId, out var sponsor))
+            return false;
+        usedCharactersForRespawn = sponsor.UsedCharactersForRespawn;
+        return true;
+    }
+
+    public bool TryGetNextAllowRespawn(NetUserId userId, [NotNullWhen(true)] out TimeSpan? nextAllowRespawn)
+    {
+        nextAllowRespawn = null;
+        if (!TryGetInfo(userId, out var sponsor))
+            return false;
+        nextAllowRespawn = sponsor.NextAllowRespawn;
+        return true;
+    }
+
+    public ICommonSession PickSession(List<ICommonSession> sessions, string roleId)
+    {
+        var prioritySessions = PickPrioritySessions(sessions, roleId);
         var session = _random.PickAndTake(sessions);
         if (prioritySessions.Count != 0)
         {
@@ -56,12 +86,14 @@ public sealed class SponsorsManager : IServerSponsorsManager
         return session;
     }
 
-    private List<ICommonSession> PickPrioritySessions(List<ICommonSession> sessions)
+    private List<ICommonSession> PickPrioritySessions(List<ICommonSession> sessions, string roleId)
     {
         List<ICommonSession> prioritySessions = new();
         foreach (var session in sessions)
         {
-            if (HavePriorityAntags(session.UserId))
+            TryGetPrototypes(session.UserId, out var prototypes);
+
+            if (prototypes!.Contains(roleId))
                 prioritySessions.Add(session);
         }
 
@@ -167,23 +199,8 @@ public sealed class SponsorsManager : IServerSponsorsManager
         return _cachedSponsors.ContainsKey(userId) && _cachedSponsors[userId].HavePriorityJoin;
     }
 
-    public bool OpenRoles(NetUserId userId)
+    public bool AllowedRespawn(NetUserId userId)
     {
-        return _cachedSponsors.ContainsKey(userId) && _cachedSponsors[userId].OpenRoles;
-    }
-
-    public bool OpenAntags(NetUserId userId)
-    {
-        return _cachedSponsors.ContainsKey(userId) && _cachedSponsors[userId].OpenAntags;
-    }
-
-    public bool HavePriorityRoles(NetUserId userId)
-    {
-        return _cachedSponsors.ContainsKey(userId) && _cachedSponsors[userId].HavePriorityRoles;
-    }
-
-    public bool HavePriorityAntags(NetUserId userId)
-    {
-        return _cachedSponsors.ContainsKey(userId) && _cachedSponsors[userId].HavePriorityAntags;
+        return _cachedSponsors.ContainsKey(userId) && _cachedSponsors[userId].AllowedRespawn;
     }
 }

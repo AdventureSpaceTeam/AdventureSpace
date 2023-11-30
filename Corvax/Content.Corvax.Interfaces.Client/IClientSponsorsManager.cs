@@ -9,8 +9,6 @@ public interface IClientSponsorsManager : ISharedSponsorsManager
     public bool PriorityJoin { get; }
     public Color? OocColor { get; }
     public int ExtraCharSlots { get; }
-    public bool OpenRoles { get; }
-    public bool OpenAntags { get; }
-    public bool HavePriorityRoles { get; }
-    public bool HavePriorityAntags { get; }
+    public bool AllowedRespawn { get; }
+    public TimeSpan NextAllowRespawn { get; set; }
 }

@@ -4,6 +4,7 @@ using System.Numerics;
 using Content.Corvax.Interfaces.Server;
 using Content.Server.Administration.Managers;
 using Content.Server.Ghost;
+using Content.Server.Preferences.Managers;
 using Content.Server.Spawners.Components;
 using Content.Server.Speech.Components;
 using Content.Server.Station.Components;
@@ -124,13 +125,15 @@ namespace Content.Server.GameTicking
         {
             var character = GetPlayerProfile(player);
 
+            // Alteros-Sponsors-start
+            var sponsors = IoCManager.Resolve<IServerSponsorsManager>(); // Alteros-Sponsors
             var jobBans = _banManager.GetJobBans(player.UserId);
             if (jobBans == null || jobId != null && jobBans.Contains(jobId))
                 return;
-            var sponsors = IoCManager.Resolve<IServerSponsorsManager>(); // Alteros-Sponsors
             sponsors.TryGetPrototypes(player.UserId, out var prototypes);
-            if (jobId != null && !_playTimeTrackings.IsAllowed(player, jobId) && !sponsors.OpenRoles(player.UserId) && !prototypes!.Contains(jobId))
+            if (jobId != null && !_playTimeTrackings.IsAllowed(player, jobId) && !prototypes!.Contains(jobId))
                 return;
+            // Alteros-Sponsors-stop
             SpawnPlayer(player, character, station, jobId, lateJoin, silent);
         }
 
@@ -155,6 +158,11 @@ namespace Content.Server.GameTicking
                 JoinAsObserver(player);
                 return;
             }
+
+            // Alteros-Sponsors-start
+            var sponsors = IoCManager.Resolve<IServerSponsorsManager>(); // Alteros-Sponsors
+            sponsors.AddUsedCharactersForRespawn(player.UserId, _prefsManager.GetPreferences(player.UserId).SelectedCharacterIndex);
+            // Alteros-Sponsors-stop
 
             // Automatically de-admin players who are joining.
             if (_cfg.GetCVar(CCVars.AdminDeadminOnJoin) && _adminManager.IsAdmin(player))

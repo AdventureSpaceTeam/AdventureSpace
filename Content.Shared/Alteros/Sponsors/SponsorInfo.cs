@@ -4,7 +4,7 @@ using Lidgren.Network;
 using Robust.Shared.Network;
 using Robust.Shared.Serialization;
 
-namespace Content.Shared.Alteros.Sponsors;
+namespace Content.Shared.Sponsors;
 
 [Serializable, NetSerializable]
 public sealed class SponsorInfo
@@ -21,29 +21,35 @@ public sealed class SponsorInfo
     [JsonPropertyName("extraSlots")]
     public int ExtraSlots { get; set; }
 
+    [JsonPropertyName("ghostTheme")]
+    public string? GhostTheme { get; set; }
+
+    [JsonPropertyName("allowedRespawn")]
+    public bool AllowedRespawn { get; set; } = false;
+
     [JsonPropertyName("allowedMarkings")] // TODO: Rename API field in separate PR as breaking change!
     public string[] AllowedMarkings { get; set; } = Array.Empty<string>();
-
-    [JsonPropertyName("allowedRoles")]
-    public string[] AllowedRoles { get; set; } = Array.Empty<string>();
 
     [JsonPropertyName("allowedSpecies")]
     public string[] AllowedSpecies { get; set; } = Array.Empty<string>();
 
-    [JsonPropertyName("ghostTheme")]
-    public string? GhostTheme { get; set; }
-
     [JsonPropertyName("openRoles")]
-    public bool OpenRoles { get; set; }
+    public string[] OpenRoles { get; set; } = Array.Empty<string>();
 
     [JsonPropertyName("openAntags")]
-    public bool OpenAntags { get; set; }
+    public string[] OpenAntags { get; set; } = Array.Empty<string>();
 
-    [JsonPropertyName("havePriorityRoles")]
-    public bool HavePriorityRoles { get; set; }
+    [JsonPropertyName("priorityRoles")]
+    public string[] PriorityRoles { get; set; } = Array.Empty<string>();
 
-    [JsonPropertyName("havePriorityAntags")]
-    public bool HavePriorityAntags { get; set; }
+    [JsonPropertyName("priorityAntags")]
+    public string[] PriorityAntags { get; set; } = Array.Empty<string>();
+
+    [JsonPropertyName("nextAllowRespawn")]
+    public TimeSpan NextAllowRespawn { get; set; } = TimeSpan.Zero;
+
+    [JsonPropertyName("usedCharactersForReSpawn")]
+    public List<int> UsedCharactersForRespawn { get; set; } = new();
 }
 
 

@@ -592,7 +592,7 @@ namespace Content.Client.Preferences.UI
                     var selector = new JobPrioritySelector(job, _prototypeManager);
                     var sponsors = IoCManager.Resolve<IClientSponsorsManager>(); // Alteros-Sponsors
 
-                    if (!_requirements.IsAllowed(job, out var reason) && !sponsors.OpenRoles && !sponsors.Prototypes.Contains(job.ID))
+                    if (!_requirements.IsAllowed(job, out var reason) && !sponsors.Prototypes.Contains(job.ID))
                     {
                         selector.LockRequirements(reason);
                     }
@@ -1356,7 +1356,9 @@ namespace Content.Client.Preferences.UI
                 // another function checks Disabled after creating the selector so this has to be done now
                 var requirements = IoCManager.Resolve<JobRequirementsManager>();
                 var sponsors = IoCManager.Resolve<IClientSponsorsManager>(); // Alteros-Sponsors
-                if (proto.Requirements != null && !requirements.CheckRoleTime(proto.Requirements, out var reason) && (!sponsors.OpenAntags))
+                if (proto.Requirements != null &&
+                    !requirements.CheckRoleTime(proto.Requirements, out var reason) &&
+                    !sponsors.Prototypes.Contains(proto.ID))
                 {
                     LockRequirements(reason);
                 }

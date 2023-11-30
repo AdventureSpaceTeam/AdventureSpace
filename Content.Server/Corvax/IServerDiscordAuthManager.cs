@@ -1,7 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Content.Corvax.Interfaces.Shared;
-using Content.Server.Alteros.DiscordAuth;
+using Content.Server.DiscordAuth;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
 

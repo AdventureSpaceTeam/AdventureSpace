@@ -10,7 +10,7 @@ using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Timing;
 
-namespace Content.Server.Alteros.JoinQueue;
+namespace Content.Server.JoinQueue;
 
 public sealed class JoinQueueManager : Content.Corvax.Interfaces.Server.IServerJoinQueueManager
 {
@@ -52,7 +52,7 @@ public sealed class JoinQueueManager : Content.Corvax.Interfaces.Server.IServerJ
     {
         _netManager.RegisterNetMessage<MsgQueueUpdate>();
 
-        _cfg.OnValueChanged(Shared.Alteros.CCVar.CCVars.QueueEnabled, OnQueueCVarChanged, true);
+        _cfg.OnValueChanged(CCVars.QueueEnabled, OnQueueCVarChanged, true);
         _playerManager.PlayerStatusChanged += OnPlayerStatusChanged;
         _discordAuthManager.PlayerVerified += OnPlayerVerified;
     }
