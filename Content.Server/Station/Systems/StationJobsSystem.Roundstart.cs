@@ -250,8 +250,9 @@ public sealed partial class StationJobsSystem
                             foreach (var netUser in jobPlayerOptions[job])
                             {
                                 var sponsors = IoCManager.Resolve<IServerSponsorsManager>(); // Alteros-Sponsors
-                                sponsors.TryGetPrototypes(netUser, out var prototypes);
-                                if (prototypes!.Contains(job))
+                                if (!sponsors.TryGetPrototypes(netUser, out var prototypes))
+                                    continue;
+                                if (prototypes.Contains(job))
                                     priorityPlayers.Add(netUser);
                             }
 
