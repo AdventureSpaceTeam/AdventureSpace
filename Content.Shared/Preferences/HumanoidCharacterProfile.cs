@@ -181,10 +181,19 @@ namespace Content.Shared.Preferences
             }
 
             // White-TTS-Start
-            var voiceId = random.Pick(prototypeManager
-                .EnumeratePrototypes<TTSVoicePrototype>()
-                .Where(o => CanHaveVoice(o, sex)).ToArray()
-            ).ID;
+            var availableVoices = new List<string>();
+            foreach (var ttsVoicePrototype in prototypeManager.EnumeratePrototypes<TTSVoicePrototype>())
+            {
+                if (!CanHaveVoice(ttsVoicePrototype, sex))
+                    continue;
+
+                if (ttsVoicePrototype.SponsorOnly)
+                    continue;
+
+                availableVoices.Add(ttsVoicePrototype.ID);
+            }
+
+            var voiceId = random.Pick(availableVoices);
             // White-TTS-End
 
             var gender = sex == Sex.Male ? Gender.Male : Gender.Female;
@@ -527,7 +536,7 @@ namespace Content.Shared.Preferences
 
             // Corvax-TTS-Start
             prototypeManager.TryIndex<TTSVoicePrototype>(Voice, out var voice);
-            if (voice is null || !CanHaveVoice(voice, Sex))
+            if (voice is null || !CanHaveVoice(voice, Sex) || (voice.SponsorOnly && !sponsorPrototypes.Contains(Voice)))
                 Voice = SharedHumanoidAppearanceSystem.DefaultSexVoice[sex];
             // Corvax-TTS-End
         }

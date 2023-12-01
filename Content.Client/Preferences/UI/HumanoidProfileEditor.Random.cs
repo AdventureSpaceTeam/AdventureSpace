@@ -1,3 +1,5 @@
+using Content.Corvax.Interfaces.Client;
+using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Preferences;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
@@ -11,7 +13,14 @@ namespace Content.Client.Preferences.UI
 
         private void RandomizeEverything()
         {
-            Profile = HumanoidCharacterProfile.Random();
+            var sponsors = IoCManager.Resolve<IClientSponsorsManager>(); // Alteros-Sponsors
+            var ignoredSpecies = new HashSet<string>();
+            foreach (var speciesPrototype in _prototypeManager.EnumeratePrototypes<SpeciesPrototype>())
+            {
+                if (speciesPrototype.SponsorOnly && !sponsors.Prototypes.Contains(speciesPrototype.ID))
+                    ignoredSpecies.Add(speciesPrototype.ID);
+            }
+            Profile = HumanoidCharacterProfile.Random(ignoredSpecies);
             UpdateControls();
             IsDirty = true;
         }
