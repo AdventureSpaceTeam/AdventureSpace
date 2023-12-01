@@ -91,9 +91,9 @@ public sealed class SponsorsManager : IServerSponsorsManager
         List<ICommonSession> prioritySessions = new();
         foreach (var session in sessions)
         {
-            TryGetPrototypes(session.UserId, out var prototypes);
+            TryGetPriorityRoles(session.UserId, out var priorityRoles);
 
-            if (prototypes!.Contains(roleId))
+            if (priorityRoles!.Contains(roleId))
                 prioritySessions.Add(session);
         }
 
@@ -164,15 +164,28 @@ public sealed class SponsorsManager : IServerSponsorsManager
 
     public bool TryGetPrototypes(NetUserId userId, [NotNullWhen(true)]  out List<string>? prototypes)
     {
-        if (!_cachedSponsors.ContainsKey(userId) || _cachedSponsors[userId].AllowedMarkings.Length == 0)
-        {
-            prototypes = null;
+        prototypes = null;
+        if (!TryGetInfo(userId, out var sponsor))
             return false;
-        }
 
         prototypes = new List<string>();
-        prototypes.AddRange(_cachedSponsors[userId].AllowedMarkings);
+        prototypes.AddRange(sponsor.AllowedMarkings);
+        prototypes.AddRange(sponsor.AllowedSpecies);
+        prototypes.AddRange(sponsor.OpenRoles);
+        prototypes.AddRange(sponsor.OpenAntags);
 
+        return true;
+    }
+
+    public bool TryGetPriorityRoles(NetUserId userId, [NotNullWhen(true)]  out List<string>? priorityRoles)
+    {
+        priorityRoles = null;
+        if (!TryGetInfo(userId, out var sponsor))
+            return false;
+
+        priorityRoles = new List<string>();
+        priorityRoles.AddRange(sponsor.PriorityRoles);
+        priorityRoles.AddRange(sponsor.PriorityAntags);
         return true;
     }
 
