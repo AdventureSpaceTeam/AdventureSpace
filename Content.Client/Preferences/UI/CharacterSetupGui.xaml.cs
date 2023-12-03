@@ -126,7 +126,7 @@ namespace Content.Client.Preferences.UI
                 Loc.GetString("character-setup-gui-create-new-character-button-tooltip",
                 ("maxCharacters", _preferencesManager.Settings!.MaxCharacterSlots));
 
-            var isDisplayedMaxSlots = false; // Corvax-Sponsors: Additional slots possible
+            var isDisplayedMaxSlots = false; // Alteros-Sponsors: Additional slots possible
             foreach (var (slot, character) in _preferencesManager.Preferences!.Characters)
             {
                 if (character is null)
@@ -134,16 +134,19 @@ namespace Content.Client.Preferences.UI
                     continue;
                 }
 
-                // Corvax-Sponsors-Start
-                isDisplayedMaxSlots = numberOfFullSlots >= _preferencesManager.Settings.MaxCharacterSlots;
-                if (isDisplayedMaxSlots) break;
-                // Corvax-Sponsors-End
-                numberOfFullSlots++;
                 var characterPickerButton = new CharacterPickerButton(_entityManager,
                     _preferencesManager,
                     _prototypeManager,
                     characterButtonsGroup,
                     character);
+                // Alteros-Sponsors-Start
+                numberOfFullSlots++;
+                isDisplayedMaxSlots = numberOfFullSlots >= _preferencesManager.Settings.MaxCharacterSlots;
+                if (numberOfFullSlots > _preferencesManager.Settings.MaxCharacterSlots)
+                {
+                    characterPickerButton.Disabled = true;
+                }
+                // Alteros-Sponsors-Stop
                 Characters.AddChild(characterPickerButton);
 
                 var characterIndexCopy = slot;
@@ -156,9 +159,9 @@ namespace Content.Client.Preferences.UI
                     UpdateUI();
                     args.Event.Handle();
                 };
-            }
 
-            _createNewCharacterButton.Disabled = isDisplayedMaxSlots; // Corvax-Sponsors
+            }
+            _createNewCharacterButton.Disabled = isDisplayedMaxSlots;
             Characters.AddChild(_createNewCharacterButton);
         }
 
@@ -238,6 +241,7 @@ namespace Content.Client.Preferences.UI
                     Parent?.RemoveChild(this);
                     Parent?.RemoveChild(confirmDeleteButton);
                     preferencesManager.DeleteCharacter(profile);
+                    Logger.Info("Delete Character button");
                 };
                 deleteButton.OnPressed += _ =>
                 {

@@ -124,6 +124,8 @@ namespace Content.Server.Preferences.Managers
 
         private async void HandleDeleteCharacterMessage(MsgDeleteCharacter message)
         {
+
+            Logger.Info("HandleDeleteCharacterMessage");
             var slot = message.Slot;
             var userId = message.MsgChannel.UserId;
 
@@ -133,10 +135,10 @@ namespace Content.Server.Preferences.Managers
                 return;
             }
 
-            if (slot < 0 || slot >= GetMaxUserCharacterSlots(userId)) // Corvax-Sponsors
-            {
-                return;
-            }
+            // if (slot < 0 || slot >= GetMaxUserCharacterSlots(userId)) // Corvax-Sponsors
+            // {
+            //     return;
+            // }
 
             var curPrefs = prefsData.Prefs!;
 
@@ -219,6 +221,10 @@ namespace Content.Server.Preferences.Managers
                     {
                         MaxCharacterSlots = GetMaxUserCharacterSlots(session.UserId),  // Corvax-Sponsors
                     };
+                    // Alteros-Sponsor-start
+                    if (msg.Preferences.SelectedCharacterIndex > GetMaxUserCharacterSlots(session.UserId))
+                        msg.Preferences.SelectedCharacterIndex = prefs.Characters.FirstOrDefault().Key;
+                    // Alteros-Sponsor-end
                     _netManager.ServerSendMessage(msg, session.ConnectedClient);
                 }
             }
