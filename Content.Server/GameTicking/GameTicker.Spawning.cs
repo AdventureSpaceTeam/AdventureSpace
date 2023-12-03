@@ -125,15 +125,11 @@ namespace Content.Server.GameTicking
         {
             var character = GetPlayerProfile(player);
 
-            // Alteros-Sponsors-start
-            var sponsors = IoCManager.Resolve<IServerSponsorsManager>(); // Alteros-Sponsors
             var jobBans = _banManager.GetJobBans(player.UserId);
             if (jobBans == null || jobId != null && jobBans.Contains(jobId))
                 return;
-            sponsors.TryGetPrototypes(player.UserId, out var prototypes);
-            if (jobId != null && !_playTimeTrackings.IsAllowed(player, jobId) && !prototypes!.Contains(jobId))
+            if (jobId != null && !_playTimeTrackings.IsAllowed(player, jobId))
                 return;
-            // Alteros-Sponsors-stop
             SpawnPlayer(player, character, station, jobId, lateJoin, silent);
         }
 
