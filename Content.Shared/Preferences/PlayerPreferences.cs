@@ -35,12 +35,12 @@ namespace Content.Shared.Preferences
         {
             SelectedCharacterIndex = index;
         }
+        // Alteros-Sponsors-stop
 
         /// <summary>
         ///     Index of the currently selected character.
         /// </summary>
         public int SelectedCharacterIndex { get; set; }
-        // Alteros-Sponsors-stop
 
         /// <summary>
         ///     The currently selected character.
