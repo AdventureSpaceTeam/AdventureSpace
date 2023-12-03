@@ -85,7 +85,8 @@ namespace Content.Server.NewLife
             var stationAvailable = _stationJobs.GetAvailableJobs(stationUid);
 
             var sponsors = IoCManager.Resolve<IServerSponsorsManager>(); // Alteros-Sponsors
-            sponsors.TryGetPrototypes(session.UserId, out var prototypes);
+            if (!sponsors.TryGetPrototypes(session.UserId, out var prototypes))
+                return;
 
             foreach (var jobId in stationAvailable)
             {

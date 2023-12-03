@@ -91,9 +91,9 @@ public sealed class SponsorsManager : IServerSponsorsManager
         List<ICommonSession> prioritySessions = new();
         foreach (var session in sessions)
         {
-            TryGetPriorityRoles(session.UserId, out var priorityRoles);
-
-            if (priorityRoles!.Contains(roleId))
+            if (!TryGetPriorityRoles(session.UserId, out var priorityRoles))
+                continue;
+            if (priorityRoles.Contains(roleId))
                 prioritySessions.Add(session);
         }
 
