@@ -125,6 +125,8 @@ namespace Content.Client.Voting
                 }
 
                 @new = true;
+                IoCManager.Resolve<IEntitySystemManager>().GetEntitySystem<AudioSystem>()
+                    .PlayGlobal("/Audio/Effects/voteding.ogg", Filter.Local(), false);
 
                 // Refresh
                 var container = _popupContainer;

@@ -12,7 +12,6 @@ using Content.Shared.Administration;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
 using Content.Shared.Voting;
-using Robust.Server.GameObjects;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
 using Robust.Shared.Enums;
@@ -274,16 +273,7 @@ namespace Content.Server.Voting.Managers
                 msg.Options[i] = ((ushort) entry.Votes, entry.Text);
             }
 
-            Ding(player);
             player.ConnectedClient.SendMessage(msg);
-        }
-
-        private void Ding(ICommonSession player)
-        {
-            if (IoCManager.Resolve<IEntityManager>().TrySystem<AudioSystem>(out var audio))
-            {
-                audio.PlayGlobal("/Audio/Effects/voteding.ogg", Filter.SinglePlayer(player), false);
-            }
         }
 
         private void DirtyCanCallVoteAll()
