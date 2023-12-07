@@ -77,8 +77,6 @@
         acts: ["Destruction"]
   - type: Machine
     board: HydroponicsTrayMachineCircuitboard
-  - type: TTS # Corvax-TTS
-    voice: Glados
   - type: WiresPanel
   - type: Wires
     boardName: wires-board-name-hydroponicstray

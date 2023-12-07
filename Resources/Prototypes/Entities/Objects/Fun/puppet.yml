@@ -40,5 +40,3 @@
     sprite: Objects/Fun/mrdips.rsi
     layers:
     - state: icon
-  - type: TTS # Corvax-TTS
-    voice: Azir

@@ -120,8 +120,6 @@
     description: ghost-role-information-slimes-description
   - type: Speech
     speechVerb: Slime
-  - type: TTS # Corvax-TTS
-    voice: Rexxar
 
 - type: entity
   name: blue slime
