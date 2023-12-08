@@ -206,7 +206,7 @@ namespace Content.Server.Voting.Managers
                 options.Options.Add((v, k));
             }
 
-            options.Options.Add((Loc.GetString("random-map-vote"), "Random")); // DTS
+            options.Options.Add((Loc.GetString("random-map-vote"), new RandomMapVoteEntry())); // DTS
 
             WirePresetVoteInitiator(options, initiator);
 
@@ -215,7 +215,7 @@ namespace Content.Server.Voting.Managers
             vote.OnFinished += (_, args) =>
             {
                 GameMapPrototype picked;
-                if (args.Winner is string) // DTS START
+                if (args.Winner is RandomMapVoteEntry) // DTS START
                 {
                     _gameMapManager.SelectMapRandom();
                     picked = _gameMapManager.GetSelectedMap()!;
@@ -294,6 +294,11 @@ namespace Content.Server.Voting.Managers
                 presets[preset.ID] = preset.ModeTitle;
             }
             return presets;
+        }
+
+        private record RandomMapVoteEntry
+        {
+
         }
     }
 }
