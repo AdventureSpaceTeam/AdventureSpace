@@ -66,6 +66,7 @@ namespace Content.IntegrationTests.Tests
             "Core",
             "Marathon",
             "Kettle",
+            "Gemini",
             "MeteorArena",
             "Atlas"
         };
