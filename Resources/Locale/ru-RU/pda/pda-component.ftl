@@ -18,6 +18,9 @@ comp-pda-ui-station = Станция: [color=white]{ $station }[/color]
 comp-pda-ui-station-alert-level = Уровень угрозы: [color={ $color }]{ $level }[/color]
 comp-pda-ui-station-alert-level-instructions = Инструкции: [color=white]{ $instructions }[/color]
 comp-pda-ui-station-time = Длительность смены: [color=white]{ $time }[/color]
+comp-pda-ui-shuttle-call-time = До смены экипажа: [color=white]{ $time }[/color]
+comp-pda-ui-shuttle-arrival-time = До прибытия шаттла: [color=white]{ $time }[/color]
+comp-pda-ui-shuttle-launch-time = До отправки шаттла: [color=white]{ $time }[/color]
 comp-pda-ui-eject-id-button = Извлечь ID
 comp-pda-ui-eject-pen-button = Извлечь ручку
 comp-pda-ui-ringtone-button-description = Измените рингтон вашего КПК
