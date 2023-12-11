@@ -5,7 +5,6 @@ using Content.Shared.NewLife;
 using JetBrains.Annotations;
 using Robust.Client.GameObjects;
 using Robust.Shared.Timing;
-using NewLifeWindow = Content.Client.Alteros.NewLife.NewLifeWindow;
 
 
 namespace Content.Client.NewLife
@@ -13,11 +12,11 @@ namespace Content.Client.NewLife
     [UsedImplicitly]
     public sealed class NewLifeEui : BaseEui
     {
-        private readonly NewLifeWindow _window;
+        private readonly Alteros.NewLife.NewLifeWindow _window;
 
         public NewLifeEui()
         {
-            _window = new NewLifeWindow(IoCManager.Resolve<IGameTiming>());
+            _window = new Alteros.NewLife.NewLifeWindow(IoCManager.Resolve<IGameTiming>());
 
             _window.SpawnRequested += () =>
             {

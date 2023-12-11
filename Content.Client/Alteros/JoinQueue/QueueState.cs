@@ -1,7 +1,7 @@
+using Content.Client.JoinQueue;
 using Content.Shared.Alteros.JoinQueue;
 using Robust.Client.Audio;
 using Robust.Client.Console;
-using Robust.Client.GameObjects;
 using Robust.Client.State;
 using Robust.Client.UserInterface;
 using Robust.Shared.Player;

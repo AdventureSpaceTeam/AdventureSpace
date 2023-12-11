@@ -74,6 +74,32 @@ public sealed class SponsorsManager : IServerSponsorsManager
         return true;
     }
 
+    public NetUserId PickJobSession(HashSet<NetUserId> jobPlayerOption, string jobId)
+    {
+        var prioritySessions = PickPriorityJobSessions(jobPlayerOption, jobId);
+        var netUserId = _random.Pick(jobPlayerOption);
+        if (prioritySessions.Count != 0)
+        {
+            netUserId = _random.Pick(prioritySessions);
+        }
+
+        return netUserId;
+    }
+
+    private HashSet<NetUserId> PickPriorityJobSessions(HashSet<NetUserId> jobPlayerOption, string jobId)
+    {
+        HashSet<NetUserId> prioritySessions = new();
+        foreach (var netUserId in jobPlayerOption)
+        {
+            if (!TryGetPriorityRoles(netUserId, out var priorityRoles))
+                continue;
+            if (priorityRoles.Contains(jobId))
+                prioritySessions.Add(netUserId);
+        }
+
+        return prioritySessions;
+    }
+
     public ICommonSession PickSession(List<ICommonSession> sessions, string roleId)
     {
         var prioritySessions = PickPrioritySessions(sessions, roleId);
@@ -83,6 +109,7 @@ public sealed class SponsorsManager : IServerSponsorsManager
             session = _random.PickAndTake(prioritySessions);
         }
 
+        sessions.Remove(session);
         return session;
     }
 
@@ -189,6 +216,19 @@ public sealed class SponsorsManager : IServerSponsorsManager
         return true;
     }
 
+    public bool TryGetOocTitle(NetUserId userId, [NotNullWhen(true)] out string? title)
+    {
+        if (!_cachedSponsors.ContainsKey(userId) || _cachedSponsors[userId].Tier == null)
+        {
+            title = null;
+            return false;
+        }
+
+        title = _cachedSponsors[userId].Title;
+
+        return title != null;
+    }
+
     public bool TryGetOocColor(NetUserId userId, [NotNullWhen(true)] out Color? color)
     {
         if (!_cachedSponsors.ContainsKey(userId) || _cachedSponsors[userId].OOCColor == null)
@@ -210,6 +250,10 @@ public sealed class SponsorsManager : IServerSponsorsManager
     public bool HavePriorityJoin(NetUserId userId)
     {
         return _cachedSponsors.ContainsKey(userId) && _cachedSponsors[userId].HavePriorityJoin;
+    }
+    public bool IsSponsor(NetUserId userId)
+    {
+        return _cachedSponsors.ContainsKey(userId);
     }
 
     public bool AllowedRespawn(NetUserId userId)

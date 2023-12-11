@@ -5,6 +5,7 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Content.Corvax.Interfaces.Server;
 using Content.Server.Administration.Managers;
 using Content.Server.Discord;
 using Content.Server.GameTicking;
@@ -393,16 +394,34 @@ namespace Content.Server.Administration.Systems
 
             var escapedText = FormattedMessage.EscapeText(message.Text);
 
-            var bwoinkText = senderAdmin switch
+            // Alteros-Sponsors-start
+            string bwoinkText;
+
+            var sponsors = IoCManager.Resolve<IServerSponsorsManager>();
+            if (senderAdmin is not null && senderAdmin.Flags == AdminFlags.Adminhelp)
             {
-                var x when x is not null && x.Flags == AdminFlags.Adminhelp =>
-                    $"[color=purple]{senderSession.Name}[/color]: {escapedText}",
-                var x when x is not null && x.HasFlag(AdminFlags.Adminhelp) =>
-                    $"[color=red]{senderSession.Name}[/color]: {escapedText}",
-                _ => $"{senderSession.Name}: {escapedText}",
-            };
+                bwoinkText = $"[color=purple]\\[{senderAdmin.Title}\\] {senderSession.Name}[/color]: {escapedText}";
+            }
+            else if (senderAdmin is not null && senderAdmin.HasFlag(AdminFlags.Adminhelp))
+            {
+                bwoinkText = $"[color=red]\\[{senderAdmin.Title}\\] {senderSession.Name}[/color]: {escapedText}";
+            }
+            else
+            {
+                sponsors.TryGetOocColor(message.UserId, out var oocColor);
+                sponsors.TryGetOocTitle(message.UserId, out var sponsorTitle);
+                if (oocColor != null)
+                {
+                    bwoinkText = $"[color={oocColor.Value.ToHex()}]\\[{sponsorTitle}\\] {senderSession.Name}[/color]: {escapedText}";
+                }
+                else
+                {
+                    bwoinkText = $"\\[{sponsorTitle}\\] {senderSession.Name}: {escapedText}";
+                }
+            }
 
             var msg = new BwoinkTextMessage(message.UserId, senderSession.UserId, bwoinkText);
+            // Alteros-Sponsors-end
 
             LogBwoink(msg);
 
@@ -447,7 +466,7 @@ namespace Content.Server.Administration.Systems
         }
 
         // Returns all online admins with AHelp access
-        private IList<INetChannel> GetTargetAdmins()
+        public IList<INetChannel> GetTargetAdmins()
         {
             return _adminManager.ActiveAdmins
                .Where(p => _adminManager.GetAdminData(p)?.HasFlag(AdminFlags.Adminhelp) ?? false)

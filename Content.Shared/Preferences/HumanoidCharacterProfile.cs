@@ -181,10 +181,19 @@ namespace Content.Shared.Preferences
             }
 
             // Corvax-TTS-Start
-            var voiceId = random.Pick(prototypeManager
-                .EnumeratePrototypes<TTSVoicePrototype>()
-                .Where(o => CanHaveVoice(o, sex)).ToArray()
-            ).ID;
+            var availableVoices = new List<string>();
+            foreach (var ttsVoicePrototype in prototypeManager.EnumeratePrototypes<TTSVoicePrototype>())
+            {
+                if (!CanHaveVoice(ttsVoicePrototype, sex))
+                    continue;
+
+                if (ttsVoicePrototype.SponsorOnly)
+                    continue;
+
+                availableVoices.Add(ttsVoicePrototype.ID);
+            }
+
+            var voiceId = random.Pick(availableVoices);
             // Corvax-TTS-End
 
             var gender = sex == Sex.Male ? Gender.Male : Gender.Female;

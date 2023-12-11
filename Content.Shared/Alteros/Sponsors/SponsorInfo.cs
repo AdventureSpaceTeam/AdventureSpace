@@ -11,6 +11,8 @@ public sealed class SponsorInfo
 {
     [JsonPropertyName("tier")]
     public int? Tier { get; set; }
+    [JsonPropertyName("title")]
+    public string? Title { get; set; }
 
     [JsonPropertyName("oocColor")]
     public string? OOCColor { get; set; }
