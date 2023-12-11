@@ -1,8 +1,12 @@
 using System.Linq;
+using System.Threading.Tasks;
+using Content.Server.Administration.Managers;
 using Content.Server.Afk;
 using Content.Server.Afk.Events;
 using Content.Server.GameTicking;
 using Content.Server.Mind;
+using Content.Server.Roles;
+using Content.Server.Database;
 using Content.Shared.CCVar;
 using Content.Shared.GameTicking;
 using Content.Shared.Mobs;
@@ -28,10 +32,12 @@ public sealed class PlayTimeTrackingSystem : EntitySystem
 {
     [Dependency] private readonly IAfkManager _afk = default!;
     [Dependency] private readonly IPlayerManager _playerManager = default!;
+    [Dependency] private readonly IAdminManager _adminManager = default!;
     [Dependency] private readonly IPrototypeManager _prototypes = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!;
     [Dependency] private readonly MindSystem _minds = default!;
     [Dependency] private readonly PlayTimeTrackingManager _tracking = default!;
+    [Dependency] private readonly IServerDbManager _db = default!;
 
     public override void Initialize()
     {
@@ -55,6 +61,11 @@ public sealed class PlayTimeTrackingSystem : EntitySystem
         base.Shutdown();
 
         _tracking.CalcTrackers -= CalcTrackers;
+    }
+
+    private bool IsBypassingChecks(ICommonSession player)
+    {
+        return _adminManager.IsAdmin(player, true);
     }
 
     private void CalcTrackers(ICommonSession player, HashSet<string> trackers)
@@ -160,6 +171,8 @@ public sealed class PlayTimeTrackingSystem : EntitySystem
 
     public bool IsAllowed(ICommonSession player, string role)
     {
+        if (IsBypassingChecks(player))
+            return true;
         // Alteros-Sponsors-start
         var sponsors = IoCManager.Resolve<IServerSponsorsManager>(); // Alteros-Sponsors
         if (sponsors.TryGetPrototypes(player.UserId, out var prototypes))
@@ -168,6 +181,7 @@ public sealed class PlayTimeTrackingSystem : EntitySystem
                 return true;
         }
         // Alteros-Sponsors-stop
+
         if (!_prototypes.TryIndex<JobPrototype>(role, out var job) ||
             job.Requirements == null ||
             !_cfg.GetCVar(CCVars.GameRoleTimers))
@@ -181,6 +195,9 @@ public sealed class PlayTimeTrackingSystem : EntitySystem
     public HashSet<string> GetDisallowedJobs(ICommonSession player)
     {
         var roles = new HashSet<string>();
+        if (IsBypassingChecks(player))
+            return roles;
+
         if (!_cfg.GetCVar(CCVars.GameRoleTimers))
             return roles;
 
@@ -212,6 +229,9 @@ public sealed class PlayTimeTrackingSystem : EntitySystem
             return;
 
         var player = _playerManager.GetSessionByUserId(userId);
+        if (IsBypassingChecks(player))
+            return;
+
         if (!_tracking.TryGetTrackerTimes(player, out var playTimes))
         {
             // Sorry mate but your playtimes haven't loaded.

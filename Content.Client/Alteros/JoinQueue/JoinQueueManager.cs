@@ -1,8 +1,9 @@
+using Content.Client.Alteros.JoinQueue;
 using Content.Shared.Alteros.JoinQueue;
 using Robust.Client.State;
 using Robust.Shared.Network;
 
-namespace Content.Client.Alteros.JoinQueue;
+namespace Content.Client.JoinQueue;
 
 public sealed class JoinQueueManager : Content.Corvax.Interfaces.Client.IClientJoinQueueManager
 {

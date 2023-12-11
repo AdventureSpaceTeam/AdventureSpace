@@ -2,7 +2,7 @@ using Content.Corvax.Interfaces.Client;
 using Content.Shared.Sponsors;
 using Robust.Shared.Network;
 
-namespace Content.Client.Alteros.Sponsors;
+namespace Content.Client.Sponsors;
 
 public sealed class SponsorsManager : IClientSponsorsManager
 {
