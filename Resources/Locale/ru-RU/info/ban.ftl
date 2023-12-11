@@ -86,28 +86,43 @@ server-role-ban = Временный джоб-бан на { $mins } { $mins ->
     }.
 server-perma-role-ban = Перманентный джоб-бан.
 server-time-ban-string =
-    > **Нарушитель:** ``{ $targetName }``
-    > **Администратор:** ``{ $adminName }``
+    > **Нарушитель**
+    > **Логин:** ``{ $targetName }``
+    > **Дискорд:** { $targetLink }
+
+    > **Администратор**
+    > **Логин:** ``{ $adminName }``
+    > **Дискорд:** { $adminLink }
 
     > **Выдан:** { $TimeNow }
     > **Истечет:** { $expiresString }
 
     > **Причина:** { $reason }
 
-    > **Тяжесть:** { $severity }
+    > **Уровень тяжести:** { $severity }
 server-ban-footer = { $server } | Раунд: #{ $round }
 server-perma-ban-string =
-    > **Нарушитель:** ``{ $targetName }``
-    > **Администратор:** ``{ $adminName }``
+    > **Нарушитель**
+    > **Логин:** ``{ $targetName }``
+    > **Дискорд:** { $targetLink }
+
+    > **Администратор**
+    > **Логин:** ``{ $adminName }``
+    > **Дискорд:** { $adminLink }
 
     > **Выдан:** { $TimeNow }
 
     > **Причина:** { $reason }
 
-    > **Тяжесть:** { $severity }
+    > **Уровень тяжести:** { $severity }
 server-role-ban-string =
-    > **Нарушитель:** ``{ $targetName }``
-    > **Администратор:** ``{ $adminName }``
+    > **Нарушитель**
+    > **Логин:** ``{ $targetName }``
+    > **Дискорд:** { $targetLink }
+
+    > **Администратор**
+    > **Логин:** ``{ $adminName }``
+    > **Дискорд:** { $adminLink }
 
     > **Выдан:** { $TimeNow }
     > **Истечет:** { $expiresString }
@@ -116,10 +131,15 @@ server-role-ban-string =
 
     > **Причина:** { $reason }
 
-    > **Тяжесть:** { $severity }
+    > **Уровень тяжести:** { $severity }
 server-perma-role-ban-string =
-    > **Нарушитель:** ``{ $targetName }``
-    > **Администратор:** ``{ $adminName }``
+    > **Нарушитель**
+    > **Логин:** ``{ $targetName }``
+    > **Дискорд:** ``{ $targetLink }``
+
+    > **Администратор**
+    > **Логин:** ``{ $adminName }``
+    > **Дискорд:** { $adminLink }
 
     > **Выдан:** { $TimeNow }
 
@@ -127,6 +147,6 @@ server-perma-role-ban-string =
 
     > **Причина:** { $reason }
 
-    > **Тяжесть:** { $severity }
+    > **Уровень тяжести:** { $severity }
 server-ban-string-no-pii = { $admin } created a { $severity } severity server ban that expires { $expires } for { $name } with reason: { $reason }
 cmd-ban_exemption_get-arg-player = <player>
