@@ -11,5 +11,7 @@ public interface IServerDiscordAuthManager : ISharedDiscordAuthManager
 {
     public event EventHandler<ICommonSession>? PlayerVerified;
     public Task<DiscordAuthManager.DiscordGenerateLinkResponse> GenerateAuthLink(NetUserId userId, CancellationToken cancel);
+    public Task<DiscordAuthManager.DiscordLinkResponse> GenerateDiscordLink(NetUserId userId, CancellationToken cancel);
     public Task<bool> IsVerified(NetUserId userId, CancellationToken cancel);
+    public Task<bool> IsDiscordMember(NetUserId userId, CancellationToken cancel);
 }

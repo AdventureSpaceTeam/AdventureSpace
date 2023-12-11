@@ -3,8 +3,9 @@ using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading;
 using System.Threading.Tasks;
-using Content.Shared.Alteros.DiscordAuth;
 using Content.Shared.CCVar;
+using Content.Shared.DiscordAuth;
+using Content.Shared.DiscordMember;
 using JetBrains.Annotations;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
@@ -22,9 +23,11 @@ public sealed class DiscordAuthManager : Content.Corvax.Interfaces.Server.IServe
 
     private ISawmill _sawmill = default!;
     private readonly HttpClient _httpClient = new();
-    private bool _isEnabled = false;
+    private bool _isEnabled;
+    private bool _checkMember;
     private string _apiUrl = string.Empty;
     private string _apiKey = string.Empty;
+    private string _discordLink = string.Empty;
 
     /// <summary>
     ///     Raised when player passed verification or if feature disabled
@@ -38,9 +41,13 @@ public sealed class DiscordAuthManager : Content.Corvax.Interfaces.Server.IServe
         _cfg.OnValueChanged(CCVars.DiscordAuthEnabled, v => _isEnabled = v, true);
         _cfg.OnValueChanged(CCVars.DiscordAuthApiUrl, v => _apiUrl = v, true);
         _cfg.OnValueChanged(CCVars.DiscordAuthApiKey, v => _apiKey = v, true);
+        _cfg.OnValueChanged(CCVars.InfoLinksDiscord, v => _discordLink = v, true);
+        _cfg.OnValueChanged(CCVars.DiscordAuthCheckMember, v => _checkMember = v, true);
 
         _netMgr.RegisterNetMessage<MsgDiscordAuthRequired>();
+        _netMgr.RegisterNetMessage<MsgDiscordMemberRequired>();
         _netMgr.RegisterNetMessage<MsgDiscordAuthCheck>(OnAuthCheck);
+        _netMgr.RegisterNetMessage<MsgDiscordMemberCheck>(OnMemberCheck);
 
         _playerMgr.PlayerStatusChanged += OnPlayerStatusChanged;
     }
@@ -48,7 +55,33 @@ public sealed class DiscordAuthManager : Content.Corvax.Interfaces.Server.IServe
     private async void OnAuthCheck(MsgDiscordAuthCheck message)
     {
         var isVerified = await IsVerified(message.MsgChannel.UserId);
+        var session = _playerMgr.GetSessionByUserId(message.MsgChannel.UserId);
         if (isVerified)
+        {
+            if (_checkMember)
+            {
+                var isDiscordMember = await IsDiscordMember(message.MsgChannel.UserId);
+
+                if (isDiscordMember)
+                {
+                    PlayerVerified?.Invoke(this, session);
+                    return;
+                }
+
+                var joinUrl = await GenerateDiscordLink(message.MsgChannel.UserId);
+                var joinMsg = new MsgDiscordMemberRequired() { AuthUrl = joinUrl.Url, QrCode = joinUrl.Qrcode };
+                session.ConnectedClient.SendMessage(joinMsg);
+                return;
+            }
+
+            PlayerVerified?.Invoke(this, session);
+        }
+    }
+
+    private async void OnMemberCheck(MsgDiscordMemberCheck message)
+    {
+        var isDiscordMember = await IsDiscordMember(message.MsgChannel.UserId);
+        if (isDiscordMember)
         {
             var session = _playerMgr.GetSessionByUserId(message.MsgChannel.UserId);
 
@@ -72,13 +105,30 @@ public sealed class DiscordAuthManager : Content.Corvax.Interfaces.Server.IServe
             var isVerified = await IsVerified(e.Session.UserId);
             if (isVerified)
             {
+                if (_checkMember)
+                {
+                    var isDiscordMember = await IsDiscordMember(e.Session.UserId);
+
+                    if (isDiscordMember)
+                    {
+                        PlayerVerified?.Invoke(this, e.Session);
+                        return;
+                    }
+
+                    var joinUrl = await GenerateDiscordLink(e.Session.UserId);
+                    Logger.Info($"Qrcode: {joinUrl.Qrcode}");
+                    var joinMsg = new MsgDiscordMemberRequired() { AuthUrl = joinUrl.Url, QrCode = joinUrl.Qrcode };
+                    e.Session.ConnectedClient.SendMessage(joinMsg);
+                    return;
+                }
+
                 PlayerVerified?.Invoke(this, e.Session);
                 return;
             }
 
             var authUrl = await GenerateAuthLink(e.Session.UserId);
-            var msg = new MsgDiscordAuthRequired() { AuthUrl = authUrl.Url, QrCode = authUrl.Qrcode };
-            e.Session.ConnectedClient.SendMessage(msg);
+            var authMsg = new MsgDiscordAuthRequired() { AuthUrl = authUrl.Url, QrCode = authUrl.Qrcode };
+            e.Session.ConnectedClient.SendMessage(authMsg);
         }
     }
 
@@ -98,6 +148,22 @@ public sealed class DiscordAuthManager : Content.Corvax.Interfaces.Server.IServe
         return data!;
     }
 
+    public async Task<DiscordLinkResponse> GenerateDiscordLink(NetUserId userId, CancellationToken cancel = default)
+    {
+        _sawmill.Info($"Player {userId} requested generation Discord verification link");
+
+        var requestUrl = $"{_apiUrl}/generate_discord_link/?discord_link={_discordLink}&key={_apiKey}";
+        var response = await _httpClient.PostAsync(requestUrl, null, cancel);
+        if (!response.IsSuccessStatusCode)
+        {
+            var content = await response.Content.ReadAsStringAsync();
+            throw new Exception($"Verification API returned bad status code: {response.StatusCode}\nResponse: {content}");
+        }
+
+        var data = await response.Content.ReadFromJsonAsync<DiscordLinkResponse>(cancellationToken: cancel);
+        return data!;
+    }
+
     public async Task<bool> IsVerified(NetUserId userId, CancellationToken cancel = default)
     {
         _sawmill.Debug($"Player {userId} check Discord verification");
@@ -114,8 +180,28 @@ public sealed class DiscordAuthManager : Content.Corvax.Interfaces.Server.IServe
         return data!.IsLinked;
     }
 
+    public async Task<bool> IsDiscordMember(NetUserId userId, CancellationToken cancel = default)
+    {
+        _sawmill.Debug($"Player {userId} check Discord member");
+
+        var requestUrl = $"{_apiUrl}/is_discord_member/?user_id={WebUtility.UrlEncode(userId.ToString())}&key={_apiKey}";
+        var response = await _httpClient.GetAsync(requestUrl, cancel);
+        if (!response.IsSuccessStatusCode)
+        {
+            var content = await response.Content.ReadAsStringAsync();
+            throw new Exception($"Verification API returned bad status code: {response.StatusCode}\nResponse: {content}");
+        }
+
+        var data = await response.Content.ReadFromJsonAsync<DiscordMemberInfoResponse>(cancellationToken: cancel);
+        return data!.IsMember;
+    }
+
+    [UsedImplicitly]
+    public sealed record DiscordLinkResponse(string Url, byte[] Qrcode);
     [UsedImplicitly]
     public sealed record DiscordGenerateLinkResponse(string Url, byte[] Qrcode);
     [UsedImplicitly]
     private sealed record DiscordAuthInfoResponse(bool IsLinked);
+    [UsedImplicitly]
+    private sealed record DiscordMemberInfoResponse(bool IsMember);
 }

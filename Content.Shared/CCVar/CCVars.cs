@@ -1930,6 +1930,9 @@ namespace Content.Shared.CCVar
         public static readonly CVarDef<string> DiscordAuthApiUrl =
             CVarDef.Create("discord_auth.api_url", "", CVar.SERVERONLY);
 
+        public static readonly CVarDef<bool> DiscordAuthCheckMember =
+            CVarDef.Create("discord_auth.check_member", false, CVar.SERVERONLY);
+
         public static readonly CVarDef<string> DiscordAuthApiKey =
             CVarDef.Create("discord_auth.api_key", "", CVar.SERVERONLY | CVar.CONFIDENTIAL);
 

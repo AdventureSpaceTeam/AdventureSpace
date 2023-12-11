@@ -1,28 +1,28 @@
 using System.Threading;
-using Content.Shared.DiscordAuth;
+using Content.Shared.DiscordMember;
 using Robust.Client.State;
 using Robust.Client.UserInterface;
 using Robust.Shared.Network;
 using Timer = Robust.Shared.Timing.Timer;
 
-namespace Content.Client.DiscordAuth;
+namespace Content.Client.DiscordMember;
 
-public sealed class DiscordAuthState : State
+public sealed class DiscordMemberState : State
 {
     [Dependency] private readonly IUserInterfaceManager _userInterfaceManager = default!;
     [Dependency] private readonly IClientNetManager _netManager = default!;
 
-    private Alteros.DiscordAuth.DiscordAuthGui? _gui;
+    private Alteros.DiscordMember.DiscordMemberGui? _gui;
     private readonly CancellationTokenSource _checkTimerCancel = new();
 
     protected override void Startup()
     {
-        _gui = new Alteros.DiscordAuth.DiscordAuthGui();
+        _gui = new Alteros.DiscordMember.DiscordMemberGui();
         _userInterfaceManager.StateRoot.AddChild(_gui);
 
         Timer.SpawnRepeating(TimeSpan.FromSeconds(5), () =>
         {
-            _netManager.ClientSendMessage(new MsgDiscordAuthCheck());
+            _netManager.ClientSendMessage(new MsgDiscordMemberCheck());
         }, _checkTimerCancel.Token);
     }
 

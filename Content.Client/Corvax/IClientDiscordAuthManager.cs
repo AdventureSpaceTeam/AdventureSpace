@@ -7,4 +7,6 @@ public interface IClientDiscordAuthManager : ISharedDiscordAuthManager
 {
     public string AuthUrl { get; }
     public Texture? Qrcode { get; }
+    public string DiscordUrl { get; }
+    public Texture? DiscordQrcode { get; }
 }
