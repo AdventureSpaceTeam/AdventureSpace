@@ -5,8 +5,8 @@ using Content.Shared.GameTicking;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Roles;
+using Content.Shared.SS220.TTS;
 using Content.Shared.Traits;
-using Content.Shared.White.TTS;
 using Robust.Shared.Configuration;
 using Robust.Shared.Enums;
 using Robust.Shared.Prototypes;
@@ -180,21 +180,12 @@ namespace Content.Shared.Preferences
                 age = random.Next(speciesPrototype.MinAge, speciesPrototype.OldAge); // people don't look and keep making 119 year old characters with zero rp, cap it at middle aged
             }
 
-            // White-TTS-Start
-            var availableVoices = new List<string>();
-            foreach (var ttsVoicePrototype in prototypeManager.EnumeratePrototypes<TTSVoicePrototype>())
-            {
-                if (!CanHaveVoice(ttsVoicePrototype, sex))
-                    continue;
-
-                if (ttsVoicePrototype.SponsorOnly)
-                    continue;
-
-                availableVoices.Add(ttsVoicePrototype.ID);
-            }
-
-            var voiceId = random.Pick(availableVoices);
-            // White-TTS-End
+            // Corvax-TTS-Start
+            var voiceId = random.Pick(prototypeManager
+                .EnumeratePrototypes<TTSVoicePrototype>()
+                .Where(o => CanHaveVoice(o, sex)).ToArray()
+            ).ID;
+            // Corvax-TTS-End
 
             var gender = sex == Sex.Male ? Gender.Male : Gender.Female;
 

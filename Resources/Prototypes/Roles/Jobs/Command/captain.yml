@@ -34,6 +34,7 @@
   joinNotifyCrew: true
   supervisors: job-supervisors-centcom
   canBeAntag: false
+  radioBold: true
   accessGroups:
   - AllAccess
   special:

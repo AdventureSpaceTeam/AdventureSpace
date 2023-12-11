@@ -1,9 +1,9 @@
 using System.Linq;
-using Content.Shared._White.TTS;
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Decals;
 using Content.Shared.Preferences;
+using Content.Shared.SS220.TTS;
 using Robust.Shared.GameObjects.Components.Localization;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
@@ -416,7 +416,7 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
             Dirty(humanoid);
     }
 
-    // White-TTS-Start
+    // Corvax-TTS-Start
     // ReSharper disable once InconsistentNaming
     public void SetTTSVoice(EntityUid uid, string voiceId, HumanoidAppearanceComponent humanoid)
     {

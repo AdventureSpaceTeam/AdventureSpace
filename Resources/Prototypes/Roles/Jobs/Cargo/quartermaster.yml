@@ -20,6 +20,7 @@
   icon: "JobIconQuarterMaster"
   supervisors: job-supervisors-captain
   canBeAntag: false
+  radioBold: true
   access:
   - Cargo
   - Salvage
