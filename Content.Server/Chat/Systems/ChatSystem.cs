@@ -13,8 +13,8 @@ using Content.Shared.ActionBlocker;
 using Content.Shared.CCVar;
 using Content.Shared.Chat;
 using Content.Shared.Database;
-using Content.Shared.Ghost;
 using Content.Shared.Humanoid;
+using Content.Shared.Ghost;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction;
 using Content.Shared.Mobs.Systems;
@@ -31,6 +31,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Replays;
 using Robust.Shared.Utility;
+using Robust.Shared.Timing;
 
 namespace Content.Server.Chat.Systems;
 
@@ -55,13 +56,15 @@ public sealed partial class ChatSystem : SharedChatSystem
     [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedInteractionSystem _interactionSystem = default!;
+    [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly ReplacementAccentSystem _wordreplacement = default!;
 
     public const int VoiceRange = 10; // how far voice goes in world units
     public const int WhisperClearRange = 2; // how far whisper goes while still being understandable, in world units
     public const int WhisperMuffledRange = 5; // how far whisper goes at all, in world units
-    public const string DefaultAnnouncementSound = "/Audio/Corvax/Announcements/announce.ogg"; // Corvax-Announcements
+    public const string DefaultAnnouncementSound = "/Audio/Announcements/announce.ogg";
     public const string CentComAnnouncementSound = "/Audio/Corvax/Announcements/centcomm.ogg"; // Corvax-Announcements
+    public const string NukiesAnnouncementSound = "/Audio/Announcements/war.ogg";
 
     private bool _loocEnabled = true;
     private bool _deadLoocEnabled;
@@ -314,21 +317,33 @@ public sealed partial class ChatSystem : SharedChatSystem
     /// <param name="message">The contents of the message</param>
     /// <param name="sender">The sender (Communications Console in Communications Console Announcement)</param>
     /// <param name="playSound">Play the announcement sound</param>
+    /// <param name="announcementSound">Specific announcement sound</param>
     /// <param name="colorOverride">Optional color for the announcement message</param>
     public void DispatchGlobalAnnouncement(
         string message,
         string sender = "Central Command",
         bool playSound = true,
-        SoundSpecifier? announcementSound = null,
         Color? colorOverride = null
         )
     {
         var wrappedMessage = Loc.GetString("chat-manager-sender-announcement-wrap-message", ("sender", sender), ("message", FormattedMessage.EscapeText(message)));
         _chatManager.ChatMessageToAll(ChatChannel.Radio, message, wrappedMessage, default, false, true, colorOverride);
+
         if (playSound)
         {
-            if (sender == Loc.GetString("admin-announce-announcer-default")) announcementSound = new SoundPathSpecifier(CentComAnnouncementSound); // Corvax-Announcements: Support custom alert sound from admin panel
-            _audio.PlayGlobal(announcementSound?.GetSound() ?? DefaultAnnouncementSound, Filter.Broadcast(), true, announcementSound?.Params ?? AudioParams.Default.WithVolume(-2f));
+            SoundSpecifier? announcementSound = null;
+            if (sender == Loc.GetString("admin-announce-announcer-default"))
+            {
+                announcementSound = new SoundPathSpecifier(CentComAnnouncementSound); // Corvax-Announcements: Support custom alert sound from admin panel
+            }
+            if (sender == Loc.GetString("comms-console-announcement-title-nukie"))
+            {
+                announcementSound = new SoundPathSpecifier(NukiesAnnouncementSound);
+            }
+            announcementSound ??= new SoundPathSpecifier(DefaultAnnouncementSound);
+            var announcementFilename = announcementSound.GetSound();
+            var announcementEv = new AnnouncementSpokeEvent(Filter.Broadcast(), announcementFilename, announcementSound.Params, message);
+            RaiseLocalEvent(announcementEv);
         }
         _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Global station announcement from {sender}: {message}");
     }
@@ -339,14 +354,14 @@ public sealed partial class ChatSystem : SharedChatSystem
     /// <param name="source">The entity making the announcement (used to determine the station)</param>
     /// <param name="message">The contents of the message</param>
     /// <param name="sender">The sender (Communications Console in Communications Console Announcement)</param>
-    /// <param name="playDefaultSound">Play the announcement sound</param>
+    /// <param name="playSound">Play the announcement sound</param>
+    /// <param name="announcementSound">Specific announcement sound</param>
     /// <param name="colorOverride">Optional color for the announcement message</param>
     public void DispatchStationAnnouncement(
         EntityUid source,
         string message,
         string sender = "Central Command",
-        bool playDefaultSound = true,
-        SoundSpecifier? announcementSound = null,
+        bool playSound = true,
         Color? colorOverride = null)
     {
         var wrappedMessage = Loc.GetString("chat-manager-sender-announcement-wrap-message", ("sender", sender), ("message", FormattedMessage.EscapeText(message)));
@@ -357,17 +372,15 @@ public sealed partial class ChatSystem : SharedChatSystem
             // you can't make a station announcement without a station
             return;
         }
-
-        if (!EntityManager.TryGetComponent<StationDataComponent>(station, out var stationDataComp)) return;
+        if (!EntityManager.TryGetComponent<StationDataComponent>(station, out var stationDataComp))
+            return;
 
         var filter = _stationSystem.GetInStation(stationDataComp);
 
         _chatManager.ChatMessageToManyFiltered(filter, ChatChannel.Radio, message, wrappedMessage, source, false, true, colorOverride);
 
-        if (playDefaultSound)
-        {
-            _audio.PlayGlobal(announcementSound?.GetSound() ?? DefaultAnnouncementSound, filter, true, AudioParams.Default.WithVolume(-2f));
-        }
+        if (playSound)
+            RaiseLocalEvent(new AnnouncementSpokeEvent(filter, DefaultAnnouncementSound, AudioParams.Default, message));
 
         _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Station Announcement on {station} from {sender}: {message}");
     }
@@ -410,6 +423,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         if (TryComp<HumanoidAppearanceComponent>(source, out var comp))
             name = $"[color={comp.SpeakerColor.ToHex()}]{name}[/color]";
         // Corvax-SpeakerColor-End
+
         var speech = GetSpeechVerb(source, message);
         var wrappedMessage = Loc.GetString(speech.Bold ? "chat-manager-entity-say-bold-wrap-message" : "chat-manager-entity-say-wrap-message",
             ("entityName", name),
@@ -506,7 +520,7 @@ public sealed partial class ChatSystem : SharedChatSystem
             if (MessageRangeCheck(session, data, range) != MessageRangeCheckResult.Full)
                 continue; // Won't get logged to chat, and ghosts are too far away to see the pop-up, so we just won't send it to them.
 
-            if (data.Range <= WhisperClearRange)
+            if (data.Range <= WhisperClearRange || data.Observer)
                 _chatManager.ChatMessageToOne(ChatChannel.Whisper, message, wrappedMessage, source, false, session.ConnectedClient);
             //If listener is too far, they only hear fragments of the message
             //Collisiongroup.Opaque is not ideal for this use. Preferably, there should be a check specifically with "Can Ent1 see Ent2" in mind
@@ -565,7 +579,14 @@ public sealed partial class ChatSystem : SharedChatSystem
             ("message", FormattedMessage.EscapeText(action)));
 
         if (checkEmote)
-            TryEmoteChatInput(source, action);
+        {
+            // SS220 Chat-Emote-Cooldown begin
+            TryEmoteChatInput(source, action, out var consumed);
+            if (consumed)
+                return;
+            // SS220 Chat-Emote-Cooldown end
+        }
+
         SendInVoiceRange(ChatChannel.Emotes, action, wrappedMessage, source, range, author);
         if (!hideLog)
             if (name != Name(source))
@@ -717,6 +738,7 @@ public sealed partial class ChatSystem : SharedChatSystem
     private string SanitizeInGameICMessage(EntityUid source, string message, out string? emoteStr, bool capitalize = true, bool punctuate = false, bool capitalizeTheWordI = true)
     {
         var newMessage = message.Trim();
+        newMessage = ReplaceWords(newMessage); // Corvax-ChatSanitize
         newMessage = SanitizeMessageReplaceWords(newMessage);
 
         if (capitalize)
@@ -916,6 +938,7 @@ public sealed class EntitySpokeEvent : EntityEventArgs
     public readonly string Message;
     public readonly string OriginalMessage;
     public readonly string? ObfuscatedMessage; // not null if this was a whisper
+    public readonly bool IsRadio; // radio message is always a whisper
 
     /// <summary>
     ///     If the entity was trying to speak into a radio, this was the channel they were trying to access. If a radio
@@ -930,6 +953,7 @@ public sealed class EntitySpokeEvent : EntityEventArgs
         OriginalMessage = originalMessage; // Corvax-TTS: Spec symbol sanitize
         Channel = channel;
         ObfuscatedMessage = obfuscatedMessage;
+        IsRadio = channel != null;
     }
 }
 
@@ -966,4 +990,34 @@ public enum ChatTransmitRange : byte
     HideChat,
     /// Ghosts can't hear or see it at all. Regular players can if in-range.
     NoGhosts
+}
+
+public sealed class AnnouncementSpokeEvent : EntityEventArgs
+{
+    public readonly Filter Source;
+    public readonly string AnnouncementSound;
+    public readonly AudioParams AnnouncementSoundParams;
+    public readonly string Message;
+
+    public AnnouncementSpokeEvent(Filter source, string announcementSound, AudioParams announcementSoundParams, string message)
+    {
+        Source = source;
+        Message = message;
+        AnnouncementSound = announcementSound;
+        AnnouncementSoundParams = announcementSoundParams;
+    }
+}
+
+public sealed class RadioSpokeEvent : EntityEventArgs
+{
+    public readonly EntityUid Source;
+    public readonly string Message;
+    public readonly EntityUid[] Receivers;
+
+    public RadioSpokeEvent(EntityUid source, string message, EntityUid[] receivers)
+    {
+        Source = source;
+        Message = message;
+        Receivers = receivers;
+    }
 }

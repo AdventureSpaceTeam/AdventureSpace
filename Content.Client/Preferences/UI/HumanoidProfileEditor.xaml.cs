@@ -188,14 +188,17 @@ namespace Content.Client.Preferences.UI
             #region Species
 
             _speciesList = prototypeManager.EnumeratePrototypes<SpeciesPrototype>().Where(o => o.RoundStart).ToList();
-            // Corvax-Sponsors-Start
-            if (_sponsorsMgr != null)
-                _speciesList = _speciesList.Where(p => !p.SponsorOnly || _sponsorsMgr.Prototypes.Contains(p.ID)).ToList();
-            // Corvax-Sponsors-End
             for (var i = 0; i < _speciesList.Count; i++)
             {
-                var name = Loc.GetString(_speciesList[i].Name);
+                var specie = _speciesList[i];
+                var name = Loc.GetString(specie.Name);
                 CSpeciesButton.AddItem(name, i);
+                if (specie.SponsorOnly && _sponsorsMgr != null &&
+                    !_sponsorsMgr.Prototypes.Contains(specie.ID))
+                {
+                    CSpeciesButton.SetItemDisabled(CSpeciesButton.GetIdx(i), true);
+                    CSpeciesButton.SetItemText(CSpeciesButton.GetIdx(i), $"{name} [СПОНСОР]");
+                }
             }
 
             CSpeciesButton.OnItemSelected += args =>

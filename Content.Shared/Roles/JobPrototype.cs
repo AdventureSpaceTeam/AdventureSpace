@@ -56,6 +56,9 @@ namespace Content.Shared.Roles
         [DataField("canBeAntag")]
         public bool CanBeAntag { get; private set; } = true;
 
+        [DataField("radioBold")]
+        public bool RadioIsBold { get; } = false;
+
         /// <summary>
         ///     Whether this job is a head.
         ///     The job system will try to pick heads before other jobs on the same priority level.

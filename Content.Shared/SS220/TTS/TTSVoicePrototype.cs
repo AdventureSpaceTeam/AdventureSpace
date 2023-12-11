@@ -1,7 +1,7 @@
-﻿using Content.Shared.Humanoid;
+using Content.Shared.Humanoid;
 using Robust.Shared.Prototypes;
 
-namespace Content.Shared.White.TTS;
+namespace Content.Shared.SS220.TTS;
 
 /// <summary>
 /// Prototype represent available TTS voices
@@ -10,7 +10,7 @@ namespace Content.Shared.White.TTS;
 // ReSharper disable once InconsistentNaming
 public sealed class TTSVoicePrototype : IPrototype
 {
-    [IdDataFieldAttribute]
+    [IdDataField]
     public string ID { get; } = default!;
 
     [DataField("name")]
@@ -23,6 +23,9 @@ public sealed class TTSVoicePrototype : IPrototype
     [DataField("speaker", required: true)]
     public string Speaker { get; } = string.Empty;
 
+    [DataField("description")]
+    public string Description { get; } = string.Empty;
+
     /// <summary>
     /// Whether the species is available "at round start" (In the character editor)
     /// </summary>
@@ -31,7 +34,4 @@ public sealed class TTSVoicePrototype : IPrototype
 
     [DataField("sponsorOnly")]
     public bool SponsorOnly { get; } = false;
-
-    [DataField("borgVoice")]
-    public bool BorgVoice { get; } = false;
 }

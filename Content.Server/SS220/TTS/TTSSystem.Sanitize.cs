@@ -2,23 +2,21 @@
 using System.Text.RegularExpressions;
 using Content.Server.Chat.Systems;
 
-namespace Content.Server.White.TTS;
+namespace Content.Server.SS220.TTS;
 
 // ReSharper disable once InconsistentNaming
 public sealed partial class TTSSystem
 {
     private void OnTransformSpeech(TransformSpeechEvent args)
     {
-        if (!_isEnabled)
-            return;
+        if (!_isEnabled) return;
         args.Message = args.Message.Replace("+", "");
     }
 
     private string Sanitize(string text)
     {
         text = text.Trim();
-        text = Regex.Replace(text, @"Ё", "Е");
-        text = Regex.Replace(text, @"[^a-zA-Zа-яА-ЯёЁ0-9,\-,+, ,?,!,.]", "");
+        text = Regex.Replace(text, @"[^a-zA-Zа-яА-ЯёЁ0-9,\-+?!. ]", "");
         text = Regex.Replace(text, @"[a-zA-Z]", ReplaceLat2Cyr, RegexOptions.Multiline | RegexOptions.IgnoreCase);
         text = Regex.Replace(text, @"(?<![a-zA-Zа-яёА-ЯЁ])[a-zA-Zа-яёА-ЯЁ]+?(?![a-zA-Zа-яёА-ЯЁ])", ReplaceMatchedWord, RegexOptions.Multiline | RegexOptions.IgnoreCase);
         text = Regex.Replace(text, @"(?<=[1-90])(\.|,)(?=[1-90])", " целых ");
@@ -58,7 +56,10 @@ public sealed partial class TTSSystem
             {"гсб", "Гэ Эс Бэ"},
             {"гв", "Гэ Вэ"},
             {"нр", "Эн Эр"},
+            {"км", "Кэ Эм"},
+            {"си", "Эс И"},
             {"срп", "Эс Эр Пэ"},
+            {"пцк", "Пэ Цэ Каа"},
             {"цк", "Цэ Каа"},
             {"рнд", "Эр Эн Дэ"},
             {"сб", "Эс Бэ"},
@@ -95,6 +96,7 @@ public sealed partial class TTSSystem
             {"авд", "А Вэ Дэ"},
             {"пнв", "Пэ Эн Вэ"},
             {"ссд", "Эс Эс Дэ"},
+            {"крс", "Ка Эр Эс"},
             {"кпб", "Кэ Пэ Бэ"},
             {"сссп", "Эс Эс Эс Пэ"},
             {"крб", "Ка Эр Бэ"},
@@ -111,12 +113,14 @@ public sealed partial class TTSSystem
             {"gps", "Джи Пи Эс"},
             {"ннксс", "Эн Эн Ка Эс Эс"},
             {"ss", "Эс Эс"},
-            {"сс", "Эс Эс"},
             {"тесла", "тэсла"},
             {"трейзен", "трэйзэн"},
             {"нанотрейзен", "нанотрэйзэн"},
             {"рпзд", "Эр Пэ Зэ Дэ"},
             {"кз", "Кэ Зэ"},
+            {"рхбз", "Эр Хэ Бэ Зэ"},
+            {"рхбзз", "Эр Хэ Бэ Зэ Зэ"},
+            {"днк", "Дэ Эн Ка"},
         };
 
     private static readonly IReadOnlyDictionary<string, string> ReverseTranslit =

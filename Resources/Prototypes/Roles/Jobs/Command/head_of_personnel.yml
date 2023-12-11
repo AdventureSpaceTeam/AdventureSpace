@@ -32,6 +32,7 @@
   icon: "JobIconHeadOfPersonnel"
   requireAdminNotify: true
   supervisors: job-supervisors-captain
+  radioBold: true
   canBeAntag: false
   access:
   - Command

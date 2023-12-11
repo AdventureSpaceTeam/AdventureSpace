@@ -28,5 +28,12 @@ namespace Content.Shared.Access.Components
         [AutoNetworkedField]
         public string JobIcon = "JobIconUnknown";
 
+        [DataField("jobColor")]
+        [AutoNetworkedField]
+        public string? JobColor;
+
+        [DataField("radioBold")]
+        [AutoNetworkedField]
+        public bool? RadioBold;
     }
 }

@@ -208,7 +208,9 @@ public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>
 
         var nukieRule = comps.Value.Item1;
         nukieRule.WarDeclaredTime = _gameTiming.CurTime;
-        _chat.DispatchGlobalAnnouncement(msg, title, announcementSound: announcementSound, colorOverride: colorOverride);
+        if (announcementSound != null)
+            _audio.PlayGlobal(announcementSound.GetSound(), Filter.Broadcast(), true, announcementSound?.Params ?? AudioParams.Default.WithVolume(-2f));
+        _chat.DispatchGlobalAnnouncement(msg, title, colorOverride: colorOverride);
         DistributeExtraTC(nukieRule);
         _warDeclarator.RefreshAllUI(comps.Value.Item1, comps.Value.Item2);
     }
