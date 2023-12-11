@@ -19,7 +19,6 @@ using Content.Shared.Administration.Logs;
 using Content.Shared.Module;
 using Content.Client.Guidebook;
 using Content.Client.Replay;
-using Content.Client.White.TTS;
 using Content.Shared.Administration.Managers;
 
 
@@ -55,11 +54,6 @@ namespace Content.Client.IoC
             IoCManager.Register<Content.Corvax.Interfaces.Client.IClientJoinQueueManager,Alteros.JoinQueue.JoinQueueManager>();
             IoCManager.Register<Content.Corvax.Interfaces.Client.IClientDiscordAuthManager,Alteros.DiscordAuth.DiscordAuthManager>();
             // Alteros-Sponsor
-
-
-            //WHITE
-            IoCManager.Register<TTSManager>();
-            //END
         }
     }
 }

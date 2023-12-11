@@ -1,4 +1,4 @@
-﻿using Content.Server.White.TTS;
+﻿using Content.Server.SS220.TTS;
 using Content.Shared.VoiceMask;
 
 namespace Content.Server.VoiceMask;

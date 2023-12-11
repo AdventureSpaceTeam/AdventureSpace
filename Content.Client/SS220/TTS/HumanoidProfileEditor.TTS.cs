@@ -1,33 +1,36 @@
-﻿using System.Linq;
+﻿// © SS220, An EULA/CLA with a hosting restriction, full text: https://raw.githubusercontent.com/SerbiaStrong-220/space-station-14/master/CLA.txt
+
+using System.Linq;
 using Content.Client.Alteros.Sponsors;
-using Content.Client.White.TTS;
+using Content.Client.SS220.TTS;
 using Content.Corvax.Interfaces.Client;
+using Content.Shared.SS220.TTS;
 using Content.Shared.Preferences;
-using Content.Shared.White.TTS;
 using Robust.Shared.Random;
 
 namespace Content.Client.Preferences.UI;
 
 public sealed partial class HumanoidProfileEditor
 {
-    private TTSManager _ttsMgr = default!;
     private TTSSystem _ttsSys = default!;
     private List<TTSVoicePrototype> _voiceList = default!;
-    private IClientSponsorsManager _sponsorsMgr = default!;
+    private IClientSponsorsManager? _sponsorsMgr;
     private readonly List<string> _sampleText = new()
     {
-        "Помогите, клоун насилует в технических тоннелях!",
-        "ХоС, ваши сотрудники украли у меня собаку и засунули ее в стиральную машину!",
-        "Агент синдиката украл пиво из бара и взорвался!",
-        "Врача! Позовите врача!"
+        "Съешь же ещё этих мягких французских булок, да выпей чаю.",
+        "Клоун, прекрати разбрасывать банановые кожурки офицерам под ноги!",
+        "Капитан, вы уверены что хотите назначить клоуна на должность главы персонала?",
+        "Эс Бэ! Тут человек в сером костюме, с тулбоксом и в маске! Помогите!!"
     };
 
     private void InitializeVoice()
     {
-        _ttsMgr = IoCManager.Resolve<TTSManager>();
         _ttsSys = _entMan.System<TTSSystem>();
-        _sponsorsMgr = IoCManager.Resolve<IClientSponsorsManager>();
-        _voiceList = _prototypeManager.EnumeratePrototypes<TTSVoicePrototype>().Where(o => o.RoundStart).ToList();
+        _voiceList = _prototypeManager
+            .EnumeratePrototypes<TTSVoicePrototype>()
+            .Where(o => o.RoundStart)
+            .OrderBy(o => Loc.GetString(o.Name))
+            .ToList();
 
         _voiceButton.OnItemSelected += args =>
         {
@@ -50,15 +53,19 @@ public sealed partial class HumanoidProfileEditor
         {
             var voice = _voiceList[i];
             if (!HumanoidCharacterProfile.CanHaveVoice(voice, Profile.Sex))
-            {
                 continue;
-            }
 
             var name = Loc.GetString(voice.Name);
             _voiceButton.AddItem(name, i);
 
             if (firstVoiceChoiceId == 1)
                 firstVoiceChoiceId = i;
+
+            var sponsors = IoCManager.Resolve<IClientSponsorsManager>(); // Alteros-Sponsors
+            if (voice.SponsorOnly && !sponsors.Prototypes.Contains(voice.ID))
+            {
+                _voiceButton.SetItemDisabled(_voiceButton.GetIdx(i), true);
+            }
         }
 
         var voiceChoiceId = _voiceList.FindIndex(x => x.ID == Profile.Voice);
@@ -74,8 +81,7 @@ public sealed partial class HumanoidProfileEditor
         if (_previewDummy is null || Profile is null)
             return;
 
-        _ttsSys.StopAllStreams();
-
-        _ttsMgr.RequestGlobalTTS(_random.Pick(_sampleText), Profile.Voice, _entMan);
+        _ttsSys.ResetQueuesAndEndStreams();
+        _ttsSys.RequestGlobalTTS(_random.Pick(_sampleText), Profile.Voice);
     }
 }

@@ -1,6 +1,6 @@
-﻿using Robust.Shared.Serialization;
+using Robust.Shared.Serialization;
 
-namespace Content.Shared._White.TTS;
+namespace Content.Shared.SS220.TTS;
 
 // ReSharper disable once InconsistentNaming
 [Serializable, NetSerializable]

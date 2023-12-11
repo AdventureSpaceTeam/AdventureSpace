@@ -1,10 +1,12 @@
-﻿using Content.Shared.White.TTS;
-using Robust.Shared.Prototypes;
+﻿using Robust.Shared.GameStates;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
-namespace Content.Shared._White.TTS;
+namespace Content.Shared.SS220.TTS;
 
-[RegisterComponent]
+/// <summary>
+/// Apply TTS for entity chat say messages
+/// </summary>
+[RegisterComponent, NetworkedComponent]
 // ReSharper disable once InconsistentNaming
 public sealed partial class TTSComponent : Component
 {
@@ -12,6 +14,6 @@ public sealed partial class TTSComponent : Component
     /// Prototype of used voice for TTS.
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite)]
-    [DataField("voice", required: false, customTypeSerializer: typeof(PrototypeIdSerializer<TTSVoicePrototype>))]
+    [DataField("voice", customTypeSerializer: typeof(PrototypeIdSerializer<TTSVoicePrototype>))]
     public string? VoicePrototypeId { get; set; }
 }
