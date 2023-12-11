@@ -1946,5 +1946,18 @@ namespace Content.Shared.CCVar
 
         public static readonly CVarDef<string> SponsorsApiUrl =
             CVarDef.Create("sponsor.api_url", "", CVar.SERVERONLY);
+
+        /*
+         *  Greetings
+         */
+
+        public static readonly CVarDef<bool> GreetingsEnable =
+            CVarDef.Create("greetings.enable", true);
+
+        public static readonly CVarDef<string> GreetingsMessage =
+            CVarDef.Create("greetings.message", "Привет");
+
+        public static readonly CVarDef<string> GreetingsAuthor =
+            CVarDef.Create("greetings.author", "Сервер");
     }
 }
