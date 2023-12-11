@@ -2,9 +2,9 @@ using Lidgren.Network;
 using Robust.Shared.Network;
 using Robust.Shared.Serialization;
 
-namespace Content.Shared.DiscordAuth;
+namespace Content.Shared.DiscordMember;
 
-public sealed class MsgDiscordAuthRequired : NetMessage
+public sealed class MsgDiscordMemberRequired : NetMessage
 {
     public override MsgGroups MsgGroup => MsgGroups.Command;
 
