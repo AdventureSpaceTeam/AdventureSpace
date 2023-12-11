@@ -1,4 +1,5 @@
 ﻿using Content.Client.Administration.Managers;
+using Content.Client.Alteros.DiscordAuth;
 using Content.Client.Changelog;
 using Content.Client.Chat.Managers;
 using Content.Client.Clickable;
@@ -18,7 +19,9 @@ using Content.Shared.Administration;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Module;
 using Content.Client.Guidebook;
+using Content.Client.JoinQueue;
 using Content.Client.Replay;
+using Content.Client.Sponsors;
 using Content.Shared.Administration.Managers;
 
 
@@ -50,9 +53,9 @@ namespace Content.Client.IoC
             IoCManager.Register<ContentReplayPlaybackManager, ContentReplayPlaybackManager>();
 
             // Alteros-Sponsor
-            IoCManager.Register<Content.Corvax.Interfaces.Client.IClientSponsorsManager,Alteros.Sponsors.SponsorsManager>();
-            IoCManager.Register<Content.Corvax.Interfaces.Client.IClientJoinQueueManager,Alteros.JoinQueue.JoinQueueManager>();
-            IoCManager.Register<Content.Corvax.Interfaces.Client.IClientDiscordAuthManager,Alteros.DiscordAuth.DiscordAuthManager>();
+            IoCManager.Register<Content.Corvax.Interfaces.Client.IClientSponsorsManager,SponsorsManager>();
+            IoCManager.Register<Content.Corvax.Interfaces.Client.IClientJoinQueueManager,JoinQueueManager>();
+            IoCManager.Register<Content.Corvax.Interfaces.Client.IClientDiscordAuthManager,DiscordAuthManager>();
             // Alteros-Sponsor
         }
     }

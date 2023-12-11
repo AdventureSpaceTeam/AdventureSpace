@@ -95,10 +95,10 @@ namespace Content.Server.Preferences.Managers
                 return;
             }
 
-            if (slot < 0 || slot >= GetMaxUserCharacterSlots(userId)) // Corvax-Sponsors
-            {
-                return;
-            }
+            // if (slot < 0 || slot >= GetMaxUserCharacterSlots(userId)) // Corvax-Sponsors
+            // {
+            //     return;
+            // }
 
             var curPrefs = prefsData.Prefs!;
 

@@ -245,25 +245,9 @@ public sealed partial class StationJobsSystem
                             if (!jobPlayerOptions.ContainsKey(job))
                                 continue;
 
-                            // Alteros-Sponsor
-                            List<NetUserId> priorityPlayers = new();
-                            foreach (var netUser in jobPlayerOptions[job])
-                            {
-                                var sponsors = IoCManager.Resolve<IServerSponsorsManager>(); // Alteros-Sponsors
-                                if (!sponsors.TryGetPrototypes(netUser, out var prototypes))
-                                    continue;
-                                if (prototypes.Contains(job))
-                                    priorityPlayers.Add(netUser);
-                            }
-
-                            var player = _random.Pick(jobPlayerOptions[job]);
-                            if (priorityPlayers.Count != 0)
-                            {
-                                player = _random.Pick(priorityPlayers);
-                            }
-                            // Alteros-Sponsor
-
                             // Picking players it finds that have the job set.
+                            var sponsors = IoCManager.Resolve<IServerSponsorsManager>(); // Alteros-Sponsors
+                            var player = sponsors.PickJobSession(jobPlayerOptions[job], job);
                             AssignPlayer(player, job, station);
                             stationShares[station]--;
 
