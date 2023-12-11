@@ -27,11 +27,12 @@ ui-options-volume-percent = { TOSTRING($volume, "P0") }
 
 ## Graphics menu
 
-ui-options-show-held-item = Показать удерживаемый элемент рядом с курсором?
-ui-options-show-combat-mode-indicators = Показать индикатор боевого режима рядом с курсором?
-ui-options-show-looc-on-head = Показывать LOOC-чат над головами персонажей?
-ui-options-fancy-speech = Показывать имена в облачках с текстом?
-ui-options-fancy-name-background = Добавить фон облачкам с текстом?
+ui-options-show-held-item = Показать удерживаемый элемент рядом с курсором
+ui-options-show-combat-mode-indicators = Показать индикатор боевого режима рядом с курсором
+ui-options-opaque-storage-window = Включить непрозрачность окна хранилища
+ui-options-show-looc-on-head = Показывать LOOC-чат над головами персонажей
+ui-options-fancy-speech = Показывать имена в облачках с текстом
+ui-options-fancy-name-background = Добавить фон облачкам с текстом
 ui-options-vsync = Вертикальная синхронизация
 ui-options-fullscreen = Полный экран
 ui-options-lighting-label = Качество освещения:
@@ -112,6 +113,8 @@ ui-options-function-rotate-stored-item = Повернуть хранящийся
 ui-options-static-storage-ui = Статичный интерфейс хранилища
 ui-options-function-smart-equip-backpack = Умная экипировка в рюкзак
 ui-options-function-smart-equip-belt = Умная экипировка на пояс
+ui-options-function-open-backpack = Открыть рюкзак
+ui-options-function-open-belt = Открыть пояс
 ui-options-function-throw-item-in-hand = Бросить предмет
 ui-options-function-try-pull-object = Тянуть объект
 ui-options-function-move-pulled-object = Тянуть объект в сторону

@@ -67,8 +67,7 @@ namespace Content.Shared.CCVar
         /// Ambience volume.
         /// </summary>
         public static readonly CVarDef<float> AmbienceVolume =
-            CVarDef.Create("ambience.volume", 0.0f, CVar.ARCHIVE | CVar.CLIENTONLY);
-
+            CVarDef.Create("ambience.volume", 0.50f, CVar.ARCHIVE | CVar.CLIENTONLY);
 
         /// <summary>
         /// AHelp volume.
@@ -93,15 +92,13 @@ namespace Content.Shared.CCVar
         /// Ambience music volume.
         /// </summary>
         public static readonly CVarDef<float> AmbientMusicVolume =
-            CVarDef.Create("ambience.music_volume", 0.0f, CVar.ARCHIVE | CVar.CLIENTONLY);
-
-        public const float AmbientMusicMultiplier = 2f;
+            CVarDef.Create("ambience.music_volume", 0.50f, CVar.ARCHIVE | CVar.CLIENTONLY);
 
         /// <summary>
         /// Lobby / round end music volume.
         /// </summary>
         public static readonly CVarDef<float> LobbyMusicVolume =
-            CVarDef.Create("ambience.lobby_music_volume", 0.0f, CVar.ARCHIVE | CVar.CLIENTONLY);
+            CVarDef.Create("ambience.lobby_music_volume", 0.50f, CVar.ARCHIVE | CVar.CLIENTONLY);
 
         /*
          * Status
