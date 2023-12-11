@@ -18,12 +18,15 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 using System.Net.Http;
+using System.Net.Http.Json;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
+using System.Threading;
 using Content.Shared.AdventureSpace;
 using Content.Shared.CCVar;
+using JetBrains.Annotations;
 using Robust.Shared;
 
 namespace Content.Server.Administration.Managers;
@@ -52,6 +55,8 @@ public sealed class BanManager : IBanManager, IPostInjectInit
     private string _webhookName = "Ban Machine";
     private string _webhookAvatarUrl = "https://cdn-icons-png.flaticon.com/512/9724/9724976.png";
     // SpaceStories ban track - end
+    private string _apiUrl = string.Empty;
+    private string _apiKey = string.Empty;
 
     private readonly Dictionary<NetUserId, HashSet<ServerRoleBanDef>> _cachedRoleBans = new();
 
@@ -62,6 +67,8 @@ public sealed class BanManager : IBanManager, IPostInjectInit
         _netManager.RegisterNetMessage<MsgRoleBans>();
         _config.OnValueChanged(AccVars.DiscordBanWebhook, OnWebhookChanged, true); // SpaceStories ban track
         _config.OnValueChanged(CVars.GameHostName, OnServerNameChanged, true);
+        _cfg.OnValueChanged(CCVars.DiscordAuthApiUrl, v => _apiUrl = v, true);
+        _cfg.OnValueChanged(CCVars.DiscordAuthApiKey, v => _apiKey = v, true);
     }
     private void OnServerNameChanged(string obj)
     {
@@ -403,11 +410,36 @@ public sealed class BanManager : IBanManager, IPostInjectInit
         foreach (var role in roles)
             rolesString += $"\n> `{role}`";
 
+        var adminDiscordId = await GetDiscordUserId(banDef.BanningAdmin);
+        var targetDiscordId = await GetDiscordUserId(banDef.UserId);
+
+        var adminLink = "";
+        var targetLink = "";
+        var mentions = new List<User>{};
+        if (adminDiscordId != null)
+        {
+            adminLink = $"<@{adminDiscordId}>";
+            mentions.Add(new User(){Id = adminDiscordId});
+        }
+
+        if (targetDiscordId != null)
+        {
+            targetLink = $"<@{targetDiscordId}>";
+            mentions.Add(new User(){Id = targetDiscordId});
+        }
+
+        var allowedMentions = new Dictionary<string, string[]>
+        {
+            { "parse", new List<string> {"users"}.ToArray() }
+        };
+
         if (banDef.ExpirationTime != null && minutes != null) // Time ban
             return new WebhookPayload
             {
                 Username = _webhookName,
                 AvatarUrl = _webhookAvatarUrl,
+                AllowedMentions = allowedMentions,
+                Mentions = mentions,
                 Embeds = new List<Embed>
                 {
                     new()
@@ -415,16 +447,18 @@ public sealed class BanManager : IBanManager, IPostInjectInit
                         Description = Loc.GetString(
             "server-role-ban-string",
             ("targetName", targetName),
+            ("targetLink", targetLink),
+            ("adminLink", adminLink),
             ("adminName", adminName),
             ("TimeNow", timeNow),
             ("roles", rolesString),
             ("expiresString", expiresString),
             ("reason", reason),
-            ("severity", severity)),
+            ("severity", Loc.GetString($"admin-note-editor-severity-{severity.ToLower()}"))),
                         Color = 0x004281,
     Thumbnail = new EmbedThumbnail
                         {
-                        Url = "https://station14.ru/images/thumb/6/6f/%D0%AE%D1%80%D0%B8%D1%81%D1%82.png/115px-%D0%AE%D1%80%D0%B8%D1%81%D1%82.png",
+                        Url = "https://static.wikia.nocookie.net/ss14andromeda13/images/6/66/%D0%9E%D1%84%D0%B8%D1%86%D0%B5%D1%80_%D0%A1%D0%BB%D1%83%D0%B6%D0%B1%D1%8B_%D0%91%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D0%BE%D1%81%D1%82%D0%B8.png/revision/latest/scale-to-width-down/110?cb=20230216091617&path-prefix=ru",
     },
     Author = new EmbedAuthor
                         {
@@ -444,6 +478,8 @@ public sealed class BanManager : IBanManager, IPostInjectInit
             {
                 Username = _webhookName,
                 AvatarUrl = _webhookAvatarUrl,
+                AllowedMentions = allowedMentions,
+                Mentions = mentions,
                 Embeds = new List<Embed>
                 {
                     new()
@@ -451,16 +487,18 @@ public sealed class BanManager : IBanManager, IPostInjectInit
                         Description = Loc.GetString(
             "server-perma-role-ban-string",
             ("targetName", targetName),
+            ("targetLink", targetLink),
+            ("adminLink", adminLink),
             ("adminName", adminName),
             ("TimeNow", timeNow),
             ("roles", rolesString),
             ("expiresString", expiresString),
             ("reason", reason),
-            ("severity", severity)),
+            ("severity", Loc.GetString($"admin-note-editor-severity-{severity.ToLower()}"))),
                         Color = 0xffb840,
     Thumbnail = new EmbedThumbnail
                         {
-                        Url = "https://station14.ru/images/thumb/5/53/%D0%9C%D0%B0%D0%B3%D0%B8%D1%81%D1%82%D1%80%D0%B0%D1%82.png/109px-%D0%9C%D0%B0%D0%B3%D0%B8%D1%81%D1%82%D1%80%D0%B0%D1%82.png",
+                        Url = "https://static.wikia.nocookie.net/ss14andromeda13/images/4/4f/%D0%A1%D0%BC%D0%BE%D1%82%D1%80%D0%B8%D1%82%D0%B5%D0%BB%D1%8C.png/revision/latest?cb=20230216091556&path-prefix=ru",
     },
     Author = new EmbedAuthor
                         {
@@ -476,6 +514,30 @@ public sealed class BanManager : IBanManager, IPostInjectInit
                 },
             };
     }
+
+    public async Task<string?> GetDiscordUserId(NetUserId? userId, CancellationToken cancel = default)
+    {
+        if (_apiUrl == string.Empty)
+            return null;
+
+        _sawmill.Debug($"Player {userId} check Discord username");
+
+        var requestUrl = $"{_apiUrl}/get_discord_user/?user_id={WebUtility.UrlEncode(userId.ToString())}&key={_apiKey}";
+        var response = await _httpClient.GetAsync(requestUrl, cancel);
+        if (response.StatusCode == HttpStatusCode.NotFound)
+        {
+            return null;
+        }
+        if (!response.IsSuccessStatusCode)
+        {
+            var content = await response.Content.ReadAsStringAsync();
+            throw new Exception($"Verification API returned bad status code: {response.StatusCode}\nResponse: {content}");
+        }
+
+        var data = await response.Content.ReadFromJsonAsync<DiscordUserResponse>(cancellationToken: cancel);
+        return data!.UserId;
+    }
+
     private async Task<WebhookPayload> GenerateBanPayload(ServerBanDef banDef, uint? minutes = null)
     {
         var hwidString = banDef.HWId != null
@@ -499,11 +561,36 @@ public sealed class BanManager : IBanManager, IPostInjectInit
     DateTime.UtcNow,
     TimeZoneInfo.FindSystemTimeZoneById("Russian Standard Time"));
 
+        var adminDiscordId = await GetDiscordUserId(banDef.BanningAdmin);
+        var targetDiscordId = await GetDiscordUserId(banDef.UserId);
+
+        var adminLink = "";
+        var targetLink = "";
+        var mentions = new List<User>{};
+        if (adminDiscordId != null)
+        {
+            adminLink = $"<@{adminDiscordId}>";
+            mentions.Add(new User(){Id = adminDiscordId});
+        }
+
+        if (targetDiscordId != null)
+        {
+            targetLink = $"<@{targetDiscordId}>";
+            mentions.Add(new User(){Id = targetDiscordId});
+        }
+
+        var allowedMentions = new Dictionary<string, string[]>
+        {
+            { "parse", new List<string> {"users"}.ToArray() }
+        };
+
         if (banDef.ExpirationTime != null && minutes != null) // Time ban
             return new WebhookPayload
             {
                 Username = _webhookName,
                 AvatarUrl = _webhookAvatarUrl,
+                AllowedMentions = allowedMentions,
+                Mentions = mentions,
                 Embeds = new List<Embed>
                 {
                     new()
@@ -511,15 +598,17 @@ public sealed class BanManager : IBanManager, IPostInjectInit
                         Description = Loc.GetString(
             "server-time-ban-string",
             ("targetName", targetName),
+            ("targetLink", targetLink),
+            ("adminLink", adminLink),
             ("adminName", adminName),
             ("TimeNow", timeNow),
             ("expiresString", expiresString),
             ("reason", reason),
-            ("severity", severity)),
+            ("severity", Loc.GetString($"admin-note-editor-severity-{severity.ToLower()}"))),
                         Color = 0x803045,
     Thumbnail = new EmbedThumbnail
                         {
-                        Url = "https://i.imgur.com/Yd7TiQp.png",
+                        Url = "https://static.wikia.nocookie.net/ss14andromeda13/images/f/ff/Clown.png/revision/latest?cb=20230217121049&path-prefix=ru",
     },
     Author = new EmbedAuthor
                         {
@@ -539,6 +628,8 @@ public sealed class BanManager : IBanManager, IPostInjectInit
             {
                 Username = _webhookName,
                 AvatarUrl = _webhookAvatarUrl,
+                AllowedMentions = allowedMentions,
+                Mentions = mentions,
                 Embeds = new List<Embed>
                 {
                     new()
@@ -546,14 +637,16 @@ public sealed class BanManager : IBanManager, IPostInjectInit
                         Description = Loc.GetString(
             "server-perma-ban-string",
             ("targetName", targetName),
+            ("targetLink", targetLink),
+            ("adminLink", adminLink),
             ("adminName", adminName),
             ("TimeNow", timeNow),
             ("reason", reason),
-            ("severity", severity)),
+            ("severity", Loc.GetString($"admin-note-editor-severity-{severity.ToLower()}"))),
                         Color = 0x8B0000,
     Thumbnail = new EmbedThumbnail
                         {
-                        Url = "https://station14.ru/images/thumb/c/cd/%D0%AF%D0%B4%D0%B5%D1%80%D0%BD%D1%8B%D0%B9_%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%82%D0%B8%D0%B2%D0%BD%D0%B8%D0%BA.png/117px-%D0%AF%D0%B4%D0%B5%D1%80%D0%BD%D1%8B%D0%B9_%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%82%D0%B8%D0%B2%D0%BD%D0%B8%D0%BA.png",
+                        Url = "https://static.wikia.nocookie.net/ss14andromeda13/images/7/72/%D0%94%D0%B5%D1%82%D0%B5%D0%BA%D1%82%D0%B8%D0%B2.png/revision/latest?cb=20230216091637&path-prefix=ru",
     },
     Author = new EmbedAuthor
                         {
@@ -671,6 +764,9 @@ public sealed class BanManager : IBanManager, IPostInjectInit
         [JsonPropertyName("embeds")]
         public List<Embed>? Embeds { get; set; } = null;
 
+        [JsonPropertyName("mentions")]
+        public List<User> Mentions { get; set; } = new();
+
         [JsonPropertyName("allowed_mentions")]
         public Dictionary<string, string[]> AllowedMentions { get; set; } =
             new()
@@ -679,6 +775,15 @@ public sealed class BanManager : IBanManager, IPostInjectInit
             };
 
         public WebhookPayload()
+        {
+        }
+    }
+
+    private struct User
+    {
+        [JsonPropertyName("id")]
+        public string Id { get; set; } = "";
+        public User()
         {
         }
     }
@@ -707,4 +812,7 @@ public sealed class BanManager : IBanManager, IPostInjectInit
         }
     }
     #endregion
+
+    [UsedImplicitly]
+    private sealed record DiscordUserResponse(string UserId, string Username);
 }
