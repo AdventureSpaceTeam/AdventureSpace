@@ -3,6 +3,8 @@
   maps:
   - CorvaxDelta
   - CorvaxAvrite
+  - CorvaxSpectrum
+  - CorvaxGate
   - CorvaxSilly
   - Aspid
   - Bagel
@@ -11,6 +13,7 @@
   - Cluster
   - Core
   - Fland
+  - Gemini
   - Marathon
   - Meta
   - Omega
