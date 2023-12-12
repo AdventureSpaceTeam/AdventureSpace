@@ -1,43 +1,4 @@
 Entries:
-- author: deltanedas
-  changes:
-  - {message: Fixed objectives not being given in some cases., type: Fix}
-  id: 4840
-  time: '2023-09-16T12:10:06.0000000+00:00'
-- author: Flareguy
-  changes:
-  - {message: 'Added several new types of barricades for mappers to use, all using
-      sprites from /vg/station. The regular, full-tile barricade has also received
-      a new sprite from /vg/station.', type: Add}
-  - {message: Barricades are now slightly stronger & cheaper to make., type: Tweak}
-  id: 4841
-  time: '2023-09-16T12:50:48.0000000+00:00'
-- author: DrSmugleaf
-  changes:
-  - {message: Resized the non-admin Ahelp window to be taller and less wide., type: Tweak}
-  id: 4842
-  time: '2023-09-17T09:04:20.0000000+00:00'
-- author: ElectroJr
-  changes:
-  - {message: Fixed light animations not working., type: Fix}
-  id: 4843
-  time: '2023-09-17T17:57:50.0000000+00:00'
-- author: Henry12116
-  changes:
-  - {message: You can now eat most organs. Bon appetit!, type: Add}
-  id: 4844
-  time: '2023-09-18T00:20:11.0000000+00:00'
-- author: DrSmugleaf
-  changes:
-  - {message: Fixed fultons losing their beacon when the stack is split., type: Fix}
-  id: 4845
-  time: '2023-09-18T00:22:26.0000000+00:00'
-- author: Psychpsyo
-  changes:
-  - {message: The advanced mop no longer looks boring when attached to the janitorial
-      trolley., type: Tweak}
-  id: 4846
-  time: '2023-09-18T00:23:35.0000000+00:00'
 - author: lapatison
   changes:
   - {message: 'Now you can light matches with certain types (combat, work, merc, explorer)
@@ -2903,3 +2864,39 @@ Entries:
   - {message: Jar now fills., type: Tweak}
   id: 5340
   time: '2023-12-12T07:54:15.0000000+00:00'
+- author: IProduceWidgets
+  changes:
+  - {message: Cig Cartons are slightly smaller., type: Tweak}
+  id: 5341
+  time: '2023-12-12T07:55:56.0000000+00:00'
+- author: IProduceWidgets
+  changes:
+  - {message: Cigar cases can now hold Small items., type: Tweak}
+  id: 5342
+  time: '2023-12-12T07:56:19.0000000+00:00'
+- author: IProduceWidgets
+  changes:
+  - {message: Pipes now have slightly bigger bowls! (30u), type: Tweak}
+  id: 5343
+  time: '2023-12-12T07:56:44.0000000+00:00'
+- author: IProduceWidgets
+  changes:
+  - {message: Long guns are now actually long., type: Tweak}
+  id: 5344
+  time: '2023-12-12T07:59:43.0000000+00:00'
+- author: IProduceWidgets
+  changes:
+  - {message: syndicate pens now come in suitably sized discarding boxes., type: Tweak}
+  id: 5345
+  time: '2023-12-12T08:01:33.0000000+00:00'
+- author: IProduceWidgets
+  changes:
+  - {message: Mops are now larger!, type: Tweak}
+  - {message: Defibs are now larger!, type: Tweak}
+  id: 5346
+  time: '2023-12-12T08:02:44.0000000+00:00'
+- author: metalgearsloth
+  changes:
+  - {message: 'Fix arrivals fog not actually blocking, no more free roaming.', type: Fix}
+  id: 5347
+  time: '2023-12-12T09:20:33.0000000+00:00'
