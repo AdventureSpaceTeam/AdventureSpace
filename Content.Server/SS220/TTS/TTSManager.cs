@@ -289,14 +289,10 @@ public sealed class TTSManager
                 await FFMpegArguments
                     .FromPipeInput(new StreamPipeSource(new MemoryStream(soundData)))
                     .OutputToFile(outputFilename, true, options =>
-                        options.WithAudioFilters(filterOptions =>
-                        {
-                            filterOptions
-                                .HighPass(frequency: 5000)
-                                .LowPass(frequency: 10000);
-                        }
-                    )
-                    ).ProcessAsynchronously();
+                    {
+                        options.WithCustomArgument("-af \"highpass=5000, lowpass=10000, volume=5.0\"");
+                    })
+                    .ProcessAsynchronously();
 
                 soundData = await File.ReadAllBytesAsync(outputFilename);
                 try
