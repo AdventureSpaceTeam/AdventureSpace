@@ -45,10 +45,13 @@ jobs:
       - name: Package server
         run: dotnet run --project Content.Packaging server --platform linux-x64 --hybrid-acz
 
-      - name: Update Build Info
-        env:
-          FORK_ID: ${{ vars.FORK_ID }}
-        run: Tools/gen_build_info.py
+#      - name: Package client
+#        run: dotnet run --project Content.Packaging client --no-wipe-release
+
+#      - name: Update Build Info
+#        env:
+#          FORK_ID: ${{ vars.FORK_ID }}
+#        run: Tools/gen_build_info.py
 
       - name: Shuffle files around
         run: |
