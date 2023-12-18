@@ -33,8 +33,10 @@ public static class ServerPackaging
 
     private static readonly List<string> ServerContentAssemblies = new()
     {
+        // Corvax-Secrets-Start
         "Content.Corvax.Interfaces.Shared",
         "Content.Corvax.Interfaces.Server",
+        // Corvax-Secrets-End
         "Content.Server.Database",
         "Content.Server",
         "Content.Shared",
@@ -46,8 +48,7 @@ public static class ServerPackaging
         // Python script had Npgsql. though we want Npgsql.dll as well soooo
         "Npgsql",
         "Microsoft",
-        "FFMpeg",
-        "Instances"
+        "FFMpeg"
     };
 
     private static readonly List<string> ServerNotExtraAssemblies = new()
