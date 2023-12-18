@@ -255,27 +255,4 @@ public sealed class TTSManager
             Locks.TryRemove(key, out _);
         }
     }
-
-    private sealed class CrusherFilterArgument : IAudioFilterArgument
-    {
-        private readonly Dictionary<string, string> _arguments = new Dictionary<string, string>();
-
-        public CrusherFilterArgument(
-            double levelIn = 1f,
-            double levelOut = 1f,
-            int bits = 1,
-            double mix = 1.0,
-            string mode = "log")
-        {
-            _arguments.Add("level_in", levelIn.ToString("0", CultureInfo.InvariantCulture));
-            _arguments.Add("level_out", levelOut.ToString("0", CultureInfo.InvariantCulture));
-            _arguments.Add("bits", bits.ToString("0", CultureInfo.InvariantCulture));
-            _arguments.Add("mix", mix.ToString("0", CultureInfo.InvariantCulture));
-            _arguments.Add("mode", mode);
-        }
-
-        public string Key => "acrusher";
-
-        public string Value => string.Join(":", _arguments.Select<KeyValuePair<string, string>, string>(pair => pair.Key + "=" + pair.Value));
-    }
 }
