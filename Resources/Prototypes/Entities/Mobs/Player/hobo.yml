@@ -1,0 +1,24 @@
+- type: entity
+  save: false
+  parent: BaseMobHoboPerson
+  name: Бездомный
+  id: MobHoboPerson
+  components:
+  - type: InteractionPopup
+    successChance: 1
+    interactSuccessString: hugging-success-generic
+    interactSuccessSound: /Audio/Effects/thudswoosh.ogg
+    messagePerceivedByOthers: hugging-success-generic-others
+  - type: Loadout
+    prototypes: [HoboGear]
+  - type: RandomHumanoidAppearance
+
+- type: entity
+  parent: MobHoboPerson
+  id: MobHoboGhost
+  suffix: Гост роль
+  components:
+  - type: GhostRole
+    name: Бездомный
+    description: Загадочно появившийся на станции бездомный.
+  - type: GhostTakeoverAvailable
