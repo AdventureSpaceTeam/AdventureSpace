@@ -139,7 +139,7 @@ namespace Content.Server.PDA
             if (!TryComp(uid, out CartridgeLoaderComponent? loader))
                 return;
 
-            int mins = _roundEndSystem.AutoCalledBefore ? _cfg.GetCVar(CCVars.EmergencyShuttleAutoCallExtensionTime)
+            int mins = _roundEndSystem._autoCalledBefore ? _cfg.GetCVar(CCVars.EmergencyShuttleAutoCallExtensionTime)
                 : _cfg.GetCVar(CCVars.EmergencyShuttleAutoCallTime);
             var shuttle_call = _roundEndSystem.AutoCallStartTime + TimeSpan.FromMinutes(mins);
 
