@@ -27,6 +27,7 @@ using Robust.Server.Containers;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Content.Server.Shuttles.Components;
+using Content.Shared.Roles;
 
 namespace Content.Server.Antag;
 
@@ -44,6 +45,7 @@ public sealed class AntagSelectionSystem : GameRuleSystem<GameRuleComponent>
     [Dependency] private readonly StorageSystem _storageSystem = default!;
     [Dependency] private readonly StationSystem _stationSystem = default!;
     [Dependency] private readonly EmergencyShuttleSystem _emergencyShuttle = default!;
+    [Dependency] private readonly SharedRoleSystem _roleSystem = default!;
 
     /// <summary>
     /// Attempts to start the game rule by checking if there are enough players in lobby and readied.
@@ -109,6 +111,12 @@ public sealed class AntagSelectionSystem : GameRuleSystem<GameRuleComponent>
             else
                 continue;
 
+            if (_mindSystem.TryGetMind(player, out var mindId, out var mind))
+            {
+                if (_roleSystem.MindIsAntagonist(mindId))
+                    continue;
+            }
+
             var pref = (HumanoidCharacterProfile) _prefs.GetPreferences(player.UserId).SelectedCharacter;
             if (pref.AntagPreferences.Contains(antagPrototype))
                 prefList.Add(player);
@@ -173,6 +181,12 @@ public sealed class AntagSelectionSystem : GameRuleSystem<GameRuleComponent>
             if (player.AttachedEntity != null && pendingQuery.HasComponent(player.AttachedEntity.Value))
                 continue;
 
+            if (_mindSystem.TryGetMind(player, out var mindId, out var mind))
+            {
+                if (_roleSystem.MindIsAntagonist(mindId))
+                    continue;
+            }
+
             list.Add(player);
         }
 
@@ -187,6 +201,7 @@ public sealed class AntagSelectionSystem : GameRuleSystem<GameRuleComponent>
                 prefList.Add(player);
             }
         }
+
         if (prefList.Count == 0)
         {
             Log.Info($"Insufficient preferred antag:{antagPreferenceId}, picking at random.");
@@ -201,7 +216,7 @@ public sealed class AntagSelectionSystem : GameRuleSystem<GameRuleComponent>
     /// <param name="antagCount">how many players to take</param>
     /// <param name="prefList">a list of players from which to draw</param>
     /// <returns></returns>
-    public List<ICommonSession> PickAntag(int antagCount, List<ICommonSession> prefList)
+    public List<ICommonSession> PickAntag(int antagCount, List<ICommonSession> prefList, string roleId)
     {
         var results = new List<ICommonSession>(antagCount);
         if (prefList.Count == 0)
@@ -212,7 +227,9 @@ public sealed class AntagSelectionSystem : GameRuleSystem<GameRuleComponent>
 
         for (var i = 0; i < antagCount; i++)
         {
-            results.Add(_random.PickAndTake(prefList));
+            var sponsors = IoCManager.Resolve<IServerSponsorsManager>(); // Alteros-Sponsors
+            var antag = sponsors.PickSession(prefList, roleId);
+            results.Add(antag);
             Log.Info("Selected a preferred antag.");
         }
         return results;
