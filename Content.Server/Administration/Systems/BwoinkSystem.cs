@@ -47,6 +47,7 @@ namespace Content.Server.Administration.Systems
         private readonly Dictionary<NetUserId, Queue<string>> _messageQueues = new();
         private readonly HashSet<NetUserId> _processingChannels = new();
         private readonly Dictionary<NetUserId, (TimeSpan Timestamp, bool Typing)> _typingUpdateTimestamps = new();
+        private string _overrideClientName = string.Empty;
 
         // Max embed description length is 4096, according to https://discord.com/developers/docs/resources/channel#embed-object-embed-limits
         // Keep small margin, just to be safe
@@ -68,12 +69,18 @@ namespace Content.Server.Administration.Systems
             _config.OnValueChanged(CCVars.DiscordAHelpFooterIcon, OnFooterIconChanged, true);
             _config.OnValueChanged(CCVars.DiscordAHelpAvatar, OnAvatarChanged, true);
             _config.OnValueChanged(CVars.GameHostName, OnServerNameChanged, true);
+            _config.OnValueChanged(CCVars.AdminAhelpOverrideClientName, OnOverrideChanged, true);
             _sawmill = IoCManager.Resolve<ILogManager>().GetSawmill("AHELP");
-            _maxAdditionalChars = GenerateAHelpMessage("", "", true).Length;
+            _maxAdditionalChars = GenerateAHelpMessage("", "", true, _timing.CurTime.ToString("hh\\:mm\\:ss"), _gameTicker.RunLevel).Length;
             _playerManager.PlayerStatusChanged += OnPlayerStatusChanged;
 
             SubscribeLocalEvent<GameRunLevelChangedEvent>(OnGameRunLevelChanged);
             SubscribeNetworkEvent<BwoinkClientTypingUpdated>(OnClientTypingUpdated);
+        }
+
+        private void OnOverrideChanged(string obj)
+        {
+            _overrideClientName = obj;
         }
 
         private void OnPlayerStatusChanged(object? sender, SessionStatusEventArgs e)
@@ -145,6 +152,7 @@ namespace Content.Server.Administration.Systems
             _config.UnsubValueChanged(CCVars.DiscordAHelpWebhook, OnWebhookChanged);
             _config.UnsubValueChanged(CCVars.DiscordAHelpFooterIcon, OnFooterIconChanged);
             _config.UnsubValueChanged(CVars.GameHostName, OnServerNameChanged);
+            _config.UnsubValueChanged(CCVars.AdminAhelpOverrideClientName, OnOverrideChanged);
         }
 
         private async void OnWebhookChanged(string url)
@@ -398,7 +406,7 @@ namespace Content.Server.Administration.Systems
             string bwoinkText;
 
             var sponsors = IoCManager.Resolve<IServerSponsorsManager>();
-            if (senderAdmin is not null && senderAdmin.Flags == AdminFlags.Adminhelp)
+            if (senderAdmin is not null && senderAdmin.Flags == AdminFlags.Adminhelp) // Mentor. Not full admin. That's why it's colored differently.
             {
                 bwoinkText = $"[color=purple]\\[{senderAdmin.Title}\\] {senderSession.Name}[/color]: {escapedText}";
             }
@@ -437,7 +445,30 @@ namespace Content.Server.Administration.Systems
             if (_playerManager.TryGetSessionById(message.UserId, out var session))
             {
                 if (!admins.Contains(session.ConnectedClient))
-                    RaiseNetworkEvent(msg, session.ConnectedClient);
+                {
+                    // If _overrideClientName is set, we generate a new message with the override name. The admins name will still be the original name for the webhooks.
+                    if (_overrideClientName != string.Empty)
+                    {
+                        string overrideMsgText;
+                        // Doing the same thing as above, but with the override name. Theres probably a better way to do this.
+                        if (senderAdmin is not null && senderAdmin.Flags == AdminFlags.Adminhelp) // Mentor. Not full admin. That's why it's colored differently.
+                        {
+                            overrideMsgText = $"[color=purple]{_overrideClientName}[/color]: {escapedText}";
+                        }
+                        else if (senderAdmin is not null && senderAdmin.HasFlag(AdminFlags.Adminhelp))
+                        {
+                            overrideMsgText = $"[color=red]{_overrideClientName}[/color]: {escapedText}";
+                        }
+                        else
+                        {
+                            overrideMsgText = $"{senderSession.Name}: {escapedText}"; // Not an admin, name is not overridden.
+                        }
+
+                        RaiseNetworkEvent(new BwoinkTextMessage(message.UserId, senderSession.UserId, overrideMsgText), session.ConnectedClient);
+                    }
+                    else
+                        RaiseNetworkEvent(msg, session.ConnectedClient);
+                }
             }
 
             var sendsWebhook = _webhookUrl != string.Empty;
@@ -453,7 +484,7 @@ namespace Content.Server.Administration.Systems
                 {
                     str = str[..(DescriptionMax - _maxAdditionalChars - unameLength)];
                 }
-                _messageQueues[msg.UserId].Enqueue(GenerateAHelpMessage(senderSession.Name, str, !personalChannel, admins.Count == 0));
+                _messageQueues[msg.UserId].Enqueue(GenerateAHelpMessage(senderSession.Name, str, !personalChannel, _timing.CurTime.ToString("hh\\:mm\\:ss"), _gameTicker.RunLevel, admins.Count == 0));
             }
 
             if (admins.Count != 0 || sendsWebhook)
@@ -474,7 +505,7 @@ namespace Content.Server.Administration.Systems
                .ToList();
         }
 
-        private static string GenerateAHelpMessage(string username, string message, bool admin, bool noReceivers = false)
+        private static string GenerateAHelpMessage(string username, string message, bool admin, string roundTime, GameRunLevel roundState, bool noReceivers = false)
         {
             var stringbuilder = new StringBuilder();
 
@@ -485,6 +516,8 @@ namespace Content.Server.Administration.Systems
             else
                 stringbuilder.Append(":inbox_tray:");
 
+            if(roundTime != string.Empty && roundState == GameRunLevel.InRound)
+                stringbuilder.Append($" **{roundTime}**");
             stringbuilder.Append($" **{username}:** ");
             stringbuilder.Append(message);
             return stringbuilder.ToString();
