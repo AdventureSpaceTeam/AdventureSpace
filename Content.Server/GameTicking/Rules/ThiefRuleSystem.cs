@@ -84,7 +84,7 @@ public sealed class ThiefRuleSystem : GameRuleSystem<ThiefRuleComponent>
         var startThiefCount = Math.Min(component.MaxAllowThief, component.StartCandidates.Count);
         var thiefPool = _antagSelection.FindPotentialAntags(component.StartCandidates, component.ThiefPrototypeId);
         //TO DO: When voxes specifies are added, increase their chance of becoming a thief by 4 times >:)
-        var selectedThieves = _antagSelection.PickAntag(_random.Next(1, startThiefCount), thiefPool);
+        var selectedThieves = _antagSelection.PickAntag(_random.Next(1, startThiefCount), thiefPool, component.ThiefPrototypeId);
 
         foreach(var thief in selectedThieves)
         {
