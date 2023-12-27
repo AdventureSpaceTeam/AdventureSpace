@@ -6,27 +6,27 @@
   requirements:
     - !type:DepartmentTimeRequirement
       department: Engineering
-      time: 7200 #2 hrs # Corvax-RoleTime
+      time: 18000 #5 hrs # Corvax-RoleTime
     - !type:DepartmentTimeRequirement
       department: Medical
-      time: 7200 #2 hrs # Corvax-RoleTime
+      time: 18000 #5 hrs # Corvax-RoleTime
     - !type:DepartmentTimeRequirement
       department: Security
-      time: 7200 #2 hrs # Corvax-RoleTime
+      time: 18000 #5 hrs # Corvax-RoleTime
     - !type:DepartmentTimeRequirement
       department: Science
-      time: 5400 #1,5 hrs # Corvax-RoleTime
+      time: 18000 #5 hrs # Corvax-RoleTime
     - !type:DepartmentTimeRequirement
       department: Cargo
-      time: 3600 #1 hrs
+      time: 18000 #5 hrs
     - !type:DepartmentTimeRequirement
       department: Civilian
-      time: 10800 #3 hrs # Corvax-RoleTime
+      time: 18000 #5 hrs # Corvax-RoleTime
 #    - !type:DepartmentTimeRequirement
 #      department: Command
 #      time: 54000 # 15 hours
     - !type:OverallPlaytimeRequirement
-      time: 36000 #10 hrs # Corvax-RoleTime
+      time: 54000 #15 hrs # Corvax-RoleTime
   weight: 20
   startingGear: HoPGear
   icon: "JobIconHeadOfPersonnel"
