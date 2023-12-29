@@ -10,7 +10,7 @@
       stampState: "paper_stamp-ok"
     - type: Sprite
       sprite: Objects/Misc/bureaucracy.rsi
-      state: stamp-iaa
+      state: paper_stamp-iaa
 
 - type: entity
   name: psychologist's rubber stamp
@@ -24,4 +24,4 @@
     stampState: "paper_stamp-psychologist"
   - type: Sprite
     sprite: Objects/Misc/bureaucracy.rsi
-    state: stamp-psychologist
+    state: paper_stamp-psychologist
