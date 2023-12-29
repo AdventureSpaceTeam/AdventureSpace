@@ -95,11 +95,11 @@ public sealed class PlayTimeAddRoleCommand : IConsoleCommand
         }
 
         _playTimeTracking.AddTimeToTracker(player, role, TimeSpan.FromMinutes(minutes));
-        var time = _playTimeTracking.GetOverallPlaytime(player);
+        var time = _playTimeTracking.GetPlayTimeForTracker(player, role);
         shell.WriteLine(Loc.GetString("cmd-playtime_addrole-succeed",
-            ("username", userName),
-            ("role", role),
-            ("time", time)));
+                                      ("username", userName),
+                                      ("role", role),
+                                      ("time", time)));
     }
 
     public CompletionResult GetCompletion(IConsoleShell shell, string[] args)
@@ -166,10 +166,11 @@ public sealed class PlayTimeAddDepartmentCommand : IConsoleCommand
             return;
         }
 
-        foreach (var role in proto.Roles)
+        foreach (var role_name in proto.Roles)
         {
+            var role = "Job" + role_name;
             _playTimeTracking.AddTimeToTracker(player, role, TimeSpan.FromMinutes(minutes));
-            var time = _playTimeTracking.GetOverallPlaytime(player);
+            var time = _playTimeTracking.GetPlayTimeForTracker(player, role);
             shell.WriteLine(Loc.GetString("cmd-playtime_adddepartment-succeed",
                                           ("username", userName),
                                           ("role", role),
