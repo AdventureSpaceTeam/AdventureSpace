@@ -8,7 +8,7 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Server.Administration.Commands;
 
-[AdminCommand(AdminFlags.Permissions)] // Corvax-DiscordRoles
+[AdminCommand(AdminFlags.Admin)]
 public sealed class PlayTimeAddOverallCommand : IConsoleCommand
 {
     [Dependency] private readonly IPlayerManager _playerManager = default!;
@@ -60,7 +60,7 @@ public sealed class PlayTimeAddOverallCommand : IConsoleCommand
     }
 }
 
-[AdminCommand(AdminFlags.Permissions)] // Corvax-DiscordRoles
+[AdminCommand(AdminFlags.Admin)]
 public sealed class PlayTimeAddRoleCommand : IConsoleCommand
 {
     [Dependency] private readonly IPlayerManager _playerManager = default!;
@@ -125,7 +125,7 @@ public sealed class PlayTimeAddRoleCommand : IConsoleCommand
     }
 }
 
-[AdminCommand(AdminFlags.Permissions)] // Corvax-DiscordRoles
+[AdminCommand(AdminFlags.Admin)]
 public sealed class PlayTimeAddDepartmentCommand : IConsoleCommand
 {
     [Dependency] private readonly IPlayerManager _playerManager = default!;
