@@ -5,12 +5,12 @@
   id: AdventureRadio
   components:
   - type: Sprite
-    sprite: _DTS/Entities/Objects/Devices/radio.rsi
+    sprite: _Alteros/Entities/Objects/Devices/radio.rsi
     layers:
     - state: radio
   - type: Item
     size: Normal
-    sprite: _DTS/Entities/Objects/Devices/radio.rsi
+    sprite: _Alteros/Entities/Objects/Devices/radio.rsi
     heldPrefix: radio
   - type: TapePlayer
     volume: 0

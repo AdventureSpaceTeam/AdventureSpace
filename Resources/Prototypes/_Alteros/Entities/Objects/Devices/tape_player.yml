@@ -6,15 +6,15 @@
   components:
   - type: Appearance
   - type: Sprite
-    sprite: _DTS/Entities/Objects/Devices/tape_player.rsi
+    sprite: _Alteros/Entities/Objects/Devices/tape_player.rsi
     state: icon
   - type: TapePlayer
     volume: -4
     rolloffFactor: 1.2
     maxDistance: 10
     tapeSlot:
-      insertSound: /Audio/_DTS/TapePlayer/insert_tape.ogg
-      ejectSound: /Audio/_DTS/TapePlayer/eject_tape.ogg
+      insertSound: /Audio/_Alteros/TapePlayer/insert_tape.ogg
+      ejectSound: /Audio/_Alteros/TapePlayer/eject_tape.ogg
       whitelist:
         components:
         - MusicTape
@@ -25,4 +25,4 @@
     containers:
       tape: !type:ContainerSlot
   - type: EmitSoundOnUse
-    sound: "/Audio/_DTS/TapePlayer/switch.ogg"
+    sound: "/Audio/_Alteros/TapePlayer/switch.ogg"
