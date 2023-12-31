@@ -118,7 +118,7 @@ public sealed class ChemistryGuideDataSystem : SharedChemistryGuideDataSystem
 
             if (extractableComponent.GrindableSolution is { } grindableSolutionId &&
                 entProto.TryGetComponent<SolutionContainerManagerComponent>(out var manager) &&
-                manager.Solutions.TryGetValue(grindableSolutionId, out var grindableSolution))
+                manager.Solutions!.TryGetValue(grindableSolutionId, out var grindableSolution))
             {
                 var data = new ReagentEntitySourceData(
                     new() { DefaultGrindCategory },

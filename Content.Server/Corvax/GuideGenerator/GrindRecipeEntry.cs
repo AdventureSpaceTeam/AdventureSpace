@@ -3,6 +3,7 @@ using Robust.Shared.Prototypes;
 using Content.Shared.Chemistry.Reagent;
 using Content.Server.Kitchen.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
+using Content.Shared.Kitchen.Components;
 
 namespace Content.Server.GuideGenerator;
 
