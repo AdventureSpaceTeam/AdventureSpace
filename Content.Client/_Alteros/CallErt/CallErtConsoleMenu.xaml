@@ -1,0 +1,49 @@
+<controls:FancyWindow xmlns="https://spacestation14.io"
+                      xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+                      xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+                      xmlns:customControls="clr-namespace:Content.Client.Administration.UI.CustomControls"
+                      Title="Консоль вызова ОБР"
+                      MinSize="900 500"
+                      SetSize="900 500">
+    <BoxContainer Orientation="Horizontal" VerticalExpand="True">
+        <BoxContainer Margin="10 10 10 10" MinWidth="300" MaxWidth="300" Orientation="Vertical" VerticalExpand="True" SizeFlagsStretchRatio="1">
+            <BoxContainer Orientation="Vertical" Margin="5 5 5 5" VerticalExpand="True">
+                <BoxContainer Orientation="Horizontal">
+                    <Label Text="Текущее время: " StyleClasses="LabelKeyText"/>
+                    <RichTextLabel Name="StationTimeLabel"/>
+                </BoxContainer>
+                <Label Text="Причина: " StyleClasses="LabelKeyText"/>
+                <PanelContainer Name="InputContainer"
+                                MinWidth="100"
+                                MinHeight="60">
+                    <PanelContainer.PanelOverride>
+                        <gfx:StyleBoxFlat BackgroundColor="#333237"/>
+                    </PanelContainer.PanelOverride>
+                    <TextEdit Name="ReasonInput" Access="Public" />
+                </PanelContainer>
+                <OptionButton Name="ErtGroupSelector" StyleClasses="OpenRight" Access="Public"/>
+                <BoxContainer Orientation="Horizontal">
+                    <Label Text="Время подготовки: " StyleClasses="LabelKeyText"/>
+                    <RichTextLabel Name="TimeToSpawnLabel"/>
+                </BoxContainer>
+                <Label Text="Состав: " StyleClasses="LabelKeyText"/>
+                <RichTextLabel Name="HumanListLabel"/>
+                <Label Text="Требования: " StyleClasses="LabelKeyText"/>
+                <RichTextLabel Name="RequirementsLabel"/>
+                <Button Name="CallErt" Text="Запросить" Access="Public"/>
+            </BoxContainer>
+        </BoxContainer>
+        <customControls:VSeparator StyleClasses="LowDivider"/>
+        <PanelContainer Margin="10 10 10 10" HorizontalExpand="True" VerticalExpand="True">
+            <PanelContainer.PanelOverride>
+                <gfx:StyleBoxFlat BackgroundColor="#000000FF" />
+            </PanelContainer.PanelOverride>
+            <ScrollContainer VerticalExpand="True">
+                <BoxContainer Name="CallErtEntriesContainer"
+                              Orientation="Vertical"
+                              StyleClasses="transparentItemList"
+                              VerticalExpand="True"/>
+            </ScrollContainer>
+        </PanelContainer>
+    </BoxContainer>
+</controls:FancyWindow>

@@ -1,5 +1,6 @@
 using System.Numerics;
 using System.Threading;
+using Content.Server._Sunrise.Shuttles;
 using Content.Server.Access.Systems;
 using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
@@ -451,7 +452,10 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
 
         component.MapEntity = map;
         component.Entity = grid;
-        _shuttle.AddFTLDestination(grid.Value, false);
+        // Alteros-start
+        var ftlDestination = _shuttle.AddFTLDestination(grid.Value, true);
+        ftlDestination.Whitelist = component.ShuttleWhitelist;
+        // Alteros-end
     }
 
     public HashSet<EntityUid> GetCentcommMaps()
@@ -493,6 +497,9 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
             _sawmill.Error($"Unable to spawn emergency shuttle {shuttlePath} for {ToPrettyString(uid)}");
             return;
         }
+        // Alteros-start
+        EnsureComp<EvacShuttleComponent>(shuttle.Value);
+        // Alteros-end
 
         centcomm.ShuttleIndex += _mapManager.GetGrid(shuttle.Value).LocalAABB.Width + ShuttleSpawnBuffer;
 
