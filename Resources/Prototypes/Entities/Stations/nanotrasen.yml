@@ -23,6 +23,9 @@
     - BaseStationSiliconLawCrewsimov
     - BaseStationAllEventsEligible
     - BaseStationNanotrasen
+    # Alteros-start
+    - BaseStationCallErt
+    # Alteros-end
   noSpawn: true
   components:
     - type: Transform
@@ -33,6 +36,9 @@
     - BaseStation
     - BaseStationAlertLevels
     - BaseStationNanotrasen
+    # Alteros-start
+    - BaseStationCallErt
+    # Alteros-end
   noSpawn: true
   components:
     - type: Transform
