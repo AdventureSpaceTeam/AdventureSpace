@@ -8,7 +8,7 @@
   - type: Item
     size: Tiny
   - type: Sprite
-    sprite: _DTS/Entities/Objects/Devices/tapes.rsi
+    sprite: _Alteros/Entities/Objects/Devices/tapes.rsi
 
 - type: entity
   parent: BaseMusicTape
@@ -19,4 +19,4 @@
   - type: Sprite
     state: tape1
   - type: MusicTape
-    sound: "/Audio/_DTS/TapePlayer/Tracks/гимн_клоуна.ogg"
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/гимн_клоуна.ogg"
