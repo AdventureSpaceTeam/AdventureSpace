@@ -1,3 +1,4 @@
+using Content.Client._Alteros.NewLife;
 using Content.Client.Eui;
 using Content.Client.Players.PlayTimeTracking;
 using Content.Shared.Eui;
@@ -12,11 +13,11 @@ namespace Content.Client.NewLife
     [UsedImplicitly]
     public sealed class NewLifeEui : BaseEui
     {
-        private readonly Alteros.NewLife.NewLifeWindow _window;
+        private readonly NewLifeWindow _window;
 
         public NewLifeEui()
         {
-            _window = new Alteros.NewLife.NewLifeWindow(IoCManager.Resolve<IGameTiming>());
+            _window = new NewLifeWindow(IoCManager.Resolve<IGameTiming>());
 
             _window.SpawnRequested += () =>
             {

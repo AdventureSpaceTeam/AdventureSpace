@@ -5,7 +5,7 @@ using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Utility;
 
-namespace Content.Client.Alteros.DiscordMember;
+namespace Content.Client._Alteros.DiscordMember;
 
 [GenerateTypedNameReferences]
 public sealed partial class DiscordMemberGui : Control

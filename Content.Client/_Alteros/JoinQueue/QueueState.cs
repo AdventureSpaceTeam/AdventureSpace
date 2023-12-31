@@ -1,3 +1,4 @@
+using Content.Client._Alteros.JoinQueue;
 using Content.Client.JoinQueue;
 using Content.Shared.Alteros.JoinQueue;
 using Robust.Client.Audio;

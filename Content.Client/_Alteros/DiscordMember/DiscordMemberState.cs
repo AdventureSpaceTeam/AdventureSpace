@@ -1,4 +1,5 @@
 using System.Threading;
+using Content.Client._Alteros.DiscordMember;
 using Content.Shared.DiscordMember;
 using Robust.Client.State;
 using Robust.Client.UserInterface;
@@ -12,12 +13,12 @@ public sealed class DiscordMemberState : State
     [Dependency] private readonly IUserInterfaceManager _userInterfaceManager = default!;
     [Dependency] private readonly IClientNetManager _netManager = default!;
 
-    private Alteros.DiscordMember.DiscordMemberGui? _gui;
+    private DiscordMemberGui? _gui;
     private readonly CancellationTokenSource _checkTimerCancel = new();
 
     protected override void Startup()
     {
-        _gui = new Alteros.DiscordMember.DiscordMemberGui();
+        _gui = new DiscordMemberGui();
         _userInterfaceManager.StateRoot.AddChild(_gui);
 
         Timer.SpawnRepeating(TimeSpan.FromSeconds(5), () =>

@@ -5,7 +5,7 @@ using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Configuration;
 
-namespace Content.Client.Alteros.JoinQueue;
+namespace Content.Client._Alteros.JoinQueue;
 
 [GenerateTypedNameReferences]
 public sealed partial class QueueGui : Control
