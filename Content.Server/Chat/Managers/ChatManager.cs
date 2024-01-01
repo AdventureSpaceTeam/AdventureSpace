@@ -228,7 +228,7 @@ namespace Content.Server.Chat.Managers
 
             Color? colorOverride = null;
             var wrappedMessage = Loc.GetString("chat-manager-send-ooc-wrap-message", ("playerName",player.Name), ("message", FormattedMessage.EscapeText(message)));
-            if (_adminManager.HasAdminFlag(player, AdminFlags.Admin))
+            if (_adminManager.HasAdminFlag(player, AdminFlags.AdminNotes))
             {
                 var prefs = _preferencesManager.GetPreferences(player.UserId);
                 colorOverride = prefs.AdminOOCColor;
