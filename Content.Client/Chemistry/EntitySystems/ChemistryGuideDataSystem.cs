@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Content.Client.Chemistry.Containers.EntitySystems;
 using Content.Shared.Atmos.Prototypes;
 using Content.Shared.Body.Part;
 using Content.Shared.Chemistry;
@@ -15,6 +16,8 @@ namespace Content.Client.Chemistry.EntitySystems;
 /// <inheritdoc/>
 public sealed class ChemistryGuideDataSystem : SharedChemistryGuideDataSystem
 {
+    [Dependency] private readonly SolutionContainerSystem _solutionContainer = default!;
+
     [ValidatePrototypeId<MixingCategoryPrototype>]
     private const string DefaultMixingCategory = "DummyMix";
     [ValidatePrototypeId<MixingCategoryPrototype>]
@@ -115,6 +118,7 @@ public sealed class ChemistryGuideDataSystem : SharedChemistryGuideDataSystem
 
                 usedNames.Add(entProto.Name);
             }
+
 
             if (extractableComponent.GrindableSolution is { } grindableSolutionId &&
                 entProto.TryGetComponent<SolutionContainerManagerComponent>(out var manager) &&
@@ -222,4 +226,3 @@ public sealed class ReagentGasSourceData : ReagentSourceData
         GasPrototype = gasPrototype;
     }
 }
-
