@@ -1,8 +1,8 @@
 - type: entity
-  name: generic rubber stamp
+  name: Печать
   parent: BaseItem
   id: RubberStampBase
-  description: A rubber stamp for stamping important documents.
+  description: Печать для проштамповки важных документов.
   abstract: true
   components:
   - type: Stamp
@@ -23,7 +23,7 @@
     stealGroup: Stamp
 
 - type: entity
-  name: alternate rubber stamp
+  name: Альтернативный штамп
   parent: RubberStampBase
   id: RubberStampBaseAlt
   abstract: true
@@ -38,7 +38,7 @@
         maxDistance: 5
 
 - type: entity
-  name: captain's rubber stamp
+  name: Печать капитана
   parent: RubberStampBase
   id: RubberStampCaptain
   suffix: DO NOT MAP
@@ -52,7 +52,7 @@
     state: stamp-cap
 
 - type: entity
-  name: CentCom rubber stamp
+  name: Печать центрального командования
   parent: RubberStampBase
   id: RubberStampCentcom
   suffix: DO NOT MAP
@@ -66,7 +66,7 @@
     state: stamp-centcom
 
 - type: entity
-  name: chaplain's rubber stamp
+  name: Печать священника
   parent: RubberStampBase
   id: RubberStampChaplain
   suffix: DO NOT MAP
@@ -80,7 +80,7 @@
     state: stamp-chaplain
 
 - type: entity
-  name: clown's rubber stamp
+  name: Печать клоуна
   parent: RubberStampBase
   id: RubberStampClown
   suffix: DO NOT MAP
@@ -97,7 +97,7 @@
       - ClownRubberStamp
 
 - type: entity
-  name: chief engineer's rubber stamp
+  name: Печать старшего инженера
   parent: RubberStampBase
   id: RubberStampCE
   suffix: DO NOT MAP
@@ -111,7 +111,7 @@
     state: stamp-ce
 
 - type: entity
-  name: chief medical officer's rubber stamp
+  name: Печать главного врача
   parent: RubberStampBase
   id: RubberStampCMO
   suffix: DO NOT MAP
@@ -125,7 +125,7 @@
     state: stamp-cmo
 
 - type: entity
-  name: head of personnel's rubber stamp
+  name: Печать главы персонала
   parent: RubberStampBase
   id: RubberStampHop
   suffix: DO NOT MAP
@@ -139,7 +139,7 @@
     state: stamp-hop
 
 - type: entity
-  name: head of security's rubber stamp
+  name: Печать главы службы безопасности
   parent: RubberStampBase
   id: RubberStampHos
   suffix: DO NOT MAP
@@ -153,7 +153,7 @@
     state: stamp-hos
 
 - type: entity
-  name: mime's rubber stamp
+  name: Печать мима
   parent: RubberStampBase
   id: RubberStampMime
   suffix: DO NOT MAP
@@ -168,7 +168,7 @@
     state: stamp-mime
 
 - type: entity
-  name: quartermaster's rubber stamp
+  name: Печать квартирмейстера
   parent: RubberStampBase
   id: RubberStampQm
   suffix: DO NOT MAP
@@ -182,7 +182,7 @@
     state: stamp-qm
 
 - type: entity
-  name: research director's rubber stamp
+  name: Печать научного руководителя
   parent: RubberStampBase
   id: RubberStampRd
   suffix: DO NOT MAP
@@ -196,7 +196,7 @@
     state: stamp-rd
 
 - type: entity
-  name: trader's rubber stamp
+  name: Печать торговца
   parent: RubberStampBase
   id: RubberStampTrader
   components:
@@ -209,7 +209,7 @@
     state: stamp-trader
 
 - type: entity
-  name: syndicate rubber stamp
+  name: Печать синдиката
   parent: RubberStampBase
   id: RubberStampSyndicate
   suffix: DO NOT MAP
@@ -223,7 +223,7 @@
     state: stamp-syndicate
 
 - type: entity
-  name: warden's rubber stamp
+  name: Печать смотрителя
   parent: RubberStampBase
   id: RubberStampWarden
   suffix: DO NOT MAP
@@ -237,7 +237,7 @@
     state: stamp-warden
 
 - type: entity
-  name: APPROVED rubber stamp
+  name: Печать ОДОБРЕНО
   parent: RubberStampBaseAlt
   id: RubberStampApproved
   components:
@@ -250,7 +250,7 @@
     state: stamp-ok
 
 - type: entity
-  name: DENIED rubber stamp
+  name: Печать ОТКАЗАНО
   parent: RubberStampBaseAlt
   id: RubberStampDenied
   components:

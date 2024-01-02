@@ -9,8 +9,8 @@
       stampedColor: "#33CC33"
       stampState: "paper_stamp-ok"
     - type: Sprite
-      sprite: Objects/Misc/bureaucracy.rsi
-      state: paper_stamp-iaa
+      sprite: Corvax/Objects/Misc/stamps.rsi
+      state: stamp-iaa
 
 - type: entity
   name: psychologist's rubber stamp
@@ -23,5 +23,5 @@
     stampedColor: "#0082AE"
     stampState: "paper_stamp-psychologist"
   - type: Sprite
-    sprite: Objects/Misc/bureaucracy.rsi
-    state: paper_stamp-psychologist
+    sprite: Corvax/Objects/Misc/stamps.rsi
+    state: stamp-psychologist
