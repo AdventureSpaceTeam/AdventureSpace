@@ -1,6 +1,6 @@
 ﻿- type: entity
-  name: adventure radio
-  description: A radio
+  name: магнитофон
+  description: Проигрывает кассеты.
   parent: TapePlayer
   id: AdventureRadio
   components:
