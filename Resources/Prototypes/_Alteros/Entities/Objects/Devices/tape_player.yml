@@ -1,7 +1,7 @@
 ﻿- type: entity
   parent: BaseItem
   id: TapePlayer
-  name: магнитофон
+  name: плеер
   description: Революция в области музыкального исскуства, убийца музыкантов.
   components:
   - type: Appearance

@@ -5,9 +5,9 @@
   id: BattleSyringe
 
 - type: entity
-  name: battle syringe
+  name: Боевой шприц
   parent: BaseItem
-  description: pew
+  description: Имеет лучшую баллистику
   id: BattleSyringe
   components:
   - type: MeleeWeapon
@@ -62,7 +62,7 @@
 
 - type: entity
   id: MagazineBattleSyringes
-  name: magazine (battle syringes)
+  name: Магазин (боевые шприцы)
   parent: BaseItem
   components:
   - type: Tag
@@ -90,16 +90,16 @@
 - type: entity
   id: MagazineBattleSyringesEmpty
   parent: MagazineBattleSyringes
-  suffix: empty
+  suffix: пустой
   components:
   - type: BallisticAmmoProvider
     proto: null
 
 - type: entity
-  name: Syringe gun
+  name: Шприцемёт
   parent: BaseItem
   id: WeaponSyringeGun
-  description: Yay
+  description: Быстрое лечение на поле боя!
   components:
   - type: Sprite
     sprite: Adventure/syringegun.rsi
@@ -148,9 +148,8 @@
     price: 500
 
 - type: entity
-  suffix: nocturine
+  suffix: ноктурин
   parent: BattleSyringe
-  description: sleep
   id: BattleSyringeNocturine
   components:
   - type: SolutionContainerManager
@@ -164,7 +163,7 @@
 - type: entity
   id: MagazineBattleSyringesNocturine
   parent: MagazineBattleSyringes
-  suffix: nocturine
+  suffix: ноктурин
   components:
   - type: BallisticAmmoProvider
     proto: BattleSyringeNocturine
