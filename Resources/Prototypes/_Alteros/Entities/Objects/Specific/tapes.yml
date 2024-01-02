@@ -13,10 +13,340 @@
 - type: entity
   parent: BaseMusicTape
   id: MusicTape1
-  name: кассета магнитофона (Гимн клоуна)
+  name: Кассета (MOON - Dust)
   description:
   components:
   - type: Sprite
     state: tape1
   - type: MusicTape
-    sound: "/Audio/_Alteros/TapePlayer/Tracks/гимн_клоуна.ogg"
+    sound: "/Audio/_DTS/TapePlayer/Tracks/dust.ogg"
+
+- type: entity
+  parent: BaseMusicTape
+  id: MusicTape2
+  name: Кассета (Light Club - Blizzard)
+  description:
+  components:
+  - type: Sprite
+    state: tape2
+  - type: MusicTape
+    sound: "/Audio/_DTS/TapePlayer/Tracks/blizzard.ogg"
+
+- type: entity
+  parent: BaseMusicTape
+  id: MusicTape3
+  name: Кассета (HARD DRIVE - METTATON)
+  description:
+  components:
+  - type: Sprite
+    state: tape3
+  - type: MusicTape
+    sound: "/Audio/_DTS/TapePlayer/Tracks/mettaton.ogg"
+
+- type: entity
+  parent: BaseMusicTape
+  id: MusicTape4
+  name: Кассета (Кино - Группа крови)
+  description:
+  components:
+  - type: Sprite
+    state: tape4
+  - type: MusicTape
+    sound: "/Audio/_DTS/TapePlayer/Tracks/group_blood.ogg"
+
+- type: entity
+  parent: BaseMusicTape
+  id: MusicTape5
+  name: Кассета (Кино - Звезда по имени солнце)
+  description:
+  components:
+  - type: Sprite
+    state: tape5
+  - type: MusicTape
+    sound: "/Audio/_DTS/TapePlayer/Tracks/star_the_sun.ogg"
+
+- type: entity
+  parent: BaseMusicTape
+  id: MusicTape6
+  name: Кассета (Chalkeaters - COUNT TO THREE)
+  description:
+  components:
+  - type: Sprite
+    state: tape6
+  - type: MusicTape
+    sound: "/Audio/_DTS/TapePlayer/Tracks/count_to_three.ogg"
+
+- type: entity
+  parent: BaseMusicTape
+  id: MusicTape7
+  name: Кассета (Arstotzka - Main theme)
+  description:
+  components:
+  - type: Sprite
+    state: tape7
+  - type: MusicTape
+    sound: "/Audio/_DTS/TapePlayer/Tracks/arstotzka.ogg"
+
+- type: entity
+  parent: BaseMusicTape
+  id: MusicTape8
+  name: Кассета (Misaki - Death by Glamour)
+  description:
+  components:
+  - type: Sprite
+    state: tape8
+  - type: MusicTape
+    sound: "/Audio/_DTS/TapePlayer/Tracks/death_by_glamour.ogg"
+
+- type: entity
+  parent: BaseMusicTape
+  id: MusicTape9
+  name: Кассета (Misaki - Another Medium)
+  description:
+  components:
+  - type: Sprite
+    state: tape9
+  - type: MusicTape
+    sound: "/Audio/_DTS/TapePlayer/Tracks/another_medium.ogg"
+
+- type: entity
+  parent: BaseMusicTape
+  id: MusicTape10
+  name: Кассета (Земляне - Трава у дома)
+  description:
+  components:
+  - type: Sprite
+    state: tape10
+  - type: MusicTape
+    sound: "/Audio/_DTS/TapePlayer/Tracks/grass_at_home.ogg"
+
+- type: entity
+  parent: BaseMusicTape
+  id: MusicTape11
+  name: Кассета (Алла Пугачёва - Звёздное лето)
+  description:
+  components:
+  - type: Sprite
+    state: tape11
+  - type: MusicTape
+    sound: "/Audio/_DTS/TapePlayer/Tracks/starry_summer.ogg"
+
+- type: entity
+  parent: BaseMusicTape
+  id: MusicTape12
+  name: Кассета (Игорь Скляр - Комарово)
+  description:
+  components:
+  - type: Sprite
+    state: tape12
+  - type: MusicTape
+    sound: "/Audio/_DTS/TapePlayer/Tracks/komarovo.ogg"
+
+- type: entity
+  parent: BaseMusicTape
+  id: MusicTape13
+  name: Кассета (Little Barrie - Better Call Saul)
+  description:
+  components:
+  - type: Sprite
+    state: tape13
+  - type: MusicTape
+    sound: "/Audio/_DTS/TapePlayer/Tracks/saul.ogg"
+
+- type: entity
+  parent: BaseMusicTape
+  id: MusicTape14
+  name: Кассета (MOON - Hydrogen)
+  description:
+  components:
+  - type: Sprite
+    state: tape14
+  - type: MusicTape
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/hydrogen.ogg"
+
+- type: entity
+  parent: BaseMusicTape
+  id: MusicTape15
+  name: Кассета (MOON - Paris)
+  description:
+  components:
+  - type: Sprite
+    state: tape15
+  - type: MusicTape
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/paris.ogg"
+
+- type: entity
+  parent: BaseMusicTape
+  id: MusicTape16
+  name: Кассета (MOON - Crystals)
+  description:
+  components:
+  - type: Sprite
+    state: tape16
+  - type: MusicTape
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/crystals.ogg"
+
+- type: entity
+  parent: BaseMusicTape
+  id: MusicTape17
+  name: Кассета (Jasper Byrne - Miami)
+  description:
+  components:
+  - type: Sprite
+    state: tape17
+  - type: MusicTape
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/miami.ogg"
+
+- type: entity
+  parent: BaseMusicTape
+  id: MusicTape18
+  name: Кассета (Jasper Byrne - Hotline)
+  description:
+  components:
+  - type: Sprite
+    state: tape18
+  - type: MusicTape
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/hotline.ogg"
+
+- type: entity
+  parent: BaseMusicTape
+  id: MusicTape19
+  name: Кассета (Bolgarich - Peacemakers)
+  description:
+  components:
+  - type: Sprite
+    state: tape19
+  - type: MusicTape
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/peacemakers.ogg"
+
+- type: entity
+  parent: BaseMusicTape
+  id: MusicTape20
+  name: Кассета (Bolgarich - Deadline)
+  description:
+  components:
+  - type: Sprite
+    state: tape20
+  - type: MusicTape
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/deadline.ogg"
+
+- type: entity
+  parent: BaseMusicTape
+  id: MusicTape21
+  name: Кассета (Bolgarich - Tear of veil)
+  description:
+  components:
+  - type: Sprite
+    state: tape21
+  - type: MusicTape
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/tear_of_veil.ogg"
+
+- type: entity
+  parent: BaseMusicTape
+  id: MusicTape22
+  name: Кассета (Лютик - Монетой)
+  description:
+  components:
+  - type: Sprite
+    state: tape22
+  - type: MusicTape
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/coin.ogg"
+
+- type: entity
+  parent: BaseMusicTape
+  id: MusicTape23
+  name: Кассета (Chalkeaters - DoomCrossing)
+  description:
+  components:
+  - type: Sprite
+    state: tape23
+  - type: MusicTape
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/doomcrossing.ogg"
+
+- type: entity
+  parent: BaseMusicTape
+  id: MusicTape24
+  name: Кассета (Hugo - Space Asshole)
+  description:
+  components:
+  - type: Sprite
+    state: tape24
+  - type: MusicTape
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/asshole.ogg"
+
+- type: entity
+  parent: BaseMusicTape
+  id: MusicTape25
+  name: Кассета (Simon Viklund - Razormind)
+  description:
+  components:
+  - type: Sprite
+    state: tape25
+  - type: MusicTape
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/razormind.ogg"
+
+- type: entity
+  parent: BaseMusicTape
+  id: MusicTape26
+  name: Кассета (Alesso - Payday)
+  description:
+  components:
+  - type: Sprite
+    state: tape26
+  - type: MusicTape
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/alesso.ogg"
+
+- type: entity
+  parent: BaseMusicTape
+  id: MusicTape27
+  name: Кассета (Carl Noren - Death Row)
+  description:
+  components:
+  - type: Sprite
+    state: tape27
+  - type: MusicTape
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/death_row.ogg"
+
+- type: entity
+  parent: BaseMusicTape
+  id: MusicTape28
+  name: Кассета (Hyper - Spoiler)
+  description:
+  components:
+  - type: Sprite
+    state: tape28
+  - type: MusicTape
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/spoiler.ogg"
+
+- type: entity
+  parent: BaseMusicTape
+  id: MusicTape29
+  name: Кассета (SAMURAI - Chippin in)
+  description:
+  components:
+  - type: Sprite
+    state: tape29
+  - type: MusicTape
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/chippin.ogg"
+
+- type: entity
+  parent: BaseMusicTape
+  id: MusicTape30
+  name: Кассета (Marcin - The Rebel Path)
+  description:
+  components:
+  - type: Sprite
+    state: tape30
+  - type: MusicTape
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/rebel_path.ogg"
+
+- type: entity
+  parent: BaseMusicTape
+  id: MusicTape31
+  name: Кассета (Magna - Divide)
+  description:
+  components:
+  - type: Sprite
+    state: tape31
+  - type: MusicTape
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/divide.ogg"
