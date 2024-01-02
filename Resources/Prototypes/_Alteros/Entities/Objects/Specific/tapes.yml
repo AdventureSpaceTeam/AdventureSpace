@@ -19,7 +19,7 @@
   - type: Sprite
     state: tape1
   - type: MusicTape
-    sound: "/Audio/_DTS/TapePlayer/Tracks/dust.ogg"
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/dust.ogg"
 
 - type: entity
   parent: BaseMusicTape
@@ -30,7 +30,7 @@
   - type: Sprite
     state: tape2
   - type: MusicTape
-    sound: "/Audio/_DTS/TapePlayer/Tracks/blizzard.ogg"
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/blizzard.ogg"
 
 - type: entity
   parent: BaseMusicTape
@@ -41,7 +41,7 @@
   - type: Sprite
     state: tape3
   - type: MusicTape
-    sound: "/Audio/_DTS/TapePlayer/Tracks/mettaton.ogg"
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/mettaton.ogg"
 
 - type: entity
   parent: BaseMusicTape
@@ -52,7 +52,7 @@
   - type: Sprite
     state: tape4
   - type: MusicTape
-    sound: "/Audio/_DTS/TapePlayer/Tracks/group_blood.ogg"
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/group_blood.ogg"
 
 - type: entity
   parent: BaseMusicTape
@@ -63,7 +63,7 @@
   - type: Sprite
     state: tape5
   - type: MusicTape
-    sound: "/Audio/_DTS/TapePlayer/Tracks/star_the_sun.ogg"
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/star_the_sun.ogg"
 
 - type: entity
   parent: BaseMusicTape
@@ -74,7 +74,7 @@
   - type: Sprite
     state: tape6
   - type: MusicTape
-    sound: "/Audio/_DTS/TapePlayer/Tracks/count_to_three.ogg"
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/count_to_three.ogg"
 
 - type: entity
   parent: BaseMusicTape
@@ -85,7 +85,7 @@
   - type: Sprite
     state: tape7
   - type: MusicTape
-    sound: "/Audio/_DTS/TapePlayer/Tracks/arstotzka.ogg"
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/arstotzka.ogg"
 
 - type: entity
   parent: BaseMusicTape
@@ -96,7 +96,7 @@
   - type: Sprite
     state: tape8
   - type: MusicTape
-    sound: "/Audio/_DTS/TapePlayer/Tracks/death_by_glamour.ogg"
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/death_by_glamour.ogg"
 
 - type: entity
   parent: BaseMusicTape
@@ -107,7 +107,7 @@
   - type: Sprite
     state: tape9
   - type: MusicTape
-    sound: "/Audio/_DTS/TapePlayer/Tracks/another_medium.ogg"
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/another_medium.ogg"
 
 - type: entity
   parent: BaseMusicTape
@@ -118,7 +118,7 @@
   - type: Sprite
     state: tape10
   - type: MusicTape
-    sound: "/Audio/_DTS/TapePlayer/Tracks/grass_at_home.ogg"
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/grass_at_home.ogg"
 
 - type: entity
   parent: BaseMusicTape
@@ -129,7 +129,7 @@
   - type: Sprite
     state: tape11
   - type: MusicTape
-    sound: "/Audio/_DTS/TapePlayer/Tracks/starry_summer.ogg"
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/starry_summer.ogg"
 
 - type: entity
   parent: BaseMusicTape
@@ -140,7 +140,7 @@
   - type: Sprite
     state: tape12
   - type: MusicTape
-    sound: "/Audio/_DTS/TapePlayer/Tracks/komarovo.ogg"
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/komarovo.ogg"
 
 - type: entity
   parent: BaseMusicTape
@@ -151,7 +151,7 @@
   - type: Sprite
     state: tape13
   - type: MusicTape
-    sound: "/Audio/_DTS/TapePlayer/Tracks/saul.ogg"
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/saul.ogg"
 
 - type: entity
   parent: BaseMusicTape
