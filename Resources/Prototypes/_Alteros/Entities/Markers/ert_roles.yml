@@ -34,7 +34,7 @@
     requirements:
     - !type:OverallPlaytimeRequirement
       time: 36000 # 10 hrs
-    - !type:RoleTimeRequirement
+    - !type:DepartmentTimeRequirement
       department: Engineering
       time: 7200 # 2 hrs
     - !type:DepartmentTimeRequirement
