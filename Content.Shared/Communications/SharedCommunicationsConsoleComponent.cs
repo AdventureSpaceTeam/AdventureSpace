@@ -1,4 +1,6 @@
 using Robust.Shared.Serialization;
+using Robust.Shared.Player;
+using Robust.Shared.Network;
 
 namespace Content.Shared.Communications
 {
@@ -40,6 +42,18 @@ namespace Content.Shared.Communications
             Level = level;
         }
     }
+
+    [Serializable, NetSerializable]
+    public sealed class CommunicationsConsoleOpenERTCallMessage : BoundUserInterfaceMessage
+    {
+        public readonly NetUserId NetId;
+
+        public CommunicationsConsoleOpenERTCallMessage(NetUserId netid)
+        {
+            NetId = netid;
+        }
+    }
+
 
     [Serializable, NetSerializable]
     public sealed class CommunicationsConsoleAnnounceMessage : BoundUserInterfaceMessage

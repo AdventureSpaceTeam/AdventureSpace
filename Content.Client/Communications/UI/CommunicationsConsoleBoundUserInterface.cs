@@ -1,12 +1,18 @@
 ﻿using Content.Shared.Communications;
 using Robust.Client.GameObjects;
+using Robust.Client.Player;
+using Robust.Shared.Player;
 using Robust.Shared.Timing;
+using Robust.Shared.Network;
+using Content.Shared.CallErt;
+using Content.Client._Alteros.CallErt;
 
 namespace Content.Client.Communications.UI
 {
     public sealed class CommunicationsConsoleBoundUserInterface : BoundUserInterface
     {
         [Dependency] private readonly IGameTiming _gameTiming = default!;
+        [Dependency] private readonly IPlayerManager _playerManager = default!;
 
         [ViewVariables]
         private CommunicationsConsoleMenu? _menu;
@@ -50,6 +56,15 @@ namespace Content.Client.Communications.UI
             {
                 CurrentLevel = level;
                 SendMessage(new CommunicationsConsoleSelectAlertLevelMessage(level));
+            }
+        }
+
+        public void CallERTButtonPressed()
+        {
+
+            if (_playerManager.LocalUser is NetUserId netid)
+            {
+                SendMessage(new CommunicationsConsoleOpenERTCallMessage(netid));
             }
         }
 

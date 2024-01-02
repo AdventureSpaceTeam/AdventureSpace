@@ -549,6 +549,8 @@
     interfaces:
     - key: enum.CommunicationsConsoleUiKey.Key
       type: CommunicationsConsoleBoundUserInterface
+    - key: enum.CallErtConsoleUiKey.Key
+      type: CallErtConsoleBoundUserInterface
   - type: Computer
     board: CommsComputerCircuitboard
   - type: PointLight
