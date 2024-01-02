@@ -49,3 +49,7 @@ ent-RandomHumanoidSpawnerNukeOp = Ядерный оперативник
 ent-RandomHumanoidSpawnerCluwne = Клувень
     .suffix = Спавнит клувеня
     .desc = { "" }
+
+ent-RandomHumanoidSpawnerERTClown = ОБР клоун
+    .suffix = Роль ОБР
+    .desc = { "" }

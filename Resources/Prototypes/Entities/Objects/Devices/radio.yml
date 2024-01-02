@@ -23,17 +23,3 @@
   - type: Tag
     tags:
     - Radio
-
-- type: entity
-  name: adventure radio
-  description: A radio
-  parent: BaseItem
-  id: AdventureRadio
-  components:
-  - type: Sprite
-    sprite: Objects/Devices/radio.rsi
-    layers:
-    - state: radio
-  - type: Item
-    sprite: Objects/Devices/radio.rsi
-    heldPrefix: radio

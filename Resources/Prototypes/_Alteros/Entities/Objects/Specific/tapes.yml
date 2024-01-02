@@ -1,0 +1,22 @@
+﻿- type: entity
+  parent: BaseItem
+  id: BaseMusicTape
+  name: кассета
+  abstract: true
+  description:
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: _Alteros/Entities/Objects/Devices/tapes.rsi
+
+- type: entity
+  parent: BaseMusicTape
+  id: MusicTape1
+  name: кассета магнитофона (Гимн клоуна)
+  description:
+  components:
+  - type: Sprite
+    state: tape1
+  - type: MusicTape
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/гимн_клоуна.ogg"

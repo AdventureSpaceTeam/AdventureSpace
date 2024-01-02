@@ -1,0 +1,32 @@
+<BoxContainer xmlns="https://spacestation14.io"
+              Margin="10 10 10 0"
+              HorizontalExpand="True"
+              Visible="True">
+    <PanelContainer StyleClasses="AngleRect" HorizontalExpand="True">
+        <BoxContainer Orientation="Vertical" HorizontalExpand="True" HorizontalAlignment="Left">
+            <BoxContainer Orientation="Horizontal" >
+                <Label Text="Название группы: " StyleClasses="LabelKeyText"/>
+                <RichTextLabel Name="GroupName"/>
+            </BoxContainer>
+            <BoxContainer Orientation="Horizontal" >
+                <Label Text="Время вызова: " StyleClasses="LabelKeyText"/>
+                <RichTextLabel Name="CalledTime"/>
+            </BoxContainer>
+            <BoxContainer Orientation="Horizontal">
+                <Label Name="ArrivalTitle" Text="Время прибытия: " StyleClasses="LabelKeyText"/>
+                <RichTextLabel Name="ArrivalTime"/>
+            </BoxContainer>
+            <BoxContainer Orientation="Vertical" MaxWidth="500" HorizontalAlignment="Left">
+                <Label Text="Причина: " StyleClasses="LabelKeyText" />
+                <RichTextLabel Name="Reason" VerticalExpand="True"/>
+            </BoxContainer>
+            <BoxContainer Orientation="Horizontal">
+                <Label Text="Статус: " StyleClasses="LabelKeyText"/>
+                <RichTextLabel Name="Status" />
+            </BoxContainer>
+            <Button Name="RecallButton" Text="Отозвать" Access="Public" HorizontalExpand="True"/>
+            <Button Name="ApproveButton" Text="Принять" Access="Public" HorizontalExpand="True"/>
+            <Button Name="DenyButton" Text="Отменить" Access="Public" HorizontalExpand="True"/>
+        </BoxContainer>
+    </PanelContainer>
+</BoxContainer>
