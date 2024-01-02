@@ -10,12 +10,14 @@ using Content.Server.Shuttles.Systems;
 using Content.Server.Station.Systems;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
+using Content.Shared.CallErt;
 using Content.Shared.CCVar;
 using Content.Shared.Communications;
 using Content.Shared.Database;
 using Content.Shared.Emag.Components;
 using Content.Shared.Popups;
 using Robust.Server.GameObjects;
+using Robust.Server.Player;
 using Robust.Shared.Configuration;
 
 namespace Content.Server.Communications
@@ -34,6 +36,7 @@ namespace Content.Server.Communications
         [Dependency] private readonly UserInterfaceSystem _uiSystem = default!;
         [Dependency] private readonly IConfigurationManager _cfg = default!;
         [Dependency] private readonly IAdminLogManager _adminLogger = default!;
+        [Dependency] private readonly IPlayerManager _playerManager = default!;
 
         private const int MaxMessageLength = 256;
         private const int MaxMessageNewlines = 2;
@@ -49,6 +52,7 @@ namespace Content.Server.Communications
 
             // Messages from the BUI
             SubscribeLocalEvent<CommunicationsConsoleComponent, CommunicationsConsoleSelectAlertLevelMessage>(OnSelectAlertLevelMessage);
+            SubscribeLocalEvent<CommunicationsConsoleComponent, CommunicationsConsoleOpenERTCallMessage>(OnOpenERTCall);
             SubscribeLocalEvent<CommunicationsConsoleComponent, CommunicationsConsoleAnnounceMessage>(OnAnnounceMessage);
             SubscribeLocalEvent<CommunicationsConsoleComponent, CommunicationsConsoleCallEmergencyShuttleMessage>(OnCallShuttleMessage);
             SubscribeLocalEvent<CommunicationsConsoleComponent, CommunicationsConsoleRecallEmergencyShuttleMessage>(OnRecallShuttleMessage);
@@ -200,6 +204,13 @@ namespace Content.Server.Communications
                 return false;
 
             return !(left.TotalSeconds / expected.TotalSeconds < recallThreshold);
+        }
+
+        private void OnOpenERTCall(EntityUid uid, CommunicationsConsoleComponent comp, CommunicationsConsoleOpenERTCallMessage message)
+        {
+            if (!_playerManager.TryGetSessionById(message.NetId, out var session))
+                return;
+            _uiSystem.TryOpen(uid, CallErtConsoleUiKey.Key, session);
         }
 
         private void OnSelectAlertLevelMessage(EntityUid uid, CommunicationsConsoleComponent comp, CommunicationsConsoleSelectAlertLevelMessage message)
