@@ -216,7 +216,7 @@ public sealed class AntagSelectionSystem : GameRuleSystem<GameRuleComponent>
     /// <param name="antagCount">how many players to take</param>
     /// <param name="prefList">a list of players from which to draw</param>
     /// <returns></returns>
-    public List<ICommonSession> PickAntag(int antagCount, List<ICommonSession> prefList, string roleId)
+    public List<ICommonSession> PickAntag(int antagCount, List<ICommonSession> prefList)
     {
         var results = new List<ICommonSession>(antagCount);
         if (prefList.Count == 0)
@@ -227,9 +227,7 @@ public sealed class AntagSelectionSystem : GameRuleSystem<GameRuleComponent>
 
         for (var i = 0; i < antagCount; i++)
         {
-            var sponsors = IoCManager.Resolve<IServerSponsorsManager>(); // Alteros-Sponsors
-            var antag = sponsors.PickSession(prefList, roleId);
-            results.Add(antag);
+            results.Add(_random.PickAndTake(prefList));
             Log.Info("Selected a preferred antag.");
         }
         return results;
@@ -321,4 +319,3 @@ public sealed class AntagSelectionSystem : GameRuleSystem<GameRuleComponent>
         }
     }
 }
-

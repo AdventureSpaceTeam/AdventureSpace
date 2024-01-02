@@ -167,7 +167,7 @@ public sealed class ThiefRuleSystem : GameRuleSystem<ThiefRuleComponent>
         // Give starting items
         _antagSelection.GiveAntagBagGear(mind.OwnedEntity.Value, thiefRule.StarterItems);
 
-        thiefRule.ThiefMinds.Add(mindId);
+        thiefRule.ThievesMinds.Add(mindId);
         return true;
     }
 
@@ -206,7 +206,7 @@ public sealed class ThiefRuleSystem : GameRuleSystem<ThiefRuleComponent>
 
     private void OnObjectivesTextGetInfo(Entity<ThiefRuleComponent> thiefs, ref ObjectivesTextGetInfoEvent args)
     {
-        args.Minds = thiefs.Comp.ThiefMinds;
+        args.Minds = thiefs.Comp.ThievesMinds;
         args.AgentName = Loc.GetString("thief-round-end-agent-name");
     }
 }
