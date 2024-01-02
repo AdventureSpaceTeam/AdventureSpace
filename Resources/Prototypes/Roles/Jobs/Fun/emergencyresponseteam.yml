@@ -276,3 +276,17 @@
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltJanitorFilled
     pocket1: Flare
+
+# Alteros-start
+- type: startingGear
+  id: ERTClownGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitClown
+    back: ClothingBackpackERTClownFilled
+    shoes: ClothingShoesClown
+    mask: ClothingMaskClown
+    pocket1: BikeHorn
+    pocket2: ClownRecorder
+    id: ERTLeaderPDA
+    ears: ClothingHeadsetAltCommand
+# Alteros-end

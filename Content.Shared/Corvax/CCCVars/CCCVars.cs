@@ -29,13 +29,13 @@ public sealed class CCCVars
     /// URL of the TTS server API.
     /// </summary>
     public static readonly CVarDef<string> TTSApiUrl =
-        CVarDef.Create("tts.api_url", "https://pubtts.ss14.su/api/v1/tts", CVar.SERVERONLY | CVar.ARCHIVE);
+        CVarDef.Create("tts.api_url", "", CVar.SERVERONLY | CVar.ARCHIVE);
 
     /// <summary>
     /// Auth token of the TTS server API.
     /// </summary>
     public static readonly CVarDef<string> TTSApiToken =
-        CVarDef.Create("tts.api_token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjcHIiOjUwMCwiZHByIjowLCJleHAiOjE3MDMwMzA0NjAsIm5hbWUiOiJBZHZlbnR1cmUgU3BhY2UiLCJycHMiOjF9.mB41fvNoD-_XGmQSpXFDOXrp1gdRy_nH7rq6Pe4-hJ4", CVar.SERVERONLY | CVar.CONFIDENTIAL);
+        CVarDef.Create("tts.api_token", "", CVar.SERVERONLY | CVar.CONFIDENTIAL);
 
     /// <summary>
     /// Amount of seconds before timeout for API

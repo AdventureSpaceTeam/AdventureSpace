@@ -3,6 +3,7 @@ using Content.Server.EUI;
 using Content.Server.Ghost.Roles.Components;
 using Content.Server.Ghost.Roles.Events;
 using Content.Server.Ghost.Roles.UI;
+using Content.Server.Humanoid.Systems;
 using Content.Server.Mind.Commands;
 using Content.Shared.Administration;
 using Content.Shared.Database;
@@ -37,6 +38,8 @@ namespace Content.Server.Ghost.Roles
         [Dependency] private readonly TransformSystem _transform = default!;
         [Dependency] private readonly SharedMindSystem _mindSystem = default!;
         [Dependency] private readonly SharedRoleSystem _roleSystem = default!;
+        [Dependency] private readonly RandomHumanoidSystem _randomHumanoidSystem = default!;
+
 
         private uint _nextRoleIdentifier;
         private bool _needsUpdateGhostRoleCount = true;
@@ -61,8 +64,20 @@ namespace Content.Server.Ghost.Roles
             SubscribeLocalEvent<GhostRoleComponent, EntityPausedEvent>(OnPaused);
             SubscribeLocalEvent<GhostRoleComponent, EntityUnpausedEvent>(OnUnpaused);
             SubscribeLocalEvent<GhostRoleMobSpawnerComponent, TakeGhostRoleEvent>(OnSpawnerTakeRole);
+            SubscribeLocalEvent<GhostRoleRandomHumanoidSpawnerComponent, TakeGhostRoleEvent>(OnRandomHumaniodSpawnerTakeRole);
             SubscribeLocalEvent<GhostTakeoverAvailableComponent, TakeGhostRoleEvent>(OnTakeoverTakeRole);
             _playerManager.PlayerStatusChanged += PlayerStatusChanged;
+        }
+
+        private void OnRandomHumaniodSpawnerTakeRole(EntityUid uid, GhostRoleRandomHumanoidSpawnerComponent component,
+            ref TakeGhostRoleEvent args)
+        {
+            QueueDel(uid);
+            if (component.SettingsPrototypeId == null)
+                return;
+
+            var mob = _randomHumanoidSystem.SpawnRandomHumanoid(component.SettingsPrototypeId, Transform(uid).Coordinates, MetaData(uid).EntityName);
+            GhostRoleInternalCreateMindAndTransfer(args.Player, uid, mob);
         }
 
         private void OnMobStateChanged(Entity<GhostTakeoverAvailableComponent> component, ref MobStateChangedEvent args)

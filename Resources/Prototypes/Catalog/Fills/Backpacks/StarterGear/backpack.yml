@@ -346,6 +346,21 @@
         - id: DeathAcidifierImplanter # crew will try to steal their amazing hardsuits
         - id: FreedomImplanter
 
+# Alteros-start
+- type: entity
+  noSpawn: true
+  parent: ClothingBackpackERTClown
+  id: ClothingBackpackERTClownFilled
+  components:
+  - type: StorageFill
+    contents:
+    - id: BoxHug
+    - id: WeaponPulsePistol
+    - id: MedkitFilled
+    - id: Soap
+    - id: CrayonRainbow
+# Alteros-end
+
 # Cargo
 
 - type: entity

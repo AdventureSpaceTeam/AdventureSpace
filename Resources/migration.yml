@@ -103,7 +103,7 @@ SpawnPointSeniorPhysician: null
 ClothingOuterHardsuitMedic: ClothingOuterHardsuitSyndieMedic
 
 # 2023-12-13
-VendingMachineSmartFridge: SmartFridge
+ComputerCriminalRecords: ComputerCallErtConsole
 
 # 2023-12-18
 ReagentContainerMilk: DrinkMilkCarton
@@ -122,4 +122,10 @@ WarpPointBeaconMedical: null
 WarpPointBeaconNeutral: null
 WarpPointBeaconScience: null
 WarpPointBeaconSecurity: null
+WarpPointBeaconService: null
+
+# 2023-12-30
+ClothingEyesGlassesCosmeticSunglasses: ClothingEyesGlassesSunglasses
+
+# 2024-01-01
 WarpPointBeaconService: null
