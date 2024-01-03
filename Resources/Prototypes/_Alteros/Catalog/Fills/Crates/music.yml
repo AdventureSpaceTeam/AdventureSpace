@@ -5,19 +5,17 @@
   components:
   - type: StorageFill
     contents:
-      - id: AdventureRadio
-        amount: 1
-      - id: TapePlayer
-        amount: 1
-      - id: MusicTapesBox
-        amount: 1
-      - id: MusicTape3
-        amount: 1
-      - id: MusicTape20
-        amount: 1
-      - id: MusicTape18
-        amount: 1
-      - id: MusicTape19
-        amount: 1
-      - id: MusicTape2
-        amount: 1
+    - id: AdventureRadio
+      amount: 1
+    - id: TapePlayer
+      amount: 1
+    - id: MusicTape3
+      amount: 1
+    - id: MusicTape20
+      amount: 1
+    - id: MusicTape18
+      amount: 1
+    - id: MusicTape19
+      amount: 1
+    - id: MusicTape2
+      amount: 1
