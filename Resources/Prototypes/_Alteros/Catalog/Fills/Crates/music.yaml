@@ -11,27 +11,6 @@
         amount: 1
       - id: MusicTapesBox
         amount: 1
-
-- type: entity
-  name: коробка с кассетами
-  parent: BoxBase
-  id: MusicTapesBox
-  components:
-  - type: Item
-    size: Large
-    shape: 
-    - 0,0,2,2
-  - type: Storage
-    whitelist:
-      components:
-        - MusicTape
-    maxItemSize: Small
-    grid:
-    - 0,0,5,7
-  - type: Sprite
-    state: box
-  - type: StorageFill
-    contents:
       - id: MusicTape3
         amount: 1
       - id: MusicTape20
