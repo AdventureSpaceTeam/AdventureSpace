@@ -1,0 +1,9 @@
+- type: cargoProduct
+  id: MusicTapes
+  icon:
+    sprite: _Alteros/Entities/Objects/Devices/radio.rsi
+    state: radio
+  product: CrateMusicTapes
+  cost: 560
+  category: Service
+  group: market
