@@ -1,0 +1,44 @@
+- type: entity
+  id: CrateMusicTapes
+  parent: CrateGenericSteel
+  name: музыкальная коробка
+  components:
+  - type: StorageFill
+    contents:
+      - id: AdventureRadio
+        amount: 1
+      - id: TapePlayer
+        amount: 1
+      - id: MusicTapesBox
+        amount: 1
+
+- type: entity
+  name: коробка с кассетами
+  parent: BoxBase
+  id: MusicTapesBox
+  components:
+  - type: Item
+    size: Large
+    shape: 
+    - 0,0,2,2
+  - type: Storage
+    whitelist:
+      components:
+        - MusicTape
+    maxItemSize: Small
+    grid:
+    - 0,0,5,7
+  - type: Sprite
+    state: box
+  - type: StorageFill
+    contents:
+      - id: MusicTape3
+        amount: 1
+      - id: MusicTape20
+        amount: 1
+      - id: MusicTape18
+        amount: 1
+      - id: MusicTape19
+        amount: 1
+      - id: MusicTape2
+        amount: 1
