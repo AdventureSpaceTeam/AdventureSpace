@@ -77,7 +77,6 @@
   sex: Male
   speaker: sentrybot
   roundStart: false
-  borgVoice: true
 
 - type: ttsVoice
   id: Mana
@@ -109,7 +108,6 @@
   sex: Male
   speaker: adventure_core
   roundStart: false
-  borgVoice: true
 
 - type: ttsVoice
   id: SpaceCore
@@ -117,7 +115,6 @@
   sex: Male
   speaker: space_core
   roundStart: false
-  borgVoice: true
 
 - type: ttsVoice
   id: FactCore
@@ -125,7 +122,6 @@
   sex: Male
   speaker: fact_core
   roundStart: false
-  borgVoice: true
 
 - type: ttsVoice
   id: Kleiner
@@ -241,7 +237,6 @@
   sex: Female
   speaker: turret_floor
   roundStart: false
-  borgVoice: true
 
 - type: ttsVoice
   id: Cirilla
@@ -429,7 +424,6 @@
   sex: Male
   speaker: officer_enclave
   roundStart: false
-  borgVoice: true
 
 - type: ttsVoice
   id: Richardson
