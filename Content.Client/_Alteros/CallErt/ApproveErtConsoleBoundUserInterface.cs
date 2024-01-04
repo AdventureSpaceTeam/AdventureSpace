@@ -26,6 +26,7 @@ public sealed class ApproveErtConsoleBoundUserInterface : BoundUserInterface
         _menu.ApproveErt += ApproveErt;
         _menu.DenyErt += DenyErt;
         _menu.OpenCentered();
+        SendMessage(new CallErtConsoleUpdateMessage());
     }
 
     private void ApproveErt(int indexGroup)
@@ -74,4 +75,3 @@ public sealed class ApproveErtConsoleBoundUserInterface : BoundUserInterface
         _menu?.Dispose();
     }
 }
-

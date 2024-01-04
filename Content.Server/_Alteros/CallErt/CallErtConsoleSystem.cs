@@ -26,10 +26,12 @@ public sealed class CallErtConsoleSystem : EntitySystem
         SubscribeLocalEvent<RefreshCallErtConsoleEvent>(OnRefreshCallErtConsole);
         SubscribeLocalEvent<CallErtConsoleComponent, CallErtConsoleCallErtMessage>(OnCallErtMessage);
         SubscribeLocalEvent<CallErtConsoleComponent, CallErtConsoleRecallErtMessage>(OnRecallErtMessage);
+        SubscribeLocalEvent<CallErtConsoleComponent, CallErtConsoleUpdateMessage>(OnUpdateCallErtConsoleMessage);
         SubscribeLocalEvent<CallErtConsoleComponent, CallErtConsoleSelectErtMessage>(OnSelectErtMessage);
         SubscribeLocalEvent<ApproveErtConsoleComponent, CallErtConsoleApproveErtMessage>(OnApproveErtMessage);
         SubscribeLocalEvent<ApproveErtConsoleComponent, CallErtConsoleDenyErtMessage>(OnDenyErtMessage);
         SubscribeLocalEvent<ApproveErtConsoleComponent, CallErtConsoleToggleAutomateApproveErtMessage>(OnToggleAutomateApproveErtMessage);
+        SubscribeLocalEvent<ApproveErtConsoleComponent, CallErtConsoleUpdateMessage>(OnUpdateApproveErtConsoleMessage);
         SubscribeLocalEvent<ApproveErtConsoleComponent, CallErtConsoleSelectStationMessage>(OnSelectStatioMessage);
     }
 
@@ -116,6 +118,20 @@ public sealed class CallErtConsoleSystem : EntitySystem
         }
 
         UpdateApproveConsoleInterface(uid, comp);
+    }
+
+    private void OnUpdateCallErtConsoleMessage(EntityUid uid, CallErtConsoleComponent comp,
+                                             CallErtConsoleUpdateMessage message)
+    {
+        if (_ui.TryGetUi(uid, CallErtConsoleUiKey.Key, out var ui) && ui.SubscribedSessions.Count > 0)
+            UpdateCallConsoleInterface(uid, comp, ui);
+    }
+
+    private void OnUpdateApproveErtConsoleMessage(EntityUid uid, ApproveErtConsoleComponent comp,
+                                                CallErtConsoleUpdateMessage message)
+    {
+        if (_ui.TryGetUi(uid, ApproveErtConsoleUiKey.Key, out var ui) && ui.SubscribedSessions.Count > 0)
+            UpdateApproveConsoleInterface(uid, comp, ui);
     }
 
     public override void Update(float frameTime)
@@ -315,4 +331,3 @@ public sealed class CallErtConsoleSystem : EntitySystem
         _ui.SetUiState(ui, state);
     }
 }
-
