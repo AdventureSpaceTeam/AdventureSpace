@@ -210,7 +210,8 @@ namespace Content.Server.Communications
         {
             if (!_playerManager.TryGetSessionById(message.NetId, out var session))
                 return;
-            _uiSystem.TryOpen(uid, CallErtConsoleUiKey.Key, session);
+            if (_uiSystem.TryGetUi(uid, CallErtConsoleUiKey.Key, out var ui))
+                _uiSystem.OpenUi(ui, session);
         }
 
         private void OnSelectAlertLevelMessage(EntityUid uid, CommunicationsConsoleComponent comp, CommunicationsConsoleSelectAlertLevelMessage message)
