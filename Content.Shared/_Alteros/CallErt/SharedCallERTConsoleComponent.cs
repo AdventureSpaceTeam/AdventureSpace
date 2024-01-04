@@ -72,6 +72,15 @@ namespace Content.Shared.CallErt
     }
 
     [Serializable, NetSerializable]
+    public sealed class CallErtConsoleUpdateMessage : BoundUserInterfaceMessage
+    {
+        public CallErtConsoleUpdateMessage()
+        {
+        }
+    }
+
+
+    [Serializable, NetSerializable]
     public sealed class CallErtConsoleRecallErtMessage : BoundUserInterfaceMessage
     {
         public readonly int IndexGroup;

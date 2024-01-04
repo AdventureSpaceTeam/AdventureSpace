@@ -30,6 +30,8 @@ public sealed class CallErtConsoleBoundUserInterface : BoundUserInterface
         _menu.OnClose += Close;
         _menu.RecallErt += RecallErt;
         _menu.OpenCentered();
+
+        SendMessage(new CallErtConsoleUpdateMessage());
     }
 
     private void CallErt()
@@ -93,4 +95,3 @@ public sealed class CallErtConsoleBoundUserInterface : BoundUserInterface
         _menu?.Dispose();
     }
 }
-
