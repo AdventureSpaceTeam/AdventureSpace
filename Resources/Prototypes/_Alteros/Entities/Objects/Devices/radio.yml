@@ -13,6 +13,6 @@
     sprite: _Alteros/Entities/Objects/Devices/radio.rsi
     heldPrefix: radio
   - type: TapePlayer
-    volume: 0
+    volume: -2
     rolloffFactor: 1
-    maxDistance: 20
+    maxDistance: 13
