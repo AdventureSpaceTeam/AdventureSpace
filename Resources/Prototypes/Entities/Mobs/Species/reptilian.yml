@@ -23,7 +23,6 @@
     requiredLegs: 2
   - type: Inventory # Corvax-Digitigrade
     speciesId: digi
-  - type: Perishable
   - type: Butcherable
     butcheringType: Spike
     spawned:

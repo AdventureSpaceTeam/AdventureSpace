@@ -32,6 +32,7 @@
       - id: FlashlightSeclite
       - id: WeaponDisabler
         prob: 0.3
+      - id: ClothingHeadHatCapWardenAlt # Corvax-SecFashion
       - id: ClothingBeltSecurityFilled
       - id: Flash
       - id: ClothingEyesGlassesSunglasses
