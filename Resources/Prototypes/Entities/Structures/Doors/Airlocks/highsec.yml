@@ -59,6 +59,7 @@
   - type: Airlock
   - type: DoorBolt
   - type: AccessReader
+    containerAccessProvider: board
   - type: Appearance
   - type: WiresVisuals
   - type: ApcPowerReceiver

@@ -3,6 +3,8 @@ using Content.Shared.Containers.ItemSlots;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.List;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Access.Components;
 
@@ -42,7 +44,7 @@ public sealed partial class IdCardConsoleComponent : Component
     // Put this on shared so we just send the state once in PVS range rather than every time the UI updates.
 
     [DataField, AutoNetworkedField]
-    public List<ProtoId<AccessLevelPrototype>> AccessLevels = new()
+    public List<string> AccessLevels = new()
     {
         "Armory",
         "Atmospherics",
