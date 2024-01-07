@@ -435,9 +435,6 @@
   id: DoorBumpOpener
 
 - type: Tag
-  id: DoorElectronics
-
-- type: Tag
   id: DonkPocket
 
 - type: Tag
