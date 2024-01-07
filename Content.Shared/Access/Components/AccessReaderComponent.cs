@@ -102,3 +102,10 @@ public sealed class AccessReaderComponentState : ComponentState
         AccessLogLimit = accessLogLimit;
     }
 }
+
+public sealed class AccessReaderConfigurationChangedEvent : EntityEventArgs
+{
+    public AccessReaderConfigurationChangedEvent()
+    {
+    }
+}
