@@ -6,8 +6,10 @@ using Content.Server.Maps;
 using Content.Shared.CCVar;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
+using Robust.Shared.GameObjects;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using Content.Server._c4llv07e;
 
 namespace Content.Server._DTS;
 
@@ -20,7 +22,7 @@ public sealed class DTSMapManager : IGameMapManager, IEntityEventSubscriber
     [Dependency] private readonly IConfigurationManager _configurationManager = default!;
     [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
-
+    [Dependency] private readonly MapSystem _mapSystem = default!;
 
     [ViewVariables(VVAccess.ReadOnly)]
     private readonly Queue<string> _previousMaps = new();
@@ -37,14 +39,12 @@ public sealed class DTSMapManager : IGameMapManager, IEntityEventSubscriber
     [ViewVariables(VVAccess.ReadOnly)]
     private bool _disableMapRepetition;
     //DTS-EDIT END
-    private string? _previousMap = string.Empty;
 
     private ISawmill _log = default!;
 
     public void Initialize()
     {
         _log = Logger.GetSawmill("mapsel");
-        _entityManager.EventBus.SubscribeEvent<MainStationMapSelected>(EventSource.Local, this, OnMainMapSelected);
         _configurationManager.OnValueChanged(CCVars.GameMap, value =>
         {
             if (TryLookupMap(value, out GameMapPrototype? map))
@@ -83,11 +83,6 @@ public sealed class DTSMapManager : IGameMapManager, IEntityEventSubscriber
                 break;
             _previousMaps.Enqueue(map.ID);
         }
-    }
-
-    private void OnMainMapSelected(MainStationMapSelected ev)
-    {
-        _previousMap = ev.MainStation.MapName;
     }
 
     public IEnumerable<GameMapPrototype> CurrentlyEligibleMaps()
@@ -187,7 +182,7 @@ public sealed class DTSMapManager : IGameMapManager, IEntityEventSubscriber
 
     private bool IsMapEligible(GameMapPrototype map)
     {
-        if (_disableMapRepetition && _previousMap == map.MapName)
+        if (_disableMapRepetition && _mapSystem.GetPreviousMap() == map.MapName)
         {
             return false;
         }

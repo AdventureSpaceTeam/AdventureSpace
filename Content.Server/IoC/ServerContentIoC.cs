@@ -1,4 +1,5 @@
 using Content.Server._DTS;
+using Content.Server._c4llv07e;
 using Content.Server.Administration;
 using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
@@ -49,6 +50,7 @@ namespace Content.Server.IoC
             IoCManager.Register<IVoteManager, VoteManager>();
             IoCManager.Register<IPlayerLocator, PlayerLocator>();
             IoCManager.Register<IAfkManager, AfkManager>();
+            IoCManager.Register<MapSystem, MapSystem>(); // c4llv07e edit
             IoCManager.Register<IGameMapManager, DTSMapManager>(); // DTS EDIT
             IoCManager.Register<RulesManager, RulesManager>();
             IoCManager.Register<IBanManager, BanManager>();
