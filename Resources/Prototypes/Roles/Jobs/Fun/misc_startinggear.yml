@@ -299,7 +299,7 @@
     head: ClothingHeadHatFedoraBrown
     neck: ClothingNeckScarfStripedBrown
     belt: ClothingBeltStorageWaistbag
-    outerClothing: ClothingOuterCoatGentle
+    outerClothing: ClothingOuterCoatTrench
     ears: ClothingHeadsetGrey
   innerClothingSkirt: ClothingUniformJumpskirtColorGrey
 
