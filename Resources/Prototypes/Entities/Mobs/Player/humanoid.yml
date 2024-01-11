@@ -64,6 +64,7 @@
     - type: GhostTakeoverAvailable
     - type: Loadout
       prototypes: [ ERTLeaderGear ]
+    - type: RandomHumanoidAppearance
     - type: RandomMetadata
       nameSegments:
       - NamesFirstMilitaryLeader
