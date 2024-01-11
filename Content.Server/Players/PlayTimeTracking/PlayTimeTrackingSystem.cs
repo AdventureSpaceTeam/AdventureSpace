@@ -65,7 +65,8 @@ public sealed class PlayTimeTrackingSystem : EntitySystem
 
     private bool IsBypassingChecks(ICommonSession player)
     {
-        return _adminManager.IsAdmin(player, true);
+        return false;
+        // return _adminManager.IsAdmin(player, true);
     }
 
     private void CalcTrackers(ICommonSession player, HashSet<string> trackers)
