@@ -46,6 +46,7 @@
     solution: injector
   - type: SolutionInjectOnCollide
     transferAmount: 8
+    fixtureId: "throw-fixture"
     blockSlots: NONE
   - type: MeleeChemicalInjector
     solution: injector
