@@ -3,7 +3,6 @@ using Content.Client.CrewManifest;
 using Content.Client.GameTicking.Managers;
 using Content.Client.UserInterface.Controls;
 using Content.Client.Players.PlayTimeTracking;
-using Content.Corvax.Interfaces.Client;
 using Content.Shared.CCVar;
 using Content.Shared.Roles;
 using Content.Shared.StatusIcon;
@@ -253,10 +252,8 @@ namespace Content.Client.LateJoin
                         category.AddChild(jobButton);
 
                         jobButton.OnPressed += _ => SelectedId.Invoke((id, jobButton.JobId));
-                        var sponsors = IoCManager.Resolve<IClientSponsorsManager>(); // Alteros-Sponsors
 
-                        if (!_jobRequirements.IsAllowed(prototype, out var reason) &&
-                            !sponsors.Prototypes.Contains(prototype.ID))
+                        if (!_jobRequirements.IsAllowed(prototype, out var reason))
                         {
                             jobButton.Disabled = true;
 

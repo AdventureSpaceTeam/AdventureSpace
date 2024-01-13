@@ -1,4 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using Content.Client.Administration.Managers;
+using Content.Corvax.Interfaces.Client;
 using Content.Shared.CCVar;
 using Content.Shared.Players;
 using Content.Shared.Players.PlayTimeTracking;
@@ -20,6 +22,7 @@ public sealed class JobRequirementsManager
     [Dependency] private readonly IEntityManager _entManager = default!;
     [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly IPrototypeManager _prototypes = default!;
+    [Dependency] private readonly IClientAdminManager _adminManager = default!;
 
     private readonly Dictionary<string, TimeSpan> _roles = new();
     private readonly List<string> _roleBans = new();
@@ -78,9 +81,17 @@ public sealed class JobRequirementsManager
         Updated?.Invoke();
     }
 
+    private bool IsBypassedChecks()
+    {
+        return _adminManager.IsActive();
+    }
+
     public bool IsAllowed(JobPrototype job, [NotNullWhen(false)] out FormattedMessage? reason)
     {
         reason = null;
+
+        if (IsBypassedChecks())
+            return true;
 
         if (_roleBans.Contains($"Job:{job.ID}"))
         {
@@ -94,8 +105,12 @@ public sealed class JobRequirementsManager
             return true;
         }
 
-        var player = _playerManager.LocalPlayer?.Session;
+        var player = _playerManager.LocalSession;
         if (player == null)
+            return true;
+
+        var sponsors = IoCManager.Resolve<IClientSponsorsManager>(); // Alteros-Sponsors
+        if (sponsors.Prototypes.Contains(job.ID))
             return true;
 
         return CheckRoleTime(job.Requirements, out reason);
@@ -106,6 +121,9 @@ public sealed class JobRequirementsManager
         reason = null;
 
         if (requirements == null)
+            return true;
+
+        if (IsBypassedChecks())
             return true;
 
         var reasons = new List<string>();

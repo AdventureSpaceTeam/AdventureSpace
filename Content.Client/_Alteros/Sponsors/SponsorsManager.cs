@@ -26,6 +26,7 @@ public sealed class SponsorsManager : IClientSponsorsManager
         Prototypes.AddRange(message.Info.AllowedMarkings);
         Prototypes.AddRange(message.Info.AllowedSpecies);
         Prototypes.AddRange(message.Info.OpenRoles);
+        Prototypes.AddRange(message.Info.OpenGhostRoles);
         Prototypes.AddRange(message.Info.OpenAntags);
         PriorityJoin = message.Info.HavePriorityJoin;
         ExtraCharSlots = message.Info.ExtraSlots;
