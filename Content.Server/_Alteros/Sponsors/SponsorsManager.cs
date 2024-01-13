@@ -74,32 +74,6 @@ public sealed class SponsorsManager : IServerSponsorsManager
         return true;
     }
 
-    public NetUserId PickJobSession(HashSet<NetUserId> jobPlayerOption, string jobId)
-    {
-        var prioritySessions = PickPriorityJobSessions(jobPlayerOption, jobId);
-        var netUserId = _random.Pick(jobPlayerOption);
-        if (prioritySessions.Count != 0)
-        {
-            netUserId = _random.Pick(prioritySessions);
-        }
-
-        return netUserId;
-    }
-
-    private HashSet<NetUserId> PickPriorityJobSessions(HashSet<NetUserId> jobPlayerOption, string jobId)
-    {
-        HashSet<NetUserId> prioritySessions = new();
-        foreach (var netUserId in jobPlayerOption)
-        {
-            if (!TryGetPriorityRoles(netUserId, out var priorityRoles))
-                continue;
-            if (priorityRoles.Contains(jobId))
-                prioritySessions.Add(netUserId);
-        }
-
-        return prioritySessions;
-    }
-
     public ICommonSession PickSession(List<ICommonSession> sessions, string roleId)
     {
         var prioritySessions = PickPrioritySessions(sessions, roleId);
@@ -118,7 +92,7 @@ public sealed class SponsorsManager : IServerSponsorsManager
         List<ICommonSession> prioritySessions = new();
         foreach (var session in sessions)
         {
-            if (!TryGetPriorityRoles(session.UserId, out var priorityRoles))
+            if (!TryGetPriorityAntags(session.UserId, out var priorityRoles))
                 continue;
             if (priorityRoles.Contains(roleId))
                 prioritySessions.Add(session);
@@ -198,21 +172,21 @@ public sealed class SponsorsManager : IServerSponsorsManager
         prototypes = new List<string>();
         prototypes.AddRange(sponsor.AllowedMarkings);
         prototypes.AddRange(sponsor.AllowedSpecies);
-        prototypes.AddRange(sponsor.OpenRoles);
         prototypes.AddRange(sponsor.OpenAntags);
+        prototypes.AddRange(sponsor.OpenRoles);
+        prototypes.AddRange(sponsor.OpenGhostRoles);
 
         return true;
     }
 
-    public bool TryGetPriorityRoles(NetUserId userId, [NotNullWhen(true)]  out List<string>? priorityRoles)
+    public bool TryGetPriorityAntags(NetUserId userId, [NotNullWhen(true)]  out List<string>? priorityAntags)
     {
-        priorityRoles = null;
+        priorityAntags = null;
         if (!TryGetInfo(userId, out var sponsor))
             return false;
 
-        priorityRoles = new List<string>();
-        priorityRoles.AddRange(sponsor.PriorityRoles);
-        priorityRoles.AddRange(sponsor.PriorityAntags);
+        priorityAntags = new List<string>();
+        priorityAntags.AddRange(sponsor.PriorityAntags);
         return true;
     }
 

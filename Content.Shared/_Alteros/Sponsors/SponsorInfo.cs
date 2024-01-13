@@ -35,14 +35,14 @@ public sealed class SponsorInfo
     [JsonPropertyName("allowedSpecies")]
     public string[] AllowedSpecies { get; set; } = Array.Empty<string>();
 
-    [JsonPropertyName("openRoles")]
-    public string[] OpenRoles { get; set; } = Array.Empty<string>();
-
     [JsonPropertyName("openAntags")]
     public string[] OpenAntags { get; set; } = Array.Empty<string>();
 
-    [JsonPropertyName("priorityRoles")]
-    public string[] PriorityRoles { get; set; } = Array.Empty<string>();
+    [JsonPropertyName("openRoles")]
+    public string[] OpenRoles { get; set; } = Array.Empty<string>();
+
+    [JsonPropertyName("openGhostRoles")]
+    public string[] OpenGhostRoles { get; set; } = Array.Empty<string>();
 
     [JsonPropertyName("priorityAntags")]
     public string[] PriorityAntags { get; set; } = Array.Empty<string>();

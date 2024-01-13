@@ -20,8 +20,6 @@ public interface IServerSponsorsManager : ISharedSponsorsManager
 
     public ICommonSession PickSession(List<ICommonSession> sessions, string roleId);
 
-    NetUserId PickJobSession(HashSet<NetUserId> jobPlayerOption, string jobId);
-
     public void SetNextAllowRespawn(NetUserId userId, TimeSpan nextRespawnTime);
 
     public void AddUsedCharactersForRespawn(NetUserId userId, int usedCharacter);
