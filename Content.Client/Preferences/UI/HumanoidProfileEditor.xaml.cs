@@ -44,7 +44,7 @@ namespace Content.Client.Preferences.UI
         {
             PanelOverride = new StyleBoxFlat()
             {
-                BackgroundColor = new Color(47, 47, 53),
+                BackgroundColor = new Color(47, 47, 53).WithAlpha(0.5f),
                 ContentMarginTopOverride = 10,
                 ContentMarginBottomOverride = 10,
                 ContentMarginLeftOverride = 10,
@@ -118,7 +118,6 @@ namespace Content.Client.Preferences.UI
             _preferencesManager = preferencesManager;
             _configurationManager = configurationManager;
             _markingManager = IoCManager.Resolve<MarkingManager>();
-            _random = IoCManager.Resolve<IRobustRandom>();
 
             #region Left
 
@@ -593,9 +592,8 @@ namespace Content.Client.Preferences.UI
                 foreach (var job in jobs)
                 {
                     var selector = new JobPrioritySelector(job, _prototypeManager);
-                    var sponsors = IoCManager.Resolve<IClientSponsorsManager>(); // Alteros-Sponsors
 
-                    if (!_requirements.IsAllowed(job, out var reason) && !sponsors.Prototypes.Contains(job.ID))
+                    if (!_requirements.IsAllowed(job, out var reason))
                     {
                         selector.LockRequirements(reason);
                     }

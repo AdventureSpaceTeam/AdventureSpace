@@ -1,6 +1,7 @@
 using System.Linq;
 using Content.Client.Eui;
 using Content.Client.Players.PlayTimeTracking;
+using Content.Corvax.Interfaces.Client;
 using Content.Shared.Eui;
 using Content.Shared.Ghost.Roles;
 using JetBrains.Annotations;
@@ -71,9 +72,10 @@ namespace Content.Client.UserInterface.Systems.Ghost.Controls.Roles
             var sysManager = entityManager.EntitySysManager;
             var spriteSystem = sysManager.GetEntitySystem<SpriteSystem>();
             var requirementsManager = IoCManager.Resolve<JobRequirementsManager>();
+            var sponsors = IoCManager.Resolve<IClientSponsorsManager>(); // Alteros-Sponsors
 
             var groupedRoles = ghostState.GhostRoles.GroupBy(
-                role => (role.Name, role.Description, role.Requirements));
+                role => (role.Name, role.Description, role.Requirements, role.PrototypeId));
             foreach (var group in groupedRoles)
             {
                 var name = group.Key.Name;
@@ -83,7 +85,10 @@ namespace Content.Client.UserInterface.Systems.Ghost.Controls.Roles
 
                 if (!requirementsManager.CheckRoleTime(group.Key.Requirements, out reason))
                 {
-                    hasAccess = false;
+                    if (!sponsors.Prototypes.Contains(group.Key.PrototypeId))
+                    {
+                        hasAccess = false;
+                    }
                 }
 
                 _window.AddEntry(name, description, hasAccess, reason, group, spriteSystem);

@@ -263,8 +263,9 @@ namespace Content.Server.Ghost.Roles
             {
                 if (metaQuery.GetComponent(uid).EntityPaused)
                     continue;
+                var prototypeId = metaQuery.GetComponent(uid).EntityPrototype!.ID;
 
-                roles.Add(new GhostRoleInfo {Identifier = id, Name = role.RoleName, Description = role.RoleDescription, Rules = role.RoleRules, Requirements = role.Requirements});
+                roles.Add(new GhostRoleInfo {Identifier = id, PrototypeId = prototypeId, Name = role.RoleName, Description = role.RoleDescription, Rules = role.RoleRules, Requirements = role.Requirements});
             }
 
             return roles.ToArray();
