@@ -28,4 +28,11 @@ public sealed partial class DepartmentPrototype : IPrototype
     ///     Used in cases when job is in two or more departments and need to choose one.
     /// </summary>
     [DataField("sort")] public int Sort = default!;
+
+    /// <summary>
+    /// Whether this is a primary department or not.
+    /// For example, CE's primary department is engineering since Command has primary: false.
+    /// </summary>
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    public bool Primary = true;
 }
