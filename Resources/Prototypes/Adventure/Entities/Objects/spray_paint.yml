@@ -1,0 +1,18 @@
+- type: entity
+  id: SprayPaint
+  name: баллончик с краской
+  description: он способен менять цвет волос.
+  parent: BaseItem
+  components:
+  - type: Sprite
+    sprite: Adventure/spray_paint.rsi
+    state: icon
+  - type: MagicMirror
+    changeHairSound: /Audio/Adventure/Items/spray_paint.ogg
+  - type: ActivatableUI
+    key: enum.MagicMirrorUiKey.Key
+    closeOnHandDeselect: true
+  - type: UserInterface
+    interfaces:
+    - key: enum.MagicMirrorUiKey.Key
+      type: MagicMirrorBoundUserInterface
