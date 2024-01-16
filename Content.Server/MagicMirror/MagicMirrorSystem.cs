@@ -75,6 +75,7 @@ public sealed class MagicMirrorSystem : EntitySystem
     {
         if (!HasComp<HumanoidAppearanceComponent>(args.User))
             args.Cancel();
+        UpdateInterface(uid, args.User, mirror);
     }
 
     private void OnMagicMirrorSelect(EntityUid uid, MagicMirrorComponent component, MagicMirrorSelectMessage message)
@@ -82,7 +83,8 @@ public sealed class MagicMirrorSystem : EntitySystem
         if (component.Target is not { } target || message.Session.AttachedEntity is not { } user)
             return;
 
-        _doAfterSystem.Cancel(component.DoAfter);
+        if (_doAfterSystem.GetStatus(component.DoAfter) != DoAfterStatus.Invalid)
+            _doAfterSystem.Cancel(component.DoAfter);
         component.DoAfter = null;
 
         var doAfter = new MagicMirrorSelectDoAfterEvent()
@@ -160,6 +162,7 @@ public sealed class MagicMirrorSystem : EntitySystem
         }, out var doAfterId);
 
         component.DoAfter = doAfterId;
+        _audio.PlayPvs(component.ChangeHairSound, uid);
     }
     private void OnChangeColorDoAfter(EntityUid uid, MagicMirrorComponent component, MagicMirrorChangeColorDoAfterEvent args)
     {
