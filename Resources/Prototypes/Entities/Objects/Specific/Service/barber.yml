@@ -8,6 +8,7 @@
     sprite: Objects/Tools/scissors.rsi
     state: icon
   - type: MagicMirror
+    availableActions: Hair
   - type: ActivatableUI
     key: enum.MagicMirrorUiKey.Key
     closeOnHandDeselect: true

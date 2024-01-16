@@ -41,6 +41,14 @@ public sealed partial class MagicMirrorWindow : DefaultWindow
         HairPicker.UpdateData(state.Hair, state.Species, state.HairSlotTotal);
         FacialHairPicker.UpdateData(state.FacialHair, state.Species, state.FacialHairSlotTotal);
 
+        var colorAvailable = (state.AvailableActions == MagicMirrorActions.Color ||
+                              state.AvailableActions == MagicMirrorActions.All);
+        var hairAvailable = (state.AvailableActions == MagicMirrorActions.Hair ||
+                             state.AvailableActions == MagicMirrorActions.All);
+
+        HairPicker.SetActions(hairAvailable, colorAvailable);
+        FacialHairPicker.SetActions(hairAvailable, colorAvailable);
+
         if (!HairPicker.Visible && !FacialHairPicker.Visible)
         {
             AddChild(new Label { Text = Loc.GetString("magic-mirror-component-activate-user-has-no-hair") });

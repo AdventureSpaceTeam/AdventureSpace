@@ -86,16 +86,27 @@ public sealed class MagicMirrorAddSlotMessage : BoundUserInterfaceMessage
 }
 
 [Serializable, NetSerializable]
+public enum MagicMirrorActions : byte
+{
+    All = 0,
+    Hair,
+    Color,
+}
+
+[Serializable, NetSerializable]
 public sealed class MagicMirrorUiState : BoundUserInterfaceState
 {
-    public MagicMirrorUiState(string species, List<Marking> hair, int hairSlotTotal, List<Marking> facialHair, int facialHairSlotTotal)
+    public MagicMirrorUiState(string species, List<Marking> hair, int hairSlotTotal, List<Marking> facialHair, int facialHairSlotTotal, MagicMirrorActions actions)
     {
         Species = species;
         Hair = hair;
         HairSlotTotal = hairSlotTotal;
         FacialHair = facialHair;
         FacialHairSlotTotal = facialHairSlotTotal;
+        AvailableActions = actions;
     }
+
+    public MagicMirrorActions AvailableActions;
 
     public NetEntity Target;
 

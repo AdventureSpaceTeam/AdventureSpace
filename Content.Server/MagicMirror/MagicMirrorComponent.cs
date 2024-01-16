@@ -1,5 +1,6 @@
 using Content.Shared.DoAfter;
 using Content.Shared.Humanoid;
+using Content.Shared.MagicMirror;
 using Robust.Shared.Audio;
 
 namespace Content.Server.MagicMirror;
@@ -42,6 +43,12 @@ public sealed partial class MagicMirrorComponent : Component
     /// </summary>
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public TimeSpan ChangeSlotTime = TimeSpan.FromSeconds(1);
+
+    /// <summary>
+    /// type of actions that magic mirror can do
+    /// </summary>
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    public MagicMirrorActions AvailableActions = MagicMirrorActions.All;
 
     /// <summary>
     /// Sound emitted when slots are changed

@@ -207,6 +207,21 @@ public sealed partial class SingleMarkingPicker : BoxContainer
         }
     }
 
+    public void SetActions(bool hairAvailability, bool colorAvailability)
+    {
+        if (MarkingSelectorContainer.ChildCount != 2)
+            return;
+
+        var enumerator = MarkingSelectorContainer.Children.ToArray();
+        var hair = enumerator[0];
+        var color = enumerator[1];
+
+        hair.Visible = hairAvailability;
+        SlotSelectorContainer.Visible = hairAvailability;
+        Search.Visible = hairAvailability;
+        color.Visible = colorAvailability;
+    }
+
     private void PopulateColors()
     {
         if (_markings == null
