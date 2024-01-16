@@ -317,12 +317,15 @@ public sealed class MagicMirrorSystem : EntitySystem
             ? new List<Marking>(facialHairMarkings)
             : new();
 
+        var actions = component.AvailableActions;
+
         var state = new MagicMirrorUiState(
             humanoid.Species,
             hair,
             humanoid.MarkingSet.PointsLeft(MarkingCategories.Hair) + hair.Count,
             facialHair,
-            humanoid.MarkingSet.PointsLeft(MarkingCategories.FacialHair) + facialHair.Count);
+            humanoid.MarkingSet.PointsLeft(MarkingCategories.FacialHair) + facialHair.Count,
+            actions);
 
         component.Target = targetUid;
         _uiSystem.TrySetUiState(mirrorUid, MagicMirrorUiKey.Key, state);

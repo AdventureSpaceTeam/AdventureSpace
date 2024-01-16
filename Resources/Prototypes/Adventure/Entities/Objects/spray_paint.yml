@@ -9,6 +9,7 @@
     state: icon
   - type: MagicMirror
     changeHairSound: /Audio/Adventure/Items/spray_paint.ogg
+    availableActions: Color
   - type: ActivatableUI
     key: enum.MagicMirrorUiKey.Key
     closeOnHandDeselect: true
