@@ -253,10 +253,23 @@ public sealed partial class SingleMarkingPicker : BoxContainer
             selector.OnColorChanged += color =>
             {
                 marking.SetColor(colorIndex, color);
+            };
+
+            var button = new Button
+            {
+                Name = $"SelectColorButton{i}",
+                Text = "Выбрать цвет",
+                ToggleMode = false,
+                HorizontalExpand = true,
+            };
+
+            button.OnPressed += args =>
+            {
                 OnColorChanged!((_slot, marking));
             };
 
             ColorSelectorContainer.AddChild(selector);
+            ColorSelectorContainer.AddChild(button);
         }
     }
 
