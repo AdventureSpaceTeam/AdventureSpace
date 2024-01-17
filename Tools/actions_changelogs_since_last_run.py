@@ -42,9 +42,6 @@ def main():
     most_recent = get_most_recent_workflow(session)
     last_sha = most_recent['head_commit']['id']
     print(f"Last successful publish job was {most_recent['id']}: {last_sha}")
-    last_changelog = yaml.safe_load(get_last_changelog(session, last_sha))
-    with open(CHANGELOG_FILE, "r") as f:
-        cur_changelog = yaml.safe_load(f)
 
     # Corvax-MultiChangelog-Start
     for changelog_file in CHANGELOG_FILES:
@@ -126,7 +123,7 @@ def send_to_discord(entries: Iterable[ChangelogEntry]) -> None:
                 emoji = TYPES_TO_EMOJI.get(change['type'], "❓")
                 message = change['message']
                 url = entry.get("url")
-<<<<<<< HEAD
+                count += 1
                 # Corvax-Localization-Start
                 TRANSLATION_API_URL = os.environ.get("TRANSLATION_API_URL")
                 if TRANSLATION_API_URL:
@@ -137,23 +134,17 @@ def send_to_discord(entries: Iterable[ChangelogEntry]) -> None:
                     })
                     message = resp.json()['data']
                 # Corvax-Localization-End
-=======
-                count += 1
->>>>>>> wiz/master
                 if url and url.strip():
                     content.write(f"{emoji} [-]({url}) {message}\n")
                 else:
                     content.write(f"{emoji} - {message}\n")
-<<<<<<< HEAD
         content.write(f"\n") # Corvax: Better formatting
-=======
 
     if count == 0:
         print("Skipping discord push as no changelog entries found")
         return
 
     print(f"Posting {count} changelog entries to discord webhook")
->>>>>>> wiz/master
 
     content.seek(0) # Corvax
     for chunk in iter(lambda: content.read(2000), ''): # Corvax: Split big changelogs messages
@@ -167,12 +158,8 @@ def send_to_discord(entries: Iterable[ChangelogEntry]) -> None:
             "flags": 1 << 2
         }
 
-<<<<<<< HEAD
-        requests.post(DISCORD_WEBHOOK_URL, json=body)
-=======
-    response = requests.post(DISCORD_WEBHOOK_URL, json=body)
-    response.raise_for_status()
->>>>>>> wiz/master
+        response = requests.post(DISCORD_WEBHOOK_URL, json=body)
+        response.raise_for_status()
 
 
 main()
