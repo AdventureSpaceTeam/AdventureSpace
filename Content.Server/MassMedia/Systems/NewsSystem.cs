@@ -33,15 +33,12 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Player;
 using Robust.Shared.Timing;
-using Content.Shared.CCVar;
-using Robust.Shared.Configuration;
 
 namespace Content.Server.MassMedia.Systems;
 
 public sealed class NewsSystem : SharedNewsSystem
 {
     [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly IConfigurationManager _cfg = default!;
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
     [Dependency] private readonly RingerSystem _ringer = default!;
     [Dependency] private readonly CartridgeLoaderSystem _cartridgeLoaderSystem = default!;

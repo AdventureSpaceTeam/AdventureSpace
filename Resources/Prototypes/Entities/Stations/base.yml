@@ -48,7 +48,7 @@
       groups:
         mining:
           paths:
-          - /Maps/Shuttles/mining.yml
+          - /Maps/Shuttles/corvax_mining.yml # Corvax-Mapping
         ruins:
           hide: true
           nameGrid: true
