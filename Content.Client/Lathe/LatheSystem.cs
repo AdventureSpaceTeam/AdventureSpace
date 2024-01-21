@@ -31,9 +31,11 @@ public sealed class LatheSystem : SharedLatheSystem
         // Lathe specific stuff
         if (_appearance.TryGetData<bool>(uid, LatheVisuals.IsRunning, out var isRunning, args.Component))
         {
-            var state = isRunning ? component.RunningState : component.IdleState;
-            args.Sprite.LayerSetAnimationTime(LatheVisualLayers.IsRunning, 0f);
-            args.Sprite.LayerSetState(LatheVisualLayers.IsRunning, state);
+            if (component.RunningState != null && component.IdleState != null) {
+                var state = isRunning ? component.RunningState : component.IdleState;
+                args.Sprite.LayerSetAnimationTime(LatheVisualLayers.IsRunning, 0f);
+                args.Sprite.LayerSetState(LatheVisualLayers.IsRunning, state);
+            }
         }
     }
 

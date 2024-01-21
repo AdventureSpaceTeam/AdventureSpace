@@ -277,7 +277,10 @@ public abstract class SharedMaterialStorageSystem : EntitySystem
             _prototype.TryIndex<MaterialPrototype>(composition.MaterialComposition.Keys.First(), out var lastMat);
             insertingComp.MaterialColor = lastMat?.Color;
         }
-        _appearance.SetData(receiver, MaterialStorageVisuals.Inserting, true);
+        if (storage.UseInsertingAnimation != null)
+        {
+            _appearance.SetData(receiver, MaterialStorageVisuals.Inserting, true);
+        }
         Dirty(receiver, insertingComp);
 
         var ev = new MaterialEntityInsertedEvent(material);

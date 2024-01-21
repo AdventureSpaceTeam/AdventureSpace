@@ -1,0 +1,28 @@
+- type: entity
+  name: Заявление об желании стать боргом
+  parent: Paper
+  id: DocumentToBecomeBorg
+  description: Заявление разумного существа о желании стать киборгом
+  components:
+  - type: Paper
+    content: |
+             =======================================
+             =  ЗАЯВЛЕНИЕ ОБ ЖЕЛАНИИ СТАТЬ БОРГОМ  =
+             =======================================
+             Кто:
+             Зачем:
+             -- место для подписей --
+
+- type: latheRecipe
+  id: DocumentToBecomeBorg
+  result: DocumentToBecomeBorg
+  completetime: 1
+  materials:
+    Paper: 10
+
+- type: latheRecipe
+  id: Document
+  result: Paper
+  completetime: 1
+  materials:
+    Paper: 10

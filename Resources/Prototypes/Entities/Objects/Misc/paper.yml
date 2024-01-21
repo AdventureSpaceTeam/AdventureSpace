@@ -24,6 +24,10 @@
       type: PaperBoundUserInterface
   - type: Item
     size: Tiny
+  - type: Material
+  - type: PhysicalComposition
+    materialComposition:
+      Paper: 10
   - type: Tag
     tags:
     - Document
