@@ -239,11 +239,11 @@ public sealed class StatsBoardSystem : EntitySystem
             return;
         if (ev.DamageIncreased)
         {
-            _statisticEntries[uid].TotalTakeDamage += ev.DamageDelta.Total.Int();
+            _statisticEntries[uid].TotalTakeDamage += ev.DamageDelta.GetTotal().Int();
         }
         else
         {
-            _statisticEntries[uid].TotalTakeHeal += Math.Abs(ev.DamageDelta.Total.Int());
+            _statisticEntries[uid].TotalTakeHeal += Math.Abs(ev.DamageDelta.GetTotal().Int());
         }
 
         if (ev.Origin != null)
@@ -254,11 +254,11 @@ public sealed class StatsBoardSystem : EntitySystem
             }
             if (ev.DamageIncreased)
             {
-                _statisticEntries[ev.Origin.Value].TotalInflictedDamage += ev.DamageDelta.Total.Int();
+                _statisticEntries[ev.Origin.Value].TotalInflictedDamage += ev.DamageDelta.GetTotal().Int();
             }
             else
             {
-                _statisticEntries[ev.Origin.Value].TotalInflictedHeal += Math.Abs(ev.DamageDelta.Total.Int());
+                _statisticEntries[ev.Origin.Value].TotalInflictedHeal += Math.Abs(ev.DamageDelta.GetTotal().Int());
             }
         }
     }
