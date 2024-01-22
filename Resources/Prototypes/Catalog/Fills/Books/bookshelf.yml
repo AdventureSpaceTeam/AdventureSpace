@@ -71,6 +71,7 @@
         prob: 0.1
       - id: BookBusido # Corvax-Books
         prob: 0.1
+        orGroup: BookPool
       - id: BookSpaceEncyclopedia
         orGroup: BookPool
       - id: BookTheBookOfControl
