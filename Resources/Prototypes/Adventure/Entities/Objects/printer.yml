@@ -1,3 +1,10 @@
+- type: latheRecipe
+  id: Document
+  result: Paper
+  completetime: 1
+  materials:
+    Paper: 10
+
 - type: entity
   id: Printer
   parent: [ BaseMachinePowered, ConstructibleMachine ]
@@ -25,7 +32,60 @@
     # runningState: building
     staticRecipes:
       - Document
-      - DocumentToBecomeBorg
+      - Document0
+      - Document1
+      - Document2
+      - Document3
+      - Document4
+      - Document5
+      - Document6
+      - Document7
+      - Document8
+      - Document9
+      - Document10
+      - Document11
+      - Document12
+      - Document13
+      - Document14
+      - Document15
+      - Document16
+      - Document17
+      - Document18
+      - Document19
+      - Document20
+      - Document21
+      - Document22
+      - Document23
+      - Document24
+      - Document25
+      - Document26
+      - Document27
+      - Document28
+      - Document29
+      - Document30
+      - Document31
+      - Document32
+      - Document33
+      - Document34
+      - Document35
+      - Document36
+      - Document37
+      - Document38
+      - Document39
+      - Document40
+      - Document41
+      - Document42
+      - Document43
+      - Document44
+      - Document45
+      - Document46
+      - Document47
+      - Document48
+      - Document49
+      - Document50
+      - Document51
+      - Document52
+      - Document53
   - type: Appearance
   - type: Fixtures
     fixtures:
