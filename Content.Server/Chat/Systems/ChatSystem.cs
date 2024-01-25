@@ -444,8 +444,6 @@ public sealed partial class ChatSystem : SharedChatSystem
             name = $"[color={comp.SpeakerColor.ToHex()}]{name}[/color]";
         // Corvax-SpeakerColor-End
 
-        var speech = GetSpeechVerb(source, message);
-
         var wrappedMessage = Loc.GetString(speech.Bold ? "chat-manager-entity-say-bold-wrap-message" : "chat-manager-entity-say-wrap-message",
             ("entityName", name),
             ("verb", Loc.GetString(_random.Pick(speech.SpeechVerbStrings))),
