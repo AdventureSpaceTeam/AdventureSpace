@@ -3,7 +3,7 @@
   result: Paper
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 - type: entity
   id: Printer
