@@ -179,7 +179,7 @@ namespace Content.Server.Preferences.Managers
         // Should only be called via UserDbDataManager.
         public async Task LoadData(ICommonSession session, CancellationToken cancel)
         {
-            if (!ShouldStorePrefs(session.ConnectedClient.AuthType))
+            if (!ShouldStorePrefs(session.Channel.AuthType))
             {
                 // Don't store data for guests.
                 var prefsData = new PlayerPrefData
@@ -225,7 +225,7 @@ namespace Content.Server.Preferences.Managers
                     if (msg.Preferences.SelectedCharacterIndex > GetMaxUserCharacterSlots(session.UserId))
                         msg.Preferences.SelectedCharacterIndex = prefs.Characters.FirstOrDefault().Key;
                     // Alteros-Sponsor-end
-                    _netManager.ServerSendMessage(msg, session.ConnectedClient);
+                    _netManager.ServerSendMessage(msg, session.Channel);
                 }
             }
         }
