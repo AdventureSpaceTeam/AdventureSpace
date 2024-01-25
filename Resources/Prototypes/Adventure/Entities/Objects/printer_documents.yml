@@ -31,14 +31,15 @@
              • Состояние Медицинского отдела:
              • Общее состояние станции:
              • Дополнительное сообщение (оставить пустым при отсутствии сообщения):
-             ╙———————————————————————————╜
-             [italic]ПРИМЕЧАНИЕ: Данная документация обязана быть предоставлена только Центральному Командованию или командующему персоналу станции. При получении данного документа сотрудником персонала станции не руководящей должности, последний обязан передать документ любому сотруднику командующего персонала станции. Подотчётное лицо подтверждает достоверность информации, указанной в отчёте. При получении недостоверных данных о ситуации на станции, к подотчётному лицу могут быть применены санкции.[/italic] [bold] ————————<Место для печатей>————————[/bold] ▶ ◀
+             ╙———————————————————————————╜[italic]ПРИМЕЧАНИЕ: Данная документация обязана быть предоставлена только Центральному Командованию или командующему персоналу станции. При получении данного документа сотрудником персонала станции не руководящей должности, последний обязан передать документ любому сотруднику командующего персонала станции. Подотчётное лицо подтверждает достоверность информации, указанной в отчёте. При получении недостоверных данных о ситуации на станции, к подотчётному лицу могут быть применены санкции.[/italic]
+             [bold]   ————————<Место для печатей>————————[/bold]
+             ▶                                                                                                            ◀
 - type: latheRecipe
   id: Document0
   result: Document0
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 
 - type: entity
@@ -77,7 +78,7 @@
   result: Document1
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 
 - type: entity
@@ -117,7 +118,7 @@
   result: Document2
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 
 - type: entity
@@ -159,7 +160,7 @@
   result: Document3
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 
 - type: entity
@@ -201,7 +202,7 @@
   result: Document4
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 
 - type: entity
@@ -243,7 +244,7 @@
   result: Document5
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 
 - type: entity
@@ -282,7 +283,7 @@
   result: Document6
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 
 - type: entity
@@ -323,7 +324,7 @@
   result: Document7
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 
 - type: entity
@@ -364,7 +365,7 @@
   result: Document8
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 
 - type: entity
@@ -404,7 +405,7 @@
   result: Document9
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 
 - type: entity
@@ -442,7 +443,7 @@
   result: Document10
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 
 - type: entity
@@ -481,7 +482,7 @@
   result: Document11
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 
 - type: entity
@@ -522,7 +523,7 @@
   result: Document12
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 
 - type: entity
@@ -563,7 +564,7 @@
   result: Document13
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 
 - type: entity
@@ -602,7 +603,7 @@
   result: Document14
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 
 - type: entity
@@ -641,7 +642,7 @@
   result: Document15
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 
 - type: entity
@@ -679,7 +680,7 @@
   result: Document16
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 
 - type: entity
@@ -720,7 +721,7 @@
   result: Document17
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 
 - type: entity
@@ -760,7 +761,7 @@
   result: Document18
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 
 - type: entity
@@ -798,7 +799,7 @@
   result: Document19
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 
 - type: entity
@@ -838,7 +839,7 @@
   result: Document20
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 
 - type: entity
@@ -878,7 +879,7 @@
   result: Document21
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 
 - type: entity
@@ -920,7 +921,7 @@
   result: Document22
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 
 - type: entity
@@ -961,7 +962,7 @@
   result: Document23
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 
 - type: entity
@@ -1005,7 +1006,7 @@
   result: Document24
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 
 - type: entity
@@ -1044,7 +1045,7 @@
   result: Document25
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 
 - type: entity
@@ -1085,7 +1086,7 @@
   result: Document26
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 
 - type: entity
@@ -1123,7 +1124,7 @@
   result: Document27
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 
 - type: entity
@@ -1164,7 +1165,7 @@
   result: Document28
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 
 - type: entity
@@ -1200,7 +1201,7 @@
   result: Document29
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 
 - type: entity
@@ -1236,7 +1237,7 @@
   result: Document30
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 
 - type: entity
@@ -1279,7 +1280,7 @@
   result: Document31
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 
 - type: entity
@@ -1319,7 +1320,7 @@
   result: Document32
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 
 - type: entity
@@ -1362,7 +1363,7 @@
   result: Document33
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 
 - type: entity
@@ -1402,7 +1403,7 @@
   result: Document34
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 
 - type: entity
@@ -1443,7 +1444,7 @@
   result: Document35
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 
 - type: entity
@@ -1484,7 +1485,7 @@
   result: Document36
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 
 - type: entity
@@ -1524,7 +1525,7 @@
   result: Document37
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 
 - type: entity
@@ -1563,7 +1564,7 @@
   result: Document38
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 
 - type: entity
@@ -1604,7 +1605,7 @@
   result: Document39
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 
 - type: entity
@@ -1643,7 +1644,7 @@
   result: Document40
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 
 - type: entity
@@ -1682,7 +1683,7 @@
   result: Document41
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 
 - type: entity
@@ -1724,7 +1725,7 @@
   result: Document42
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 
 - type: entity
@@ -1763,7 +1764,7 @@
   result: Document43
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 
 - type: entity
@@ -1801,7 +1802,7 @@
   result: Document44
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 
 - type: entity
@@ -1839,7 +1840,7 @@
   result: Document45
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 
 - type: entity
@@ -1881,7 +1882,7 @@
   result: Document46
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 
 - type: entity
@@ -1920,7 +1921,7 @@
   result: Document47
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 
 - type: entity
@@ -1962,7 +1963,7 @@
   result: Document48
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 
 - type: entity
@@ -2001,7 +2002,7 @@
   result: Document49
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 
 - type: entity
@@ -2042,7 +2043,7 @@
   result: Document50
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 
 - type: entity
@@ -2083,7 +2084,7 @@
   result: Document51
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 
 - type: entity
@@ -2125,7 +2126,7 @@
   result: Document52
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 
 - type: entity
@@ -2167,4 +2168,4 @@
   result: Document53
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
