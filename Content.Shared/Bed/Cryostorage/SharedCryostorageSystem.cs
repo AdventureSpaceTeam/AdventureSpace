@@ -68,8 +68,12 @@ public abstract class SharedCryostorageSystem : EntitySystem
             return;
 
         var containedComp = EnsureComp<CryostorageContainedComponent>(args.Entity);
-        var delay = Mind.TryGetMind(args.Entity, out _, out _) ? comp.GracePeriod : comp.NoMindGracePeriod;
-        containedComp.GracePeriodEndTime = Timing.CurTime + delay;
+        if (comp.GracePeriod != null) {
+            var delay = Mind.TryGetMind(args.Entity, out _, out _) ? comp.GracePeriod : comp.NoMindGracePeriod;
+            containedComp.GracePeriodEndTime = Timing.CurTime + delay;
+        } else {
+            containedComp.GracePeriodEndTime = null;
+        }
         containedComp.Cryostorage = ent;
         Dirty(args.Entity, containedComp);
     }
