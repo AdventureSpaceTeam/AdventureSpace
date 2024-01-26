@@ -13,6 +13,7 @@
   components:
   - type: Sprite
     sprite: Adventure/Structures/Machines/printer.rsi
+    drawdepth: SmallObjects
     snapCardinals: true
     layers:
     - state: icon
