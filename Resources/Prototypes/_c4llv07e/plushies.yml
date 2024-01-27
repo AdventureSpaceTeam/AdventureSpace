@@ -1,0 +1,109 @@
+- type: entity
+  parent: BaseItem
+  id: PlushieWiki
+  name: Blabla
+  description: Blabla.
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _c4llv07e/plushieWiki.rsi
+
+- type: entity
+  parent: PlushieWiki
+  id: PlushieIAA
+  name: Плюшевый АВД
+  description: Очаровательная мягкая игрушка, напоминающая вам об важности СРП и КЗ.
+  components:
+  - type: Sprite
+    state: plushieIAA
+
+- type: entity
+  parent: PlushieWiki
+  id: PlushieERT
+  name: Плюшевый ОБР
+  description: Очаровательная мягкая игрушка, к вам направили самый милый ОБР.
+  components:
+  - type: Sprite
+    state: plushieERT
+  - type: EmitSoundOnUse
+    sound:
+      path: /Audio/Voice/Moth/moth_chitter.ogg
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Voice/Moth/moth_scream.ogg
+  - type: UseDelay
+    delay: 1.0
+
+- type: entity
+  parent: PlushieWiki
+  id: PlushieMaid
+  name: Плюшевая горничная
+  description: Очаровательная мягкая игрушка, Р-р-р!.
+  components:
+  - type: Sprite
+    state: plushieMaid
+  - type: EmitSoundOnUse
+    sound:
+      path: /Audio/Animals/cat_meow.ogg
+  - type: UseDelay
+    delay: 1.0
+
+- type: entity
+  parent: PlushieWiki
+  id: plushieBartender
+  name: Плюшевый бармен
+  description: Очаровательная мягкая игрушка, только попробуй заказать воды!. @Токио Форс
+  components:
+  - type: Sprite
+    state: plushieBartender
+  - type: EmitSoundOnUse
+    sound:
+      path: /Audio/Weapons/Guns/Gunshots/shotgun.ogg
+  - type: UseDelay
+    delay: 5.0
+
+- type: entity
+  parent: PlushieWiki
+  id: plushieHOS
+  name: Плюшевый ГСБ
+  description: Очаровательная мягкая игрушка, именем закона - СТОЙ!
+  components:
+  - type: Sprite
+    state: plushieHOS
+  - type: EmitSoundOnUse
+    sound:
+      path: /Audio/Items/Whistle/whistle_3.ogg
+  - type: UseDelay
+    delay: 5.0
+
+- type: entity
+  parent: PlushieWiki
+  id: plushieCBURN
+  name: Плюшевый РХБЗЗ
+  description: Очаровательная мягкая игрушка, Гр-р-уа!
+  components:
+  - type: Sprite
+    state: plushieCBURN
+  - type: EmitSoundOnUse
+    sound:
+      path: /Audio/Voice/Zombie/zombie-2.ogg
+  - type: UseDelay
+    delay: 5.0
+
+- type: entity
+  parent: PlushieWiki
+  id: plushieCMO
+  name: Плюшевый ГВ
+  description: Очаровательная мягкая игрушка, в отделе не курить!
+  components:
+  - type: Sprite
+    state: plushieCMO
+
+- type: entity
+  parent: PlushieWiki
+  id: plushieRD
+  name: Плюшевый НР
+  description: Очаровательная мягкая игрушка!
+  components:
+  - type: Sprite
+    state: plushieRD
