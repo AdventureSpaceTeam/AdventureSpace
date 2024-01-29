@@ -44,14 +44,6 @@
         SpawnerCBURNUnit: 5
       requirements:
         ZombiePercent: 50
-    clown:
-      name: clown
-      shuttle: Maps/_Alteros/Shuttles/clown_ert_shuttle.yml
-      waitingTime: 60
-      humansList:
-        SpawnerERTClown: 5
-      requirements:
-        RoundDuration: 30
     deathSquad:
       name: death-squad
       announcement: false
@@ -61,13 +53,3 @@
       waitingTime: 300
       humansList:
         SpawnerDeathSquad: 5
-    centcomOfficial:
-      name: centcom-official
-      shuttle: Maps/_Alteros/Shuttles/centcom_shuttle.yml
-      waitingTime: 300
-      humansList:
-        SpawnerCentcomOfficial: 1
-        SpawnerERTSecurity: 2
-        SpawnerERTClown: 1
-      requirements:
-        RoundDuration: 90
