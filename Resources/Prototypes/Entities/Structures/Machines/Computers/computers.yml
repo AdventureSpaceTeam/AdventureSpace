@@ -549,6 +549,8 @@
   - type: CommunicationsConsole
     title: comms-console-announcement-title-station
   - type: CallErtConsole
+  - type: DeviceNetwork
+    transmitFrequencyId: ShuttleTimer
   - type: ActivatableUI
     key: enum.CommunicationsConsoleUiKey.Key
   - type: UserInterface
