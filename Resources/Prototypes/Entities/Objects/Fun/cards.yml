@@ -1,0 +1,727 @@
+- type: entity
+  parent: BaseItem
+  id: CqGCard
+  name: Игральная карта
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Fun/cards.rsi
+    state: Cq
+  - type: Tag
+    tags:
+    - Card
+
+- type: entity
+  parent: BaseItem
+  id: CaGCard
+  name: Игральная карта
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Fun/cards.rsi
+    state: Ca
+  - type: Tag
+    tags:
+    - Card
+
+- type: entity
+  parent: BaseItem
+  id: CjGCard
+  name: Игральная карта
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Fun/cards.rsi
+    state: Cj
+  - type: Tag
+    tags:
+    - Card
+    
+- type: entity
+  parent: BaseItem
+  id: CkGCard
+  name: Игральная карта
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Fun/cards.rsi
+    state: Ck
+  - type: Tag
+    tags:
+    - Card
+
+- type: entity
+  parent: BaseItem
+  id: C2GCard
+  name: Игральная карта
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Fun/cards.rsi
+    state: C2
+  - type: Tag
+    tags:
+    - Card
+
+- type: entity
+  parent: BaseItem
+  id: C3GCard
+  name: Игральная карта
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Fun/cards.rsi
+    state: C3
+  - type: Tag
+    tags:
+    - Card
+
+- type: entity
+  parent: BaseItem
+  id: C4GCard
+  name: Игральная карта
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Fun/cards.rsi
+    state: C4
+  - type: Tag
+    tags:
+    - Card
+
+- type: entity
+  parent: BaseItem
+  id: C5GCard
+  name: Игральная карта
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Fun/cards.rsi
+    state: C5
+  - type: Tag
+    tags:
+    - Card
+    
+- type: entity
+  parent: BaseItem
+  id: C6GCard
+  name: Игральная карта
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Fun/cards.rsi
+    state: C6
+  - type: Tag
+    tags:
+    - Card
+
+- type: entity
+  parent: BaseItem
+  id: C7GCard
+  name: Игральная карта
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Fun/cards.rsi
+    state: C7
+  - type: Tag
+    tags:
+    - Card
+
+- type: entity
+  parent: BaseItem
+  id: C8GCard
+  name: Игральная карта
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Fun/cards.rsi
+    state: C8
+  - type: Tag
+    tags:
+    - Card
+
+- type: entity
+  parent: BaseItem
+  id: C9GCard
+  name: Игральная карта
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Fun/cards.rsi
+    state: C9
+  - type: Tag
+    tags:
+    - Card
+
+- type: entity
+  parent: BaseItem
+  id: C10GCard
+  name: Игральная карта
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Fun/cards.rsi
+    state: C10
+  - type: Tag
+    tags:
+    - Card
+
+- type: entity
+  parent: BaseItem
+  id: BqGCard
+  name: Игральная карта
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Fun/cards.rsi
+    state: Bq
+  - type: Tag
+    tags:
+    - Card
+
+- type: entity
+  parent: BaseItem
+  id: BaGCard
+  name: Игральная карта
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Fun/cards.rsi
+    state: Ba
+  - type: Tag
+    tags:
+    - Card
+
+- type: entity
+  parent: BaseItem
+  id: BjGCard
+  name: Игральная карта
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Fun/cards.rsi
+    state: Bj
+  - type: Tag
+    tags:
+    - Card
+    
+- type: entity
+  parent: BaseItem
+  id: BkGCard
+  name: Игральная карта
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Fun/cards.rsi
+    state: Bk
+  - type: Tag
+    tags:
+    - Card
+
+- type: entity
+  parent: BaseItem
+  id: B2GCard
+  name: Игральная карта
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Fun/cards.rsi
+    state: B2
+  - type: Tag
+    tags:
+    - Card
+
+- type: entity
+  parent: BaseItem
+  id: B3GCard
+  name: Игральная карта
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Fun/cards.rsi
+    state: B3
+  - type: Tag
+    tags:
+    - Card
+
+- type: entity
+  parent: BaseItem
+  id: B4GCard
+  name: Игральная карта
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Fun/cards.rsi
+    state: B4
+  - type: Tag
+    tags:
+    - Card
+
+- type: entity
+  parent: BaseItem
+  id: B5GCard
+  name: Игральная карта
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Fun/cards.rsi
+    state: B5
+  - type: Tag
+    tags:
+    - Card
+    
+- type: entity
+  parent: BaseItem
+  id: B6GCard
+  name: Игральная карта
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Fun/cards.rsi
+    state: B6
+  - type: Tag
+    tags:
+    - Card
+
+- type: entity
+  parent: BaseItem
+  id: B7GCard
+  name: Игральная карта
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Fun/cards.rsi
+    state: B7
+  - type: Tag
+    tags:
+    - Card
+
+- type: entity
+  parent: BaseItem
+  id: B8GCard
+  name: Игральная карта
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Fun/cards.rsi
+    state: B8
+  - type: Tag
+    tags:
+    - Card
+
+- type: entity
+  parent: BaseItem
+  id: B9GCard
+  name: Игральная карта
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Fun/cards.rsi
+    state: B9
+  - type: Tag
+    tags:
+    - Card
+
+- type: entity
+  parent: BaseItem
+  id: B10GCard
+  name: Игральная карта
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Fun/cards.rsi
+    state: B10
+  - type: Tag
+    tags:
+    - Card
+
+- type: entity
+  parent: BaseItem
+  id: PqGCard
+  name: Игральная карта
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Fun/cards.rsi
+    state: Pq
+  - type: Tag
+    tags:
+    - Card
+
+- type: entity
+  parent: BaseItem
+  id: PaGCard
+  name: Игральная карта
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Fun/cards.rsi
+    state: Pa
+  - type: Tag
+    tags:
+    - Card
+
+- type: entity
+  parent: BaseItem
+  id: PjGCard
+  name: Игральная карта
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Fun/cards.rsi
+    state: Pj
+  - type: Tag
+    tags:
+    - Card
+    
+- type: entity
+  parent: BaseItem
+  id: PkGCard
+  name: Игральная карта
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Fun/cards.rsi
+    state: Pk
+  - type: Tag
+    tags:
+    - Card
+
+- type: entity
+  parent: BaseItem
+  id: P2GCard
+  name: Игральная карта
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Fun/cards.rsi
+    state: P2
+  - type: Tag
+    tags:
+    - Card
+
+- type: entity
+  parent: BaseItem
+  id: P3GCard
+  name: Игральная карта
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Fun/cards.rsi
+    state: P3
+  - type: Tag
+    tags:
+    - Card
+
+- type: entity
+  parent: BaseItem
+  id: P4GCard
+  name: Игральная карта
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Fun/cards.rsi
+    state: P4
+  - type: Tag
+    tags:
+    - Card
+
+- type: entity
+  parent: BaseItem
+  id: P5GCard
+  name: Игральная карта
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Fun/cards.rsi
+    state: P5
+  - type: Tag
+    tags:
+    - Card
+    
+- type: entity
+  parent: BaseItem
+  id: P6GCard
+  name: Игральная карта
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Fun/cards.rsi
+    state: P6
+  - type: Tag
+    tags:
+    - Card
+
+- type: entity
+  parent: BaseItem
+  id: P7GCard
+  name: Игральная карта
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Fun/cards.rsi
+    state: P7
+  - type: Tag
+    tags:
+    - Card
+
+- type: entity
+  parent: BaseItem
+  id: P8GCard
+  name: Игральная карта
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Fun/cards.rsi
+    state: P8
+  - type: Tag
+    tags:
+    - Card
+
+- type: entity
+  parent: BaseItem
+  id: P9GCard
+  name: Игральная карта
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Fun/cards.rsi
+    state: P9
+  - type: Tag
+    tags:
+    - Card
+
+- type: entity
+  parent: BaseItem
+  id: P10GCard
+  name: Игральная карта
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Fun/cards.rsi
+    state: P10
+  - type: Tag
+    tags:
+    - Card
+
+- type: entity
+  parent: BaseItem
+  id: KqGCard
+  name: Игральная карта
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Fun/cards.rsi
+    state: Kq
+  - type: Tag
+    tags:
+    - Card
+
+- type: entity
+  parent: BaseItem
+  id: KaGCard
+  name: Игральная карта
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Fun/cards.rsi
+    state: Ka
+  - type: Tag
+    tags:
+    - Card
+
+- type: entity
+  parent: BaseItem
+  id: KjGCard
+  name: Игральная карта
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Fun/cards.rsi
+    state: Kj
+  - type: Tag
+    tags:
+    - Card
+    
+- type: entity
+  parent: BaseItem
+  id: KkGCard
+  name: Игральная карта
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Fun/cards.rsi
+    state: Kk
+  - type: Tag
+    tags:
+    - Card
+
+- type: entity
+  parent: BaseItem
+  id: K2GCard
+  name: Игральная карта
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Fun/cards.rsi
+    state: K2
+  - type: Tag
+    tags:
+    - Card
+
+- type: entity
+  parent: BaseItem
+  id: K3GCard
+  name: Игральная карта
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Fun/cards.rsi
+    state: K3
+  - type: Tag
+    tags:
+    - Card
+
+- type: entity
+  parent: BaseItem
+  id: K4GCard
+  name: Игральная карта
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Fun/cards.rsi
+    state: K4
+  - type: Tag
+    tags:
+    - Card
+
+- type: entity
+  parent: BaseItem
+  id: K5GCard
+  name: Игральная карта
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Fun/cards.rsi
+    state: K5
+  - type: Tag
+    tags:
+    - Card
+    
+- type: entity
+  parent: BaseItem
+  id: K6GCard
+  name: Игральная карта
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Fun/cards.rsi
+    state: K6
+  - type: Tag
+    tags:
+    - Card
+
+- type: entity
+  parent: BaseItem
+  id: K7GCard
+  name: Игральная карта
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Fun/cards.rsi
+    state: K7
+  - type: Tag
+    tags:
+    - Card
+
+- type: entity
+  parent: BaseItem
+  id: K8GCard
+  name: Игральная карта
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Fun/cards.rsi
+    state: K8
+  - type: Tag
+    tags:
+    - Card
+
+- type: entity
+  parent: BaseItem
+  id: K9GCard
+  name: Игральная карта
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Fun/cards.rsi
+    state: K9
+  - type: Tag
+    tags:
+    - Card
+
+- type: entity
+  parent: BaseItem
+  id: K10GCard
+  name: Игральная карта
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Fun/cards.rsi
+    state: K10
+  - type: Tag
+    tags:
+    - Card
