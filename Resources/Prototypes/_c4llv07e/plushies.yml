@@ -50,7 +50,7 @@
 
 - type: entity
   parent: PlushieWiki
-  id: plushieBartender
+  id: PlushieBartender
   name: Плюшевый бармен
   description: Очаровательная мягкая игрушка, только попробуй заказать воды!. @Токио Форс
   components:
@@ -64,7 +64,7 @@
 
 - type: entity
   parent: PlushieWiki
-  id: plushieHOS
+  id: PlushieHOS
   name: Плюшевый ГСБ
   description: Очаровательная мягкая игрушка, именем закона - СТОЙ!
   components:
@@ -78,7 +78,7 @@
 
 - type: entity
   parent: PlushieWiki
-  id: plushieCBURN
+  id: PlushieCBURN
   name: Плюшевый РХБЗЗ
   description: Очаровательная мягкая игрушка, Гр-р-уа!
   components:
@@ -92,7 +92,7 @@
 
 - type: entity
   parent: PlushieWiki
-  id: plushieCMO
+  id: PlushieCMO
   name: Плюшевый ГВ
   description: Очаровательная мягкая игрушка, в отделе не курить!
   components:
@@ -101,7 +101,7 @@
 
 - type: entity
   parent: PlushieWiki
-  id: plushieRD
+  id: PlushieRD
   name: Плюшевый НР
   description: Очаровательная мягкая игрушка!
   components:

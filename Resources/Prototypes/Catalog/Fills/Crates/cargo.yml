@@ -305,6 +305,32 @@
     - id: PlushieArachind
       prob: 0.01
       orGroup: Plushies
+# c4llv07e_start
+    - id: PlushieIAA
+      prob: 0.01
+      orGroup: Plushies
+    - id: PlushieERT
+      prob: 0.01
+      orGroup: Plushies
+    - id: PlushieMaid
+      prob: 0.01
+      orGroup: Plushies
+    - id: PlushieBartender
+      prob: 0.01
+      orGroup: Plushies
+    - id: PlushieHOS
+      prob: 0.01
+      orGroup: Plushies
+    - id: PlushieCBURN
+      prob: 0.01
+      orGroup: Plushies
+    - id: PlushieCMO
+      prob: 0.01
+      orGroup: Plushies
+    - id: PlushieRD
+      prob: 0.01
+      orGroup: Plushies
+# c4llv07e_end
     #useful
     - id: AmeJar
       prob: 0.01
