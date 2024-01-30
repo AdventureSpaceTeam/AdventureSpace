@@ -1209,3 +1209,6 @@
   id: WriteIgnoreStamps
 
 # PUT YOUR TAGS IN ALPHABETICAL ORDER
+
+- type: Tag
+  id: Card
