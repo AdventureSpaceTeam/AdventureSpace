@@ -1,0 +1,906 @@
+#White
+- type: entity
+  parent: ClothingHeadBase
+  id: 80s_wig
+  name: парик 80s
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/White/80s_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/White/80s_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: afro_wig
+  name: парик afro
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/White/afro_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/White/afro_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: antenna_wig
+  name: парик antenna
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/White/antenna_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/White/antenna_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: bedhead_wig
+  name: парик bedhead
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/White/bedhead_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/White/bedhead_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: beehead_wig
+  name: парик beehead
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/White/beehead_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/White/beehead_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: bigafro_wig
+  name: парик bigafro
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/White/bigafro_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/White/bigafro_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: bob_wig
+  name: парик bob
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/White/bob_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/White/bob_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: bowcut_wig
+  name: парик bowcut
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/White/bowcut_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/White/bowcut_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: braid_wig
+  name: парик braid
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/White/braid_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/White/braid_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: cornrowtail_wig
+  name: парик cornrowtail
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/White/cornrowtail_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/White/cornrowtail_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: country_wig
+  name: парик country
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/White/country_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/White/country_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: floorlength_bedhead_wig
+  name: парик floorlength
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/White/floorlength_bedhead_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/White/floorlength_bedhead_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: long_wig
+  name: парик long
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/White/long_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/White/long_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: pigtails_wig
+  name: парик pigtails
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/White/pigtails_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/White/pigtails_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: wisp_wig
+  name: парик wisp
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/White/wisp_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/White/wisp_wig.rsi
+
+#Yellow
+- type: entity
+  parent: ClothingHeadBase
+  id: 80s_yellow_wig
+  name: парик 80s
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Yellow/80s_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Yellow/80s_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: afro_yellow_wig
+  name: парик afro
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Yellow/afro_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Yellow/afro_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: antenna_yellow_wig
+  name: парик antenna
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Yellow/antenna_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Yellow/antenna_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: bedhead_yellow_wig
+  name: парик bedhead
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Yellow/bedhead_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Yellow/bedhead_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: beehead_yellow_wig
+  name: парик beehead
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Yellow/beehead_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Yellow/beehead_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: bigafro_yellow_wig
+  name: парик bigafro
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Yellow/bigafro_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Yellow/bigafro_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: bob_yellow_wig
+  name: парик bob
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Yellow/bob_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Yellow/bob_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: bowcut_yellow_wig
+  name: парик bowcut
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Yellow/bowcut_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Yellow/bowcut_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: braid_yellow_wig
+  name: парик braid
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Yellow/braid_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Yellow/braid_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: cornrowtail_yellow_wig
+  name: парик cornrowtail
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Yellow/cornrowtail_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Yellow/cornrowtail_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: country_yellow_wig
+  name: парик country
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Yellow/country_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Yellow/country_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: floorlength_bedhead_yellow_wig
+  name: парик floorlength
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Yellow/floorlength_bedhead_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Yellow/floorlength_bedhead_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: long_yellow_wig
+  name: парик long
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Yellow/long_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Yellow/long_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: pigtails_yellow_wig
+  name: парик pigtails
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Yellow/pigtails_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Yellow/pigtails_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: wisp_yellow_wig
+  name: парик wisp
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Yellow/wisp_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Yellow/wisp_wig.rsi
+
+#Blue
+- type: entity
+  parent: ClothingHeadBase
+  id: 80s_blue_wig
+  name: парик 80s
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Blue/80s_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Blue/80s_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: afro_blue_wig
+  name: парик afro
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Blue/afro_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Blue/afro_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: antenna_blue_wig
+  name: парик antenna
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Blue/antenna_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Blue/antenna_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: bedhead_blue_wig
+  name: парик bedhead
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Blue/bedhead_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Blue/bedhead_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: beehead_blue_wig
+  name: парик beehead
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Blue/beehead_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Blue/beehead_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: bigafro_blue_wig
+  name: парик bigafro
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Blue/bigafro_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Blue/bigafro_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: bob_blue_wig
+  name: парик bob
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Blue/bob_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Blue/bob_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: bowcut_blue_wig
+  name: парик bowcut
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Blue/bowcut_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Blue/bowcut_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: braid_blue_wig
+  name: парик braid
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Blue/braid_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Blue/braid_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: cornrowtail_blue_wig
+  name: парик cornrowtail
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Blue/cornrowtail_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Blue/cornrowtail_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: country_blue_wig
+  name: парик country
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Blue/country_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Blue/country_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: floorlength_bedhead_blue_wig
+  name: парик floorlength
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Blue/floorlength_bedhead_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Blue/floorlength_bedhead_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: long_blue_wig
+  name: парик long
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Blue/long_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Blue/long_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: pigtails_blue_wig
+  name: парик pigtails
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Blue/pigtails_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Blue/pigtails_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: wisp_blue_wig
+  name: парик wisp
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Blue/wisp_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Blue/wisp_wig.rsi
+
+#Red
+- type: entity
+  parent: ClothingHeadBase
+  id: 80s_red_wig
+  name: парик 80s
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Red/80s_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Red/80s_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: afro_red_wig
+  name: парик afro
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Red/afro_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Red/afro_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: antenna_red_wig
+  name: парик antenna
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Red/antenna_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Red/antenna_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: bedhead_red_wig
+  name: парик bedhead
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Red/bedhead_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Red/bedhead_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: beehead_red_wig
+  name: парик beehead
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Red/beehead_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Red/beehead_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: bigafro_red_wig
+  name: парик bigafro
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Red/bigafro_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Red/bigafro_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: bob_red_wig
+  name: парик bob
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Red/bob_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Red/bob_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: bowcut_red_wig
+  name: парик bowcut
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Red/bowcut_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Red/bowcut_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: braid_red_wig
+  name: парик braid
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Red/braid_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Red/braid_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: cornrowtail_red_wig
+  name: парик cornrowtail
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Red/cornrowtail_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Red/cornrowtail_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: country_red_wig
+  name: парик country
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Red/country_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Red/country_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: floorlength_bedhead_red_wig
+  name: парик floorlength
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Red/floorlength_bedhead_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Red/floorlength_bedhead_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: long_red_wig
+  name: парик long
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Red/long_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Red/long_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: pigtails_red_wig
+  name: парик pigtails
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Red/pigtails_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Red/pigtails_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: wisp_red_wig
+  name: парик wisp
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Red/wisp_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Red/wisp_wig.rsi
+
+#Green
+- type: entity
+  parent: ClothingHeadBase
+  id: 80s_green_wig
+  name: парик 80s
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Green/80s_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Green/80s_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: afro_green_wig
+  name: парик afro
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Green/afro_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Green/afro_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: antenna_green_wig
+  name: парик antenna
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Green/antenna_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Green/antenna_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: bedhead_green_wig
+  name: парик bedhead
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Green/bedhead_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Green/bedhead_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: beehead_green_wig
+  name: парик beehead
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Green/beehead_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Green/beehead_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: bigafro_green_wig
+  name: парик bigafro
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Green/bigafro_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Green/bigafro_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: bob_green_wig
+  name: парик bob
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Green/bob_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Green/bob_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: bowcut_green_wig
+  name: парик bowcut
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Green/bowcut_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Green/bowcut_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: braid_green_wig
+  name: парик braid
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Green/braid_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Green/braid_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: cornrowtail_green_wig
+  name: парик cornrowtail
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Green/cornrowtail_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Green/cornrowtail_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: country_green_wig
+  name: парик country
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Green/country_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Green/country_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: floorlength_bedhead_green_wig
+  name: парик floorlength
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Green/floorlength_bedhead_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Green/floorlength_bedhead_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: long_green_wig
+  name: парик long
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Green/long_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Green/long_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: pigtails_green_wig
+  name: парик pigtails
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Green/pigtails_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Green/pigtails_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: wisp_green_wig
+  name: парик wisp
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Green/wisp_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Green/wisp_wig.rsi
+
+#Pink
+- type: entity
+  parent: ClothingHeadBase
+  id: 80s_pink_wig
+  name: парик 80s
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Pink/80s_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Pink/80s_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: afro_pink_wig
+  name: парик afro
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Pink/afro_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Pink/afro_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: antenna_pink_wig
+  name: парик antenna
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Pink/antenna_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Pink/antenna_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: bedhead_pink_wig
+  name: парик bedhead
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Pink/bedhead_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Pink/bedhead_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: beehead_pink_wig
+  name: парик beehead
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Pink/beehead_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Pink/beehead_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: bigafro_pink_wig
+  name: парик bigafro
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Pink/bigafro_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Pink/bigafro_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: bob_pink_wig
+  name: парик bob
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Pink/bob_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Pink/bob_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: bowcut_pink_wig
+  name: парик bowcut
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Pink/bowcut_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Pink/bowcut_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: braid_pink_wig
+  name: парик braid
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Pink/braid_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Pink/braid_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: cornrowtail_pink_wig
+  name: парик cornrowtail
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Pink/cornrowtail_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Pink/cornrowtail_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: country_pink_wig
+  name: парик country
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Pink/country_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Pink/country_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: floorlength_bedhead_pink_wig
+  name: парик floorlength
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Pink/floorlength_bedhead_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Pink/floorlength_bedhead_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: long_pink_wig
+  name: парик long
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Pink/long_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Pink/long_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: pigtails_pink_wig
+  name: парик pigtails
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Pink/pigtails_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Pink/pigtails_wig.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: wisp_pink_wig
+  name: парик wisp
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Wigs/Pink/wisp_wig.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Wigs/Pink/wisp_wig.rsi
+

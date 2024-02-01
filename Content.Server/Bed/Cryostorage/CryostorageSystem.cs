@@ -252,9 +252,11 @@ public sealed class CryostorageSystem : SharedCryostorageSystem
             ? "cryostorage-insert-message-temp"
             : "cryostorage-insert-message-permanent";
 
-        var msg = Loc.GetString(locKey, ("time", comp.GracePeriod.TotalMinutes));
-        if (TryComp<ActorComponent>(args.Entity, out var actor))
-            _chatManager.ChatMessageToOne(ChatChannel.Server, msg, msg, uid, false, actor.PlayerSession.Channel);
+        if (comp.GracePeriod != null) {
+            var msg = Loc.GetString(locKey, ("time", comp.GracePeriod.Value.TotalMinutes));
+            if (TryComp<ActorComponent>(args.Entity, out var actor))
+                _chatManager.ChatMessageToOne(ChatChannel.Server, msg, msg, uid, false, actor.PlayerSession.Channel);
+        }
     }
 
     private IEnumerable<CryostorageContainedPlayerData> GetAllContainedData(Entity<CryostorageComponent> ent)
