@@ -27,6 +27,8 @@ namespace Content.Client.Communications.UI
             AnnounceButton.Disabled = !owner.CanAnnounce;
 
             CallERTButton.OnPressed += (_) => Owner.CallERTButtonPressed();
+            BroadcastButton.OnPressed += (_) => Owner.BroadcastButtonPressed(Rope.Collapse(MessageInput.TextRope));
+            BroadcastButton.Disabled = !owner.CanBroadcast;
 
             AlertLevelButton.OnItemSelected += args =>
             {

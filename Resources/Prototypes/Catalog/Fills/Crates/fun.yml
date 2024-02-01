@@ -28,6 +28,16 @@
       - id: PlushieMoth
       - id: PlushieArachind
       - id: PlushiePenguin
+# c4llv07e_start
+      - id: PlushieIAA
+      - id: PlushieERT
+      - id: PlushieMaid
+      - id: PlushieBartender
+      - id: PlushieHOS
+      - id: PlushieCBURN
+      - id: PlushieCMO
+      - id: PlushieRD
+# c4llv07e_end
 
 - type: entity
   id: CrateFunLizardPlushieBulk
@@ -366,4 +376,3 @@
       - id: BoxDarts
         amount: 1
         prob: 0.05
-

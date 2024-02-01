@@ -3,7 +3,7 @@
   result: Paper
   completetime: 1
   materials:
-    Paper: 10
+    PaperDocument: 100
 
 - type: entity
   id: Printer
@@ -13,6 +13,7 @@
   components:
   - type: Sprite
     sprite: Adventure/Structures/Machines/printer.rsi
+    drawdepth: SmallObjects
     snapCardinals: true
     layers:
     - state: icon
@@ -93,11 +94,11 @@
         shape:
           !type:PhysShapeAabb
           bounds: "-0.4,-0.4,0.4,0.4"
-        density: 190
+        density: 25
         mask:
-        - MachineMask
+        - TabletopMachineMask
         layer:
-          - MachineLayer
+        - TabletopMachineLayer
   - type: Destructible
     thresholds:
     - trigger:

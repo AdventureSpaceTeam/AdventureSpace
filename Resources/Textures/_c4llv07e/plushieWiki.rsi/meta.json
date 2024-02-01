@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Create by Makcu",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "plushieIAA"
+    },
+    {
+      "name": "plushieERT"
+    },
+    {
+      "name": "plushieMaid"
+    },
+    {
+      "name": "plushieBartender"
+    },
+    {
+      "name": "plushieHOS"
+    },
+    {
+      "name": "plushieCBURN"
+    },
+    {
+      "name": "plushieCMO"
+    },
+    {
+      "name": "plushieRD"
+    }
+  ]
+}

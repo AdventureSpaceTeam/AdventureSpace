@@ -274,6 +274,10 @@ public sealed class ZombieRuleSystem : GameRuleSystem<ZombieRuleComponent>
         {
             if (player.AttachedEntity == null || !HasComp<HumanoidAppearanceComponent>(player.AttachedEntity) || HasComp<ZombieImmuneComponent>(player.AttachedEntity))
                 continue;
+
+            if (HasComp<InitialInfectedExemptComponent>(player.AttachedEntity))
+                continue; // used (for example) on ERT
+
             playerList.Add(player);
 
             var pref = (HumanoidCharacterProfile) _prefs.GetPreferences(player.UserId).SelectedCharacter;
@@ -339,7 +343,7 @@ public sealed class ZombieRuleSystem : GameRuleSystem<ZombieRuleComponent>
             // I went all the way to ChatManager.cs and all i got was this lousy T-shirt
             // You got a free T-shirt!?!?
             _chatManager.ChatMessageToOne(Shared.Chat.ChatChannel.Server, message,
-               wrappedMessage, default, false, zombie.ConnectedClient, Color.Plum);
+               wrappedMessage, default, false, zombie.Channel, Color.Plum);
             _audio.PlayGlobal(component.InitialInfectedSound, ownedEntity);
         }
     }
