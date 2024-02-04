@@ -28,11 +28,12 @@
     whitelist:
       tags:
         - Document
+    storage:
+      SheetPrinter: 0
   - type: Lathe
     # idleState: icon
     # runningState: building
     staticRecipes:
-      - Document
       - Document0
       - Document1
       - Document2
