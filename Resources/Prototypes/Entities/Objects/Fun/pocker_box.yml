@@ -6,11 +6,11 @@
   - type: StorageFill
     contents:
       - id: GreenPockerChip
-        amount: 50
+        amount: 15
       - id: BluePockerChip
-        amount: 25
+        amount: 5
       - id: YellowPockerChip
-        amount: 10
+        amount: 3
       - id: RedPockerChip
   - type: Sprite
     sprite: Objects/Fun/pocker.rsi
