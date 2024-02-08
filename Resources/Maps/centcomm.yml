@@ -160,6 +160,7 @@ entities:
       bodyType: Dynamic
     - type: Fixtures
       fixtures: {}
+    - type: FTLDestination
     - type: BecomesStation
       id: centcomm
     - type: Gravity
