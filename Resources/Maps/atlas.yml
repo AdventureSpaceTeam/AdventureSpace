@@ -22257,17 +22257,13 @@ entities:
   - uid: 496
     components:
     - type: Transform
-      pos: 31.373415,10.717659
+      pos: 31.274546,10.849379
       parent: 30
-    - type: Physics
-      canCollide: False
   - uid: 501
     components:
     - type: Transform
-      pos: 31.529665,10.608284
+      pos: 31.087046,10.463961
       parent: 30
-    - type: Physics
-      canCollide: False
 - proto: DrinkGoldenCup
   entities:
   - uid: 283
@@ -23174,10 +23170,8 @@ entities:
   - uid: 329
     components:
     - type: Transform
-      pos: 37.51847,3.5410953
+      pos: 36.22387,4.3657017
       parent: 30
-    - type: Physics
-      canCollide: False
 - proto: FloorDrain
   entities:
   - uid: 7395
@@ -39754,6 +39748,23 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 16.5,-7.5
       parent: 30
+- proto: Printer
+  entities:
+  - uid: 255
+    components:
+    - type: Transform
+      pos: 37.5,3.5
+      parent: 30
+  - uid: 1617
+    components:
+    - type: Transform
+      pos: 31.5,10.5
+      parent: 30
+  - uid: 1622
+    components:
+    - type: Transform
+      pos: 28.5,-1.5
+      parent: 30
 - proto: Protolathe
   entities:
   - uid: 4724
@@ -43319,6 +43330,13 @@ entities:
     - type: Transform
       pos: 35.5,6.5
       parent: 30
+- proto: SpawnMobGorillaLargo
+  entities:
+  - uid: 5430
+    components:
+    - type: Transform
+      pos: -29.5,20.5
+      parent: 30
 - proto: SpawnMobMcGriff
   entities:
   - uid: 7398
@@ -43344,13 +43362,6 @@ entities:
     components:
     - type: Transform
       pos: 3.5,-15.5
-      parent: 30
-- proto: SpawnMobRaccoonMorticia
-  entities:
-  - uid: 5430
-    components:
-    - type: Transform
-      pos: -29.5,20.5
       parent: 30
 - proto: SpawnMobShiva
   entities:
@@ -43740,27 +43751,6 @@ entities:
     components:
     - type: Transform
       pos: 11.5,13.5
-      parent: 30
-- proto: SpawnVehicleJanicart
-  entities:
-  - uid: 7408
-    components:
-    - type: Transform
-      pos: 22.5,-2.5
-      parent: 30
-- proto: SpawnVehicleSecway
-  entities:
-  - uid: 1617
-    components:
-    - type: Transform
-      pos: 15.5,13.5
-      parent: 30
-- proto: SpawnVehicleWheelchairFolded
-  entities:
-  - uid: 255
-    components:
-    - type: Transform
-      pos: 3.5,-5.5
       parent: 30
 - proto: SprayBottleSpaceCleaner
   entities:
@@ -45859,24 +45849,6 @@ entities:
     - type: Transform
       pos: 2.5,-21.5
       parent: 30
-- proto: VehicleKeyJanicart
-  entities:
-  - uid: 7397
-    components:
-    - type: Transform
-      pos: 23.47368,-2.1477566
-      parent: 30
-    - type: Physics
-      canCollide: False
-- proto: VehicleKeySecway
-  entities:
-  - uid: 1622
-    components:
-    - type: Transform
-      pos: 15.46822,12.503206
-      parent: 30
-    - type: Physics
-      canCollide: False
 - proto: VendingBarDrobe
   entities:
   - uid: 6131
