@@ -2093,5 +2093,12 @@ namespace Content.Shared.CCVar
 
         public static readonly CVarDef<string> GreetingsAuthor =
             CVarDef.Create("greetings.author", "Сервер");
+
+        /*
+         * Adventure Space WL
+         */
+
+        public static readonly CVarDef<float> RnDPointsModifier =
+            CVarDef.Create("game.research_modifier", 1.0f, CVar.SERVER | CVar.REPLICATED);
     }
 }
