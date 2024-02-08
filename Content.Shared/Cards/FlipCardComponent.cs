@@ -10,6 +10,12 @@ public sealed partial class FlipCardComponent : Component
 }
 
 [Serializable, NetSerializable]
+public sealed class FlipCardComponentState : ComponentState
+{
+    public bool Flipped { get; init; }
+}
+
+[Serializable, NetSerializable]
 public enum CardsVisual
 {
     Visual,
