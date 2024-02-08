@@ -57,12 +57,6 @@
               max: 1
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
-# Corvax-Printer-Start
-  - type: Material
-  - type: PhysicalComposition
-    materialComposition:
-      SheetPrinter: 100
-# Corvax-Printer-End
   - type: Food
     solution: food
     delay: 7
@@ -74,6 +68,12 @@
         reagents:
         - ReagentId: Fiber
           Quantity: 1
+# Corvax-Printer-Start
+  - type: Material
+  - type: PhysicalComposition
+    materialComposition:
+      SheetPrinter: 100
+# Corvax-Printer-End
 
 - type: entity
   name: paper scrap
