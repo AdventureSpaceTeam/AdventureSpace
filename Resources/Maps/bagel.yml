@@ -16796,7 +16796,7 @@ entities:
   - uid: 8975
     components:
     - type: Transform
-      pos: 8.718838,-28.542063
+      pos: 4.137763,-31.439306
       parent: 60
   - uid: 9561
     components:
@@ -16813,7 +16813,7 @@ entities:
   - uid: 8972
     components:
     - type: Transform
-      pos: 8.593838,-28.432688
+      pos: 4.2210965,-31.262222
       parent: 60
   - uid: 9087
     components:
@@ -16897,7 +16897,7 @@ entities:
   - uid: 8974
     components:
     - type: Transform
-      pos: 8.437588,-28.338938
+      pos: 4.044013,-31.564306
       parent: 60
   - uid: 13501
     components:
@@ -71122,7 +71122,7 @@ entities:
   - uid: 18576
     components:
     - type: Transform
-      pos: 3.1967216,3.6603613
+      pos: -0.4953475,2.9077792
       parent: 60
 - proto: FlashlightLantern
   entities:
@@ -107241,7 +107241,7 @@ entities:
   - uid: 8707
     components:
     - type: Transform
-      pos: 8.259504,-28.56417
+      pos: 8.55443,-32.220554
       parent: 60
   - uid: 9543
     components:
@@ -109964,7 +109964,7 @@ entities:
   - uid: 18577
     components:
     - type: Transform
-      pos: 3.6342216,3.5822363
+      pos: -0.7203277,3.6786127
       parent: 60
   - uid: 20068
     components:
@@ -110826,6 +110826,23 @@ entities:
       parent: 60
     - type: AtmosDevice
       joinedGrid: 60
+- proto: OxygenTankFilled
+  entities:
+  - uid: 17242
+    components:
+    - type: Transform
+      pos: -18.527008,32.655674
+      parent: 60
+  - uid: 17243
+    components:
+    - type: Transform
+      pos: -18.245758,32.64005
+      parent: 60
+  - uid: 24063
+    components:
+    - type: Transform
+      pos: 8.5436735,-62.480114
+      parent: 60
 - proto: PaintingAmogusTriptych
   entities:
   - uid: 23383
@@ -116891,6 +116908,18 @@ entities:
       parent: 60
     - type: ApcPowerReceiver
       powerLoad: 0
+- proto: Printer
+  entities:
+  - uid: 728
+    components:
+    - type: Transform
+      pos: 8.5,-28.5
+      parent: 60
+  - uid: 5503
+    components:
+    - type: Transform
+      pos: 3.5,3.5
+      parent: 60
 - proto: Protolathe
   entities:
   - uid: 7081
@@ -129316,6 +129345,13 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 25.5,-28.5
       parent: 60
+- proto: SpawnMobGorillaLargo
+  entities:
+  - uid: 13102
+    components:
+    - type: Transform
+      pos: 45.5,13.5
+      parent: 60
 - proto: SpawnMobMcGriff
   entities:
   - uid: 4710
@@ -129368,13 +129404,6 @@ entities:
     components:
     - type: Transform
       pos: 40.5,-8.5
-      parent: 60
-- proto: SpawnMobRaccoonMorticia
-  entities:
-  - uid: 13102
-    components:
-    - type: Transform
-      pos: 45.5,13.5
       parent: 60
 - proto: SpawnMobShiva
   entities:
@@ -129919,25 +129948,6 @@ entities:
     components:
     - type: Transform
       pos: -26.5,-9.5
-      parent: 60
-- proto: SpawnVehicleJanicart
-  entities:
-  - uid: 728
-    components:
-    - type: Transform
-      pos: -3.5,-26.5
-      parent: 60
-- proto: SpawnVehicleSecway
-  entities:
-  - uid: 5503
-    components:
-    - type: Transform
-      pos: -26.5,-20.5
-      parent: 60
-  - uid: 24175
-    components:
-    - type: Transform
-      pos: -33.5,-20.5
       parent: 60
 - proto: SpawnVendingMachineRestockFoodDrink
   entities:
@@ -135803,32 +135813,6 @@ entities:
     components:
     - type: Transform
       pos: 50.5,-25.5
-      parent: 60
-- proto: VehicleJanicartDestroyed
-  entities:
-  - uid: 24122
-    components:
-    - type: Transform
-      pos: -19.5,-44.5
-      parent: 60
-- proto: VehicleKeyJanicart
-  entities:
-  - uid: 21686
-    components:
-    - type: Transform
-      pos: -5.895404,-28.54571
-      parent: 60
-- proto: VehicleKeySecway
-  entities:
-  - uid: 5507
-    components:
-    - type: Transform
-      pos: -28.569313,-20.385147
-      parent: 60
-  - uid: 24176
-    components:
-    - type: Transform
-      pos: -33.527782,-15.554149
       parent: 60
 - proto: VendingBarDrobe
   entities:
@@ -156779,22 +156763,5 @@ entities:
     components:
     - type: Transform
       pos: 23.533411,-13.4549055
-      parent: 60
-- proto: YellowOxygenTankFilled
-  entities:
-  - uid: 17242
-    components:
-    - type: Transform
-      pos: -18.527008,32.655674
-      parent: 60
-  - uid: 17243
-    components:
-    - type: Transform
-      pos: -18.245758,32.64005
-      parent: 60
-  - uid: 24063
-    components:
-    - type: Transform
-      pos: 8.5436735,-62.480114
       parent: 60
 ...
