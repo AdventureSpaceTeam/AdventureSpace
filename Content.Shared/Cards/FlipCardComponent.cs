@@ -1,9 +1,18 @@
 using Robust.Shared.Serialization;
+using Robust.Shared.GameStates;
 namespace Content.Shared.Cards;
-[RegisterComponent]
+
+[RegisterComponent, NetworkedComponent]
 public sealed partial class FlipCardComponent : Component
 {
-    [ViewVariables, DataField("flipped")] public bool Flipped;
+    [ViewVariables(VVAccess.ReadWrite), DataField("flipped")]
+    public bool Flipped = false;
+}
+
+[Serializable, NetSerializable]
+public sealed class FlipCardComponentState : ComponentState
+{
+    public bool Flipped { get; init; }
 }
 
 [Serializable, NetSerializable]
