@@ -27162,17 +27162,6 @@ entities:
         - 0
         - 0
         - 0
-    - type: ContainerContainer
-      containers:
-        entity_storage: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 7660
-        paper_label: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
 - proto: ClosetL3JanitorFilled
   entities:
   - uid: 7662
@@ -57904,7 +57893,7 @@ entities:
   - uid: 5066
     components:
     - type: Transform
-      pos: -3.487246,31.609404
+      pos: -0.6263505,32.402325
       parent: 1
 - proto: MedkitOxygenFilled
   entities:
@@ -58414,6 +58403,18 @@ entities:
       parent: 1
     - type: AtmosDevice
       joinedGrid: 1
+- proto: OxygenTankFilled
+  entities:
+  - uid: 8928
+    components:
+    - type: Transform
+      pos: -33.421288,-7.524516
+      parent: 1
+  - uid: 9731
+    components:
+    - type: Transform
+      pos: -28.423817,12.547613
+      parent: 1
 - proto: PaintingMonkey
   entities:
   - uid: 5040
@@ -61499,6 +61500,13 @@ entities:
           ent: 12623
     - type: ApcPowerReceiver
       powerLoad: 0
+- proto: Printer
+  entities:
+  - uid: 4967
+    components:
+    - type: Transform
+      pos: -3.5,31.5
+      parent: 1
 - proto: Protolathe
   entities:
   - uid: 3806
@@ -67861,7 +67869,7 @@ entities:
       parent: 1
 - proto: SpawnMobCorgi
   entities:
-  - uid: 4967
+  - uid: 5319
     components:
     - type: Transform
       pos: -1.5,19.5
@@ -67896,6 +67904,18 @@ entities:
     components:
     - type: Transform
       pos: 5.5,29.5
+      parent: 1
+- proto: SpawnMobGorillaLargo
+  entities:
+  - uid: 11927
+    components:
+    - type: Transform
+      pos: 9.5,-19.5
+      parent: 1
+  - uid: 11928
+    components:
+    - type: Transform
+      pos: -38.5,-3.5
       parent: 1
 - proto: SpawnMobMcGriff
   entities:
@@ -67969,18 +67989,6 @@ entities:
     components:
     - type: Transform
       pos: -9.5,-25.5
-      parent: 1
-- proto: SpawnMobRaccoonMorticia
-  entities:
-  - uid: 11927
-    components:
-    - type: Transform
-      pos: 9.5,-19.5
-      parent: 1
-  - uid: 11928
-    components:
-    - type: Transform
-      pos: -38.5,-3.5
       parent: 1
 - proto: SpawnMobShiva
   entities:
@@ -68329,25 +68337,6 @@ entities:
     components:
     - type: Transform
       pos: 28.5,17.5
-      parent: 1
-- proto: SpawnVehicleJanicart
-  entities:
-  - uid: 7663
-    components:
-    - type: Transform
-      pos: 14.5,-1.5
-      parent: 1
-- proto: SpawnVehicleSecway
-  entities:
-  - uid: 5319
-    components:
-    - type: Transform
-      pos: 18.5,10.5
-      parent: 1
-  - uid: 5320
-    components:
-    - type: Transform
-      pos: 19.5,10.5
       parent: 1
 - proto: SpawnVendingMachineRestockDrink
   entities:
@@ -71643,27 +71632,6 @@ entities:
     components:
     - type: Transform
       pos: -14.498325,-10.477551
-      parent: 1
-- proto: VehicleKeyJanicart
-  entities:
-  - uid: 7660
-    components:
-    - type: Transform
-      parent: 7659
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-- proto: VehicleKeySecway
-  entities:
-  - uid: 5321
-    components:
-    - type: Transform
-      pos: 25.427599,10.5971575
-      parent: 1
-  - uid: 5322
-    components:
-    - type: Transform
-      pos: 25.708849,10.6596575
       parent: 1
 - proto: VendingBarDrobe
   entities:
@@ -81920,18 +81888,6 @@ entities:
     components:
     - type: Transform
       pos: -28.522102,-7.4028454
-      parent: 1
-- proto: YellowOxygenTankFilled
-  entities:
-  - uid: 8928
-    components:
-    - type: Transform
-      pos: -33.421288,-7.524516
-      parent: 1
-  - uid: 9731
-    components:
-    - type: Transform
-      pos: -28.423817,12.547613
       parent: 1
 - proto: ZiptiesBroken
   entities:
