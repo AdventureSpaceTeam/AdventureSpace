@@ -56,12 +56,6 @@
   components:
     - type: StationCentcomm
       map: "/Maps/corvax_centcomm.yml" # Corvax-Mapping
-      # Alteros-start
-      shuttleWhitelist:
-        components:
-        - ErtShuttle
-        - EvacShuttle
-      # Alteros-end
 
 - type: entity
   id: BaseStationEvacuation
