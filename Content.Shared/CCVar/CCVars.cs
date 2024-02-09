@@ -1426,6 +1426,9 @@ namespace Content.Shared.CCVar
         public static readonly CVarDef<bool> EmergencyEarlyLaunchAllowed =
             CVarDef.Create("shuttle.emergency_early_launch_allowed", false, CVar.SERVERONLY);
 
+        public static readonly CVarDef<bool> CanCallEmergency =
+            CVarDef.Create("shuttle.can_call_emergency", true, CVar.SERVERONLY);
+
         /// <summary>
         /// How long the emergency shuttle remains docked with the station, in seconds.
         /// </summary>
