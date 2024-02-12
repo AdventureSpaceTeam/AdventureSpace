@@ -278,6 +278,9 @@
       type: TransferAmountBoundUserInterface
   - type: Spillable
     solution: injector
+  - type: Tag # c4llv07e
+    tags:
+    - Dropper
   - type: Item
     sprite: Objects/Specific/Chemistry/dropper.rsi
   - type: Appearance
