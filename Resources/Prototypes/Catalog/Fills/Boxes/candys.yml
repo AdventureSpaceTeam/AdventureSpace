@@ -39,7 +39,7 @@
     - id: RainbowWrapCandy
       prob: 0.25
   - type: Sprite
-    sprite: Objects\Storage\CandyBoxes\assorted.rsi
+    sprite: Objects/Storage/CandyBoxes/assorted.rsi
     state: close
 
 - type: entity
@@ -54,7 +54,7 @@
     - id: BlueWrapCandy
       amount: 4
   - type: Sprite
-    sprite: Objects\Storage\CandyBoxes\cyan-blue.rsi
+    sprite: Objects/Storage/CandyBoxes/cyan-blue.rsi
     state: close
 
 - type: entity
@@ -69,7 +69,7 @@
     - id: OrangeWrapCandy
       amount: 4
   - type: Sprite
-    sprite: Objects\Storage\CandyBoxes\orange-yellow.rsi
+    sprite: Objects/Storage/CandyBoxes/orange-yellow.rsi
     state: close
 
 - type: entity
@@ -84,7 +84,7 @@
     - id: PurpleWrapCandy
       amount: 4
   - type: Sprite
-    sprite: Objects\Storage\CandyBoxes\red-purple.rsi
+    sprite: Objects/Storage/CandyBoxes/red-purple.rsi
     state: close
 
 - type: entity
@@ -99,5 +99,5 @@
     - id: WhiteWrapCandy
       amount: 4
   - type: Sprite
-    sprite: Objects\Storage\CandyBoxes\green-white.rsi
+    sprite: Objects/Storage/CandyBoxes/green-white.rsi
     state: close
