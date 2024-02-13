@@ -9,13 +9,27 @@
       amount: 1
     - id: TapePlayer
       amount: 1
-    - id: MusicTape3
+    - id: MusicTape2
       amount: 1
-    - id: MusicTape20
+    - id: MusicTape3
       amount: 1
     - id: MusicTape18
       amount: 1
     - id: MusicTape19
       amount: 1
-    - id: MusicTape2
+    - id: MusicTape20
+      amount: 1
+    - id: MusicTape27
+      amount: 1
+    - id: MusicTape28
+      amount: 1
+    - id: MusicTape29
+      amount: 1
+    - id: MusicTape30
+      amount: 1
+    - id: MusicTape31
+      amount: 1
+    - id: MusicTape32
+      amount: 1
+    - id: MusicTape33
       amount: 1
