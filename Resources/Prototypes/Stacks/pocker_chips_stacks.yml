@@ -25,3 +25,66 @@
   spawn: RedPockerChip
   maxCount: 10
   itemSize: 2
+
+- type: stack
+  id: GreenWrap
+  name: фантики
+  spawn: GreenWrap
+  maxCount: 5
+  itemSize: 1
+
+- type: stack
+  id: BlueWrap
+  name: фантики
+  spawn: BlueWrap
+  maxCount: 5
+  itemSize: 1
+
+- type: stack
+  id: CyanWrap
+  name: фантики
+  spawn: CyanWrap
+  maxCount: 5
+  itemSize: 1
+
+- type: stack
+  id: RedWrap
+  name: фантики
+  spawn: RedWrap
+  maxCount: 5
+  itemSize: 1
+
+- type: stack
+  id: RainbowWrap
+  name: фантики
+  spawn: RainbowWrap
+  maxCount: 5
+  itemSize: 1
+
+- type: stack
+  id: YellowWrap
+  name: фантики
+  spawn: YellowWrap
+  maxCount: 5
+  itemSize: 1
+
+- type: stack
+  id: OrangeWrap
+  name: фантики
+  spawn: OrangeWrap
+  maxCount: 5
+  itemSize: 1
+
+- type: stack
+  id: PurpleWrap
+  name: фантики
+  spawn: PurpleWrap
+  maxCount: 5
+  itemSize: 1
+
+- type: stack
+  id: WhiteWrap
+  name: фантики
+  spawn: WhiteWrap
+  maxCount: 5
+  itemSize: 1
