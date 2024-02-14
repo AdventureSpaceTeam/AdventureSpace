@@ -27,6 +27,8 @@
   parent: BaseWrap
   name: фантик
   components:
+  - type: Item
+    size: Tiny
   - type: Sprite
     sprite: Objects/Consumable/Food/candys.rsi
     state: BlueWrap
@@ -39,6 +41,8 @@
   parent: BaseWrap
   name: фантик
   components:
+  - type: Item
+    size: Tiny
   - type: Sprite
     sprite: Objects/Consumable/Food/candys.rsi
     state: CyanWrap
@@ -51,6 +55,8 @@
   parent: BaseWrap
   name: фантик
   components:
+  - type: Item
+    size: Tiny
   - type: Sprite
     sprite: Objects/Consumable/Food/candys.rsi
     state: RedWrap
@@ -63,6 +69,8 @@
   parent: BaseWrap
   name: фантик
   components:
+  - type: Item
+    size: Tiny
   - type: Sprite
     sprite: Objects/Consumable/Food/candys.rsi
     state: RainbowWrap
@@ -75,6 +83,8 @@
   parent: BaseWrap
   name: фантик
   components:
+  - type: Item
+    size: Tiny
   - type: Sprite
     sprite: Objects/Consumable/Food/candys.rsi
     state: YellowWrap
@@ -87,6 +97,8 @@
   parent: BaseWrap
   name: фантик
   components:
+  - type: Item
+    size: Tiny
   - type: Sprite
     sprite: Objects/Consumable/Food/candys.rsi
     state: OrangeWrap
@@ -99,6 +111,8 @@
   parent: BaseWrap
   name: фантик
   components:
+  - type: Item
+    size: Tiny
   - type: Sprite
     sprite: Objects/Consumable/Food/candys.rsi
     state: PurpleWrap
@@ -111,6 +125,8 @@
   parent: BaseWrap
   name: фантик
   components:
+  - type: Item
+    size: Tiny
   - type: Sprite
     sprite: Objects/Consumable/Food/candys.rsi
     state: WhiteWrap

@@ -12,7 +12,7 @@
   - type: SolutionContainerManager
     solutions:
       food:
-        maxVol: 7 # Room for extra condiments
+        maxVol: 7
         reagents:
         - ReagentId: Nutriment
           Quantity: 1
@@ -372,7 +372,6 @@
         reagents:
         - ReagentId: Milk
           Quantity: 2
-
 
 
 - type: entity
