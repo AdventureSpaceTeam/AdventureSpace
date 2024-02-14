@@ -16,7 +16,8 @@
         reagents:
         - ReagentId: Nutriment
           Quantity: 1
-
+        - ReagentId: Sugar
+          Quantity: 2
   - type: Item
     sprite: Objects/Consumable/Food/candys.rsi
     size: Tiny
@@ -424,5 +425,5 @@
       food:
         maxVol: 4
         reagents:
-        - ReagentId: Nutriment
+        - ReagentId: Omnizine
           Quantity: 2
