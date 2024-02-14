@@ -91,7 +91,7 @@
 - type: cargoProduct
   id: TerBoxOfSweets
   icon:
-    sprite: Objects\Storage\CandyBoxes\assorted.rsi
+    sprite: Objects/Storage/CandyBoxes/assorted.rsi
     state: close
   product: TerSweetBox
   cost: 450
