@@ -295,3 +295,80 @@
     state: tape26
   - type: MusicTape
     sound: "/Audio/_Alteros/TapePlayer/Tracks/divide.ogg"
+
+- type: entity
+  parent: BaseMusicTape
+  id: MusicTape27
+  name: Кассета (Denis Major - Boss 1)
+  description:
+  components:
+  - type: Sprite
+    state: tape27
+  - type: MusicTape
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/boss1.ogg"
+
+- type: entity
+  parent: BaseMusicTape
+  id: MusicTape28
+  name: Кассета (Denis Major - Boss 2)
+  description:
+  components:
+  - type: Sprite
+    state: tape28
+  - type: MusicTape
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/boss2.ogg"
+
+- type: entity
+  parent: BaseMusicTape
+  id: MusicTape29
+  name: Кассета (Denis Major - Bump)
+  description:
+  components:
+  - type: Sprite
+    state: tape29
+  - type: MusicTape
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/bump.ogg"
+
+- type: entity
+  parent: BaseMusicTape
+  id: MusicTape30
+  name: Кассета (Denis Major - Busybass)
+  description:
+  components:
+  - type: Sprite
+    state: tape30
+  - type: MusicTape
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/busybass.ogg"
+
+- type: entity
+  parent: BaseMusicTape
+  id: MusicTape31
+  name: Кассета (Denis Major - Intro)
+  description:
+  components:
+  - type: Sprite
+    state: tape31
+  - type: MusicTape
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/intro.ogg"
+
+- type: entity
+  parent: BaseMusicTape
+  id: MusicTape32
+  name: Кассета (Denis Major - Dance Trumpet)
+  description:
+  components:
+  - type: Sprite
+    state: tape32
+  - type: MusicTape
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/trumpet.ogg"
+
+- type: entity
+  parent: BaseMusicTape
+  id: MusicTape33
+  name: Кассета (Denis Major - Slow Rock)
+  description:
+  components:
+  - type: Sprite
+    state: tape33
+  - type: MusicTape
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/rock.ogg"

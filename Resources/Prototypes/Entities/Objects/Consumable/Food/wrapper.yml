@@ -1,23 +1,30 @@
 - type: entity
   parent: BaseItem
-  id: GreenWrap
+  id: BaseWrap
   name: фантик
+  abstract: true
   components:
   - type: Item
     size: Tiny
-  - type: Sprite
-    sprite: Objects/Consumable/Food/candys.rsi
-    state: GreenWrap
   - type: Tag
     tags:
     - Trash
+
+- type: entity
+  id: GreenWrap
+  parent: BaseWrap
+  name: фантик
+  components:
+  - type: Sprite
+    sprite: Objects/Consumable/Food/candys.rsi
+    state: GreenWrap
   - type: Stack
     count: 1
     stackType: GreenWrap
 
 - type: entity
   id: BlueWrap
-  parent: BaseItem
+  parent: BaseWrap
   name: фантик
   components:
   - type: Item
@@ -25,16 +32,13 @@
   - type: Sprite
     sprite: Objects/Consumable/Food/candys.rsi
     state: BlueWrap
-  - type: Tag
-    tags:
-    - Trash
   - type: Stack
     count: 1
     stackType: BlueWrap
 
 - type: entity
   id: CyanWrap
-  parent: BaseItem
+  parent: BaseWrap
   name: фантик
   components:
   - type: Item
@@ -42,16 +46,13 @@
   - type: Sprite
     sprite: Objects/Consumable/Food/candys.rsi
     state: CyanWrap
-  - type: Tag
-    tags:
-      - Trash
   - type: Stack
     count: 1
     stackType: CyanWrap
 
 - type: entity
   id: RedWrap
-  parent: BaseItem
+  parent: BaseWrap
   name: фантик
   components:
   - type: Item
@@ -59,16 +60,13 @@
   - type: Sprite
     sprite: Objects/Consumable/Food/candys.rsi
     state: RedWrap
-  - type: Tag
-    tags:
-      - Trash
   - type: Stack
     count: 1
     stackType: RedWrap
 
 - type: entity
   id: RainbowWrap
-  parent: BaseItem
+  parent: BaseWrap
   name: фантик
   components:
   - type: Item
@@ -76,16 +74,13 @@
   - type: Sprite
     sprite: Objects/Consumable/Food/candys.rsi
     state: RainbowWrap
-  - type: Tag
-    tags:
-      - Trash
   - type: Stack
     count: 1
     stackType: RainbowWrap
 
 - type: entity
   id: YellowWrap
-  parent: BaseItem
+  parent: BaseWrap
   name: фантик
   components:
   - type: Item
@@ -93,16 +88,13 @@
   - type: Sprite
     sprite: Objects/Consumable/Food/candys.rsi
     state: YellowWrap
-  - type: Tag
-    tags:
-      - Trash
   - type: Stack
     count: 1
     stackType: YellowWrap
 
 - type: entity
   id: OrangeWrap
-  parent: BaseItem
+  parent: BaseWrap
   name: фантик
   components:
   - type: Item
@@ -110,16 +102,13 @@
   - type: Sprite
     sprite: Objects/Consumable/Food/candys.rsi
     state: OrangeWrap
-  - type: Tag
-    tags:
-      - Trash
   - type: Stack
     count: 1
     stackType: OrangeWrap
 
 - type: entity
   id: PurpleWrap
-  parent: BaseItem
+  parent: BaseWrap
   name: фантик
   components:
   - type: Item
@@ -127,16 +116,13 @@
   - type: Sprite
     sprite: Objects/Consumable/Food/candys.rsi
     state: PurpleWrap
-  - type: Tag
-    tags:
-      - Trash
   - type: Stack
     count: 1
     stackType: PurpleWrap
 
 - type: entity
   id: WhiteWrap
-  parent: BaseItem
+  parent: BaseWrap
   name: фантик
   components:
   - type: Item
@@ -144,9 +130,6 @@
   - type: Sprite
     sprite: Objects/Consumable/Food/candys.rsi
     state: WhiteWrap
-  - type: Tag
-    tags:
-      - Trash
   - type: Stack
     count: 1
     stackType: WhiteWrap

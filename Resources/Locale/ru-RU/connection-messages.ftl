@@ -40,3 +40,9 @@ panic-bunker-account-reason-overall =
         [few] часа
        *[other] часов
     }.
+# c4llv07e queue localization start
+queue-title = Очередь
+queue-quit = Выйти
+queue-position = Ваша позиция
+queue-total = Всего в очереди
+# c4llv07e queue localization end
