@@ -1,0 +1,143 @@
+- type: entity
+  parent: FoodBase
+  id: MeatCandyBase
+  abstract: true
+  components:
+  - type: Food
+  - type: Tag
+    tags:
+      - Meat
+  - type: Sprite
+    sprite: Objects/Consumable/Food/candys.rsi
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 5
+        reagents:
+        - ReagentId: UncookedAnimalProteins
+          Quantity: 1
+        - ReagentId: Nutriment
+          Quantity: 2
+        - ReagentId: Fat
+          Quantity: 2
+
+- type: entity
+  parent: FoodBase
+  id: ClothCandyBase
+  abstract: true
+  components:
+  - type: Food
+  - type: Tag
+    tags:
+      - ClothMade
+  - type: Sprite
+    sprite: Objects/Consumable/Food/candys.rsi
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 4
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 2
+
+- type: entity
+  id: SpicyWrapCandy
+  parent: BaseItem
+  name: конфета
+  components:
+  - type: Food
+  - type: Sprite
+    sprite: Objects/Consumable/Food/candys.rsi
+    state: RedWrapCandy
+  - type: Tag
+    tags:
+      - FoodSnack
+  - type: SpawnItemsOnUse
+    items:
+      - id: RedWrap
+      - id: SpicyCandy
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+  - type: Item
+    size: Tiny
+
+- type: entity
+  id: SpicyCandy
+  parent: MeatCandyBase
+  name: конфета
+  components:
+  - type: Food
+  - type: FlavorProfile
+    flavors:
+      - meaty
+      - spicy
+  - type: Sprite
+    state: RedCandy
+
+- type: entity
+  id: SourWrapCandy
+  parent: BaseItem
+  name: конфета
+  components:
+  - type: Food
+  - type: Sprite
+    sprite: Objects/Consumable/Food/candys.rsi
+    state: GreenWrapCandy
+  - type: Tag
+    tags:
+      - FoodSnack
+  - type: SpawnItemsOnUse
+    items:
+      - id: GreenWrap
+      - id: SourCandy
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+  - type: Item
+    size: Tiny
+
+- type: entity
+  id: SourCandy
+  parent: MeatCandyBase
+  name: конфета
+  components:
+  - type: Food
+  - type: FlavorProfile
+    flavors:
+      - meaty
+      - sour
+  - type: Sprite
+    state: GreenCandy
+
+
+- type: entity
+  id: ClothWrapCandy
+  parent: BaseItem
+  name: конфета
+  components:
+  - type: Food
+  - type: Sprite
+    sprite: Objects/Consumable/Food/candys.rsi
+    state: WhiteWrapCandy
+  - type: Tag
+    tags:
+      - FoodSnack
+  - type: SpawnItemsOnUse
+    items:
+      - id: WhiteWrap
+      - id: ClothCandy
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+  - type: Item
+    size: Tiny
+
+- type: entity
+  id: ClothCandy
+  parent: ClothCandyBase
+  name: конфета
+  components:
+  - type: Food
+  - type: FlavorProfile
+    flavors:
+      - indescribably
+  - type: Sprite
+    state: WhiteCandy

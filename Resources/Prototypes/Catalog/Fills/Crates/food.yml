@@ -174,3 +174,13 @@
       - id: BlueCandyBox
       - id: FoodSnackSyndi
         prob: 0.1
+
+- type: entity
+  id: TerSweetBox
+  parent: CrateBaseWeldable
+  name: ящик необычных сладостей
+  components:
+  - type: StorageFill
+    contents:
+      - id: TerCandyBox
+        amount: 4
