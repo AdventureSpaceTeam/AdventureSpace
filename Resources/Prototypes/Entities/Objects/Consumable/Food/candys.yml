@@ -12,12 +12,11 @@
   - type: SolutionContainerManager
     solutions:
       food:
-        maxVol: 7 # Room for extra condiments
+        maxVol: 7
         reagents:
         - ReagentId: Nutriment
           Quantity: 1
-        - ReagentId: Sugar
-          Quantity: 2
+
   - type: Item
     sprite: Objects/Consumable/Food/candys.rsi
     size: Tiny
@@ -374,7 +373,6 @@
           Quantity: 2
 
 
-
 - type: entity
   id: BlueDyloveneCandy
   parent: CandyBase
@@ -426,5 +424,5 @@
       food:
         maxVol: 4
         reagents:
-        - ReagentId: Omnizine
+        - ReagentId: Nutriment
           Quantity: 2
