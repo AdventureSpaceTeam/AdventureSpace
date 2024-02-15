@@ -8,6 +8,9 @@
     sprite: Clothing/OuterClothing/Wigs/White/80s_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/White/80s_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -18,6 +21,9 @@
     sprite: Clothing/OuterClothing/Wigs/White/afro_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/White/afro_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -28,6 +34,9 @@
     sprite: Clothing/OuterClothing/Wigs/White/antenna_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/White/antenna_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -38,6 +47,9 @@
     sprite: Clothing/OuterClothing/Wigs/White/bedhead_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/White/bedhead_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -48,6 +60,9 @@
     sprite: Clothing/OuterClothing/Wigs/White/beehead_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/White/beehead_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -58,6 +73,9 @@
     sprite: Clothing/OuterClothing/Wigs/White/bigafro_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/White/bigafro_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -68,6 +86,9 @@
     sprite: Clothing/OuterClothing/Wigs/White/bob_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/White/bob_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -78,6 +99,9 @@
     sprite: Clothing/OuterClothing/Wigs/White/bowcut_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/White/bowcut_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -88,6 +112,9 @@
     sprite: Clothing/OuterClothing/Wigs/White/braid_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/White/braid_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -98,6 +125,9 @@
     sprite: Clothing/OuterClothing/Wigs/White/cornrowtail_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/White/cornrowtail_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -108,6 +138,9 @@
     sprite: Clothing/OuterClothing/Wigs/White/country_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/White/country_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -118,6 +151,9 @@
     sprite: Clothing/OuterClothing/Wigs/White/floorlength_bedhead_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/White/floorlength_bedhead_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -128,6 +164,9 @@
     sprite: Clothing/OuterClothing/Wigs/White/long_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/White/long_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -138,6 +177,9 @@
     sprite: Clothing/OuterClothing/Wigs/White/pigtails_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/White/pigtails_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -148,6 +190,9 @@
     sprite: Clothing/OuterClothing/Wigs/White/wisp_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/White/wisp_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 #Yellow
 - type: entity
@@ -159,6 +204,9 @@
     sprite: Clothing/OuterClothing/Wigs/Yellow/80s_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Yellow/80s_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -169,6 +217,9 @@
     sprite: Clothing/OuterClothing/Wigs/Yellow/afro_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Yellow/afro_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -179,6 +230,9 @@
     sprite: Clothing/OuterClothing/Wigs/Yellow/antenna_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Yellow/antenna_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -189,6 +243,9 @@
     sprite: Clothing/OuterClothing/Wigs/Yellow/bedhead_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Yellow/bedhead_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -199,6 +256,9 @@
     sprite: Clothing/OuterClothing/Wigs/Yellow/beehead_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Yellow/beehead_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -209,6 +269,9 @@
     sprite: Clothing/OuterClothing/Wigs/Yellow/bigafro_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Yellow/bigafro_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -219,6 +282,9 @@
     sprite: Clothing/OuterClothing/Wigs/Yellow/bob_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Yellow/bob_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -229,6 +295,9 @@
     sprite: Clothing/OuterClothing/Wigs/Yellow/bowcut_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Yellow/bowcut_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -239,6 +308,9 @@
     sprite: Clothing/OuterClothing/Wigs/Yellow/braid_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Yellow/braid_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -249,6 +321,9 @@
     sprite: Clothing/OuterClothing/Wigs/Yellow/cornrowtail_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Yellow/cornrowtail_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -259,6 +334,9 @@
     sprite: Clothing/OuterClothing/Wigs/Yellow/country_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Yellow/country_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -269,6 +347,9 @@
     sprite: Clothing/OuterClothing/Wigs/Yellow/floorlength_bedhead_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Yellow/floorlength_bedhead_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -279,6 +360,9 @@
     sprite: Clothing/OuterClothing/Wigs/Yellow/long_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Yellow/long_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -289,6 +373,9 @@
     sprite: Clothing/OuterClothing/Wigs/Yellow/pigtails_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Yellow/pigtails_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -299,6 +386,9 @@
     sprite: Clothing/OuterClothing/Wigs/Yellow/wisp_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Yellow/wisp_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 #Blue
 - type: entity
@@ -310,6 +400,9 @@
     sprite: Clothing/OuterClothing/Wigs/Blue/80s_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Blue/80s_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -320,6 +413,9 @@
     sprite: Clothing/OuterClothing/Wigs/Blue/afro_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Blue/afro_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -330,6 +426,9 @@
     sprite: Clothing/OuterClothing/Wigs/Blue/antenna_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Blue/antenna_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -340,6 +439,9 @@
     sprite: Clothing/OuterClothing/Wigs/Blue/bedhead_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Blue/bedhead_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -350,6 +452,9 @@
     sprite: Clothing/OuterClothing/Wigs/Blue/beehead_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Blue/beehead_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -360,6 +465,9 @@
     sprite: Clothing/OuterClothing/Wigs/Blue/bigafro_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Blue/bigafro_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -370,6 +478,9 @@
     sprite: Clothing/OuterClothing/Wigs/Blue/bob_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Blue/bob_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -380,6 +491,9 @@
     sprite: Clothing/OuterClothing/Wigs/Blue/bowcut_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Blue/bowcut_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -390,6 +504,9 @@
     sprite: Clothing/OuterClothing/Wigs/Blue/braid_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Blue/braid_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -400,6 +517,9 @@
     sprite: Clothing/OuterClothing/Wigs/Blue/cornrowtail_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Blue/cornrowtail_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -410,6 +530,9 @@
     sprite: Clothing/OuterClothing/Wigs/Blue/country_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Blue/country_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -420,6 +543,9 @@
     sprite: Clothing/OuterClothing/Wigs/Blue/floorlength_bedhead_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Blue/floorlength_bedhead_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -430,6 +556,9 @@
     sprite: Clothing/OuterClothing/Wigs/Blue/long_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Blue/long_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -440,6 +569,9 @@
     sprite: Clothing/OuterClothing/Wigs/Blue/pigtails_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Blue/pigtails_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -450,6 +582,9 @@
     sprite: Clothing/OuterClothing/Wigs/Blue/wisp_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Blue/wisp_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 #Red
 - type: entity
@@ -461,6 +596,9 @@
     sprite: Clothing/OuterClothing/Wigs/Red/80s_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Red/80s_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -471,6 +609,9 @@
     sprite: Clothing/OuterClothing/Wigs/Red/afro_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Red/afro_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -481,6 +622,9 @@
     sprite: Clothing/OuterClothing/Wigs/Red/antenna_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Red/antenna_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -491,6 +635,9 @@
     sprite: Clothing/OuterClothing/Wigs/Red/bedhead_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Red/bedhead_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -501,6 +648,9 @@
     sprite: Clothing/OuterClothing/Wigs/Red/beehead_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Red/beehead_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -511,6 +661,9 @@
     sprite: Clothing/OuterClothing/Wigs/Red/bigafro_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Red/bigafro_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -521,6 +674,9 @@
     sprite: Clothing/OuterClothing/Wigs/Red/bob_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Red/bob_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -531,6 +687,9 @@
     sprite: Clothing/OuterClothing/Wigs/Red/bowcut_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Red/bowcut_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -541,6 +700,9 @@
     sprite: Clothing/OuterClothing/Wigs/Red/braid_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Red/braid_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -551,6 +713,9 @@
     sprite: Clothing/OuterClothing/Wigs/Red/cornrowtail_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Red/cornrowtail_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -561,6 +726,9 @@
     sprite: Clothing/OuterClothing/Wigs/Red/country_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Red/country_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -571,6 +739,9 @@
     sprite: Clothing/OuterClothing/Wigs/Red/floorlength_bedhead_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Red/floorlength_bedhead_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -581,6 +752,9 @@
     sprite: Clothing/OuterClothing/Wigs/Red/long_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Red/long_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -591,6 +765,9 @@
     sprite: Clothing/OuterClothing/Wigs/Red/pigtails_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Red/pigtails_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -601,6 +778,9 @@
     sprite: Clothing/OuterClothing/Wigs/Red/wisp_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Red/wisp_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 #Green
 - type: entity
@@ -612,6 +792,9 @@
     sprite: Clothing/OuterClothing/Wigs/Green/80s_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Green/80s_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -622,6 +805,9 @@
     sprite: Clothing/OuterClothing/Wigs/Green/afro_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Green/afro_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -632,6 +818,9 @@
     sprite: Clothing/OuterClothing/Wigs/Green/antenna_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Green/antenna_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -642,6 +831,9 @@
     sprite: Clothing/OuterClothing/Wigs/Green/bedhead_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Green/bedhead_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -652,6 +844,9 @@
     sprite: Clothing/OuterClothing/Wigs/Green/beehead_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Green/beehead_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -662,6 +857,9 @@
     sprite: Clothing/OuterClothing/Wigs/Green/bigafro_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Green/bigafro_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -672,6 +870,9 @@
     sprite: Clothing/OuterClothing/Wigs/Green/bob_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Green/bob_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -682,6 +883,9 @@
     sprite: Clothing/OuterClothing/Wigs/Green/bowcut_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Green/bowcut_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -692,6 +896,9 @@
     sprite: Clothing/OuterClothing/Wigs/Green/braid_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Green/braid_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -702,6 +909,9 @@
     sprite: Clothing/OuterClothing/Wigs/Green/cornrowtail_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Green/cornrowtail_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -712,6 +922,9 @@
     sprite: Clothing/OuterClothing/Wigs/Green/country_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Green/country_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -722,6 +935,9 @@
     sprite: Clothing/OuterClothing/Wigs/Green/floorlength_bedhead_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Green/floorlength_bedhead_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -732,6 +948,9 @@
     sprite: Clothing/OuterClothing/Wigs/Green/long_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Green/long_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -742,6 +961,9 @@
     sprite: Clothing/OuterClothing/Wigs/Green/pigtails_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Green/pigtails_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -752,6 +974,9 @@
     sprite: Clothing/OuterClothing/Wigs/Green/wisp_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Green/wisp_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 #Pink
 - type: entity
@@ -763,6 +988,9 @@
     sprite: Clothing/OuterClothing/Wigs/Pink/80s_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Pink/80s_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -773,6 +1001,9 @@
     sprite: Clothing/OuterClothing/Wigs/Pink/afro_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Pink/afro_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -783,6 +1014,9 @@
     sprite: Clothing/OuterClothing/Wigs/Pink/antenna_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Pink/antenna_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -793,6 +1027,9 @@
     sprite: Clothing/OuterClothing/Wigs/Pink/bedhead_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Pink/bedhead_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -803,6 +1040,9 @@
     sprite: Clothing/OuterClothing/Wigs/Pink/beehead_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Pink/beehead_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -813,6 +1053,9 @@
     sprite: Clothing/OuterClothing/Wigs/Pink/bigafro_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Pink/bigafro_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -823,6 +1066,9 @@
     sprite: Clothing/OuterClothing/Wigs/Pink/bob_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Pink/bob_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -833,6 +1079,9 @@
     sprite: Clothing/OuterClothing/Wigs/Pink/bowcut_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Pink/bowcut_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -843,6 +1092,9 @@
     sprite: Clothing/OuterClothing/Wigs/Pink/braid_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Pink/braid_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -853,6 +1105,9 @@
     sprite: Clothing/OuterClothing/Wigs/Pink/cornrowtail_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Pink/cornrowtail_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -863,6 +1118,9 @@
     sprite: Clothing/OuterClothing/Wigs/Pink/country_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Pink/country_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -873,6 +1131,9 @@
     sprite: Clothing/OuterClothing/Wigs/Pink/floorlength_bedhead_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Pink/floorlength_bedhead_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -883,6 +1144,9 @@
     sprite: Clothing/OuterClothing/Wigs/Pink/long_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Pink/long_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -893,6 +1157,9 @@
     sprite: Clothing/OuterClothing/Wigs/Pink/pigtails_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Pink/pigtails_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
 - type: entity
   parent: ClothingHeadBase
@@ -903,4 +1170,7 @@
     sprite: Clothing/OuterClothing/Wigs/Pink/wisp_wig.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Wigs/Pink/wisp_wig.rsi
+  - type: Tag
+    tags:
+    - HidesHair
 
