@@ -1,7 +1,7 @@
 - type: entity
-  id: CrateMusicTapes
+  id: CrateMusicPlayer
   parent: CrateGenericSteel
-  name: музыкальная коробка
+  name: ящик плеера
   components:
   - type: StorageFill
     contents:
@@ -9,15 +9,47 @@
       amount: 1
     - id: TapePlayer
       amount: 1
+
+- type: entity
+  id: CrateMusicClassic
+  parent: CrateGenericSteel
+  name: ящик классической музыки
+  components:
+  - type: StorageFill
+    contents:
     - id: MusicTape2
       amount: 1
+    - id: MusicTape6
+      amount: 1
+    - id: MusicTape9
+      amount: 1
+
+- type: entity
+  id: CrateMusicRock
+  parent: CrateGenericSteel
+  name: ящик рок музыки
+  components:
+  - type: StorageFill
+    contents:
     - id: MusicTape3
+      amount: 1
+    - id: MusicTape15
+      amount: 1
+    - id: MusicTape16
+      amount: 1
+    - id: MusicTape17
       amount: 1
     - id: MusicTape18
       amount: 1
     - id: MusicTape19
       amount: 1
     - id: MusicTape20
+      amount: 1
+    - id: MusicTape24
+      amount: 1
+    - id: MusicTape25
+      amount: 1
+    - id: MusicTape26
       amount: 1
     - id: MusicTape27
       amount: 1
@@ -27,9 +59,43 @@
       amount: 1
     - id: MusicTape30
       amount: 1
-    - id: MusicTape31
+
+- type: entity
+  id: CrateMusicCyber
+  parent: CrateGenericSteel
+  name: ящик кибер музыки
+  components:
+  - type: StorageFill
+    contents:
+    - id: MusicTape4
       amount: 1
-    - id: MusicTape32
+    - id: MusicTape5
       amount: 1
-    - id: MusicTape33
+    - id: MusicTape22
+      amount: 1
+    - id: MusicTape1
+      amount: 1
+    - id: MusicTape10
+      amount: 1
+    - id: MusicTape11
+      amount: 1
+    - id: MusicTape12
+      amount: 1
+    - id: MusicTape13
+      amount: 1
+    - id: MusicTape14
+      amount: 1
+    - id: MusicTape23
+      amount: 1
+
+- type: entity
+  id: CrateMusicPop
+  parent: CrateGenericSteel
+  name: ящик поп музыки
+  components:
+  - type: StorageFill
+    contents:
+    - id: MusicTape7
+      amount: 1
+    - id: MusicTape8
       amount: 1
