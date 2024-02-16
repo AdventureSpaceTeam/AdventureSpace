@@ -296,4 +296,5 @@
     - id: AdminPDA
     - id: GasAnalyzer
     - id: trayScanner
+    - id: DoorRemoteAll
   - type: Unremoveable

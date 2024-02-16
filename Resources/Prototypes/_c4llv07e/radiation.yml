@@ -1,0 +1,8 @@
+- type: entity
+  id: RadiationSource
+  components:
+  - type: Sprite
+  - type: RadiationSource
+    intensity: 5
+    slope: 0.5
+    enabled: true

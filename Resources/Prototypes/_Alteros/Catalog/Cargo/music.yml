@@ -1,9 +1,49 @@
 - type: cargoProduct
-  id: MusicTapes
+  id: MusicPlayers
   icon:
     sprite: _Alteros/Entities/Objects/Devices/radio.rsi
     state: radio
-  product: CrateMusicTapes
-  cost: 560
+  product: CrateMusicPlayer
+  cost: 1560
+  category: Service
+  group: market
+
+- type: cargoProduct
+  id: MusicClassic
+  icon:
+    sprite: _Alteros/Entities/Objects/Devices/tapes.rsi
+    state: tape23
+  product: CrateMusicClassic
+  cost: 1950
+  category: Service
+  group: market
+
+- type: cargoProduct
+  id: MusicRock
+  icon:
+    sprite: _Alteros/Entities/Objects/Devices/tapes.rsi
+    state: tape26
+  product: CrateMusicRock
+  cost: 2250
+  category: Service
+  group: market
+
+- type: cargoProduct
+  id: MusicCyber
+  icon:
+    sprite: _Alteros/Entities/Objects/Devices/tapes.rsi
+    state: tape11
+  product: CrateMusicCyber
+  cost: 1230
+  category: Service
+  group: market
+
+- type: cargoProduct
+  id: MusicPop
+  icon:
+    sprite: _Alteros/Entities/Objects/Devices/tapes.rsi
+    state: tape19
+  product: CrateMusicPop
+  cost: 280
   category: Service
   group: market
