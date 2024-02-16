@@ -68,230 +68,274 @@
 - type: entity
   parent: BaseMusicTape
   id: MusicTape6
-  name: Кассета (Сундук - Предатель)
+  name: Кассета (Arstotzka - Main theme)
   description:
   components:
   - type: Sprite
     state: tape6
   - type: MusicTape
-    sound: "/Audio/_Alteros/TapePlayer/Tracks/traitor.ogg"
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/arstotzka.ogg"
 
 - type: entity
   parent: BaseMusicTape
   id: MusicTape7
-  name: Кассета (Arstotzka - Main theme)
+  name: Кассета (Алла Пугачёва - Звёздное лето)
   description:
   components:
   - type: Sprite
     state: tape7
   - type: MusicTape
-    sound: "/Audio/_Alteros/TapePlayer/Tracks/arstotzka.ogg"
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/starry_summer.ogg"
 
 - type: entity
   parent: BaseMusicTape
   id: MusicTape8
-  name: Кассета (Инстасамка - За деньги да)
+  name: Кассета (Игорь Скляр - Комарово)
   description:
   components:
   - type: Sprite
     state: tape8
   - type: MusicTape
-    sound: "/Audio/_Alteros/TapePlayer/Tracks/for_money.ogg"
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/komarovo.ogg"
 
 - type: entity
   parent: BaseMusicTape
   id: MusicTape9
-  name: Кассета (Piano Fantasia - Song For Denise)
+  name: Кассета (Little Barrie - Better Call Saul)
   description:
   components:
   - type: Sprite
     state: tape9
   - type: MusicTape
-    sound: "/Audio/_Alteros/TapePlayer/Tracks/wide.ogg"
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/saul.ogg"
 
 - type: entity
   parent: BaseMusicTape
   id: MusicTape10
-  name: Кассета (Алла Пугачёва - Звёздное лето)
+  name: Кассета (MOON - Hydrogen)
   description:
   components:
   - type: Sprite
     state: tape10
   - type: MusicTape
-    sound: "/Audio/_Alteros/TapePlayer/Tracks/starry_summer.ogg"
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/hydrogen.ogg"
 
 - type: entity
   parent: BaseMusicTape
   id: MusicTape11
-  name: Кассета (Игорь Скляр - Комарово)
+  name: Кассета (MOON - Paris)
   description:
   components:
   - type: Sprite
     state: tape11
   - type: MusicTape
-    sound: "/Audio/_Alteros/TapePlayer/Tracks/komarovo.ogg"
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/paris.ogg"
 
 - type: entity
   parent: BaseMusicTape
   id: MusicTape12
-  name: Кассета (Little Barrie - Better Call Saul)
+  name: Кассета (MOON - Crystals)
   description:
   components:
   - type: Sprite
     state: tape12
   - type: MusicTape
-    sound: "/Audio/_Alteros/TapePlayer/Tracks/saul.ogg"
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/crystals.ogg"
 
 - type: entity
   parent: BaseMusicTape
   id: MusicTape13
-  name: Кассета (MOON - Hydrogen)
+  name: Кассета (Jasper Byrne - Miami)
   description:
   components:
   - type: Sprite
     state: tape13
   - type: MusicTape
-    sound: "/Audio/_Alteros/TapePlayer/Tracks/hydrogen.ogg"
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/miami.ogg"
 
 - type: entity
   parent: BaseMusicTape
   id: MusicTape14
-  name: Кассета (MOON - Paris)
+  name: Кассета (Jasper Byrne - Hotline)
   description:
   components:
   - type: Sprite
     state: tape14
   - type: MusicTape
-    sound: "/Audio/_Alteros/TapePlayer/Tracks/paris.ogg"
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/hotline.ogg"
 
 - type: entity
   parent: BaseMusicTape
   id: MusicTape15
-  name: Кассета (MOON - Crystals)
+  name: Кассета (Bolgarich - Peacemakers)
   description:
   components:
   - type: Sprite
     state: tape15
   - type: MusicTape
-    sound: "/Audio/_Alteros/TapePlayer/Tracks/crystals.ogg"
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/peacemakers.ogg"
 
 - type: entity
   parent: BaseMusicTape
   id: MusicTape16
-  name: Кассета (Jasper Byrne - Miami)
+  name: Кассета (Bolgarich - Deadline)
   description:
   components:
   - type: Sprite
     state: tape16
   - type: MusicTape
-    sound: "/Audio/_Alteros/TapePlayer/Tracks/miami.ogg"
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/deadline.ogg"
 
 - type: entity
   parent: BaseMusicTape
   id: MusicTape17
-  name: Кассета (Jasper Byrne - Hotline)
+  name: Кассета (Bolgarich - Tear of veil)
   description:
   components:
   - type: Sprite
     state: tape17
   - type: MusicTape
-    sound: "/Audio/_Alteros/TapePlayer/Tracks/hotline.ogg"
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/tear_of_veil.ogg"
 
 - type: entity
   parent: BaseMusicTape
   id: MusicTape18
-  name: Кассета (Bolgarich - Peacemakers)
+  name: Кассета (Hugo - Space Asshole)
   description:
   components:
   - type: Sprite
     state: tape18
   - type: MusicTape
-    sound: "/Audio/_Alteros/TapePlayer/Tracks/peacemakers.ogg"
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/asshole.ogg"
 
 - type: entity
   parent: BaseMusicTape
   id: MusicTape19
-  name: Кассета (Bolgarich - Deadline)
+  name: Кассета (Simon Viklund - Razormind)
   description:
   components:
   - type: Sprite
     state: tape19
   - type: MusicTape
-    sound: "/Audio/_Alteros/TapePlayer/Tracks/deadline.ogg"
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/razormind.ogg"
 
 - type: entity
   parent: BaseMusicTape
   id: MusicTape20
-  name: Кассета (Bolgarich - Tear of veil)
+  name: Кассета (Alesso - Payday)
   description:
   components:
   - type: Sprite
     state: tape20
   - type: MusicTape
-    sound: "/Audio/_Alteros/TapePlayer/Tracks/tear_of_veil.ogg"
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/alesso.ogg"
 
 - type: entity
   parent: BaseMusicTape
   id: MusicTape21
-  name: Кассета (Hugo - Space Asshole)
+  name: Кассета (Carl Noren - Death Row)
   description:
   components:
   - type: Sprite
     state: tape21
   - type: MusicTape
-    sound: "/Audio/_Alteros/TapePlayer/Tracks/asshole.ogg"
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/death_row.ogg"
 
 - type: entity
   parent: BaseMusicTape
   id: MusicTape22
-  name: Кассета (Simon Viklund - Razormind)
+  name: Кассета (Marcin - The Rebel Path)
   description:
   components:
   - type: Sprite
     state: tape22
   - type: MusicTape
-    sound: "/Audio/_Alteros/TapePlayer/Tracks/razormind.ogg"
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/rebel_path.ogg"
 
 - type: entity
   parent: BaseMusicTape
   id: MusicTape23
-  name: Кассета (Alesso - Payday)
+  name: Кассета (Magna - Divide)
   description:
   components:
   - type: Sprite
     state: tape23
   - type: MusicTape
-    sound: "/Audio/_Alteros/TapePlayer/Tracks/alesso.ogg"
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/divide.ogg"
 
 - type: entity
   parent: BaseMusicTape
   id: MusicTape24
-  name: Кассета (Carl Noren - Death Row)
+  name: Кассета (Denis Major - Boss 1)
   description:
   components:
   - type: Sprite
     state: tape24
   - type: MusicTape
-    sound: "/Audio/_Alteros/TapePlayer/Tracks/death_row.ogg"
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/boss1.ogg"
 
 - type: entity
   parent: BaseMusicTape
   id: MusicTape25
-  name: Кассета (Marcin - The Rebel Path)
+  name: Кассета (Denis Major - Boss 2)
   description:
   components:
   - type: Sprite
     state: tape25
   - type: MusicTape
-    sound: "/Audio/_Alteros/TapePlayer/Tracks/rebel_path.ogg"
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/boss2.ogg"
 
 - type: entity
   parent: BaseMusicTape
   id: MusicTape26
-  name: Кассета (Magna - Divide)
+  name: Кассета (Denis Major - Bump)
   description:
   components:
   - type: Sprite
     state: tape26
   - type: MusicTape
-    sound: "/Audio/_Alteros/TapePlayer/Tracks/divide.ogg"
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/bump.ogg"
+
+- type: entity
+  parent: BaseMusicTape
+  id: MusicTape27
+  name: Кассета (Denis Major - Busybass)
+  description:
+  components:
+  - type: Sprite
+    state: tape27
+  - type: MusicTape
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/busybass.ogg"
+
+- type: entity
+  parent: BaseMusicTape
+  id: MusicTape28
+  name: Кассета (Denis Major - Intro)
+  description:
+  components:
+  - type: Sprite
+    state: tape28
+  - type: MusicTape
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/intro.ogg"
+
+- type: entity
+  parent: BaseMusicTape
+  id: MusicTape29
+  name: Кассета (Denis Major - Dance Trumpet)
+  description:
+  components:
+  - type: Sprite
+    state: tape29
+  - type: MusicTape
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/trumpet.ogg"
+
+- type: entity
+  parent: BaseMusicTape
+  id: MusicTape30
+  name: Кассета (Denis Major - Slow Rock)
+  description:
+  components:
+  - type: Sprite
+    state: tape30
+  - type: MusicTape
+    sound: "/Audio/_Alteros/TapePlayer/Tracks/rock.ogg"

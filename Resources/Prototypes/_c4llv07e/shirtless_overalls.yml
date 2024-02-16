@@ -1,0 +1,10 @@
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitShirtlessOveralls
+  name: Садовый комбинезон без рубашки
+  description: Покажи кто тут босс гидропоники.
+  components:
+  - type: Sprite
+    sprite: _c4llv07e/shirtless_overalls.rsi
+  - type: Clothing
+    sprite: _c4llv07e/shirtless_overalls.rsi
