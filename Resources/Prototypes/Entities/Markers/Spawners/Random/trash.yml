@@ -33,6 +33,14 @@
         - FoodPacketSusTrash
         - FoodPacketSyndiTrash
         - BrokenBottle
+        - GreenWrap
+        - BlueWrap
+        - CyanWrap
+        - YellowWrap
+        - PurpleWrap
+        - RedWrap
+        - RainbowWrap
+        - OrangeWrap
       chance: 0.5
       offset: 0.2
   placement:

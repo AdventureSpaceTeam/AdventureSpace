@@ -45,5 +45,10 @@
       - FoodFrozenSnowconeRainbow
       - FoodSnackPistachios
       - FoodSnackSemki
+      - AssortedCandyBox
+      - BlueCandyBox
+      - YellowCandyBox
+      - RedCandyBox
+      - GreenCandyBox
     chance: 0.8
     offset: 0.0
