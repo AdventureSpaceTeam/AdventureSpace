@@ -77,3 +77,23 @@
   cost: 2400
   category: Food
   group: market
+
+- type: cargoProduct
+  id: BoxOfSweets
+  icon:
+    sprite: Objects/Storage/CandyBoxes/assorted.rsi
+    state: close
+  product: SweetBox
+  cost: 450
+  category: Food
+  group: market
+
+- type: cargoProduct
+  id: TerBoxOfSweets
+  icon:
+    sprite: Objects/Storage/CandyBoxes/assorted.rsi
+    state: close
+  product: TerSweetBox
+  cost: 450
+  category: Food
+  group: market
