@@ -2089,7 +2089,7 @@ namespace Content.Shared.CCVar
          */
 
         public static readonly CVarDef<bool> GreetingsEnable =
-            CVarDef.Create("greetings.enable", true);
+            CVarDef.Create("greetings.enable", false);
 
         public static readonly CVarDef<string> GreetingsMessage =
             CVarDef.Create("greetings.message", "Привет");
