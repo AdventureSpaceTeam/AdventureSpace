@@ -62,109 +62,109 @@
 - type: entity
   parent: SpaceCash
   id: SpaceCash10
-  suffix: 10
+  suffix: 1
   components:
   - type: Icon
     sprite: Objects/Economy/cash.rsi
     state: cash_10
   - type: Stack
-    count: 10
+    count: 1
 
 - type: entity
   parent: SpaceCash
   id: SpaceCash100
-  suffix: 100
+  suffix: 1
   components:
   - type: Icon
     sprite: Objects/Economy/cash.rsi
     state: cash_100
   - type: Stack
-    count: 100
+    count: 1
 
 - type: entity
   parent: SpaceCash
   id: SpaceCash500
-  suffix: 500
+  suffix: 5
   components:
   - type: Icon
     sprite: Objects/Economy/cash.rsi
     state: cash_500
   - type: Stack
-    count: 500
+    count: 5
 
 - type: entity
   parent: SpaceCash
   id: SpaceCash1000
-  suffix: 1000
+  suffix: 10
   components:
   - type: Icon
     sprite: Objects/Economy/cash.rsi
     state: cash_1000
   - type: Stack
-    count: 1000
+    count: 10
 
 - type: entity
   parent: SpaceCash
   id: SpaceCash2500
-  suffix: 2500
+  suffix: 25
   components:
   - type: Icon
     sprite: Objects/Economy/cash.rsi
     state: cash_1000
   - type: Stack
-    count: 2500
+    count: 25
 
 - type: entity
   parent: SpaceCash
   id: SpaceCash5000
-  suffix: 5000
+  suffix: 50
   components:
   - type: Icon
     sprite: Objects/Economy/cash.rsi
     state: cash_1000
   - type: Stack
-    count: 5000
+    count: 50
 
 - type: entity
   parent: SpaceCash
   id: SpaceCash10000
-  suffix: 10000
+  suffix: 100
   components:
   - type: Icon
     sprite: Objects/Economy/cash.rsi
     state: cash_1000
   - type: Stack
-    count: 10000
+    count: 100
 
 - type: entity
   parent: SpaceCash
   id: SpaceCash20000
-  suffix: 20000
+  suffix: 200
   components:
   - type: Icon
     sprite: Objects/Economy/cash.rsi
     state: cash_1000
   - type: Stack
-    count: 20000
+    count: 200
 
 - type: entity
   parent: SpaceCash
   id: SpaceCash30000
-  suffix: 30000
+  suffix: 300
   components:
   - type: Icon
     sprite: Objects/Economy/cash.rsi
     state: cash_1000
   - type: Stack
-    count: 30000
+    count: 300
 
 - type: entity
   parent: SpaceCash
   id: SpaceCash1000000
-  suffix: 1000000
+  suffix: 10000
   components:
   - type: Icon
     sprite: Objects/Economy/cash.rsi
     state: cash_1000000
   - type: Stack
-    count: 1000000
+    count: 10000
