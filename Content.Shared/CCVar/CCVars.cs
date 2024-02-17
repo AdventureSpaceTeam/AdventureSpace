@@ -2106,5 +2106,15 @@ namespace Content.Shared.CCVar
 
         public static readonly CVarDef<float> RnDPointsModifier =
             CVarDef.Create("game.research_modifier", 1.0f, CVar.SERVER | CVar.REPLICATED);
+
+        /*
+         * DEBUG
+         */
+
+        /// <summary>
+        /// A simple toggle to test <c>OptionsVisualizerComponent</c>.
+        /// </summary>
+        public static readonly CVarDef<bool> DebugOptionVisualizerTest =
+            CVarDef.Create("debug.option_visualizer_test", false, CVar.CLIENTONLY);
     }
 }
