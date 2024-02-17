@@ -2096,5 +2096,15 @@ namespace Content.Shared.CCVar
 
         public static readonly CVarDef<string> GreetingsAuthor =
             CVarDef.Create("greetings.author", "Сервер");
+
+        /*
+         * DEBUG
+         */
+
+        /// <summary>
+        /// A simple toggle to test <c>OptionsVisualizerComponent</c>.
+        /// </summary>
+        public static readonly CVarDef<bool> DebugOptionVisualizerTest =
+            CVarDef.Create("debug.option_visualizer_test", false, CVar.CLIENTONLY);
     }
 }
