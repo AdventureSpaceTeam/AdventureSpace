@@ -43,6 +43,7 @@
   - type: ApcPowerReceiver
     powerLoad: 1000 # TODO if we keep this make it spike power draw when teleporting
   - type: CargoTelepad
+  - type: CargoPallet
   - type: Machine
     board: CargoTelepadMachineCircuitboard
   - type: Appearance

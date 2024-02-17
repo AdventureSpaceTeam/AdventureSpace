@@ -232,9 +232,6 @@ namespace Content.Server.Cargo.Systems
         {
             foreach (var gridUid in data.Grids)
             {
-                if (!_tradeQuery.HasComponent(gridUid))
-                    continue;
-
                 ents.Add(gridUid);
             }
         }
