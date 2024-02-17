@@ -56,6 +56,10 @@ namespace Content.Server.GameTicking
         [ViewVariables]
         private GameRunLevel _runLevel;
 
+        private RoundEndMessageEvent.RoundEndPlayerInfo[]? _replayRoundPlayerInfo;
+
+        private string? _replayRoundText;
+
         [ViewVariables]
         public GameRunLevel RunLevel
         {
@@ -383,11 +387,14 @@ namespace Content.Server.GameTicking
                     PlayerOOCName = contentPlayerData?.Name ?? "(IMPOSSIBLE: REGISTERED MIND WITH NO OWNER)",
                     // Character name takes precedence over current entity name
                     PlayerICName = playerIcName,
+                    PlayerGuid = userId,
                     PlayerNetEntity = GetNetEntity(entity),
                     Role = antag
                         ? roles.First(role => role.Antagonist).Name
                         : roles.FirstOrDefault().Name ?? Loc.GetString("game-ticker-unknown-role"),
                     Antag = antag,
+                    JobPrototypes = roles.Where(role => !role.Antagonist).Select(role => role.Prototype).ToArray(),
+                    AntagPrototypes = roles.Where(role => role.Antagonist).Select(role => role.Prototype).ToArray(),
                     Observer = observer,
                     Connected = connected
                 };
@@ -400,7 +407,11 @@ namespace Content.Server.GameTicking
 
             RaiseNetworkEvent(new RoundEndMessageEvent(gamemodeTitle, roundEndText, roundDuration, RoundId,
                 listOfPlayerInfoFinal.Length, listOfPlayerInfoFinal, LobbySong, sound));
+
             RaiseLocalEvent(new RoundEndedEvent(RoundId, roundDuration)); // Corvax
+
+            _replayRoundPlayerInfo = listOfPlayerInfoFinal;
+            _replayRoundText = roundEndText;
         }
 
         private async void SendRoundEndDiscordMessage()

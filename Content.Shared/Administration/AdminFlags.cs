@@ -90,9 +90,14 @@
         EditNotes = 1 << 14,
 
         /// <summary>
+        ///     Lets you Massban, on SS14.Admin
+        /// </summary>
+        MassBan = 1 << 15,
+
+        /// <summary>
         ///     Lets you view admin chat.
         /// </summary>
-        AdminNotes = 1 << 15,
+        AdminNotes = 1 << 16,
 
         /// <summary>
         ///     Dangerous host permissions like scsi.
