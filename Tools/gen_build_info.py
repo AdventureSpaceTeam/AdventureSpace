@@ -38,32 +38,23 @@ def inject_manifest(zip_path: str, manifest: str) -> None:
         z.writestr("build.json", manifest)
 
 
-def get_git_sha() -> str:
-    proc = subprocess.run(["git", "rev-parse", "HEAD"], stdout=subprocess.PIPE, check=True, encoding="UTF-8")
-    tag = proc.stdout.strip()
-    return tag
-
 def generate_build_json(file: str) -> str:
     # Env variables set by Jenkins.
 
     hash = sha256_file(file)
     engine_version = get_engine_version()
     manifest_hash = generate_manifest_hash(file)
-    version = os.environ.get("GITHUB_SHA")
-    if not version:
-        version = get_git_sha()
 
     return json.dumps({
         "download": BUILD_URL,
         "hash": hash,
-        "version": version,
+        "version": VERSION,
         "fork_id": FORK_ID,
         "engine_version": engine_version,
         "manifest_url": MANIFEST_URL,
         "manifest_download_url": MANIFEST_DOWNLOAD_URL,
         "manifest_hash": manifest_hash
     })
-
 
 def generate_manifest_hash(file: str) -> str:
     zip = ZipFile(file)
@@ -91,6 +82,7 @@ def get_engine_version() -> str:
     tag = proc.stdout.strip()
     assert tag.startswith("v")
     return tag[1:] # Cut off v prefix.
+
 
 def sha256_file(path: str) -> str:
     with open(path, "rb") as f:
