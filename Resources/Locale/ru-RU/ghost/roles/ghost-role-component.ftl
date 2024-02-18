@@ -159,3 +159,6 @@ ghost-role-information-syndicate-reinforcement-rules = Действуют обы
 ghost-role-information-syndicate-monkey-reinforcement-name = Агент-обезьяна Синдиката
 ghost-role-information-syndicate-monkey-reinforcement-description = Кому-то нужно подкрепление. Вы, специально обученная обезьяна, поможете им.
 ghost-role-information-syndicate-monkey-reinforcement-rules = Действуют обычные правила антагонистов Синдиката. Работайте с тем, кто вас вызвал, и не причиняйте ему вреда.
+ghost-role-information-Gingerbread-name = Пряничный человечек
+ghost-role-information-Gingerbread-description = Вы любимый ребенок шеф-повара. Вы живой пряничный человечек.
+ghost-role-information-Gingerbread-rules = Вы съедобный человечек из печенья. Ваша задача найти свое место в этом мире, где всё хочет вас съесть.
