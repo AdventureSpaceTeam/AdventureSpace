@@ -373,10 +373,9 @@
     - ChemDispenserMachineCircuitboard
     - ChemMasterMachineCircuitboard
     - CondenserMachineCircuitBoard
-    - PrinterDocMachineCircuitboard # Corvax-Printer
+    # - PrinterDocMachineCircuitboard # Corvax-Printer
+    - PrinterMachineCircuitboard # c4llv07e printer
     - HotplateMachineCircuitboard
-    - HotplateMachineCircuitboard
-    - PrinterDocMachineCircuitboard # Corvax-Printer
     - UniformPrinterMachineCircuitboard
     - FloorGreenCircuit
     - FloorBlueCircuit

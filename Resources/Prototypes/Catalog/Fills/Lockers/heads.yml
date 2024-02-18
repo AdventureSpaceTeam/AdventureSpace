@@ -17,7 +17,8 @@
       - id: RubberStampQm
       - id: ClothingHeadsetAltCargo
       - id: BoxEncryptionKeyCargo
-      - id: PrinterDocFlatpack # Corvax-Printer
+      # - id: PrinterDocFlatpack # Corvax-Printer
+      - id: PrinterFlatpack # c4llv07e printer
 
 - type: entity
   id: LockerCaptainFilledHardsuit
@@ -129,7 +130,8 @@
         prob: 0.5
       - id: ClothingOuterCoatHOP # Corvax-Resprite
       - id: AccessConfigurator
-      - id: PrinterDocFlatpack # Corvax-Printer
+      # - id: PrinterDocFlatpack # Corvax-Printer
+      - id: PrinterFlatpack # c4llv07e printer
 
 - type: entity
   id: LockerChiefEngineerFilledHardsuit

@@ -223,3 +223,4 @@ YellowOxygenTankFilled: OxygenTankFilled
 
 # corvax printer
 PrinterDoc: Printer
+PrinterDocMachineCircuitboard: PrinterMachineCircuitboard
