@@ -2,49 +2,86 @@
   id: AtmosDeviceFanTiny
   start: start
   graph:
-  - node: start
-    edges:
-    - to: tinyfan
-      steps:
-      - material: Plasma
-        amount: 5
-      - material: Cable
-        amount: 10
-      - material: Steel
-        amount: 10
-      - material: Plasteel
-        amount: 10
-      - material: Plastic
-        amount: 10
-        doAfter: 5
+    - node: start
+      edges:
+        - to: tinyfanp1
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          steps:
+            - material: Plasteel
+              amount: 10
+              doAfter: 1
 
-  - node: tinyfan
-    entity: AtmosDeviceFanTiny
-    edges:
-    - to: start
-      completed:
-      - !type:SpawnPrototype
-        prototype: SheetPlasma1
-        amount: 5
-      - !type:SpawnPrototype
-        prototype: CableApcStack1
-        amount: 10
-      - !type:SpawnPrototype
-        prototype: SheetSteel1
-        amount: 10
-      - !type:SpawnPrototype
-        prototype: SheetPlasteel1
-        amount: 10
-      - !type:SpawnPrototype
-        prototype: SheetPlastic1
-        amount: 10
-      - !type:DeleteEntity
-      steps:
-      - tool: Screwing
-        doAfter: 2
-      - tool: Welding
-        doAfter: 1
-      - tool: Anchoring
-        doAfter: 1
-      - tool: Welding
-        doAfter: 2
+    - node: tinyfanp1
+      entity: AtmosDeviceFanTinyP1
+      edges:
+        - to: tinyfanp2
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          steps:
+            - material: Cable
+              amount: 10
+              doAfter: 1
+
+    - node: tinyfanp2
+      entity: AtmosDeviceFanTinyP2
+      edges:
+        - to: tinyfanp3
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          steps:
+            - material: Steel
+              amount: 10
+              doAfter: 1
+
+    - node: tinyfanp3
+      entity: AtmosDeviceFanTinyP3
+      edges:
+      - to: tinyfanp4
+        steps:
+          - material: Plastic
+            amount: 10
+            doAfter: 1
+
+    - node: tinyfanp4
+      entity: AtmosDeviceFanTinyP4
+      edges:
+      - to: tinyfan
+        steps:
+          - material: Plasma
+            amount: 5
+            doAfter: 1
+
+    - node: tinyfan
+      entity: AtmosDeviceFanTiny
+      edges:
+      - to: start
+        completed:
+        - !type:SpawnPrototype
+          prototype: SheetPlasma1
+          amount: 5
+        - !type:SpawnPrototype
+          prototype: CableApcStack1
+          amount: 10
+        - !type:SpawnPrototype
+          prototype: SheetSteel1
+          amount: 10
+        - !type:SpawnPrototype
+          prototype: SheetPlasteel1
+          amount: 10
+        - !type:SpawnPrototype
+          prototype: SheetPlastic1
+          amount: 10
+        - !type:DeleteEntity
+        steps:
+        - tool: Screwing
+          doAfter: 2
+        - tool: Welding
+          doAfter: 1
+        - tool: Anchoring
+          doAfter: 1
+        - tool: Welding
+          doAfter: 2

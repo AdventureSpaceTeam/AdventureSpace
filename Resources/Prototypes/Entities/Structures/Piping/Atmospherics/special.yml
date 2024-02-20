@@ -28,3 +28,75 @@
   - type: Construction
     graph: AtmosDeviceFanTiny
     node: tinyfan
+
+- type: entity
+  id: AtmosDeviceFanTinyP1
+  name: каркас маленького вентилятора
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Transform
+    anchored: true
+  - type: Physics
+    bodyType: Static
+  - type: Sprite
+    sprite: Structures/Piping/Atmospherics/tinyfanparts/p1.rsi
+    state: icon
+  - type: Clickable
+  - type: Construction
+    graph: AtmosDeviceFanTiny
+    node: tinyfanp1
+
+- type: entity
+  id: AtmosDeviceFanTinyP2
+  name: каркас маленького вентилятора
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Transform
+    anchored: true
+  - type: Physics
+    bodyType: Static
+  - type: Sprite
+    sprite: Structures/Piping/Atmospherics/tinyfanparts/p1.rsi
+    state: icon
+  - type: Clickable
+  - type: Construction
+    graph: AtmosDeviceFanTiny
+    node: tinyfanp2
+
+- type: entity
+  id: AtmosDeviceFanTinyP3
+  name: каркас маленького вентилятора
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Transform
+    anchored: true
+  - type: Physics
+    bodyType: Static
+  - type: Sprite
+    sprite: Structures/Piping/Atmospherics/tinyfanparts/p2.rsi
+    state: icon
+  - type: Clickable
+  - type: Construction
+    graph: AtmosDeviceFanTiny
+    node: tinyfanp3
+
+- type: entity
+  id: AtmosDeviceFanTinyP4
+  name: каркас маленького вентилятора
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Transform
+    anchored: true
+  - type: Physics
+    bodyType: Static
+  - type: Sprite
+    sprite: Structures/Piping/Atmospherics/tinyfanparts/p3.rsi
+    state: icon
+  - type: Clickable
+  - type: Construction
+    graph: AtmosDeviceFanTiny
+    node: tinyfanp4
