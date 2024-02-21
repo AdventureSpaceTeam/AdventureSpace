@@ -30,6 +30,8 @@
         - Document
     storage:
       SheetPrinter: 0
+  - type: Machine
+    board: PrinterMachineCircuitboard
   - type: Lathe
     # idleState: icon
     # runningState: building
@@ -129,3 +131,36 @@
     price: 800
   - type: ResearchClient
   - type: TechnologyDatabase
+
+- type: entity
+  id: PrinterMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: Плата принтера
+  description: Микросхема для создания принтера
+  components:
+    - type: Sprite
+      state: cpuboard_adv
+    - type: MachineBoard
+      prototype: Printer
+      requirements:
+        MatterBin: 3
+        Manipulator: 1
+      materialRequirements:
+        Glass: 1
+
+- type: latheRecipe
+  id: PrinterMachineCircuitboard
+  result: PrinterMachineCircuitboard
+  completetime: 4
+  materials:
+     Steel: 100
+     Glass: 900
+
+- type: entity
+  parent: BaseFlatpack
+  id: PrinterFlatpack
+  name: упакованный принтер
+  description: упакованн
+  components:
+  - type: Flatpack
+    entity: Printer
