@@ -3,6 +3,7 @@
   parent: BaseMachineCircuitboard
   name: document printer machine board
   description: A machine printed circuit board for an document printer
+  suffix: ПРИНТЕР КОРВАКСА, НЕ ИСПОЛЬЗОВАТЬ
   components:
     - type: MachineBoard
       prototype: PrinterDoc
