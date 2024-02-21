@@ -1,0 +1,230 @@
+# Рома, если ты это читаешь, можешь забирать этот файл себе. Я его
+# переместил в свою папку только как ответственный за внесение на сервер.
+
+#Horns
+- type: marking
+  sponsorOnly: true
+  id: LizardHornsArgali2
+  name: Унатх, рожки (Толстый  Аргали)
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [Reptilian]
+  sprites:
+  - sprite: _c4llv07e/Reptilian_Customs/horns.rsi
+    state: horns_argali2
+
+- type: marking
+  sponsorOnly: true
+  id: LizardHornsAyrshire2
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [Reptilian]
+  sprites:
+  - sprite: _c4llv07e/Reptilian_Customs/horns.rsi
+    state: horns_ayrshire2
+
+- type: marking
+  sponsorOnly: true
+  id: LizardHornsBambi
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [Reptilian]
+  sprites:
+  - sprite: _c4llv07e/Reptilian_Customs/horns.rsi
+    state: horns_bambi
+
+- type: marking
+  sponsorOnly: true
+  id: LizardHornsBig
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [Reptilian]
+  sprites:
+  - sprite: _c4llv07e/Reptilian_Customs/horns.rsi
+    state: horns_big
+
+- type: marking
+  sponsorOnly: true
+  id: LizardHornsBighorn2
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [Reptilian]
+  sprites:
+  - sprite: _c4llv07e/Reptilian_Customs/horns.rsi
+    state: horns_bighorn2
+
+- type: marking
+  sponsorOnly: true
+  id: LizardHornsCorkscrew
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [Reptilian]
+  sprites:
+  - sprite: _c4llv07e/Reptilian_Customs/horns.rsi
+    state: horns_corkscrew
+
+- type: marking
+  sponsorOnly: true
+  id: LizardHornsDeathclaw
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [Reptilian]
+  sprites:
+  - sprite: _c4llv07e/Reptilian_Customs/horns.rsi
+    state: horns_deathclaw
+
+- type: marking
+  sponsorOnly: true
+  id: LizardHornsDeathclawgreat
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [Reptilian]
+  sprites:
+  - sprite: _c4llv07e/Reptilian_Customs/horns.rsi
+    state: horns_deathclawgreat
+
+- type: marking
+  sponsorOnly: true
+  id: LizardHornsDouble2
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [Reptilian]
+  sprites:
+  - sprite: _c4llv07e/Reptilian_Customs/horns.rsi
+    state: horns_double2
+
+- type: marking
+  sponsorOnly: true
+  id: LizardHornsDragon
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [Reptilian]
+  sprites:
+  - sprite: _c4llv07e/Reptilian_Customs/horns.rsi
+    state: horns_dragon
+
+- type: marking
+  sponsorOnly: true
+  id: LizardHornsMohawk
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [Reptilian]
+  sprites:
+  - sprite: _c4llv07e/Reptilian_Customs/horns.rsi
+    state: horns_mohawk
+
+- type: marking
+  sponsorOnly: true
+  id: LizardHornsOlddragon
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [Reptilian]
+  sprites:
+  - sprite: _c4llv07e/Reptilian_Customs/horns.rsi
+    state: horns_olddragon
+
+- type: marking
+  sponsorOnly: true
+  id: LizardHornsMyrsore2
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [Reptilian]
+  sprites:
+  - sprite: _c4llv07e/Reptilian_Customs/horns.rsi
+    state: horns_myrsore2
+
+- type: marking
+  sponsorOnly: true
+  id: LizardHornsTrike
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [Reptilian]
+  sprites:
+  - sprite: _c4llv07e/Reptilian_Customs/horns.rsi
+    state: horns_trike
+
+#Tails
+- type: marking
+  sponsorOnly: true
+  id: LizardTailCurved
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Reptilian]
+  sprites:
+  - sprite: _c4llv07e/Reptilian_Customs/tails.rsi
+    state: tail_curved
+
+- type: marking
+  sponsorOnly: true
+  id: LizardTailFlexible
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Reptilian]
+  sprites:
+  - sprite: _c4llv07e/Reptilian_Customs/tails.rsi
+    state: tail_flexible
+
+- type: marking
+  sponsorOnly: true
+  id: LizardTailSpiky
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Reptilian]
+  sprites:
+  - sprite: _c4llv07e/Reptilian_Customs/tails.rsi
+    state: tail_spiky
+
+#Body
+- type: marking
+  sponsorOnly: true
+  id: LizardChestPrickly
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Reptilian]
+  sprites:
+  - sprite: _c4llv07e/Reptilian_Customs/body.rsi
+    state: body_prickly
+
+- type: marking
+  sponsorOnly: true
+  id: LizardChestRidge
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Reptilian]
+  sprites:
+  - sprite: _c4llv07e/Reptilian_Customs/body.rsi
+    state: body_ridge
+
+#Frills
+- type: marking
+  sponsorOnly: true
+  id: LizardFrillsCollar
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [Reptilian]
+  sprites:
+  - sprite: _c4llv07e/Reptilian_Customs/frills.rsi
+    state: frills_collar
+
+#Snout
+- type: marking
+  sponsorOnly: true
+  id: LizardSnoutFlat
+  bodyPart: Snout
+  markingCategory: Snout
+  forcedColoring: true
+  speciesRestriction: [Reptilian]
+  sprites:
+  - sprite: _c4llv07e/Reptilian_Customs/snout.rsi
+    state: snout_flat
+
+- type: marking
+  sponsorOnly: true
+  id: LizardSnoutHigh
+  bodyPart: Snout
+  markingCategory: Snout
+  forcedColoring: true
+  speciesRestriction: [Reptilian]
+  sprites:
+  - sprite: _c4llv07e/Reptilian_Customs/snout.rsi
+    state: snout_high
