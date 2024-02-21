@@ -407,7 +407,6 @@ namespace Content.Server.GameTicking
 
             RaiseNetworkEvent(new RoundEndMessageEvent(gamemodeTitle, roundEndText, roundDuration, RoundId,
                 listOfPlayerInfoFinal.Length, listOfPlayerInfoFinal, LobbySong, sound));
-
             RaiseLocalEvent(new RoundEndedEvent(RoundId, roundDuration)); // Corvax
 
             _replayRoundPlayerInfo = listOfPlayerInfoFinal;
