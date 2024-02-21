@@ -220,3 +220,12 @@ VehicleJanicartDestroyed: null
 # 2024-02-01
 YellowOxygenTank: OxygenTank
 YellowOxygenTankFilled: OxygenTankFilled
+
+# corvax printer
+PrinterDoc: Printer
+PrinterDocMachineCircuitboard: PrinterMachineCircuitboard
+
+# 2024-02-19
+Drone: null
+SpawnMobDrone: null
+Onestar: null # I dont think this is even mapped, but just in case
