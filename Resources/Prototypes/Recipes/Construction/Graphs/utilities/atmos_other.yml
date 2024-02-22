@@ -21,6 +21,8 @@
             - !type:SnapToGrid
               southRotation: true
           steps:
+            - tool: Welding
+              doAfter: 2
             - material: Cable
               amount: 10
               doAfter: 1
@@ -36,24 +38,31 @@
             - material: Steel
               amount: 10
               doAfter: 1
+            - tool: Anchoring
+              doAfter: 1
 
     - node: tinyfanp3
       entity: AtmosDeviceFanTinyP3
       edges:
-      - to: tinyfanp4
-        steps:
-          - material: Plastic
-            amount: 10
-            doAfter: 1
+        - to: tinyfanp4
+          steps:
+            - material: Plastic
+              amount: 10
+              doAfter: 1
+            - tool: Welding
+              doAfter: 1
+
 
     - node: tinyfanp4
       entity: AtmosDeviceFanTinyP4
       edges:
-      - to: tinyfan
-        steps:
-          - material: Plasma
-            amount: 5
-            doAfter: 1
+        - to: tinyfan
+          steps:
+            - material: Plasma
+              amount: 5
+              doAfter: 1
+            - tool: Screwing
+              doAfter: 2
 
     - node: tinyfan
       entity: AtmosDeviceFanTiny
