@@ -160,7 +160,7 @@
   parent: BaseFlatpack
   id: PrinterFlatpack
   name: упакованный принтер
-  description: упакованн
+  description: Упаковка, при помощи которой можно создать принтер.
   components:
   - type: Flatpack
     entity: Printer
