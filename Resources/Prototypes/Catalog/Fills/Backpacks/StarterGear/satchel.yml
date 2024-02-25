@@ -297,7 +297,7 @@
   components:
   - type: StorageFill
     contents:
-    - id: AdminPD
+    - id: AdminPDA
     - id: GasAnalyzer
     - id: trayScanner
     - id: DoorRemoteAll
