@@ -62,6 +62,9 @@
             "name": "box_medical"
         },
         {
+            "name": "box_indimedical"
+        },
+        {
             "name": "box_science"
         },
         {
