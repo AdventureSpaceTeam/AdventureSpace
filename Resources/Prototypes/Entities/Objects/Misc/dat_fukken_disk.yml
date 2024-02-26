@@ -11,7 +11,7 @@
     sprite: Objects/Misc/nukedisk.rsi
     state: icon
   - type: StaticPrice
-    price: 2000
+    price: 0
   - type: CargoSellBlacklist
   - type: ArrivalsBlacklist
   - type: WarpPoint
@@ -34,4 +34,4 @@
     sprite: Objects/Misc/nukedisk.rsi
     state: icon
   - type: StaticPrice
-    price: 1 # it's worth even less than normal items. Perfection.
+    price: 0

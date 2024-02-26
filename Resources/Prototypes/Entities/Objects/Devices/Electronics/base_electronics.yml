@@ -9,7 +9,7 @@
       sprite: Objects/Misc/module.rsi
       state: generic
     - type: StaticPrice
-      price: 100
+      price: 0
     - type: PhysicalComposition
       materialComposition:
         Glass: 200

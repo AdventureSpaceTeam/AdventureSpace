@@ -19,7 +19,7 @@
       bodypart: !type:Container
         ents: []
   - type: StaticPrice
-    price: 50
+    price: 0
   - type: Tag
     tags:
       - Trash

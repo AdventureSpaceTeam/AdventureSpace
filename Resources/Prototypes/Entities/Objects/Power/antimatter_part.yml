@@ -13,7 +13,7 @@
   - type: Flatpack
     entity: AmeShielding
   - type: StaticPrice
-    price: 500
+    price: 0
   - type: GuideHelp
     guides: [ AME, Power ]
   - type: StealTarget

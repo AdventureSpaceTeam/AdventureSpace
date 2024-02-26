@@ -141,7 +141,7 @@
     group: Standard
     department: Civilian
   - type: StaticPrice
-    price: 150
+    price: 0
   - type: LightningTarget
     priority: 1
   - type: Tag
