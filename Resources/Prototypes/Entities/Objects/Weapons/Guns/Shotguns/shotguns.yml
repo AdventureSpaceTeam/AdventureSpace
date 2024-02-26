@@ -41,7 +41,7 @@
       ballistic-ammo: !type:Container
         ents: []
   - type: StaticPrice
-    price: 500
+    price: 0
 
 - type: entity
   name: Bulldog
@@ -97,7 +97,7 @@
     zeroVisible: true
   - type: Appearance
   - type: StaticPrice
-    price: 500
+    price: 0
 
 - type: entity
   name: double-barreled shotgun
@@ -296,7 +296,7 @@
     graph: ImprovisedShotgunGraph
     node: shotgun
   - type: StaticPrice
-    price: 20
+    price: 0
 
 - type: entity
   name: improvised shotgun

@@ -15,7 +15,7 @@
       chemicalComposition:
         Silicon: 20
     - type: StaticPrice
-      price: 34
+      price: 0
 
 # Wallmount Substation
 - type: entity
@@ -28,7 +28,7 @@
       sprite: Objects/Misc/module.rsi
       state: charger_APC
     - type: StaticPrice
-      price: 40
+      price: 0
     - type: Tag
       tags:
         - DroneUsable
@@ -45,7 +45,7 @@
     sprite: Objects/Misc/module.rsi
     state: charger_APC
   - type: StaticPrice
-    price: 20
+    price: 0
   - type: PhysicalComposition
     materialComposition:
       Glass: 90
@@ -65,7 +65,7 @@
       sprite: Objects/Misc/module.rsi
       state: charger_APC
     - type: StaticPrice
-      price: 40
+      price: 0
     - type: Tag
       tags:
         - DroneUsable
@@ -82,7 +82,7 @@
       sprite: Objects/Misc/module.rsi
       state: generic
     - type: StaticPrice
-      price: 85
+      price: 0
     - type: Tag
       tags:
         - DroneUsable
