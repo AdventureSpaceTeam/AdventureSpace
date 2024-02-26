@@ -615,7 +615,7 @@ namespace Content.Server.Kitchen.EntitySystems
                 return;
 
             // some validation to prevent trollage
-            if (args.NewCookTime % 5 != 0 || args.NewCookTime > ent.Comp.MaxCookTime)
+            if (args.NewCookTime % 50 != 0 || args.NewCookTime > ent.Comp.MaxCookTime)
                 return;
 
             ent.Comp.CurrentCookTimeButtonIndex = args.ButtonIndex;
