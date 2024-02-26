@@ -163,7 +163,7 @@
   - type: Clothing
     sprite: Clothing/Head/Misc/fancycrown.rsi
   - type: MobPrice
-    price: 3000
+    price: 0
   - type: AddAccentClothing
     accent: MobsterAccent
 
@@ -281,4 +281,4 @@
     tags:
       - WhitelistChameleon
   - type: StaticPrice
-    price: 1
+    price: 0

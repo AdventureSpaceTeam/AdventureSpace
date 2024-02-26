@@ -401,7 +401,7 @@
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitRd
   - type: StaticPrice
-    price: 750
+    price: 0
   - type: StealTarget
     stealGroup: ClothingOuterHardsuitRd
 

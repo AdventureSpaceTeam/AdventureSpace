@@ -37,7 +37,7 @@
     materialComposition:
       Cloth: 100
   - type: StaticPrice
-    price: 5
+    price: 0
 
 - type: entity
   parent: BasePlushie
@@ -589,7 +589,7 @@
     materialComposition:
       Plastic: 100
   - type: StaticPrice
-    price: 25
+    price: 0
   - type: Tag
     tags:
     - Figurine

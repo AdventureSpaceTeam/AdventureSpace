@@ -68,7 +68,7 @@
       paper_label: !type:ContainerSlot
   - type: ItemSlots
   - type: StaticPrice
-    price: 50
+    price: 0
   - type: Construction
     graph: CrateGenericSteel
     node: crategenericsteel
