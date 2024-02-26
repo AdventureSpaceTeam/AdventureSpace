@@ -39761,17 +39761,17 @@ entities:
       parent: 30
 - proto: Printer
   entities:
-  - uid: 255
+  - uid: 255000
     components:
     - type: Transform
       pos: 37.5,3.5
       parent: 30
-  - uid: 1617
+  - uid: 1617000
     components:
     - type: Transform
       pos: 31.5,10.5
       parent: 30
-  - uid: 1622
+  - uid: 1622000
     components:
     - type: Transform
       pos: 28.5,-1.5

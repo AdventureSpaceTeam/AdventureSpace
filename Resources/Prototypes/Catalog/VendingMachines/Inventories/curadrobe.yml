@@ -11,4 +11,5 @@
     ClothingUniformJumpskirtLibrarian: 3
     ClothingShoesBootsLaceup: 2
     ClothingHeadsetService: 2
-    PrinterDocFlatpack: 2 # Corvax-Printer
+    # PrinterDocFlatpack: 2 # Corvax-Printer
+    PrinterFlatpack: 2 # c4llv07e printer
