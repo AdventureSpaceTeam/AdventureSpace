@@ -20,7 +20,7 @@
           - MachineMask
   - type: CargoPallet
   - type: StaticPrice
-    price: 100
+    price: 0
   - type: Sprite
     drawdepth: FloorTiles
     layers:

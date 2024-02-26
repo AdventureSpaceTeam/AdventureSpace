@@ -38,7 +38,7 @@
     materialComposition:
       Cloth: 100
   - type: StaticPrice
-    price: 5
+    price: 0
   - type: Food
     requiresSpecialDigestion: true
     useSound:
@@ -51,7 +51,7 @@
         reagents:
         - ReagentId: Fiber
           Quantity: 10
-    
+          
 - type: entity
   parent: BasePlushie
   id: PlushieGhost
@@ -723,7 +723,7 @@
     materialComposition:
       Plastic: 100
   - type: StaticPrice
-    price: 25
+    price: 0
   - type: Tag
     tags:
     - Figurine

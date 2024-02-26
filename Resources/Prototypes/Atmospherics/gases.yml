@@ -76,7 +76,7 @@
   gasVisbilityFactor: 3.5
   color: 56941E
   reagent: Ammonia
-  pricePerMole: 0.15
+  pricePerMole: 0
 
 - type: gas
   id: 7
@@ -86,7 +86,7 @@
   molarMass: 44
   color: 2887E8
   reagent: NitrousOxide
-  pricePerMole: 2.5
+  pricePerMole: 0
 
 - type: gas
   id: 8
