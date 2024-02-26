@@ -83,9 +83,6 @@
       prototype: ComputerCargoOrders
     - type: StaticPrice
       price: 0
-    - type: Tag
-      tags:
-      - DroneUsable
 
 - type: entity
   id: CargoBountyComputerCircuitboard

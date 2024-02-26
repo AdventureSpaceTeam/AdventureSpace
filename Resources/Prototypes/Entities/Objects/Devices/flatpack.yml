@@ -35,6 +35,3 @@
       cpu_supply: "#A46106"
   - type: StaticPrice
     price: 0
-  - type: Tag
-    tags:
-    - DroneUsable
