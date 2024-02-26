@@ -1,0 +1,25 @@
+- type: entity
+  name: АнтиГипоксия
+  parent: Pill
+  id: NamedPillDexalin
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 20
+        reagents:
+        - ReagentId: Dexalin
+          Quantity: 10
+
+- type: entity
+  name: АнтиРад
+  parent: Pill
+  id: NamedPillHyronalin
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 20
+        reagents:
+        - ReagentId: Hyronalin
+          Quantity: 10
