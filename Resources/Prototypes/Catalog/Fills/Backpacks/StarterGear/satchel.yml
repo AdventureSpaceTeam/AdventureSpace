@@ -223,6 +223,7 @@
     - type: StorageFill
       contents:
         - id: BoxSurvival
+ 
         - id: AcousticGuitarInstrument
         - id: SaxophoneInstrument
 
@@ -234,6 +235,7 @@
     - type: StorageFill
       contents:
         - id: BoxSurvival
+ 
         - id: BookRandom
 
 - type: entity
@@ -257,6 +259,7 @@
     - type: StorageFill
       contents:
         - id: BoxSurvival
+ 
 
 - type: entity
   noSpawn: true
@@ -266,6 +269,7 @@
     - type: StorageFill
       contents:
         - id: BoxSurvival
+ 
 
 - type: entity
   noSpawn: true
