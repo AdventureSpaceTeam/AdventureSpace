@@ -164,4 +164,3 @@
   - type: Sprite
     layers:
       - state: box_indimedical
-      - state: writing
