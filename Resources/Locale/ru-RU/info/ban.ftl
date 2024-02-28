@@ -2,9 +2,9 @@
 cmd-ban-desc = Банит кого-либо
 cmd-ban-help = Использование: ban <name or user ID> <reason> [продолжительность в минутах, без указания или 0 для пермабана]
 cmd-ban-player = Не удалось найти игрока с таким именем.
-cmd-ban-invalid-minutes = ${ minutes } is not a valid amount of minutes!
-cmd-ban-invalid-severity = ${ severity } is not a valid severity!
-cmd-ban-invalid-arguments = Invalid amount of arguments
+cmd-ban-invalid-minutes = { $minutes } не является допустимым количеством минут!
+cmd-ban-invalid-severity = { $severity } не является допустимой тяжестью!
+cmd-ban-invalid-arguments = Недопустимое число аргументов
 cmd-ban-hint = <name/user ID>
 cmd-ban-hint-reason = <reason>
 cmd-ban-hint-severity = [severity]
