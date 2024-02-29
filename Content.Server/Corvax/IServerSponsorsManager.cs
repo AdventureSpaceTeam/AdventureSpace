@@ -18,7 +18,7 @@ public interface IServerSponsorsManager : ISharedSponsorsManager
     public bool TryGetNextAllowRespawn(NetUserId userId, [NotNullWhen(true)] out TimeSpan? nextAllowRespawn);
     public bool TryGetUsedCharactersForRespawn(NetUserId userId, [NotNullWhen(true)] out List<int>? usedCharactersForRespawn);
 
-    public ICommonSession PickSession(List<ICommonSession> sessions, string roleId);
+    public ICommonSession PickAntagSession(List<ICommonSession> sessions, string roleId);
 
     public void SetNextAllowRespawn(NetUserId userId, TimeSpan nextRespawnTime);
 
