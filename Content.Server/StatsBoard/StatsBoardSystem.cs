@@ -10,6 +10,7 @@ using Content.Shared.Bed.Sleep;
 using Content.Shared.Construction;
 using Content.Shared.Cuffs.Components;
 using Content.Shared.Damage;
+using Content.Shared.Doors.Systems;
 using Content.Shared.Electrocution;
 using Content.Shared.Fluids;
 using Content.Shared.Humanoid;
