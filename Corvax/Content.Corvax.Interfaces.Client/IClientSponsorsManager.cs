@@ -10,5 +10,4 @@ public interface IClientSponsorsManager : ISharedSponsorsManager
     public Color? OocColor { get; }
     public int ExtraCharSlots { get; }
     public bool AllowedRespawn { get; }
-    public TimeSpan NextAllowRespawn { get; set; }
 }
