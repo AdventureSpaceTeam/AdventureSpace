@@ -58,6 +58,13 @@
       edges:
         - to: tinyfan
           steps:
+            - component: CapacitorStockPart
+              store: StockPart
+              name: "door electronics circuit board"
+              icon:
+                sprite: "Objects/Misc/module.rsi"
+                state: "door_electronics"
+              doAfter: 3
             - material: Plasma
               amount: 5
               doAfter: 1
