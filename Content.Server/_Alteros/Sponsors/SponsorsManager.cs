@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 using Content.Corvax.Interfaces.Server;
+using Content.Server.Mind;
 using Content.Shared.CCVar;
 using Content.Shared.Sponsors;
 using Robust.Shared.Configuration;
@@ -74,7 +75,7 @@ public sealed class SponsorsManager : IServerSponsorsManager
         return true;
     }
 
-    public ICommonSession PickSession(List<ICommonSession> sessions, string roleId)
+    public ICommonSession PickAntagSession(List<ICommonSession> sessions, string roleId)
     {
         var prioritySessions = PickPrioritySessions(sessions, roleId);
         var session = _random.PickAndTake(sessions);
