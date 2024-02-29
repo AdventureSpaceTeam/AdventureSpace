@@ -57,6 +57,32 @@ public sealed class SponsorsManager : IServerSponsorsManager
         return session;
     }
 
+    public NetUserId PickRoleSession(HashSet<NetUserId> users, string roleId)
+    {
+        var priorityUsers = PickPriorityRoles(users, roleId);
+        var session = _random.Pick(users);
+        if (priorityUsers.Count != 0)
+        {
+            session = _random.Pick(priorityUsers);
+        }
+
+        return session;
+    }
+
+    private List<NetUserId> PickPriorityRoles(HashSet<NetUserId> users, string roleId)
+    {
+        List<NetUserId> priorityUsers = new();
+        foreach (var userId in users)
+        {
+            if (!TryGetPriorityRoles(userId, out var priorityRoles))
+                continue;
+            if (priorityRoles.Contains(roleId))
+                priorityUsers.Add(userId);
+        }
+
+        return priorityUsers;
+    }
+
     private List<ICommonSession> PickPrioritySessions(List<ICommonSession> sessions, string roleId)
     {
         List<ICommonSession> prioritySessions = new();
@@ -157,6 +183,17 @@ public sealed class SponsorsManager : IServerSponsorsManager
 
         priorityAntags = new List<string>();
         priorityAntags.AddRange(sponsor.PriorityAntags);
+        return true;
+    }
+
+    public bool TryGetPriorityRoles(NetUserId userId, [NotNullWhen(true)]  out List<string>? priorityRoles)
+    {
+        priorityRoles = null;
+        if (!TryGetInfo(userId, out var sponsor))
+            return false;
+
+        priorityRoles = new List<string>();
+        priorityRoles.AddRange(sponsor.PriorityRoles);
         return true;
     }
 
