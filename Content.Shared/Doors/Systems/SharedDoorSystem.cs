@@ -132,6 +132,8 @@ public abstract partial class SharedDoorSystem : EntitySystem
         {
             if (!SetState(uid, DoorState.Emagging, door))
                 return;
+            var emagged = new DoorEmaggedEvent(args.UserUid);
+            RaiseLocalEvent(args.UserUid, ref emagged);
             Audio.PlayPredicted(door.SparkSound, uid, args.UserUid, AudioParams.Default.WithVolume(8));
             args.Handled = true;
         }
@@ -795,3 +797,6 @@ public abstract partial class SharedDoorSystem : EntitySystem
     }
     #endregion
 }
+
+[ByRefEvent]
+public readonly record struct DoorEmaggedEvent(EntityUid UserUid);
