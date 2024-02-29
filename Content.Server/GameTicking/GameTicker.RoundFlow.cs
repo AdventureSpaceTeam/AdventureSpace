@@ -22,6 +22,7 @@ using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
+using Content.Server.StatsBoard;
 
 namespace Content.Server.GameTicking
 {
@@ -30,7 +31,7 @@ namespace Content.Server.GameTicking
         [Dependency] private readonly DiscordWebhook _discord = default!;
         [Dependency] private readonly ITaskManager _taskManager = default!;
         [Dependency] private readonly IVoteManager _voteManager = default!;
-
+        [Dependency] private readonly StatsBoardSystem _statsBoardSystem = default!;
 
         private static readonly Counter RoundNumberMetric = Metrics.CreateCounter(
             "ss14_round_number",
@@ -405,8 +406,10 @@ namespace Content.Server.GameTicking
             var listOfPlayerInfoFinal = listOfPlayerInfo.OrderBy(pi => pi.PlayerOOCName).ToArray();
             var sound = _audio.GetSound(new SoundCollectionSpecifier("RoundEnd"));
 
+            var roundStats = _statsBoardSystem.GetRoundStats();
+
             RaiseNetworkEvent(new RoundEndMessageEvent(gamemodeTitle, roundEndText, roundDuration, RoundId,
-                listOfPlayerInfoFinal.Length, listOfPlayerInfoFinal, LobbySong, sound));
+                listOfPlayerInfoFinal.Length, listOfPlayerInfoFinal, roundStats, LobbySong, sound));
             RaiseLocalEvent(new RoundEndedEvent(RoundId, roundDuration)); // Corvax
 
             _replayRoundPlayerInfo = listOfPlayerInfoFinal;
