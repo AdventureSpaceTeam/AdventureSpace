@@ -5,7 +5,7 @@
   unit: materials-unit-piece
   icon: { sprite: /Textures/Objects/Misc/monkeycube.rsi, state: cube }
   color: "#8A9A5B"
-  price: 0
+  price: 0.1
 
 - type: material
   id: Cardboard
@@ -13,7 +13,7 @@
   name: materials-cardboard
   icon: { sprite: /Textures/Objects/Materials/materials.rsi, state: cardboard }
   color: "#70736c"
-  price: 0
+  price: 0.005
 
 - type: material
   id: Cloth
@@ -22,7 +22,7 @@
   unit: materials-unit-roll
   icon: { sprite: /Textures/Objects/Materials/materials.rsi, state: cloth }
   color: "#e7e7de"
-  price: 0
+  price: 0.05
 
 - type: material
   id: Durathread
@@ -32,7 +32,7 @@
   unit: materials-unit-sheet
   icon: { sprite: /Textures/Objects/Materials/materials.rsi, state: durathread }
   color: "#8291a1"
-  price: 0
+  price: 0.15 # 1-1 mix of plastic and cloth.
 
 - type: material
   id: Paper
@@ -40,7 +40,7 @@
   name: materials-paper
   icon: { sprite: Objects/Materials/Sheets/other.rsi, state: paper }
   color: "#d9d9d9"
-  price: 0
+  price: 0.05 #same as wood
 
 - type: material
   id: PaperDocument
@@ -48,7 +48,7 @@
   name: Бумага
   icon: { sprite: Objects/Misc/bureaucracy.rsi, state: paper }
   color: "#d9d9d9"
-  price: 0
+  price: 0.05 #same as wood
 
 - type: material
   id: Plasma
@@ -56,7 +56,7 @@
   name: materials-plasma
   icon: { sprite: Objects/Materials/Sheets/other.rsi, state: plasma }
   color: "#7e009e"
-  price: 0
+  price: 0.2
 
 - type: material
   id: Plastic
@@ -64,7 +64,7 @@
   name: materials-plastic
   icon: { sprite: Objects/Materials/Sheets/other.rsi, state: plastic }
   color: "#d9d9d9"
-  price: 0
+  price: 0.1
 
 - type: material
   id: Wood
@@ -73,7 +73,7 @@
   unit: materials-unit-plank
   icon: { sprite: Objects/Materials/materials.rsi, state: wood }
   color: "#966F33"
-  price: 0
+  price: 0.05
 
 - type: material
   id: Uranium
@@ -81,7 +81,7 @@
   name: materials-uranium
   icon: { sprite: Objects/Materials/Sheets/other.rsi, state: uranium }
   color: "#32a852"
-  price: 0
+  price: 0.2
 
 - type: material
   id: Bananium
@@ -90,7 +90,7 @@
   unit: materials-unit-bunch
   icon: { sprite: Objects/Materials/materials.rsi, state: bananium }
   color: "#32a852"
-  price: 0
+  price: 0.2
 
 - type: material
   id: Meaterial # you can't take this pun from me
@@ -98,7 +98,7 @@
   unit: materials-unit-slab
   icon: { sprite: Objects/Materials/Sheets/meaterial.rsi, state: meat }
   color: "#c53648"
-  price: 0
+  price: 0.05
 
 - type: material
   id: WebSilk
@@ -106,7 +106,7 @@
   unit: materials-unit-web
   icon: { sprite: Objects/Materials/silk.rsi, state: icon }
   color: "#eeeeee" #eeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-  price: 0
+  price: 0 # Maybe better for it to be priceless, knowing how greedy cargo is.
 
 - type: material
   id: Bones
