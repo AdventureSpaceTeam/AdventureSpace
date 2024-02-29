@@ -74,7 +74,7 @@ public sealed class WarDeclaratorSystem : EntitySystem
         if (ev.Status == WarConditionStatus.WarReady)
         {
             var title = Loc.GetString(ent.Comp.SenderTitle);
-            _chat.DispatchGlobalAnnouncement(ent.Comp.Message, title, true, ent.Comp.Sound, ent.Comp.Color);
+            _chat.DispatchGlobalAnnouncement(ent.Comp.Message, title, true, ent.Comp.Color);
             _adminLogger.Add(LogType.Chat, LogImpact.Low, $"{ToPrettyString(playerEntity):player} has declared war with this text: {ent.Comp.Message}");
         }
 
