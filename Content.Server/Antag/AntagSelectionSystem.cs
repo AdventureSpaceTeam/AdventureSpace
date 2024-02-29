@@ -15,6 +15,7 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using System.Linq;
+using Content.Corvax.Interfaces.Server;
 using Content.Shared.Chat;
 using Robust.Shared.Enums;
 
@@ -191,7 +192,7 @@ public sealed class AntagSelectionSystem : GameRuleSystem<GameRuleComponent>
     /// <param name="eligiblePlayerLists">Array of lists, which are chosen from in order until the correct number of items are selected</param>
     /// <param name="count">How many items to select</param>
     /// <returns>Up to the specified count of elements from all provided lists</returns>
-    public List<EntityUid> ChooseAntags(int count, params List<EntityUid>[] eligiblePlayerLists)
+    public List<EntityUid> ChooseAntags(int count, ProtoId<AntagPrototype> antagPrototype, params List<EntityUid>[] eligiblePlayerLists)
     {
         var chosenPlayers = new List<EntityUid>();
         foreach (var playerList in eligiblePlayerLists)
@@ -207,7 +208,7 @@ public sealed class AntagSelectionSystem : GameRuleSystem<GameRuleComponent>
                 continue;
 
             //Pick and choose a random number of players from this list
-            chosenPlayers.AddRange(ChooseAntags(count - chosenPlayers.Count, playerList));
+            chosenPlayers.AddRange(ChooseAntags(count - chosenPlayers.Count, antagPrototype, playerList));
         }
         return chosenPlayers;
     }
@@ -217,16 +218,29 @@ public sealed class AntagSelectionSystem : GameRuleSystem<GameRuleComponent>
     /// <param name="eligiblePlayers">List of eligible players</param>
     /// <param name="count">How many to choose</param>
     /// <returns>Up to the specified count of elements from the provided list</returns>
-    public List<EntityUid> ChooseAntags(int count, List<EntityUid> eligiblePlayers)
+    public List<EntityUid> ChooseAntags(int count, ProtoId<AntagPrototype> antagPrototype, List<EntityUid> eligiblePlayers)
     {
+        var playerSessions = new List<ICommonSession>();
+        var sessionsDict = new Dictionary<ICommonSession, EntityUid>();
+        foreach (var eligiblePlayer in eligiblePlayers)
+        {
+            if (!_mindSystem.TryGetMind(eligiblePlayer, out var mindId, out var mind) || mind.Session == null)
+                continue;
+            playerSessions.Add(mind.Session);
+            sessionsDict.Add(mind.Session, eligiblePlayer);
+        }
+
         var chosenPlayers = new List<EntityUid>();
 
         for (var i = 0; i < count; i++)
         {
-            if (eligiblePlayers.Count == 0)
+            if (playerSessions.Count == 0)
                 break;
 
-            chosenPlayers.Add(RobustRandom.PickAndTake(eligiblePlayers));
+            var sponsors = IoCManager.Resolve<IServerSponsorsManager>(); // Alteros-Sponsors
+            var antag = sponsors.PickAntagSession(playerSessions, antagPrototype);
+
+            chosenPlayers.Add(sessionsDict[antag]);
         }
 
         return chosenPlayers;
@@ -238,7 +252,7 @@ public sealed class AntagSelectionSystem : GameRuleSystem<GameRuleComponent>
     /// <param name="eligiblePlayerLists">Array of lists, which are chosen from in order until the correct number of items are selected</param>
     /// <param name="count">How many items to select</param>
     /// <returns>Up to the specified count of elements from all provided lists</returns>
-    public List<ICommonSession> ChooseAntags(int count, params List<ICommonSession>[] eligiblePlayerLists)
+    public List<ICommonSession> ChooseAntags(int count, ProtoId<AntagPrototype> antagPrototype, params List<ICommonSession>[] eligiblePlayerLists)
     {
         var chosenPlayers = new List<ICommonSession>();
         foreach (var playerList in eligiblePlayerLists)
@@ -254,7 +268,7 @@ public sealed class AntagSelectionSystem : GameRuleSystem<GameRuleComponent>
                 continue;
 
             //Pick and choose a random number of players from this list
-            chosenPlayers.AddRange(ChooseAntags(count - chosenPlayers.Count, playerList));
+            chosenPlayers.AddRange(ChooseAntags(count - chosenPlayers.Count, antagPrototype, playerList));
         }
         return chosenPlayers;
     }
@@ -264,7 +278,7 @@ public sealed class AntagSelectionSystem : GameRuleSystem<GameRuleComponent>
     /// <param name="eligiblePlayers">List of eligible sessions</param>
     /// <param name="count">How many to choose</param>
     /// <returns>Up to the specified count of elements from the provided list</returns>
-    public List<ICommonSession> ChooseAntags(int count, List<ICommonSession> eligiblePlayers)
+    public List<ICommonSession> ChooseAntags(int count, ProtoId<AntagPrototype> antagPrototype, List<ICommonSession> eligiblePlayers)
     {
         var chosenPlayers = new List<ICommonSession>();
 
@@ -273,7 +287,9 @@ public sealed class AntagSelectionSystem : GameRuleSystem<GameRuleComponent>
             if (eligiblePlayers.Count == 0)
                 break;
 
-            chosenPlayers.Add(RobustRandom.PickAndTake(eligiblePlayers));
+            var sponsors = IoCManager.Resolve<IServerSponsorsManager>(); // Alteros-Sponsors
+            var antag = sponsors.PickAntagSession(eligiblePlayers, antagPrototype);
+            chosenPlayers.Add(antag);
         }
 
         return chosenPlayers;

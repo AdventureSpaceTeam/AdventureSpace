@@ -257,7 +257,7 @@ public sealed class ZombieRuleSystem : GameRuleSystem<ZombieRuleComponent>
         var initialInfectedCount = _antagSelection.CalculateAntagCount(_playerManager.PlayerCount, component.PlayersPerInfected, component.MaxInitialInfected);
 
         //Choose the required number of initial infected from the eligible players, making up any shortfall by choosing from all players
-        var initialInfected = _antagSelection.ChooseAntags(initialInfectedCount, eligiblePlayers, allPlayers);
+        var initialInfected = _antagSelection.ChooseAntags(initialInfectedCount, component.PatientZeroPrototypeId, eligiblePlayers, allPlayers);
 
         //Make brain craving
         MakeZombie(initialInfected, component);

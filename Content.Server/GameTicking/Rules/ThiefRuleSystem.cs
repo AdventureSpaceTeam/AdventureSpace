@@ -55,7 +55,7 @@ public sealed class ThiefRuleSystem : GameRuleSystem<ThiefRuleComponent>
             var thiefCount = _random.Next(1, comp.MaxAllowThief + 1);
 
             //Select our theives
-            var thieves = _antagSelection.ChooseAntags(thiefCount, eligiblePlayers);
+            var thieves = _antagSelection.ChooseAntags(thiefCount, comp.ThiefPrototypeId, eligiblePlayers);
 
             MakeThief(thieves, comp, comp.PacifistThieves);
         }
