@@ -152,11 +152,11 @@ public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>
 
             //Select Nukies
             //Select Commander, priority : commanderEligible, agentEligible, operativeEligible, all players
-            var selectedCommander = _antagSelection.ChooseAntags(1, commanderEligible, agentEligible, operativeEligible, ev.PlayerPool).FirstOrDefault();
+            var selectedCommander = _antagSelection.ChooseAntags(1, nukeops.CommanderSpawnDetails.AntagRoleProto, commanderEligible, agentEligible, operativeEligible, ev.PlayerPool).FirstOrDefault();
             //Select Agent, priority : agentEligible, operativeEligible, all players
-            var selectedAgent = _antagSelection.ChooseAntags(1, agentEligible, operativeEligible, ev.PlayerPool).FirstOrDefault();
+            var selectedAgent = _antagSelection.ChooseAntags(1, nukeops.AgentSpawnDetails.AntagRoleProto, agentEligible, operativeEligible, ev.PlayerPool).FirstOrDefault();
             //Select Operatives, priority : operativeEligible, all players
-            var selectedOperatives = _antagSelection.ChooseAntags(nukiesToSelect - 2, operativeEligible, ev.PlayerPool);
+            var selectedOperatives = _antagSelection.ChooseAntags(nukiesToSelect - 2, nukeops.OperativeSpawnDetails.AntagRoleProto, operativeEligible, ev.PlayerPool);
 
             //Create the team!
             //If the session is null, they will be spawned as ghost roles (provided the cvar is set)
