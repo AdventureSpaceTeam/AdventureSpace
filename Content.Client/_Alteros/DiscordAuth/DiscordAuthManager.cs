@@ -17,6 +17,7 @@ public sealed class DiscordAuthManager : Content.Corvax.Interfaces.Client.IClien
     public Texture? Qrcode { get; private set; }
     public string DiscordUrl { get; private set; } = string.Empty;
     public Texture? DiscordQrcode { get; private set; }
+    public string DiscordUsername { get; private set; } = string.Empty;
 
     public void Initialize()
     {
@@ -46,6 +47,7 @@ public sealed class DiscordAuthManager : Content.Corvax.Interfaces.Client.IClien
         if (_stateManager.CurrentState is not DiscordMemberState)
         {
             DiscordUrl = message.AuthUrl;
+            DiscordUsername = message.DiscordUsername;
             if (message.QrCode.Length > 0)
             {
                 using var ms = new MemoryStream(message.QrCode);
