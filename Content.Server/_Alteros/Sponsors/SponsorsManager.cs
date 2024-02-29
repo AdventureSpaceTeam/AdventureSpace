@@ -4,7 +4,6 @@ using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 using Content.Corvax.Interfaces.Server;
-using Content.Server.Mind;
 using Content.Shared.CCVar;
 using Content.Shared.Sponsors;
 using Robust.Shared.Configuration;
@@ -43,36 +42,6 @@ public sealed class SponsorsManager : IServerSponsorsManager
     public bool TryGetInfo(NetUserId userId, [NotNullWhen(true)] out SponsorInfo? sponsor)
     {
         return _cachedSponsors.TryGetValue(userId, out sponsor);
-    }
-
-    public void SetNextAllowRespawn(NetUserId userId, TimeSpan nextRespawnTime)
-    {
-        if (TryGetInfo(userId, out var sponsor))
-            sponsor.NextAllowRespawn = nextRespawnTime;
-    }
-
-    public void AddUsedCharactersForRespawn(NetUserId userId, int usedCharacter)
-    {
-        if (TryGetInfo(userId, out var sponsor))
-            sponsor.UsedCharactersForRespawn.Add(usedCharacter);
-    }
-
-    public bool TryGetUsedCharactersForRespawn(NetUserId userId, [NotNullWhen(true)] out List<int>? usedCharactersForRespawn)
-    {
-        usedCharactersForRespawn = null;
-        if (!TryGetInfo(userId, out var sponsor))
-            return false;
-        usedCharactersForRespawn = sponsor.UsedCharactersForRespawn;
-        return true;
-    }
-
-    public bool TryGetNextAllowRespawn(NetUserId userId, [NotNullWhen(true)] out TimeSpan? nextAllowRespawn)
-    {
-        nextAllowRespawn = null;
-        if (!TryGetInfo(userId, out var sponsor))
-            return false;
-        nextAllowRespawn = sponsor.NextAllowRespawn;
-        return true;
     }
 
     public ICommonSession PickAntagSession(List<ICommonSession> sessions, string roleId)

@@ -1,4 +1,6 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Threading.Tasks;
 using Content.Corvax.Interfaces.Server;
 using Content.Server.EUI;
 using Content.Server.GameTicking;
@@ -13,9 +15,9 @@ using Content.Shared.Preferences;
 using Content.Shared.Roles;
 using JetBrains.Annotations;
 using Robust.Shared.Configuration;
+using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Timing;
 
 namespace Content.Server.NewLife
 {
@@ -28,12 +30,53 @@ namespace Content.Server.NewLife
         [Dependency] private readonly StationJobsSystem _stationJobs = default!;
         [Dependency] private readonly StationSystem _stationSystem = default!;
         [Dependency] private readonly IServerPreferencesManager _prefsManager = default!;
-        [Dependency] private readonly IGameTiming _gameTiming = default!;
         [Dependency] private readonly PlayTimeTrackingSystem _playTimeTrackings = default!;
         [Dependency] private readonly IConfigurationManager _cfg = default!;
+        [Dependency] private readonly IServerNetManager _netMgr = default!;
 
         private readonly Dictionary<ICommonSession, NewLifeEui> _openUis = new();
-        private int _newLifeTimeout = 30;
+        public int NewLifeTimeout;
+
+        private readonly Dictionary<NetUserId, NewLifeUserData> _newLifeRoundData = new();
+
+
+        public void SetNextAllowRespawn(NetUserId userId, TimeSpan nextRespawnTime)
+        {
+            if (_newLifeRoundData.TryGetValue(userId, out var data))
+            {
+                data.NextAllowRespawn = nextRespawnTime;
+            }
+        }
+
+        public void AddUsedCharactersForRespawn(NetUserId userId, int usedCharacter)
+        {
+            if (_newLifeRoundData.TryGetValue(userId, out var data))
+            {
+                data.UsedCharactersForRespawn.Add(usedCharacter);
+            }
+        }
+
+        private bool TryGetUsedCharactersForRespawn(NetUserId userId, [NotNullWhen(true)] out List<int>? usedCharactersForRespawn)
+        {
+            usedCharactersForRespawn = null;
+            if (!_newLifeRoundData.TryGetValue(userId, out var data))
+            {
+                return false;
+            }
+            usedCharactersForRespawn = data.UsedCharactersForRespawn;
+            return true;
+        }
+
+        private bool TryGetNextAllowRespawn(NetUserId userId, [NotNullWhen(true)] out TimeSpan? nextAllowRespawn)
+        {
+            nextAllowRespawn = null;
+            if (!_newLifeRoundData.TryGetValue(userId, out var data))
+            {
+                return false;
+            }
+            nextAllowRespawn = data.NextAllowRespawn;
+            return true;
+        }
 
         public override void Initialize()
         {
@@ -41,13 +84,25 @@ namespace Content.Server.NewLife
 
             SubscribeLocalEvent<PlayerAttachedEvent>(OnPlayerAttached);
             SubscribeNetworkEvent<NewLifeOpenRequest>(OnRespawnMenuOpenRequest);
+            _netMgr.Connecting += NetMgrOnConnecting;
 
             _cfg.OnValueChanged(CCVars.NewLifeTimeout, SetNewLifeTimeout, true);
         }
 
+        private async Task NetMgrOnConnecting(NetConnectingArgs e)
+        {
+            var sponsors = IoCManager.Resolve<IServerSponsorsManager>();
+            if (sponsors.AllowedRespawn(e.UserId))
+            {
+                if (_newLifeRoundData.ContainsKey(e.UserId))
+                    return;
+                _newLifeRoundData.Add(e.UserId, new NewLifeUserData());
+            }
+        }
+
         private void SetNewLifeTimeout(int value)
         {
-            _newLifeTimeout = value;
+            NewLifeTimeout = value;
         }
 
         private void OnRespawnMenuOpenRequest(NewLifeOpenRequest msg, EntitySessionEventArgs args)
@@ -57,18 +112,15 @@ namespace Content.Server.NewLife
 
         public void OnGhostRespawnMenuRequest(ICommonSession player, int? characterId, string? roleProto)
         {
-            var sponsors = IoCManager.Resolve<IServerSponsorsManager>(); // Alteros-Sponsors
-            if (sponsors.AllowedRespawn(player.UserId) && characterId != null)
-            {
-                var stationUid = _stationSystem.GetStations().FirstOrDefault();
-                _prefsManager.GetPreferences(player.UserId).SetProfile(characterId.Value);
-                _gameTicker.MakeJoinGame(player, stationUid, roleProto);
-                var timeout = _gameTiming.CurTime + TimeSpan.FromMinutes(_newLifeTimeout);
-                sponsors.SetNextAllowRespawn(player.UserId, timeout);
-            }
+            var sponsors = IoCManager.Resolve<IServerSponsorsManager>();
+            if (!sponsors.AllowedRespawn(player.UserId) || characterId == null)
+                return;
+            var stationUid = _stationSystem.GetStations().FirstOrDefault();
+            _prefsManager.GetPreferences(player.UserId).SetProfile(characterId.Value);
+            _gameTicker.MakeJoinGame(player, stationUid, roleProto, canBeAntag: false);
         }
 
-        public void OpenEui(ICommonSession session)
+        private void OpenEui(ICommonSession session)
         {
             if (session.AttachedEntity is not {Valid: true} attached ||
                 !EntityManager.HasComponent<GhostComponent>(attached))
@@ -98,10 +150,10 @@ namespace Content.Server.NewLife
             jobsAvailable.Sort((x, y) =>
                 -string.Compare(x.LocalizedName, y.LocalizedName, StringComparison.CurrentCultureIgnoreCase));
 
-            if (!sponsors.TryGetNextAllowRespawn(session.UserId, out var nextAllowRespawn))
+            if (!TryGetNextAllowRespawn(session.UserId, out var nextAllowRespawn))
                 return;
 
-            if (!sponsors.TryGetUsedCharactersForRespawn(session.UserId, out var usedCharactersForRespawn))
+            if (!TryGetUsedCharactersForRespawn(session.UserId, out var usedCharactersForRespawn))
                 return;
 
             var eui = _openUis[session] = new NewLifeEui(prefs.Characters, jobsAvailable,

@@ -3,7 +3,7 @@ using Content.Corvax.Interfaces.Shared;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
 
-namespace Content.Corvax.Interfaces.Server;
+namespace Content.Interfaces.Server;
 
 public interface IServerSponsorsManager : ISharedSponsorsManager
 {
@@ -15,12 +15,8 @@ public interface IServerSponsorsManager : ISharedSponsorsManager
     public bool HavePriorityJoin(NetUserId userId);
     public bool IsSponsor(NetUserId userId);
     public bool AllowedRespawn(NetUserId userId);
-    public bool TryGetNextAllowRespawn(NetUserId userId, [NotNullWhen(true)] out TimeSpan? nextAllowRespawn);
-    public bool TryGetUsedCharactersForRespawn(NetUserId userId, [NotNullWhen(true)] out List<int>? usedCharactersForRespawn);
 
     public ICommonSession PickAntagSession(List<ICommonSession> sessions, string roleId);
 
-    public void SetNextAllowRespawn(NetUserId userId, TimeSpan nextRespawnTime);
-
-    public void AddUsedCharactersForRespawn(NetUserId userId, int usedCharacter);
+    public NetUserId PickRoleSession(HashSet<NetUserId> users, string roleId);
 }

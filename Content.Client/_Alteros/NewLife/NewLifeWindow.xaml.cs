@@ -10,7 +10,7 @@ namespace Content.Client._Alteros.NewLife
     [GenerateTypedNameReferences]
     public sealed partial class NewLifeWindow : DefaultWindow
     {
-        private IGameTiming _timing;
+        private readonly IGameTiming _timing;
 
         private TimeSpan _nextRespawnTime = TimeSpan.Zero;
 
@@ -74,8 +74,8 @@ namespace Content.Client._Alteros.NewLife
                 CharacterSelector.SetItemMetadata(i, character.Identifier);
                 if (usedCharactersForRespawn.Contains(character.Identifier))
                 {
-                    CharacterSelector.SetItemDisabled(CharacterSelector.GetIdx(i), true);
-                    CharacterSelector.SetItemText(CharacterSelector.GetIdx(i), Loc.GetString("new-life-gui-character-dead", ("name", character.Name)));
+                    //CharacterSelector.SetItemDisabled(CharacterSelector.GetIdx(i), true);
+                    CharacterSelector.SetItemText(CharacterSelector.GetIdx(i), Loc.GetString("new-life-gui-character-used", ("name", character.Name)));
                 }
             }
         }
