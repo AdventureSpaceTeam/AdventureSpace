@@ -47,11 +47,8 @@ public sealed class SponsorInfo
     [JsonPropertyName("priorityAntags")]
     public string[] PriorityAntags { get; set; } = Array.Empty<string>();
 
-    [JsonPropertyName("nextAllowRespawn")]
-    public TimeSpan NextAllowRespawn { get; set; } = TimeSpan.Zero;
-
-    [JsonPropertyName("usedCharactersForReSpawn")]
-    public List<int> UsedCharactersForRespawn { get; set; } = new();
+    [JsonPropertyName("priorityRoles")]
+    public string[] PriorityRoles { get; set; } = Array.Empty<string>();
 }
 
 
