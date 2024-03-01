@@ -15,7 +15,7 @@
       Steel: 500
       Glass: 100
   - type: StaticPrice
-    price: 0
+    price: 50
   - type: Tag
     tags:
     - WhitelistChameleon

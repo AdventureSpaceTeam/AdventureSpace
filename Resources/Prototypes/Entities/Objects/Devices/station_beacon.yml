@@ -74,7 +74,7 @@
         - !type:DoActsBehavior
           acts: ["Breakage"]
   - type: StaticPrice
-    price: 0
+    price: 25
 
 - type: entity
   parent: DefaultStationBeacon

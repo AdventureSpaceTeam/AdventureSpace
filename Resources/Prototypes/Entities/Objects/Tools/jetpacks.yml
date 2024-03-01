@@ -56,7 +56,7 @@
       moleUsage: 0.00085
     - type: Appearance
     - type: StaticPrice
-      price: 0
+      price: 100
 
 - type: entity
   id: ActionToggleJetpack
