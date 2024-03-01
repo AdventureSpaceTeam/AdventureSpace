@@ -128,7 +128,7 @@
     anchored: true
   - type: Pullable
   - type: StaticPrice
-    price: 0
+    price: 800
   - type: ResearchClient
   - type: TechnologyDatabase
 

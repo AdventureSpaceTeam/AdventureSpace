@@ -70,6 +70,6 @@
       machine_parts: !type:Container
       beakerSlot: !type:ContainerSlot
   - type: StaticPrice
-    price: 0
+    price: 1000
   - type: Wires
   - type: WiresPanel

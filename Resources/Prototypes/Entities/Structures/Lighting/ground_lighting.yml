@@ -127,7 +127,7 @@
   - type: PointLight
     enabled: true
   - type: StaticPrice
-    price: 0
+    price: 25
   - type: AmbientOnPowered
   - type: AmbientSound
     volume: -15
