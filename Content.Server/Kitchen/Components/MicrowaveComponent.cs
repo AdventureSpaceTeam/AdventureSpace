@@ -67,7 +67,7 @@ namespace Content.Server.Kitchen.Components
         /// This is currently only used for validation and the client does not check this.
         /// </summary>
         [DataField("maxCookTime"), ViewVariables(VVAccess.ReadWrite)]
-        public uint MaxCookTime = 300;
+        public uint MaxCookTime = 30;
 
         /// <summary>
         ///     The max temperature that this microwave can heat objects to.
