@@ -1,0 +1,19 @@
+- type: entity
+  parent: ClothingOuterArmorBasic
+  id: ClothingOuterArmorJensenBulletproof
+  name: нуарный бронежилет детектива
+  description: Выглядит как накинутый на бронежилет плащ
+  components:
+  - type: Sprite
+    sprite: _c4llv07e/JensenBulletProof.rsi
+  - type: Clothing
+    sprite: _c4llv07e/JensenBulletProof.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.4
+        Heat: 0.9
+  - type: ExplosionResistance
+    damageCoefficient: 0.80

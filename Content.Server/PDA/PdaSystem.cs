@@ -13,8 +13,8 @@ using Content.Server.Store.Components;
 using Content.Server.Store.Systems;
 using Content.Shared.Access.Components;
 using Content.Shared.CartridgeLoader;
-using Content.Shared.Chat;
 using Content.Shared.CCVar;
+using Content.Shared.Chat;
 using Content.Shared.Light.Components;
 using Content.Shared.PDA;
 using Robust.Server.Containers;
@@ -23,7 +23,6 @@ using Robust.Shared.Configuration;
 using Robust.Shared.Containers;
 using Robust.Shared.Player;
 using Robust.Shared.Utility;
-using Robust.Shared.Timing;
 
 namespace Content.Server.PDA
 {
@@ -37,11 +36,10 @@ namespace Content.Server.PDA
         [Dependency] private readonly IChatManager _chatManager = default!;
         [Dependency] private readonly UserInterfaceSystem _ui = default!;
         [Dependency] private readonly UnpoweredFlashlightSystem _unpoweredFlashlight = default!;
-        [Dependency] private readonly ContainerSystem _containerSystem = default!;
         [Dependency] private readonly RoundEndSystem _roundEndSystem = default!;
         [Dependency] private readonly IConfigurationManager _cfg = default!;
-        [Dependency] private readonly IGameTiming _timing = default!;
         [Dependency] private readonly EmergencyShuttleSystem _emergencyShuttleSystem = default!;
+        [Dependency] private readonly ContainerSystem _containerSystem = default!;
 
         public override void Initialize()
         {
