@@ -18,7 +18,7 @@
   - type: Item
     size: Normal
   - type: StaticPrice
-    price: 0
+    price: 200
 
 #These are for instruments that are larger, can't be picked up, or have collision
 - type: entity
@@ -70,7 +70,7 @@
         - MidImpassable
         - BulletImpassable
   - type: StaticPrice
-    price: 0
+    price: 300
 
 - type: entity
   parent: BasePlaceableInstrument

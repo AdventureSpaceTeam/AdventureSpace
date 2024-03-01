@@ -319,7 +319,7 @@
           False: { visible: false }
   - type: WiresVisuals
   - type: StaticPrice
-    price: 0
+    price: 5000
   - type: AccessReader
     access: [["Research"]]
   - type: GuideHelp

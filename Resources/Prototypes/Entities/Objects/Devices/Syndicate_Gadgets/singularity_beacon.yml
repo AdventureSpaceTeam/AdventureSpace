@@ -37,4 +37,4 @@
     powerLoad: 15000
     priority: High
   - type: StaticPrice
-    price: 0
+    price: 1500

@@ -111,7 +111,7 @@
   - type: Bloodstream
     bloodMaxVolume: 0.1
   - type: MobPrice
-    price: 0
+    price: 50
   - type: NPCRetaliation
   - type: FactionException
   - type: NpcFactionMember
@@ -504,7 +504,7 @@
       Unsexed: UnisexMoth
     wilhelmProbability: 0.001
   - type: MobPrice
-    price: 0
+    price: 150
   - type: Tag
     tags:
     - Trash
@@ -692,7 +692,7 @@
   - type: Bloodstream
     bloodMaxVolume: 0.1
   - type: MobPrice
-    price: 0
+    price: 50
 
 - type: entity
   name: cow
@@ -1576,7 +1576,7 @@
     bloodMaxVolume: 50
   - type: CanEscapeInventory
   - type: MobPrice
-    price: 0
+    price: 50
   - type: BadFood
   - type: NonSpreaderZombie
   - type: PreventSpiller
@@ -2483,7 +2483,7 @@
   - type: SentienceTarget
     flavorKind: station-event-random-sentience-flavor-corgi
   - type: MobPrice
-    price: 0
+    price: 200
   - type: Tag
     tags:
     - VimPilot
@@ -2638,7 +2638,7 @@
     attributes:
       gender: epicene
   - type: MobPrice
-    price: 0
+    price: 200
   - type: Tag
     tags:
     - VimPilot
@@ -2761,7 +2761,7 @@
     - id: FoodMeat
       amount: 1
   - type: MobPrice
-    price: 0
+    price: 100
   - type: MeleeWeapon
     damage:
       types:
@@ -3024,7 +3024,7 @@
   - type: CanEscapeInventory
     BaseResistTime: 3
   - type: MobPrice
-    price: 0
+    price: 60
   - type: NonSpreaderZombie
 
 - type: entity
