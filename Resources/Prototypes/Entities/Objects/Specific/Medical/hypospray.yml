@@ -22,7 +22,7 @@
   - type: UseDelay
     delay: 0.5
   - type: StaticPrice
-    price: 750
+    price: 0
   - type: Tag
     tags:
     - HighRiskItem
@@ -126,7 +126,7 @@
       Plastic: 50
   - type: SpaceGarbage
   - type: StaticPrice
-    price: 75 # These are limited supply items.
+    price: 0
   - type: TrashOnSolutionEmpty
     solution: pen
 
@@ -331,7 +331,7 @@
     solutionName: pen
     transferAmount: 30
   - type: StaticPrice
-    price: 500
+    price: 0
   - type: Tag
     tags: []
 
@@ -358,7 +358,7 @@
     changeColor: false
     emptySpriteName: microstimpen_empty
   - type: StaticPrice
-    price: 100
+    price: 0
   - type: Tag
     tags: []
 
@@ -390,7 +390,7 @@
     solutionName: pen
     transferAmount: 30
   - type: StaticPrice
-    price: 500
+    price: 0
   - type: Tag
     tags: []
 
@@ -414,7 +414,7 @@
   - type: UseDelay
     delay: 0.5
   - type: StaticPrice # A new shitcurity meta
-    price: 75
+    price: 0
 
 - type: entity
   parent: BaseItem

@@ -46,7 +46,7 @@
   name: chat-radio-security
   keycode: 'о' # Corvax-Localization
   frequency: 1359
-  color: "#dd3535"
+  color: "#66748c"
 
 - type: radioChannel
   id: Service

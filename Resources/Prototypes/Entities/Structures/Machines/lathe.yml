@@ -49,7 +49,7 @@
     anchored: true
   - type: Pullable
   - type: StaticPrice
-    price: 800
+    price: 0
   - type: ResearchClient
   - type: TechnologyDatabase
 
