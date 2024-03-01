@@ -1,0 +1,61 @@
+- type: job
+  id: BSO
+  name: job-name-captain
+  description: job-description-captain
+  playTimeTracker: JobBSO
+  requirements:
+    - !type:DepartmentTimeRequirement
+      department: Engineering
+      time: 36000 #10 hrs # Corvax-RoleTime
+    - !type:DepartmentTimeRequirement
+      department: Medical
+      time: 36000 #10 hrs # Corvax-RoleTime
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 54000 #15 hrs # Corvax-RoleTime
+    - !type:DepartmentTimeRequirement
+      department: Science
+      time: 36000 #10 hrs # Corvax-RoleTime
+    - !type:DepartmentTimeRequirement
+      department: Cargo
+      time: 36000 #10 hrs
+    - !type:DepartmentTimeRequirement
+      department: Civilian
+      time: 36000 #10 hrs # Corvax-RoleTime
+#    - !type:DepartmentTimeRequirement
+#      department: Command
+#      time: 54000 # 15 hours
+    - !type:OverallPlaytimeRequirement
+      time: 72000 #20 hrs # Corvax-RoleTime
+  weight: 20
+  startingGear: BSOGear
+  icon: "JobIconCaptain"
+  requireAdminNotify: true
+  joinNotifyCrew: true
+  supervisors: job-supervisors-centcom
+  canBeAntag: false
+  radioBold: true
+  accessGroups:
+  - AllAccess
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+  - !type:AddComponentSpecial
+    components:
+      - type: CommandStaff
+
+- type: startingGear
+  id: BSOGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCaptain
+    back: ClothingBackpackCaptainFilled
+    shoes: ClothingShoesBootsLaceup
+    head: ClothingHeadHatCaptain
+    eyes: ClothingEyesGlassesSunglasses
+    gloves: ClothingHandsGlovesCaptain
+    outerClothing: ClothingOuterArmorCaptainCarapace
+    id: CaptainPDA
+    ears: ClothingHeadsetAltCommand
+  innerClothingSkirt: ClothingUniformJumpskirtCaptain
+  satchel: ClothingBackpackSatchelCaptainFilled
+  duffelbag: ClothingBackpackDuffelCaptainFilled
