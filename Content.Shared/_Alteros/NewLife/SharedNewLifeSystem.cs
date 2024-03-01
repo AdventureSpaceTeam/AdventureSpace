@@ -23,4 +23,12 @@ namespace Content.Shared.NewLife
     {
     }
 
+
+    [Serializable, NetSerializable]
+    [DataDefinition]
+    public partial class NewLifeUserData
+    {
+        public TimeSpan NextAllowRespawn { get; set; }
+        public List<int> UsedCharactersForRespawn { get; set; } = new();
+    }
 }

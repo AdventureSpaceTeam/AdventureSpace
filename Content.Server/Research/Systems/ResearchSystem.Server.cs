@@ -1,11 +1,14 @@
 using System.Linq;
 using Content.Server.Power.EntitySystems;
+using Content.Shared.CCVar;
 using Content.Shared.Research.Components;
+using Robust.Shared.Configuration;
 
 namespace Content.Server.Research.Systems;
 
 public sealed partial class ResearchSystem
 {
+    [Dependency] private readonly IConfigurationManager _configurationManager= default!;
     private void InitializeServer()
     {
         SubscribeLocalEvent<ResearchServerComponent, ComponentStartup>(OnServerStartup);
@@ -161,7 +164,11 @@ public sealed partial class ResearchSystem
 
         if (!Resolve(uid, ref component))
             return;
-        component.Points += points;
+        var modifier = _configurationManager.GetCVar(CCVars.RnDPointsModifier);
+        if (points >= 0)
+            component.Points += (int)((float)points * modifier);
+        else
+            component.Points += points;
         var ev = new ResearchServerPointsChangedEvent(uid, component.Points, points);
         foreach (var client in component.Clients)
         {

@@ -65,7 +65,7 @@
           True: {state: stunbaton_on}
           False: {state: stunbaton_off}
   - type: StaticPrice
-    price: 80
+    price: 0
   - type: Riggable
   - type: SolutionContainerManager
     solutions:
@@ -109,7 +109,7 @@
     malus: 0.225
   - type: Appearance
   - type: StaticPrice
-    price: 80
+    price: 0
   - type: GuideHelp
     guides:
     - Security
@@ -144,7 +144,7 @@
       sprite: Objects/Weapons/Melee/flash.rsi
     - type: UseDelay
     - type: StaticPrice
-      price: 40
+      price: 0
     - type: Appearance
     - type: GenericVisualizer
       visuals:

@@ -140,7 +140,7 @@
   - type: LightningTarget
     priority: 1
   - type: StaticPrice
-    price: 500
+    price: 0
 
 # APC under construction
 - type: entity

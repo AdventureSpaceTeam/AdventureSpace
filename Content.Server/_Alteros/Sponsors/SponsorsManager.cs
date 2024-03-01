@@ -44,37 +44,7 @@ public sealed class SponsorsManager : IServerSponsorsManager
         return _cachedSponsors.TryGetValue(userId, out sponsor);
     }
 
-    public void SetNextAllowRespawn(NetUserId userId, TimeSpan nextRespawnTime)
-    {
-        if (TryGetInfo(userId, out var sponsor))
-            sponsor.NextAllowRespawn = nextRespawnTime;
-    }
-
-    public void AddUsedCharactersForRespawn(NetUserId userId, int usedCharacter)
-    {
-        if (TryGetInfo(userId, out var sponsor))
-            sponsor.UsedCharactersForRespawn.Add(usedCharacter);
-    }
-
-    public bool TryGetUsedCharactersForRespawn(NetUserId userId, [NotNullWhen(true)] out List<int>? usedCharactersForRespawn)
-    {
-        usedCharactersForRespawn = null;
-        if (!TryGetInfo(userId, out var sponsor))
-            return false;
-        usedCharactersForRespawn = sponsor.UsedCharactersForRespawn;
-        return true;
-    }
-
-    public bool TryGetNextAllowRespawn(NetUserId userId, [NotNullWhen(true)] out TimeSpan? nextAllowRespawn)
-    {
-        nextAllowRespawn = null;
-        if (!TryGetInfo(userId, out var sponsor))
-            return false;
-        nextAllowRespawn = sponsor.NextAllowRespawn;
-        return true;
-    }
-
-    public ICommonSession PickSession(List<ICommonSession> sessions, string roleId)
+    public ICommonSession PickAntagSession(List<ICommonSession> sessions, string roleId)
     {
         var prioritySessions = PickPrioritySessions(sessions, roleId);
         var session = _random.PickAndTake(sessions);
@@ -85,6 +55,32 @@ public sealed class SponsorsManager : IServerSponsorsManager
 
         sessions.Remove(session);
         return session;
+    }
+
+    public NetUserId PickRoleSession(HashSet<NetUserId> users, string roleId)
+    {
+        var priorityUsers = PickPriorityRoles(users, roleId);
+        var session = _random.Pick(users);
+        if (priorityUsers.Count != 0)
+        {
+            session = _random.Pick(priorityUsers);
+        }
+
+        return session;
+    }
+
+    private List<NetUserId> PickPriorityRoles(HashSet<NetUserId> users, string roleId)
+    {
+        List<NetUserId> priorityUsers = new();
+        foreach (var userId in users)
+        {
+            if (!TryGetPriorityRoles(userId, out var priorityRoles))
+                continue;
+            if (priorityRoles.Contains(roleId))
+                priorityUsers.Add(userId);
+        }
+
+        return priorityUsers;
     }
 
     private List<ICommonSession> PickPrioritySessions(List<ICommonSession> sessions, string roleId)
@@ -187,6 +183,17 @@ public sealed class SponsorsManager : IServerSponsorsManager
 
         priorityAntags = new List<string>();
         priorityAntags.AddRange(sponsor.PriorityAntags);
+        return true;
+    }
+
+    public bool TryGetPriorityRoles(NetUserId userId, [NotNullWhen(true)]  out List<string>? priorityRoles)
+    {
+        priorityRoles = null;
+        if (!TryGetInfo(userId, out var sponsor))
+            return false;
+
+        priorityRoles = new List<string>();
+        priorityRoles.AddRange(sponsor.PriorityRoles);
         return true;
     }
 

@@ -70,7 +70,7 @@
     solution: food
     weightedRandomId: RandomFillSpaceshroom
   - type: StaticPrice
-    price: 20
+    price: 0
 
 - type: weightedRandomFillSolution
   id: RandomFillSpaceshroom
@@ -120,4 +120,4 @@
     state: spaceshroom_cooked
   - type: Produce
   - type: StaticPrice
-    price: 40
+    price: 0

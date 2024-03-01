@@ -73,4 +73,4 @@
     radius: 3
     color: red
   - type: StaticPrice
-    price: 200
+    price: 0
