@@ -20,4 +20,4 @@
     energy: 3
     color: "#4faffb"
   - type: StaticPrice
-    price: 0
+    price: 500

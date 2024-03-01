@@ -302,7 +302,7 @@
           Primed: { state: primed }
           Unprimed: { state: complete }
   - type: StaticPrice
-    price: 0
+    price: 25
 
 - type: entity
   name: EMP grenade

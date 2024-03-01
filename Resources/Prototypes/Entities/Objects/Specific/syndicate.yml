@@ -17,7 +17,7 @@
   - type: StaticPrice
     price: 0
   - type: StackPrice
-    price: 0
+    price: 200
   - type: Currency
     price:
       Telecrystal: 1

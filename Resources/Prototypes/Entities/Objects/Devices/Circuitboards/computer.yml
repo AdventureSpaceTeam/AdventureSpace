@@ -11,7 +11,7 @@
     - type: Item
       storedRotation: -90
     - type: StaticPrice
-      price: 0
+      price: 100
     - type: PhysicalComposition
       materialComposition:
         Glass: 400
@@ -82,10 +82,7 @@
     - type: ComputerBoard
       prototype: ComputerCargoOrders
     - type: StaticPrice
-      price: 0
-    - type: Tag
-      tags:
-      - DroneUsable
+      price: 750
 
 - type: entity
   id: CargoBountyComputerCircuitboard
@@ -231,7 +228,7 @@
     - type: ComputerBoard
       prototype: ComputerId
     - type: StaticPrice
-      price: 0
+      price: 750
     - type: Tag
       tags:
       - HighRiskItem
@@ -373,7 +370,7 @@
     - type: Sprite
       state: cpu_service
     - type: StaticPrice
-      price: 0
+      price: 150
     - type: ComputerBoard
       prototype: ComputerMassMedia
 
