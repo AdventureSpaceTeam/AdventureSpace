@@ -10,6 +10,7 @@ using Content.Shared.Bed.Sleep;
 using Content.Shared.Construction;
 using Content.Shared.Cuffs.Components;
 using Content.Shared.Damage;
+using Content.Shared.Doors.Systems;
 using Content.Shared.Electrocution;
 using Content.Shared.Fluids;
 using Content.Shared.Humanoid;
@@ -46,7 +47,6 @@ public sealed class StatsBoardSystem : EntitySystem
 
         SubscribeLocalEvent<StatsBoardComponent, ComponentInit>(OnStartup);
         SubscribeLocalEvent<StatsBoardComponent, ComponentShutdown>(OnShutdown);
-        SubscribeLocalEvent<RoundEndTextAppendEvent>(OnRoundEnded);
         SubscribeLocalEvent<StatsBoardComponent, DamageChangedEvent>(OnDamageModify);
         SubscribeLocalEvent<StatsBoardComponent, SlippedEvent>(OnSlippedEvent);
         SubscribeLocalEvent<StatsBoardComponent, CreamedEvent>(OnCreamedEvent);
@@ -302,7 +302,7 @@ public sealed class StatsBoardSystem : EntitySystem
         }
     }
 
-    private void OnRoundEnded(RoundEndTextAppendEvent ev)
+    public string GetRoundStats()
     {
         var result = "";
         var totalSlipped = 0;
@@ -719,7 +719,7 @@ public sealed class StatsBoardSystem : EntitySystem
 
         result += "\n";
 
-        ev.AddLine(result);
+        return result;
     }
 
     private string? TryGetUsername(EntityUid uid)

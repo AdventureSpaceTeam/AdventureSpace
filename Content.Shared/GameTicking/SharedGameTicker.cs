@@ -185,6 +185,7 @@ namespace Content.Shared.GameTicking
         public int RoundId { get; }
         public int PlayerCount { get; }
         public RoundEndPlayerInfo[] AllPlayersEndInfo { get; }
+        public string RoundEndStats { get; }
         public string? LobbySong;
 
         /// <summary>
@@ -199,6 +200,7 @@ namespace Content.Shared.GameTicking
             int roundId,
             int playerCount,
             RoundEndPlayerInfo[] allPlayersEndInfo,
+            string roundEndStats,
             string? lobbySong,
             string? restartSound)
         {
@@ -208,6 +210,7 @@ namespace Content.Shared.GameTicking
             RoundId = roundId;
             PlayerCount = playerCount;
             AllPlayersEndInfo = allPlayersEndInfo;
+            RoundEndStats = roundEndStats;
             LobbySong = lobbySong;
             RestartSound = restartSound;
         }

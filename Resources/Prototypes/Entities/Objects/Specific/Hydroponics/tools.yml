@@ -63,7 +63,7 @@
     slots:
     - back
   - type: StaticPrice
-    price: 40
+    price: 0
 
 - type: entity
   name: hatchet

@@ -50,5 +50,4 @@ public sealed class SponsorsManager : IClientSponsorsManager
     public int ExtraCharSlots { get; private set; }
     public string? GhostTheme { get; private set; }
     public bool AllowedRespawn { get; private set; }
-    public TimeSpan NextAllowRespawn { get; set; }
 }
