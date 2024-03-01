@@ -65,7 +65,7 @@
   - type: TrashOnSolutionEmpty
     solution: beaker
   - type: StaticPrice
-    price: 100
+    price: 0
   - type: DamageOnLand
     damage:
       types:

@@ -1426,6 +1426,9 @@ namespace Content.Shared.CCVar
         public static readonly CVarDef<bool> EmergencyEarlyLaunchAllowed =
             CVarDef.Create("shuttle.emergency_early_launch_allowed", false, CVar.SERVERONLY);
 
+        public static readonly CVarDef<bool> CanCallEmergency =
+            CVarDef.Create("shuttle.can_call_emergency", true, CVar.SERVERONLY);
+
         /// <summary>
         /// How long the emergency shuttle remains docked with the station, in seconds.
         /// </summary>
@@ -2087,6 +2090,13 @@ namespace Content.Shared.CCVar
 
         public static readonly CVarDef<string> GreetingsAuthor =
             CVarDef.Create("greetings.author", "Сервер");
+
+        /*
+         * Adventure Space WL
+         */
+
+        public static readonly CVarDef<float> RnDPointsModifier =
+            CVarDef.Create("game.research_modifier", 1.0f, CVar.SERVER | CVar.REPLICATED);
 
         /*
          * DEBUG

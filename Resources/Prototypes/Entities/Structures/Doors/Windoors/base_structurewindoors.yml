@@ -140,7 +140,7 @@
     containers:
     - board
   - type: StaticPrice
-    price: 100
+    price: 0
   - type: PryUnpowered
 
 - type: entity
