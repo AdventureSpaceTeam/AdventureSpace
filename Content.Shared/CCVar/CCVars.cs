@@ -507,6 +507,13 @@ namespace Content.Shared.CCVar
             CVarDef.Create("pirates.players_per_pirate", 5);
 
         /*
+         * Nukeops
+         */
+
+        public static readonly CVarDef<bool> NukeopsSpawnGhostRoles =
+            CVarDef.Create("nukeops.spawn_ghost_roles", false);
+
+        /*
          * Tips
          */
 
@@ -1426,6 +1433,9 @@ namespace Content.Shared.CCVar
         public static readonly CVarDef<bool> EmergencyEarlyLaunchAllowed =
             CVarDef.Create("shuttle.emergency_early_launch_allowed", false, CVar.SERVERONLY);
 
+        public static readonly CVarDef<bool> CanCallEmergency =
+            CVarDef.Create("shuttle.can_call_emergency", true, CVar.SERVERONLY);
+
         /// <summary>
         /// How long the emergency shuttle remains docked with the station, in seconds.
         /// </summary>
@@ -1497,15 +1507,6 @@ namespace Content.Shared.CCVar
         /// </summary>
         public static readonly CVarDef<bool> CrewManifestUnsecure =
             CVarDef.Create("crewmanifest.unsecure", true, CVar.REPLICATED);
-
-        /// <summary>
-        ///     Dictates the order the crew manifest will appear in, in terms of its sections.
-        ///     Sections not in this list will appear at the end of the list, in no
-        ///     specific order.
-        /// </summary>
-        public static readonly CVarDef<string> CrewManifestOrdering =
-            CVarDef.Create("crewmanifest.ordering", "Command,Security,Science,Medical,Engineering,Cargo,Civilian,Unknown",
-                CVar.REPLICATED);
 
         /*
          * Biomass
@@ -2096,6 +2097,13 @@ namespace Content.Shared.CCVar
 
         public static readonly CVarDef<string> GreetingsAuthor =
             CVarDef.Create("greetings.author", "Сервер");
+
+        /*
+         * Adventure Space WL
+         */
+
+        public static readonly CVarDef<float> RnDPointsModifier =
+            CVarDef.Create("game.research_modifier", 1.0f, CVar.SERVER | CVar.REPLICATED);
 
         /*
          * DEBUG

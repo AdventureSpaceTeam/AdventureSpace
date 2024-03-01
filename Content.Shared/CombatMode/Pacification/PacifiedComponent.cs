@@ -11,17 +11,23 @@ namespace Content.Shared.CombatMode.Pacification;
 ///
 /// If you want full-pacifism (no combat mode at all), you can simply set <see cref="DisallowAllCombat"/> before adding.
 /// </summary>
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentPause]
 [Access(typeof(PacificationSystem))]
 public sealed partial class PacifiedComponent : Component
 {
     [DataField]
+    [ViewVariables(VVAccess.ReadWrite)]
     public bool DisallowDisarm = false;
+
+    [DataField]
+    [ViewVariables(VVAccess.ReadWrite)]
+    public bool DisallowGuns = false;
 
     /// <summary>
     ///  If true, this will disable combat entirely instead of only disallowing attacking living creatures and harmful things.
     /// </summary>
     [DataField]
+    [ViewVariables(VVAccess.ReadWrite)]
     public bool DisallowAllCombat = false;
 
 
@@ -33,6 +39,7 @@ public sealed partial class PacifiedComponent : Component
     public TimeSpan PopupCooldown = TimeSpan.FromSeconds(3.0);
 
     [DataField]
+    [AutoPausedField]
     public TimeSpan? NextPopupTime = null;
 
     /// <summary>

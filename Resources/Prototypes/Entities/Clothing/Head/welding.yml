@@ -4,6 +4,8 @@
   name: welding mask
   abstract: true
   components:
+  - type: Item
+    storedRotation: 0
   - type: IngestionBlocker
   - type: FlashImmunity
   - type: IdentityBlocker
@@ -13,7 +15,7 @@
       Steel: 500
       Glass: 100
   - type: StaticPrice
-    price: 50
+    price: 0
   - type: Tag
     tags:
     - WhitelistChameleon

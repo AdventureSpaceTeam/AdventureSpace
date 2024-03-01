@@ -1,10 +1,9 @@
 using System.Globalization;
 using System.Linq;
 using System.Numerics;
-using Content.Corvax.Interfaces.Server;
 using Content.Server.Administration.Managers;
 using Content.Server.Ghost;
-using Content.Server.Preferences.Managers;
+using Content.Server.NewLife;
 using Content.Server.Spawners.Components;
 using Content.Server.Speech.Components;
 using Content.Server.Station.Components;
@@ -29,6 +28,8 @@ namespace Content.Server.GameTicking
     {
         [Dependency] private readonly IAdminManager _adminManager = default!;
         [Dependency] private readonly SharedJobSystem _jobs = default!;
+        [Dependency] private readonly NewLifeSystem _newLifeSystem = default!;
+
 
         [ValidatePrototypeId<EntityPrototype>]
         public const string ObserverPrototypeName = "MobObserver";
@@ -121,7 +122,7 @@ namespace Content.Server.GameTicking
             RaiseLocalEvent(new RulePlayerJobsAssignedEvent(assignedJobs.Keys.Select(x => _playerManager.GetSessionById(x)).ToArray(), profiles, force));
         }
 
-        private void SpawnPlayer(ICommonSession player, EntityUid station, string? jobId = null, bool lateJoin = true, bool silent = false)
+        private void SpawnPlayer(ICommonSession player, EntityUid station, string? jobId = null, bool lateJoin = true, bool silent = false, bool canBeAntag = true)
         {
             var character = GetPlayerProfile(player);
 
@@ -130,10 +131,10 @@ namespace Content.Server.GameTicking
                 return;
             if (jobId != null && !_playTimeTrackings.IsAllowed(player, jobId))
                 return;
-            SpawnPlayer(player, character, station, jobId, lateJoin, silent);
+            SpawnPlayer(player, character, station, jobId, lateJoin, silent, canBeAntag);
         }
 
-        private void SpawnPlayer(ICommonSession player, HumanoidCharacterProfile character, EntityUid station, string? jobId = null, bool lateJoin = true, bool silent = false)
+        private void SpawnPlayer(ICommonSession player, HumanoidCharacterProfile character, EntityUid station, string? jobId = null, bool lateJoin = true, bool silent = false, bool canBeAntag = true)
         {
             // Can't spawn players with a dummy ticker!
             if (DummyTicker)
@@ -156,8 +157,8 @@ namespace Content.Server.GameTicking
             }
 
             // Alteros-Sponsors-start
-            var sponsors = IoCManager.Resolve<IServerSponsorsManager>(); // Alteros-Sponsors
-            sponsors.AddUsedCharactersForRespawn(player.UserId, _prefsManager.GetPreferences(player.UserId).SelectedCharacterIndex);
+            _newLifeSystem.AddUsedCharactersForRespawn(player.UserId, _prefsManager.GetPreferences(player.UserId).SelectedCharacterIndex);
+            _newLifeSystem.SetNextAllowRespawn(player.UserId, _gameTiming.CurTime + TimeSpan.FromMinutes(_newLifeSystem.NewLifeTimeout));
             // Alteros-Sponsors-stop
 
             // Automatically de-admin players who are joining.
@@ -277,7 +278,7 @@ namespace Content.Server.GameTicking
 
             // We raise this event directed to the mob, but also broadcast it so game rules can do something now.
             PlayersJoinedRoundNormally++;
-            var aev = new PlayerSpawnCompleteEvent(mob, player, jobId, lateJoin, PlayersJoinedRoundNormally, station, character);
+            var aev = new PlayerSpawnCompleteEvent(mob, player, jobId, lateJoin, PlayersJoinedRoundNormally, station, character, canBeAntag);
             RaiseLocalEvent(mob, aev, true);
         }
 
@@ -299,7 +300,7 @@ namespace Content.Server.GameTicking
         /// <param name="station">The station they're spawning on</param>
         /// <param name="jobId">An optional job for them to spawn as</param>
         /// <param name="silent">Whether or not the player should be greeted upon joining</param>
-        public void MakeJoinGame(ICommonSession player, EntityUid station, string? jobId = null, bool silent = false)
+        public void MakeJoinGame(ICommonSession player, EntityUid station, string? jobId = null, bool silent = false, bool canBeAntag = true)
         {
             if (!_playerGameStatuses.ContainsKey(player.UserId))
                 return;
@@ -307,7 +308,7 @@ namespace Content.Server.GameTicking
             if (!_userDb.IsLoadComplete(player))
                 return;
 
-            SpawnPlayer(player, station, jobId, silent: silent);
+            SpawnPlayer(player, station, jobId, silent: silent, canBeAntag: canBeAntag);
         }
 
         /// <summary>
@@ -470,11 +471,12 @@ namespace Content.Server.GameTicking
         public bool LateJoin { get; }
         public EntityUid Station { get; }
         public HumanoidCharacterProfile Profile { get; }
+        public bool CanBeAntag { get; }
 
         // Ex. If this is the 27th person to join, this will be 27.
         public int JoinOrder { get; }
 
-        public PlayerSpawnCompleteEvent(EntityUid mob, ICommonSession player, string? jobId, bool lateJoin, int joinOrder, EntityUid station, HumanoidCharacterProfile profile)
+        public PlayerSpawnCompleteEvent(EntityUid mob, ICommonSession player, string? jobId, bool lateJoin, int joinOrder, EntityUid station, HumanoidCharacterProfile profile, bool canBeAntag)
         {
             Mob = mob;
             Player = player;
@@ -483,6 +485,7 @@ namespace Content.Server.GameTicking
             Station = station;
             Profile = profile;
             JoinOrder = joinOrder;
+            CanBeAntag = canBeAntag;
         }
     }
 }

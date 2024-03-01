@@ -103,7 +103,7 @@
     - type: WallMount
       arc: 360
     - type: StaticPrice
-      price: 150
+      price: 0
     - type: DoorBolt
     - type: AccessReader
       access: [ [ "Engineering" ] ]
@@ -181,4 +181,4 @@
     - type: Physics
       canCollide: false
     - type: StaticPrice
-      price: 100
+      price: 0

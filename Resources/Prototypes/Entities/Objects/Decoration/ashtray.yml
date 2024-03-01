@@ -12,7 +12,7 @@
   - type: Item
     size: Small
   - type: StaticPrice
-    price: 1
+    price: 0
   - type: Storage
     whitelist:
       tags:
