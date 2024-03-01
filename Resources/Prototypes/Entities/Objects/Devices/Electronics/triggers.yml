@@ -29,7 +29,7 @@
         params:
           volume: -2
     - type: StaticPrice
-      price: 0
+      price: 40
 
 - type: entity
   parent: TimerTrigger
@@ -50,7 +50,7 @@
       range: 200
     - type: DeviceLinkSink
     - type: StaticPrice
-      price: 0
+      price: 40
 
 - type: entity
   parent: BaseItem
@@ -65,7 +65,7 @@
     components:
   - type: TriggerOnVoice
   - type: StaticPrice
-    price: 0
+    price: 40
   - type: Tag
     tags:
     - VoiceTrigger

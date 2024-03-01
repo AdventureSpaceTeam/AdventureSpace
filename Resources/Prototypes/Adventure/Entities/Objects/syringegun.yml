@@ -146,7 +146,7 @@
     size: Huge
   - type: AmmoCounter
   - type: StaticPrice
-    price: 0
+    price: 500
 
 - type: entity
   suffix: ноктурин

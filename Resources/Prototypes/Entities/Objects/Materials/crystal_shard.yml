@@ -35,7 +35,7 @@
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
   - type: StaticPrice
-    price: 0
+    price: 50
 
 - type: entity
   parent: ShardCrystalBase

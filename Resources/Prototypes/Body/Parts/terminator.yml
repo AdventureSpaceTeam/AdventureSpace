@@ -18,7 +18,7 @@
         ents: []
   - type: Gibbable
   - type: StaticPrice
-    price: 0
+    price: 200
 
 - type: entity
   parent: PartTerminator
@@ -46,7 +46,7 @@
     partType: Head
   # killing a terminators worth big bucks
   - type: StaticPrice
-    price: 0
+    price: 2000
   - type: Tag
     tags:
     - Head

@@ -86,7 +86,7 @@
   molarMass: 44
   color: 2887E8
   reagent: NitrousOxide
-  pricePerMole: 1
+  pricePerMole: 2.5
 
 - type: gas
   id: 8
