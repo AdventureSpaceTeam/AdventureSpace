@@ -267,7 +267,6 @@
       contents:
         - id: BoxSurvival
 
-
 - type: entity
   noSpawn: true
   parent: ClothingBackpackSatchelMime
