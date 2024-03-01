@@ -73,7 +73,7 @@
     - type: PointLight
       enabled: true
       radius: 3
-      color: blue
+      color: red
     - type: Climbable
     - type: Clickable
 

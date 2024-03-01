@@ -5,7 +5,7 @@
   parent: BaseStructureDynamic
   components:
   - type: StaticPrice
-    price: 0
+    price: 500
   - type: Anchorable
   - type: InteractionOutline
   - type: Damageable

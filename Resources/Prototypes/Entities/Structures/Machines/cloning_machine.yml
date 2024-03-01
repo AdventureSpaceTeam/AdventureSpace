@@ -68,7 +68,7 @@
           Idle: { state: pod_0 }
   - type: Climbable
   - type: StaticPrice
-    price: 0
+    price: 1000
   - type: ContainerContainer
     containers:
       machine_board: !type:Container
