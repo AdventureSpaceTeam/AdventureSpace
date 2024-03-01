@@ -102,4 +102,4 @@
   - type: ExaminableSolution
     solution: output
   - type: StaticPrice
-    price: 500
+    price: 0

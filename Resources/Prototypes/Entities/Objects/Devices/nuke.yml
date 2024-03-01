@@ -91,7 +91,7 @@
     - key: enum.NukeUiKey.Key
       type: NukeBoundUserInterface
   - type: StaticPrice
-    price: 50000 # YOU STOLE A NUCLEAR FISSION EXPLOSIVE?!
+    price: 0
   - type: CargoSellBlacklist
   - type: ArrivalsBlacklist
   - type: ItemSlots
@@ -161,4 +161,4 @@
   - type: ReagentTank
     transferAmount: 100
   - type: StaticPrice
-    price: 5000 # That's a pretty fancy keg you got there.
+    price: 0

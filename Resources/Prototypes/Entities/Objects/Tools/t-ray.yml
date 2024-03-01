@@ -20,4 +20,4 @@
           On: { state: tray-on }
           Off: { state: tray-off }
   - type: StaticPrice
-    price: 60
+    price: 0

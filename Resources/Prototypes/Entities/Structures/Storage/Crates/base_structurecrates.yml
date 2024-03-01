@@ -68,7 +68,7 @@
       paper_label: !type:ContainerSlot
   - type: ItemSlots
   - type: StaticPrice
-    price: 50
+    price: 0
   - type: Construction
     graph: CrateGenericSteel
     node: crategenericsteel
@@ -78,6 +78,7 @@
 - type: entity
   parent: CrateGeneric
   id: CrateBaseWeldable
+  noSpawn: true
   components:
   - type: Weldable
   - type: ResistLocker
@@ -85,6 +86,7 @@
 - type: entity
   parent: CrateBaseWeldable
   id: CrateBaseSecure
+  suffix: Secure
   components:
   - type: Lock
   - type: LockVisuals

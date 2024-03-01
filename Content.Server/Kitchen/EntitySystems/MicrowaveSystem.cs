@@ -86,7 +86,6 @@ namespace Content.Server.Kitchen.EntitySystems
 
             SubscribeLocalEvent<ActiveMicrowaveComponent, ComponentStartup>(OnCookStart);
             SubscribeLocalEvent<ActiveMicrowaveComponent, ComponentShutdown>(OnCookStop);
-            SubscribeLocalEvent<ActiveMicrowaveComponent, EntityUnpausedEvent>(OnEntityUnpaused);
             SubscribeLocalEvent<ActiveMicrowaveComponent, EntInsertedIntoContainerMessage>(OnActiveMicrowaveInsert);
             SubscribeLocalEvent<ActiveMicrowaveComponent, EntRemovedFromContainerMessage>(OnActiveMicrowaveRemove);
 
@@ -110,11 +109,6 @@ namespace Content.Server.Kitchen.EntitySystems
 
             SetAppearance(ent.Owner, MicrowaveVisualState.Idle, microwaveComponent);
             microwaveComponent.PlayingStream = _audio.Stop(microwaveComponent.PlayingStream);
-        }
-
-        private void OnEntityUnpaused(Entity<ActiveMicrowaveComponent> ent, ref EntityUnpausedEvent args)
-        {
-            ent.Comp.MalfunctionTime += args.PausedTime;
         }
 
         private void OnActiveMicrowaveInsert(Entity<ActiveMicrowaveComponent> ent, ref EntInsertedIntoContainerMessage args)
@@ -615,7 +609,7 @@ namespace Content.Server.Kitchen.EntitySystems
                 return;
 
             // some validation to prevent trollage
-            if (args.NewCookTime % 5 != 0 || args.NewCookTime > ent.Comp.MaxCookTime)
+            if (args.NewCookTime % 50 != 0 || args.NewCookTime > ent.Comp.MaxCookTime)
                 return;
 
             ent.Comp.CurrentCookTimeButtonIndex = args.ButtonIndex;
