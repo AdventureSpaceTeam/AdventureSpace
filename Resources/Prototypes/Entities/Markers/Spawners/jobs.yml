@@ -322,6 +322,18 @@
       - state: green
       - state: hop
 
+- type: entity
+  id: SpawnPointBSO
+  parent: SpawnPointJobBase
+  name: офицер синего щита
+  components:
+  - type: SpawnPoint
+    job_id: BSO
+  - type: Sprite
+    layers:
+      - state: green
+      - state: bso
+
 # Engineering
 
 - type: entity
