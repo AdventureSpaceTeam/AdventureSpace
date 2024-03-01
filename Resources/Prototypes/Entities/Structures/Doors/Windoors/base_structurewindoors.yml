@@ -194,7 +194,7 @@
     graph: Windoor
     node: windoorSecure
   - type: StaticPrice
-    price: 0
+    price: 200
 
 #Plasma Windoors
 - type: entity
