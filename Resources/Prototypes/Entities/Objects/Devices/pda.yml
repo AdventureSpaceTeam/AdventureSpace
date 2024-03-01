@@ -170,7 +170,7 @@
     state: pda-interncadet
   - type: PdaBorderColor
     borderColor: "#717059"
-    accentVColor: "#5c617b"
+    accentVColor: "#A32D26"
   - type: Icon
     state: pda-interncadet
 
@@ -601,8 +601,8 @@
     id: HoSIDCard
     state: pda-hos
   - type: PdaBorderColor
-    borderColor: "#5c617b"
-    accentHColor: "#f8d860"
+    borderColor: "#A32D26"
+    accentHColor: "#447987"
   - type: Icon
     state: pda-hos
 
@@ -616,8 +616,8 @@
     id: WardenIDCard
     state: pda-warden
   - type: PdaBorderColor
-    borderColor: "#5c617b"
-    accentVColor: "#a7becf"
+    borderColor: "#A32D26"
+    accentVColor: "#949137"
   - type: Icon
     state: pda-warden
 
@@ -631,7 +631,7 @@
     id: SecurityIDCard
     state: pda-security
   - type: PdaBorderColor
-    borderColor: "#5c617b"
+    borderColor: "#A32D26"
   - type: Icon
     state: pda-security
 
@@ -934,9 +934,9 @@
     id: BrigmedicIDCard
     state: pda-brigmedic
   - type: PdaBorderColor
-    borderColor: "#5c617b"
-    accentHColor: "#a7becf"
-    accentVColor: "#a7becf"
+    borderColor: "#A32D26"
+    accentHColor: "#d7d7d0"
+    accentVColor: "#d7d7d0"
   - type: Icon
     state: pda-brigmedic
 
