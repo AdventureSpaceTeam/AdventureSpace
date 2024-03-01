@@ -5,6 +5,7 @@
   components:
   - type: StorageFill
     contents:
+      - id: IndiMedBox
       - id: BoxSurvival
 
 - type: entity
@@ -14,6 +15,7 @@
   components:
   - type: StorageFill
     contents:
+      - id: IndiMedBox
       - id: BoxSurvival
       - id: Crowbar
       - id: Wrench
@@ -28,6 +30,7 @@
   components:
   - type: StorageFill
     contents:
+      - id: IndiMedBox
       - id: BoxHug
       - id: RubberStampClown
 
@@ -38,6 +41,7 @@
   components:
   - type: StorageFill
     contents:
+      - id: IndiMedBox
       - id: BoxSurvivalSecurity
       - id: Flash
       - id: MagazinePistol
@@ -49,6 +53,7 @@
   components:
   - type: StorageFill
     contents:
+      - id: IndiMedBox
       - id: BoxSurvival
       - id: ForensicPad
       - id: ForensicScanner
@@ -60,6 +65,7 @@
   components:
   - type: StorageFill
     contents:
+      - id: IndiMedBox
       - id: Flash
 
 - type: entity
@@ -69,6 +75,7 @@
   components:
   - type: StorageFill
     contents:
+      - id: IndiMedBox
       - id: BoxSurvivalMedical
 
 - type: entity
@@ -78,6 +85,7 @@
   components:
   - type: StorageFill
     contents:
+      - id: IndiMedBox
       - id: BoxSurvivalMedical
       - id: EmergencyRollerBedSpawnFolded
 
@@ -88,6 +96,7 @@
   components:
   - type: StorageFill
     contents:
+      - id: IndiMedBox
       - id: BoxSurvival
       - id: Flash
       #- name: StationCharter
@@ -100,6 +109,7 @@
   components:
   - type: StorageFill
     contents:
+      - id: IndiMedBox
       - id: BoxSurvivalEngineering
       - id: Flash
       #- id: TelescopicBaton
@@ -111,6 +121,7 @@
   components:
   - type: StorageFill
     contents:
+      - id: IndiMedBox
       - id: BoxSurvival
       - id: Flash
       #- id: TelescopicBaton
@@ -122,6 +133,7 @@
   components:
   - type: StorageFill
     contents:
+      - id: IndiMedBox
       - id: BoxSurvival
       - id: Flash
       #- id: TelescopicBaton
@@ -133,6 +145,7 @@
   components:
   - type: StorageFill
     contents:
+      - id: IndiMedBox
       - id: BoxSurvivalMedical
       - id: Flash
       #- id: TelescopicBaton
@@ -144,6 +157,7 @@
   components:
   - type: StorageFill
     contents:
+      - id: IndiMedBox
       - id: BoxSurvival
       - id: Flash
       #- id: TelescopicBaton
@@ -155,6 +169,7 @@
   components:
   - type: StorageFill
     contents:
+      - id: IndiMedBox
       - id: BoxSurvivalSecurity
       - id: Flash
       - id: MagazinePistol
@@ -166,6 +181,7 @@
   components:
   - type: StorageFill
     contents:
+      - id: IndiMedBox
       - id: BoxSurvivalEngineering
 
 - type: entity
@@ -175,6 +191,7 @@
   components:
   - type: StorageFill
     contents:
+      - id: IndiMedBox
       - id: BoxSurvivalEngineering
 
 - type: entity
@@ -184,6 +201,7 @@
   components:
   - type: StorageFill
     contents:
+      - id: IndiMedBox
       - id: BoxSurvival
 
 - type: entity
@@ -193,6 +211,7 @@
   components:
   - type: StorageFill
     contents:
+      - id: IndiMedBox
       - id: BoxSurvival
 
 - type: entity
@@ -202,6 +221,7 @@
   components:
   - type: StorageFill
     contents:
+      - id: IndiMedBox
       - id: BoxSurvivalMedical
 
 - type: entity
@@ -211,6 +231,7 @@
   components:
   - type: StorageFill
     contents:
+      - id: IndiMedBox
       - id: BoxSurvival
       - id: Bible
       - id: RubberStampChaplain
@@ -222,8 +243,8 @@
   components:
     - type: StorageFill
       contents:
+        - id: IndiMedBox
         - id: BoxSurvival
- 
         - id: AcousticGuitarInstrument
         - id: SaxophoneInstrument
 
@@ -234,8 +255,8 @@
   components:
     - type: StorageFill
       contents:
+        - id: IndiMedBox
         - id: BoxSurvival
- 
         - id: BookRandom
 
 - type: entity
@@ -245,6 +266,7 @@
   components:
     - type: StorageFill
       contents:
+      - id: IndiMedBox
       - id: BoxSurvival
       - id: BoxForensicPad
       - id: Lighter
@@ -258,7 +280,9 @@
   components:
     - type: StorageFill
       contents:
+        - id: IndiMedBox
         - id: BoxSurvival
+
  
 
 - type: entity
@@ -268,8 +292,8 @@
   components:
     - type: StorageFill
       contents:
+        - id: IndiMedBox
         - id: BoxSurvival
- 
 
 - type: entity
   noSpawn: true
@@ -278,6 +302,7 @@
   components:
   - type: StorageFill
     contents:
+      - id: IndiMedBox
       - id: BoxSurvival
       - id: RubberStampMime
 
@@ -288,6 +313,7 @@
   components:
   - type: StorageFill
     contents:
+    - id: IndiMedBox
     - id: GasAnalyzer
     - id: trayScanner
     - id: DoorRemoteAll
