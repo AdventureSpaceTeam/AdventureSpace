@@ -151,16 +151,6 @@
       - id: TeslaGeneratorFlatpack
 
 - type: entity
-  id: CrateEngineeringTeslaCoil
-  parent: CrateEngineeringSecure
-  name: tesla coil crate
-  description: Tesla coil. Attracts lightning and generates energy from it.
-  components:
-  - type: StorageFill
-    contents:
-      - id: TeslaCoilFlatpack
-
-- type: entity
   id: CrateEngineeringTeslaGroundingRod
   parent: CrateEngineeringSecure
   name: tesla grounding rod crate
