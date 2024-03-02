@@ -36,7 +36,7 @@
     containers:
     - board
   - type: StaticPrice
-    price: 0
+    price: 280
 
 - type: entity
   id: BlastDoorOpen

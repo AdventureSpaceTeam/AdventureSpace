@@ -6,7 +6,6 @@
     - type: StorageFill
       contents:
         - id: BoxSurvival
-        - id: IndiMedBox
 
 - type: entity
   noSpawn: true
@@ -16,5 +15,4 @@
     - type: StorageFill
       contents:
         - id: BoxSurvivalMedical
-        - id: IndiMedBox
         - id: RubberStampPsychologist
