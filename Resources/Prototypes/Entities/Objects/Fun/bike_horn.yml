@@ -105,7 +105,7 @@
     slots: [Belt]
   - type: Prayable
   - type: StaticPrice
-    price: 0
+    price: 1000
   - type: PointLight
     radius: 1.2
     energy: 1

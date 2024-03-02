@@ -53,7 +53,7 @@
         sound:
           collection: MetalBreak
   - type: StaticPrice
-    price: 0
+    price: 10
 
 - type: entity
   id: ReinforcedGirder
@@ -96,4 +96,4 @@
               sound:
                 collection: MetalBreak
     - type: StaticPrice
-      price: 0
+      price: 66

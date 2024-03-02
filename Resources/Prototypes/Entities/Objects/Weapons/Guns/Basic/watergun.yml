@@ -45,7 +45,7 @@
   - type: ExaminableSolution
     solution: chamber
   - type: StaticPrice
-    price: 0
+    price: 100
   - type: PhysicalComposition
     materialComposition:
       Plastic: 150

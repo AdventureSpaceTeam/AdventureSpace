@@ -43,7 +43,7 @@
     fillBaseName: fill-
     solutionName: drainBuffer
   - type: StaticPrice
-    price: 0
+    price: 25
 
 - type: entity
   id: ToiletDirtyWater
