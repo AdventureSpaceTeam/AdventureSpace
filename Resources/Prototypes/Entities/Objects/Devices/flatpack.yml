@@ -34,7 +34,7 @@
       cpu_science: "#D381C9"
       cpu_supply: "#A46106"
   - type: StaticPrice
-    price: 250
+    price: 0
 
 - type: entity
   parent: BaseFlatpack

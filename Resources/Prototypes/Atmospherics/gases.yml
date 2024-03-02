@@ -88,7 +88,6 @@
   reagent: NitrousOxide
   pricePerMole: 2.5
 
-
 - type: gas
   id: 8
   name: gases-frezon
