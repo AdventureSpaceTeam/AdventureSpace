@@ -8,7 +8,7 @@
   components:
   - type: StorageFill
     contents:
-      - id: AmePart
+      - id: AmePartFlatpack
         amount: 9
 
 - type: entity
@@ -52,7 +52,7 @@
   components:
   - type: StorageFill
     contents:
-      - id: RadiationCollector
+      - id: RadiationCollectorFlatpack
       - id: PlasmaTankFilled
 
 - type: entity
@@ -63,7 +63,7 @@
   components:
   - type: StorageFill
     contents:
-      - id: ContainmentFieldGenerator
+      - id: ContainmentFieldGeneratorFlatpack
 
 - type: entity
   id: CrateEngineeringSingularityGenerator
@@ -73,7 +73,7 @@
   components:
   - type: StorageFill
     contents:
-      - id: SingularityGenerator
+      - id: SingularityGeneratorFlatpack
 
 # Particle Accelerator
 
@@ -124,7 +124,7 @@
   components:
   - type: StorageFill
     contents:
-      - id: SolarAssembly
+      - id: SolarAssemblyFlatpack
         amount: 6
 
 - type: entity
@@ -148,7 +148,7 @@
   components:
   - type: StorageFill
     contents:
-      - id: TeslaGenerator
+      - id: TeslaGeneratorFlatpack
 
 - type: entity
   id: CrateEngineeringTeslaCoil
@@ -168,14 +168,4 @@
   components:
   - type: StorageFill
     contents:
-      - id: TeslaGroundingRod
-
-- type: entity
-  id: CrateEngineeringTeslaCoil
-  parent: CrateEngineeringSecure
-  name: tesla coil crate
-  description: Tesla coil. Attracts lightning and generates energy from it.
-  components:
-  - type: StorageFill
-    contents:
-      - id: TeslaCoil
+      - id: TeslaGroundingRodFlatpack
