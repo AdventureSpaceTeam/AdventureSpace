@@ -23,6 +23,7 @@ namespace Content.Client.Preferences
         [Dependency] private readonly IBaseClient _baseClient = default!;
         [Dependency] private readonly IConfigurationManager _cfg = default!;
         [Dependency] private readonly IPrototypeManager _prototypes = default!;
+        [Dependency] private readonly IClientPreferencesManager _preferencesManager = default!;
         private IClientSponsorsManager? _sponsorsManager; // Corvax-Sponsors
 
         public event Action? OnServerDataLoaded;

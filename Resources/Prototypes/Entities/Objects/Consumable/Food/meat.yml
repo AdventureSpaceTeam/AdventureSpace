@@ -306,7 +306,7 @@
         - ReagentId: Bicaridine
           Quantity: 20
   - type: StaticPrice
-    price: 750
+    price: 0
   - type: StealTarget
     stealGroup: FoodMeatCorgi
 
@@ -700,7 +700,7 @@
         - ReagentId: Iron
           Quantity: 10
   - type: StaticPrice
-    price: 3000 #It has so much Omnizin in it
+    price: 0
   - type: Tag
     tags:
     - Meat

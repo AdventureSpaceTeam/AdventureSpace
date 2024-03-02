@@ -49,7 +49,7 @@
       60: 0.7
       80: 0.5
   - type: MobPrice
-    price: 1000 # Living critters are valuable in space.
+    price: 0
   - type: Perishable
   - type: Reflect
     reflectProb: 0.7

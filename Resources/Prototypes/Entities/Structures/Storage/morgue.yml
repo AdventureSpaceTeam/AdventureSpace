@@ -70,7 +70,7 @@
     anchored: true
   - type: AntiRottingContainer
   - type: StaticPrice
-    price: 200
+    price: 0
 
 - type: entity
   id: Crematorium

@@ -140,7 +140,7 @@
     containers:
     - board
   - type: StaticPrice
-    price: 100
+    price: 0
   - type: PryUnpowered
 
 - type: entity
@@ -194,7 +194,7 @@
     graph: Windoor
     node: windoorSecure
   - type: StaticPrice
-    price: 200
+    price: 0
 
 #Plasma Windoors
 - type: entity

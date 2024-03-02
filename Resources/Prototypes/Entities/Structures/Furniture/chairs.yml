@@ -47,7 +47,7 @@
         sound:
           collection: MetalBreak
   - type: StaticPrice
-    price: 10
+    price: 0
 
 - type: entity
   name: chair
@@ -201,7 +201,7 @@
     tags:
     - Wooden
   - type: StaticPrice
-    price: 75
+    price: 0
 
 - type: entity
   name: ritual chair
