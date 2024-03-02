@@ -28,3 +28,67 @@
   - type: Construction
     graph: AtmosDeviceFanTiny
     node: tinyfan
+
+- type: entity
+  id: FanPartBase
+  abstract: true
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Transform
+    anchored: true
+  - type: Physics
+    bodyType: Static
+  - type: Sprite
+    state: icon
+  - type: Clickable
+  - type: Construction
+    graph: AtmosDeviceFanTiny
+
+- type: entity
+  parent: FanPartBase
+  id: AtmosDeviceFanTinyP1
+  name: каркас маленького вентилятора
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    sprite: Structures/Piping/Atmospherics/tinyfanparts/p1.rsi
+  - type: Construction
+    node: tinyfanp1
+
+- type: entity
+  parent: FanPartBase
+  id: AtmosDeviceFanTinyP2
+  name: каркас маленького вентилятора
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    sprite: Structures/Piping/Atmospherics/tinyfanparts/p2.rsi
+  - type: Construction
+    node: tinyfanp2
+
+- type: entity
+  parent: FanPartBase
+  id: AtmosDeviceFanTinyP3
+  name: каркас маленького вентилятора
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    sprite: Structures/Piping/Atmospherics/tinyfanparts/p3.rsi
+  - type: Construction
+    node: tinyfanp3
+
+- type: entity
+  parent: FanPartBase
+  id: AtmosDeviceFanTinyP4
+  name: каркас маленького вентилятора
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    sprite: Structures/Piping/Atmospherics/tinyfanparts/p4.rsi
+  - type: Construction
+    node: tinyfanp4
