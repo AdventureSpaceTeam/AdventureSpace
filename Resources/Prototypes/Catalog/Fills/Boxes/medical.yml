@@ -161,7 +161,6 @@
     - 0,0,2,2
   - type: StorageFill
     contents:
-      - id: NamedPillDexalin
       - id: NamedPillHyronalin
       - id: PillCharcoal
       - id: Brutepack1
