@@ -84,7 +84,7 @@
       BeakerSlotA: !type:ContainerSlot
       BeakerSlotB: !type:ContainerSlot
   - type: StaticPrice
-    price: 60
+    price: 0
 
 - type: entity
   name: flash payload

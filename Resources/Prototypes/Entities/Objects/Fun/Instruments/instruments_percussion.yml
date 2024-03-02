@@ -82,7 +82,7 @@
     tags:
     - KeyedInstrument
   - type: StaticPrice
-    price: 90
+    price: 0
 
 - type: entity
   parent: BaseHandheldInstrument

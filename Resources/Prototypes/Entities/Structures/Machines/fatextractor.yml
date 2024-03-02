@@ -107,7 +107,7 @@
   - type: Advertise
     pack: FatExtractorFacts
   - type: StaticPrice
-    price: 1000
+    price: 0
   - type: ResistLocker
   - type: EntityStorage
     capacity: 1

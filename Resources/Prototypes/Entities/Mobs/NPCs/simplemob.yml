@@ -60,7 +60,7 @@
       60: 0.7
       80: 0.5
   - type: MobPrice
-    price: 1000 # Living critters are valuable in space.
+    price: 0
   - type: Perishable
 
 - type: entity
@@ -102,5 +102,5 @@
   - type: Bloodstream
     bloodMaxVolume: 150
   - type: MobPrice
-    price: 150
+    price: 0
   - type: FloatingVisuals
