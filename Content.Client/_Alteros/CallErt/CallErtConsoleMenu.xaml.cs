@@ -35,10 +35,11 @@ namespace Content.Client._Alteros.CallErt
             ErtGroupSelector.OnItemSelected += args =>
             {
                 var metadata = ErtGroupSelector.GetItemMetadata(args.Id);
-                if (metadata != null && metadata is string cast)
-                {
-                    Owner.ErtGroupSelected(cast);
-                }
+                if (metadata is not string cast)
+                    return;
+
+                Owner.ErtGroupSelected(cast);
+                ErtGroupSelector.Select(args.Id);
             };
 
             CallErt.OnPressed += (_) => Owner.CallErtButtonPressed();

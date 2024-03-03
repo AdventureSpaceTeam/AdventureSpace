@@ -28,6 +28,9 @@ public sealed class CallErtConsoleSystem : EntitySystem
         SubscribeLocalEvent<CallErtConsoleComponent, CallErtConsoleRecallErtMessage>(OnRecallErtMessage);
         SubscribeLocalEvent<CallErtConsoleComponent, CallErtConsoleUpdateMessage>(OnUpdateCallErtConsoleMessage);
         SubscribeLocalEvent<CallErtConsoleComponent, CallErtConsoleSelectErtMessage>(OnSelectErtMessage);
+        SubscribeLocalEvent<ApproveErtConsoleComponent, ApproveErtConsoleRecallErtMessage>(OnRecallApproveErtMessage);
+        SubscribeLocalEvent<ApproveErtConsoleComponent, CallErtConsoleSendErtMessage>(OnSendErtMessage);
+        SubscribeLocalEvent<ApproveErtConsoleComponent, CallErtConsoleSelectErtMessage>(OnSelectErtMessage);
         SubscribeLocalEvent<ApproveErtConsoleComponent, CallErtConsoleApproveErtMessage>(OnApproveErtMessage);
         SubscribeLocalEvent<ApproveErtConsoleComponent, CallErtConsoleDenyErtMessage>(OnDenyErtMessage);
         SubscribeLocalEvent<ApproveErtConsoleComponent, CallErtConsoleToggleAutomateApproveErtMessage>(OnToggleAutomateApproveErtMessage);
@@ -38,17 +41,17 @@ public sealed class CallErtConsoleSystem : EntitySystem
     private void OnSelectStatioMessage(EntityUid uid, ApproveErtConsoleComponent comp,
         CallErtConsoleSelectStationMessage message)
     {
-        if (message.Session.AttachedEntity is not {Valid: true} mob) return;
+        if (message.Session.AttachedEntity is not {Valid: true} mob)
+            return;
+
         if (!CanUse(mob, uid))
         {
             _popupSystem.PopupEntity(Loc.GetString("comms-console-permission-denied"), uid, message.Session);
             return;
         }
 
-        if (EntityUid.TryParse(message.StationUid.ToString(), out var stationId) && stationId.Valid)
-            return;
-
-        comp.SelectedStation = stationId;
+        comp.SelectedStation = GetEntity(message.StationUid);
+        comp.SelectedErtGroup = null;
 
         UpdateApproveConsoleInterface(uid, comp);
     }
@@ -62,7 +65,6 @@ public sealed class CallErtConsoleSystem : EntitySystem
             _popupSystem.PopupEntity(Loc.GetString("comms-console-permission-denied"), uid, message.Session);
             return;
         }
-
         if (comp.SelectedStation == null)
             return;
 
@@ -159,6 +161,12 @@ public sealed class CallErtConsoleSystem : EntitySystem
         var queryApproveErtConsole = EntityQueryEnumerator<ApproveErtConsoleComponent>();
         while (queryApproveErtConsole.MoveNext(out var uid, out var comp))
         {
+            // TODO refresh the UI in a less horrible way
+            if (comp.SendErtCooldownRemaining >= 0f)
+            {
+                comp.SendErtCooldownRemaining -= frameTime;
+            }
+
             comp.UIUpdateAccumulator += frameTime;
 
             if (comp.UIUpdateAccumulator < UIUpdateInterval)
@@ -230,6 +238,7 @@ public sealed class CallErtConsoleSystem : EntitySystem
     private void OnSelectErtMessage(EntityUid uid, CallErtConsoleComponent comp,
         CallErtConsoleSelectErtMessage message)
     {
+        comp.SelectedErtGroup = message.ErtGroup;
         UpdateCallConsoleInterface(uid, comp);
     }
 
@@ -251,8 +260,8 @@ public sealed class CallErtConsoleSystem : EntitySystem
             {
                 foreach (var (id, detail) in ertComponent.ErtGroups.ErtGroupList)
                 {
-                    if (detail.ShowInConsole)
-                        ertsList.Add(id, detail);
+                    //if (detail.ShowInConsole)
+                    ertsList.Add(id, detail);
                 }
                 foreach (var detail in ertComponent.CalledErtGroups)
                 {
@@ -261,7 +270,7 @@ public sealed class CallErtConsoleSystem : EntitySystem
             }
         }
 
-        var state = new CallErtConsoleInterfaceState(CanCallOrRecallErt(component), ertsList, calledErtsList);
+        var state = new CallErtConsoleInterfaceState(CanCallOrRecallErt(component), ertsList, calledErtsList, component.SelectedErtGroup);
         _ui.SetUiState(ui, state);
     }
 
@@ -289,6 +298,11 @@ public sealed class CallErtConsoleSystem : EntitySystem
         return comp.CallErtCooldownRemaining <= 0f;
     }
 
+    private bool CanSendErt(ApproveErtConsoleComponent comp)
+    {
+        return comp.SendErtCooldownRemaining <= 0f;
+    }
+
     private void UpdateApproveConsoleInterface(EntityUid uid, ApproveErtConsoleComponent? component = null, PlayerBoundUserInterface? ui = null)
     {
         if (!Resolve(uid, ref component, false))
@@ -301,33 +315,87 @@ public sealed class CallErtConsoleSystem : EntitySystem
 
         var stations = _stationSystem.GetStations();
 
-        var stationsList = new Dictionary<int, string>();
+        var stationsList = new Dictionary<NetEntity, string>();
         foreach (var entityUid in stations)
         {
-            stationsList.Add(entityUid.Id, MetaData(entityUid).EntityName);
+            if (HasComp<StationCallErtComponent>(entityUid))
+                stationsList.Add(GetNetEntity(entityUid), MetaData(entityUid).EntityName);
         }
 
         if (stationsList.Count > 0 && component.SelectedStation == null)
-            component.SelectedStation = EntityUid.Parse(stationsList.First().Key.ToString());
+            component.SelectedStation = stations.First();
 
         var calledErtsList = new List<CallErtGroupEnt>();
+        var ertsList = new Dictionary<string, ErtGroupDetail>();
         if (component.SelectedStation != null)
         {
-            if (TryComp<StationCallErtComponent>(component.SelectedStation.Value, out var ertComponent) && ertComponent.ErtGroups != null)
+            if (TryComp<StationCallErtComponent>(component.SelectedStation, out var ertComponent) && ertComponent.ErtGroups != null)
             {
                 automaticApprove = ertComponent.AutomaticApprove;
                 foreach (var detail in ertComponent.CalledErtGroups)
                 {
                     calledErtsList.Add(detail);
                 }
+
+                foreach (var (id, detail) in ertComponent.ErtGroups.ErtGroupList)
+                {
+                    //if (detail.ShowInConsole)
+                    ertsList.Add(id, detail);
+                }
             }
         }
 
-        int? selectedStation = null;
-        if (component.SelectedStation != null)
-            selectedStation = component.SelectedStation.Value.Id;
-
-        var state = new ApproveErtConsoleInterfaceState(automaticApprove, calledErtsList, stationsList, selectedStation);
+        var state = new ApproveErtConsoleInterfaceState(CanSendErt(component), automaticApprove, ertsList, calledErtsList, stationsList, GetNetEntity(component.SelectedStation), component.SelectedErtGroup);
         _ui.SetUiState(ui, state);
+    }
+
+    private void OnSendErtMessage(EntityUid uid, ApproveErtConsoleComponent comp, CallErtConsoleSendErtMessage message)
+    {
+        if (message.Session.AttachedEntity is not {Valid: true} mob)
+            return;
+
+        if (!CanUse(mob, uid))
+        {
+            _popupSystem.PopupEntity(Loc.GetString("comms-console-permission-denied"), uid, message.Session);
+            return;
+        }
+
+        var stationUid = GetEntity(message.Station);
+        if (!CanSendErt(comp))
+            return;
+
+        _stationCallErtSystem.SendErt(stationUid, message.ErtGroup);
+        comp.SendErtCooldownRemaining = comp.DelayBetweenSendErt;
+        UpdateApproveConsoleInterface(uid, comp);
+    }
+
+
+
+    private void OnRecallApproveErtMessage(EntityUid uid, ApproveErtConsoleComponent comp,
+        ApproveErtConsoleRecallErtMessage message)
+    {
+        if (message.Session.AttachedEntity is not {Valid: true} mob) return;
+        if (!CanUse(mob, uid))
+        {
+            _popupSystem.PopupEntity(Loc.GetString("comms-console-permission-denied"), uid, message.Session);
+            return;
+        }
+
+        var stationUid = GetEntity(message.Station);
+
+        if (!_stationCallErtSystem.ReallApproveErt(stationUid, message.IndexGroup))
+        {
+            _popupSystem.PopupEntity(Loc.GetString("comms-console-call-ert-fall"), uid, message.Session);
+            return;
+        }
+
+        UpdateApproveConsoleInterface(uid, comp);
+    }
+
+    private void OnSelectErtMessage(EntityUid uid, ApproveErtConsoleComponent comp,
+        CallErtConsoleSelectErtMessage message)
+    {
+        comp.SelectedErtGroup = message.ErtGroup;
+        UpdateApproveConsoleInterface(uid, comp);
     }
 }

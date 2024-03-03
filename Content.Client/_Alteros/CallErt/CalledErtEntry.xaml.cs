@@ -49,6 +49,11 @@ public sealed partial class CalledErtEntry : BoxContainer
             RecallButton.Visible = false;
         }
 
+        if (status == ErtGroupStatus.Approved)
+        {
+            RecallButton.Visible = allowApprove;
+        }
+
         RecallButton.OnPressed += _ => OnRecallErt(index);
         ApproveButton.OnPressed += _ => OnApproveErt(index);
         DenyButton.OnPressed += _ => OnDenyErt(index);

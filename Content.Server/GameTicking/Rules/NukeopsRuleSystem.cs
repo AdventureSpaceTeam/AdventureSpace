@@ -818,6 +818,8 @@ public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>
         if (numNukies == 0)
             return;
 
+        component.RoundstartOperatives = numNukies;
+
         //Fill the ranks, commander first, then agent, then operatives
         //TODO: Possible alternative team compositions? Like multiple commanders or agents
         var operatives = new List<NukieSpawn>();

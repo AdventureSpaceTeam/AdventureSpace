@@ -8,10 +8,10 @@ public sealed partial class CallErtConsoleComponent : Component
 
     public float UIUpdateAccumulator = 0f;
 
-    /// <summary>
-    /// Time in seconds between announcement delays on a per-console basis
-    /// </summary>
     [ViewVariables(VVAccess.ReadWrite)]
     [DataField("delayCallErt")]
     public int DelayBetweenCallErt = 30;
+
+    [ViewVariables]
+    public string? SelectedErtGroup = null;
 }
