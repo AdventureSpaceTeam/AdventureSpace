@@ -313,12 +313,6 @@ namespace Content.Server.GameTicking
 
             RunLevel = GameRunLevel.PostRound;
 
-            // The lobby song is set here instead of in RestartRound,
-            // because ShowRoundEndScoreboard triggers the start of the music playing
-            // at the end of a round, and this needs to be set before RestartRound
-            // in order for the lobby song status display to be accurate.
-            LobbySong = _robustRandom.Pick(_lobbyMusicCollection.PickFiles).ToString();
-
             ShowRoundEndScoreboard(text);
             SendRoundEndDiscordMessage();
         }
@@ -408,8 +402,18 @@ namespace Content.Server.GameTicking
 
             var roundStats = _statsBoardSystem.GetRoundStats();
 
-            RaiseNetworkEvent(new RoundEndMessageEvent(gamemodeTitle, roundEndText, roundDuration, RoundId,
-                listOfPlayerInfoFinal.Length, listOfPlayerInfoFinal, roundStats, LobbySong, sound));
+            var roundEndMessageEvent = new RoundEndMessageEvent(
+                gamemodeTitle,
+                roundEndText,
+                roundDuration,
+                RoundId,
+                listOfPlayerInfoFinal.Length,
+                listOfPlayerInfoFinal,
+                roundStats,
+                sound
+            );
+            RaiseNetworkEvent(roundEndMessageEvent);
+            RaiseLocalEvent(roundEndMessageEvent);
             RaiseLocalEvent(new RoundEndedEvent(RoundId, roundDuration)); // Corvax
 
             _replayRoundPlayerInfo = listOfPlayerInfoFinal;

@@ -457,10 +457,10 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
 
         component.MapEntity = map;
         component.Entity = grid;
-        // Alteros-start
-        var ftlDestination = _shuttle.AddFTLDestination(grid.Value, true);
-        ftlDestination.Whitelist = component.ShuttleWhitelist;
-        // Alteros-end
+        if (_shuttle.TryAddFTLDestination(mapId, false, out var ftlDestination))
+        {
+            ftlDestination.Whitelist = component.ShuttleWhitelist;
+        }
     }
 
     public HashSet<EntityUid> GetCentcommMaps()
