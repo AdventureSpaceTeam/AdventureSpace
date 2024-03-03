@@ -50,6 +50,17 @@
       showInConsole: false
       announcementAfterCall: death-squad-ert-call-announcement
       shuttle: Maps/_Alteros/Shuttles/death_squad_shuttle.yml
-      waitingTime: 300
+      waitingTime: 60
       humansList:
         SpawnerDeathSquad: 5
+    centcomOfficial:
+      name: centcom-official
+      announcement: false
+      showInConsole: false
+      shuttle: Maps/Sunrise/Shuttles/centcom_shuttle.yml
+      waitingTime: 60
+      humansList:
+        SpawnerCentcomOfficial: 1
+        SpawnerERTSecurity: 2
+      requirements:
+        RoundDuration: 90
