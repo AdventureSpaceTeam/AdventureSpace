@@ -78,7 +78,6 @@ namespace Content.Shared.GameTicking
     public sealed class TickerLobbyStatusEvent : EntityEventArgs
     {
         public bool IsRoundStarted { get; }
-        public string? LobbySong { get; }
         public string? LobbyBackground { get; }
         public bool YouAreReady { get; }
         // UTC.
@@ -86,10 +85,9 @@ namespace Content.Shared.GameTicking
         public TimeSpan RoundStartTimeSpan { get; }
         public bool Paused { get; }
 
-        public TickerLobbyStatusEvent(bool isRoundStarted, string? lobbySong, string? lobbyBackground, bool youAreReady, TimeSpan startTime, TimeSpan preloadTime, TimeSpan roundStartTimeSpan, bool paused)
+        public TickerLobbyStatusEvent(bool isRoundStarted, string? lobbyBackground, bool youAreReady, TimeSpan startTime, TimeSpan preloadTime, TimeSpan roundStartTimeSpan, bool paused)
         {
             IsRoundStarted = isRoundStarted;
-            LobbySong = lobbySong;
             LobbyBackground = lobbyBackground;
             YouAreReady = youAreReady;
             StartTime = startTime;
@@ -186,7 +184,6 @@ namespace Content.Shared.GameTicking
         public int PlayerCount { get; }
         public RoundEndPlayerInfo[] AllPlayersEndInfo { get; }
         public string RoundEndStats { get; }
-        public string? LobbySong;
 
         /// <summary>
         /// Sound gets networked due to how entity lifecycle works between client / server and to avoid clipping.
@@ -201,7 +198,6 @@ namespace Content.Shared.GameTicking
             int playerCount,
             RoundEndPlayerInfo[] allPlayersEndInfo,
             string roundEndStats,
-            string? lobbySong,
             string? restartSound)
         {
             GamemodeTitle = gamemodeTitle;
@@ -211,7 +207,6 @@ namespace Content.Shared.GameTicking
             PlayerCount = playerCount;
             AllPlayersEndInfo = allPlayersEndInfo;
             RoundEndStats = roundEndStats;
-            LobbySong = lobbySong;
             RestartSound = restartSound;
         }
     }
