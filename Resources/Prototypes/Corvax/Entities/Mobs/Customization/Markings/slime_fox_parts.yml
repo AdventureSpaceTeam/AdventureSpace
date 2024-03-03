@@ -3,7 +3,7 @@
   bodyPart: HeadTop
   markingCategory: HeadTop
   speciesRestriction: [SlimePerson]
-  sponsorOnly: false # c4llv07e WL
+  sponsorOnly: True 
   sprites:
   - sprite: Corvax/Mobs/Customization/slime_fox_parts.rsi
     state: ears_slime_fox_outer
