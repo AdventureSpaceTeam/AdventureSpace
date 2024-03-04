@@ -58,7 +58,7 @@ namespace Content.Client.Kitchen.UI
                     var actualButton = (MicrowaveMenu.MicrowaveCookTimeButton) args.Button;
                     selectedCookTime = actualButton.CookTime == 0 ? 0 : actualButton.CookTime;
                     // SendMessage(new MicrowaveSelectCookTimeMessage((int) selectedCookTime / 5, actualButton.CookTime));
-                    SendPredictedMessage(new MicrowaveSelectCookTimeMessage((int) selectedCookTime / 50, actualButton.CookTime));
+                    SendPredictedMessage(new MicrowaveSelectCookTimeMessage((int) selectedCookTime / 5, actualButton.CookTime));
 
                     _menu.CookTimeInfoLabel.Text = Loc.GetString("microwave-bound-user-interface-cook-time-label",
                                                                     ("time", selectedCookTime));

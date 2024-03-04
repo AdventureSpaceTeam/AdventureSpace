@@ -2,7 +2,7 @@
   id: RecipePelmeni
   name: pelmeni recipe
   result: FoodPelmeniBowl
-  time: 100
+  time: 10
   reagents:
     Water: 20
   solids:

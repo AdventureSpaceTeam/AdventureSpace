@@ -32,7 +32,7 @@
         - ReagentId: MindbreakerToxin
           Quantity: 2
   - type: StaticPrice
-    price: 0
+    price: 5
 
 - type: entity
   parent: Crayon

@@ -245,7 +245,6 @@
       contents:
         - id: IndiMedBox
         - id: BoxSurvival
- 
         - id: AcousticGuitarInstrument
         - id: SaxophoneInstrument
 
@@ -258,7 +257,6 @@
       contents:
         - id: IndiMedBox
         - id: BoxSurvival
- 
         - id: BookRandom
 
 - type: entity
@@ -284,7 +282,6 @@
       contents:
         - id: IndiMedBox
         - id: BoxSurvival
- 
 
 - type: entity
   noSpawn: true
@@ -295,7 +292,6 @@
       contents:
         - id: IndiMedBox
         - id: BoxSurvival
- 
 
 - type: entity
   noSpawn: true
@@ -316,6 +312,7 @@
   - type: StorageFill
     contents:
     - id: IndiMedBox
+    - id: AdminPDA
     - id: GasAnalyzer
     - id: trayScanner
     - id: DoorRemoteAll

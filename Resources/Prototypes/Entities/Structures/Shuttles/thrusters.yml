@@ -54,7 +54,7 @@
             sound:
               collection: MetalBreak
     - type: StaticPrice
-      price: 0
+      price: 300
   placement:
     mode: SnapgridCenter
 
@@ -196,7 +196,7 @@
     damageContainer: Inorganic
     damageModifierSet: Electronic
   - type: StaticPrice
-    price: 0
+    price: 2000
 
 - type: entity
   id: GyroscopeUnanchored

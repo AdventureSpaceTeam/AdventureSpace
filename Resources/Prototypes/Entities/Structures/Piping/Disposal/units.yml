@@ -72,7 +72,7 @@
     containers:
       disposals: !type:Container
   - type: StaticPrice
-    price: 0
+    price: 62
   - type: PowerSwitch
 
 - type: entity

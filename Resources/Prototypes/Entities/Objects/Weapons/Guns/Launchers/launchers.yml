@@ -14,7 +14,7 @@
   - type: Item
     size: Huge
   - type: StaticPrice
-    price: 0
+    price: 500
   - type: ContainerContainer
     containers:
       ballistic-ammo: !type:Container
