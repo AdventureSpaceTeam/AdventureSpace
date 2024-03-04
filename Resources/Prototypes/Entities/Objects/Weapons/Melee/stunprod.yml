@@ -63,7 +63,7 @@
           True: {state: stunprod_on}
           False: {state: stunprod_off}
   - type: StaticPrice
-    price: 0
+    price: 100
   - type: Construction
     graph: makeshiftstunprod
     node: msstunprod

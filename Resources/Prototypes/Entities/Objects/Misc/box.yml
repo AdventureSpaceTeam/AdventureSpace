@@ -26,4 +26,4 @@
     materialComposition:
       Cardboard: 100
   - type: StaticPrice
-    price: 0
+    price: 10

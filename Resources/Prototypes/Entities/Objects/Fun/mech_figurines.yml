@@ -13,7 +13,7 @@
     materialComposition:
       Plastic: 100
   - type: StaticPrice
-    price: 0
+    price: 75
   - type: Tag
     tags:
     - Figurine

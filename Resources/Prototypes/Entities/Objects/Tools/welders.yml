@@ -95,7 +95,7 @@
     materialComposition:
       Steel: 200
   - type: StaticPrice
-    price: 0
+    price: 40
   - type: IgnitionSource
     temperature: 700
 

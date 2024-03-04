@@ -13,7 +13,7 @@
       bodypart: !type:Container
         ents: []
   - type: StaticPrice
-    price: 0
+    price: 20
   - type: Gibbable
   - type: Tag
     tags:

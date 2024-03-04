@@ -44,7 +44,7 @@
     stackType: Ointment
     count: 10
   - type: StackPrice
-    price: 0
+    price: 5
 
 - type: entity
   id: Ointment1
@@ -95,7 +95,7 @@
     stackType: RegenerativeMesh
     count: 10
   - type: StackPrice
-    price: 0
+    price: 20
 
 - type: entity
   id: OintmentAdvanced1
@@ -132,7 +132,7 @@
     stackType: Brutepack
     count: 10
   - type: StackPrice
-    price: 0
+    price: 5
 
 - type: entity
   id: Brutepack1
@@ -182,7 +182,7 @@
     stackType: MedicatedSuture
     count: 10
   - type: StackPrice
-    price: 0
+    price: 20
 
 - type: entity
   id: BrutepackAdvanced1
@@ -220,7 +220,7 @@
     stackType: Bloodpack
     count: 10
   - type: StackPrice
-    price: 0
+    price: 10
 
 - type: entity
   parent: Bloodpack
@@ -287,7 +287,7 @@
     stackType: Gauze
     count: 10
   - type: StackPrice
-    price: 0
+    price: 10
 
 - type: entity
   id: Gauze1

@@ -750,7 +750,7 @@
   - type: SentienceTarget
     flavorKind: station-event-random-sentience-flavor-slime
   - type: MobPrice
-    price: 0
+    price: 3000 # it is a truly valuable creature
   - type: GhostRole
     name: ghost-role-information-smile-name
     description: ghost-role-information-smile-description

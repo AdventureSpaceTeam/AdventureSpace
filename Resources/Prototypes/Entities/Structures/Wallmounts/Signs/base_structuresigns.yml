@@ -34,4 +34,4 @@
     sprite: Structures/Wallmounts/signs.rsi
     snapCardinals: true
   - type: StaticPrice
-    price: 0
+    price: 20
