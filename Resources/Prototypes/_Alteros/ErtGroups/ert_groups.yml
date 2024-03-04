@@ -44,12 +44,3 @@
         SpawnerCBURNUnit: 5
       requirements:
         ZombiePercent: 50
-    deathSquad:
-      name: death-squad
-      announcement: false
-      showInConsole: false
-      announcementAfterCall: death-squad-ert-call-announcement
-      shuttle: Maps/_Alteros/Shuttles/death_squad_shuttle.yml
-      waitingTime: 300
-      humansList:
-        SpawnerDeathSquad: 5
