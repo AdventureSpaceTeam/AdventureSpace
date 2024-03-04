@@ -264,6 +264,8 @@ public sealed partial class TTSSystem : EntitySystem
     private void OnPlayTTS(PlayTTSEvent ev)
     {
         var volume = (ev.IsRadio ? _radioVolume : _volume) * ev.VolumeModifier;
+        if (volume == 0.0f)
+            return;
         var audioParams = AudioParams.Default.WithVolume(volume);
 
         PlayTTSBytes(ev.Data, GetEntity(ev.SourceUid), audioParams);
