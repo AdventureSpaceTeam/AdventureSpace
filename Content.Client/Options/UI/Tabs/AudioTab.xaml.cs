@@ -47,6 +47,7 @@ namespace Content.Client.Options.UI.Tabs
             EventMusicCheckBox.OnToggled += OnEventMusicCheckToggled;
             AdminSoundsCheckBox.OnToggled += OnAdminSoundsCheckToggled;
             AHelpSoundsCheckBox.OnToggled += OnAHelpSoundsCheckToggled;
+            TtsClientCheckBox.OnToggled += OnTtsClientCheckToggled;
 
             AmbienceSoundsSlider.MinValue = _cfg.GetCVar(CCVars.MinMaxAmbientSourcesConfigured);
             AmbienceSoundsSlider.MaxValue = _cfg.GetCVar(CCVars.MaxMaxAmbientSourcesConfigured);
@@ -141,6 +142,11 @@ namespace Content.Client.Options.UI.Tabs
             UpdateChanges();
         }
 
+        private void OnTtsClientCheckToggled(BaseButton.ButtonEventArgs args)
+        {
+            UpdateChanges();
+        }
+
         private void OnEventMusicCheckToggled(BaseButton.ButtonEventArgs args)
         {
             UpdateChanges();
@@ -172,6 +178,7 @@ namespace Content.Client.Options.UI.Tabs
             _cfg.SetCVar(CCVars.EventMusicEnabled, EventMusicCheckBox.Pressed);
             _cfg.SetCVar(CCVars.AdminSoundsEnabled, AdminSoundsCheckBox.Pressed);
             _cfg.SetCVar(CCVars.AHelpSoundsEnabled, AHelpSoundsCheckBox.Pressed);
+            _cfg.SetCVar(CCCVars.TTSClientEnabled, TtsClientCheckBox.Pressed);
             _cfg.SaveToFile();
             UpdateChanges();
         }
@@ -200,6 +207,7 @@ namespace Content.Client.Options.UI.Tabs
             EventMusicCheckBox.Pressed = _cfg.GetCVar(CCVars.EventMusicEnabled);
             AdminSoundsCheckBox.Pressed = _cfg.GetCVar(CCVars.AdminSoundsEnabled);
             AHelpSoundsCheckBox.Pressed = _cfg.GetCVar(CCVars.AHelpSoundsEnabled);
+            TtsClientCheckBox.Pressed = _cfg.GetCVar(CCCVars.TTSClientEnabled);
             UpdateChanges();
         }
 
@@ -233,7 +241,8 @@ namespace Content.Client.Options.UI.Tabs
             var isEventSame = EventMusicCheckBox.Pressed == _cfg.GetCVar(CCVars.EventMusicEnabled);
             var isAdminSoundsSame = AdminSoundsCheckBox.Pressed == _cfg.GetCVar(CCVars.AdminSoundsEnabled);
             var isAHelpSoundsSame = AHelpSoundsCheckBox.Pressed == _cfg.GetCVar(CCVars.AHelpSoundsEnabled);
-            var isEverythingSame = isMasterVolumeSame && isMidiVolumeSame && isAHelpSoundsSame && isAmbientVolumeSame && isAmbientMusicVolumeSame && isAmbientSoundsSame && isLobbySame && isRestartSoundsSame && isEventSame && isAdminSoundsSame && isLobbyVolumeSame && isTtsRadioVolumeSame;
+            var isTtsClientSame = TtsClientCheckBox.Pressed == _cfg.GetCVar(CCCVars.TTSClientEnabled);
+            var isEverythingSame = isMasterVolumeSame && isMidiVolumeSame && isAHelpSoundsSame && isTtsClientSame && isAmbientVolumeSame && isAmbientMusicVolumeSame && isAmbientSoundsSame && isLobbySame && isRestartSoundsSame && isEventSame && isAdminSoundsSame && isLobbyVolumeSame && isTtsRadioVolumeSame;
             isEverythingSame = isEverythingSame && isTtsVolumeSame && isTtsAnnounceVolumeSame; // Corvax-TTS
             ApplyButton.Disabled = isEverythingSame;
             ResetButton.Disabled = isEverythingSame;
