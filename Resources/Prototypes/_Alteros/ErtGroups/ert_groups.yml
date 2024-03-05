@@ -48,7 +48,6 @@
       name: death-squad
       announcement: false
       showInConsole: false
-      announcementAfterCall: death-squad-ert-call-announcement
       shuttle: Maps/_Alteros/Shuttles/death_squad_shuttle.yml
       waitingTime: 60
       humansList:
