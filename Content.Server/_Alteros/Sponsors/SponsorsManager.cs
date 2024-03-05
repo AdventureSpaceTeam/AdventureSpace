@@ -234,7 +234,7 @@ public sealed class SponsorsManager : IServerSponsorsManager
     }
     public bool IsSponsor(NetUserId userId)
     {
-        return _cachedSponsors.ContainsKey(userId);
+        return _cachedSponsors.ContainsKey(userId) && _cachedSponsors[userId].Tier > 0;
     }
 
     public bool AllowedRespawn(NetUserId userId)
