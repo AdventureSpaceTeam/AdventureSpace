@@ -79,6 +79,12 @@ public sealed class CCCVars
     public static readonly CVarDef<float> TTSAnnounceVolume =
         CVarDef.Create("tts.announce_volume", 0f, CVar.CLIENTONLY | CVar.ARCHIVE);
 
+    /// <summary>
+    /// Enable client TTS subscription
+    /// </summary>
+    public static readonly CVarDef<bool> TTSClientEnabled =
+        CVarDef.Create("tts.client_enabled", true, CVar.CLIENTONLY | CVar.ARCHIVE);
+
     /*
      * Peaceful Round End
      */
