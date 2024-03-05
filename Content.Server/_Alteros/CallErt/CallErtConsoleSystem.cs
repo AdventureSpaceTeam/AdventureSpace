@@ -260,8 +260,8 @@ public sealed class CallErtConsoleSystem : EntitySystem
             {
                 foreach (var (id, detail) in ertComponent.ErtGroups.ErtGroupList)
                 {
-                    //if (detail.ShowInConsole)
-                    ertsList.Add(id, detail);
+                    if (detail.ShowInConsole)
+                        ertsList.Add(id, detail);
                 }
                 foreach (var detail in ertComponent.CalledErtGroups)
                 {
@@ -339,7 +339,6 @@ public sealed class CallErtConsoleSystem : EntitySystem
 
                 foreach (var (id, detail) in ertComponent.ErtGroups.ErtGroupList)
                 {
-                    //if (detail.ShowInConsole)
                     ertsList.Add(id, detail);
                 }
             }
