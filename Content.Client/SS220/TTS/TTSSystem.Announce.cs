@@ -15,7 +15,8 @@ public sealed partial class TTSSystem : EntitySystem
     private void InitializeAnnounces()
     {
         _cfg.OnValueChanged(CCCVars.TTSAnnounceVolume, OnTtsAnnounceVolumeChanged, true);
-        SubscribeNetworkEvent<AnnounceTTSEvent>(OnAnnounceTTSPlay);
+        if (_cfg.GetCVar<bool>(CCCVars.TTSClientEnabled))
+            SubscribeNetworkEvent<AnnounceTTSEvent>(OnAnnounceTTSPlay);
     }
 
     private void ShutdownAnnounces()
@@ -25,6 +26,8 @@ public sealed partial class TTSSystem : EntitySystem
 
     private void OnAnnounceTTSPlay(AnnounceTTSEvent ev)
     {
+        if (VolumeAnnounce == 0.0f)
+            return;
         // Early creation of entities can lead to crashes, so we postpone it as much as possible
         if (AnnouncementUid == EntityUid.Invalid)
             AnnouncementUid = Spawn(null);
