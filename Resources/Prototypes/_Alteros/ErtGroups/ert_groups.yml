@@ -44,3 +44,22 @@
         SpawnerCBURNUnit: 5
       requirements:
         ZombiePercent: 50
+    deathSquad:
+      name: death-squad
+      announcement: false
+      showInConsole: false
+      shuttle: Maps/_Alteros/Shuttles/death_squad_shuttle.yml
+      waitingTime: 60
+      humansList:
+        SpawnerDeathSquad: 5
+    centcomOfficial:
+      name: centcom-official
+      announcement: true
+      showInConsole: false
+      shuttle: Maps/Sunrise/Shuttles/centcom_shuttle.yml
+      waitingTime: 60
+      humansList:
+        SpawnerCentcomOfficial: 1
+        SpawnerERTSecurity: 2
+      requirements:
+        RoundDuration: 90
