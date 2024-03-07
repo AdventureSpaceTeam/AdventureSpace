@@ -12,11 +12,9 @@ public sealed class CallErtConsoleBoundUserInterface : BoundUserInterface
     [ViewVariables]
     private CallErtConsoleMenu? _menu;
     [ViewVariables]
-    private string? SelectedErtGroup { get; set; }
-    [ViewVariables]
     public bool CanCallErt { get; private set; }
 
-    private int maxReasonLength = 256;
+    private readonly int maxReasonLength = 256;
 
     public CallErtConsoleBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey)
     {
@@ -36,12 +34,14 @@ public sealed class CallErtConsoleBoundUserInterface : BoundUserInterface
 
     private void CallErt()
     {
-        if (_menu == null || SelectedErtGroup == null)
+        var ertGroup = (string?) _menu?.ErtGroupSelector.SelectedMetadata;
+
+        if (ertGroup == null || _menu == null)
             return;
 
         var stringContent = Rope.Collapse(_menu.ReasonInput.TextRope);
         var content = (stringContent.Length <= maxReasonLength ? stringContent.Trim() : $"{stringContent.Trim().Substring(0, maxReasonLength)}...");
-        SendMessage(new CallErtConsoleCallErtMessage(SelectedErtGroup, content));
+        SendMessage(new CallErtConsoleCallErtMessage(ertGroup, content));
     }
 
     private void RecallErt(int indexGroup)
@@ -56,8 +56,7 @@ public sealed class CallErtConsoleBoundUserInterface : BoundUserInterface
 
     public void ErtGroupSelected(string group)
     {
-        SelectedErtGroup = group;
-        SendMessage(new CallErtConsoleSelectErtMessage());
+        SendMessage(new CallErtConsoleSelectErtMessage(group));
     }
 
     protected override void UpdateState(BoundUserInterfaceState state)
@@ -69,18 +68,10 @@ public sealed class CallErtConsoleBoundUserInterface : BoundUserInterface
 
         CanCallErt = callErtState.CanCallErt;
 
-        if (string.IsNullOrEmpty(SelectedErtGroup))
-        {
-            if (callErtState.ErtsList is { Count: > 0 })
-            {
-                SelectedErtGroup = callErtState.ErtsList.First().Key;
-            }
-        }
-
         if (_menu == null)
             return;
 
-        _menu.UpdateErtList(callErtState.ErtsList, SelectedErtGroup);
+        _menu.UpdateErtList(callErtState.ErtsList, callErtState.SelectedErtGroup);
         _menu.UpdateCalledErtList(callErtState.CalledErtsList);
         _menu.UpdateStationTime();
         _menu.CallErt.Disabled = !CanCallErt;

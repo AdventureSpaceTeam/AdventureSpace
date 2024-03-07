@@ -17,6 +17,7 @@ namespace Content.Client._Alteros.CallErt
     {
         [Dependency] private readonly IGameTiming _gameTiming = default!;
         [Dependency] private readonly IEntitySystemManager _entitySystem = default!;
+        [Dependency] private readonly ILocalizationManager _loc = default!;
         private readonly ClientGameTicker _gameTicker;
 
         private ApproveErtConsoleBoundUserInterface Owner { get; set; }
@@ -24,6 +25,8 @@ namespace Content.Client._Alteros.CallErt
         public Action<int>? ApproveErt { get; set; }
 
         public Action<int>? DenyErt { get; set; }
+
+        public Action<int>? RecallErt { get; set; }
 
         public ApproveErtConsoleMenu(ApproveErtConsoleBoundUserInterface owner)
         {
@@ -41,11 +44,75 @@ namespace Content.Client._Alteros.CallErt
             StationSelector.OnItemSelected += args =>
             {
                 var metadata = StationSelector.GetItemMetadata(args.Id);
-                if (metadata != null && metadata is int cast)
-                {
-                    Owner.StationSelected(cast);
-                }
+                if (metadata is not NetEntity cast)
+                    return;
+
+                Owner.StationSelected(cast);
+                StationSelector.Select(args.Id);
             };
+
+            ErtGroupSelector.OnItemSelected += args =>
+            {
+                var metadata = ErtGroupSelector.GetItemMetadata(args.Id);
+                if (metadata is not string cast)
+                    return;
+
+                Owner.ErtGroupSelected(cast);
+                ErtGroupSelector.Select(args.Id);
+            };
+
+            SendErt.OnPressed += (_) => Owner.SendErtButtonPressed();
+            SendErt.Disabled = !owner.CanSendErt;
+        }
+
+        public void UpdateErtList(Dictionary<string, ErtGroupDetail> ertGroups, string? selectedErt)
+        {
+            ErtGroupSelector.Clear();
+
+            if (ertGroups.Count == 0)
+                return;
+
+            selectedErt ??= ertGroups.First().Key;
+
+            foreach (var (ertGroupName, ErtGroupDetail) in ertGroups)
+            {
+                var name = ertGroupName;
+                if (Loc.TryGetString($"ert-group-name-{ErtGroupDetail.Name}", out var locName))
+                {
+                    name = locName;
+                }
+                ErtGroupSelector.AddItem(name);
+                ErtGroupSelector.SetItemMetadata(ErtGroupSelector.ItemCount - 1, ertGroupName);
+
+                if (ertGroupName == selectedErt)
+                {
+                    ErtGroupSelector.Select(ErtGroupSelector.ItemCount - 1);
+                }
+            }
+
+            if (!ertGroups.TryGetValue(selectedErt, out var ertGroup))
+                return;
+
+            var humanListText = "";
+
+            var humansCount = ertGroup.HumansList.Count;
+
+            foreach (var (humanId, count) in ertGroup.HumansList)
+            {
+                humanListText += $"● {_loc.GetEntityData(humanId).Name}: {count}";
+
+                if (humansCount <= 1)
+                    continue;
+
+                humanListText += "\n";
+                humansCount--;
+            }
+
+            RichTextLabelExt.SetMarkup(HumanListLabel, humanListText);
+
+            var waitingTime = TimeSpan.FromSeconds(ertGroup.WaitingTime);
+
+            RichTextLabelExt.SetMarkup(TimeToSpawnLabel, $"{waitingTime:hh':'mm':'ss}");
         }
 
         public void UpdateCalledErtList(List<CallErtGroupEnt>? calledErts)
@@ -55,20 +122,33 @@ namespace Content.Client._Alteros.CallErt
             if (calledErts == null)
                 return;
 
-            for (var i = 0; i < calledErts.Count; i++)
+            var originalIndexes = Enumerable.Range(0, calledErts.Count).ToList();
+
+            var sortedIndexes = originalIndexes.OrderByDescending(i => calledErts[i].CalledTime).ToList();
+
+            foreach (var sortedIndex in sortedIndexes)
             {
-                var calledErt = calledErts[i];
+                var calledErt = calledErts[sortedIndex];
 
                 if (calledErt.ErtGroupDetail == null)
                     continue;
 
-                var entry = new CalledErtEntry(i, calledErt.ErtGroupDetail.Name, calledErt.CalledTime, calledErt.ArrivalTime, calledErt.Status, calledErt.Reason, approveErt: ApproveErt, denyErt: DenyErt, allowApprove: true);
+                var entry = new CalledErtEntry(sortedIndex,
+                    calledErt.ErtGroupDetail.Name,
+                    calledErt.CalledTime,
+                    calledErt.ArrivalTime,
+                    calledErt.Status,
+                    calledErt.Reason,
+                    recallErt: RecallErt,
+                    approveErt: ApproveErt,
+                    denyErt: DenyErt,
+                    allowApprove: true);
 
                 CallErtEntriesContainer.AddChild(entry);
             }
         }
 
-        public void UpdateStationList(Dictionary<int, string> stations, int? selectedStation)
+        public void UpdateStationList(Dictionary<NetEntity, string> stations, NetEntity? selectedStation)
         {
             StationSelector.Clear();
 

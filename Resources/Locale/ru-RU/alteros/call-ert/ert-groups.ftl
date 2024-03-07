@@ -10,6 +10,10 @@ ert-call-auto-refusal-announcement = Ядро ИИ приняло решение
 ert-call-manual-accepted-announcement = Командный состав ЦК принял решение принять запрос на отправку { $name }, отряд будет подготовлен и отправлен через { $preparationTime } минут.
 ert-call-auto-accepted-announcement = Ядро ИИ приняло решение принять запрос на отправку { $name }, отряд будет подготовлен и отправлен через { $preparationTime } минут.
 
+ert-call-central-command-send-groups-cause = Отправлено центральным командованием.
+ert-call-central-command-send-group-announcement = Командный состав ЦК принял решение отправить на станцию { $name }, отряд будет подготовлен и отправлен через { $preparationTime } минут.
+ert-call-central-command-recall-announcement = Командный состав ЦК принял решение отменить отправку { $name }.
+
 ert-group-name-medical = ОБР медиков
 ert-group-full-name-medical = отряд быстрого реагирования медиков
 ert-call-announcement-medical = Мы получили запрос на отправку отряда быстрого реагирования медиков.
@@ -37,3 +41,7 @@ ert-call-announcement-clown = Мы получили запрос на отпра
 ert-group-name-centcom-official = ПЦК
 ert-group-full-name-centcom-official = представитель центрального коммандования
 ert-call-announcement-centcom-official = Мы получили запрос на отправку представителя центрального коммандования.
+
+ert-group-name-death-squad = Эскадрон смерти
+ert-group-full-name-death-squad = эскадрон смерти
+ert-call-announcement-death-squad = Мы получили запрос на отправку эскадрона смерти.

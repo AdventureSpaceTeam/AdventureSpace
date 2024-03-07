@@ -16,35 +16,31 @@ namespace Content.Shared.NewLife
     {
         public string Identifier { get; set; }
         public string Name { get; set; }
+        public uint? Count { get; set; }
     }
 
     [NetSerializable, Serializable]
-    public sealed class NewLifeEuiState : EuiStateBase
+    public sealed class NewLifeEuiState(
+        List<NewLifeCharacterInfo> characters,
+        Dictionary<NetEntity, string> stations,
+        Dictionary<NetEntity, List<NewLifeRolesInfo>> jobs,
+        TimeSpan nextRespawnTime,
+        List<int> usedCharactersForRespawn)
+        : EuiStateBase
     {
-        public List<NewLifeCharacterInfo> Characters { get; }
-        public List<NewLifeRolesInfo> Roles { get; }
-        public TimeSpan NextRespawnTime { get; }
-        public List<int> UsedCharactersForRespawn { get; }
-
-        public NewLifeEuiState(List<NewLifeCharacterInfo> characters, List<NewLifeRolesInfo> roles,
-            TimeSpan nextRespawnTime, List<int> usedCharactersForRespawn)
-        {
-            Characters = characters;
-            Roles = roles;
-            NextRespawnTime = nextRespawnTime;
-            UsedCharactersForRespawn = usedCharactersForRespawn;
-        }
+        public List<NewLifeCharacterInfo> Characters { get; } = characters;
+        public Dictionary<NetEntity, string> Stations { get; } = stations;
+        public Dictionary<NetEntity, List<NewLifeRolesInfo>> Jobs { get; } = jobs;
+        public TimeSpan NextRespawnTime { get; } = nextRespawnTime;
+        public List<int> UsedCharactersForRespawn { get; } = usedCharactersForRespawn;
     }
 
     [NetSerializable, Serializable]
-    public sealed class NewLifeRequestSpawnMessage : EuiMessageBase
+    public sealed class NewLifeRequestSpawnMessage(int? characterId, NetEntity? stationId, string? roleProto)
+        : EuiMessageBase
     {
-        public int? CharacterId { get; }
-        public string? RoleProto { get; }
-        public NewLifeRequestSpawnMessage(int? characterId, string? roleProto)
-        {
-            CharacterId = characterId;
-            RoleProto = roleProto;
-        }
+        public int? CharacterId { get; } = characterId;
+        public NetEntity? StationId { get; } = stationId;
+        public string? RoleProto { get; } = roleProto;
     }
 }

@@ -351,6 +351,30 @@ public sealed class StationCallErtSystem : EntitySystem
         return true;
     }
 
+    public bool ReallApproveErt(EntityUid stationUid, int indexGroup, MetaDataComponent? dataComponent = null,
+        StationCallErtComponent? component = null)
+    {
+        if (!Resolve(stationUid, ref component, ref dataComponent)
+            || component.ErtGroups == null)
+        {
+            return false;
+        }
+
+        if (component.CalledErtGroups.TryGetValue(indexGroup, out var callErtGroupEnt))
+        {
+            if (callErtGroupEnt.Status == ErtGroupStatus.Approved)
+            {
+                callErtGroupEnt.Status = ErtGroupStatus.Revoke;
+                _chatSystem.DispatchGlobalAnnouncement(Loc.GetString("ert-call-central-command-recall-announcement",
+                        ("name", Loc.GetString($"ert-group-full-name-{callErtGroupEnt.ErtGroupDetail!.Name}"))), playSound: true,
+                    colorOverride: Color.Gold);
+            }
+        }
+
+        RaiseLocalEvent(new RefreshCallErtConsoleEvent(stationUid));
+        return true;
+    }
+
 
     public bool ApproveErt(EntityUid stationUid, int indexGroup, MetaDataComponent? dataComponent = null,
         StationCallErtComponent? component = null)
@@ -463,6 +487,40 @@ public sealed class StationCallErtSystem : EntitySystem
         }
 
         return true;
+    }
+
+    public void SendErt(EntityUid stationUid, string ertGroup, MetaDataComponent? dataComponent = null, StationCallErtComponent? component = null)
+    {
+        if (!Resolve(stationUid, ref component, ref dataComponent)
+            || component.ErtGroups == null
+            || !component.ErtGroups.ErtGroupList.TryGetValue(ertGroup, out var ertGroupDetails))
+            return;
+
+        var curTime = _gameTiming.CurTime;
+
+        var ertGroupEnt = new CallErtGroupEnt
+        {
+            Id = ertGroup,
+            CalledTime = _gameTiming.CurTime.Subtract(_gameTicker.RoundStartTimeSpan),
+            Status = ErtGroupStatus.Approved,
+            ArrivalTime = curTime + TimeSpan.FromSeconds(ertGroupDetails.WaitingTime),
+            ReviewTime = TimeSpan.Zero,
+            Reason = Loc.GetString("ert-call-central-command-send-groups-cause"),
+            ErtGroupDetail = ertGroupDetails
+        };
+
+        component.CalledErtGroups.Add(ertGroupEnt);
+
+        string message;
+
+        message = Loc.GetString("ert-call-central-command-send-group-announcement",
+            ("name", Loc.GetString($"ert-group-full-name-{ertGroupDetails.Name}")),
+            ("preparationTime", (int) component.ReviewTime / 60));
+
+        _chatSystem.DispatchGlobalAnnouncement(message, playSound: true,
+            colorOverride: Color.Gold);
+
+        RaiseLocalEvent(new RefreshCallErtConsoleEvent(stationUid));
     }
 
     public override void Update(float frameTime)

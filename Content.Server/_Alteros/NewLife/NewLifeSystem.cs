@@ -110,14 +110,16 @@ namespace Content.Server.NewLife
             OpenEui(args.SenderSession);
         }
 
-        public void OnGhostRespawnMenuRequest(ICommonSession player, int? characterId, string? roleProto)
+        public void OnGhostRespawnMenuRequest(ICommonSession player, int? characterId, NetEntity? stationId, string? roleProto)
         {
+            var stationUid = GetEntity(stationId);
+            if (stationUid == null || roleProto == null)
+                return;
             var sponsors = IoCManager.Resolve<IServerSponsorsManager>();
             if (!sponsors.AllowedRespawn(player.UserId) || characterId == null)
                 return;
-            var stationUid = _stationSystem.GetStations().FirstOrDefault();
             _prefsManager.GetPreferences(player.UserId).SetProfile(characterId.Value);
-            _gameTicker.MakeJoinGame(player, stationUid, roleProto, canBeAntag: false);
+            _gameTicker.MakeJoinGame(player, stationUid.Value, roleProto, canBeAntag: false);
         }
 
         private void OpenEui(ICommonSession session)
@@ -132,23 +134,35 @@ namespace Content.Server.NewLife
             var preferencesManager = IoCManager.Resolve<IServerPreferencesManager>();
             var prefs = preferencesManager.GetPreferences(session.UserId);
 
-            var jobsAvailable = new List<JobPrototype>();
-            var stationUid = _stationSystem.GetStations().FirstOrDefault();
-            var stationAvailable = _stationJobs.GetAvailableJobs(stationUid);
-
-            var sponsors = IoCManager.Resolve<IServerSponsorsManager>(); // Alteros-Sponsors
-            if (!sponsors.TryGetPrototypes(session.UserId, out var prototypes))
-                return;
-
-            foreach (var jobId in stationAvailable)
+            var jobsDict = new Dictionary<NetEntity, List<(JobPrototype, uint?)>>();
+            var stations = _stationSystem.GetStations();
+            foreach (var stationUid in stations)
             {
-                if (!_playTimeTrackings.IsAllowed(session, jobId) && !prototypes!.Contains(jobId))
-                    continue;
-                jobsAvailable.Add(_prototypeManager.Index<JobPrototype>(jobId));
+                var availableStationJobs = new List<(JobPrototype, uint?)>();
+                var stationJobs = _stationJobs.GetJobs(stationUid);
+
+                foreach (var job in stationJobs)
+                {
+                    if (!_playTimeTrackings.IsAllowed(session, job.Key))
+                        continue;
+                    availableStationJobs.Add((_prototypeManager.Index<JobPrototype>(job.Key), job.Value));
+                }
+
+                availableStationJobs.Sort((x, y) =>
+                {
+                    var xName = x.Item1.LocalizedName;
+                    var yName = y.Item1.LocalizedName;
+                    return -string.Compare(xName, yName, StringComparison.CurrentCultureIgnoreCase);
+                });
+
+                jobsDict.Add(GetNetEntity(stationUid), availableStationJobs);
             }
 
-            jobsAvailable.Sort((x, y) =>
-                -string.Compare(x.LocalizedName, y.LocalizedName, StringComparison.CurrentCultureIgnoreCase));
+            var stationsList = new Dictionary<NetEntity, string>();
+            foreach (var entityUid in stations)
+            {
+                stationsList.Add(GetNetEntity(entityUid), MetaData(entityUid).EntityName);
+            }
 
             if (!TryGetNextAllowRespawn(session.UserId, out var nextAllowRespawn))
                 return;
@@ -156,7 +170,7 @@ namespace Content.Server.NewLife
             if (!TryGetUsedCharactersForRespawn(session.UserId, out var usedCharactersForRespawn))
                 return;
 
-            var eui = _openUis[session] = new NewLifeEui(prefs.Characters, jobsAvailable,
+            var eui = _openUis[session] = new NewLifeEui(prefs.Characters, stationsList, jobsDict,
                 nextAllowRespawn.Value, usedCharactersForRespawn);
             _euiManager.OpenEui(eui, session);
             eui.StateDirty();
@@ -192,16 +206,23 @@ namespace Content.Server.NewLife
             return characters;
         }
 
-        public List<NewLifeRolesInfo> GetRolesInfo(List<JobPrototype> availableJobs)
+        public Dictionary<NetEntity, List<NewLifeRolesInfo>> GetRolesInfo(Dictionary<NetEntity, List<(JobPrototype, uint?)>> availableStations)
         {
-            var roles = new List<NewLifeRolesInfo>();
+            var stations = new Dictionary<NetEntity, List<NewLifeRolesInfo>>();
 
-            foreach (var availableJob in availableJobs)
+            foreach (var station in availableStations)
             {
-                roles.Add(new NewLifeRolesInfo {Identifier = availableJob.ID, Name = availableJob.LocalizedName});
+                var roles = new List<NewLifeRolesInfo>();
+
+                foreach (var availableJob in station.Value)
+                {
+                    roles.Add(new NewLifeRolesInfo {Identifier = availableJob.Item1.ID, Name = availableJob.Item1.LocalizedName, Count = availableJob.Item2});
+                }
+
+                stations.Add(station.Key, roles);
             }
 
-            return roles;
+            return stations;
         }
 
         private void OnPlayerAttached(PlayerAttachedEvent message)
