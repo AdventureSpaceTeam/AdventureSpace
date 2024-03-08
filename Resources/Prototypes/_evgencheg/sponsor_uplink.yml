@@ -1,7 +1,8 @@
 - type: entity
-  parent: Telecrystal
-  id: DonateCrystal1
-  suffix: 1
+  name: бананорубль
+  parent: BaseItem
+  id: DonateCrystal
+  suffix: 20 BR
   components:
   - type: Sprite
     sprite: _evgencheg/telecrystal.rsi
@@ -10,86 +11,89 @@
     sprite: _evgencheg/telecrystal.rsi
     size: Tiny
   - type: Stack
+    count: 20
+    stackType: DonateCrystal
+  - type: StaticPrice
+    price: 0
+  - type: StackPrice
+    price: 200
+  - type: Currency
+    price:
+      DonateCrystal: 1
+
+- type: entity
+  parent: DonateCrystal
+  id: DonateCrystal1
+  name: бананорубль
+  suffix: 1
+  components:
+  - type: Stack
     count: 1
 
 - type: currency
-  id: DonateCrystals
-  displayName: store-currency-display-donatecrystal
-  cash: 
+  id: DonateCrystal
+  displayName: бананорубли
+  cash:
     1: DonateCrystal1
   canWithdraw: true
 
 - type: storeCategory
   id: SponsorThings
-  name: store-category-sponsor
+  name: Плюшки
 
 - type: listing
   id: UplinkSponsorCloth1
-  name: uplink-gas-atmos-name
-  description: uplink-gas-atmos-desc
   productEntity: ClothingMaskGasAtmosian
   cost:
-    Telecrystal: 2
+    DonateCrystal: 2
   categories:
   - SponsorThings
 
 - type: listing
   id: UplinkSponsorCloth2
-  name: uplink-cloak-atmos-name
-  description: uplink-cloak-atmos-desc
   productEntity: ClothingCloakAtmosian
   cost:
-    Telecrystal: 4
+    DonateCrystal: 4
   categories:
   - SponsorThings
 
 - type: listing
   id: UplinkSponsorCloth3
-  name: uplink-gas-gamer-name
-  description: uplink-cloak-gamer-desc
   productEntity: ClothingCloakGamer
   cost:
-    Telecrystal: 6
+    DonateCrystal: 6
   categories:
   - SponsorThings
 
 - type: listing
   id: UplinkSponsorCloth4
-  name: uplink-coat-hos-name
-  description: uplink-coat-hos-desc
   productEntity: ClothingOuterCoatHoSOvercoat
   cost:
-    Telecrystal: 5
+    DonateCrystal: 5
   categories:
   - SponsorThings
 
 - type: listing
   id: UplinkSponsorCloth5
-  name: uplink-coat-ussp-name
-  description: uplink-coat-ussp-desc
   productEntity: ClothingOuterCoatUSSPOvercoatBlack
   cost:
-    Telecrystal: 5
+    DonateCrystal: 5
   categories:
   - SponsorThings
 
 - type: listing
   id: UplinkSponsorCloth6
-  name: uplink-gloves-ussp-name
-  description: uplink-gloves-ussp-desc
   productEntity: ClothingHandsGlovesLeatherUSSPBlack
   cost:
-    Telecrystal: 2
+    DonateCrystal: 2
   categories:
   - SponsorThings
 
 - type: listing
   id: UplinkSponsorCloth7
-  name: uplink-jumpsuit-ussp-name
-  description: uplink-jumpsuit-ussp-desc
   productEntity: ClothingUniformJumpsuitUSSPBlack
   cost:
-    Telecrystal: 3
+    DonateCrystal: 3
   categories:
   - SponsorThings
 
@@ -99,14 +103,13 @@
   categories:
   - SponsorThings
   currencyWhitelist:
-  - DonateCrystals
+  - DonateCrystal
 
 - type: entity
   parent: BaseItem
   id: DonateUplink
-  name: syndicate uplink
-  description: Suspiciously looking old radio...
-  suffix: Empty
+  name: хонкомаз
+  suffix: 30
   components:
   - type: Sprite
     sprite: _evgencheg/communication.rsi
@@ -124,4 +127,4 @@
   - type: Store
     preset: StorePresetSponsor
     balance:
-      DonateCrystals: 30
+      DonateCrystal: 30
