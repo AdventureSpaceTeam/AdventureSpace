@@ -15,7 +15,7 @@
   parent: ClothingMaskGas
   id: ClothingMaskGasAtmosian
   name: противогаз атмоса
-  description: Усовершенствованный противогаз, используемый специалистами по атмосферным воздействиям. Он огнестойкий!
+  description: Усовершенствованный противогаз, используемый атмосферными техниками. Он огнестойкий!
   suffix: Sponsor
   components:
     - type: Sprite
