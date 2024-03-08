@@ -1,4 +1,5 @@
 using Content.Client._Alteros.NewLife;
+using System.Linq;
 using Content.Client.Eui;
 using Content.Client.Players.PlayTimeTracking;
 using Content.Shared.Eui;
@@ -21,7 +22,7 @@ namespace Content.Client.NewLife
 
             _window.SpawnRequested += () =>
             {
-                SendMessage(new NewLifeRequestSpawnMessage(_window.GetSelectedCharacter(), _window.GetSelectedRole()));
+                SendMessage(new NewLifeRequestSpawnMessage(_window.GetSelectedCharacter(), _window.GetSelectedStation(), _window.GetSelectedRole()));
             };
 
             _window.OnClose += () =>
@@ -46,17 +47,16 @@ namespace Content.Client.NewLife
         {
             base.HandleState(state);
 
-            if (state is not NewLifeEuiState ghostState)
+            if (state is not NewLifeEuiState newLifeState)
                 return;
 
-            var entityManager = IoCManager.Resolve<IEntityManager>();
-            var sysManager = entityManager.EntitySysManager;
-            var spriteSystem = sysManager.GetEntitySystem<SpriteSystem>();
-            var requirementsManager = IoCManager.Resolve<JobRequirementsManager>();
+            var selectedStation = newLifeState.Stations.Keys.FirstOrDefault();
 
-            _window.UpdateCharactersList(ghostState.Characters, ghostState.UsedCharactersForRespawn);
-            _window.UpdateRolesList(ghostState.Roles);
-            _window.UpdateNextRespawn(ghostState.NextRespawnTime);
+            _window.UpdateCharactersList(newLifeState.Characters, newLifeState.UsedCharactersForRespawn);
+            _window.UpdateStationList(newLifeState.Stations, selectedStation);
+            _window.UpdateRolesList(newLifeState.Jobs[selectedStation]);
+            _window.UpdateJobs(newLifeState.Jobs);
+            _window.UpdateNextRespawn(newLifeState.NextRespawnTime);
         }
     }
 }

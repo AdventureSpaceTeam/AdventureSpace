@@ -57,7 +57,8 @@ public sealed partial class TTSSystem : EntitySystem
         _cfg.OnValueChanged(CCCVars.TTSVolume, OnTtsVolumeChanged, true);
         _cfg.OnValueChanged(CCCVars.TTSRadioVolume, OnTtsRadioVolumeChanged, true);
 
-        SubscribeNetworkEvent<PlayTTSEvent>(OnPlayTTS);
+        if (_cfg.GetCVar<bool>(CCCVars.TTSClientEnabled))
+            SubscribeNetworkEvent<PlayTTSEvent>(OnPlayTTS);
         SubscribeNetworkEvent<TtsQueueResetMessage>(OnQueueResetRequest);
 
         InitializeAnnounces();
@@ -264,6 +265,8 @@ public sealed partial class TTSSystem : EntitySystem
     private void OnPlayTTS(PlayTTSEvent ev)
     {
         var volume = (ev.IsRadio ? _radioVolume : _volume) * ev.VolumeModifier;
+        if (volume == 0.0f)
+            return;
         var audioParams = AudioParams.Default.WithVolume(volume);
 
         PlayTTSBytes(ev.Data, GetEntity(ev.SourceUid), audioParams);

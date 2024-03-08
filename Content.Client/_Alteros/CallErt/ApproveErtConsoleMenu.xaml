@@ -1,18 +1,30 @@
 <controls:FancyWindow xmlns="https://spacestation14.io"
                       xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
                       xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+                      xmlns:customControls="clr-namespace:Content.Client.Administration.UI.CustomControls"
                       Title="Консоль принятия ОБР"
-                      MinSize="600 500"
-                      SetSize="600 500">
-    <BoxContainer Margin="10 10 10 10" Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True" SizeFlagsStretchRatio="1">
-        <BoxContainer Orientation="Vertical" Margin="10 10 10 10">
-            <BoxContainer Orientation="Horizontal" HorizontalAlignment="Center">
-                <Label Text="Текущее время: " StyleClasses="LabelKeyText"/>
-                <RichTextLabel Name="StationTimeLabel"/>
+                      MinSize="900 600"
+                      SetSize="900 600">
+    <BoxContainer Orientation="Horizontal" VerticalExpand="True">
+        <BoxContainer Margin="10 10 10 10" MinWidth="300" MaxWidth="300" Orientation="Vertical" VerticalExpand="True" SizeFlagsStretchRatio="1">
+            <BoxContainer Orientation="Vertical" Margin="5 5 5 5" VerticalExpand="True">
+                <BoxContainer Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Label Text="Текущее время: " StyleClasses="LabelKeyText"/>
+                    <RichTextLabel Name="StationTimeLabel"/>
+                </BoxContainer>
+                <CheckBox Name="AutomateApproveCheckBox" Margin="5 5 5 5" MinWidth="100" Text="Автопринятие" Pressed="True" HorizontalAlignment="Center"/>
+                <OptionButton Name="StationSelector" StyleClasses="OpenRight" Access="Public"/>
+                <OptionButton Name="ErtGroupSelector" StyleClasses="OpenRight" Access="Public"/>
+                <BoxContainer Orientation="Horizontal">
+                    <Label Text="Время подготовки: " StyleClasses="LabelKeyText"/>
+                    <RichTextLabel Name="TimeToSpawnLabel"/>
+                </BoxContainer>
+                <Label Text="Состав: " StyleClasses="LabelKeyText"/>
+                <RichTextLabel Name="HumanListLabel"/>
+                <Button Name="SendErt" Text="Отправить" Access="Public"/>
             </BoxContainer>
-            <CheckBox Name="AutomateApproveCheckBox" MinWidth="100" Text="Автопринятие" Pressed="True" HorizontalAlignment="Center"/>
-            <OptionButton Name="StationSelector" StyleClasses="OpenRight" Access="Public" HorizontalAlignment="Center"/>
         </BoxContainer>
+        <customControls:VSeparator StyleClasses="LowDivider"/>
         <PanelContainer Margin="10 10 10 10" HorizontalExpand="True" VerticalExpand="True">
             <PanelContainer.PanelOverride>
                 <gfx:StyleBoxFlat BackgroundColor="#000000FF" />

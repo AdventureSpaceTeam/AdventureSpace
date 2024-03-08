@@ -9,23 +9,28 @@ namespace Content.Server.NewLife.UI
     public sealed class NewLifeEui : BaseEui
     {
         private readonly IReadOnlyDictionary<int, ICharacterProfile> _characterProfiles;
-        private readonly List<JobPrototype> _availableJobs;
+        private readonly Dictionary<NetEntity, string> _stations;
+        private readonly Dictionary<NetEntity, List<(JobPrototype, uint?)>> _jobs;
         private readonly TimeSpan _nextAllowRespawn;
         private readonly List<int> _usedCharactersForRespawn;
 
-        public NewLifeEui(IReadOnlyDictionary<int, ICharacterProfile> prefsCharacters,
-            List<JobPrototype> availableJobs, TimeSpan nextAllowRespawn, List<int> usedCharactersForRespawn)
+        public NewLifeEui(IReadOnlyDictionary<int, ICharacterProfile> prefsCharacters, Dictionary<NetEntity, string> stations,
+            Dictionary<NetEntity, List<(JobPrototype, uint?)>> jobs, TimeSpan nextAllowRespawn, List<int> usedCharactersForRespawn)
         {
             _characterProfiles = prefsCharacters;
-            _availableJobs = availableJobs;
+            _stations = stations;
+            _jobs = jobs;
             _nextAllowRespawn = nextAllowRespawn;
             _usedCharactersForRespawn = usedCharactersForRespawn;
         }
 
         public override NewLifeEuiState GetNewState()
         {
-            return new(EntitySystem.Get<NewLifeSystem>().GetCharactersInfo(_characterProfiles),
-                EntitySystem.Get<NewLifeSystem>().GetRolesInfo(_availableJobs),
+            var newLife = EntitySystem.Get<NewLifeSystem>();
+
+            return new(newLife.GetCharactersInfo(_characterProfiles),
+                _stations,
+                newLife.GetRolesInfo(_jobs),
                 _nextAllowRespawn,
                 _usedCharactersForRespawn);
         }
@@ -37,7 +42,7 @@ namespace Content.Server.NewLife.UI
             switch (msg)
             {
                 case NewLifeRequestSpawnMessage req:
-                    EntitySystem.Get<NewLifeSystem>().OnGhostRespawnMenuRequest(Player, req.CharacterId, req.RoleProto);
+                    EntitySystem.Get<NewLifeSystem>().OnGhostRespawnMenuRequest(Player, req.CharacterId, req.StationId, req.RoleProto);
                     break;
             }
         }

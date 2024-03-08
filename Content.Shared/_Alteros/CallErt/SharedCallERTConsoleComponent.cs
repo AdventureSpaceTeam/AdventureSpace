@@ -13,35 +13,47 @@ namespace Content.Shared.CallErt
         public readonly bool CanCallErt;
         public Dictionary<string, ErtGroupDetail> ErtsList;
         public List<CallErtGroupEnt> CalledErtsList;
+        public string? SelectedErtGroup;
 
         public CallErtConsoleInterfaceState(
             bool canCallErt,
             Dictionary<string, ErtGroupDetail> ertsList,
-            List<CallErtGroupEnt> calledErtsList)
+            List<CallErtGroupEnt> calledErtsList,
+            string? selectedErtGroup)
         {
             CanCallErt = canCallErt;
             ErtsList = ertsList;
             CalledErtsList = calledErtsList;
+            SelectedErtGroup = selectedErtGroup;
         }
     }
 
     [Serializable, NetSerializable]
     public sealed class ApproveErtConsoleInterfaceState : BoundUserInterfaceState
     {
-        public readonly bool AutomaticApprove;
+        public bool CanSendErt;
+        public bool AutomaticApprove;
+        public Dictionary<string, ErtGroupDetail> ErtsList;
         public List<CallErtGroupEnt> CalledErtsList;
-        public Dictionary<int, string> StationList;
-        public int? SelectedStation;
+        public Dictionary<NetEntity, string> StationList;
+        public NetEntity? SelectedStation;
+        public string? SelectedErtGroup;
 
-        public ApproveErtConsoleInterfaceState(bool automaticApprove,
+        public ApproveErtConsoleInterfaceState(bool canSendErt,
+            bool automaticApprove,
+            Dictionary<string, ErtGroupDetail> ertsList,
             List<CallErtGroupEnt> calledErtsList,
-            Dictionary<int, string> stationList,
-            int? selectedStation)
+            Dictionary<NetEntity, string> stationList,
+            NetEntity? selectedStation,
+            string? selectedErtGroup)
         {
+            CanSendErt = canSendErt;
             AutomaticApprove = automaticApprove;
+            ErtsList = ertsList;
             CalledErtsList = calledErtsList;
             StationList = stationList;
             SelectedStation = selectedStation;
+            SelectedErtGroup = selectedErtGroup;
         }
     }
 
@@ -72,6 +84,19 @@ namespace Content.Shared.CallErt
     }
 
     [Serializable, NetSerializable]
+    public sealed class CallErtConsoleSendErtMessage : BoundUserInterfaceMessage
+    {
+        public readonly NetEntity Station;
+        public readonly string ErtGroup;
+
+        public CallErtConsoleSendErtMessage(NetEntity station, string ertGroup)
+        {
+            Station = station;
+            ErtGroup = ertGroup;
+        }
+    }
+
+    [Serializable, NetSerializable]
     public sealed class CallErtConsoleUpdateMessage : BoundUserInterfaceMessage
     {
         public CallErtConsoleUpdateMessage()
@@ -90,6 +115,20 @@ namespace Content.Shared.CallErt
             IndexGroup = indexGroup;
         }
     }
+
+    [Serializable, NetSerializable]
+    public sealed class ApproveErtConsoleRecallErtMessage : BoundUserInterfaceMessage
+    {
+        public readonly NetEntity Station;
+        public readonly int IndexGroup;
+
+        public ApproveErtConsoleRecallErtMessage(NetEntity station, int indexGroup)
+        {
+            Station = station;
+            IndexGroup = indexGroup;
+        }
+    }
+
 
     [Serializable, NetSerializable]
     public sealed class CallErtConsoleApproveErtMessage : BoundUserInterfaceMessage
@@ -128,9 +167,9 @@ namespace Content.Shared.CallErt
     [Serializable, NetSerializable]
     public sealed class CallErtConsoleSelectStationMessage : BoundUserInterfaceMessage
     {
-        public readonly int StationUid;
+        public NetEntity StationUid;
 
-        public CallErtConsoleSelectStationMessage(int stationUid)
+        public CallErtConsoleSelectStationMessage(NetEntity stationUid)
         {
             StationUid = stationUid;
         }
@@ -139,6 +178,12 @@ namespace Content.Shared.CallErt
     [Serializable, NetSerializable]
     public sealed class CallErtConsoleSelectErtMessage : BoundUserInterfaceMessage
     {
+        public string ErtGroup;
+
+        public CallErtConsoleSelectErtMessage(string ertGroup)
+        {
+            ErtGroup = ertGroup;
+        }
     }
 
     [Serializable, NetSerializable]
