@@ -22,6 +22,7 @@ public sealed partial class TTSSystem : EntitySystem
     private const int MaxMessageChars = 100 * 2; // same as SingleBubbleCharLimit * 2
     private bool _isEnabled = false;
     private string _voiceId = "glados";
+    private List<ICommonSession> _ignoredRecipients = new();
     public const float WhisperVoiceVolumeModifier = 0.6f; // how far whisper goes in world units
     public const int WhisperVoiceRange = 6; // how far whisper goes in world units
 
@@ -38,6 +39,7 @@ public sealed partial class TTSSystem : EntitySystem
         SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundRestartCleanup);
 
         SubscribeNetworkEvent<RequestGlobalTTSEvent>(OnRequestGlobalTTS);
+        SubscribeNetworkEvent<ClientOptionTTSEvent>(OnClientOptionTTS);
     }
 
     private void OnRadioReceiveEvent(RadioSpokeEvent args)
@@ -94,11 +96,22 @@ public sealed partial class TTSSystem : EntitySystem
         _ttsManager.ResetCache();
     }
 
+    private async void OnClientOptionTTS(ClientOptionTTSEvent ev, EntitySessionEventArgs args)
+    {
+        if (ev.Enabled)
+            _ignoredRecipients.Remove(args.SenderSession);
+        else
+            _ignoredRecipients.Add(args.SenderSession);
+    }
+
     private async void OnRequestGlobalTTS(RequestGlobalTTSEvent ev, EntitySessionEventArgs args)
     {
         if (!_isEnabled ||
             ev.Text.Length > MaxMessageChars ||
             !GetVoicePrototype(ev.VoiceId, out var protoVoice))
+            return;
+
+        if (_ignoredRecipients.Contains(args.SenderSession))
             return;
 
         var soundData = await GenerateTTS(ev.Text, protoVoice.Speaker);
@@ -138,7 +151,7 @@ public sealed partial class TTSSystem : EntitySystem
     {
         var soundData = await GenerateTTS(message, speaker);
         if (soundData is null) return;
-        RaiseNetworkEvent(new PlayTTSEvent(soundData, GetNetEntity(uid)), Filter.Pvs(uid));
+        RaiseNetworkEvent(new PlayTTSEvent(soundData, GetNetEntity(uid)), Filter.Pvs(uid).RemovePlayers(_ignoredRecipients));
     }
 
     private async void HandleWhisper(EntityUid uid, string message, string speaker, bool isRadio)
@@ -156,6 +169,9 @@ public sealed partial class TTSSystem : EntitySystem
         foreach (var session in receptions)
         {
             if (!session.AttachedEntity.HasValue)
+                continue;
+
+            if (_ignoredRecipients.Contains(session))
                 continue;
 
             var xform = xformQuery.GetComponent(session.AttachedEntity.Value);
@@ -181,7 +197,7 @@ public sealed partial class TTSSystem : EntitySystem
 
         foreach (var uid in uids)
         {
-            RaiseNetworkEvent(new PlayTTSEvent(soundData, GetNetEntity(uid), true), Filter.Entities(uid));
+            RaiseNetworkEvent(new PlayTTSEvent(soundData, GetNetEntity(uid), true), Filter.Entities(uid).RemovePlayers(_ignoredRecipients));
         }
     }
 

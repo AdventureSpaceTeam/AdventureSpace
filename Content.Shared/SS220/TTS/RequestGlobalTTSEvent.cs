@@ -15,3 +15,13 @@ public sealed class RequestGlobalTTSEvent : EntityEventArgs
         VoiceId = voiceId;
     }
 }
+
+[Serializable, NetSerializable]
+public sealed class ClientOptionTTSEvent : EntityEventArgs
+{
+    public bool Enabled { get; }
+    public ClientOptionTTSEvent(bool enabled)
+    {
+        Enabled = enabled;
+    }
+}

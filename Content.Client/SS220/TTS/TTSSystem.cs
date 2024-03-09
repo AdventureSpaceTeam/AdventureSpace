@@ -56,9 +56,9 @@ public sealed partial class TTSSystem : EntitySystem
 
         _cfg.OnValueChanged(CCCVars.TTSVolume, OnTtsVolumeChanged, true);
         _cfg.OnValueChanged(CCCVars.TTSRadioVolume, OnTtsRadioVolumeChanged, true);
+        _cfg.OnValueChanged(CCCVars.TTSClientEnabled, OnTtsClientOptionChanged, true);
 
-        if (_cfg.GetCVar<bool>(CCCVars.TTSClientEnabled))
-            SubscribeNetworkEvent<PlayTTSEvent>(OnPlayTTS);
+        SubscribeNetworkEvent<PlayTTSEvent>(OnPlayTTS);
         SubscribeNetworkEvent<TtsQueueResetMessage>(OnQueueResetRequest);
 
         InitializeAnnounces();
@@ -69,6 +69,7 @@ public sealed partial class TTSSystem : EntitySystem
         base.Shutdown();
         _cfg.UnsubValueChanged(CCCVars.TTSVolume, OnTtsVolumeChanged);
         _cfg.UnsubValueChanged(CCCVars.TTSRadioVolume, OnTtsRadioVolumeChanged);
+        _cfg.UnsubValueChanged(CCCVars.TTSClientEnabled, OnTtsClientOptionChanged);
 
         // clear virtual files
         ContentRoot.Clear();
@@ -80,6 +81,11 @@ public sealed partial class TTSSystem : EntitySystem
     public void RequestGlobalTTS(string text, string voiceId)
     {
         RaiseNetworkEvent(new RequestGlobalTTSEvent(text, voiceId));
+    }
+
+    private void OnTtsClientOptionChanged(bool option)
+    {
+        RaiseNetworkEvent(new ClientOptionTTSEvent(option));
     }
 
     private void OnTtsVolumeChanged(float volume)
