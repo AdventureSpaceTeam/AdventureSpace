@@ -158,7 +158,7 @@
                 <CheckBox Name="EventMusicCheckBox" Text="{Loc 'ui-options-event-music'}" />
                 <CheckBox Name="AdminSoundsCheckBox" Text="{Loc 'ui-options-admin-sounds'}" />
                 <CheckBox Name="AHelpSoundsCheckBox" Text="{Loc 'ui-options-ahelp-sounds'}" />
-                <CheckBox Name="TtsClientCheckBox" Text="Включить ТТС (потребуется перезапуск)" />
+                <CheckBox Name="TtsClientCheckBox" Text="Включить ТТС" />
             </BoxContainer>
         </BoxContainer>
         <controls:StripeBack HasBottomEdge="False" HasMargins="False">
