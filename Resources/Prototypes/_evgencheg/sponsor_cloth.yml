@@ -30,7 +30,7 @@
 - type: entity
   parent: ClothingNeckBase
   id: ClothingCloakAtmosian
-  name: плащ
+  name: плащ атмоса
   description: Плащ легендарного атмоса
   suffix: Sponsor
   components:
