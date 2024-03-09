@@ -7,8 +7,11 @@
     "y": 32
   },
   "states": [
-	  {
+    {
       "name": "old-radio"
+    },
+    {
+      "name": "open"
     },
     {
       "name": "old-radio-inhand-left",

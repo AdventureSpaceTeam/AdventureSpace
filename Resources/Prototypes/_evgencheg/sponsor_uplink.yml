@@ -115,15 +115,24 @@
     sprite: _evgencheg/communication.rsi
     layers:
     - state: old-radio
+      map: ["enum.DonateUplinkVisualLayers.Base"]
   - type: Item
     sprite: _evgencheg/communication.rsi
     heldPrefix: old-radio
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.DonateUplinkVisualLayers.Opened:
+        enum.DonateUplinkVisualLayers.Base:
+          True: { state: "open" }
+          False: { state: "old-radio" }
   - type: UserInterface
     interfaces:
     - key: enum.StoreUiKey.Key
       type: StoreBoundUserInterface
   - type: ActivatableUI
     key: enum.StoreUiKey.Key
+  - type: DonateUplink
   - type: Store
     preset: StorePresetSponsor
     balance:
