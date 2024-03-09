@@ -265,3 +265,34 @@
       sprite: Corvax/Sponsor/jesuisunfou/Clothing/Shoes/ussp.rsi
     - type: Clothing
       sprite: Corvax/Sponsor/jesuisunfou/Clothing/Shoes/ussp.rsi
+
+# Makcu
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingCloakGreenLegendarySponsor
+  name: зелёный плащ легендарного спонсора
+  description: Зелёный плащ
+  suffix: Sponsor
+  components:
+    - type: Sprite
+      sprite: _c4llv07e/sponsors/1
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingCloakBlackLegendarySponsor
+  name: чёрный плащ легендарного спонсора
+  description: Чёрный плащ
+  suffix: Sponsor
+  components:
+    - type: Sprite
+      sprite: _c4llv07e/sponsors/2
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingCloakVavevSponsor
+  name: плащ имени вавевы великого
+  description: Носи с честью!
+  suffix: Sponsor
+  components:
+    - type: Sprite
+      sprite: _c4llv07e/sponsors/3
