@@ -97,6 +97,31 @@
   categories:
   - SponsorThings
 
+- type: listing
+  id: UplinkSponsorCloth8
+  productEntity: ClothingCloakGreenLegendarySponsor
+  cost:
+    DonateCrystal: 5
+  categories:
+  - SponsorThings
+
+- type: listing
+  id: UplinkSponsorCloth9
+  productEntity: ClothingCloakBlackLegendarySponsor
+  cost:
+    DonateCrystal: 5
+  categories:
+  - SponsorThings
+
+- type: listing
+  id: UplinkSponsorCloth10  # 10, yay!!
+  productEntity: ClothingCloakVavevSponsor
+  cost:
+    DonateCrystal: 6
+  categories:
+  - SponsorThings
+
+
 - type: storePreset
   id: StorePresetSponsor
   storeName: Sponsor
