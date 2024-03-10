@@ -1,22 +1,14 @@
-﻿namespace Content.Server.StatsBoard
-{
-    [RegisterComponent, Access(typeof(StatsBoardSystem))]
-    public sealed partial class StatsBoardComponent : Component
-    {
+﻿using Robust.Shared.Network;
+using Robust.Shared.Player;
+using Robust.Shared.Serialization;
 
-    }
-}
+namespace Content.Shared._Sunrise.StatsBoard;
 
-[Serializable]
-public sealed partial class StatisticEntries
+[Serializable, NetSerializable]
+public sealed partial class StatisticEntry(string name, NetUserId userId)
 {
-    public List<StatisticEntry> Entries = new();
-}
-
-[Serializable]
-public sealed partial class StatisticEntry
-{
-    public string Name { get; set; }
+    public string Name { get; set; } = name;
+    public NetUserId FirstActor { get; set; } = userId;
     public int TotalTakeDamage { get; set; } = 0;
     public int TotalTakeHeal { get; set; } = 0;
     public int TotalInflictedDamage { get; set; } = 0;
@@ -35,8 +27,4 @@ public sealed partial class StatisticEntry
     public TimeSpan SpaceTime { get; set; } = TimeSpan.Zero;
     public TimeSpan SleepTime { get; set; } = TimeSpan.Zero;
     public bool IsInteractedCaptainCard { get; set; } = false;
-    public StatisticEntry(string name)
-    {
-        Name = name;
-    }
 }
