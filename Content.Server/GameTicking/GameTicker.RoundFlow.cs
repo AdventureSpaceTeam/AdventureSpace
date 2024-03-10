@@ -402,6 +402,8 @@ namespace Content.Server.GameTicking
 
             var roundStats = _statsBoardSystem.GetRoundStats();
 
+            var statisticEntries = _statsBoardSystem.GetStatisticEntries();
+
             var roundEndMessageEvent = new RoundEndMessageEvent(
                 gamemodeTitle,
                 roundEndText,
@@ -410,6 +412,7 @@ namespace Content.Server.GameTicking
                 listOfPlayerInfoFinal.Length,
                 listOfPlayerInfoFinal,
                 roundStats,
+                statisticEntries,
                 sound
             );
             RaiseNetworkEvent(roundEndMessageEvent);

@@ -1,10 +1,14 @@
 using System.Linq;
 using System.Numerics;
+using Content.Client._Sunrise.StatsBoard;
 using Content.Client.Message;
+using Content.Client.Players;
+using Content.Shared._Sunrise.StatsBoard;
 using Content.Shared.GameTicking;
 using Robust.Client.GameObjects;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.CustomControls;
+using Robust.Shared.Player;
 using Robust.Shared.Utility;
 using static Robust.Client.UserInterface.Controls.BoxContainer;
 
@@ -13,12 +17,14 @@ namespace Content.Client.RoundEnd
     public sealed class RoundEndSummaryWindow : DefaultWindow
     {
         private readonly IEntityManager _entityManager;
+        private readonly ISharedPlayerManager _playerManager;
         public int RoundId;
 
         public RoundEndSummaryWindow(string gm, string roundEnd, TimeSpan roundTimeSpan, int roundId,
-            RoundEndMessageEvent.RoundEndPlayerInfo[] info, string roundEndStats, IEntityManager entityManager)
+            RoundEndMessageEvent.RoundEndPlayerInfo[] info, string roundEndStats, StatisticEntry[] statisticEntries, IEntityManager entityManager, ISharedPlayerManager playerManager)
         {
             _entityManager = entityManager;
+            _playerManager = playerManager;
 
             MinSize = SetSize = new Vector2(700, 600);
 
@@ -35,6 +41,7 @@ namespace Content.Client.RoundEnd
             roundEndTabs.AddChild(MakeRoundEndSummaryTab(gm, roundEnd, roundTimeSpan, roundId));
             roundEndTabs.AddChild(MakePlayerManifestTab(info));
             roundEndTabs.AddChild(MakeRoundEndStatsTab(roundEndStats));
+            roundEndTabs.AddChild(MakeRoundEndMyStatsTab(statisticEntries));
 
             Contents.AddChild(roundEndTabs);
 
@@ -197,6 +204,43 @@ namespace Content.Client.RoundEnd
             }
 
             roundEndSummaryContainerScrollbox.AddChild(roundEndSummaryContainer);
+            roundEndSummaryTab.AddChild(roundEndSummaryContainerScrollbox);
+
+            return roundEndSummaryTab;
+        }
+
+        private BoxContainer MakeRoundEndMyStatsTab(StatisticEntry[] statisticEntries)
+        {
+            var roundEndSummaryTab = new BoxContainer
+            {
+                Orientation = LayoutOrientation.Vertical,
+                Name = Loc.GetString("round-end-summary-window-my-stats-tab-title")
+            };
+
+            var roundEndSummaryContainerScrollbox = new ScrollContainer
+            {
+                VerticalExpand = true,
+                Margin = new Thickness(10),
+            };
+
+            var statsEntries = new StatsEntries();
+            foreach (var statisticEntry in statisticEntries)
+            {
+                if (statisticEntry.FirstActor != _playerManager.LocalSession!.UserId)
+                    continue;
+
+                var statsEntry = new StatsEntry(statisticEntry.Name, statisticEntry.TotalTakeDamage,
+                    statisticEntry.TotalTakeHeal, statisticEntry.TotalInflictedDamage,
+                    statisticEntry.TotalInflictedHeal, statisticEntry.SlippedCount,
+                    statisticEntry.CreamedCount, statisticEntry.DoorEmagedCount, statisticEntry.ElectrocutedCount,
+                    statisticEntry.CuffedCount, statisticEntry.AbsorbedPuddleCount, statisticEntry.SpentTk ?? 0,
+                    statisticEntry.DeadCount, statisticEntry.HumanoidKillCount, statisticEntry.KilledMouseCount,
+                    statisticEntry.CuffedTime, statisticEntry.SpaceTime, statisticEntry.SleepTime,
+                    statisticEntry.IsInteractedCaptainCard ? "Да" : "Нет");
+                statsEntries.AddEntry(statsEntry);
+            }
+
+            roundEndSummaryContainerScrollbox.AddChild(statsEntries);
             roundEndSummaryTab.AddChild(roundEndSummaryContainerScrollbox);
 
             return roundEndSummaryTab;

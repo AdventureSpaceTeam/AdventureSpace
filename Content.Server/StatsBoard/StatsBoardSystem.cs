@@ -1,11 +1,11 @@
 ﻿using System.Linq;
 using Content.Server.Cargo.Components;
-using Content.Server.Doors.Systems;
 using Content.Server.GameTicking;
 using Content.Server.Mind;
 using Content.Server.RoundEnd;
 using Content.Server.Station.Systems;
 using Content.Server.Store.Systems;
+using Content.Shared._Sunrise.StatsBoard;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.Construction;
 using Content.Shared.Cuffs.Components;
@@ -13,14 +13,18 @@ using Content.Shared.Damage;
 using Content.Shared.Doors.Systems;
 using Content.Shared.Electrocution;
 using Content.Shared.Fluids;
+using Content.Shared.Ghost;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Interaction.Components;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Item;
+using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;
+using Content.Shared.Mobs.Components;
 using Content.Shared.Slippery;
 using Content.Shared.Tag;
+using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
@@ -45,20 +49,28 @@ public sealed class StatsBoardSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<StatsBoardComponent, ComponentInit>(OnStartup);
-        SubscribeLocalEvent<StatsBoardComponent, ComponentShutdown>(OnShutdown);
-        SubscribeLocalEvent<StatsBoardComponent, DamageChangedEvent>(OnDamageModify);
-        SubscribeLocalEvent<StatsBoardComponent, SlippedEvent>(OnSlippedEvent);
-        SubscribeLocalEvent<StatsBoardComponent, CreamedEvent>(OnCreamedEvent);
-        SubscribeLocalEvent<StatsBoardComponent, InteractionAttemptEvent>(OnInteractionAttempt);
-        SubscribeLocalEvent<StatsBoardComponent, MobStateChangedEvent>(OnMobStateChanged);
-        SubscribeLocalEvent<StatsBoardComponent, DoorEmaggedEvent>(OnDoorEmagged);
-        SubscribeLocalEvent<StatsBoardComponent, ElectrocutedEvent>(OnElectrocuted);
-        SubscribeLocalEvent<StatsBoardComponent, SubtractCashEvent>(OnItemPurchasedEvent);
-        SubscribeLocalEvent<StatsBoardComponent, CuffedEvent>(OnCuffedEvent);
-        SubscribeLocalEvent<StatsBoardComponent, ItemConstructionCreated>(OnCraftedEvent);
-        SubscribeLocalEvent<StatsBoardComponent, AbsorberPudleEvent>(OnAbsorbedPuddleEvent);
+        SubscribeLocalEvent<ActorComponent, DamageChangedEvent>(OnDamageModify);
+        SubscribeLocalEvent<ActorComponent, SlippedEvent>(OnSlippedEvent);
+        SubscribeLocalEvent<ActorComponent, CreamedEvent>(OnCreamedEvent);
+        SubscribeLocalEvent<ActorComponent, InteractionAttemptEvent>(OnInteractionAttempt);
+        SubscribeLocalEvent<ActorComponent, MobStateChangedEvent>(OnMobStateChanged);
+        SubscribeLocalEvent<ActorComponent, DoorEmaggedEvent>(OnDoorEmagged);
+        SubscribeLocalEvent<ActorComponent, ElectrocutedEvent>(OnElectrocuted);
+        SubscribeLocalEvent<ActorComponent, SubtractCashEvent>(OnItemPurchasedEvent);
+        SubscribeLocalEvent<ActorComponent, CuffedEvent>(OnCuffedEvent);
+        SubscribeLocalEvent<ActorComponent, ItemConstructionCreated>(OnCraftedEvent);
+        SubscribeLocalEvent<ActorComponent, AbsorberPudleEvent>(OnAbsorbedPuddleEvent);
+        SubscribeLocalEvent<ActorComponent, MindAddedMessage>(OnMindAdded);
         SubscribeLocalEvent<RoundEndSystemChangedEvent>(OnRoundEndSystemChange);
+    }
+
+    private void OnMindAdded(EntityUid uid, ActorComponent comp, MindAddedMessage ev)
+    {
+        if (_statisticEntries.ContainsKey(uid) || ev.Mind.Comp.Session == null || HasComp<GhostComponent>(uid))
+            return;
+
+        var value = new StatisticEntry(MetaData(uid).EntityName, ev.Mind.Comp.Session.UserId);
+        _statisticEntries.Add(uid, value);
     }
 
     private void OnRoundEndSystemChange(RoundEndSystemChangedEvent args)
@@ -72,37 +84,25 @@ public sealed class StatsBoardSystem : EntitySystem
         _statisticEntries.Clear();
     }
 
-    private void OnShutdown(EntityUid uid, StatsBoardComponent component, ComponentShutdown args)
+    private void OnAbsorbedPuddleEvent(EntityUid uid, ActorComponent comp, ref AbsorberPudleEvent ev)
     {
-        if (!_statisticEntries.ContainsKey(uid))
-        {
-            _statisticEntries.Add(uid, new StatisticEntry(MetaData(uid).EntityName));
-        }
-        else
-        {
-            _statisticEntries[uid].Name = MetaData(uid).EntityName;
-        }
-    }
-
-    private void OnStartup(EntityUid uid, StatsBoardComponent component, ComponentInit args)
-    {
-        if (!_statisticEntries.ContainsKey(uid))
-        {
-            _statisticEntries.Add(uid, new StatisticEntry(MetaData(uid).EntityName));
-        }
-    }
-
-    private void OnAbsorbedPuddleEvent(EntityUid uid, StatsBoardComponent comp, ref AbsorberPudleEvent ev)
-    {
-        if (!_statisticEntries.ContainsKey(uid))
+        if (!_mindSystem.TryGetMind(comp.PlayerSession, out var mindId, out var mind))
             return;
-        _statisticEntries[uid].AbsorbedPuddleCount += 1;
+
+        if (_statisticEntries.TryGetValue(uid, out var value))
+        {
+            value.AbsorbedPuddleCount += 1;
+        }
     }
 
-    private void OnCraftedEvent(EntityUid uid, StatsBoardComponent comp, ref ItemConstructionCreated ev)
+    private void OnCraftedEvent(EntityUid uid, ActorComponent comp, ref ItemConstructionCreated ev)
     {
-        if (!_statisticEntries.ContainsKey(uid))
+        if (!_mindSystem.TryGetMind(comp.PlayerSession, out var mindId, out var mind))
             return;
+
+        if (!_statisticEntries.TryGetValue(uid, out var value))
+            return;
+
         if (!TryComp<MetaDataComponent>(ev.Item, out var metaDataComponent))
             return;
         if (metaDataComponent.EntityPrototype == null)
@@ -116,10 +116,11 @@ public sealed class StatsBoardSystem : EntitySystem
         }
     }
 
-    private void OnCuffedEvent(EntityUid uid, StatsBoardComponent comp, ref CuffedEvent ev)
+    private void OnCuffedEvent(EntityUid uid, ActorComponent comp, ref CuffedEvent ev)
     {
-        if (!_statisticEntries.ContainsKey(uid))
+        if (!_statisticEntries.TryGetValue(uid, out var value))
             return;
+
         _statisticEntries[uid].CuffedCount += 1;
         if (_clownCuffed.clown != null)
             return;
@@ -129,10 +130,11 @@ public sealed class StatsBoardSystem : EntitySystem
         _clownCuffed.time = _gameTiming.CurTime.Subtract(_gameTicker.RoundStartTimeSpan);
     }
 
-    private void OnItemPurchasedEvent(EntityUid uid, StatsBoardComponent comp, ref SubtractCashEvent ev)
+    private void OnItemPurchasedEvent(EntityUid uid, ActorComponent comp, ref SubtractCashEvent ev)
     {
-        if (!_statisticEntries.ContainsKey(uid))
+        if (!_statisticEntries.TryGetValue(uid, out var value))
             return;
+
         if (ev.Currency != "Telecrystal")
             return;
         if (_statisticEntries[uid].SpentTk == null)
@@ -145,24 +147,27 @@ public sealed class StatsBoardSystem : EntitySystem
         }
     }
 
-    private void OnElectrocuted(EntityUid uid, StatsBoardComponent comp, ElectrocutedEvent ev)
+    private void OnElectrocuted(EntityUid uid, ActorComponent comp, ElectrocutedEvent ev)
     {
-        if (!_statisticEntries.ContainsKey(uid))
+        if (!_statisticEntries.TryGetValue(uid, out var value))
             return;
+
         _statisticEntries[uid].ElectrocutedCount += 1;
     }
 
-    private void OnDoorEmagged(EntityUid uid, StatsBoardComponent comp, ref DoorEmaggedEvent ev)
+    private void OnDoorEmagged(EntityUid uid, ActorComponent comp, ref DoorEmaggedEvent ev)
     {
-        if (!_statisticEntries.ContainsKey(uid))
+        if (!_statisticEntries.TryGetValue(uid, out var value))
             return;
+
         _statisticEntries[uid].DoorEmagedCount += 1;
     }
 
-    private void OnInteractionAttempt(EntityUid uid, StatsBoardComponent component, InteractionAttemptEvent args)
+    private void OnInteractionAttempt(EntityUid uid, ActorComponent comp, InteractionAttemptEvent args)
     {
-        if (!_statisticEntries.ContainsKey(uid))
+        if (!_statisticEntries.TryGetValue(uid, out var value))
             return;
+
         if (!HasComp<ItemComponent>(args.Target))
             return;
         if (MetaData(args.Target.Value).EntityPrototype == null)
@@ -175,17 +180,17 @@ public sealed class StatsBoardSystem : EntitySystem
         _statisticEntries[uid].IsInteractedCaptainCard = true;
     }
 
-    private void OnCreamedEvent(EntityUid uid, StatsBoardComponent comp, ref CreamedEvent ev)
+    private void OnCreamedEvent(EntityUid uid, ActorComponent comp, ref CreamedEvent ev)
     {
-        if (!_statisticEntries.ContainsKey(uid))
+        if (!_statisticEntries.TryGetValue(uid, out var value))
             return;
 
         _statisticEntries[uid].CreamedCount += 1;
     }
 
-    private void OnMobStateChanged(EntityUid uid, StatsBoardComponent component, MobStateChangedEvent args)
+    private void OnMobStateChanged(EntityUid uid, ActorComponent comp, MobStateChangedEvent args)
     {
-        if (!_statisticEntries.ContainsKey(uid))
+        if (!_statisticEntries.TryGetValue(uid, out var value))
             return;
 
         switch (args.NewMobState)
@@ -210,20 +215,18 @@ public sealed class StatsBoardSystem : EntitySystem
 
                 if (origin != null)
                 {
-                    if (_tagSystem.HasTag(uid, "Hamster"))
+                    if (_hamsterKiller == null && _tagSystem.HasTag(uid, "Hamster"))
                     {
                         _hamsterKiller = origin.Value;
                     }
 
-                    if (TryComp<StatsBoardComponent>(args.Origin, out var statsBoard))
+                    if (_tagSystem.HasTag(uid, "Mouse"))
                     {
-                        if (_tagSystem.HasTag(uid, "Mouse"))
-                        {
-                            _statisticEntries[origin.Value].KilledMouseCount += 1;
-                        }
-                        if (HasComp<HumanoidAppearanceComponent>(uid))
-                            _statisticEntries[origin.Value].HumanoidKillCount += 1;
+                        _statisticEntries[origin.Value].KilledMouseCount += 1;
                     }
+
+                    if (HasComp<HumanoidAppearanceComponent>(uid))
+                        _statisticEntries[origin.Value].HumanoidKillCount += 1;
                 }
 
                 break;
@@ -231,43 +234,57 @@ public sealed class StatsBoardSystem : EntitySystem
         }
     }
 
-    private void OnDamageModify(EntityUid uid, StatsBoardComponent comp, DamageChangedEvent ev)
+    private void OnDamageModify(EntityUid uid, ActorComponent comp, DamageChangedEvent ev)
     {
-        if (!_statisticEntries.ContainsKey(uid))
+        DamageGetModify(uid, ev);
+
+        if (ev.Origin != null)
+            DamageTakeModify(ev.Origin.Value, ev);
+    }
+
+    private void DamageTakeModify(EntityUid uid, DamageChangedEvent ev)
+    {
+        if (!_statisticEntries.TryGetValue(uid, out var value))
             return;
+
         if (ev.DamageDelta == null)
             return;
+
         if (ev.DamageIncreased)
         {
-            _statisticEntries[uid].TotalTakeDamage += ev.DamageDelta.GetTotal().Int();
+            value.TotalInflictedDamage += ev.DamageDelta.GetTotal().Int();
         }
         else
         {
-            _statisticEntries[uid].TotalTakeHeal += Math.Abs(ev.DamageDelta.GetTotal().Int());
-        }
-
-        if (ev.Origin != null)
-        {
-            if (!_statisticEntries.ContainsKey(ev.Origin.Value))
-            {
-                _statisticEntries.Add(ev.Origin.Value, new StatisticEntry(MetaData(ev.Origin.Value).EntityName));
-            }
-            if (ev.DamageIncreased)
-            {
-                _statisticEntries[ev.Origin.Value].TotalInflictedDamage += ev.DamageDelta.GetTotal().Int();
-            }
-            else
-            {
-                _statisticEntries[ev.Origin.Value].TotalInflictedHeal += Math.Abs(ev.DamageDelta.GetTotal().Int());
-            }
+            value.TotalInflictedHeal += Math.Abs(ev.DamageDelta.GetTotal().Int());
         }
     }
 
-    private void OnSlippedEvent(EntityUid uid, StatsBoardComponent comp, ref SlippedEvent ev)
+    private void DamageGetModify(EntityUid uid, DamageChangedEvent ev)
     {
-        if (!_statisticEntries.ContainsKey(uid))
+        if (!_statisticEntries.TryGetValue(uid, out var value))
             return;
-        _statisticEntries[uid].SlippedCount += 1;
+
+        if (ev.DamageDelta == null)
+            return;
+
+        if (ev.DamageIncreased)
+        {
+            value.TotalTakeDamage += ev.DamageDelta.GetTotal().Int();
+        }
+        else
+        {
+            value.TotalTakeHeal += Math.Abs(ev.DamageDelta.GetTotal().Int());
+        }
+    }
+
+    private void OnSlippedEvent(EntityUid uid, ActorComponent comp, ref SlippedEvent ev)
+    {
+        if (!_statisticEntries.TryGetValue(uid, out var value))
+            return;
+
+        if (HasComp<HumanoidAppearanceComponent>(uid))
+            _statisticEntries[uid].SlippedCount += 1;
     }
 
     private StationBankAccountComponent? GetBankAccount(EntityUid? uid)
@@ -283,10 +300,10 @@ public sealed class StatsBoardSystem : EntitySystem
     {
         base.Update(frameTime);
 
-        var statsQuery = EntityQueryEnumerator<StatsBoardComponent>();
+        var statsQuery = EntityQueryEnumerator<ActorComponent>();
         while (statsQuery.MoveNext(out var ent, out var comp))
         {
-            if (!_statisticEntries.ContainsKey(ent))
+            if (!_statisticEntries.TryGetValue(ent, out var value))
                 return;
 
             if (TryComp<TransformComponent>(ent, out var transformComponent) &&
@@ -300,6 +317,11 @@ public sealed class StatsBoardSystem : EntitySystem
             if (HasComp<SleepingComponent>(ent))
                 _statisticEntries[ent].SleepTime += TimeSpan.FromSeconds(frameTime);
         }
+    }
+
+    public StatisticEntry[] GetStatisticEntries()
+    {
+        return _statisticEntries.Values.ToArray();
     }
 
     public string GetRoundStats()
@@ -346,7 +368,6 @@ public sealed class StatsBoardSystem : EntitySystem
         EntityUid? playerWithMostInflictedHeal = null;
         EntityUid? playerWithMostInflictedDamage = null;
         EntityUid? playerWithMostPuddleAbsorb = null;
-        EntityUid? playerWithMostBigBalance = null;
 
         foreach (var (uid, data) in _statisticEntries)
         {
@@ -510,7 +531,7 @@ public sealed class StatsBoardSystem : EntitySystem
 
         if (totalSlipped >= 1)
         {
-            result += $"\nВ этой смене поскользнулись [color=white]{totalSlipped}[/color] раз.";
+            result += $"\nИгроки в этой смене поскользнулись [color=white]{totalSlipped}[/color] раз.";
         }
 
         if (mostSlippedCharacter != null && maxSlippedCount > 1)
@@ -599,7 +620,7 @@ public sealed class StatsBoardSystem : EntitySystem
 
         if (totalSleepTime > TimeSpan.Zero)
         {
-            result += $"\nОбщее время сна составило [color=yellow]{totalSleepTime.ToString("hh\\:mm\\:ss")}[/color].";
+            result += $"\nОбщее время сна игроков составило [color=yellow]{totalSleepTime.ToString("hh\\:mm\\:ss")}[/color].";
         }
 
         if (playerWithLongestSleepTime != null)
@@ -634,7 +655,7 @@ public sealed class StatsBoardSystem : EntitySystem
 
         if (totalHeal >= 1)
         {
-            result += $"\nВсего было излечено [color=white]{totalHeal}[/color] урона.";
+            result += $"\nВсего игроками было излечено [color=white]{totalHeal}[/color] урона.";
         }
 
         if (playerWithMostInflictedHeal != null)
@@ -644,12 +665,12 @@ public sealed class StatsBoardSystem : EntitySystem
                 _statisticEntries[playerWithMostInflictedHeal.Value].Name);
             var usernameColor = username != null ? $" ([color=gray]{username}[/color])" : "";
             result +=
-                $"\nБольше всего урона вылечил [color=white]{name}[/color]{usernameColor} - [color=white]{maxInflictedHeal}[/color].";
+                $"\nБольше всего урона игрокам вылечил [color=white]{name}[/color]{usernameColor} - [color=white]{maxInflictedHeal}[/color].";
         }
 
         if (totalDamage >= 1)
         {
-            result += $"\nВсего было получено [color=white]{totalDamage}[/color] урона.";
+            result += $"\nВсего игроками было получено [color=white]{totalDamage}[/color] урона.";
         }
 
         if (playerWithMostInflictedDamage != null)
@@ -694,7 +715,7 @@ public sealed class StatsBoardSystem : EntitySystem
 
         if (totalAbsorbedPuddle >= 1)
         {
-            result += $"\nБыло убрано [color=white]{totalAbsorbedPuddle}[/color] луж.";
+            result += $"\nИгроками было убрано [color=white]{totalAbsorbedPuddle}[/color] луж.";
         }
 
         if (playerWithMostPuddleAbsorb != null && maxPuddleAbsorb > 1)

@@ -1,3 +1,4 @@
+using Content.Shared._Sunrise.StatsBoard;
 using Content.Shared.Roles;
 using Robust.Shared.Network;
 using Robust.Shared.Replays;
@@ -184,6 +185,7 @@ namespace Content.Shared.GameTicking
         public int PlayerCount { get; }
         public RoundEndPlayerInfo[] AllPlayersEndInfo { get; }
         public string RoundEndStats { get; }
+        public StatisticEntry[] StatisticEntries { get; }
 
         /// <summary>
         /// Sound gets networked due to how entity lifecycle works between client / server and to avoid clipping.
@@ -198,6 +200,7 @@ namespace Content.Shared.GameTicking
             int playerCount,
             RoundEndPlayerInfo[] allPlayersEndInfo,
             string roundEndStats,
+            StatisticEntry[] statisticEntries,
             string? restartSound)
         {
             GamemodeTitle = gamemodeTitle;
@@ -207,6 +210,7 @@ namespace Content.Shared.GameTicking
             PlayerCount = playerCount;
             AllPlayersEndInfo = allPlayersEndInfo;
             RoundEndStats = roundEndStats;
+            StatisticEntries = statisticEntries;
             RestartSound = restartSound;
         }
     }
