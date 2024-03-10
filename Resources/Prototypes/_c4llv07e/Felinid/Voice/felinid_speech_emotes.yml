@@ -1,0 +1,8 @@
+- type: emote
+  id: Hissing
+  category: Vocal
+  chatMessages: [Шипит!]
+  chatTriggers:
+    - шипит
+    - шипит.
+    - шипит!
