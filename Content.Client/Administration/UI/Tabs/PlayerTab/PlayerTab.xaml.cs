@@ -101,24 +101,33 @@ namespace Content.Client.Administration.UI.Tabs.PlayerTab
             }
 
             _players = players;
-            PlayerCount.Text = $"Players: {_playerMan.PlayerCount}";
+            PlayerCount.Text = $"Игроки: {_playerMan.PlayerCount}";
 
             var sortedPlayers = new List<PlayerInfo>(players);
             sortedPlayers.Sort(Compare);
 
             UpdateHeaderSymbols();
 
+            var antagCount = 0;
+            var sponsorCount = 0;
             var useAltColor = false;
             foreach (var player in sortedPlayers)
             {
                 if (!_showDisconnected && !player.Connected)
                     continue;
 
+                if (player.Antag)
+                    antagCount += 1;
+
+                if (player.IsSponsor)
+                    sponsorCount += 1;
+
                 var entry = new PlayerTabEntry(player.Username,
                     player.CharacterName,
                     player.IdentityName,
                     player.StartingJob,
-                    player.Antag ? "YES" : "NO",
+                    player.SponsorTitle ?? "",
+                    player.Antag ? "Да" : "Нет",
                     new StyleBoxFlat(useAltColor ? _altColor : _defaultColor),
                     player.Connected,
                     player.PlaytimeString);
@@ -129,6 +138,9 @@ namespace Content.Client.Administration.UI.Tabs.PlayerTab
 
                 useAltColor ^= true;
             }
+
+            SponsorCount.Text = $"Спонсоры: {sponsorCount}";
+            AntagCount.Text = $"Антаги: {antagCount}";
         }
 
         private void UpdateHeaderSymbols()
@@ -149,6 +161,7 @@ namespace Content.Client.Administration.UI.Tabs.PlayerTab
                 Header.Username => Compare(x.Username, y.Username),
                 Header.Character => Compare(x.CharacterName, y.CharacterName),
                 Header.Job => Compare(x.StartingJob, y.StartingJob),
+                Header.Sponsor => string.Compare(x.SponsorTitle!, y.SponsorTitle, StringComparison.Ordinal),
                 Header.Antagonist => x.Antag.CompareTo(y.Antag),
                 Header.Playtime => TimeSpan.Compare(x.OverallPlaytime ?? default, y.OverallPlaytime ?? default),
                 _ => 1
