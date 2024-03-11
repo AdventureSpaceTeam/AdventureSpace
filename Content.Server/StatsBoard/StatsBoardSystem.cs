@@ -5,7 +5,6 @@ using Content.Server.Mind;
 using Content.Server.RoundEnd;
 using Content.Server.Station.Systems;
 using Content.Server.Store.Systems;
-using Content.Shared._Sunrise.StatsBoard;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.Construction;
 using Content.Shared.Cuffs.Components;

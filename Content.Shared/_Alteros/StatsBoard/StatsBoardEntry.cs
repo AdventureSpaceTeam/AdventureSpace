@@ -1,8 +1,7 @@
 ﻿using Robust.Shared.Network;
-using Robust.Shared.Player;
 using Robust.Shared.Serialization;
 
-namespace Content.Shared._Sunrise.StatsBoard;
+namespace Content.Server.StatsBoard;
 
 [Serializable, NetSerializable]
 public sealed partial class StatisticEntry(string name, NetUserId userId)
