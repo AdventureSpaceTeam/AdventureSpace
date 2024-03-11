@@ -22,10 +22,6 @@
       sprite: Corvax/Sponsor/Clothing/Mask/atmosian.rsi
     - type: Clothing
       sprite: Corvax/Sponsor/Clothing/Mask/atmosian.rsi
-    - type: Armor
-      modifiers:
-        coefficients:
-          Heat: 0.80
 
 - type: entity
   parent: ClothingNeckBase
@@ -155,13 +151,6 @@
       sprite: Corvax/Sponsor/NEKISH/Clothing/OuterClothing/Coats/hos_overcoat.rsi
     - type: Clothing
       sprite: Corvax/Sponsor/NEKISH/Clothing/OuterClothing/Coats/hos_overcoat.rsi
-    - type: Armor
-      modifiers:
-        coefficients:
-          Blunt: 0.7
-          Slash: 0.7
-          Piercing: 0.4
-          Heat: 0.7
 
 - type: entity
   parent: ClothingUniformBase
@@ -186,24 +175,6 @@
       sprite: Corvax/Clothing/Hands/Accessories/watch.rsi
     - type: Clothing
       sprite: Corvax/Clothing/Hands/Accessories/watch.rsi
-
-- type: marking
-  id: AugmentsRoboticRightArm
-  bodyPart: RArm
-  markingCategory: Arms
-  sponsorOnly: true
-  sprites:
-    - sprite: Corvax/Mobs/Customization/augments.rsi
-      state: robotic_r_arm
-
-- type: marking
-  id: AugmentsRoboticRightHand
-  bodyPart: RHand
-  markingCategory: Arms
-  sponsorOnly: true
-  sprites:
-    - sprite: Corvax/Mobs/Customization/augments.rsi
-      state: robotic_r_hand
 
 # jesuisunfou
 - type: entity
