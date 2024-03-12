@@ -133,7 +133,7 @@
 - type: entity
   parent: BaseItem
   id: DonateUplink
-  name: анденчурплинк
+  name: адвенчурплинк
   suffix: 30
   components:
   - type: Sprite
