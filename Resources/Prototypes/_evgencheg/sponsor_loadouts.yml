@@ -1,5 +1,9 @@
-﻿- type: loadout
-  id: BaseAdvenUplinkLoadout
-  entity: DonateUplink
-  sponsorOnly: true
-  whitelistJobs: [Visitor, ServiceWorker, Musician, Mime, Librarian, Lawyer, Janitor, Detective, Clown, Chef, Chaplain, Botanist, Bartender, Passenger, Warden, SecurityOfficer, SecurityCadet, HeadOfSecurity, Scientist, HeadOfSecurity, ResearchDirector, Paramedic, ResearchAssistant, MedicalDoctor, ChiefMedicalOfficer, Chemist, TechnicalAssistant, StationEngineer, ChiefEngineer, IAA, CargoTechnician, Quartermaster, SalvageSpecialist, Captain, HeadOfPersonnel, AtmosphericTechnician]
+# Оно ругается на прототип, хотя в других файлах он есть.
+# Я хз, почему это так, но я пока не буду это включать, т.к.
+# всё равно работать не будет (C) c4llv07e
+
+# ﻿- type: loadout
+#   id: BaseAdvenUplinkLoadout
+#   entity: DonateUplink
+#   sponsorOnly: true
+#   whitelistJobs: [Visitor, ServiceWorker, Musician, Mime, Librarian, Lawyer, Janitor, Detective, Clown, Chef, Chaplain, Botanist, Bartender, Passenger, Warden, SecurityOfficer, SecurityCadet, HeadOfSecurity, Scientist, HeadOfSecurity, ResearchDirector, Paramedic, ResearchAssistant, MedicalDoctor, ChiefMedicalOfficer, Chemist, TechnicalAssistant, StationEngineer, ChiefEngineer, IAA, CargoTechnician, Quartermaster, SalvageSpecialist, Captain, HeadOfPersonnel, AtmosphericTechnician]
