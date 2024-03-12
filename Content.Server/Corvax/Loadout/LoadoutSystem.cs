@@ -6,6 +6,7 @@ using Content.Server.Storage.EntitySystems;
 using Content.Shared.Clothing.Components;
 using Content.Shared.Inventory;
 using Robust.Shared.Prototypes;
+using Content.Shared.Corvax.Loadout;
 
 namespace Content.Server.Corvax.Loadout;
 
