@@ -6,6 +6,8 @@ using Content.Client.Lobby.UI;
 using Content.Client.Message;
 using Content.Client.Players.PlayTimeTracking;
 using Content.Client.Stylesheets;
+using Content.Client.Sponsors;
+using Content.Corvax.Interfaces.Client;
 using Content.Client.UserInterface.Controls;
 using Content.Client.UserInterface.Systems.Guidebook;
 using Content.Shared.CCVar;
@@ -1442,11 +1444,13 @@ namespace Content.Client.Preferences.UI
                 // another function checks Disabled after creating the selector so this has to be done now
                 var requirements = IoCManager.Resolve<JobRequirementsManager>();
                 var sponsors = IoCManager.Resolve<IClientSponsorsManager>(); // Alteros-Sponsors
-                if (proto.Requirements != null &&
-                    !requirements.CheckRoleTime(proto.Requirements, out var reason) &&
-                    !sponsors.Prototypes.Contains(proto.ID))
+                if (sponsors.Prototypes.Contains(proto.ID))
                 {
-                    LockRequirements(reason);
+                    if (proto.Requirements != null &&
+                        !requirements.CheckRoleTime(proto.Requirements, out var reason))
+                    {
+                        LockRequirements(reason);
+                    }
                 }
             }
         }
