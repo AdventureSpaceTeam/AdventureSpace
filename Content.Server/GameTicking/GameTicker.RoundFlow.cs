@@ -400,8 +400,6 @@ namespace Content.Server.GameTicking
             var listOfPlayerInfoFinal = listOfPlayerInfo.OrderBy(pi => pi.PlayerOOCName).ToArray();
             var sound = RoundEndSoundCollection == null ? null : _audio.GetSound(new SoundCollectionSpecifier(RoundEndSoundCollection));
 
-            var roundStats = _statsBoardSystem.GetRoundStats();
-
             var roundEndMessageEvent = new RoundEndMessageEvent(
                 gamemodeTitle,
                 roundEndText,
@@ -409,7 +407,6 @@ namespace Content.Server.GameTicking
                 RoundId,
                 listOfPlayerInfoFinal.Length,
                 listOfPlayerInfoFinal,
-                roundStats,
                 sound
             );
             RaiseNetworkEvent(roundEndMessageEvent);
