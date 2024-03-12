@@ -3,7 +3,6 @@
   abstract: true
   id: MobSiliconBase
   components:
-  - type: StatsBoard
   - type: LagCompensation
   - type: Reactive
     groups:

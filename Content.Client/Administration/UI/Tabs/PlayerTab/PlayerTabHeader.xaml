@@ -5,24 +5,31 @@
                   HorizontalExpand="True"
                   SeparationOverride="4">
         <Label Name="UsernameLabel"
-               SizeFlagsStretchRatio="3"
+               SizeFlagsStretchRatio="5"
                HorizontalExpand="True"
                ClipText="True"
                Text="{Loc player-tab-username}"
                MouseFilter="Pass"/>
         <cc:VSeparator/>
         <Label Name="CharacterLabel"
-               SizeFlagsStretchRatio="3"
+               SizeFlagsStretchRatio="4"
                HorizontalExpand="True"
                ClipText="True"
                Text="{Loc player-tab-character}"
                MouseFilter="Pass"/>
         <cc:VSeparator/>
         <Label Name="JobLabel"
-               SizeFlagsStretchRatio="3"
+               SizeFlagsStretchRatio="4"
                HorizontalExpand="True"
                ClipText="True"
                Text="{Loc player-tab-job}"
+               MouseFilter="Pass"/>
+        <cc:VSeparator/>
+        <Label Name="SponsorLabel"
+               SizeFlagsStretchRatio="5"
+               HorizontalExpand="True"
+               ClipText="True"
+               Text="{Loc player-tab-sponsor}"
                MouseFilter="Pass"/>
         <cc:VSeparator/>
         <Label Name="AntagonistLabel"
@@ -31,8 +38,9 @@
                ClipText="True"
                Text="{Loc player-tab-antagonist}"
                MouseFilter="Pass"/>
+        <cc:VSeparator/>
         <Label Name="PlaytimeLabel"
-               SizeFlagsStretchRatio="2"
+               SizeFlagsStretchRatio="4"
                HorizontalExpand="True"
                ClipText="True"
                Text="{Loc player-tab-playtime}"

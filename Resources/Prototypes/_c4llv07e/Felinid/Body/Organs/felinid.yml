@@ -1,0 +1,57 @@
+- type: entity
+  id: OrganFelinidHeart
+  parent: OrganHumanHeart
+  name: felinid heart
+  components:
+  - type: Metabolizer
+    metabolizerTypes: [Felinid]
+    groups:
+    - id: Medicine
+      rateModifier: 1.25
+    - id: Poison
+      rateModifier: 1.25
+    - id: Narcotic
+      rateModifier: 1.25
+
+- type: entity
+  id: OrganFelinidLiver
+  parent: OrganHumanLiver
+  name: felinid liver
+  components:
+  - type: Metabolizer
+    metabolizerTypes: [Felinid]
+    groups:
+    - id: Alcohol
+      rateModifier: 0.1
+
+- type: entity
+  id: OrganFelinidStomach
+  parent: OrganHumanStomach
+  name: felinid stomach
+  components:
+  - type: Sprite
+    state: stomach
+  - type: Organ
+  - type: SolutionContainerManager
+    solutions:
+      stomach:
+        maxVol: 50
+      food:
+        maxVol: 5
+        reagents:
+        - ReagentId: UncookedAnimalProteins
+          Quantity: 5
+  - type: Stomach
+  - type: Metabolizer
+    # mm very yummy
+    maxReagents: 3
+    metabolizerTypes: [Felinid]
+    groups:
+        - id: Food
+          rateModifier: 1.25
+        - id: Drink
+          rateModifier: 1.25
+
+- type: metabolizerType
+  id: Felinid
+  name: felinid

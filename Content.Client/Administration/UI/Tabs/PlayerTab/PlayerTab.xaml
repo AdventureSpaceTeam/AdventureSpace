@@ -3,7 +3,11 @@
          xmlns:cc="clr-namespace:Content.Client.Administration.UI.CustomControls">
     <BoxContainer Orientation="Vertical">
         <BoxContainer Orientation="Horizontal">
-            <Label Name="PlayerCount" HorizontalExpand="True" SizeFlagsStretchRatio="0.50"
+            <Label Name="PlayerCount" HorizontalExpand="True" SizeFlagsStretchRatio="0.15"
+                   Text="{Loc Player Count}" />
+            <Label Name="SponsorCount" HorizontalExpand="True" SizeFlagsStretchRatio="0.15"
+                   Text="{Loc Player Count}" />
+            <Label Name="AntagCount" HorizontalExpand="True" SizeFlagsStretchRatio="0.15"
                    Text="{Loc Player Count}" />
             <Button Name="ShowDisconnectedButton" HorizontalExpand="True" SizeFlagsStretchRatio="0.25"
                     Text="{Loc player-tab-show-disconnected}" ToggleMode="True"/>

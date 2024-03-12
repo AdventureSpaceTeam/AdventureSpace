@@ -1,0 +1,77 @@
+- type: entity
+  save: false
+  name: Urist McHands The Felinid
+  parent: BaseMobSpeciesOrganic
+  id: BaseMobFelinid
+  abstract: true
+  components:
+  - type: HumanoidAppearance
+    species: Felinid
+  - type: Hunger
+  - type: Thirst
+  - type: Icon
+    sprite: Mobs/Species/Slime/parts.rsi # It was like this beforehand, no idea why.
+    state: full
+  - type: Respirator
+    damage:
+      types:
+        Asphyxiation: 2
+    damageRecovery:
+      types:
+        Asphyxiation: -1.0
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    scale: 0.85, 0.85
+  - type: Body
+    prototype: Felinid
+    requiredLegs: 2
+  - type: Butcherable
+    butcheringType: Spike
+    spawned:
+    - id: FoodMeatHuman
+      amount: 5
+  - type: Fixtures
+    fixtures: # TODO: This needs a second fixture just for mob collisions.
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        # they r smaller
+        density: 120
+        restitution: 0.0
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: MeleeWeapon
+    soundHit:
+      path: /Audio/Weapons/pierce.ogg
+    angle: 30
+    animation: WeaponArcClaw
+    damage:
+      types:
+        Slash: 5
+  - type: OwOAccent
+  - type: Speech
+    speechSounds: Cat
+  - type: Vocal
+    sounds:
+      Male: MaleFelinid
+      Female: FemaleFelinid
+      Unsexed: MaleFelinid
+  - type: MovementSpeedModifier
+    weightlessAcceleration: 0.7
+    weightlessFriction: 3
+    weightlessModifier: 1
+
+
+- type: entity
+  parent: BaseSpeciesDummy
+  id: MobFelinidDummy
+  noSpawn: true
+  components:
+  - type: HumanoidAppearance
+    species: Felinid
+  - type: Sprite
+    scale: 0.85, 0.85

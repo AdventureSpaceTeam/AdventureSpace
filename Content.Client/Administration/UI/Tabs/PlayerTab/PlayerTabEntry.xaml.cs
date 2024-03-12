@@ -10,7 +10,7 @@ public sealed partial class PlayerTabEntry : ContainerButton
 {
     public NetEntity? PlayerEntity;
 
-    public PlayerTabEntry(string username, string character, string identity, string job, string antagonist, StyleBox styleBox, bool connected, string overallPlaytime)
+    public PlayerTabEntry(string username, string character, string identity, string job, string sponsor, string antagonist, StyleBox styleBox, bool connected, string overallPlaytime)
     {
         RobustXamlLoader.Load(this);
 
@@ -21,6 +21,7 @@ public sealed partial class PlayerTabEntry : ContainerButton
         CharacterLabel.Text = character;
         if (identity != character)
             CharacterLabel.Text += $" [{identity}]";
+        SponsorLabel.Text = sponsor;
         AntagonistLabel.Text = antagonist;
         BackgroundColorPanel.PanelOverride = styleBox;
         OverallPlaytimeLabel.Text = overallPlaytime;

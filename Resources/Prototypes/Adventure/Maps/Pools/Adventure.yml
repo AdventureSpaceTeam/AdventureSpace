@@ -1,17 +1,26 @@
 - type: gameMapPool
   id: AdventureMapPool
   maps:
-  - CorvaxAvrite
-  - CorvaxDelta
-  - CorvaxGate
-  - CorvaxSpectrum
-  - CorvaxSilly
+  - Atlas
   - Bagel
   - Box
   - Cluster
+  - Core
+  - CorvaxAstra
+  - CorvaxAvrite
+  - CorvaxDelta
+  - CorvaxGate
+  - CorvaxMaus
+  - CorvaxOutpost
+  - CorvaxSilly
+  - CorvaxSpectrum
+  - CorvaxSilly
   - Fland
+  - Marathon
   - Meta
   - Omega
-  - Atlas
+  - Origin
   - Reach
+  - Saltern
   - Starquest
+  - Train
