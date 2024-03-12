@@ -163,6 +163,7 @@
     contents:
       - id: NamedPillHyronalin
       - id: PillCharcoal
+      - id: NamedPillDexalin
       - id: Brutepack1
         amount: 2
       - id: Gauze

@@ -25,6 +25,8 @@ public sealed partial class TTSSystem : EntitySystem
 
     private void OnAnnounceTTSPlay(AnnounceTTSEvent ev)
     {
+        if (VolumeAnnounce == 0.0f)
+            return;
         // Early creation of entities can lead to crashes, so we postpone it as much as possible
         if (AnnouncementUid == EntityUid.Invalid)
             AnnouncementUid = Spawn(null);

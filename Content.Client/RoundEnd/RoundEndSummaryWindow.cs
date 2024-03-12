@@ -20,7 +20,7 @@ namespace Content.Client.RoundEnd
         {
             _entityManager = entityManager;
 
-            MinSize = SetSize = new Vector2(700, 600);
+            MinSize = SetSize = new Vector2(520, 580);
 
             Title = Loc.GetString("round-end-summary-window-title");
 
@@ -34,6 +34,7 @@ namespace Content.Client.RoundEnd
             var roundEndTabs = new TabContainer();
             roundEndTabs.AddChild(MakeRoundEndSummaryTab(gm, roundEnd, roundTimeSpan, roundId));
             roundEndTabs.AddChild(MakePlayerManifestTab(info));
+
             Contents.AddChild(roundEndTabs);
 
             OpenCenteredRight();
@@ -165,39 +166,6 @@ namespace Content.Client.RoundEnd
             playerManifestTab.AddChild(playerInfoContainerScrollbox);
 
             return playerManifestTab;
-        }
-
-
-        private BoxContainer MakeRoundEndStatsTab(string stats)
-        {
-            var roundEndSummaryTab = new BoxContainer
-            {
-                Orientation = LayoutOrientation.Vertical,
-                Name = Loc.GetString("round-end-summary-window-stats-tab-title")
-            };
-
-            var roundEndSummaryContainerScrollbox = new ScrollContainer
-            {
-                VerticalExpand = true,
-                Margin = new Thickness(10)
-            };
-            var roundEndSummaryContainer = new BoxContainer
-            {
-                Orientation = LayoutOrientation.Vertical
-            };
-
-            //Round end text
-            if (!string.IsNullOrEmpty(stats))
-            {
-                var statsLabel = new RichTextLabel();
-                statsLabel.SetMarkup(stats);
-                roundEndSummaryContainer.AddChild(statsLabel);
-            }
-
-            roundEndSummaryContainerScrollbox.AddChild(roundEndSummaryContainer);
-            roundEndSummaryTab.AddChild(roundEndSummaryContainerScrollbox);
-
-            return roundEndSummaryTab;
         }
     }
 
