@@ -139,7 +139,7 @@ namespace Content.Client.GameTicking.Managers
                 return;
 
             //This is not ideal at all, but I don't see an immediately better fit anywhere else.
-            _window = new RoundEndSummaryWindow(message.GamemodeTitle, message.RoundEndText, message.RoundDuration, message.RoundId, message.AllPlayersEndInfo, _entityManager);
+            _window = new RoundEndSummaryWindow(message.GamemodeTitle, message.RoundEndText, message.RoundDuration, message.RoundId, message.AllPlayersEndInfo, message.RoundEndStats, message.StatisticEntries, _entityManager, _playerManager);
         }
     }
 }
