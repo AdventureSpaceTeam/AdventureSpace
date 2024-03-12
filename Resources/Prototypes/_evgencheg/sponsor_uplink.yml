@@ -66,14 +66,6 @@
   - SponsorThings
 
 - type: listing
-  id: UplinkSponsorCloth4
-  productEntity: ClothingOuterCoatHoSOvercoat
-  cost:
-    DonateCrystal: 5
-  categories:
-  - SponsorThings
-
-- type: listing
   id: UplinkSponsorCloth5
   productEntity: ClothingOuterCoatUSSPOvercoatBlack
   cost:
