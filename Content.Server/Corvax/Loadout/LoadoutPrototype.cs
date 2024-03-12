@@ -3,7 +3,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.List;
 
-namespace Content.Shared.Corvax.Loadout;
+namespace Content.Server.Corvax.Loadout;
 
 [Prototype("loadout")]
 public sealed class LoadoutItemPrototype : IPrototype
