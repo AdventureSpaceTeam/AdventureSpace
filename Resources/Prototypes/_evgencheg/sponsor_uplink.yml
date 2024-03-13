@@ -66,7 +66,7 @@
   - SponsorThings
 
 - type: listing
-  id: UplinkSponsorCloth5
+  id: UplinkSponsorCloth4
   productEntity: ClothingOuterCoatUSSPOvercoatBlack
   cost:
     DonateCrystal: 5
@@ -74,15 +74,7 @@
   - SponsorThings
 
 - type: listing
-  id: UplinkSponsorCloth6
-  productEntity: ClothingHandsGlovesLeatherUSSPBlack
-  cost:
-    DonateCrystal: 2
-  categories:
-  - SponsorThings
-
-- type: listing
-  id: UplinkSponsorCloth7
+  id: UplinkSponsorCloth5
   productEntity: ClothingUniformJumpsuitUSSPBlack
   cost:
     DonateCrystal: 3
@@ -90,7 +82,7 @@
   - SponsorThings
 
 - type: listing
-  id: UplinkSponsorCloth8
+  id: UplinkSponsorCloth6
   productEntity: ClothingCloakGreenLegendarySponsor
   cost:
     DonateCrystal: 5
@@ -98,7 +90,7 @@
   - SponsorThings
 
 - type: listing
-  id: UplinkSponsorCloth9
+  id: UplinkSponsorCloth7
   productEntity: ClothingCloakBlackLegendarySponsor
   cost:
     DonateCrystal: 5
@@ -106,7 +98,7 @@
   - SponsorThings
 
 - type: listing
-  id: UplinkSponsorCloth10  # 10, yay!!
+  id: UplinkSponsorCloth8
   productEntity: ClothingCloakVavevSponsor
   cost:
     DonateCrystal: 6
@@ -125,7 +117,7 @@
 - type: entity
   parent: BaseItem
   id: DonateUplink
-  name: адвенчурплинк
+  name: адвенчурлинк
   suffix: 30
   components:
   - type: Sprite
