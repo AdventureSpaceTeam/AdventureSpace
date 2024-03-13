@@ -210,7 +210,7 @@
     guides:
       - Cyborgs
   - type: TTS # Corvax-TTS
-    voice: Glados
+    voice: glados
 
 - type: entity
   id: BaseBorgChassisNT

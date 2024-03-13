@@ -221,7 +221,7 @@
   - type: Inventory
     templateId: borgDutch
   - type: TTS # Corvax-TTS
-    voice: Glados
+    voice: glados
 
 - type: entity
   id: BorgChassisService
