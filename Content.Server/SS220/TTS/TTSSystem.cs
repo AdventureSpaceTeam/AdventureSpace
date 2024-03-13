@@ -82,13 +82,13 @@ public sealed partial class TTSSystem : EntitySystem
             args.Message.Length > MaxMessageChars * 2 ||
             !GetVoicePrototype(_voiceId, out var protoVoice))
         {
-            RaiseNetworkEvent(new AnnounceTTSEvent(new byte[] { }, args.AnnouncementSound, args.AnnouncementSoundParams), args.Source);
+            RaiseNetworkEvent(new AnnounceTTSEvent(new byte[] { }, args.AnnouncementSound, args.AnnouncementSoundParams), args.Source.RemovePlayers(_ignoredRecipients));
             return;
         }
 
         var soundData = await GenerateTTS(args.Message, protoVoice.Speaker, false, false, true);
         soundData ??= new byte[] { };
-        RaiseNetworkEvent(new AnnounceTTSEvent(soundData, args.AnnouncementSound, args.AnnouncementSoundParams), args.Source);
+        RaiseNetworkEvent(new AnnounceTTSEvent(soundData, args.AnnouncementSound, args.AnnouncementSoundParams), args.Source.RemovePlayers(_ignoredRecipients));
     }
 
     private void OnRoundRestartCleanup(RoundRestartCleanupEvent ev)
