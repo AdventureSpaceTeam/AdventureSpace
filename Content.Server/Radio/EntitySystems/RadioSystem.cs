@@ -196,6 +196,10 @@ public sealed class RadioSystem : EntitySystem
         var idCardTitle = Loc.GetString("chat-radio-no-id");
         idCardTitle = GetIdCard(senderUid)?.JobTitle ?? idCardTitle;
 
+        if (TryComp<RadioNameComponent>(senderUid, out var radioName) &&
+            radioName.Name != string.Empty)
+            idCardTitle = radioName.Name;
+
         var textInfo = CultureInfo.CurrentCulture.TextInfo;
         idCardTitle = textInfo.ToTitleCase(idCardTitle);
 
