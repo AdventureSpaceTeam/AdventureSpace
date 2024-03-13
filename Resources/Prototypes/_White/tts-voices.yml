@@ -1,643 +1,770 @@
 - type: ttsVoice
-  id: Aidar
-  name: tts-voice-name-aidar
+  name: Папич
+  description: Голос популярного стримера Папича
   sex: Male
-  speaker: aidar
+  speaker: papich
+  id: papich
 
 - type: ttsVoice
-  id: Eugene
-  name: tts-voice-name-eugene
-  sex: Male
-  speaker: eugene
-
-- type: ttsVoice
-  id: Baya
-  name: tts-voice-name-baya
-  sex: Female
-  speaker: baya
-
-- type: ttsVoice
-  id: Kseniya
-  name: tts-voice-name-kseniya
-  sex: Female
-  speaker: kseniya
-
-- type: ttsVoice
-  id: Xenia
-  name: tts-voice-name-xenia
-  sex: Female
-  speaker: xenia
-
-- type: ttsVoice
-  id: Charlotte
-  name: tts-voice-name-charlotte
-  sex: Female
-  speaker: charlotte
-
-- type: ttsVoice
-  id: Bebey
-  name: tts-voice-name-bebey
+  name: Бэбэй
+  description: Голос популярного стримера Бэбэя
   sex: Male
   speaker: bebey
+  id: bebey
 
 - type: ttsVoice
-  id: Biden
-  name: tts-voice-name-biden
-  sex: Male
-  speaker: biden
-
-#- type: ttsVoice
-#  id: Ddr2
-#  name: tts-voice-name-ddr2
-#  sex: Male
-#  speaker: ddr2
-
-- type: ttsVoice
-  id: Papa
-  name: tts-voice-name-papa
-  sex: Male
-  speaker: papa
-
-- type: ttsVoice
-  id: Mykyta
-  name: tts-voice-name-mykyta
-  sex: Male
-  speaker: mykyta
-
-- type: ttsVoice
-  id: Glados
-  name: tts-voice-name-glados
-  sex: Female
-  speaker: glados
-  roundStart: false
-
-- type: ttsVoice
-  id: Sentrybot
-  name: tts-voice-name-sentrybot
-  sex: Male
-  speaker: sentrybot
-  roundStart: false
-
-- type: ttsVoice
-  id: Mana
-  name: tts-voice-name-mana
-  sex: Female
-  speaker: mana
-
-- type: ttsVoice
-  id: Soldier
-  name: tts-voice-name-soldier
-  sex: Male
-  speaker: soldier
-
-- type: ttsVoice
-  id: Planya
-  name: tts-voice-name-planya
-  sex: Female
-  speaker: planya
-
-- type: ttsVoice
-  id: Amina
-  name: tts-voice-name-amina
-  sex: Female
-  speaker: amina
-
-- type: ttsVoice
-  id: AdventureCore
-  name: tts-voice-name-adventure-core
-  sex: Male
-  speaker: adventure_core
-  roundStart: false
-
-- type: ttsVoice
-  id: SpaceCore
-  name: tts-voice-name-space-core
-  sex: Male
-  speaker: space_core
-  roundStart: false
-
-- type: ttsVoice
-  id: FactCore
-  name: tts-voice-name-fact-core
-  sex: Male
-  speaker: fact_core
-  roundStart: false
-
-- type: ttsVoice
-  id: Kleiner
-  name: tts-voice-name-kleiner
-  sex: Male
-  speaker: kleiner
-
-- type: ttsVoice
-  id: Dbkn
-  name: tts-voice-name-dbkn
-  sex: Male
-  speaker: dbkn
-
-- type: ttsVoice
-  id: Neco
-  name: tts-voice-name-neco
-  sex: Female
-  speaker: neco
-
-- type: ttsVoice
-  id: Gman
-  name: tts-voice-name-gman
-  sex: Male
-  speaker: gman
-
-- type: ttsVoice
-  id: Obama
-  name: tts-voice-name-obama
-  sex: Male
-  speaker: obama
-
-- type: ttsVoice
-  id: Trump
-  name: tts-voice-name-trump
-  sex: Male
-  speaker: trump
-
-- type: ttsVoice
-  id: Briman
-  name: tts-voice-name-briman
-  sex: Male
-  speaker: briman
-
-- type: ttsVoice
-  id: FatherGrigori
-  name: tts-voice-name-father-grigori
-  sex: Male
-  speaker: father_grigori
-
-- type: ttsVoice
-  id: Vance
-  name: tts-voice-name-vance
-  sex: Male
-  speaker: vance
-
-- type: ttsVoice
-  id: Barni
-  name: tts-voice-name-barni
-  sex: Male
-  speaker: barni
-
-- type: ttsVoice
-  id: Alyx
-  name: tts-voice-name-alyx
-  sex: Female
-  speaker: alyx
-
-- type: ttsVoice
-  id: Mossman
-  name: tts-voice-name-mossman
-  sex: Female
-  speaker: mossman
-
-- type: ttsVoice
-  id: Bandit
-  name: tts-voice-name-bandit
-  sex: Male
-  speaker: bandit
-
-- type: ttsVoice
-  id: Geralt
-  name: tts-voice-name-geralt
-  sex: Male
-  speaker: geralt
-
-- type: ttsVoice
-  id: Triss
-  name: tts-voice-name-triss
-  sex: Female
-  speaker: triss
-
-- type: ttsVoice
-  id: KodlakWhiteMane
-  name: tts-voice-name-kodlak-white-mane
-  sex: Male
-  speaker: kodlakwhitemane
-
-- type: ttsVoice
-  id: Cicero
-  name: tts-voice-name-cicero
-  sex: Male
-  speaker: cicero
-
-- type: ttsVoice
-  id: Sheogorath
-  name: tts-voice-name-sheogorath
-  sex: Male
-  speaker: sheogorath
-
-- type: ttsVoice
-  id: TurretFloor
-  name: tts-voice-name-turret-floor
-  sex: Female
-  speaker: turret_floor
-  roundStart: false
-
-- type: ttsVoice
-  id: Cirilla
-  name: tts-voice-name-cirilla
-  sex: Female
-  speaker: cirilla
-
-- type: ttsVoice
-  id: Lambert
-  name: tts-voice-name-lambert
-  sex: Male
-  speaker: lambert
-
-- type: ttsVoice
-  id: Polina
-  name: tts-voice-name-polina
-  sex: Female
-  speaker: polina
-
-- type: ttsVoice
-  id: Arthas
-  name: tts-voice-name-arthas
-  sex: Male
-  speaker: arthas
-
-- type: ttsVoice
-  id: Xrenoid
-  name: tts-voice-name-xrenoid
-  sex: Male
-  speaker: xrenoid
-
-- type: ttsVoice
-  id: Azir
-  name: tts-voice-name-azir
-  sex: Male
-  speaker: azir
-
-- type: ttsVoice
-  id: Caitlyn
-  name: tts-voice-name-caitlyn
-  sex: Female
-  speaker: caitlyn
-
-- type: ttsVoice
-  id: Ekko
-  name: tts-voice-name-ekko
-  sex: Male
-  speaker: ekko
-
-- type: ttsVoice
-  id: Twitch
-  name: tts-voice-name-twitch
-  sex: Male
-  speaker: twitch
-
-- type: ttsVoice
-  id: Strelok
-  name: tts-voice-name-strelok
-  sex: Male
-  speaker: strelok
-
-- type: ttsVoice
-  id: Ziggs
-  name: tts-voice-name-ziggs
-  sex: Male
-  speaker: ziggs
-
-- type: ttsVoice
-  id: Tracer
-  name: tts-voice-name-tracer
-  sex: Female
-  speaker: tracer
-
-- type: ttsVoice
-  id: Illidan
-  name: tts-voice-name-illidan
-  sex: Male
-  speaker: illidan
-
-- type: ttsVoice
-  id: Rexxar
-  name: tts-voice-name-rexxar
-  sex: Male
-  speaker: rexxar
-
-- type: ttsVoice
-  id: Voljin
-  name: tts-voice-name-voljin
-  sex: Male
-  speaker: voljin
-
-- type: ttsVoice
-  id: Forester
-  name: tts-voice-name-forester
-  sex: Male
-  speaker: forester
-
-- type: ttsVoice
-  id: Sidorovich
-  name: tts-voice-name-sidorovich
-  sex: Male
-  speaker: sidorovich
-
-- type: ttsVoice
-  id: TfEngineer
-  name: tts-voice-name-tf-engineer
-  sex: Male
-  speaker: engineer
-
-- type: ttsVoice
-  id: TfHeavy
-  name: tts-voice-name-tf-heavy
-  sex: Male
-  speaker: heavy
-
-- type: ttsVoice
-  id: TfMedic
-  name: tts-voice-name-tf-medic
-  sex: Male
-  speaker: medic
-
-- type: ttsVoice
-  id: TfSniper
-  name: tts-voice-name-tf-sniper
-  sex: Male
-  speaker: sniper
-
-- type: ttsVoice
-  id: TfSpy
-  name: tts-voice-name-tf-spy
-  sex: Male
-  speaker: spy
-
-- type: ttsVoice
-  id: TfDemoman
-  name: tts-voice-name-tf-demoman
-  sex: Male
-  speaker: demoman
-
-- type: ttsVoice
-  id: Valtos
-  name: tts-voice-name-valtos
-  sex: Female
-  speaker: valtos
-
-- type: ttsVoice
-  id: Khajiit
-  name: tts-voice-name-khajiit
-  sex: Male
-  speaker: khajiit
-
-- type: ttsVoice
-  id: Punisher
-  name: tts-voice-name-punisher
-  sex: Male
-  speaker: punisher
-
-- type: ttsVoice
-  id: Johnny
-  name: tts-voice-name-johnny
-  sex: Male
-  speaker: johnny
-
-- type: ttsVoice
-  id: Panam
-  name: tts-voice-name-panam
-  sex: Female
-  speaker: panam
-
-- type: ttsVoice
-  id: Dornan
-  name: tts-voice-name-dornan
-  sex: Male
-  speaker: dornan
-
-- type: ttsVoice
-  id: VFemale
-  name: tts-voice-name-v-female
-  sex: Female
-  speaker: v_female
-
-- type: ttsVoice
-  id: OfficerEnclave
-  name: tts-voice-name-officer-enclave
-  sex: Male
-  speaker: officer_enclave
-  roundStart: false
-
-- type: ttsVoice
-  id: Richardson
-  name: tts-voice-name-richardson
-  sex: Male
-  speaker: richardson
-
-- type: ttsVoice
-  id: Elenwen
-  name: tts-voice-name-elenwen
-  sex: Female
-  speaker: elenwen
-
-- type: ttsVoice
-  id: EmperorTit
-  name: tts-voice-name-emperor-tit
-  sex: Male
-  speaker: emperor
-
-- type: ttsVoice
-  id: GuardSkyrim
-  name: tts-voice-name-guard-skyrim
-  sex: Male
-  speaker: guard
-
-- type: ttsVoice
-  id: Hagraven
-  name: tts-voice-name-hagraven
-  sex: Male
-  speaker: hagraven
-
-- type: ttsVoice
-  id: HermaeusMora
-  name: tts-voice-name-hermaeus-mora
-  sex: Male
-  speaker: hermaeus_mora
-
-- type: ttsVoice
-  id: Nord
-  name: tts-voice-name-nord
-  sex: Male
-  speaker: nord
-
-- type: ttsVoice
-  id: Ulfric
-  name: tts-voice-name-ulfric
-  sex: Male
-  speaker: ulfric
-
-- type: ttsVoice
-  id: GoodThalya
-  name: tts-voice-name-good-thalya
-  sex: Female
-  speaker: good_thalya
-
-- type: ttsVoice
-  id: Cerys
-  name: tts-voice-name-cerys
-  sex: Female
-  speaker: cerys
-
-- type: ttsVoice
-  id: Judy
-  name: tts-voice-name-judy
-  sex: Female
-  speaker: judy
-
-- type: ttsVoice
-  id: Mitch
-  name: tts-voice-name-mitch
-  sex: Male
-  speaker: mitch
-
-- type: ttsVoice
-  id: Skippy
-  name: tts-voice-name-skippy
-  sex: Male
-  speaker: skippy
-
-- type: ttsVoice
-  id: Butch
-  name: tts-voice-name-butch
-  sex: Male
-  speaker: butch
-
-- type: ttsVoice
-  id: Marcus
-  name: tts-voice-name-marcus
-  sex: Male
-  speaker: marcus
-
-- type: ttsVoice
-  id: Sulik
-  name: tts-voice-name-sulik
-  sex: Male
-  speaker: sulik
-
-- type: ttsVoice
-  id: Astrid
-  name: tts-voice-name-astrid
-  sex: Female
-  speaker: astrid
-
-- type: ttsVoice
-  id: Maven
-  name: tts-voice-name-maven
-  sex: Female
-  speaker: maven
-
-- type: ttsVoice
-  id: Nazir
-  name: tts-voice-name-nazir
-  sex: Male
-  speaker: nazir
-
-- type: ttsVoice
-  id: Jackie
-  name: tts-voice-name-jackie
-  sex: Male
-  speaker: jackie
-
-- type: ttsVoice
-  id: EvilThalya
-  name: tts-voice-name-evil-thalya
-  sex: Female
-  speaker: evil_thalya
-
-- type: ttsVoice
-  id: PostalDude
-  name: tts-voice-name-dude
-  sex: Male
-  speaker: dude
-
-- type: ttsVoice
-  id: Anduin
-  name: tts-voice-name-anduin
-  sex: Male
-  speaker: anduin
-
-- type: ttsVoice
-  id: Brukan
-  name: tts-voice-name-brukan
-  sex: Male
-  speaker: brukan
-
-- type: ttsVoice
-  id: Puchkow
-  name: tts-voice-name-puchkow
+  name: Дмитрий Пучков
+  description: 
   sex: Male
   speaker: puchkow
+  id: puchkow
 
 - type: ttsVoice
-  id: Moriarti
-  name: tts-voice-name-moriarti
+  name: Мориарти
+  description: 
   sex: Male
   speaker: moriarti
+  id: moriarti
 
 - type: ttsVoice
-  id: NecoArcTwo
-  name: tts-voice-name-neco-arc-two
+  name: Шарлотта
+  description: Голос виртуального ютубера Charlotte Ch
+  sex: Female
+  speaker: charlotte
+  id: charlotte
+
+- type: ttsVoice
+  name: Планя
+  description: Голос виртуального ютубера Planya Ch
+  sex: Female
+  speaker: planya
+  id: planya
+
+- type: ttsVoice
+  name: Мана
+  description: Голос виртуального ютубера Mana Renewal
+  sex: Female
+  speaker: mana
+  id: mana
+
+- type: ttsVoice
+  name: Амина
+  description: Голос виртуального ютубера St. Amina Renewal
+  sex: Female
+  speaker: amina
+  id: amina
+
+- type: ttsVoice
+  name: Джо Байден
+  description: Голос американского президента Джо Байдена
+  sex: Male
+  speaker: biden
+  id: biden
+
+- type: ttsVoice
+  name: Барак Обама
+  description: Голос американского президента Барака Обамы
+  sex: Male
+  speaker: obama
+  id: obama
+
+- type: ttsVoice
+  name: Дональд Трамп
+  description: Голос американского президента Дональда Трампа
+  sex: Male
+  speaker: trump
+  id: trump
+
+- type: ttsVoice
+  name: Добакин
+  description: Голос начинающего диктора Добакина
+  sex: Male
+  speaker: dbkn
+  id: dbkn
+
+- type: ttsVoice
+  name: Хреноид
+  description: Голос начинающего диктора Хреноида
+  sex: Male
+  speaker: xrenoid
+  id: xrenoid
+
+- type: ttsVoice
+  name: Валтос
+  description: Голос начинающего диктора Валтоса
+  sex: Female
+  speaker: valtos
+  id: valtos
+
+- type: ttsVoice
+  name: Уоллес Брин
+  description: Голос персонажа Уоллес Брин из игры Half-Life 2
+  sex: Male
+  speaker: briman
+  id: briman
+
+- type: ttsVoice
+  name: Отец Григорий
+  description: Голос персонажа Отец Григорий из игры Half-Life 2
+  sex: Male
+  speaker: father_grigori
+  id: father_grigori
+
+- type: ttsVoice
+  name: Доктор Кляйнер
+  description: Голос персонажа Доктор Кляйнер из игры Half-Life 2
+  sex: Male
+  speaker: kleiner
+  id: kleiner
+
+- type: ttsVoice
+  name: Джудит Моссман
+  description: Голос персонажа Джудит Моссман из игры Half-Life 2
+  sex: Female
+  speaker: mossman
+  id: mossman
+
+- type: ttsVoice
+  name: Илай Вэнс
+  description: Голос персонажа Илай Вэнс из игры Half-Life 2
+  sex: Male
+  speaker: vance
+  id: vance
+
+- type: ttsVoice
+  name: Аликс Вэнс
+  description: Голос персонажа Аликс Вэнс из игры Half-Life 2
+  sex: Female
+  speaker: alyx
+  id: alyx
+
+- type: ttsVoice
+  name: G-Man
+  description: Голос персонажа G-Man из игры Half-Life 2
+  sex: Male
+  speaker: gman
+  id: gman
+
+- type: ttsVoice
+  name: Барни Калхун
+  description: Голос персонажа Барни Калхун из игры Half-Life 2
+  sex: Male
+  speaker: barni
+  id: barni
+
+- type: ttsVoice
+  name: Неко-Арк
+  description: Голос персонажа Неко-Арк из Fate
+  sex: Female
+  speaker: neco
+  id: neco
+
+- type: ttsVoice
+  name: Неко-Арк 2
+  description: Голос персонажа Неко-Арк из Fate
   sex: Female
   speaker: neco_arc_2
+  id: neco_arc_2
 
 - type: ttsVoice
-  id: AngryNecoArc
-  name: tts-voice-name-angry-neco-arc
+  name: Злая Неко-Арк
+  description: Злой голос персонажа Неко-Арк из Fate
   sex: Female
   speaker: angry_neco_arc
+  id: angry_neco_arc
 
 - type: ttsVoice
-  id: Squidward
-  name: tts-voice-name-squidward
-  sex: Male
-  speaker: squidward
-
-- type: ttsVoice
-  id: Garrosh
-  name: tts-voice-name-garrosh
-  sex: Male
-  speaker: garrosh
-
-- type: ttsVoice
-  id: Jaina
-  name: tts-voice-name-jaina
-  sex: Female
-  speaker: jaina
-
-- type: ttsVoice
-  id: Adjutant
-  name: tts-voice-name-adjutant
-  sex: Female
-  speaker: adjutant
-
-- type: ttsVoice
-  id: Hanson
-  name: tts-voice-name-hanson
-  sex: Female
-  speaker: hanson
-
-- type: ttsVoice
-  id: Bralik
-  name: tts-voice-name-bralik
-  sex: Male
-  speaker: bralik
-
-- type: ttsVoice
-  id: Horner
-  name: tts-voice-name-horner
-  sex: Male
-  speaker: horner
-
-- type: ttsVoice
-  id: Villager
-  name: tts-voice-name-villager
+  name: Житель
+  description: Голос персонажа Житель из игры Minecraft
   sex: Male
   speaker: villager
-  roundStart: false
+  id: villager
+
+- type: ttsVoice
+  name: Сквидвард
+  description: Голос персонажа Сквидвард из мультфильма Губка Боб
+  sex: Male
+  speaker: squidward
+  id: squidward
+
+- type: ttsVoice
+  name: SentryBot
+  description: Голос персонажа SentryBot из Fallout 3
+  sex: Male
+  speaker: sentrybot
+  id: sentrybot
+
+- type: ttsVoice
+  name: Полина
+  description: Голос персонажа Полина из игры Tiny Bunny
+  sex: Female
+  speaker: polina
+  id: polina
+
+- type: ttsVoice
+  name: Цицерон
+  description: Голос персонажа Цицерон из игры TES 5 Skyrim
+  sex: Male
+  speaker: cicero
+  id: cicero
+
+- type: ttsVoice
+  name: Шеогорат
+  description: Голос персонажа Шеогорат из игры TES 5 Skyrim
+  sex: Male
+  speaker: sheogorath
+  id: sheogorath
+
+- type: ttsVoice
+  name: Кодлак Белая Грива
+  description: Голос персонажа Кодлак Белая Грива из игры TES 5 Skyrim
+  sex: Male
+  speaker: kodlakwhitemane
+  id: kodlakwhitemane
+
+- type: ttsVoice
+  name: Каджит
+  description: Голос персонажа Каджит из игры TES 5 Skyrim
+  sex: Male
+  speaker: khajiit
+  id: khajiit
+
+- type: ttsVoice
+  name: Эленвен
+  description: Голос персонажа Эленвен из игры TES 5 Skyrim
+  sex: Female
+  speaker: elenwen
+  id: elenwen
+
+- type: ttsVoice
+  name: Тит Мид II
+  description: Голос персонажа Тит Мид II из игры TES 5 Skyrim
+  sex: Male
+  speaker: emperor
+  id: emperor
+
+- type: ttsVoice
+  name: Стражник
+  description: Голос Стражников из игры TES 5 Skyrim
+  sex: Male
+  speaker: guard
+  id: guard
+
+- type: ttsVoice
+  name: Ворожея
+  description: Голос Ворожей из игры TES 5 Skyrim
+  sex: Male
+  speaker: hagraven
+  id: hagraven
+
+- type: ttsVoice
+  name: Хермеус Мора
+  description: Голос персонажа Хермеус Мора из игры TES 5 Skyrim
+  sex: Male
+  speaker: hermaeus_mora
+  id: hermaeus_mora
+
+- type: ttsVoice
+  name: Норд
+  description: Голос Нордов из игры TES 5 Skyrim
+  sex: Male
+  speaker: nord
+  id: nord
+
+- type: ttsVoice
+  name: Ульфрик Буревестник
+  description: Голос персонажа Ульфрик Буревестник из игры TES 5 Skyrim
+  sex: Male
+  speaker: ulfric
+  id: ulfric
+
+- type: ttsVoice
+  name: Астрид
+  description: Голос персонажа Астрид из игры TES 5 Skyrim
+  sex: Female
+  speaker: astrid
+  id: astrid
+
+- type: ttsVoice
+  name: Мавен Чёрный Вереск
+  description: Голос персонажа Мавен Чёрный Вереск из игры TES 5 Skyrim
+  sex: Female
+  speaker: maven
+  id: maven
+
+- type: ttsVoice
+  name: Назир
+  description: Голос персонажа Назир из игры TES 5 Skyrim
+  sex: Male
+  speaker: nazir
+  id: nazir
+
+- type: ttsVoice
+  name: GLaDOS
+  description: Голос персонажа GLaDOS из игры Portal 2
+  sex: Female
+  speaker: glados
+  id: glados
+
+- type: ttsVoice
+  name: Модуль Приключений
+  description: Голос персонажа Модуль Приключений из игры Portal 2
+  sex: Male
+  speaker: adventure_core
+  id: adventure_core
+
+- type: ttsVoice
+  name: Модуль Фактов
+  description: Голос персонажа Модуль Фактов из игры Portal 2
+  sex: Male
+  speaker: fact_core
+  id: fact_core
+
+- type: ttsVoice
+  name: Модуль Космоса
+  description: Голос персонажа Модуль Космоса из игры Portal 2
+  sex: Male
+  speaker: space_core
+  id: space_core
+
+- type: ttsVoice
+  name: Турель
+  description: Голос персонажа Турель из игры Portal 2
+  sex: Female
+  speaker: turret_floor
+  id: turret_floor
+
+- type: ttsVoice
+  name: Геральт из Ривии
+  description: Голос персонажа Геральт из Ривии из игры The Witcher 3
+  sex: Male
+  speaker: geralt
+  id: geralt
+
+- type: ttsVoice
+  name: Цирилла
+  description: Голос персонажа Цирилла из игры The Witcher 3
+  sex: Female
+  speaker: cirilla
+  id: cirilla
+
+- type: ttsVoice
+  name: Керис ан Крайт
+  description: Голос персонажа Керис ан Крайт из игры The Witcher 3
+  sex: Female
+  speaker: cerys
+  id: cerys
+
+- type: ttsVoice
+  name: Ламберт
+  description: Голос персонажа Ламберт из игры The Witcher 3
+  sex: Male
+  speaker: lambert
+  id: lambert
+
+- type: ttsVoice
+  name: Трисс
+  description: Голос персонажа Трисс из игры The Witcher 3
+  sex: Female
+  speaker: triss
+  id: triss
+
+- type: ttsVoice
+  name: Азир
+  description: Голос персонажа Азир из игры League of Legends
+  sex: Male
+  speaker: azir
+  id: azir
+
+- type: ttsVoice
+  name: Экко
+  description: Голос персонажа Экко из игры League of Legends
+  sex: Male
+  speaker: ekko
+  id: ekko
+
+- type: ttsVoice
+  name: Твич
+  description: Голос персонажа Твич из игры League of Legends
+  sex: Male
+  speaker: twitch
+  id: twitch
+
+- type: ttsVoice
+  name: Зиггс
+  description: Голос персонажа Зиггс из игры League of Legends
+  sex: Male
+  speaker: ziggs
+  id: ziggs
+
+- type: ttsVoice
+  name: Кэйтлин
+  description: Голос персонажа Кэйтлин из игры League of Legends
+  sex: Female
+  speaker: caitlyn
+  id: caitlyn
+
+- type: ttsVoice
+  name: Артас Менетил
+  description: Голос персонажа Артас Менетил из игры Warcraft 3
+  sex: Male
+  speaker: arthas
+  id: arthas
+
+- type: ttsVoice
+  name: Иллидан Ярость Бури
+  description: Голос персонажа Иллидан Ярость Бури из игры Warcraft 3
+  sex: Male
+  speaker: illidan
+  id: illidan
+
+- type: ttsVoice
+  name: Рексар
+  description: Голос персонажа Рексар из игры Warcraft 3
+  sex: Male
+  speaker: rexxar
+  id: rexxar
+
+- type: ttsVoice
+  name: Вол'джин
+  description: Голос персонажа Вол'джин из игры Warcraft 3
+  sex: Male
+  speaker: voljin
+  id: voljin
+
+- type: ttsVoice
+  name: Бандит
+  description: Голос персонажа Бандита из игры S.T.A.L.K.E.R.
+  sex: Male
+  speaker: bandit
+  id: bandit
+
+- type: ttsVoice
+  name: Лесник
+  description: Голос персонажа Лесник из игры S.T.A.L.K.E.R.
+  sex: Male
+  speaker: forester
+  id: forester
+
+- type: ttsVoice
+  name: Сидорович
+  description: Голос персонажа Сидорович из игры S.T.A.L.K.E.R.
+  sex: Male
+  speaker: sidorovich
+  id: sidorovich
+
+- type: ttsVoice
+  name: Стрелок
+  description: Голос персонажа Стрелок из игры S.T.A.L.K.E.R.
+  sex: Male
+  speaker: strelok
+  id: strelok
+
+- type: ttsVoice
+  name: Трэйсер
+  description: Голос персонажа Трэйсер из игры Overwatch
+  sex: Female
+  speaker: tracer
+  id: tracer
+
+- type: ttsVoice
+  name: Солдат
+  description: Голос персонажа Солдат из Team Fortress 2 из английской озвучки
+  sex: Male
+  speaker: soldier
+  id: soldier
+
+- type: ttsVoice
+  name: Инженер
+  description: Голос персонажа Инженер из игры Team Fortress 2
+  sex: Male
+  speaker: engineer
+  id: engineer
+
+- type: ttsVoice
+  name: Хэви
+  description: Голос персонажа Хэви из игры Team Fortress 2
+  sex: Male
+  speaker: heavy
+  id: heavy
+
+- type: ttsVoice
+  name: Медик
+  description: Голос персонажа Медик из игры Team Fortress 2
+  sex: Male
+  speaker: medic
+  id: medic
+
+- type: ttsVoice
+  name: Подрывник
+  description: Голос персонажа Подрывник из игры Team Fortress 2
+  sex: Male
+  speaker: demoman
+  id: demoman
+
+- type: ttsVoice
+  name: Снайпер
+  description: Голос персонажа Снайпер из игры Team Fortress 2
+  sex: Male
+  speaker: sniper
+  id: sniper
+
+- type: ttsVoice
+  name: Шпион
+  description: Голос персонажа Шпион из игры Team Fortress 2
+  sex: Male
+  speaker: spy
+  id: spy
+
+- type: ttsVoice
+  name: Каратель
+  description: Голос персонажа Каратель из игры The Punisher
+  sex: Male
+  speaker: punisher
+  id: punisher
+
+- type: ttsVoice
+  name: Джонни Сильверхенд
+  description: Голос персонажа Джонни Сильверхенд из игры Cyberpunk 2077
+  sex: Male
+  speaker: johnny
+  id: johnny
+
+- type: ttsVoice
+  name: Панам Палмер
+  description: Голос персонажа Панам Палмер из игры Cyberpunk 2077
+  sex: Female
+  speaker: panam
+  id: panam
+
+- type: ttsVoice
+  name: Ви
+  description: Голос персонажа Ви из игры Cyberpunk 2077
+  sex: Female
+  speaker: v_female
+  id: v_female
+
+- type: ttsVoice
+  name: Джуди Альварес
+  description: Голос персонажа Джуди Альварес из игры Cyberpunk 2077
+  sex: Female
+  speaker: judy
+  id: judy
+
+- type: ttsVoice
+  name: Митч Андерсон
+  description: Голос персонажа Митч Андерсон из игры Cyberpunk 2077
+  sex: Male
+  speaker: mitch
+  id: mitch
+
+- type: ttsVoice
+  name: Скиппи
+  description: Голос персонажа Скиппи из игры Cyberpunk 2077
+  sex: Male
+  speaker: skippy
+  id: skippy
+
+- type: ttsVoice
+  name: Джеки Уэллс
+  description: Голос персонажа Джеки Уэллс из игры Cyberpunk 2077
+  sex: Male
+  speaker: jackie
+  id: jackie
+
+- type: ttsVoice
+  name: Сержант Дорнан
+  description: Голос персонажа Сержант Дорнан из игры Fallout 2
+  sex: Male
+  speaker: dornan
+  id: dornan
+
+- type: ttsVoice
+  name: Офицер Анклава
+  description: Голос персонажа Офицер Анклава из игры Fallout 2
+  sex: Male
+  speaker: officer_enclave
+  id: officer_enclave
+
+- type: ttsVoice
+  name: Дик Ричардсон
+  description: Голос персонажа Ричард «Дик» Ричардсон из игры Fallout 2
+  sex: Male
+  speaker: richardson
+  id: richardson
+
+- type: ttsVoice
+  name: Бутч Харрис
+  description: Голос персонажа Бутч Харрис из игры Fallout 2
+  sex: Male
+  speaker: butch
+  id: butch
+
+- type: ttsVoice
+  name: Маркус
+  description: Голос персонажа Маркус из игры Fallout 2
+  sex: Male
+  speaker: marcus
+  id: marcus
+
+- type: ttsVoice
+  name: Сулик
+  description: Голос персонажа Сулик из игры Fallout 2
+  sex: Male
+  speaker: sulik
+  id: sulik
+
+- type: ttsVoice
+  name: Добрая Талия
+  description: Голос персонажа Добрая Талия из игры Dungeons 3
+  sex: Female
+  speaker: good_thalya
+  id: good_thalya
+
+- type: ttsVoice
+  name: Злая Талия
+  description: Голос персонажа Злая Талия из игры Dungeons 3
+  sex: Female
+  speaker: evil_thalya
+  id: evil_thalya
+
+- type: ttsVoice
+  name: Чувак
+  description: Голос персонажа Чувак из игры Postal 2
+  sex: Male
+  speaker: dude
+  id: dude
+
+- type: ttsVoice
+  name: Андуин Ринн
+  description: Голос персонажа Андуин Ринн из игры Hearthstone
+  sex: Male
+  speaker: anduin
+  id: anduin
+
+- type: ttsVoice
+  name: Бру'кан
+  description: Голос персонажа Бру'кан из игры Hearthstone
+  sex: Male
+  speaker: brukan
+  id: brukan
+
+- type: ttsVoice
+  name: Гаррош Адский Крик
+  description: Голос персонажа Гаррош Адский Крик из игры Hearthstone
+  sex: Male
+  speaker: garrosh
+  id: garrosh
+
+- type: ttsVoice
+  name: Джайна Праудмур
+  description: Голос персонажа Джайна Праудмур из игры Hearthstone
+  sex: Female
+  speaker: jaina
+  id: jaina
+
+- type: ttsVoice
+  name: Адъютант
+  description: Голос персонажа Адъютант из игры StarCraft 2
+  sex: Female
+  speaker: adjutant
+  id: adjutant
+
+- type: ttsVoice
+  name: Ариэль Хэнсон
+  description: Голос персонажа Ариэль Хэнсон из игры StarCraft 2
+  sex: Female
+  speaker: hanson
+  id: hanson
+
+- type: ttsVoice
+  name: Бралик
+  description: Голос персонажа Бралик из игры StarCraft 2
+  sex: Male
+  speaker: bralik
+  id: bralik
+
+- type: ttsVoice
+  name: Мэтт Хорнер
+  description: Голос персонажа Мэтт Хорнер из игры StarCraft 2
+  sex: Male
+  speaker: horner
+  id: horner
+
+- type: ttsVoice
+  name: Амит Таккар
+  description: Голос персонажа Амит Таккар из игры Hogwarts Legacy
+  sex: Male
+  speaker: amitkakkar
+  id: amitkakkar
+
+- type: ttsVoice
+  name: Элеазар Фиг
+  description: Голос персонажа Элеазар Фиг из игры Hogwarts Legacy
+  sex: Male
+  speaker: eleazarfig
+  id: eleazarfig
+
+- type: ttsVoice
+  name: Эрни Ларк
+  description: Голос персонажа Эрни Ларк из игры Hogwarts Legacy
+  sex: Male
+  speaker: ernielark
+  id: ernielark
+
+- type: ttsVoice
+  name: Игнатия Уайлдсмит
+  description: Голос персонажа Игнатия Уайлдсмит из игры Hogwarts Legacy
+  sex: Female
+  speaker: ignatiaflootravel
+  id: ignatiaflootravel
+
+- type: ttsVoice
+  name: Лодгок
+  description: Голос персонажа Лодгок из игры Hogwarts Legacy
+  sex: Male
+  speaker: lodgok
+  id: lodgok
+
+- type: ttsVoice
+  name: Финеас Найджелус Блэк
+  description: Голос персонажа Финеас Найджелус Блэк из игры Hogwarts Legacy
+  sex: Male
+  speaker: phineasblack
+  id: phineasblack
+
+- type: ttsVoice
+  name: Ранрок
+  description: Голос персонажа Ранрок из игры Hogwarts Legacy
+  sex: Male
+  speaker: ranrak
+  id: ranrak
+
+- type: ttsVoice
+  name: Виктор Руквуд
+  description: Голос персонажа Виктор Руквуд из игры Hogwarts Legacy
+  sex: Male
+  speaker: victorrookwood
+  id: victorrookwood
+
+- type: ttsVoice
+  name: Зенобия Ноук
+  description: Голос персонажа Зенобия Ноук из игры Hogwarts Legacy
+  sex: Female
+  speaker: zenobianoke
+  id: zenobianoke
+
+- type: ttsVoice
+  name: Глэдвин Мун
+  description: Голос персонажа Глэдвин Мун из игры Hogwarts Legacy
+  sex: Male
+  speaker: gladwinmoon
+  id: gladwinmoon
+
+- type: ttsVoice
+  name: Матильда Уизли
+  description: Голос персонажа Матильда Уизли из игры Hogwarts Legacy
+  sex: Female
+  speaker: matildaweasley
+  id: matildaweasley
+

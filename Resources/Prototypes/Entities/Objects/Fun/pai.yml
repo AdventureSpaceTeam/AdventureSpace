@@ -53,7 +53,7 @@
   - type: TypingIndicator
     proto: robot
   - type: TTS # Corvax-TTS
-    voice: Glados
+    voice: glados
   - type: Speech
     speechVerb: Robotic
     speechSounds: Pai
