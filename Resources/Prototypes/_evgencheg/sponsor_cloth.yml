@@ -261,7 +261,7 @@
 - type: entity
   parent: ClothingNeckBase
   id: ClothingCloakVavevSponsor
-  name: плащ имени вавевы великого
+  name: плащ имени каца великого
   description: Носи с честью!
   suffix: Sponsor
   components:
