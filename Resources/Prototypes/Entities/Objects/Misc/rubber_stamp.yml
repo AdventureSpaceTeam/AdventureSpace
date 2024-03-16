@@ -80,6 +80,19 @@
     state: stamp-chaplain
 
 - type: entity
+  name: Печать юриста
+  parent: RubberStampBase
+  id: RubberStampLawyer
+  suffix: DO NOT MAP
+  components:
+  - type: Stamp
+    stampedName: stamp-component-stamped-name-lawyer
+    stampedColor: "#233D57"
+    stampState: "paper_stamp-lawyer"
+  - type: Sprite
+    state: stamp-lawyer
+
+- type: entity
   name: Печать клоуна
   parent: RubberStampBase
   id: RubberStampClown
