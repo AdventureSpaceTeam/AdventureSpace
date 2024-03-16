@@ -42,14 +42,6 @@
   name: Плюшки
 
 - type: listing
-  id: UplinkSponsorCloth1
-  productEntity: ClothingMaskGasAtmosian
-  cost:
-    DonateCrystal: 2
-  categories:
-  - SponsorThings
-
-- type: listing
   id: UplinkSponsorCloth2
   productEntity: ClothingCloakAtmosian
   cost:
@@ -62,14 +54,6 @@
   productEntity: ClothingCloakGamer
   cost:
     DonateCrystal: 7
-  categories:
-  - SponsorThings
-
-- type: listing
-  id: UplinkSponsorCloth4
-  productEntity: ClothingOuterCoatUSSPOvercoatBlack
-  cost:
-    DonateCrystal: 5
   categories:
   - SponsorThings
 
