@@ -13,20 +13,6 @@
   id: bebey
 
 - type: ttsVoice
-  name: Дмитрий Пучков
-  description: 
-  sex: Male
-  speaker: puchkow
-  id: puchkow
-
-- type: ttsVoice
-  name: Мориарти
-  description: 
-  sex: Male
-  speaker: moriarti
-  id: moriarti
-
-- type: ttsVoice
   name: Шарлотта
   description: Голос виртуального ютубера Charlotte Ch
   sex: Female
@@ -767,4 +753,3 @@
   sex: Female
   speaker: matildaweasley
   id: matildaweasley
-
