@@ -56,7 +56,7 @@
       name: centcom-official
       announcement: true
       showInConsole: false
-      shuttle: Maps/Sunrise/Shuttles/centcom_shuttle.yml
+      shuttle: Maps/_Alteros/Shuttles/centcom_shuttle.yml
       waitingTime: 60
       humansList:
         SpawnerCentcomOfficial: 1
