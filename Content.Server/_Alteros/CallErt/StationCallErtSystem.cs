@@ -482,7 +482,7 @@ public sealed class StationCallErtSystem : EntitySystem
         if (ertGroupDetails.Announcement)
         {
             _chatSystem.DispatchGlobalAnnouncement(Loc.GetString("ert-call-spawn-announcement",
-                    ("name", Loc.GetString($"ert-group-full-name-{ertGroupDetails.Name}"))), playSound: true,
+                    ("name", Loc.GetString($"ert-group-name-{ertGroupDetails.Name}"))), playSound: true,
                 colorOverride: Color.Gold);
         }
 
