@@ -466,8 +466,8 @@ public sealed class StationSystem : EntitySystem
     public List<EntityUid> GetStations()
     {
         var stations = new List<EntityUid>();
-        var query = EntityQueryEnumerator<StationDataComponent>();
-        while (query.MoveNext(out var uid, out _))
+        var query = EntityQueryEnumerator<StationDataComponent, StationJobsComponent>();
+        while (query.MoveNext(out var uid, out _, out _))
         {
             stations.Add(uid);
         }
