@@ -21,7 +21,6 @@
     slots:
     - suitStorage
     - Belt
-  - type: AmmoCounter
   - type: Gun
     selectedMode: SemiAuto
     fireRate: 1.5
