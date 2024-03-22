@@ -510,7 +510,7 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
         EnsureComp<EvacShuttleComponent>(shuttle.Value);
         // Alteros-end
 
-        centcomm.ShuttleIndex += _mapManager.GetGrid(shuttle.Value).LocalAABB.Width + ShuttleSpawnBuffer;
+        centcomm.ShuttleIndex += Comp<MapGridComponent>(shuttle.Value).LocalAABB.Width + ShuttleSpawnBuffer;
 
         // Update indices for all centcomm comps pointing to same map
         var query = AllEntityQuery<StationCentcommComponent>();
