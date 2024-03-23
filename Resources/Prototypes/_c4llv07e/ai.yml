@@ -43,6 +43,8 @@
   - type: SiliconLawProvider
     laws: Crewsimov
   - type: IonStormTarget
+  - type: AnnounceAuthor
+    name: Искусственный интеллект
   - type: IntrinsicRadioReceiver
   - type: IntrinsicRadioTransmitter
     channels:
