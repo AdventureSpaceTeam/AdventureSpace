@@ -26,6 +26,7 @@ using Content.Shared.Popups;
 using Robust.Server.GameObjects;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
+using Content.Shared._c4llv07e.AnnounceAuthor;
 
 namespace Content.Server.Communications
 {
@@ -268,6 +269,11 @@ namespace Content.Server.Communications
                 if (_idCardSystem.TryFindIdCard(mob, out var id))
                 {
                     author = $"{id.Comp.FullName} ({CultureInfo.CurrentCulture.TextInfo.ToTitleCase(id.Comp.JobTitle ?? string.Empty)})".Trim();
+                }
+
+                if (TryComp<AnnounceAuthorComponent>(mob, out var announceAuthor))
+                {
+                    author = announceAuthor.Name;
                 }
             }
 
