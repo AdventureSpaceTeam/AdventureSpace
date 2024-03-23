@@ -11,12 +11,8 @@
   - type: ActiveRadio
     receiveAllChannels: true
   - type: Sprite
-    drawdepth: Ghosts
-    sprite: Mobs/Ghosts/ghost_human.rsi
-    color: "#fff8"
-    layers:
-    - state: animated
-      shader: unshaded
+    sprite: _c4llv07e/ai.rsi
+    state: icon
   - type: Fixtures
     fixtures:
       fix1:
