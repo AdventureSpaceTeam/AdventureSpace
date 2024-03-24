@@ -10,9 +10,10 @@
   - type: MovementIgnoreGravity
   - type: ActiveRadio
     receiveAllChannels: true
-  - type: Sprite
-    sprite: _c4llv07e/ai.rsi
-    state: icon
+  # - type: Sprite
+  #   drawdepth: Ghosts
+  #   sprite: _c4llv07e/ai.rsi
+  #   state: icon
   - type: Fixtures
     fixtures:
       fix1:
@@ -32,12 +33,12 @@
     - CanPilot
     - BypassInteractionRangeChecks
   - type: Input
+    context: AI
   - type: Physics
     bodyType: KinematicController
     bodyStatus: InAir
   - type: CanMoveInAir
   - type: Body
-    prototype: Aghost
   - type: NoSlip
   - type: SiliconLawBound
   - type: SiliconLawProvider
@@ -75,8 +76,6 @@
         type: SolarControlConsoleBoundUserInterface
       - key: enum.CommunicationsConsoleUiKey.Key
         type: CommunicationsConsoleBoundUserInterface
-      - key: enum.RadarConsoleUiKey.Key
-        type: RadarConsoleBoundUserInterface
       - key: enum.CargoConsoleUiKey.Orders
         type: CargoOrderConsoleBoundUserInterface
       - key: enum.CrewMonitoringUIKey.Key
@@ -90,8 +89,6 @@
         toggleAction: ActionAGhostShowSolar
       - key: enum.CommunicationsConsoleUiKey.Key
         toggleAction: ActionAGhostShowCommunications
-      - key: enum.RadarConsoleUiKey.Key
-        toggleAction: ActionAGhostShowRadar
       - key: enum.CargoConsoleUiKey.Orders
         toggleAction: ActionAGhostShowCargo
       - key: enum.CrewMonitoringUIKey.Key
@@ -102,8 +99,7 @@
   - type: CommunicationsConsole
     title: Искусственный интеллект
     color: "#1876ec"
-  - type: RadarConsole
-    followEntity: true
+  - type: UnblockableSpeech
   - type: CargoOrderConsole
   - type: CrewMonitoringConsole
     snap: false
@@ -117,6 +113,8 @@
   - type: StationLimitedNetwork
   - type: SolutionScanner
   - type: IgnoreUIRange
-  # - type: Inventory
-  #   templateId: aghost
-  # - type: InventorySlots
+  - type: AI
+    itemsInHands:
+    - DoorRemoteAll
+  - type: Hands
+    showInHands: false

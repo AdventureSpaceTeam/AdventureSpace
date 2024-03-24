@@ -8,6 +8,7 @@ using Content.Shared.Database;
 using Content.Shared.Examine;
 using Content.Shared.Remotes.EntitySystems;
 using Content.Shared.Remotes.Components;
+using Content.Shared.Tag;
 
 namespace Content.Shared.Remotes
 {
@@ -17,6 +18,7 @@ namespace Content.Shared.Remotes
         [Dependency] private readonly AirlockSystem _airlock = default!;
         [Dependency] private readonly DoorSystem _doorSystem = default!;
         [Dependency] private readonly ExamineSystemShared _examine = default!;
+        [Dependency] private readonly TagSystem _tag = default!;
         public override void Initialize()
         {
             base.Initialize();
@@ -33,7 +35,8 @@ namespace Content.Shared.Remotes
                 || !TryComp<DoorComponent>(args.Target, out var doorComp) // If it isn't a door we don't use it
                                                                           // Only able to control doors if they are within your vision and within your max range.
                                                                           // Not affected by mobs or machines anymore.
-                || !_examine.InRangeUnOccluded(args.User, args.Target.Value, SharedInteractionSystem.MaxRaycastRange, null))
+                || (!_examine.InRangeUnOccluded(args.User, args.Target.Value, SharedInteractionSystem.MaxRaycastRange, null) &&
+                    !_tag.HasTag(args.User, "BypassInteractionRangeChecks")))
 
             {
                 return;
