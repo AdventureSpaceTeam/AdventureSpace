@@ -184,11 +184,6 @@ public sealed class DeviceListSystem : SharedDeviceListSystem
         if (merge)
             newDevices.UnionWith(deviceList.Devices);
 
-        if (newDevices.Count > deviceList.DeviceLimit)
-        {
-            return DeviceListUpdateResult.TooManyDevices;
-        }
-
         var query = GetEntityQuery<DeviceNetworkComponent>();
         var oldDevices = deviceList.Devices.ToList();
         foreach (var device in oldDevices)
