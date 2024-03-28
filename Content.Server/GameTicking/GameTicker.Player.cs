@@ -1,4 +1,5 @@
 using Content.Corvax.Interfaces.Server;
+using Content.Shared.Administration;
 using Content.Server.Administration.Systems;
 using Content.Server.Database;
 using Content.Shared.CCVar;
