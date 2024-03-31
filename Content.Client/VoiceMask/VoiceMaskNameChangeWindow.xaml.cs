@@ -12,13 +12,12 @@ namespace Content.Client.VoiceMask;
 [GenerateTypedNameReferences]
 public sealed partial class VoiceMaskNameChangeWindow : FancyWindow
 {
-    private readonly List<TTSVoicePrototype> _voices; // Corvax-TTS
-
     public Action<string>? OnNameChange;
-    public Action<string>? OnVoiceChange; // Corvax-TTS
     public Action<string?>? OnVerbChange;
+    public Action<string>? OnVoiceChange; // Corvax-TTS
 
     private List<(string, string)> _verbs = new();
+    private List<TTSVoicePrototype> _voices = new(); // Corvax-TTS
 
     private string? _verb;
 
@@ -30,26 +29,6 @@ public sealed partial class VoiceMaskNameChangeWindow : FancyWindow
         {
             OnNameChange?.Invoke(NameSelector.Text);
         };
-        // Corvax-TTS-Start
-        VoiceSelector.OnItemSelected += args =>
-        {
-            VoiceSelector.SelectId(args.Id);
-            if (VoiceSelector.SelectedMetadata != null)
-                OnVoiceChange!((string)VoiceSelector.SelectedMetadata);
-        };
-        _voices = IoCManager
-            .Resolve<IPrototypeManager>()
-            .EnumeratePrototypes<TTSVoicePrototype>()
-            .Where(o => o.RoundStart)
-            .OrderBy(o => Loc.GetString(o.Name))
-            .ToList();
-        for (var i = 0; i < _voices.Count; i++)
-        {
-            var name = Loc.GetString(_voices[i].Name);
-            VoiceSelector.AddItem(name);
-            VoiceSelector.SetItemMetadata(i, _voices[i].ID);
-        }
-        // Corvax-TTS-End
 
         SpeechVerbSelector.OnItemSelected += args =>
         {
@@ -58,30 +37,9 @@ public sealed partial class VoiceMaskNameChangeWindow : FancyWindow
         };
 
         ReloadVerbs(proto);
+        ReloadVoices(proto); // Corvax-TTS
 
         AddVerbs();
-    }
-
-    public void UpdateState(string name, string voice, string? verb) // Corvax-TTS
-    {
-        NameSelector.Text = name;
-
-        // Corvax-TTS-Start
-        var voiceIdx = _voices.FindIndex(v => v.ID == voice);
-        if (voiceIdx != -1)
-            VoiceSelector.Select(voiceIdx);
-        // Corvax-TTS-End
-
-        _verb = verb;
-
-        for (int id = 0; id < SpeechVerbSelector.ItemCount; id++)
-        {
-            if (string.Equals(verb, SpeechVerbSelector.GetItemMetadata(id)))
-            {
-                SpeechVerbSelector.SelectId(id);
-                break;
-            }
-        }
     }
 
     private void ReloadVerbs(IPrototypeManager proto)
@@ -113,5 +71,49 @@ public sealed partial class VoiceMaskNameChangeWindow : FancyWindow
 
         if (verb == _verb)
             SpeechVerbSelector.SelectId(id);
+    }
+
+    // Corvax-TTS-Start
+    private void ReloadVoices(IPrototypeManager proto)
+    {
+        VoiceSelector.OnItemSelected += args =>
+        {
+            VoiceSelector.SelectId(args.Id);
+            if (VoiceSelector.SelectedMetadata != null)
+                OnVoiceChange!((string)VoiceSelector.SelectedMetadata);
+        };
+        _voices = proto
+            .EnumeratePrototypes<TTSVoicePrototype>()
+            .Where(o => o.RoundStart)
+            .OrderBy(o => Loc.GetString(o.Name))
+            .ToList();
+        for (var i = 0; i < _voices.Count; i++)
+        {
+            var name = Loc.GetString(_voices[i].Name);
+            VoiceSelector.AddItem(name);
+            VoiceSelector.SetItemMetadata(i, _voices[i].ID);
+        }
+    }
+    // Corvax-TTS-End
+
+    public void UpdateState(string name, string voice, string? verb) // Corvax-TTS
+    {
+        NameSelector.Text = name;
+        _verb = verb;
+
+        for (int id = 0; id < SpeechVerbSelector.ItemCount; id++)
+        {
+            if (string.Equals(verb, SpeechVerbSelector.GetItemMetadata(id)))
+            {
+                SpeechVerbSelector.SelectId(id);
+                break;
+            }
+        }
+
+        // Corvax-TTS-Start
+        var voiceIdx = _voices.FindIndex(v => v.ID == voice);
+        if (voiceIdx != -1)
+            VoiceSelector.Select(voiceIdx);
+        // Corvax-TTS-End
     }
 }

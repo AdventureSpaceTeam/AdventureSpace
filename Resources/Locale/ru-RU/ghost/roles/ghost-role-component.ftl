@@ -162,3 +162,7 @@ ghost-role-information-syndicate-monkey-reinforcement-rules = Действуют
 ghost-role-information-Gingerbread-name = Пряничный человечек
 ghost-role-information-Gingerbread-description = Вы любимый ребенок шеф-повара. Вы живой пряничный человечек.
 ghost-role-information-Gingerbread-rules = Вы съедобный человечек из печенья. Ваша задача найти свое место в этом мире, где всё хочет вас съесть.
+ghost-role-information-artifact-name = Sentient Artifact
+ghost-role-information-artifact-description =
+    Enact your eldritch whims.
+    Forcibly activate your nodes for good or for evil.

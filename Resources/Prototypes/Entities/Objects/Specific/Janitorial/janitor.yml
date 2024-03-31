@@ -11,6 +11,8 @@
     damage:
       types:
         Blunt: 10
+    soundHit:
+      collection: MetalThud
   - type: Clothing
     quickEquip: false
     slots:
@@ -53,6 +55,8 @@
       damage:
         types:
           Blunt: 10
+      soundHit:
+         collection: MetalThud
     - type: Spillable
       solution: absorbed
     - type: Wieldable
