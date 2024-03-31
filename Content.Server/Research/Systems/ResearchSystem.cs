@@ -3,11 +3,13 @@ using System.Linq;
 using Content.Server.Administration.Logs;
 using Content.Server.Radio.EntitySystems;
 using Content.Shared.Access.Systems;
+using Content.Shared.CCVar;
 using Content.Shared.Popups;
 using Content.Shared.Research.Components;
 using Content.Shared.Research.Systems;
 using JetBrains.Annotations;
 using Robust.Server.GameObjects;
+using Robust.Shared.Configuration;
 using Robust.Shared.Timing;
 
 namespace Content.Server.Research.Systems
@@ -16,11 +18,14 @@ namespace Content.Server.Research.Systems
     public sealed partial class ResearchSystem : SharedResearchSystem
     {
         [Dependency] private readonly IAdminLogManager _adminLog = default!;
+        [Dependency] private readonly IConfigurationManager _cfg = default!;
         [Dependency] private readonly IGameTiming _timing = default!;
         [Dependency] private readonly AccessReaderSystem _accessReader = default!;
         [Dependency] private readonly UserInterfaceSystem _uiSystem = default!;
         [Dependency] private readonly SharedPopupSystem _popup = default!;
         [Dependency] private readonly RadioSystem _radio = default!;
+
+        private float _tickSizeModifier = 1.0f;
 
         public override void Initialize()
         {
@@ -31,6 +36,7 @@ namespace Content.Server.Research.Systems
             InitializeServer();
 
             SubscribeLocalEvent<TechnologyDatabaseComponent, ResearchRegistrationChangedEvent>(OnDatabaseRegistrationChanged);
+            Subs.CVar(_cfg, CCVars.RnDTickSizeModifier, value => _tickSizeModifier = value, true);
         }
 
         /// <summary>
@@ -98,7 +104,7 @@ namespace Content.Server.Research.Systems
             {
                 if (server.NextUpdateTime > _timing.CurTime)
                     continue;
-                server.NextUpdateTime = _timing.CurTime + server.ResearchConsoleUpdateTime;
+                server.NextUpdateTime = _timing.CurTime + server.ResearchConsoleUpdateTime * _tickSizeModifier;
 
                 UpdateServer(uid, (int) server.ResearchConsoleUpdateTime.TotalSeconds, server);
             }
