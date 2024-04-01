@@ -24,30 +24,6 @@
     entity: InjBucket
 
 - type: constructionGraph
-  id: PaperFlovBucket
-  start: start
-  graph:
-  - node: start
-    edges:
-    - to: bucket
-      steps:
-      - tag: Paper
-        icon:
-          sprite: Objects/Misc/bureaucracy.rsi
-          state: paper
-        name: paper
-        amount: 4
-      - tag: Handcuffs
-        icon:
-          sprite: Objects/Misc/cablecuffs.rsi
-          state: cuff
-          color: red
-        name: cuffs
-        doAfter: 10
-  - node: bucket
-    entity: PaperBucket
-
-- type: constructionGraph
   id: RosesBucket
   start: start
   graph:
@@ -55,12 +31,6 @@
     edges:
     - to: bucket
       steps:
-      - tag: Paper
-        icon:
-          sprite: Objects/Misc/bureaucracy.rsi
-          state: paper
-        name: paper
-
       - tag: RedRose
         icon:
           sprite: Objects/Decoration/Flovers/red_rose.rsi
