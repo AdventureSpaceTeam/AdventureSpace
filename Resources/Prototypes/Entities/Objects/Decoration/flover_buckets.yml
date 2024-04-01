@@ -1,0 +1,78 @@
+- type: entity
+  parent: BaseItem
+  id: BaseFloverBucket
+  abstract: true
+  components:  
+  - type: Construction
+    node: bucket
+  - type: MeleeWeapon
+    soundHit:
+      collection: Punch
+    damage:
+      types:
+        Blunt: 1
+
+- type: entity
+  parent: BaseFloverBucket
+  id: InjBucket
+  name: букет инженерных тюльпанов
+  components:
+  - type: Construction
+    graph: InjTulpBucket
+  - type: Sprite
+    sprite: Objects/Decoration/Flovers/inj-bucket.rsi
+    state: icon
+  - type: Item
+    sprite: Objects/Decoration/Flovers/inj-bucket.rsi
+
+- type: entity
+  parent: BaseFloverBucket
+  id: RoseBucket
+  name: розовый букет
+  components:
+  - type: Construction
+    graph: RosesBucket
+  - type: Sprite
+    sprite: Objects/Decoration/Flovers/rose_bucket.rsi
+    state: icon
+  - type: Item
+    sprite: Objects/Decoration/Flovers/rose_bucket.rsi
+
+- type: entity
+  parent: BaseFloverBucket
+  id: OrhBucket
+  name: орхидеевый букет
+  components:
+  - type: Construction
+    graph: OrhFlovBucket
+  - type: Sprite
+    sprite: Objects/Decoration/Flovers/orh_bucket.rsi
+    state: icon
+  - type: Item
+    sprite: Objects/Decoration/Flovers/orh_bucket.rsi
+
+- type: entity
+  parent: BaseFloverBucket
+  id: FlowBucket
+  name: цветочный букет
+  components:
+  - type: Construction
+    graph: TulpBucket
+  - type: Sprite
+    sprite: Objects/Decoration/Flovers/flov_bucket.rsi
+    state: icon
+  - type: Item
+    sprite: Objects/Decoration/Flovers/flov_bucket.rsi
+
+- type: entity
+  parent: BaseFloverBucket
+  id: AssortBucket
+  name: ассорти букет
+  components:
+  - type: Construction
+    graph: AssorFlovBucket
+  - type: Sprite
+    sprite: Objects/Decoration/Flovers/assor_bucket.rsi
+    state: icon
+  - type: Item
+    sprite: Objects/Decoration/Flovers/assor_bucket.rsi
