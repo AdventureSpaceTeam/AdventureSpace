@@ -36,14 +36,27 @@
           sprite: Objects/Decoration/Flovers/red_rose.rsi
           state: icon
         name: red rose
-        amount: 3
+      - tag: RedRose
+        icon:
+          sprite: Objects/Decoration/Flovers/red_rose.rsi
+          state: icon
+        name: red rose
+      - tag: RedRose
+        icon:
+          sprite: Objects/Decoration/Flovers/red_rose.rsi
+          state: icon
+        name: red rose
 
       - tag: WhiteRose
         icon:
           sprite: Objects/Decoration/Flovers/white_rose.rsi
           state: icon
         name: white rose
-        amount: 2
+      - tag: WhiteRose
+        icon:
+          sprite: Objects/Decoration/Flovers/white_rose.rsi
+          state: icon
+        name: white rose
 
       - tag: Handcuffs
         icon:
@@ -69,7 +82,16 @@
           sprite: Objects/Decoration/Flovers/orhidea.rsi
           state: icon
         name: orhidea
-        amount: 3
+      - tag: Orhidea
+        icon:
+          sprite: Objects/Decoration/Flovers/orhidea.rsi
+          state: icon
+        name: orhidea
+      - tag: Orhidea
+        icon:
+          sprite: Objects/Decoration/Flovers/orhidea.rsi
+          state: icon
+        name: orhidea
 
       - tag: Handcuffs
         icon:
@@ -100,14 +122,27 @@
           sprite: Objects/Decoration/Flovers/tulpan.rsi
           state: icon
         name: tulip
-        amount: 2
+      - tag: Tulpan
+        icon:
+          sprite: Objects/Decoration/Flovers/tulpan.rsi
+          state: icon
+        name: tulip
 
       - tag: Gvozdika
         icon:
           sprite: Objects/Decoration/Flovers/gvozdika.rsi
           state: icon
         name: carnation
-        amount: 3
+      - tag: Gvozdika
+        icon:
+          sprite: Objects/Decoration/Flovers/gvozdika.rsi
+          state: icon
+        name: carnation
+      - tag: Gvozdika
+        icon:
+          sprite: Objects/Decoration/Flovers/gvozdika.rsi
+          state: icon
+        name: carnation
 
       - tag: Handcuffs
         icon:
