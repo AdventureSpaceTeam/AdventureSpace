@@ -2138,6 +2138,9 @@ namespace Content.Shared.CCVar
         public static readonly CVarDef<float> RnDPointsModifier =
             CVarDef.Create("game.research_modifier", 1.0f, CVar.SERVER | CVar.REPLICATED);
 
+        public static readonly CVarDef<float> RnDTickSizeModifier =
+            CVarDef.Create("game.research_tick_size_modifier", 1.0f, CVar.SERVER | CVar.REPLICATED);
+
         /*
          * DEBUG
          */
