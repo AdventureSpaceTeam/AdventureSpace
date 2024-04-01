@@ -11,18 +11,6 @@
     state: icon
 
 - type: construction
-  name: bouquet of paper roses
-  id: PaperFlovBucket
-  graph: PaperFlovBucket
-  startNode: start
-  targetNode: bucket
-  category: construction-category-misc
-  objectType: Item
-  icon:
-    sprite: Objects/Decoration/Flovers/paper_bucket.rsi
-    state: icon
-
-- type: construction
   name: bouquet of roses
   id: RosesBucket
   graph: RosesBucket
