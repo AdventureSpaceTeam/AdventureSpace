@@ -44,10 +44,9 @@
     solution: injector
   - type: ExaminableSolution
     solution: injector
-  - type: SolutionInjectOnCollide
+  - type: SolutionInjectOnEmbed
     transferAmount: 8
-    fixtureId: "throw-fixture"
-    blockSlots: NONE
+    solution: injector
   - type: MeleeChemicalInjector
     solution: injector
   - type: TrashOnSolutionEmpty
