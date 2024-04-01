@@ -20,7 +20,7 @@ namespace Content.Client.Access.UI
 
         private readonly IdCardConsoleBoundUserInterface _owner;
 
-        private AccessLevelControl _accessButtons;
+        private AccessLevelControl _accessButtons = new();
         private readonly List<string> _jobPrototypeIds = new();
 
         private string? _lastFullName;
@@ -28,7 +28,7 @@ namespace Content.Client.Access.UI
         private string? _lastJobProto;
 
         public IdCardConsoleWindow(IdCardConsoleBoundUserInterface owner, IPrototypeManager prototypeManager,
-            List<string> accessLevels)
+            List<ProtoId<AccessLevelPrototype>> accessLevels)
         {
             RobustXamlLoader.Load(this);
             IoCManager.InjectDependencies(this);
@@ -66,7 +66,7 @@ namespace Content.Client.Access.UI
 
             JobPresetOptionButton.OnItemSelected += SelectJobPreset;
 
-            _accessButtons = new AccessLevelControl(accessLevels, prototypeManager);
+            _accessButtons.Populate(accessLevels, prototypeManager);
             AccessLevelControlContainer.AddChild(_accessButtons);
 
             foreach (var (id, button) in _accessButtons.ButtonsList)
@@ -167,9 +167,9 @@ namespace Content.Client.Access.UI
             JobPresetOptionButton.Disabled = !interfaceEnabled;
 
             _accessButtons.UpdateState(state.TargetIdAccessList?.ToList() ??
-                                       new List<string>(),
+                                       new List<ProtoId<AccessLevelPrototype>>(),
                                        state.AllowedModifyAccessList?.ToList() ??
-                                       new List<string>());
+                                       new List<ProtoId<AccessLevelPrototype>>());
 
             var jobIndex = _jobPrototypeIds.IndexOf(state.TargetIdJobPrototype);
             if (jobIndex >= 0)

@@ -12,14 +12,18 @@ namespace Content.Client.Access.UI;
 [GenerateTypedNameReferences]
 public sealed partial class AccessLevelControl : GridContainer
 {
-    public readonly Dictionary<string, Button> ButtonsList = new();
+    public readonly Dictionary<ProtoId<AccessLevelPrototype>, Button> ButtonsList = new();
 
-    public AccessLevelControl(List<string> accessLevels, IPrototypeManager prototypeManager)
+    public AccessLevelControl()
     {
         RobustXamlLoader.Load(this);
+    }
+
+    public void Populate(List<ProtoId<AccessLevelPrototype>> accessLevels, IPrototypeManager prototypeManager)
+    {
         foreach (var access in accessLevels)
         {
-            if (!prototypeManager.TryIndex<AccessLevelPrototype>(access, out var accessLevel))
+            if (!prototypeManager.TryIndex(access, out var accessLevel))
             {
                 Logger.Error($"Unable to find accesslevel for {access}");
                 continue;
@@ -27,7 +31,7 @@ public sealed partial class AccessLevelControl : GridContainer
 
             var newButton = new Button
             {
-                Text = GetAccessLevelName(accessLevel),
+                Text = accessLevel.GetAccessLevelName(),
                 ToggleMode = true,
             };
             AddChild(newButton);
@@ -35,17 +39,9 @@ public sealed partial class AccessLevelControl : GridContainer
         }
     }
 
-    private static string GetAccessLevelName(AccessLevelPrototype prototype)
-    {
-        if (prototype.Name is { } name)
-            return Loc.GetString(name);
-
-        return prototype.ID;
-    }
-
     public void UpdateState(
-        List<string> pressedList,
-        List<string>? enabledList = null)
+        List<ProtoId<AccessLevelPrototype>> pressedList,
+        List<ProtoId<AccessLevelPrototype>>? enabledList = null)
     {
         foreach (var (accessName, button) in ButtonsList)
         {
