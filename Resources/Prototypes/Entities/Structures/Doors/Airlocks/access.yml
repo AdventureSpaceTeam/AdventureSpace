@@ -7,8 +7,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsService ]
-  - type: Wires
-    layoutId: AirlockService
 
 - type: entity
   parent: Airlock
@@ -28,8 +26,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsTheatre ]
-  - type: Wires
-    layoutId: AirlockService
 
 - type: entity
   parent: Airlock
@@ -39,8 +35,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsChapel ]
-  - type: Wires
-    layoutId: AirlockService
 
 - type: entity
   parent: Airlock
@@ -50,8 +44,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsJanitor ]
-  - type: Wires
-    layoutId: AirlockService
 
 - type: entity
   parent: Airlock
@@ -61,8 +53,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsKitchen ]
-  - type: Wires
-    layoutId: AirlockService
 
 - type: entity
   parent: Airlock
@@ -72,8 +62,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsBar ]
-  - type: Wires
-    layoutId: AirlockService
 
 - type: entity
   parent: Airlock
@@ -83,8 +71,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsHydroponics ]
-  - type: Wires
-    layoutId: AirlockService
 
 - type: entity
   parent: Airlock
@@ -94,8 +80,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsCaptain ]
-  - type: Wires
-    layoutId: AirlockCommand
 
 - type: entity
   parent: AirlockExternal
@@ -114,8 +98,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsCargo ]
-  - type: Wires
-    layoutId: AirlockCargo
 
 - type: entity
   parent: AirlockExternal
@@ -125,8 +107,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsEngineering ]
-  - type: Wires
-    layoutId: AirlockEngineering
 
 - type: entity
   parent: AirlockExternal
@@ -136,8 +116,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsAtmospherics ]
-  - type: Wires
-    layoutId: AirlockEngineering
 
 - type: entity
   parent: AirlockExternal
@@ -163,8 +141,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsKitchen ]
-  - type: Wires
-    layoutId: AirlockService
 
 - type: entity
   parent: AirlockFreezer
@@ -174,8 +150,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsFreezer ]
-  - type: Wires
-    layoutId: AirlockService
 
 - type: entity
   parent: AirlockFreezer
@@ -195,8 +169,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsEngineering ]
-  - type: Wires
-    layoutId: AirlockEngineering
 
 - type: entity
   parent: AirlockAtmospherics
@@ -206,8 +178,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsAtmospherics ]
-  - type: Wires
-    layoutId: AirlockEngineering
 
 - type: entity
   parent: AirlockCargo
@@ -217,8 +187,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsCargo ]
-  - type: Wires
-    layoutId: AirlockCargo
 
 - type: entity
   parent: AirlockCargo
@@ -228,8 +196,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsSalvage ]
-  - type: Wires
-    layoutId: AirlockCargo
 
 - type: entity
   parent: AirlockMining
@@ -249,8 +215,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsMedical ]
-  - type: Wires
-    layoutId: AirlockMedical
 
 - type: entity
   parent: AirlockVirology
@@ -260,8 +224,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsMedical ]
-  - type: Wires
-    layoutId: AirlockMedical
 
 - type: entity
   parent: AirlockChemistry
@@ -271,8 +233,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsChemistry ]
-  - type: Wires
-    layoutId: AirlockMedical
 
 - type: entity
   parent: AirlockScience
@@ -282,8 +242,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsResearch ]
-  - type: Wires
-    layoutId: AirlockScience
 
 - type: entity
   parent: AirlockScience
@@ -293,8 +251,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsScience ]
-  - type: Wires
-    layoutId: AirlockScience
 
 - type: entity
   parent: AirlockCentralCommand
@@ -325,8 +281,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsCaptain ]
-  - type: Wires
-    layoutId: AirlockCommand
 
 - type: entity
   parent: AirlockCommand
@@ -336,8 +290,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsChiefMedicalOfficer ]
-  - type: Wires
-    layoutId: AirlockCommand
 
 - type: entity
   parent: AirlockCommand
@@ -347,8 +299,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsChiefEngineer ]
-  - type: Wires
-    layoutId: AirlockCommand
 
 - type: entity
   parent: AirlockCommand
@@ -358,8 +308,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsHeadOfSecurity ]
-  - type: Wires
-    layoutId: AirlockCommand
 
 - type: entity
   parent: AirlockCommand
@@ -369,8 +317,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsResearchDirector ]
-  - type: Wires
-    layoutId: AirlockCommand
 
 - type: entity
   parent: AirlockCommand
@@ -380,8 +326,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsHeadOfPersonnel ]
-  - type: Wires
-    layoutId: AirlockCommand
 
 - type: entity
   parent: AirlockCommand
@@ -391,8 +335,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsQuartermaster ]
-  - type: Wires
-    layoutId: AirlockCommand
 
 - type: entity
   parent: AirlockSecurity
@@ -456,8 +398,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsVault ]
-  - type: Wires
-    layoutId: AirlockSecurity
 
 - type: entity
   parent: AirlockCommand
@@ -467,8 +407,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsExternal ]
-  - type: Wires
-    layoutId: AirlockCommand
 
 # Glass Airlocks
 - type: entity
@@ -479,8 +417,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsService ]
-  - type: Wires
-    layoutId: AirlockService
 
 - type: entity
   parent: AirlockGlass
@@ -510,8 +446,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsBar ]
-  - type: Wires
-    layoutId: AirlockService
 
 - type: entity
   parent: AirlockExternalGlass
@@ -530,8 +464,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsCargo ]
-  - type: Wires
-    layoutId: AirlockService
 
 - type: entity
   parent: AirlockExternalGlass
@@ -557,8 +489,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsEngineering ]
-  - type: Wires
-    layoutId: AirlockEngineering
 
 - type: entity
   parent: AirlockExternalGlass
@@ -568,8 +498,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsAtmospherics ]
-  - type: Wires
-    layoutId: AirlockEngineering
 
 - type: entity
   parent: AirlockGlass
@@ -579,8 +507,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsKitchen ]
-  - type: Wires
-    layoutId: AirlockService
 
 - type: entity
   parent: AirlockGlass
@@ -600,8 +526,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsHydroponics ]
-  - type: Wires
-    layoutId: AirlockService
 
 - type: entity
   parent: AirlockGlass
@@ -611,8 +535,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsChapel ]
-  - type: Wires
-    layoutId: AirlockService
 
 - type: entity
   parent: AirlockEngineeringGlass
@@ -622,8 +544,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsEngineering ]
-  - type: Wires
-    layoutId: AirlockEngineering
 
 - type: entity
   parent: AirlockAtmosphericsGlass
@@ -633,8 +553,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsAtmospherics ]
-  - type: Wires
-    layoutId: AirlockEngineering
 
 - type: entity
   parent: AirlockCargoGlass
@@ -644,8 +562,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsCargo ]
-  - type: Wires
-    layoutId: AirlockCargo
 
 - type: entity
   parent: AirlockCargoGlass
@@ -655,8 +571,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsSalvage ]
-  - type: Wires
-    layoutId: AirlockCargo
 
 - type: entity
   parent: AirlockMiningGlass
@@ -686,8 +600,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsMedical ]
-  - type: Wires
-    layoutId: AirlockMedical
 
 - type: entity
   parent: AirlockVirologyGlass
@@ -697,8 +609,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsMedical ]
-  - type: Wires
-    layoutId: AirlockMedical
 
 - type: entity
   parent: AirlockScienceGlass
@@ -708,8 +618,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsResearch ]
-  - type: Wires
-    layoutId: AirlockScience
 
 - type: entity
   parent: AirlockScienceGlass
@@ -719,8 +627,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsScience ]
-  - type: Wires
-    layoutId: AirlockScience
 
 - type: entity
   parent: AirlockCentralCommandGlass
@@ -740,8 +646,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsCommand ]
-  - type: Wires
-    layoutId: AirlockCommand
 
 - type: entity
   parent: AirlockCommandGlass
@@ -751,8 +655,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsCaptain ]
-  - type: Wires
-    layoutId: AirlockCommand
 
 - type: entity
   parent: AirlockCommandGlass
@@ -762,8 +664,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsChiefMedicalOfficer ]
-  - type: Wires
-    layoutId: AirlockCommand
 
 - type: entity
   parent: AirlockCommandGlass
@@ -773,8 +673,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsChiefEngineer ]
-  - type: Wires
-    layoutId: AirlockCommand
 
 - type: entity
   parent: AirlockCommandGlass
@@ -784,8 +682,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsHeadOfSecurity ]
-  - type: Wires
-    layoutId: AirlockCommand
 
 - type: entity
   parent: AirlockCommandGlass
@@ -795,8 +691,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsResearchDirector ]
-  - type: Wires
-    layoutId: AirlockCommand
 
 - type: entity
   parent: AirlockCommandGlass
@@ -806,8 +700,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsHeadOfPersonnel ]
-  - type: Wires
-    layoutId: AirlockCommand
 
 - type: entity
   parent: AirlockCommandGlass
@@ -817,8 +709,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsQuartermaster ]
-  - type: Wires
-    layoutId: AirlockCommand
 
 - type: entity
   parent: AirlockSecurityGlass
@@ -828,8 +718,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsSecurity ]
-  - type: Wires
-    layoutId: AirlockCommand
 
 - type: entity
   parent: AirlockSecurityGlass
@@ -839,8 +727,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsDetective ]
-  - type: Wires
-    layoutId: AirlockCommand
 
 - type: entity
   parent: AirlockSecurityGlass
@@ -850,8 +736,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsBrig ]
-  - type: Wires
-    layoutId: AirlockCommand
 
 - type: entity
   parent: AirlockSecurityGlass
@@ -871,8 +755,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsArmory ]
-  - type: Wires
-    layoutId: AirlockSecurity
 
 - type: entity
   parent: AirlockCommandGlassLocked
@@ -926,8 +808,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsSalvage ]
-  - type: Wires
-    layoutId: AirlockCargo
 
 - type: entity
   parent: AirlockMaint
@@ -937,8 +817,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsCargo ]
-  - type: Wires
-    layoutId: AirlockCargo
 
 - type: entity
   parent: AirlockMaint
@@ -948,8 +826,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsCommand ]
-  - type: Wires
-    layoutId: AirlockCommand
 
 - type: entity
   parent: AirlockMaint
@@ -968,8 +844,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsEngineering ]
-  - type: Wires
-    layoutId: AirlockEngineering
 
 - type: entity
   parent: AirlockMaint
@@ -979,8 +853,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsAtmospherics ]
-  - type: Wires
-    layoutId: AirlockEngineering
 
 - type: entity
   parent: AirlockMaint
@@ -990,8 +862,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsBar ]
-  - type: Wires
-    layoutId: AirlockService
 
 - type: entity
   parent: AirlockMaint
@@ -1001,8 +871,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsChapel ]
-  - type: Wires
-    layoutId: AirlockService
 
 - type: entity
   parent: AirlockMaint
@@ -1012,8 +880,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsHydroponics ]
-  - type: Wires
-    layoutId: AirlockService
 
 - type: entity
   parent: AirlockMaint
@@ -1023,8 +889,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsJanitor ]
-  - type: Wires
-    layoutId: AirlockService
 
 - type: entity
   parent: AirlockMaint
@@ -1054,8 +918,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsTheatre ]
-  - type: Wires
-    layoutId: AirlockService
 
 - type: entity
   parent: AirlockMaint
@@ -1065,8 +927,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsKitchen ]
-  - type: Wires
-    layoutId: AirlockService
 
 - type: entity
   parent: AirlockMaint
@@ -1085,8 +945,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsMedical ]
-  - type: Wires
-    layoutId: AirlockMedical
 
 - type: entity
   parent: AirlockMaint
@@ -1096,8 +954,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsChemistry ]
-  - type: Wires
-    layoutId: AirlockMedical
 
 - type: entity
   parent: AirlockMaint
@@ -1107,8 +963,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsResearch ]
-  - type: Wires
-    layoutId: AirlockScience
 
 - type: entity
   parent: AirlockMaint
@@ -1118,8 +972,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsRnDMed ]
-  - type: Wires
-    layoutId: AirlockScience
 
 - type: entity
   parent: AirlockMaint
@@ -1129,8 +981,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsSecurity ]
-  - type: Wires
-    layoutId: AirlockSecurity
 
 - type: entity
   parent: AirlockMaint
@@ -1140,8 +990,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsDetective ]
-  - type: Wires
-    layoutId: AirlockSecurity
 
 - type: entity
   parent: AirlockMaint
@@ -1151,8 +999,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsHeadOfPersonnel ]
-  - type: Wires
-    layoutId: AirlockCommand
 
 - type: entity
   parent: AirlockMaint
@@ -1162,8 +1008,6 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsCaptain ]
-  - type: Wires
-    layoutId: AirlockCommand
 
 - type: entity
   parent: AirlockMaint
@@ -1351,5 +1195,6 @@
   id: AirlockHatchSyndicate
   suffix: Syndicate, Locked
   components:
-  - type: AccessReader
-    access: [["SyndicateAgent"]]
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSyndicateAgent ]

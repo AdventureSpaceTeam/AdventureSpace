@@ -16,15 +16,15 @@ namespace Content.Client.Doors.Electronics;
 public sealed partial class DoorElectronicsConfigurationMenu : FancyWindow
 {
     private readonly DoorElectronicsBoundUserInterface _owner;
-    private AccessLevelControl _buttonsList;
+    private AccessLevelControl _buttonsList = new();
 
-    public DoorElectronicsConfigurationMenu(DoorElectronicsBoundUserInterface ui, List<string> accessLevels, IPrototypeManager prototypeManager)
+    public DoorElectronicsConfigurationMenu(DoorElectronicsBoundUserInterface ui, List<ProtoId<AccessLevelPrototype>> accessLevels, IPrototypeManager prototypeManager)
     {
         RobustXamlLoader.Load(this);
 
         _owner = ui;
 
-        _buttonsList = new AccessLevelControl(accessLevels, prototypeManager);
+        _buttonsList.Populate(accessLevels, prototypeManager);
         AccessLevelControlContainer.AddChild(_buttonsList);
 
         foreach (var (id, button) in _buttonsList.ButtonsList)
@@ -36,6 +36,6 @@ public sealed partial class DoorElectronicsConfigurationMenu : FancyWindow
 
     public void UpdateState(DoorElectronicsConfigurationState state)
     {
-        _buttonsList.UpdateState(state.accessList);
+        _buttonsList.UpdateState(state.AccessList);
     }
 }

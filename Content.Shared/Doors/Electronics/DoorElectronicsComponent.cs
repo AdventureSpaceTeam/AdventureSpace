@@ -1,9 +1,14 @@
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
+using Robust.Shared.Prototypes;
+using Content.Shared.Access;
 
 namespace Content.Shared.Doors.Electronics;
 
-[RegisterComponent, NetworkedComponent()]
+/// <summary>
+/// Allows an entity's AccessReader to be configured via UI.
+/// </summary>
+[RegisterComponent, NetworkedComponent]
 public sealed partial class DoorElectronicsComponent : Component
 {
 }
@@ -11,22 +16,22 @@ public sealed partial class DoorElectronicsComponent : Component
 [Serializable, NetSerializable]
 public sealed class DoorElectronicsUpdateConfigurationMessage : BoundUserInterfaceMessage
 {
-    public List<string> accessList;
+    public List<ProtoId<AccessLevelPrototype>> AccessList;
 
-    public DoorElectronicsUpdateConfigurationMessage(List<string> _accessList)
+    public DoorElectronicsUpdateConfigurationMessage(List<ProtoId<AccessLevelPrototype>> accessList)
     {
-        accessList = _accessList;
+        AccessList = accessList;
     }
 }
 
 [Serializable, NetSerializable]
 public sealed class DoorElectronicsConfigurationState : BoundUserInterfaceState
 {
-    public List<string> accessList;
+    public List<ProtoId<AccessLevelPrototype>> AccessList;
 
-    public DoorElectronicsConfigurationState(List<string> _accessList)
+    public DoorElectronicsConfigurationState(List<ProtoId<AccessLevelPrototype>> accessList)
     {
-        accessList = _accessList;
+        AccessList = accessList;
     }
 }
 
