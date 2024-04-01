@@ -27,19 +27,6 @@
 
 - type: entity
   parent: BaseFloverBucket
-  id: PaperBucket
-  name: букет бумажных роз
-  components:
-  - type: Construction
-    graph: PaperFlovBucket
-  - type: Sprite
-    sprite: Objects/Decoration/Flovers/paper_bucket.rsi
-    state: icon
-  - type: Item
-    sprite: Objects/Decoration/Flovers/paper_bucket.rsi
-
-- type: entity
-  parent: BaseFloverBucket
   id: RoseBucket
   name: розовый букет
   components:
