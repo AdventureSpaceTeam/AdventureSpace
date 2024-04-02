@@ -34,15 +34,7 @@
         base:
           True: { visible: False }
           False: { visible: True }
-      enum.BlendVisual.Visual:
-        anim:
-          Normal:
-            visible: false
-          Blending:
-            visible: true
   - type: Dumpable
-    soundDump:
-      collection: shufflerRustle
     distance: 0.1
   - type: Item
     size: Normal

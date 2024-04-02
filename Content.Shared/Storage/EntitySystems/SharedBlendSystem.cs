@@ -28,12 +28,6 @@ public sealed class SharedBlendSystem : EntitySystem
         if (!TryComp<StorageComponent>(uid, out var storage))
             return;
 
-        if (TryComp<AppearanceComponent>(uid, out var appearance))
-        {
-            Dirty(uid, component);
-            _appearanceSystem.SetData(uid, BlendVisual.Visual, BlendVisual.Blending, appearance);
-        }
-
         _audio.PlayPvs(component.Sound, uid);
 
         List<EntityUid> dumpQueue = _containerSystem.EmptyContainer(storage.Container);

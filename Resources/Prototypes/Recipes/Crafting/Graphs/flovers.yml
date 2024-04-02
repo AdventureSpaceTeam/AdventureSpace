@@ -47,6 +47,12 @@
           state: icon
         name: red rose
 
+      - tag: RedRose
+        icon:
+          sprite: Objects/Decoration/Flovers/red_rose.rsi
+          state: icon
+        name: red rose
+
       - tag: WhiteRose
         icon:
           sprite: Objects/Decoration/Flovers/white_rose.rsi

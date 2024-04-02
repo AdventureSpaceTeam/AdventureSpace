@@ -9,19 +9,4 @@ public sealed partial class BlendComponent : Component
 {
     [ViewVariables(VVAccess.ReadWrite), DataField("sound"), AutoNetworkedField]
     public SoundSpecifier? Sound = null;
-
-    [Serializable, NetSerializable]
-    public sealed class BlendComponentState : ComponentState
-    {
-        public bool Blending { get; init; }
-    }
-
-    [Serializable, NetSerializable]
-    public enum BlendVisual
-    {
-        Visual,
-        Normal,
-        Blending
-    }
-
 }
