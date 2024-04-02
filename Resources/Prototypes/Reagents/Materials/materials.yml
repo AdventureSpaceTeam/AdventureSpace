@@ -81,7 +81,7 @@
   name: materials-uranium
   icon: { sprite: Objects/Materials/Sheets/other.rsi, state: uranium }
   color: "#32a852"
-  price: 0.2
+  price: 0.02
 
 - type: material
   id: Bananium
@@ -123,7 +123,7 @@
   unit: materials-unit-piece
   icon: { sprite: Objects/Materials/ore.rsi, state: coal }
   color: "#404040"
-  price: 0
+  price: 0.075
 
 - type: material
   id: Gunpowder
