@@ -22,7 +22,7 @@
   unit: materials-unit-chunk
   icon: { sprite: Objects/Materials/ore.rsi, state: gold }
   color: "#FFD700"
-  price: 0.02
+  price: 0.2
 
 - type: material
   id: RawSilver
@@ -49,7 +49,7 @@
   unit: materials-unit-chunk
   icon: { sprite: Objects/Materials/ore.rsi, state: uranium }
   color: "#32a852"
-  price: 0.02
+  price: 0.2
 
 - type: material
   id: RawBananium
