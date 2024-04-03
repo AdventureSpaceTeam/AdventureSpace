@@ -32,4 +32,10 @@ public sealed partial class DumpableComponent : Component
     /// </summary>
     [DataField("multiplier"), AutoNetworkedField]
     public float Multiplier = 1.0f;
+
+    [DataField("distance"), AutoNetworkedField]
+    public float Distance = 1.0f;
+
+    [DataField("random"), AutoNetworkedField]
+    public bool Random = false;
 }

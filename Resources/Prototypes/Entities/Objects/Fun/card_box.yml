@@ -66,9 +66,13 @@
     state: card_box
   - type: Item
     size: Small
+  - type: Dumpable
+    distance: 0.5
   - type: Storage
     grid:
     - 0,0,13,3
+    quickInsert: true
+    areaInsert: true
     whitelist:
       tags:
       - Card
