@@ -1,0 +1,866 @@
+#Кровь ксено
+- type: reagent
+  id: XenoBloodAcid
+  parent: SulfuricAcid
+  name: Кислота Ксеноморфов
+  group: Toxins
+  desc: Абсолюно едкое
+  physicalDesc: Жёлтое вещество, способное растворить что угодно.
+  flavor: acid
+  color: "#d9f500"
+
+#Мобы
+- type: entity
+  name: Бегун
+  suffix: BORK (Alien)
+  description: Невероятно быстрый и опасный.
+  parent: MobAlienPraetorian
+  id: MobAlienRunner
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: /Textures/_c4llv07e/Mobs/Aliens/alienrunner.rsi
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: running
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      150: Dead
+  - type: MeleeWeapon
+    damage:
+      types:
+        Brute: 2
+        Slash: 6
+    soundHit:
+     collection: AlienScreamAttack
+  - type: MovementSpeedModifier
+    baseSprintSpeed: 6
+    baseWalkSpeed : 7
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 450
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: GhostRole
+    allowMovement: true
+    allowSpeech: true
+    makeSentient: true
+    name: Бегун
+    description: Вы - разведчик, совершайте быстрые атаки и ищите противника.
+  - type: Butcherable
+    spawned:
+      - id: FoodMeatAlian
+        amount: 3
+  - type: Reform
+    actionPrototype: AlienEvolutionAction
+    reformTime: 10
+    popupText: Вы  начинаете сбрасывать свой старый панцирь
+    reformPrototype: MobAlien
+  - type: Emoting
+
+- type: entity
+  name: Ксеноморф
+  suffix: BORK (Alien)
+  description: Идеальный организм.
+  parent: MobXeno
+  id: MobAlien
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: /Textures/_c4llv07e/Mobs/Aliens/alien.rsi
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: running
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      200: Dead
+  - type: Bloodstream
+    bloodReagent: XenoBloodAcid
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      150: 0.7
+  - type: MeleeWeapon
+    damage:
+      types:
+        Brute: 2
+        Slash: 10
+    soundHit:
+     collection: AlienScreamAttack
+  - type: MovementSpeedModifier
+    baseSprintSpeed: 5
+    baseWalkSpeed : 6
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 450
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: StatusEffects
+    allowed:
+    - Stun
+  - type: GhostRole
+    allowMovement: true
+    allowSpeech: true
+    makeSentient: true
+    name: Ксеноморф
+    description: Высокая скорость, сила, интеллект - вы идеальное оружие для убийств.
+  - type: TriggerOnMobstateChange
+    mobState:
+    - Dead
+  - type: EmitSoundOnTrigger
+    sound:
+      collection: AliensDead
+      params:
+        volume: -1
+  - type: Damageable
+    damageModifierSet: Aliens
+  - type: Butcherable
+    spawned:
+      - id: FoodMeatAlian
+        amount: 3
+  - type: Spider
+    actionPrototype: ActionAlienWeb
+    webPrototype: AlianWeb
+    reformTime: 10
+  - type: IgnoreSpiderWeb
+  - type: Speech
+    speechVerb: LargeMob
+    speechSounds: AlienSpeach
+    params:
+      volume: -5
+  - type: Reform
+    actionPrototype: PraetorianEvolutionAction
+    reformTime: 20
+    popupText: Вы  начинаете сбрасывать свой старый панцирь
+    reformPrototype: MobAlienPraetorian
+  - type: Vocal
+    sounds:
+      Male: AlienScream
+      Female: AlienScream
+      Unsexed: AlienScream
+  - type: EmitSoundOnSpawn
+    sound:
+      path: /Audio/_c4llv07e/Aliens/Slider_spawn.ogg
+      params:
+        volume: -2
+  - type: IntrinsicRadioReceiver
+  - type: IntrinsicRadioTransmitter
+    channels:
+    - Alian
+  - type: ActiveRadio
+    channels:
+    - Alian
+  - type: Puller
+    needsHands: false
+  - type: PassiveDamage
+    allowedStates:
+    - Alive
+    damageCap: 1000
+    damage:
+      groups:
+        Brute: -0.15
+        Burn: -0.15
+        Airloss: -0.15
+        Toxin: -0.15
+        Genetic: -0.15
+  - type: Emoting
+
+- type: entity
+  name: Преторианец
+  suffix: BORK (Alien)
+  description: Промежуточная стадия от трутня к королеве.
+  parent: MobXeno
+  id: MobAlienPraetorian
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: /Textures/_c4llv07e/Mobs/Aliens/alienpraetorian.rsi
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: running
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      350: Dead
+  - type: Bloodstream
+    bloodReagent: XenoBloodAcid
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      300: 0.7
+  - type: MovementSpeedModifier
+    baseSprintSpeed: 4.5
+    baseWalkSpeed : 5.5
+  - type: StatusEffects
+    allowed:
+    - Stun
+  - type: MeleeWeapon
+    damage:
+     types:
+       Brute: 5
+       Slash: 20
+    soundHit:
+     collection: AlienScreamAttack
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 700
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: GhostRole
+    allowMovement: true
+    allowSpeech: true
+    makeSentient: true
+    name: Преторианец
+    description: Защищайте королеву, командуйте своими братьями на передовой.
+  - type: Reform
+    actionPrototype: QueenEvolutionAction
+    reformTime: 30
+    popupText: Вы  начинаете сбрасывать свой старый панцирь
+    reformPrototype: MobAlienQueen
+  - type: Damageable
+    damageModifierSet: Aliens
+  - type: Butcherable
+    spawned:
+      - id: FoodMeatAlian
+        amount: 5
+  - type: IgnoreSpiderWeb
+  - type: TriggerOnMobstateChange
+    mobState:
+    - Dead
+  - type: EmitSoundOnTrigger
+    sound:
+      collection: AliensDead
+      params:
+        volume: -1
+  - type: Speech
+    speechVerb: LargeMob
+    speechSounds: AlienSpeach
+    params:
+      volume: -5
+  - type: Vocal
+    sounds:
+      Male: AlienScream
+      Female: AlienScream
+      Unsexed: AlienScream
+  - type: EmitSoundOnSpawn
+    sound:
+      path: /Audio/_c4llv07e/Aliens/Slider_spawn.ogg
+      params:
+        volume: -2
+  - type: IntrinsicRadioReceiver
+  - type: IntrinsicRadioTransmitter
+    channels:
+    - Alian
+  - type: ActiveRadio
+    channels:
+    - Alian
+  - type: Puller
+    needsHands: false
+  - type: PassiveDamage
+    allowedStates:
+    - Alive
+    damageCap: 1000
+    damage:
+      groups:
+        Brute: -0.15
+        Burn: -0.15
+        Airloss: -0.15
+        Toxin: -0.15
+        Genetic: -0.15
+  - type: Emoting
+
+- type: entity
+  name: Королева Ксеноморфов
+  suffix: BORK (Alien)
+  description: Матка и центральный мозг улья.
+  parent: MobXeno
+  id: MobAlienQueen
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: /Textures/_c4llv07e/Mobs/Aliens/alienqueen.rsi
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: running
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      1000: Dead
+  - type: Bloodstream
+    bloodReagent: XenoBloodAcid
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      950: 0.7
+  - type: MovementSpeedModifier
+    baseSprintSpeed: 3.5
+    baseWalkSpeed : 4.5
+  - type: MeleeWeapon
+    damage:
+      types:
+       Brute: 5
+       Slash: 30
+    soundHit:
+     collection: AlienScreamAttack
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.45
+        density: 1500
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: GhostRole
+    allowMovement: true
+    allowSpeech: true
+    makeSentient: true
+    name: Королева Ксеноморфов
+    description: Руководите ульем, отдайте жизнь за улей, вы есть улей....
+  - type: EggLayer
+    hungerUsage: 0
+    eggLaySound: !type:SoundPathSpecifier
+      path: /Audio/Voice/Misc/lowHiss3.ogg
+    eggSpawn:
+    - id: AlienEgg
+  - type: Damageable
+    damageModifierSet: Aliens
+  - type: Butcherable
+    spawned:
+      - id: FoodMeatAlian
+        amount: 8
+  - type: Spider
+    actionPrototype: ActionAlienWeb
+    webPrototype: AlianWeb
+    reformTime: 10
+  - type: IgnoreSpiderWeb
+  - type: Speech
+    speechVerb: LargeMob
+    speechSounds: AlienSpeach
+    params:
+      volume: -5
+  - type: TriggerOnMobstateChange
+    mobState:
+    - Dead
+  - type: EmitSoundOnTrigger
+    sound:
+      path: /Audio/_c4llv07e/Aliens/Queen_dead.ogg
+      params:
+        volume: -2
+  - type: Vocal
+    sounds:
+      Male: QueenRoar
+      Female: QueenRoar
+      Unsexed: QueenRoar
+  - type: EmitSoundOnSpawn
+    sound:
+      path: /Audio/_c4llv07e/Aliens/Slider_spawn.ogg
+      params:
+        volume: -2
+  - type: IntrinsicRadioReceiver
+  - type: IntrinsicRadioTransmitter
+    channels:
+    - Alian
+  - type: ActiveRadio
+    channels:
+    - Alian
+  - type: Puller
+    needsHands: false
+  - type: PassiveDamage
+    allowedStates:
+    - Alive
+    damageCap: 1000
+    damage:
+      groups:
+        Brute: -0.15
+        Burn: -0.15
+        Airloss: -0.15
+        Toxin: -0.15
+        Genetic: -0.15
+  - type: Emoting
+
+- type: entity
+  name: Ползун
+  suffix: BORK (Alien)
+  description: Начало конца.
+  parent: MobAlienPraetorian
+  id: MobAlienSlider
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: /Textures/_c4llv07e/Mobs/Aliens/slider.rsi
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: running
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      50: Dead
+  - type: StatusEffects
+    allowed:
+    - Stun
+  - type: MeleeWeapon
+    damage:
+     types:
+       Brute: 1
+       Slash: 2
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.25
+        density: 30
+        mask:
+        - SmallMobMask
+        layer:
+        - SmallMobLayer
+  - type: MovementSpeedModifier
+    baseSprintSpeed: 5
+    baseWalkSpeed : 6
+  - type: GhostRole
+    allowMovement: true
+    allowSpeech: true
+    makeSentient: true
+    name: Ползун
+    description: Вы крайне слабы для все. Избегайте людей для успешной эволюции.
+  - type: Reform
+    actionPrototype: RunnerEvolutionAction
+    reformTime: 10
+    popupText: Вы  начинаете сбрасывать свой старый панцирь
+    reformPrototype: MobAlienRunner
+  - type: EmitSoundOnSpawn
+    sound:
+      path: /Audio/_c4llv07e/Aliens/Slider_spawn.ogg
+      params:
+        volume: -2
+  - type: Butcherable
+    spawned:
+      - id: FoodMeatAlian
+        amount: 1
+  - type: TriggerOnMobstateChange
+    mobState:
+    - Dead
+  - type: EmitSoundOnTrigger
+    sound:
+      path: /Audio/_c4llv07e/Aliens/Slider_dead.ogg
+      params:
+        volume: -1
+  - type: Speech
+    speechVerb: LargeMob
+    speechSounds: SliderSpeach
+  - type: IntrinsicRadioReceiver
+  - type: IntrinsicRadioTransmitter
+    channels:
+    - Alian
+  - type: ActiveRadio
+    channels:
+    - Alian
+  - type: Puller
+    needsHands: false
+  - type: Emoting
+
+#Действия
+- type: entity
+  id: QueenEvolutionAction
+  name: Эволюционировать в королеву
+  description: Пришло время стать сильнее.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon:
+      sprite: /Textures/_c4llv07e/Mobs/Aliens/alienqueen.rsi
+      state: sleeping
+    event: !type:ReformEvent {}
+    useDelay: 1200
+
+- type: entity
+  id: AlienEvolutionAction
+  name: Эволюционировать в трутня
+  description: Пришло время стать сильнее.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon:
+      sprite: /Textures/_c4llv07e/Mobs/Aliens/alien.rsi
+      state: sleeping
+    event: !type:ReformEvent {}
+    useDelay: 180
+
+- type: entity
+  id: RunnerEvolutionAction
+  name: Эволюционировать в бегуна
+  description: Пришло время стать сильнее.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon:
+      sprite: /Textures/_c4llv07e/Mobs/Aliens/alienrunner.rsi
+      state: sleeping
+    event: !type:ReformEvent {}
+    useDelay: 120
+
+- type: entity
+  id: ActionAlienWeb
+  name: Расширить улей
+  description: Расширяйте улей используя свою слизь.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon:
+      sprite: /Textures/_c4llv07e/Mobs/Aliens/alian_web.rsi
+      state: Alian_web
+    event: !type:SpiderWebActionEvent
+    useDelay: 30
+
+- type: entity
+  id: PraetorianEvolutionAction
+  name: Эволюционировать в преторианца
+  description: Пришло время стать сильнее.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon:
+      sprite: /Textures/_c4llv07e/Mobs/Aliens/alienpraetorian.rsi
+      state: sleeping
+    event: !type:ReformEvent {}
+    useDelay: 600
+
+#яйца ксено
+- type: entity
+  id: AlienEgg
+  parent: AlienEggDecor
+  description: Там что-то швелится.
+  name: Яйцо Ксеноморфа
+  suffix: BORK (Alien)
+  components:
+  - type: Sprite
+    sprite: /Textures/_c4llv07e/Mobs/Aliens/alien_egg/alien_egg.rsi
+    layers:
+      - state: alienegg
+  - type: Timer
+  - type: TimedSpawner
+    prototypes:
+    - MobAlienSlider
+    intervalSeconds: 180
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: TimedDespawn
+    lifetime: 185
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: desecration
+      - !type:SpillBehavior
+        solution: food
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          FoodMeatAlian:
+            min: 1
+            max: 2
+          MobAlienSlider:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+- type: entity
+  id: AlienEggOpenDecor
+  parent: AlienEggDecor
+  description: Кажется оно пустое, это не к добру.
+  name: Яйцо Ксеноморфа
+  suffix: BORK (Alien/Decor)
+  components:
+  - type: Sprite
+    sprite: /Textures/_c4llv07e/Mobs/Aliens/alien_egg/alien_egg_open.rsi
+    layers:
+      - state: alienegg_open
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: desecration
+      - !type:SpillBehavior
+        solution: food
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          FoodMeatAlian:
+            min: 1
+            max: 2
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+- type: entity
+  id: AlienEggDecor
+  parent: BaseItem
+  description: Там что-то швелится.
+  name: Яйцо Ксеноморфа
+  suffix: BORK (Alien/Decor)
+  components:
+  - type: Sprite
+    sprite: /Textures/_c4llv07e/Mobs/Aliens/alien_egg/alien_egg.rsi
+    layers:
+      - state: alienegg
+  - type: MultiHandedItem
+  - type: StaticPrice
+    price: 4000
+  - type: Item
+    size: Huge
+  - type: Damageable
+    damageContainer: Biological
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: desecration
+      - !type:SpillBehavior
+        solution: food
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          FoodMeatAlian:
+            min: 1
+            max: 2
+          MobAlienSlider:
+            min: 0
+            max: 1
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: DamageOnHighSpeedImpact
+    minimumSpeed: 0.1
+    damage:
+      types:
+        Blunt: 1
+
+#Броня Чужих
+- type: damageModifierSet
+  id: Aliens
+  coefficients:
+    Caustic: 0.0
+    Blunt: 0.4
+    Slash: 0.8
+    Piercing: 0.6
+    Heat: 1.8
+
+#Слизь ксеноморфа
+- type: entity
+  id: AlianWeb
+  suffix: BORK (Alien)
+  name: Слизь улья
+  description: Слизь, вырабатываемая ксеноморфами для постройки улья.
+  placement:
+    mode: SnapgridCenter
+    snap:
+      - Wall
+  components:
+    - type: MeleeSound
+      soundGroups:
+        Brute:
+          path:
+            "/Audio/Weapons/slash.ogg"
+    - type: Sprite
+      sprite: /Textures/_c4llv07e/Mobs/Aliens/alian_web.rsi
+      layers:
+        - state: Alian_web
+          map: ["spiderWebLayer"]
+      drawdepth: WallMountedItems
+    - type: Appearance
+    - type: GenericVisualizer
+      visuals:
+        enum.SpiderWebVisuals.Variant:
+          spiderWebLayer:
+            1:  {state: Alian_web}
+    - type: Clickable
+    - type: Transform
+      anchored: true
+    - type: Physics
+    - type: Fixtures
+      fixtures:
+        fix1:
+          hard: false
+          density: 7
+          shape:
+            !type:PhysShapeAabb
+            bounds: "-0.5,-0.5,0.5,0.5"
+          layer:
+          - MidImpassable
+    - type: Damageable
+      damageModifierSet: Wood
+    - type: Destructible
+      thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 10
+        behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+        - !type:SpawnEntitiesBehavior
+          spawn:
+            FoodMeatAlianWeb:
+              min: 0
+              max: 2
+    - type: Temperature
+      heatDamage:
+        types:
+          Heat: 5
+      coldDamage: {}
+      ColdDamageThreshold: 0
+    - type: Flammable
+      fireSpread: true
+      cold:
+        types: {}
+      damage:
+        types:
+          Heat: 5
+    - type: Reactive
+      groups:
+        Flammable: [Touch]
+        Extinguish: [Touch]
+    - type: SpiderWebObject
+    - type: SpeedModifierContacts
+      walkSpeedModifier: 0.5
+      sprintSpeedModifier: 0.5
+      ignoreWhitelist:
+        components:
+            - IgnoreSpiderWeb
+
+#мясо чужих
+- type: entity
+  name: Мясо ксеноморфа
+  suffix: BORK (Alien)
+  parent: FoodMeatXeno
+  id: FoodMeatAlian
+  description: Кусок мяса ксеносов, пропитанный кислотой.
+  components:
+  - type: Sprite
+    sprite: /Textures/_c4llv07e/Mobs/Aliens/alian_meat.rsi
+    layers:
+      - state: Alian
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: XenoBloodAcid
+          Quantity: 20
+
+- type: entity
+  name: Обрезанные сухожилия
+  suffix: BORK (Alien)
+  parent: FoodMeatAlian
+  id: FoodMeatAlianWeb
+  description: Маленькие жили, пропитанные кислотой.
+  components:
+  - type: Sprite
+    sprite: /Textures/_c4llv07e/Mobs/Aliens/alian_web.rsi
+    layers:
+      - state: Alian_web_Destr
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: XenoBloodAcid
+          Quantity: 5
+
+#Звуки
+- type: soundCollection
+  id: AliensDead
+  files:
+  - /Audio/_c4llv07e/Aliens/alien_dead_1.ogg
+  - /Audio/_c4llv07e/Aliens/alien_dead_2.ogg
+
+- type: emoteSounds
+  params:
+    variation: 0.125
+    volume: -1
+  id: AlienScream
+  sounds:
+    Scream:
+      collection: AlienScreamCollection
+
+- type: soundCollection
+  id: AlienScreamCollection
+  files:
+  - /Audio/_c4llv07e/Aliens/alien_scream_1.ogg
+  - /Audio/_c4llv07e/Aliens/alien_scream_2.ogg
+  - /Audio/_c4llv07e/Aliens/alien_scream_3.ogg
+  - /Audio/_c4llv07e/Aliens/alien_dead_2.ogg
+
+- type: speechSounds
+  id: AlienSpeach
+  saySound:
+    path: /Audio/_c4llv07e/Aliens/alien_speach_1.ogg
+  askSound:
+    path: /Audio/_c4llv07e/Aliens/alien_speach_2.ogg
+  exclaimSound:
+    path: /Audio/_c4llv07e/Aliens/alien_speach_3.ogg
+
+- type: emoteSounds
+  params:
+    variation: 0.125
+    volume: -1
+  id: QueenRoar
+  sounds:
+    Scream:
+      collection: QueenRoarCollection
+
+- type: soundCollection
+  id: QueenRoarCollection
+  files:
+  - /Audio/_c4llv07e/Aliens/Queen_roar_1.ogg
+  - /Audio/_c4llv07e/Aliens/Queen_roar_2.ogg
+
+- type: speechSounds
+  id: SliderSpeach
+  saySound:
+    path: /Audio/_c4llv07e/Aliens/Slider_speach.ogg
+  askSound:
+    path: /Audio/_c4llv07e/Aliens/Slider_speach.ogg
+  exclaimSound:
+    path: /Audio/_c4llv07e/Aliens/Slider_speach.ogg
+
+- type: soundCollection
+  id: AlienScreamAttack
+  files:
+  - /Audio/_c4llv07e/Aliens/alien_scream_1.ogg
+  - /Audio/_c4llv07e/Aliens/alien_scream_2.ogg
+  - /Audio/_c4llv07e/Aliens/alien_scream_3.ogg
+
+#Радио Чужих
+- type: radioChannel
+  id: Alian
+  name: Коллективный разум ксеноморфов
+  keycode: 'ч'
+  frequency: 426
+  color: "#d9f500"
+  longRange: true
