@@ -10,10 +10,10 @@
   - type: MovementIgnoreGravity
   - type: ActiveRadio
     receiveAllChannels: true
-  # - type: Sprite
-  #   drawdepth: Ghosts
-  #   sprite: _c4llv07e/ai.rsi
-  #   state: icon
+  - type: Sprite
+    drawdepth: Ghosts
+    sprite: _c4llv07e/ai.rsi
+    state: icon
   - type: Fixtures
     fixtures:
       fix1:
