@@ -117,5 +117,13 @@
   - type: AI
     itemsInHands:
     - DoorRemoteAll
+    - TrayScanner21
   - type: Hands
     showInHands: false
+
+- type: entity
+  id: TrayScanner21
+  parent: trayScanner
+  components:
+  - type: TrayScanner
+    range: 21
