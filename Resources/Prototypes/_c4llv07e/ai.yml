@@ -28,6 +28,7 @@
   - type: TTS # Corvax-TTS
     voice: glados
   - type: ContentEye
+    maxZoom: 2.0, 2.0
   - type: Tag
     tags:
     - CanPilot
