@@ -562,8 +562,8 @@ namespace Content.Shared.CCVar
          * Console
          */
 
-        public static readonly CVarDef<bool>
-            ConsoleLoginLocal = CVarDef.Create("console.loginlocal", true, CVar.ARCHIVE | CVar.SERVERONLY);
+        public static readonly CVarDef<bool> ConsoleLoginLocal =
+            CVarDef.Create("console.loginlocal", true, CVar.ARCHIVE | CVar.SERVERONLY);
 
         /// <summary>
         /// Automatically log in the given user as host, equivalent to the <c>promotehost</c> command.
@@ -745,7 +745,7 @@ namespace Content.Shared.CCVar
 
         public static readonly CVarDef<bool> CombatModeIndicatorsPointShow =
             CVarDef.Create("hud.combat_mode_indicators_point_show", true, CVar.ARCHIVE | CVar.CLIENTONLY);
-
+        
         public static readonly CVarDef<bool> LoocAboveHeadShow =
             CVarDef.Create("hud.show_looc_above_head", true, CVar.ARCHIVE | CVar.CLIENTONLY);
 
@@ -855,6 +855,7 @@ namespace Content.Shared.CCVar
 
         /// <summary>
         ///     Should the ban details in admin channel include PII? (IP, HWID, etc)
+        /// </summary>
         public static readonly CVarDef<bool> AdminShowPIIOnBan =
             CVarDef.Create("admin.show_pii_onban", false, CVar.SERVERONLY);
 
@@ -1243,6 +1244,9 @@ namespace Content.Shared.CCVar
         /// </summary>
         public static readonly CVarDef<bool> OocEnableDuringRound =
             CVarDef.Create("ooc.enable_during_round", false, CVar.NOTIFY | CVar.REPLICATED | CVar.SERVER);
+        
+        public static readonly CVarDef<bool> ShowOocPatronColor =
+            CVarDef.Create("ooc.show_ooc_patron_color", true, CVar.ARCHIVE | CVar.REPLICATED | CVar.CLIENT);
 
         /*
          * LOOC
