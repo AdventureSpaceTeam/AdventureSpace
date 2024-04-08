@@ -1,3 +1,4 @@
+using Content.Shared.Actions;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction.Components;
 using Content.Shared.Interaction.Events;
@@ -9,6 +10,7 @@ namespace Content.Server._c4llv07e.AI;
 public sealed class AISystem : EntitySystem
 {
     [Dependency] private readonly SharedHandsSystem _hands = default!;
+    [Dependency] private readonly SharedActionsSystem _actions = default!;
 
     public override void Initialize()
     {
@@ -34,6 +36,7 @@ public sealed class AISystem : EntitySystem
             EnsureComp<UnremoveableComponent>(item);
             EnsureComp<AIControlledComponent>(item);
         }
+        _actions.AddAction(ent, "ActionToggleLighting");
     }
 
     public void OnShutdown(Entity<AIComponent> ent, ref ComponentShutdown args)
