@@ -36,8 +36,7 @@
   - type: Input
     context: AI
   - type: Physics
-    bodyType: KinematicController
-    bodyStatus: InAir
+    bodyType: Kinematic
   - type: CanMoveInAir
   - type: Body
   - type: NoSlip
