@@ -57,6 +57,7 @@ namespace Content.IntegrationTests.Tests
 			"CorvaxMaus",
 			"CorvaxIshimura",
 			"CorvaxPaper",
+            "CorvaxSplit",
             // Corvax-End
             "Dev",
             "TestTeg",
