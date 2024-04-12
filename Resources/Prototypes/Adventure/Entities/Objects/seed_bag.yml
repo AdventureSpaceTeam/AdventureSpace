@@ -1,0 +1,84 @@
+- type: entity
+  name: плетёная сумка
+  id: SeedBag
+  parent: BaseStorageItem
+  description: Самодельная сумка ботаника. Подходит для свежего урожая
+  components:
+  - type: Sprite
+    sprite: DTS/seed_bag.rsi
+    state: icon
+  - type: Item
+    storedRotation: -90
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - belt
+  - type: Storage
+    grid:
+    - 0,0,6,3
+    maxItemSize: Small
+    quickInsert: true
+    areaInsert: true
+    whitelist:
+      components:
+        - Produce
+        - Seed
+  - type: Dumpable
+  - type: Construction
+    graph: SeedBag
+    node: seedbag
+
+- type: constructionGraph
+  id: SeedBag
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: seedbag
+          steps:
+            - material: Cloth
+              amount: 5
+              doAfter: 5
+            - tag: Wheat
+              name: Wheat Bushel
+              icon:
+                sprite: Objects/Specific/Hydroponics/wheat.rsi
+                state: produce
+              doAfter: 1
+            - tag: Wheat
+              name: Wheat Bushel
+              icon:
+                sprite: Objects/Specific/Hydroponics/wheat.rsi
+                state: produce
+              doAfter: 1
+            - tag: Wheat
+              name: Wheat Bushel
+              icon:
+                sprite: Objects/Specific/Hydroponics/wheat.rsi
+                state: produce
+              doAfter: 1
+            - tag: Wheat
+              name: Wheat Bushel
+              icon:
+                sprite: Objects/Specific/Hydroponics/wheat.rsi
+                state: produce
+              doAfter: 1
+            - tag: Wheat
+              name: Wheat Bushel
+              icon:
+                sprite: Objects/Specific/Hydroponics/wheat.rsi
+                state: produce
+              doAfter: 1
+    - node: seedbag
+      entity: SeedBag
+
+- type: construction
+  name: wicker bag
+  id: SeedBag
+  graph: SeedBag
+  startNode: start
+  targetNode: seedbag
+  category: construction-category-storage
+  description: A crude reinforced spear for when you need to put holes in somebody.
+  icon: { sprite: DTS/seed_bag.rsi, state: icon }
+  objectType: Item
