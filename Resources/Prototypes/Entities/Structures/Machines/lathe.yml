@@ -714,6 +714,10 @@
       - ShuttleGunPerforatorCircuitboard
       - ShuttleGunFriendshipCircuitboard
       - ShuttleGunDusterCircuitboard
+      - WeaponPlasmaGunPrint #PlasmaWeapons
+      - PlasmaMagazinPrint #PlasmaWeapons
+      - WeaponPlasmaSniperPrint #PlasmaWeapons
+      - PlasmaSniperMagazinPrint #PlasmaWeapons
   - type: MaterialStorage
     whitelist:
       tags:
