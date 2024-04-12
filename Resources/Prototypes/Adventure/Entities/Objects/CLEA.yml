@@ -14,7 +14,7 @@
 - type: entity
   parent: ClothingHeadBase
   id: ClothingHeadHelmetCLEA
-  name: Шлем офицера ЦСС
+  name: Шлем ЦСС
   description: им можно колоть орехи
   components:
   - type: Sprite
@@ -99,10 +99,26 @@
   - type: ExplosionResistance
     damageCoefficient: 0.90
 
-#ID карта ЦСС  
+#ID карта  ЦСС  
 - type: entity
   parent: ERTLeaderIDCard
   id: CLEAIDCard
+  name: ID карта ЦСС  
+  components:
+  - type: Sprite
+    sprite: Bork/CLEA/other/CLEA_IDcard.rsi
+    layers:
+    - state: silver
+    - state: idCLEA
+  - type: Item
+  - type: IdCard
+    jobTitle: Солдат ЦСС
+    jobIcon: JobIconCLEA
+
+#ID карта офицера ЦСС  
+- type: entity
+  parent: ERTLeaderIDCard
+  id: CLEAOfficerIDCard
   name: ID карта Офицера ЦСС  
   components:
   - type: Sprite
@@ -139,7 +155,7 @@
 - type: entity
   parent: BasePDA
   id: CLEAPDA
-  name: КПК Офицера ЦСС 
+  name: КПК солдата ЦСС 
   description: не такой робастный, как у отряда быстрого реагирования
   components:
   - type: Sprite
@@ -156,6 +172,34 @@
       visible: false
   - type: Pda
     id: CLEAIDCard
+    state: pda-CLEA
+  - type: PdaBorderColor
+    borderColor: "#4e4e56"
+  - type: Icon
+    sprite: Bork/CLEA/other/CLEA_PDA.rsi
+    state: pda-CLEA
+
+#КПК офицера ЦСС
+- type: entity
+  parent: BasePDA
+  id: CLEAOfficerPDA
+  name: КПК Офицера ЦСС 
+  description: не такой робастный, как у отряда быстрого реагирования
+  components:
+  - type: Sprite
+    sprite: Bork/CLEA/other/CLEA_PDA.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+  - type: Pda
+    id: CLEAOfficerIDCard
     state: pda-CLEA
   - type: PdaBorderColor
     borderColor: "#4e4e56"
@@ -208,7 +252,7 @@
     highPressureMultiplier: 0.3
     lowPressureMultiplier: 1000
 
-#ГИР ЦСС
+#ГИР Офицера ЦСС
 - type: startingGear
   id: CLEAGearBase
   equipment:
@@ -219,7 +263,7 @@
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterArmorCLEA
     mask: ClothingMaskCLEA
-    id: CLEAPDA
+    id: CLEAOfficerPDA
     belt: ClothingBeltMilitaryWebbingCLEA
     pocket1: WeaponPistolMk58
     suitstorage: WeaponRifleM90GrenadeLauncher
@@ -235,9 +279,101 @@
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitCLEA
     mask: ClothingMaskCLEA
-    id: CLEAPDA
+    id: CLEAOfficerPDA
     belt: ClothingBeltMilitaryWebbingCLEA
     pocket1: WeaponPistolMk58
     suitstorage: WeaponRifleM90GrenadeLauncher
     ears: ClothingHeadsetAltCentCom
     eyes: ClothingEyesGlassesSecurity
+
+
+# госторолька офицер
+- type: randomHumanoidSettings
+  id: CLEAOfficer
+  randomizeName: false
+  components:
+    - type: MindShield
+    - type: GhostRole
+      name: Офицер ЦСС
+      description: . #придумаешь сам
+    - type: GhostTakeoverAvailable
+    - type: Loadout
+      prototypes: [ CLEAGearBase ]
+    - type: RandomMetadata
+      nameSegments:
+      - NamesFirstCLEAOfficer
+      - NamesLastCLEAOfficer
+    - type: InitialInfectedExempt
+
+- type: randomHumanoidSettings
+  id: CLEAOfficerEVA
+  randomizeName: false
+  components:
+    - type: MindShield
+    - type: GhostRole
+      name: Офицер ЦСС
+      description: . #придумаешь сам
+    - type: GhostTakeoverAvailable
+    - type: Loadout
+      prototypes: [ CLEAGearFullEVA ]
+    - type: RandomMetadata
+      nameSegments:
+      - NamesFirstCLEAOfficer
+      - NamesLastCLEAOfficer
+    - type: InitialInfectedExempt
+
+- type: entity
+  id: RandomHumanoidSpawnerCLEAOfficer
+  name: Офицер ЦСС
+  suffix: BASE
+  components:
+    - type: Sprite
+      sprite: Markers/jobs.rsi
+      state: cleaofficer
+    - type: RandomMetadata
+      nameSegments:
+      - NamesFirstCLEAOfficer
+      - NamesLastCLEAOfficer
+    - type: RandomHumanoidSpawner
+      settings: CLEAOfficer
+    - type: InitialInfectedExempt
+
+- type: entity
+  id: RandomHumanoidSpawnerCLEAOfficerEVA
+  name: Офицер ЦСС
+  suffix: EVA
+  components:
+    - type: Sprite
+      sprite: Markers/jobs.rsi
+      state: cleaofficer
+    - type: RandomMetadata
+      nameSegments:
+      - NamesFirstCLEAOfficer
+      - NamesLastCLEAOfficer
+    - type: RandomHumanoidSpawner
+      settings: CLEAOfficerEVA
+    - type: InitialInfectedExempt
+
+- type: dataset
+  id: NamesFirstCLEAOfficer
+  values:
+  - Лейтенант
+  - Капитан
+  - Майор
+
+- type: dataset
+  id: NamesLastCLEAOfficer
+  values:
+  - Ястреб
+  - Ворон
+  - Бугор
+  - Браво
+  - Фокс
+  - Хикс
+  - Гроза
+  - Каир
+  - Геварра
+  - Рекс
+  - Вольф
+  - Бизон
+# /госторолька офицер
