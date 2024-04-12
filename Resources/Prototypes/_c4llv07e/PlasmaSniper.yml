@@ -45,7 +45,7 @@
 
 - type: entity
   id: PlasmaSniperMagazinPrint
-  name: Плазменная батарея
+  name: Плазменная батарея "Виверны"
   suffix: BORK(Print)
   parent: PlasmaSniperMagazin
   components:
@@ -178,3 +178,25 @@
 
 - type: Tag
   id: PlasmaMagSniper
+
+# рецепты
+- type: latheRecipe
+  id: WeaponPlasmaSniperPrint
+  result: WeaponPlasmaSniperPrint
+  category: Weapons
+  completetime: 3
+  materials:
+     Steel: 2500
+     Gold: 750
+     Uranium: 1500
+     Plastic: 750
+
+- type: latheRecipe
+  id: PlasmaSniperMagazinPrint
+  result: PlasmaSniperMagazinPrint
+  category: Ammo
+  completetime: 3
+  materials:
+     Steel: 750
+     Uranium: 750
+     Glass: 500

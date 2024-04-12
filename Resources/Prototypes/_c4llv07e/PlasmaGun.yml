@@ -171,3 +171,25 @@
       amount: 2
     - id: PlasmaMagazin
       amount: 4
+
+# рецепты
+- type: latheRecipe
+  id: WeaponPlasmaGunPrint
+  result: WeaponPlasmaGunPrint
+  category: Weapons
+  completetime: 3
+  materials:
+     Steel: 2000
+     Gold: 500
+     Uranium: 1000
+     Plastic: 500
+
+- type: latheRecipe
+  id: PlasmaMagazinPrint
+  result: PlasmaMagazinPrint
+  category: Ammo
+  completetime: 3
+  materials:
+     Steel: 500
+     Uranium: 500
+     Glass: 250
