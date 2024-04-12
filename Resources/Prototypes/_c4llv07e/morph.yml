@@ -27,8 +27,8 @@
     drawdepth: Mobs
     layers:
     - map: ["enum.DamageStateVisualLayers.Base"]
-      state: nymph
-      sprite: Mobs/Animals/nymph.rsi
+      state: morph
+      sprite: _c4llv07e/morph.rsi
   - type: Physics
   - type: Fixtures
     fixtures:
