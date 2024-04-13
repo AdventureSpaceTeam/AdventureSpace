@@ -13,7 +13,15 @@
   - type: Sprite
     drawdepth: Ghosts
     sprite: _c4llv07e/ai.rsi
-    state: icon
+    layers:
+    - map: [ "hologram" ]
+      state: icon
+  - type: GenericVisualizer
+    visuals:
+      enum.AIVisuals.Visibility:
+        hologram:
+          True: { state: visible }
+          False: { state: icon }
   - type: Fixtures
     fixtures:
       fix1:
@@ -148,3 +156,14 @@
 
 - type: playTimeTracker
   id: JobAI
+
+- type: entity
+  id: ActionAIToggleVisibility
+  name: Переключить голопроекторы ИИ
+  description: Позволяет персоналу видеть вас
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon: _c4llv07e/interface/eye.png
+    checkCanInteract: false
+    event: !type:AIToggleVisibilityActionEvent
