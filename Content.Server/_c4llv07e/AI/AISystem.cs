@@ -26,33 +26,23 @@ public sealed class AISystem : EntitySystem
     public override void Initialize()
     {
         SubscribeLocalEvent<AIComponent, ComponentStartup>(OnStartup);
-        SubscribeLocalEvent<AIComponent, ComponentShutdown>(OnShutdown);
         SubscribeLocalEvent<AIComponent, MindAddedMessage>(OnMindAdded);
         SubscribeLocalEvent<AIComponent, AIToggleVisibilityActionEvent>(OnToggleVisibility);
     }
 
-    private void OnStartup(Entity<AIComponent> ent, ref ComponentStartup args)
+    private void SetupHands(Entity<AIComponent> ent)
     {
-        var hands = EnsureComp<HandsComponent>(ent.Owner);
-        var visibility = EnsureComp<VisibilityComponent>(ent.Owner);
-        _actions.AddAction(ent, "ActionToggleLighting");
-        _actions.AddAction(ent, "ActionAIToggleVisibility");
-        SetupHands((ent.Owner, ent.Comp, hands));
-        SetupVisibility((ent.Owner, ent.Comp, visibility));
-    }
-
-    private void SetupHands(Entity<AIComponent, HandsComponent> ent)
-    {
-        _hands.RemoveHands(ent.Owner, ent.Comp2);
+        var hands = EnsureComp<HandsComponent>(ent);
+        _hands.RemoveHands(ent, hands);
         int handIndex = 0;
-        foreach (var itemProto in ent.Comp1.ItemsInHands)
+        foreach (var itemProto in ent.Comp.ItemsInHands)
         {
             EntityUid item;
             item = Spawn(itemProto);
             var handId = $"{ent.Owner}-hand-item{handIndex}";
             handIndex += 1;
-            _hands.AddHand(ent.Owner, handId, HandLocation.Middle, ent.Comp2);
-            _hands.DoPickup(ent.Owner, ent.Comp2.Hands[handId], item, ent.Comp2);
+            _hands.AddHand(ent, handId, HandLocation.Middle, hands);
+            _hands.DoPickup(ent, hands.Hands[handId], item, hands);
             EnsureComp<UnremoveableComponent>(item);
             EnsureComp<AIControlledComponent>(item);
         }
@@ -61,15 +51,6 @@ public sealed class AISystem : EntitySystem
     private void SetupVisibility(Entity<AIComponent, VisibilityComponent?> ent)
     {
         UpdateVisibility(ent);
-        if (!TryComp<EyeComponent>(ent, out var eye))
-            return;
-    }
-
-    private void OnShutdown(Entity<AIComponent> ent, ref ComponentShutdown args)
-    {
-        if (!TryComp<HandsComponent>(ent.Owner, out var hands))
-            return;
-        _hands.RemoveHands(ent.Owner, hands);
     }
 
     private void OnMindAdded(Entity<AIComponent> ent, ref MindAddedMessage args)
@@ -96,6 +77,15 @@ public sealed class AISystem : EntitySystem
         }
         _visibility.RefreshVisibility(entity, ent.Comp2);
         _appearance.SetData(ent, AIVisuals.Visibility, ent.Comp1.IsVisible);
+    }
+
+    private void OnStartup(Entity<AIComponent> ent, ref ComponentStartup args)
+    {
+        var visibility = EnsureComp<VisibilityComponent>(ent.Owner);
+        _actions.AddAction(ent, "ActionToggleLighting");
+        _actions.AddAction(ent, "ActionAIToggleVisibility");
+        SetupHands(ent);
+        SetupVisibility((ent.Owner, ent.Comp, visibility));
     }
 
     private void OnToggleVisibility(Entity<AIComponent> ent, ref AIToggleVisibilityActionEvent args)
