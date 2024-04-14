@@ -146,7 +146,7 @@
 
 - type: job
   id: AI
-  name: Искусстевнный интеллект
+  name: Искусственный интеллект
   description: Всевидящий глаз станции. Соблюдайте законы, помогайте экипажу и следите за станцией.
   playTimeTracker: JobAI
   canBeAntag: false
