@@ -20,7 +20,7 @@ public sealed class SharedAISystem : EntitySystem
 
     public void OnInteract(Entity<AIComponent> ent, ref InteractionAttemptEvent args)
     {
-        if (!HasComp<AIControlledComponent>(args.Target) && args.Target != null)
+        if (!HasComp<AIControlledComponent>(args.Target) && args.Target != null && args.Target != args.Uid)
             args.Cancel();
     }
 
