@@ -90,6 +90,8 @@
         type: CrewMonitoringBoundUserInterface
       - key: enum.GeneralStationRecordConsoleKey.Key
         type: GeneralStationRecordConsoleBoundUserInterface
+      - key: enum.PowerMonitoringConsoleUiKey.Key
+        type: PowerMonitoringConsoleBoundUserInterface
   - type: IntrinsicUI
     uis:
       - key: enum.SolarControlConsoleUiKey.Key
@@ -102,6 +104,10 @@
         toggleAction: ActionAGhostShowCrewMonitoring
       - key: enum.GeneralStationRecordConsoleKey.Key
         toggleAction: ActionAGhostShowStationRecords
+      - key: enum.PowerMonitoringConsoleUiKey.Key
+        toggleAction: ActionAGhostShowPowerMonitor
+  - type: PowerMonitoringConsole
+  - type: PowerMonitoringCableNetworks
   - type: SolarControlConsole
   - type: CommunicationsConsole
     title: Искусственный интеллект
@@ -165,6 +171,19 @@
   noSpawn: true
   components:
   - type: InstantAction
-    icon: _c4llv07e/interface/eye.png
+    icon: _c4llv07e/Interface/eye.png
     checkCanInteract: false
     event: !type:AIToggleVisibilityActionEvent
+
+- type: entity
+  id: ActionAGhostShowPowerMonitor
+  name: Интерфейс питания сети
+  description: Просмотр интерфейса питания станции.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon: _c4llv07e/Interface/power.png
+    iconOn: _c4llv07e/Interface/power.png
+    keywords: [ "AI", "console", "interface" ]
+    priority: -10
+    event: !type:ToggleIntrinsicUIEvent { key: enum.PowerMonitoringConsoleUiKey.Key }
