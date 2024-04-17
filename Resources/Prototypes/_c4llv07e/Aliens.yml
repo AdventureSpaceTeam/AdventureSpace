@@ -1,3 +1,5 @@
+
+
 #Кровь ксено
 - type: reagent
   id: XenoBloodAcid
@@ -8,6 +10,25 @@
   physicalDesc: Жёлтое вещество, способное растворить что угодно.
   flavor: acid
   color: "#d9f500"
+
+#Кислотный плевок
+- type: entity
+  id: CausticSpit
+  name: Кислотный плевок
+  parent: BaseBullet
+  noSpawn: true
+  components:
+    - type: Projectile
+      damage:
+        types:
+          Caustic: 5
+          Heat: 5
+    - type: Sprite
+      sprite: /Textures/_c4llv07e/Mobs/Aliens/acid_spit.rsi
+      layers:
+      - state: acidspit
+    - type: Ammo
+      muzzleFlash: null
 
 #Мобы
 - type: entity
@@ -32,6 +53,7 @@
       types:
         Brute: 2
         Slash: 6
+        Structural: 10
     soundHit:
      collection: AlienScreamAttack
   - type: MovementSpeedModifier
@@ -59,14 +81,72 @@
       - id: FoodMeatAlian
         amount: 3
   - type: Reform
+    actionPrototype: GobberEvolutionAction
+    reformTime: 10
+    popupText: Вы  начинаете сбрасывать свой старый панцирь
+    reformPrototype: MobAlienGobber
+  - type: Emoting
+
+- type: entity
+  name: Плевун
+  suffix: BORK (Alien)
+  description: Способен выделять кислоту из своей крови и плевать ею в своих жертв.
+  parent: MobAlienRunner
+  id: MobAlienGobber
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: /Textures/_c4llv07e/Mobs/Aliens/aliengobber.rsi
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: running
+    - map: [ "enum.DamageStateVisualLayers.BaseUnshaded" ]
+      state: running-unshaded
+      shader: unshaded
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: running
+        BaseUnshaded: running-unshaded
+      Dead:
+        Base: dead
+        BaseUnshaded: dead-unshaded
+  - type: GhostRole
+    allowMovement: true
+    allowSpeech: true
+    makeSentient: true
+    name: Плевун
+    description: Защищайте улей, не вступая в ближний бой.
+  - type: HTN
+    rootTask:
+      task: SimpleRangedHostileCompound
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 2
+    rechargeSound:
+      path: /Audio/_c4llv07e/Aliens/Slider_speach.ogg
+  - type: BasicEntityAmmoProvider
+    proto: CausticSpit
+    capacity: 1
+    count: 1
+  - type: Gun
+    minAngle: 25
+    maxAngle: 35
+    angleIncrease: 4
+    angleDecay: 16
+    fireRate: 0.70
+    useKey: false
+    selectedMode: SemiAuto
+    availableModes:
+      - SemiAuto
+    soundGunshot: /Audio/_c4llv07e/Aliens/alien_scream_2.ogg
+  - type: Reform
     actionPrototype: AlienEvolutionAction
     reformTime: 10
     popupText: Вы  начинаете сбрасывать свой старый панцирь
     reformPrototype: MobAlien
-  - type: Emoting
 
 - type: entity
-  name: Ксеноморф
+  name: Трутень
   suffix: BORK (Alien)
   description: Идеальный организм.
   parent: MobXeno
@@ -90,8 +170,9 @@
   - type: MeleeWeapon
     damage:
       types:
-        Brute: 2
+        Brute: 5
         Slash: 10
+        Structural: 20
     soundHit:
      collection: AlienScreamAttack
   - type: MovementSpeedModifier
@@ -115,8 +196,8 @@
     allowMovement: true
     allowSpeech: true
     makeSentient: true
-    name: Ксеноморф
-    description: Высокая скорость, сила, интеллект - вы идеальное оружие для убийств.
+    name: Трутень
+    description: Высокая скорость, сила, интеллект - идеальное оружие для убийств.
   - type: TriggerOnMobstateChange
     mobState:
     - Dead
@@ -211,6 +292,7 @@
      types:
        Brute: 5
        Slash: 20
+       Structural: 30
     soundHit:
      collection: AlienScreamAttack
   - type: Fixtures
@@ -288,7 +370,7 @@
   - type: Emoting
 
 - type: entity
-  name: Королева Ксеноморфов
+  name: Королева
   suffix: BORK (Alien)
   description: Матка и центральный мозг улья.
   parent: MobXeno
@@ -315,8 +397,9 @@
   - type: MeleeWeapon
     damage:
       types:
-       Brute: 5
+       Brute: 10
        Slash: 30
+       Structural: 50
     soundHit:
      collection: AlienScreamAttack
   - type: Fixtures
@@ -334,12 +417,12 @@
     allowMovement: true
     allowSpeech: true
     makeSentient: true
-    name: Королева Ксеноморфов
+    name: Королева
     description: Руководите ульем, отдайте жизнь за улей, вы есть улей....
   - type: EggLayer
     hungerUsage: 0
     eggLaySound: !type:SoundPathSpecifier
-      path: /Audio/Voice/Misc/lowHiss3.ogg
+      path: /Audio/_c4llv07e/Aliens/Slider_speach.ogg
     eggSpawn:
     - id: AlienEgg
   - type: Damageable
@@ -376,6 +459,123 @@
       path: /Audio/_c4llv07e/Aliens/Slider_spawn.ogg
       params:
         volume: -2
+  - type: IntrinsicRadioReceiver
+  - type: IntrinsicRadioTransmitter
+    channels:
+    - Alian
+  - type: ActiveRadio
+    channels:
+    - Alian
+  - type: Puller
+    needsHands: false
+  - type: PassiveDamage
+    allowedStates:
+    - Alive
+    damageCap: 1000
+    damage:
+      groups:
+        Brute: -0.15
+        Burn: -0.15
+        Airloss: -0.15
+        Toxin: -0.15
+        Genetic: -0.15
+  - type: Emoting
+  - type: Reform
+    actionPrototype: EmpressEvolutionAction
+    reformTime: 40
+    popupText: Вы  начинаете сбрасывать свой старый панцирь
+    reformPrototype: MobAlienEmpress
+
+- type: entity
+  name: Императрица
+  suffix: BORK (Alien)
+  description: Эта матка построила самый огромный улей и возвысилась над остальными.
+  parent: MobXeno
+  id: MobAlienEmpress
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: /Textures/_c4llv07e/Mobs/Aliens/Empress.rsi
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: running
+  - type: GhostRole
+    allowMovement: true
+    allowSpeech: true
+    makeSentient: true
+    name: Императрица
+    description: Вы возвысились над всеми ульями и теперь можете управлять королевами.
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      1500: Dead
+  - type: Bloodstream
+    bloodReagent: XenoBloodAcid
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      1350: 0.7
+  - type: MovementSpeedModifier
+    baseSprintSpeed: 3.0
+    baseWalkSpeed : 4.0
+  - type: MeleeWeapon
+    damage:
+      types:
+       Brute: 30
+       Slash: 30
+       Structural: 80
+    soundHit:
+     collection: AlienScreamAttack
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.70
+        density: 1500
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: EmitSoundOnSpawn
+    sound:
+      path: /Audio/_c4llv07e/Aliens/Queen_dead.ogg
+      params:
+        volume: -2
+  - type: EggLayer
+    hungerUsage: 0
+    eggLaySound: !type:SoundPathSpecifier
+      path: /Audio/_c4llv07e/Aliens/Slider_speach.ogg
+    eggSpawn:
+    - id: AlienEgg
+  - type: Damageable
+    damageModifierSet: Aliens
+  - type: Butcherable
+    spawned:
+      - id: FoodMeatAlian
+        amount: 12
+  - type: Spider
+    actionPrototype: ActionAlienWeb
+    webPrototype: AlianWeb
+    reformTime: 10
+  - type: IgnoreSpiderWeb
+  - type: Speech
+    speechVerb: LargeMob
+    speechSounds: AlienSpeach
+    params:
+      volume: -5
+  - type: TriggerOnMobstateChange
+    mobState:
+    - Dead
+  - type: EmitSoundOnTrigger
+    sound:
+      path: /Audio/_c4llv07e/Aliens/Queen_dead.ogg
+      params:
+        volume: -2
+  - type: Vocal
+    sounds:
+      Male: QueenRoar
+      Female: QueenRoar
+      Unsexed: QueenRoar
   - type: IntrinsicRadioReceiver
   - type: IntrinsicRadioTransmitter
     channels:
@@ -442,7 +642,7 @@
     allowSpeech: true
     makeSentient: true
     name: Ползун
-    description: Вы крайне слабы для все. Избегайте людей для успешной эволюции.
+    description: Вы крайне слабы. Избегайте людей для успешной эволюции.
   - type: Reform
     actionPrototype: RunnerEvolutionAction
     reformTime: 10
@@ -494,6 +694,19 @@
     useDelay: 1200
 
 - type: entity
+  id: EmpressEvolutionAction
+  name: Возвыситься над ульем
+  description: Обретите наивысшую власть.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon:
+      sprite: /Textures/_c4llv07e/Mobs/Aliens/Empress.rsi
+      state: sleeping
+    event: !type:ReformEvent {}
+    useDelay: 1800
+
+- type: entity
   id: AlienEvolutionAction
   name: Эволюционировать в трутня
   description: Пришло время стать сильнее.
@@ -518,6 +731,19 @@
       state: sleeping
     event: !type:ReformEvent {}
     useDelay: 120
+
+- type: entity
+  id: GobberEvolutionAction
+  name: Эволюционировать в плевальщика
+  description: Пришло время стать сильнее.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon:
+      sprite: /Textures/_c4llv07e/Mobs/Aliens/aliengobber.rsi
+      state: sleeping
+    event: !type:ReformEvent {}
+    useDelay: 60
 
 - type: entity
   id: ActionAlienWeb
@@ -560,12 +786,12 @@
   - type: Timer
   - type: TimedSpawner
     prototypes:
-    - MobAlienSlider
+    - AlienEggOpenSliderSpawn
     intervalSeconds: 180
     minimumEntitiesSpawned: 1
     maximumEntitiesSpawned: 1
   - type: TimedDespawn
-    lifetime: 185
+    lifetime: 181
   - type: Destructible
     thresholds:
     - trigger:
@@ -617,6 +843,33 @@
             max: 2
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+
+#открытие яйца
+- type: entity
+  parent: AlienEggOpenDecor
+  id: AlienEggOpenSliderSpawn
+  suffix: BORK (Alien/OpenEgg)
+  components:
+  - type: Sprite
+    sprite: /Textures/_c4llv07e/Mobs/Aliens/alien_egg/alien_egg_open.rsi
+    layers:
+    - state: alienegg_open
+  - type: SpawnOnDespawn
+    prototype: AlienEggOpenDecor
+  - type: Timer
+  - type: TimedSpawner
+    prototypes:
+    - MobAlienSlider
+    intervalSeconds: 2
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: TimedDespawn
+    lifetime: 2.5
+  - type: EmitSoundOnSpawn
+    sound:
+      path: /Audio/_c4llv07e/Aliens/alienegg_opening.ogg
+      params:
+        volume: -10
 
 - type: entity
   id: AlienEggDecor

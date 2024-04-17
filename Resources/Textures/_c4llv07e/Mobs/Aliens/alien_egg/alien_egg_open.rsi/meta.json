@@ -11,6 +11,18 @@
       "name": "alienegg_open"
     },
     {
+      "name": "alienegg_opening",
+      "delays": [
+        [
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          2
+        ]
+      ]
+    },
+    {
       "name": "inhand-left",
       "directions": 4
     },
