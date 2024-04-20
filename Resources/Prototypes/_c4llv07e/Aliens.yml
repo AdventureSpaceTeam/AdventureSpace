@@ -853,7 +853,7 @@
   - type: Sprite
     sprite: /Textures/_c4llv07e/Mobs/Aliens/alien_egg/alien_egg_open.rsi
     layers:
-    - state: alienegg_open
+    - state: alienegg_opening
   - type: SpawnOnDespawn
     prototype: AlienEggOpenDecor
   - type: Timer
