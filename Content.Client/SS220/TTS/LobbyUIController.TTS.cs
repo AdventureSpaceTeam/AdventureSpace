@@ -1,4 +1,4 @@
-using Content.Client.Corvax.TTS;
+using Content.Client.SS220.TTS;
 using Robust.Client.UserInterface;
 using Robust.Shared.Random;
 

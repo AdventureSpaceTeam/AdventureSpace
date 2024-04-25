@@ -1,4 +1,4 @@
-﻿- type: loadout
+﻿- type: loadoutItem
   id: BaseAdvenUplinkLoadout
   entity: DonateUplink
   sponsorOnly: true

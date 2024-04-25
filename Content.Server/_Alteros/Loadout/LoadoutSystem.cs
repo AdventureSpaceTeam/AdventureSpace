@@ -6,7 +6,7 @@ using Content.Shared.Clothing.Components;
 using Content.Shared.Inventory;
 using Robust.Shared.Prototypes;
 
-namespace Content.Server.Loadout;
+namespace Content.Server._Alteros.Loadout;
 
 // NOTE: Full implementation will be in future, now just sponsor items
 public sealed class LoadoutSystem : EntitySystem

@@ -3,9 +3,9 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.List;
 
-namespace Content.Server.Loadout;
+namespace Content.Server._Alteros.Loadout;
 
-[Prototype("loadout")]
+[Prototype]
 public sealed class LoadoutItemPrototype : IPrototype
 {
     [IdDataFieldAttribute] public string ID { get; } = default!;
