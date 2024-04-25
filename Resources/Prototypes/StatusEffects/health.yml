@@ -2,7 +2,7 @@
   id: HealthIcon
   abstract: true
   priority: 1
-  locationPreference: Left
+  locationPreference: Left # Corvax-TypingIndicator
   isShaded: true
 
 - type: statusIcon
