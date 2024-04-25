@@ -21,6 +21,9 @@
       interfaces:
         - key: enum.ChameleonUiKey.Key
           type: ChameleonBoundUserInterface
+    - type: HideLayerClothing
+      slots:
+      - Snout
 # Corvax-HiddenDesc-Start
     - type: HiddenDescription
       entries:
@@ -43,6 +46,9 @@
   suffix: Voice Mask, Chameleon
   components:
     - type: VoiceMasker
+    - type: HideLayerClothing
+      slots:
+      - Snout
 # Corvax-HiddenDesc-Start
     - type: HiddenDescription
       entries:
