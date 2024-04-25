@@ -25,6 +25,7 @@
     - BaseStationSiliconLawCrewsimov
     - BaseStationAllEventsEligible
     - BaseStationNanotrasen
+    - BaseRandomStation
     # Alteros-start
     - BaseStationCallErt
     # Alteros-end
