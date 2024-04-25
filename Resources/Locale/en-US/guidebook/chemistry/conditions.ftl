@@ -9,10 +9,10 @@
 
 reagent-effect-condition-guidebook-total-hunger =
     { $max ->
-        [2147483648] the target has at least {NATURALFIXED($min, 2)} total hunger
+        [2147483648] the target has at least $min total hunger
         *[other] { $min ->
-                    [0] the target has at most {NATURALFIXED($max, 2)} total hunger
-                    *[other] the target has between {NATURALFIXED($min, 2)} and {NATURALFIXED($max, 2)} total hunger
+                    [0] the target has at most $max total hunger
+                    *[other] the target has between $min and $max total hunger
                  }
     }
 
