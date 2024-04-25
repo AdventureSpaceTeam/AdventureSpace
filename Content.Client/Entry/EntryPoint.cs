@@ -120,7 +120,7 @@ namespace Content.Client.Entry
             _prototypeManager.RegisterIgnore("nukeopsRole");
             _prototypeManager.RegisterIgnore("stationGoal"); // Corvax-StationGoal
             _prototypeManager.RegisterIgnore("ertGroups"); // Alteros-ERTCALL
-            _prototypeManager.RegisterIgnore("loadout"); // c4llv07e-fix-loadout
+            _prototypeManager.RegisterIgnore("loadoutItem"); // c4llv07e-fix-loadout
 
             _componentFactory.GenerateNetIds();
             _adminManager.Initialize();

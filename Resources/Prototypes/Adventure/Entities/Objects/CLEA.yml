@@ -21,7 +21,7 @@
     sprite: Bork/CLEA/CLEA_Helmet.rsi
   - type: Clothing
     sprite: Bork/CLEA/CLEA_Helmet.rsi
-  - type: Armor 
+  - type: Armor
     modifiers:
       coefficients:
         Blunt: 0.90
@@ -60,7 +60,6 @@
   - type: FlashImmunity
   - type: EyeProtection
     protectionTime: 5
-  - type: ShowSecurityIcons
 
 #РПС ЦСС
 - type: entity
@@ -89,7 +88,7 @@
     sprite: Bork/CLEA/CLEA_armor.rsi
   - type: Clothing
     sprite: Bork/CLEA/CLEA_armor.rsi
-  - type: Armor 
+  - type: Armor
     modifiers:
       coefficients:
         Blunt: 0.80
@@ -99,11 +98,11 @@
   - type: ExplosionResistance
     damageCoefficient: 0.90
 
-#ID карта  ЦСС  
+#ID карта  ЦСС
 - type: entity
   parent: ERTLeaderIDCard
   id: CLEAIDCard
-  name: ID карта ЦСС  
+  name: ID карта ЦСС
   components:
   - type: Sprite
     sprite: Bork/CLEA/other/CLEA_IDcard.rsi
@@ -115,11 +114,11 @@
     jobTitle: Солдат ЦСС
     jobIcon: JobIconCLEA
 
-#ID карта офицера ЦСС  
+#ID карта офицера ЦСС
 - type: entity
   parent: ERTLeaderIDCard
   id: CLEAOfficerIDCard
-  name: ID карта Офицера ЦСС  
+  name: ID карта Офицера ЦСС
   components:
   - type: Sprite
     sprite: Bork/CLEA/other/CLEA_IDcard.rsi
@@ -143,7 +142,7 @@
 - type: entity
   parent: ClothingBackpackSecurity
   id: ClothingMilitaryBackpackCLEA
-  name: Рюкзак ЦСС 
+  name: Рюкзак ЦСС
   components:
   - type: StorageFill
     contents:
@@ -155,7 +154,7 @@
 - type: entity
   parent: BasePDA
   id: CLEAPDA
-  name: КПК солдата ЦСС 
+  name: КПК солдата ЦСС
   description: не такой робастный, как у отряда быстрого реагирования
   components:
   - type: Sprite
@@ -183,7 +182,7 @@
 - type: entity
   parent: BasePDA
   id: CLEAOfficerPDA
-  name: КПК Офицера ЦСС 
+  name: КПК Офицера ЦСС
   description: не такой робастный, как у отряда быстрого реагирования
   components:
   - type: Sprite
