@@ -98,7 +98,7 @@
   - type: ExplosionResistance
     damageCoefficient: 0.90
 
-#ID карта  ЦСС
+#ID карта ЦСС
 - type: entity
   parent: ERTLeaderIDCard
   id: CLEAIDCard
@@ -186,7 +186,7 @@
   description: не такой робастный, как у отряда быстрого реагирования
   components:
   - type: Sprite
-    sprite: Bork/CLEA/other/CLEA_PDA.rsi
+    sprite: Bork/CLEA/other/CLEA_PDA_Officer.rsi
     layers:
     - map: [ "enum.PdaVisualLayers.Base" ]
     - state: "light_overlay"
@@ -203,7 +203,7 @@
   - type: PdaBorderColor
     borderColor: "#4e4e56"
   - type: Icon
-    sprite: Bork/CLEA/other/CLEA_PDA.rsi
+    sprite: Bork/CLEA/other/CLEA_PDA_Officer.rsi
     state: pda-CLEA
 
 #Скафандр ЦСС
@@ -221,17 +221,17 @@
     highPressureMultiplier: 0.5
     lowPressureMultiplier: 1000
   - type: ExplosionResistance
-    damageCoefficient: 0.4
+    damageCoefficient: 0.7
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.6
-        Slash: 0.6
-        Piercing: 0.6
-        Caustic: 0.7
+        Blunt: 0.65
+        Slash: 0.65
+        Piercing: 0.65
+        Caustic: 0.65
   - type: ClothingSpeedModifier
-    walkModifier: 0.75
-    sprintModifier: 0.75
+    walkModifier: 0.85
+    sprintModifier: 0.85
   - type: HeldSpeedModifier
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitCLEA
@@ -251,9 +251,88 @@
     highPressureMultiplier: 0.3
     lowPressureMultiplier: 1000
 
-#ГИР Офицера ЦСС
+#Скафандр офицера ЦСС
+- type: entity
+  parent: ClothingOuterHardsuitSecurity
+  id: ClothingOuterHardsuitCLEAOfficer
+  name: Скафандр офицера ЦСС
+  description: базовый боевой скафандр центральных силовых структур
+  components:
+  - type: Sprite
+    sprite: Bork/CLEA/CLEA_hardhuit/CLEA_hardhuit_Officer.rsi
+  - type: Clothing
+    sprite: Bork/CLEA/CLEA_hardhuit/CLEA_hardhuit_Officer.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 0.5
+    lowPressureMultiplier: 1000
+  - type: ExplosionResistance
+    damageCoefficient: 0.6
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.60
+        Slash: 0.60
+        Piercing: 0.60
+        Caustic: 0.60
+  - type: ClothingSpeedModifier
+    walkModifier: 0.90
+    sprintModifier: 0.90
+  - type: HeldSpeedModifier
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitCLEAOfficer
+
+- type: entity
+  parent: ClothingHeadHardsuitBase
+  id: ClothingHeadHelmetHardsuitCLEAOfficer
+  name: Шлем скафандра офицера ЦСС
+  description: таким шлемом можно колоть орехи
+  components:
+  - type: BreathMask
+  - type: Sprite
+    sprite: Bork/CLEA/CLEA_hardhuit/CLEA_hardhuit_helmet_Officer.rsi
+  - type: Clothing
+    sprite: Bork/CLEA/CLEA_hardhuit/CLEA_hardhuit_helmet_Officer.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 0.3
+    lowPressureMultiplier: 1000
+
+#ГИР солдата ЦСС
 - type: startingGear
   id: CLEAGearBase
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCLEA
+    back: ClothingMilitaryBackpackCLEA
+    shoes: ClothingShoesBootsJackSecFilled
+    head: ClothingHeadHelmetCLEA
+    gloves: ClothingHandsGlovesCombat
+    outerClothing: ClothingOuterArmorCLEA
+    mask: ClothingMaskCLEA
+    id: CLEAPDA
+    belt: ClothingBeltMilitaryWebbingCLEA
+    pocket1: WeaponPistolMk58
+    suitstorage: WeaponRifleM90GrenadeLauncher
+    ears: ClothingHeadsetAltCentCom
+    eyes: ClothingEyesGlassesSecurity
+
+- type: startingGear
+  id: CLEAGearFullEVA
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCLEA
+    back: ClothingMilitaryBackpackCLEA
+    shoes: ClothingShoesBootsJackSecFilled
+    gloves: ClothingHandsGlovesCombat
+    outerClothing: ClothingOuterHardsuitCLEA
+    mask: ClothingMaskCLEA
+    id: CLEAPDA
+    belt: ClothingBeltMilitaryWebbingCLEA
+    pocket1: WeaponPistolMk58
+    suitstorage: WeaponRifleM90GrenadeLauncher
+    ears: ClothingHeadsetAltCentCom
+    eyes: ClothingEyesGlassesSecurity
+
+#ГИР Офицера ЦСС
+- type: startingGear
+  id: CLEAGearOfficerBase
   equipment:
     jumpsuit: ClothingUniformJumpsuitCLEA
     back: ClothingMilitaryBackpackCLEA
@@ -270,13 +349,13 @@
     eyes: ClothingEyesGlassesSecurity
 
 - type: startingGear
-  id: CLEAGearFullEVA
+  id: CLEAGearOfficerFullEVA
   equipment:
     jumpsuit: ClothingUniformJumpsuitCLEA
     back: ClothingMilitaryBackpackCLEA
     shoes: ClothingShoesBootsJackSecFilled
     gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterHardsuitCLEA
+    outerClothing: ClothingOuterHardsuitCLEAOfficer
     mask: ClothingMaskCLEA
     id: CLEAOfficerPDA
     belt: ClothingBeltMilitaryWebbingCLEA
@@ -294,10 +373,10 @@
     - type: MindShield
     - type: GhostRole
       name: Офицер ЦСС
-      description: . #придумаешь сам
+      description: Офицер отряда Центральных Силовых Структур. Пора решать проблемы. #придумаешь сам
     - type: GhostTakeoverAvailable
     - type: Loadout
-      prototypes: [ CLEAGearBase ]
+      prototypes: [ CLEAGearOfficerBase ]
     - type: RandomMetadata
       nameSegments:
       - NamesFirstCLEAOfficer
@@ -311,10 +390,10 @@
     - type: MindShield
     - type: GhostRole
       name: Офицер ЦСС
-      description: . #придумаешь сам
+      description: Офицер отряда Центральных Силовых Структур. Пора решать проблемы. #придумаешь сам
     - type: GhostTakeoverAvailable
     - type: Loadout
-      prototypes: [ CLEAGearFullEVA ]
+      prototypes: [ CLEAGearOfficerFullEVA ]
     - type: RandomMetadata
       nameSegments:
       - NamesFirstCLEAOfficer
@@ -376,3 +455,93 @@
   - Вольф
   - Бизон
 # /госторолька офицер
+
+# госторолька солдат
+- type: randomHumanoidSettings
+  id: CLEABase
+  randomizeName: false
+  components:
+    - type: MindShield
+    - type: GhostRole
+      name: Солдат ЦСС
+      description: Солдат отряда Центральных Силовых Структур. Пора решать проблемы. #придумаешь сам
+    - type: GhostTakeoverAvailable
+    - type: Loadout
+      prototypes: [ CLEAGearBase ]
+    - type: RandomMetadata
+      nameSegments:
+      - NamesFirstCLEABase
+      - NamesLastCLEABase
+    - type: InitialInfectedExempt
+
+- type: randomHumanoidSettings
+  id: CLEABaseEVA
+  randomizeName: false
+  components:
+    - type: MindShield
+    - type: GhostRole
+      name: Солдат ЦСС
+      description: Солдат отряда Центральных Силовых Структур. Пора решать проблемы. #придумаешь сам
+    - type: GhostTakeoverAvailable
+    - type: Loadout
+      prototypes: [ CLEAGearFullEVA ]
+    - type: RandomMetadata
+      nameSegments:
+      - NamesFirstCLEABase
+      - NamesLastCLEABase
+    - type: InitialInfectedExempt
+
+- type: entity
+  id: RandomHumanoidSpawnerCLEABase
+  name: Солдат ЦСС
+  suffix: BASE
+  components:
+    - type: Sprite
+      sprite: Markers/jobs.rsi
+      state: cleaofficer
+    - type: RandomMetadata
+      nameSegments:
+      - NamesFirstCLEABase
+      - NamesLastCLEABase
+    - type: RandomHumanoidSpawner
+      settings: CLEABase
+    - type: InitialInfectedExempt
+
+- type: entity
+  id: RandomHumanoidSpawnerCLEABaseEVA
+  name: Солдат ЦСС
+  suffix: EVA
+  components:
+    - type: Sprite
+      sprite: Markers/jobs.rsi
+      state: cleaofficer
+    - type: RandomMetadata
+      nameSegments:
+      - NamesFirstCLEABase
+      - NamesLastCLEABase
+    - type: RandomHumanoidSpawner
+      settings: CLEABaseEVA
+    - type: InitialInfectedExempt
+
+- type: dataset
+  id: NamesFirstCLEABase
+  values:
+  - Рядовой
+  - Ефрейтор
+
+- type: dataset
+  id: NamesLastCLEABase
+  values:
+  - Ястреб
+  - Ворон
+  - Бугор
+  - Браво
+  - Фокс
+  - Хикс
+  - Гроза
+  - Каир
+  - Геварра
+  - Рекс
+  - Вольф
+  - Бизон
+# /госторолька солдат
