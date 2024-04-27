@@ -31,6 +31,7 @@ using Robust.Shared.Random;
 using Robust.Shared.Utility;
 using System.Linq;
 using Content.Server.GameTicking.Components;
+using Content.Shared.CombatMode.Pacification;
 
 namespace Content.Server.GameTicking.Rules;
 
@@ -344,7 +345,7 @@ public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>
                 var timeRemain = nukeops.WarNukieArriveDelay + Timing.CurTime;
                 ev.DeclaratorEntity.Comp.ShuttleDisabledTime = timeRemain;
 
-                DistributeExtraTc(nukeops);
+                DistributeExtraTc((uid, nukeops));
             }
         }
     }
@@ -371,7 +372,7 @@ public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>
         return WarConditionStatus.YesWar;
     }
 
-    private void DistributeExtraTc(NukeopsRuleComponent nukieRule)
+    private void DistributeExtraTc(Entity<NukeopsRuleComponent> nukieRule)
     {
         var enumerator = EntityQueryEnumerator<StoreComponent>();
         while (enumerator.MoveNext(out var uid, out var component))
@@ -379,13 +380,13 @@ public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>
             if (!_tag.HasTag(uid, NukeOpsUplinkTagPrototype))
                 continue;
 
-            if (GetOutpost(uid) is not {} outpost)
+            if (GetOutpost(nukieRule.Owner) is not { } outpost)
                 continue;
 
             if (Transform(uid).MapID != Transform(outpost).MapID) // Will receive bonus TC only on their start outpost
                 continue;
 
-            _store.TryAddCurrency(new () { { TelecrystalCurrencyPrototype, nukieRule.WarTcAmountPerNukie } }, uid, component);
+            _store.TryAddCurrency(new () { { TelecrystalCurrencyPrototype, nukieRule.Comp.WarTcAmountPerNukie } }, uid, component);
 
             var msg = Loc.GetString("store-currency-war-boost-given", ("target", uid));
             _popupSystem.PopupEntity(msg, uid);
@@ -486,6 +487,7 @@ public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>
         }
 
         args.Entity = Spawn(species.Prototype);
+        RemComp<PacifiedComponent>(args.Entity.Value); // Corvax-DionaPacifist: Allow dionas nukes to harm
         _humanoid.LoadProfile(args.Entity.Value, profile);
     }
 
@@ -510,7 +512,7 @@ public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>
         if (!Resolve(ent, ref ent.Comp, false))
             return null;
 
-        return ent.Comp.MapGrids.FirstOrNull();
+        return ent.Comp.MapGrids.Where(e => HasComp<StationMemberComponent>(e) && !HasComp<NukeOpsShuttleComponent>(e)).FirstOrNull();
     }
 
     /// <remarks>
