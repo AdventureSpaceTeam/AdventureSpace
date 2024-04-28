@@ -259,6 +259,9 @@
   id: CableCoil
 
 - type: Tag
+  id: CaneBlade
+
+- type: Tag
   id: CannonBall
 
 - type: Tag
@@ -1319,7 +1322,7 @@
 - type: Tag
   id: WriteIgnoreStamps
 
-# PUT YOUR TAGS IN ALPHABETICAL ORDER
+# ALPHABETICAL
 
 - type: Tag
   id: Card

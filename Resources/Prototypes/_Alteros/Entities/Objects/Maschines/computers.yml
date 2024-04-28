@@ -20,8 +20,8 @@
     key: enum.CallErtConsoleUiKey.Key
   - type: UserInterface
     interfaces:
-    - key: enum.CallErtConsoleUiKey.Key
-      type: CallErtConsoleBoundUserInterface
+      enum.CallErtConsoleUiKey.Key:
+        type: CallErtConsoleBoundUserInterface
   - type: Computer
   - type: PointLight
     radius: 1.5
@@ -53,8 +53,8 @@
     key: enum.ApproveErtConsoleUiKey.Key
   - type: UserInterface
     interfaces:
-    - key: enum.ApproveErtConsoleUiKey.Key
-      type: ApproveErtConsoleBoundUserInterface
+      enum.ApproveErtConsoleUiKey.Key:
+        type: ApproveErtConsoleBoundUserInterface
   - type: Computer
   - type: PointLight
     radius: 1.5

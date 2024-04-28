@@ -164,6 +164,9 @@ ghost-role-information-syndicate-monkey-reinforcement-rules = Действуют
 ghost-role-information-Gingerbread-name = Пряничный человечек
 ghost-role-information-Gingerbread-description = Вы любимый ребенок шеф-повара. Вы живой пряничный человечек.
 ghost-role-information-Gingerbread-rules = Вы съедобный человечек из печенья. Ваша задача найти свое место в этом мире, где всё хочет вас съесть.
+ghost-role-information-syndicate-kobold-reinforcement-name = Syndicate Kobold Agent
+ghost-role-information-syndicate-kobold-reinforcement-description = Someone needs reinforcements. You, a trained kobold, will help them.
+ghost-role-information-syndicate-kobold-reinforcement-rules = Normal syndicate antagonist rules apply. Work with whoever called you in, and don't harm them.
 ghost-role-information-artifact-name = Разумный артефакт
 ghost-role-information-artifact-description =
     Осуществляйте свои инопланетные прихоти.

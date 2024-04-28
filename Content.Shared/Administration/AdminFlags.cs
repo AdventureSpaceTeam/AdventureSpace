@@ -99,10 +99,10 @@
         /// </summary>
         Stealth = 1 << 16,
 
-        /// <summary>
-        ///     Lets you view admin chat.
-        /// </summary>
-        AdminNotes = 1 << 17,
+        ///<summary>
+		/// Allows you to use Admin chat
+		///</summary>
+		Adminchat = 1 << 17,
 
         /// <summary>
         ///     Dangerous host permissions like scsi.
