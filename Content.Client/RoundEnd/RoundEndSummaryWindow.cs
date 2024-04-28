@@ -5,7 +5,6 @@ using Content.Client.Message;
 using Content.Client.Players;
 using Content.Server.StatsBoard;
 using Content.Shared.GameTicking;
-using Robust.Client.GameObjects;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.CustomControls;
 using Robust.Shared.Player;
@@ -21,10 +20,10 @@ namespace Content.Client.RoundEnd
         public int RoundId;
 
         public RoundEndSummaryWindow(string gm, string roundEnd, TimeSpan roundTimeSpan, int roundId,
-            RoundEndMessageEvent.RoundEndPlayerInfo[] info, string roundEndStats, StatisticEntry[] statisticEntries, IEntityManager entityManager, ISharedPlayerManager playerManager)
+            RoundEndMessageEvent.RoundEndPlayerInfo[] info, string roundEndStats, StatisticEntry[] statisticEntries, IEntityManager entityManager)
         {
             _entityManager = entityManager;
-            _playerManager = playerManager;
+            _playerManager = IoCManager.Resolve<ISharedPlayerManager>();
 
             MinSize = SetSize = new Vector2(700, 600);
 

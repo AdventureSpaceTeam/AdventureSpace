@@ -15,5 +15,5 @@
     closeOnHandDeselect: true
   - type: UserInterface
     interfaces:
-    - key: enum.MagicMirrorUiKey.Key
-      type: MagicMirrorBoundUserInterface
+      enum.MagicMirrorUiKey.Key:
+        type: MagicMirrorBoundUserInterface

@@ -41,12 +41,9 @@ public sealed class CallErtConsoleSystem : EntitySystem
     private void OnSelectStatioMessage(EntityUid uid, ApproveErtConsoleComponent comp,
         CallErtConsoleSelectStationMessage message)
     {
-        if (message.Session.AttachedEntity is not {Valid: true} mob)
-            return;
-
-        if (!CanUse(mob, uid))
+        if (!CanUse(message.Actor, uid))
         {
-            _popupSystem.PopupEntity(Loc.GetString("comms-console-permission-denied"), uid, message.Session);
+            _popupSystem.PopupEntity(Loc.GetString("comms-console-permission-denied"), uid, message.Actor);
             return;
         }
 
@@ -59,10 +56,9 @@ public sealed class CallErtConsoleSystem : EntitySystem
     private void OnToggleAutomateApproveErtMessage(EntityUid uid, ApproveErtConsoleComponent comp,
         CallErtConsoleToggleAutomateApproveErtMessage message)
     {
-        if (message.Session.AttachedEntity is not {Valid: true} mob) return;
-        if (!CanUse(mob, uid))
+        if (!CanUse(message.Actor, uid))
         {
-            _popupSystem.PopupEntity(Loc.GetString("comms-console-permission-denied"), uid, message.Session);
+            _popupSystem.PopupEntity(Loc.GetString("comms-console-permission-denied"), uid, message.Actor);
             return;
         }
         if (comp.SelectedStation == null)
@@ -70,7 +66,7 @@ public sealed class CallErtConsoleSystem : EntitySystem
 
         if (!_stationCallErtSystem.ToggleAutomateApprove(comp.SelectedStation.Value, message.AutomateApprove))
         {
-            _popupSystem.PopupEntity(Loc.GetString("comms-console-call-ert-fall"), uid, message.Session);
+            _popupSystem.PopupEntity(Loc.GetString("comms-console-call-ert-fall"), uid, message.Actor);
             return;
         }
 
@@ -81,10 +77,9 @@ public sealed class CallErtConsoleSystem : EntitySystem
     private void OnApproveErtMessage(EntityUid uid, ApproveErtConsoleComponent comp,
         CallErtConsoleApproveErtMessage message)
     {
-        if (message.Session.AttachedEntity is not {Valid: true} mob) return;
-        if (!CanUse(mob, uid))
+        if (!CanUse(message.Actor, uid))
         {
-            _popupSystem.PopupEntity(Loc.GetString("comms-console-permission-denied"), uid, message.Session);
+            _popupSystem.PopupEntity(Loc.GetString("comms-console-permission-denied"), uid, message.Actor);
             return;
         }
 
@@ -93,7 +88,7 @@ public sealed class CallErtConsoleSystem : EntitySystem
 
         if (!_stationCallErtSystem.ApproveErt(comp.SelectedStation.Value, message.IndexGroup))
         {
-            _popupSystem.PopupEntity(Loc.GetString("comms-console-call-ert-fall"), uid, message.Session);
+            _popupSystem.PopupEntity(Loc.GetString("comms-console-call-ert-fall"), uid, message.Actor);
             return;
         }
 
@@ -103,10 +98,9 @@ public sealed class CallErtConsoleSystem : EntitySystem
     private void OnDenyErtMessage(EntityUid uid, ApproveErtConsoleComponent comp,
         CallErtConsoleDenyErtMessage message)
     {
-        if (message.Session.AttachedEntity is not {Valid: true} mob) return;
-        if (!CanUse(mob, uid))
+        if (!CanUse(message.Actor, uid))
         {
-            _popupSystem.PopupEntity(Loc.GetString("comms-console-permission-denied"), uid, message.Session);
+            _popupSystem.PopupEntity(Loc.GetString("comms-console-permission-denied"), uid, message.Actor);
             return;
         }
 
@@ -115,7 +109,7 @@ public sealed class CallErtConsoleSystem : EntitySystem
 
         if (!_stationCallErtSystem.DenyErt(comp.SelectedStation.Value, message.IndexGroup))
         {
-            _popupSystem.PopupEntity(Loc.GetString("comms-console-call-ert-fall"), uid, message.Session);
+            _popupSystem.PopupEntity(Loc.GetString("comms-console-call-ert-fall"), uid, message.Actor);
             return;
         }
 
@@ -125,15 +119,13 @@ public sealed class CallErtConsoleSystem : EntitySystem
     private void OnUpdateCallErtConsoleMessage(EntityUid uid, CallErtConsoleComponent comp,
                                              CallErtConsoleUpdateMessage message)
     {
-        if (_ui.TryGetUi(uid, CallErtConsoleUiKey.Key, out var ui) && ui.SubscribedSessions.Count > 0)
-            UpdateCallConsoleInterface(uid, comp, ui);
+        UpdateCallConsoleInterface(uid, comp);
     }
 
     private void OnUpdateApproveErtConsoleMessage(EntityUid uid, ApproveErtConsoleComponent comp,
                                                 CallErtConsoleUpdateMessage message)
     {
-        if (_ui.TryGetUi(uid, ApproveErtConsoleUiKey.Key, out var ui) && ui.SubscribedSessions.Count > 0)
-            UpdateApproveConsoleInterface(uid, comp, ui);
+        UpdateApproveConsoleInterface(uid, comp);
     }
 
     public override void Update(float frameTime)
@@ -154,8 +146,7 @@ public sealed class CallErtConsoleSystem : EntitySystem
 
             comp.UIUpdateAccumulator -= UIUpdateInterval;
 
-            if (_ui.TryGetUi(uid, CallErtConsoleUiKey.Key, out var ui) && ui.SubscribedSessions.Count > 0)
-                UpdateCallConsoleInterface(uid, comp, ui);
+            UpdateCallConsoleInterface(uid, comp);
         }
 
         var queryApproveErtConsole = EntityQueryEnumerator<ApproveErtConsoleComponent>();
@@ -174,8 +165,7 @@ public sealed class CallErtConsoleSystem : EntitySystem
 
             comp.UIUpdateAccumulator -= UIUpdateInterval;
 
-            if (_ui.TryGetUi(uid, ApproveErtConsoleUiKey.Key, out var ui) && ui.SubscribedSessions.Count > 0)
-                UpdateApproveConsoleInterface(uid, comp, ui);
+            UpdateApproveConsoleInterface(uid, comp);
         }
 
         base.Update(frameTime);
@@ -183,10 +173,9 @@ public sealed class CallErtConsoleSystem : EntitySystem
 
     private void OnCallErtMessage(EntityUid uid, CallErtConsoleComponent comp, CallErtConsoleCallErtMessage message)
     {
-        if (message.Session.AttachedEntity is not {Valid: true} mob) return;
-        if (!CanUse(mob, uid))
+        if (!CanUse(message.Actor, uid))
         {
-            _popupSystem.PopupEntity(Loc.GetString("comms-console-permission-denied"), uid, message.Session);
+            _popupSystem.PopupEntity(Loc.GetString("comms-console-permission-denied"), uid, message.Actor);
             return;
         }
 
@@ -215,10 +204,9 @@ public sealed class CallErtConsoleSystem : EntitySystem
     private void OnRecallErtMessage(EntityUid uid, CallErtConsoleComponent comp,
         CallErtConsoleRecallErtMessage message)
     {
-        if (message.Session.AttachedEntity is not {Valid: true} mob) return;
-        if (!CanUse(mob, uid))
+        if (!CanUse(message.Actor, uid))
         {
-            _popupSystem.PopupEntity(Loc.GetString("comms-console-permission-denied"), uid, message.Session);
+            _popupSystem.PopupEntity(Loc.GetString("comms-console-permission-denied"), uid, message.Actor);
             return;
         }
 
@@ -228,7 +216,7 @@ public sealed class CallErtConsoleSystem : EntitySystem
 
         if (!_stationCallErtSystem.ReallErt(stationUid.Value, message.IndexGroup))
         {
-            _popupSystem.PopupEntity(Loc.GetString("comms-console-call-ert-fall"), uid, message.Session);
+            _popupSystem.PopupEntity(Loc.GetString("comms-console-call-ert-fall"), uid, message.Actor);
             return;
         }
 
@@ -242,12 +230,9 @@ public sealed class CallErtConsoleSystem : EntitySystem
         UpdateCallConsoleInterface(uid, comp);
     }
 
-    private void UpdateCallConsoleInterface(EntityUid uid, CallErtConsoleComponent? component = null, PlayerBoundUserInterface? ui = null)
+    private void UpdateCallConsoleInterface(EntityUid uid, CallErtConsoleComponent? component = null)
     {
         if (!Resolve(uid, ref component, false))
-            return;
-
-        if (ui == null && !_ui.TryGetUi(uid, CallErtConsoleUiKey.Key, out ui))
             return;
 
         var stationUid = _stationSystem.GetOwningStation(uid);
@@ -271,7 +256,7 @@ public sealed class CallErtConsoleSystem : EntitySystem
         }
 
         var state = new CallErtConsoleInterfaceState(CanCallOrRecallErt(component), ertsList, calledErtsList, component.SelectedErtGroup);
-        _ui.SetUiState(ui, state);
+        _ui.SetUiState(uid, CallErtConsoleUiKey.Key, state);
     }
 
     private void OnRefreshCallErtConsole(RefreshCallErtConsoleEvent args)
@@ -303,12 +288,9 @@ public sealed class CallErtConsoleSystem : EntitySystem
         return comp.SendErtCooldownRemaining <= 0f;
     }
 
-    private void UpdateApproveConsoleInterface(EntityUid uid, ApproveErtConsoleComponent? component = null, PlayerBoundUserInterface? ui = null)
+    private void UpdateApproveConsoleInterface(EntityUid uid, ApproveErtConsoleComponent? component = null)
     {
         if (!Resolve(uid, ref component, false))
-            return;
-
-        if (ui == null && !_ui.TryGetUi(uid, ApproveErtConsoleUiKey.Key, out ui))
             return;
 
         var automaticApprove = false;
@@ -345,17 +327,14 @@ public sealed class CallErtConsoleSystem : EntitySystem
         }
 
         var state = new ApproveErtConsoleInterfaceState(CanSendErt(component), automaticApprove, ertsList, calledErtsList, stationsList, GetNetEntity(component.SelectedStation), component.SelectedErtGroup);
-        _ui.SetUiState(ui, state);
+        _ui.SetUiState(uid, CallErtConsoleUiKey.Key, state);
     }
 
     private void OnSendErtMessage(EntityUid uid, ApproveErtConsoleComponent comp, CallErtConsoleSendErtMessage message)
     {
-        if (message.Session.AttachedEntity is not {Valid: true} mob)
-            return;
-
-        if (!CanUse(mob, uid))
+        if (!CanUse(message.Actor, uid))
         {
-            _popupSystem.PopupEntity(Loc.GetString("comms-console-permission-denied"), uid, message.Session);
+            _popupSystem.PopupEntity(Loc.GetString("comms-console-permission-denied"), uid, message.Actor);
             return;
         }
 
@@ -373,10 +352,9 @@ public sealed class CallErtConsoleSystem : EntitySystem
     private void OnRecallApproveErtMessage(EntityUid uid, ApproveErtConsoleComponent comp,
         ApproveErtConsoleRecallErtMessage message)
     {
-        if (message.Session.AttachedEntity is not {Valid: true} mob) return;
-        if (!CanUse(mob, uid))
+        if (!CanUse(message.Actor, uid))
         {
-            _popupSystem.PopupEntity(Loc.GetString("comms-console-permission-denied"), uid, message.Session);
+            _popupSystem.PopupEntity(Loc.GetString("comms-console-permission-denied"), uid, message.Actor);
             return;
         }
 
@@ -384,7 +362,7 @@ public sealed class CallErtConsoleSystem : EntitySystem
 
         if (!_stationCallErtSystem.ReallApproveErt(stationUid, message.IndexGroup))
         {
-            _popupSystem.PopupEntity(Loc.GetString("comms-console-call-ert-fall"), uid, message.Session);
+            _popupSystem.PopupEntity(Loc.GetString("comms-console-call-ert-fall"), uid, message.Actor);
             return;
         }
 

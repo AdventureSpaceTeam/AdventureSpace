@@ -7,8 +7,7 @@ using Content.Shared.GameWindow;
 using JetBrains.Annotations;
 using Robust.Client.Graphics;
 using Robust.Client.State;
-using Robust.Shared.Player;
-using Robust.Shared.Utility;
+using Robust.Client.UserInterface;
 
 namespace Content.Client.GameTicking.Managers
 {
@@ -16,19 +15,13 @@ namespace Content.Client.GameTicking.Managers
     public sealed class ClientGameTicker : SharedGameTicker
     {
         [Dependency] private readonly IStateManager _stateManager = default!;
-        [Dependency] private readonly ISharedPlayerManager _playerManager = default!;
         [Dependency] private readonly IClientAdminManager _admin = default!;
         [Dependency] private readonly IClyde _clyde = default!;
         [Dependency] private readonly SharedMapSystem _map = default!;
+        [Dependency] private readonly IUserInterfaceManager _userInterfaceManager = default!;
 
-        [ViewVariables] private bool _initialized;
         private Dictionary<NetEntity, Dictionary<string, uint?>>  _jobsAvailable = new();
         private Dictionary<NetEntity, string> _stationNames = new();
-
-        /// <summary>
-        /// The current round-end window. Could be used to support re-opening the window after closing it.
-        /// </summary>
-        private RoundEndSummaryWindow? _window;
 
         [ViewVariables] public bool AreWeReady { get; private set; }
         [ViewVariables] public bool IsGameStarted { get; private set; }
@@ -154,12 +147,7 @@ namespace Content.Client.GameTicking.Managers
             // Force an update in the event of this song being the same as the last.
             RestartSound = message.RestartSound;
 
-            // Don't open duplicate windows (mainly for replays).
-            if (_window?.RoundId == message.RoundId)
-                return;
-
-            //This is not ideal at all, but I don't see an immediately better fit anywhere else.
-            _window = new RoundEndSummaryWindow(message.GamemodeTitle, message.RoundEndText, message.RoundDuration, message.RoundId, message.AllPlayersEndInfo, message.RoundEndStats, message.StatisticEntries, EntityManager, _playerManager);
+            _userInterfaceManager.GetUIController<RoundEndSummaryUIController>().OpenRoundEndSummaryWindow(message);
         }
     }
 }
