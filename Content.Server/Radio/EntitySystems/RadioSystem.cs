@@ -168,8 +168,14 @@ public sealed class RadioSystem : EntitySystem
             RaiseLocalEvent(receiver, ref ev);
         }
 
+        var receiversEnum = EntityQueryEnumerator<ActiveRadioComponent, TransformComponent>();
+        var receivers = new List<EntityUid>();
+        while (receiversEnum.MoveNext(out var receiver, out var _, out var _))
+        {
+            receivers.Add(receiver);
+        }
         // Dispatch TTS radio speech event for every receiver
-        RaiseLocalEvent(new RadioSpokeEvent(messageSource, message, ev.Receivers.ToArray()));
+        RaiseLocalEvent(new RadioSpokeEvent(messageSource, message, receivers.ToArray()));
 
         if (name != Name(messageSource))
             _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Radio message from {ToPrettyString(messageSource):user} as {name} on {channel.LocalizedName}: {message}");
