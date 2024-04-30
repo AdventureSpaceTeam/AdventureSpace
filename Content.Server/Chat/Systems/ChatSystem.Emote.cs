@@ -1,6 +1,6 @@
 using System.Collections.Frozen;
 using Content.Shared.Chat.Prototypes;
-using Content.Shared.Emoting;
+using Content.Shared.Speech;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
@@ -81,6 +81,16 @@ public partial class ChatSystem
         bool ignoreActionBlocker = false
         )
     {
+        if (!(emote.Whitelist?.IsValid(source, EntityManager) ?? true))
+            return;
+        if (emote.Blacklist?.IsValid(source, EntityManager) ?? false)
+            return;
+
+        if (!emote.Available &&
+            TryComp<SpeechComponent>(source, out var speech) &&
+            !speech.AllowedEmotes.Contains(emote.ID))
+            return;
+
         // check if proto has valid message for chat
         if (emote.ChatMessages.Count != 0)
         {
@@ -148,26 +158,11 @@ public partial class ChatSystem
         return true;
     }
 
-    private void TryEmoteChatInput(EntityUid uid, string textInput, out bool consumed)
+    private void TryEmoteChatInput(EntityUid uid, string textInput)
     {
-        consumed = false;
         var actionLower = textInput.ToLower();
         if (!_wordEmoteDict.TryGetValue(actionLower, out var emote))
             return;
-
-        // SS220 Chat-Emote-Cooldown begin
-        if (TryComp<EmotingComponent>(uid, out var comp))
-        {
-            var currentTime = _gameTiming.CurTime;
-            if (currentTime - comp.LastChatEmoteTime < comp.ChatEmoteCooldown)
-            {
-                consumed = true;
-                return;
-            }
-
-            comp.LastChatEmoteTime = currentTime;
-        }
-        // SS220 Chat-Emote-Cooldown end
 
         InvokeEmoteEvent(uid, emote);
     }

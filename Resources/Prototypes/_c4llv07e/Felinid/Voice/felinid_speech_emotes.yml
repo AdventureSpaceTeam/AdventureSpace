@@ -1,4 +1,5 @@
 - type: emote
+  name: Визг
   id: Hissing
   category: Vocal
   chatMessages: [Шипит!]

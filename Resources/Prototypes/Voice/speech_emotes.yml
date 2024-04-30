@@ -1,7 +1,15 @@
 # vocal emotes
 - type: emote
   id: Scream
+  name: chat-emote-name-scream
   category: Vocal
+  icon: Interface/Actions/scream.png
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
   chatMessages: [кричит!] # Corvax-Localization
   chatTriggers:
     - scream
@@ -42,7 +50,15 @@
 
 - type: emote
   id: Laugh
+  name: chat-emote-name-laugh
   category: Vocal
+  icon: Interface/Actions/scream.png
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
   chatMessages: [смеётся.] # Corvax-Localization
   chatTriggers:
     - laugh
@@ -92,7 +108,14 @@
 
 - type: emote
   id: Honk
+  name: chat-emote-name-honk
   category: Vocal
+  icon: Interface/Actions/scream.png
+  whitelist:
+    requireAll: true
+    components:
+    - Vocal
+    - BorgChassis
   chatMessages: [издаёт хонк.] # Corvax-Localization
   chatTriggers:
     - honk
@@ -115,7 +138,15 @@
 
 - type: emote
   id: Sigh
+  name: chat-emote-name-sigh
   category: Vocal
+  icon: Interface/Actions/scream.png
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
   chatMessages: [вздыхает.] # Corvax-Localization
   chatTriggers:
     - sigh
@@ -135,7 +166,15 @@
 
 - type: emote
   id: Whistle
+  name: chat-emote-name-whistle
   category: Vocal
+  icon: Interface/Actions/scream.png
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
   chatMessages: [свистит.] # Corvax-Localization
   chatTriggers:
     - whistle
@@ -158,7 +197,15 @@
 
 - type: emote
   id: Crying
+  name: chat-emote-name-crying
   category: Vocal
+  icon: Interface/Actions/scream.png
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
   chatMessages: [плачет.] # Corvax-Localization
   chatTriggers:
     - cry
@@ -189,7 +236,16 @@
 
 - type: emote
   id: Squish
+  name: chat-emote-name-squish
   category: Vocal
+  available: false
+  icon: Interface/Actions/scream.png
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
   chatMessages: [хлюпает.] # Corvax-Localization
   chatTriggers:
     - squish
@@ -209,7 +265,16 @@
 
 - type: emote
   id: Chitter
+  name: chat-emote-name-chitter
   category: Vocal
+  available: false
+  icon: Interface/Actions/scream.png
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
   chatMessages: [стрекочет.] # Corvax-Localization
   chatTriggers:
    - chitter
@@ -229,7 +294,15 @@
 
 - type: emote
   id: Squeak
+  name: chat-emote-name-squeak
   category: Vocal
+  available: false
+  whitelist:
+    components:
+      - Vocal
+  blacklist:
+    components:
+    - BorgChassis
   chatMessages: [пищит.] # Corvax-Localization
   chatTriggers:
    - squeak
@@ -249,7 +322,16 @@
 
 - type: emote
   id: Click
+  name: chat-emote-name-click
   category: Vocal
+  available: false
+  icon: Interface/Actions/scream.png
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
   chatMessages: [клацает.] # Corvax-Localization
   chatTriggers:
    - click
@@ -270,7 +352,15 @@
 # hand emotes
 - type: emote
   id: Clap
+  name: chat-emote-name-clap
   category: Hands
+  icon: Interface/Actions/scream.png
+  whitelist:
+    components:
+    - Hands
+  blacklist:
+    components:
+    - BorgChassis
   chatMessages: [хлопает!] # Corvax-Localization
   chatTriggers:
     - clap
@@ -297,7 +387,15 @@
 
 - type: emote
   id: Snap
+  name: chat-emote-name-snap
   category: Hands
+  icon: Interface/Actions/scream.png
+  whitelist:
+    components:
+    - Hands
+  blacklist:
+    components:
+    - BorgChassis
   chatMessages: [щёлкает пальцами.] # Corvax-Localization
   chatTriggers:
     - snap
@@ -338,7 +436,15 @@
 
 - type: emote
   id: Salute
+  name: chat-emote-name-salute
   category: Hands
+  icon: Interface/Actions/scream.png
+  whitelist:
+    components:
+    - Hands
+  blacklist:
+    components:
+    - BorgChassis
   chatMessages: [салютует.] # Corvax-Localization
   chatTriggers:
     - salute
@@ -364,13 +470,31 @@
 
 - type: emote
   id: DefaultDeathgasp
+  name: chat-emote-name-deathgasp
+  icon: Interface/Actions/scream.png
+  whitelist:
+    components:
+    - MobState
   chatMessages: ["emote-deathgasp"]
   chatTriggers:
   - deathgasp
 
 - type: emote
+  id: MonkeyDeathgasp
+  name: chat-emote-name-deathgasp
+  icon: Interface/Actions/scream.png
+  chatMessages: ["chat-emote-msg-deathgasp-monkey"]
+
+- type: emote
   id: Buzz
+  name: chat-emote-name-buzz
   category: Vocal
+  icon: Interface/Actions/scream.png
+  whitelist:
+    requireAll: true
+    components:
+    - BorgChassis
+    - Vocal
   chatMessages: [жужжит!] # Corvax-Localization
   chatTriggers:
     - buzzing
@@ -399,12 +523,19 @@
 
 - type: emote
   id: Weh
+  name: chat-emote-name-weh
   category: Vocal
   chatMessages: [издаёт вех!]
 
 - type: emote
   id: Chirp
+  name: chat-emote-name-chirp
   category: Vocal
+  icon: Interface/Actions/scream.png
+  whitelist:
+    requireAll: true
+    components:
+    - Nymph
   chatMessages: [чирикает!]
   chatTriggers:
     - chirp
@@ -428,7 +559,14 @@
 # Machine Emotes
 - type: emote
   id: Beep
+  name: chat-emote-name-beep
   category: Vocal
+  icon: Interface/Actions/scream.png
+  whitelist:
+    requireAll: true
+    components:
+    - BorgChassis
+    - Vocal
   chatMessages: [делает бип.] # Corvax-Localization
   chatTriggers:
     - beep
@@ -451,7 +589,14 @@
 
 - type: emote
   id: Chime
+  name: chat-emote-name-chime
   category: Vocal
+  icon: Interface/Actions/scream.png
+  whitelist:
+    requireAll: true
+    components:
+    - BorgChassis
+    - Vocal
   chatMessages: [издаёт трель.] # Corvax-Localization
   chatTriggers:
     - chime
@@ -474,7 +619,14 @@
 
 - type: emote
   id: Buzz-Two
+  name: chat-emote-name-buzztwo
   category: Vocal
+  icon: Interface/Actions/scream.png
+  whitelist:
+    requireAll: true
+    components:
+    - BorgChassis
+    - Vocal
   chatMessages: [издаёт бип-буп.] # Corvax-Localization
   chatTriggers:
     - buzztwice
@@ -530,7 +682,14 @@
 
 - type: emote
   id: Ping
+  name: chat-emote-name-ping
   category: Vocal
+  icon: Interface/Actions/scream.png
+  whitelist:
+    requireAll: true
+    components:
+    - BorgChassis
+    - Vocal
   chatMessages: [издаёт пинг.] # Corvax-Localization
   chatTriggers:
     - ping
