@@ -568,15 +568,6 @@ public sealed partial class ChatSystem : SharedChatSystem
             ("entity", ent),
             ("message", FormattedMessage.RemoveMarkup(action)));
 
-        if (checkEmote)
-        {
-            // SS220 Chat-Emote-Cooldown begin
-            TryEmoteChatInput(source, action, out var consumed);
-            if (consumed)
-                return;
-            // SS220 Chat-Emote-Cooldown end
-        }
-
         SendInVoiceRange(ChatChannel.Emotes, action, wrappedMessage, source, range, author);
         if (!hideLog)
             if (name != Name(source))
