@@ -75,36 +75,35 @@
     - AllAccess
     tags:
     - CentralCommand
-  - type: ShowSecurityIcons
   - type: UserInterface
     interfaces:
-      - key: enum.SiliconLawsUiKey.Key
+      enum.SiliconLawsUiKey.Key:
         type: SiliconLawBoundUserInterface
-      - key: enum.SolarControlConsoleUiKey.Key
+      enum.SolarControlConsoleUiKey.Key:
         type: SolarControlConsoleBoundUserInterface
-      - key: enum.CommunicationsConsoleUiKey.Key
+      enum.CommunicationsConsoleUiKey.Key:
         type: CommunicationsConsoleBoundUserInterface
-      - key: enum.CargoConsoleUiKey.Orders
+      enum.CargoConsoleUiKey.Orders:
         type: CargoOrderConsoleBoundUserInterface
-      - key: enum.CrewMonitoringUIKey.Key
+      enum.CrewMonitoringUIKey.Key:
         type: CrewMonitoringBoundUserInterface
-      - key: enum.GeneralStationRecordConsoleKey.Key
+      enum.GeneralStationRecordConsoleKey.Key:
         type: GeneralStationRecordConsoleBoundUserInterface
-      - key: enum.PowerMonitoringConsoleUiKey.Key
+      enum.PowerMonitoringConsoleUiKey.Key:
         type: PowerMonitoringConsoleBoundUserInterface
   - type: IntrinsicUI
     uis:
-      - key: enum.SolarControlConsoleUiKey.Key
+      enum.SolarControlConsoleUiKey.Key:
         toggleAction: ActionAGhostShowSolar
-      - key: enum.CommunicationsConsoleUiKey.Key
+      enum.CommunicationsConsoleUiKey.Key:
         toggleAction: ActionAGhostShowCommunications
-      - key: enum.CargoConsoleUiKey.Orders
+      enum.CargoConsoleUiKey.Orders:
         toggleAction: ActionAGhostShowCargo
-      - key: enum.CrewMonitoringUIKey.Key
+      enum.CrewMonitoringUIKey.Key:
         toggleAction: ActionAGhostShowCrewMonitoring
-      - key: enum.GeneralStationRecordConsoleKey.Key
+      enum.GeneralStationRecordConsoleKey.Key:
         toggleAction: ActionAGhostShowStationRecords
-      - key: enum.PowerMonitoringConsoleUiKey.Key
+      enum.PowerMonitoringConsoleUiKey.Key:
         toggleAction: ActionAGhostShowPowerMonitor
   - type: PowerMonitoringConsole
   - type: PowerMonitoringCableNetworks
