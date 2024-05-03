@@ -15,7 +15,7 @@
   noun: seeds-noun-seeds
   displayName: голубая агава
   plantRsi: DTS/Produce/blueagava.rsi
-  packetPrototype: BlueAgava
+  packetPrototype: BlueAgavaSeeds
   productPrototypes:
     - FoodBlueAgava
   lifespan: 25

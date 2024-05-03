@@ -14,7 +14,7 @@
   noun: seeds-noun-spores
   displayName: стеклошляпник
   plantRsi: DTS/Produce/glasscap.rsi
-  packetPrototype: GlassSeeds
+  packetPrototype: GlasscapSeeds
   productPrototypes:
     - GlassLog
   lifespan: 80
