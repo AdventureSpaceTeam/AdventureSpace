@@ -33,7 +33,7 @@
       Min: 1
       Max: 4
       PotencyDivisor: 25
-    HeartbreakerToxin:
+    MindbreakerToxin:
       Min: 1
       Max: 4
       PotencyDivisor: 25
