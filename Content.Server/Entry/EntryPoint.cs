@@ -30,6 +30,7 @@ using Robust.Shared.ContentPack;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
+using Content.Server.Corvax.GuideGenerator;
 
 namespace Content.Server.Entry
 {
