@@ -10,7 +10,7 @@
   blacklist:
     components:
     - BorgChassis
-  chatMessages: [кричит!] # Corvax-Localization
+  chatMessages: ["chat-emote-msg-scream"]
   chatTriggers:
     - scream
     - screams
@@ -59,7 +59,7 @@
   blacklist:
     components:
     - BorgChassis
-  chatMessages: [смеётся.] # Corvax-Localization
+  chatMessages: ["chat-emote-msg-laugh"]
   chatTriggers:
     - laugh
     - laughs
@@ -116,7 +116,7 @@
     components:
     - Vocal
     - BorgChassis
-  chatMessages: [издаёт хонк.] # Corvax-Localization
+  chatMessages: ["chat-emote-msg-honk"]
   chatTriggers:
     - honk
     - honk.
@@ -147,7 +147,7 @@
   blacklist:
     components:
     - BorgChassis
-  chatMessages: [вздыхает.] # Corvax-Localization
+  chatMessages: ["chat-emote-msg-sigh"]
   chatTriggers:
     - sigh
     - sighs
@@ -175,7 +175,7 @@
   blacklist:
     components:
     - BorgChassis
-  chatMessages: [свистит.] # Corvax-Localization
+  chatMessages: ["chat-emote-msg-whistle"]
   chatTriggers:
     - whistle
     - whistle.
@@ -206,7 +206,7 @@
   blacklist:
     components:
     - BorgChassis
-  chatMessages: [плачет.] # Corvax-Localization
+  chatMessages: ["chat-emote-msg-crying"]
   chatTriggers:
     - cry
     - cry.
@@ -246,7 +246,7 @@
   blacklist:
     components:
     - BorgChassis
-  chatMessages: [хлюпает.] # Corvax-Localization
+  chatMessages: ["chat-emote-msg-squish"]
   chatTriggers:
     - squish
     - squish.
@@ -275,7 +275,7 @@
   blacklist:
     components:
     - BorgChassis
-  chatMessages: [стрекочет.] # Corvax-Localization
+  chatMessages: ["chat-emote-msg-chitter"]
   chatTriggers:
    - chitter
    - chitter.
@@ -303,7 +303,7 @@
   blacklist:
     components:
     - BorgChassis
-  chatMessages: [пищит.] # Corvax-Localization
+  chatMessages: ["chat-emote-msg-squeak"]
   chatTriggers:
    - squeak
    - squeak.
@@ -332,7 +332,7 @@
   blacklist:
     components:
     - BorgChassis
-  chatMessages: [клацает.] # Corvax-Localization
+  chatMessages: ["chat-emote-msg-click"]
   chatTriggers:
    - click
    - click.
@@ -361,7 +361,7 @@
   blacklist:
     components:
     - BorgChassis
-  chatMessages: [хлопает!] # Corvax-Localization
+  chatMessages: ["chat-emote-msg-clap"]
   chatTriggers:
     - clap
     - claps
@@ -396,7 +396,7 @@
   blacklist:
     components:
     - BorgChassis
-  chatMessages: [щёлкает пальцами.] # Corvax-Localization
+  chatMessages: ["chat-emote-msg-snap"] # snaps <{THEIR($ent)}> fingers?
   chatTriggers:
     - snap
     - snaps
@@ -445,7 +445,7 @@
   blacklist:
     components:
     - BorgChassis
-  chatMessages: [салютует.] # Corvax-Localization
+  chatMessages: ["chat-emote-msg-salute"]
   chatTriggers:
     - salute
     - salute.
@@ -475,7 +475,7 @@
   whitelist:
     components:
     - MobState
-  chatMessages: ["emote-deathgasp"]
+  chatMessages: ["chat-emote-msg-deathgasp"]
   chatTriggers:
   - deathgasp
 
@@ -495,7 +495,7 @@
     components:
     - BorgChassis
     - Vocal
-  chatMessages: [жужжит!] # Corvax-Localization
+  chatMessages: ["chat-emote-msg-buzz"]
   chatTriggers:
     - buzzing
     - buzzing!
@@ -536,7 +536,7 @@
     requireAll: true
     components:
     - Nymph
-  chatMessages: [чирикает!]
+  chatMessages: ["chat-emote-msg-chirp"]
   chatTriggers:
     - chirp
     - chirp!
@@ -567,7 +567,7 @@
     components:
     - BorgChassis
     - Vocal
-  chatMessages: [делает бип.] # Corvax-Localization
+  chatMessages: ["chat-emote-msg-beep"]
   chatTriggers:
     - beep
     - beep!
@@ -597,7 +597,7 @@
     components:
     - BorgChassis
     - Vocal
-  chatMessages: [издаёт трель.] # Corvax-Localization
+  chatMessages: ["chat-emote-msg-chime"]
   chatTriggers:
     - chime
     - chime.
@@ -627,7 +627,7 @@
     components:
     - BorgChassis
     - Vocal
-  chatMessages: [издаёт бип-буп.] # Corvax-Localization
+  chatMessages: ["chat-emote-msg-buzzestwo"]
   chatTriggers:
     - buzztwice
     - buzztwice.
@@ -690,7 +690,7 @@
     components:
     - BorgChassis
     - Vocal
-  chatMessages: [издаёт пинг.] # Corvax-Localization
+  chatMessages: ["chat-emote-msg-ping"]
   chatTriggers:
     - ping
     - ping.
