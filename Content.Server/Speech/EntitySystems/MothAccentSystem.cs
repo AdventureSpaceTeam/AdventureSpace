@@ -19,9 +19,9 @@ public sealed class MothAccentSystem : EntitySystem
         var message = args.Message;
 
         // buzzz
-        message = Regex.Replace(message, "z{1,3}", "zzz");
+        message = RegexLowerBuzz.Replace(message, "zzz");
         // buZZZ
-        message = Regex.Replace(message, "Z{1,3}", "ZZZ");
+        message = RegexUpperBuzz.Replace(message, "ZZZ");
 
         // Corvax-Localization-Start
         // ж => жжж
