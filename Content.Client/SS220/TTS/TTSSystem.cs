@@ -77,6 +77,10 @@ public sealed partial class TTSSystem : EntitySystem
         ShutdownAnnounces();
         ResetQueuesAndEndStreams();
     }
+    public void RequestPreviewTTS(string voiceId)
+    {
+        RaiseNetworkEvent(new RequestPreviewTTSEvent(voiceId));
+    }
 
     public void RequestGlobalTTS(string text, string voiceId)
     {

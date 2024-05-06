@@ -30,6 +30,7 @@ using Robust.Shared.ContentPack;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
+using Content.Server.Corvax.GuideGenerator;
 
 namespace Content.Server.Entry
 {
@@ -142,6 +143,9 @@ namespace Content.Server.Entry
                 file.Flush();
                 file = resourceManager.UserData.OpenWriteText(resPath.WithName("mealrecipes_" + dest));
                 MealsRecipesJsonGenerator.PublishJson(file);
+                file.Flush();
+                file = resourceManager.UserData.OpenWriteText(resPath.WithName("healthchangereagents_" + dest));
+                HealthChangeReagentsJsonGenerator.PublishJson(file);
                 file.Flush();
                 // Corvax-Wiki-End
                 IoCManager.Resolve<IBaseServer>().Shutdown("Data generation done");

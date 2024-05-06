@@ -8,6 +8,7 @@ using Content.Shared.SS220.AnnounceTTS;
 using Robust.Shared.Configuration;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
 
 namespace Content.Server.SS220.TTS;
 
@@ -18,6 +19,7 @@ public sealed partial class TTSSystem : EntitySystem
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly TTSManager _ttsManager = default!;
     [Dependency] private readonly SharedTransformSystem _xforms = default!;
+    [Dependency] private readonly IRobustRandom _rng = default!;
 
     private const int MaxMessageChars = 100 * 2; // same as SingleBubbleCharLimit * 2
     private bool _isEnabled = false;
@@ -25,6 +27,22 @@ public sealed partial class TTSSystem : EntitySystem
     private List<ICommonSession> _ignoredRecipients = new();
     public const float WhisperVoiceVolumeModifier = 0.6f; // how far whisper goes in world units
     public const int WhisperVoiceRange = 6; // how far whisper goes in world units
+    private readonly List<string> _sampleText =
+        new()
+        {
+            "Съешь же ещё этих мягких французских булок, да выпей чаю.",
+            "Клоун, прекрати разбрасывать банановые кожурки офицерам под ноги!",
+            "Капитан, вы уверены что хотите назначить клоуна на должность главы персонала?",
+            "Эс Бэ! Тут человек в сером костюме, с тулбоксом и в маске! Помогите!!",
+            "Учёные, тут странная аномалия в баре! Она уже съела мима!",
+            "Я надеюсь что инженеры внимательно следят за сингулярностью...",
+            "Вы слышали эти странные крики в техах? Мне кажется туда ходить небезопасно.",
+            "Вы не видели Гамлета? Мне кажется он забегал к вам на кухню.",
+            "Здесь есть доктор? Человек умирает от отравленного пончика! Нужна помощь!",
+            "Вам нужно согласие и печать квартирмейстера, если вы хотите сделать заказ на партию дробовиков.",
+            "Возле эвакуационного шаттла разгерметизация! Инженеры, нам срочно нужна ваша помощь!",
+            "Бармен, налей мне самого крепкого вина, которое есть в твоих запасах!"
+        };
 
     public override void Initialize()
     {
@@ -94,6 +112,20 @@ public sealed partial class TTSSystem : EntitySystem
     private void OnRoundRestartCleanup(RoundRestartCleanupEvent ev)
     {
         _ttsManager.ResetCache();
+    }
+
+    private async void OnRequestPreviewTTS(RequestPreviewTTSEvent ev, EntitySessionEventArgs args)
+    {
+        if (!_isEnabled ||
+            !_prototypeManager.TryIndex<TTSVoicePrototype>(ev.VoiceId, out var protoVoice))
+            return;
+
+        var previewText = _rng.Pick(_sampleText);
+        var soundData = await GenerateTTS(previewText, protoVoice.Speaker);
+        if (soundData is null)
+            return;
+
+        RaiseNetworkEvent(new PlayTTSEvent(soundData), Filter.SinglePlayer(args.SenderSession));
     }
 
     private async void OnClientOptionTTS(ClientOptionTTSEvent ev, EntitySessionEventArgs args)
