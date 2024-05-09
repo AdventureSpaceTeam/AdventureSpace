@@ -1,5 +1,8 @@
 ﻿name: Adv changelog generator
 
+permissions:
+  contents: write
+
 on:
   workflow_dispatch:
   push:
