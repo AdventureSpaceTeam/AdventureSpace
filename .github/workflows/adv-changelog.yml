@@ -1,0 +1,19 @@
+﻿name: Adv changelog generator
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - 'master'
+
+jobs:
+  changelog:
+    name: Adv changelog generator
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3.6.0
+    - name: Generate changelog
+      run: Tools/adv_changelog.sh
+    - uses: stefanzweifel/git-auto-commit-action@v5
+      with:
+        commit_message: Automated Change
