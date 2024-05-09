@@ -15,6 +15,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3.6.0
+      with:
+        fetch-depth: 0
     - name: Generate changelog
       run: Tools/adv_changelog.sh
     - uses: stefanzweifel/git-auto-commit-action@v5
