@@ -1,7 +1,7 @@
 #!/bin/sh
 
 special_symbol=:adv_cl:
-set -u
+set -xue
 
 {
 i=1
