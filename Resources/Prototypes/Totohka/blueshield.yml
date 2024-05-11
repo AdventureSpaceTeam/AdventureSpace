@@ -126,6 +126,7 @@
     contents:
       - id: BoxSurvivalSecurity
       - id: Flash
+      - id: IndiMedBox
 
 #Шапка
 - type: entity
