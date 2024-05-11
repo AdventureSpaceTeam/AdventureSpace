@@ -27,7 +27,7 @@ namespace Content.Shared.Preferences
     [Serializable, NetSerializable]
     public sealed partial class HumanoidCharacterProfile : ICharacterProfile
     {
-        private static readonly Regex RestrictedNameRegex = new("[^A-Z,a-z,0-9, -]");
+        private static readonly Regex RestrictedNameRegex = new("[^А-Яа-яёЁ0-9' -]");
         private static readonly Regex ICNameCaseRegex = new(@"^(?<word>\w)|\b(?<word>\w)(?=\w*$)");
 
         public const int MaxNameLength = 32;
@@ -449,7 +449,7 @@ namespace Content.Shared.Preferences
 
             if (configManager.GetCVar(CCVars.RestrictedNames))
             {
-                name = Regex.Replace(name, @"[^А-Яа-яёЁ0-9' -]", string.Empty); // Corvax: Only cyrillic names
+                name = RestrictedNameRegex.Replace(name, string.Empty);
             }
 
             if (configManager.GetCVar(CCVars.ICNameCase))
@@ -557,13 +557,13 @@ namespace Content.Shared.Preferences
             }
         }
 
-        // White-TTS-Start
+        // Corvax-TTS-Start
         // SHOULD BE NOT PUBLIC, BUT....
         public static bool CanHaveVoice(TTSVoicePrototype voice, Sex sex)
         {
             return voice.RoundStart && sex == Sex.Unsexed || (voice.Sex == sex || voice.Sex == Sex.Unsexed);
         }
-        // White-TTS-End
+        // Corvax-TTS-End
 
         public ICharacterProfile Validated(ICommonSession session, IDependencyCollection collection, string[] sponsorPrototypes)
         {
