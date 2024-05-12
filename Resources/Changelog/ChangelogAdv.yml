@@ -5,3 +5,17 @@ Entries:
     type: Add
   id: 1
   time: 2024-05-09T10:57:26+03:00
+- author: "c4llv07e"
+  changes:
+  - message: "Добавлен бригмедик"
+    type: Add
+  id: 2
+  time: 2024-05-09T21:31:00+03:00
+- author: "Totohka"
+  changes:
+  - message: "Добавлена роль Офицера синего щита!"
+    type: Add
+  - message: "Добавлена аптечка бригмедику!"
+    type: Add
+  id: 3
+  time: 2024-05-12T00:58:28+03:00
