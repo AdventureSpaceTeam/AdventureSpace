@@ -219,10 +219,6 @@ VehicleJanicartDestroyed: null
 YellowOxygenTank: OxygenTank
 YellowOxygenTankFilled: OxygenTankFilled
 
-# corvax printer
-PrinterDoc: Printer
-PrinterDocMachineCircuitboard: PrinterMachineCircuitboard
-
 # 2024-02-19
 Drone: null
 SpawnMobDrone: null
