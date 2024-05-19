@@ -151,12 +151,12 @@
 
 - type: job
   id: AI
-  name: Искусственный интеллект
+  name: искусственный интеллект
   description: Всевидящий глаз станции. Соблюдайте законы, помогайте экипажу и следите за станцией.
   playTimeTracker: JobAI
   canBeAntag: false
   icon: JobIconAI
-  overrideConsoleVisibility: true
+  setPreference: false
   supervisors: job-supervisors-rd-centcom
   jobEntity: MobAI
 
