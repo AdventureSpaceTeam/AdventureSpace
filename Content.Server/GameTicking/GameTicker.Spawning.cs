@@ -9,6 +9,7 @@ using Content.Server.Speech.Components;
 using Content.Server.Station.Components;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
+using Content.Shared.Mind;
 using Content.Shared.Players;
 using Content.Shared.Preferences;
 using Content.Shared.Roles;
@@ -99,8 +100,7 @@ namespace Content.Server.GameTicking
                 if (job == null)
                 {
                     var playerSession = _playerManager.GetSessionById(netUser);
-                    _chatManager.DispatchServerMessage(playerSession,
-                        Loc.GetString("job-not-available-wait-in-lobby"));
+                    _chatManager.DispatchServerMessage(playerSession, Loc.GetString("job-not-available-wait-in-lobby"));
                 }
                 else
                 {
@@ -132,8 +132,7 @@ namespace Content.Server.GameTicking
             EntityUid station,
             string? jobId = null,
             bool lateJoin = true,
-            bool silent = false,
-            bool canBeAntag = true)
+            bool silent = false)
         {
             var character = GetPlayerProfile(player);
 
@@ -143,7 +142,7 @@ namespace Content.Server.GameTicking
 
             if (jobId != null && !_playTimeTrackings.IsAllowed(player, jobId))
                 return;
-            SpawnPlayer(player, character, station, jobId, lateJoin, silent, canBeAntag);
+            SpawnPlayer(player, character, station, jobId, lateJoin, silent);
         }
 
         private void SpawnPlayer(ICommonSession player,
@@ -151,8 +150,7 @@ namespace Content.Server.GameTicking
             EntityUid station,
             string? jobId = null,
             bool lateJoin = true,
-            bool silent = false,
-            bool canBeAntag = true)
+            bool silent = false)
         {
             // Can't spawn players with a dummy ticker!
             if (DummyTicker)
@@ -304,8 +302,7 @@ namespace Content.Server.GameTicking
                 lateJoin,
                 PlayersJoinedRoundNormally,
                 station,
-                character,
-                canBeAntag);
+                character);
             RaiseLocalEvent(mob, aev, true);
         }
 
@@ -327,11 +324,7 @@ namespace Content.Server.GameTicking
         /// <param name="station">The station they're spawning on</param>
         /// <param name="jobId">An optional job for them to spawn as</param>
         /// <param name="silent">Whether or not the player should be greeted upon joining</param>
-        public void MakeJoinGame(ICommonSession player,
-            EntityUid station,
-            string? jobId = null,
-            bool silent = false,
-            bool canBeAntag = true)
+        public void MakeJoinGame(ICommonSession player, EntityUid station, string? jobId = null, bool silent = false)
         {
             if (!_playerGameStatuses.ContainsKey(player.UserId))
                 return;
@@ -339,7 +332,7 @@ namespace Content.Server.GameTicking
             if (!_userDb.IsLoadComplete(player))
                 return;
 
-            SpawnPlayer(player, station, jobId, silent: silent, canBeAntag: canBeAntag);
+            SpawnPlayer(player, station, jobId, silent: silent);
         }
 
         /// <summary>
@@ -364,33 +357,21 @@ namespace Content.Server.GameTicking
             if (DummyTicker)
                 return;
 
-            var mind = player.GetMind();
+            Entity<MindComponent?>? mind = player.GetMind();
             if (mind == null)
             {
-                mind = _mind.CreateMind(player.UserId);
+                var name = GetPlayerProfile(player).Name;
+                var (mindId, mindComp) = _mind.CreateMind(player.UserId, name);
+                mind = (mindId, mindComp);
                 _mind.SetUserId(mind.Value, player.UserId);
                 _roles.MindAddRole(mind.Value, new ObserverRoleComponent());
             }
 
-            var name = GetPlayerProfile(player).Name;
-            var ghost = SpawnObserverMob();
-            _metaData.SetEntityName(ghost, name);
-            _ghost.SetCanReturnToBody(ghost, false);
-            _mind.TransferTo(mind.Value, ghost);
+            var ghost = _ghost.SpawnGhost(mind.Value);
             _adminLogger.Add(LogType.LateJoin,
                 LogImpact.Low,
                 $"{player.Name} late joined the round as an Observer with {ToPrettyString(ghost):entity}.");
         }
-
-        #region Mob Spawning Helpers
-
-        private EntityUid SpawnObserverMob()
-        {
-            var coordinates = GetObserverSpawnPoint();
-            return EntityManager.SpawnEntity(ObserverPrototypeName, coordinates);
-        }
-
-        #endregion
 
         #region Spawn Points
 
@@ -398,8 +379,7 @@ namespace Content.Server.GameTicking
         {
             _possiblePositions.Clear();
 
-            foreach (var (point, transform) in EntityManager
-                         .EntityQuery<SpawnPointComponent, TransformComponent>(true))
+            foreach (var (point, transform) in EntityManager.EntityQuery<SpawnPointComponent, TransformComponent>(true))
             {
                 if (point.SpawnType != SpawnPointType.Observer)
                     continue;
@@ -415,7 +395,7 @@ namespace Content.Server.GameTicking
                 var query = AllEntityQuery<MapGridComponent>();
                 while (query.MoveNext(out var uid, out var grid))
                 {
-                    if (!metaQuery.TryGetComponent(uid, out var meta) || meta.EntityPaused)
+                    if (!metaQuery.TryGetComponent(uid, out var meta) || meta.EntityPaused || TerminatingOrDeleted(uid))
                     {
                         continue;
                     }
@@ -452,7 +432,9 @@ namespace Content.Server.GameTicking
             {
                 var mapUid = _mapManager.GetMapEntityId(map);
 
-                if (!metaQuery.TryGetComponent(mapUid, out var meta) || meta.EntityPaused)
+                if (!metaQuery.TryGetComponent(mapUid, out var meta)
+                    || meta.EntityPaused
+                    || TerminatingOrDeleted(mapUid))
                 {
                     continue;
                 }
@@ -511,7 +493,6 @@ namespace Content.Server.GameTicking
         public bool LateJoin { get; }
         public EntityUid Station { get; }
         public HumanoidCharacterProfile Profile { get; }
-        public bool CanBeAntag { get; }
 
         // Ex. If this is the 27th person to join, this will be 27.
         public int JoinOrder { get; }
@@ -522,8 +503,7 @@ namespace Content.Server.GameTicking
             bool lateJoin,
             int joinOrder,
             EntityUid station,
-            HumanoidCharacterProfile profile,
-            bool canBeAntag)
+            HumanoidCharacterProfile profile)
         {
             Mob = mob;
             Player = player;
@@ -532,7 +512,6 @@ namespace Content.Server.GameTicking
             Station = station;
             Profile = profile;
             JoinOrder = joinOrder;
-            CanBeAntag = canBeAntag;
         }
     }
 }
