@@ -922,7 +922,7 @@
         settings: short
     - type: GhostTakeoverAvailable
     - type: Loadout
-      prototypes: [ SyndicateOperativeGearDisasterVictim ]
+      prototypes: [ SyndicateOperativeGearCivilian ]
     - type: RandomMetadata
       nameSegments:
       - names_first
