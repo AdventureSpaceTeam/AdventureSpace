@@ -1,0 +1,188 @@
+- type: entity
+  parent: BaseMob
+  id: MobAI
+  name: ИИ
+  components:
+  - type: CargoSellBlacklist
+  - type: MovementSpeedModifier
+    baseSprintSpeed: 12
+    baseWalkSpeed: 8
+  - type: MovementIgnoreGravity
+  - type: ActiveRadio
+    receiveAllChannels: true
+  - type: Sprite
+    drawdepth: Ghosts
+    sprite: _c4llv07e/ai.rsi
+    layers:
+    - map: [ "hologram" ]
+      state: icon
+  - type: GenericVisualizer
+    visuals:
+      enum.AIVisuals.Visibility:
+        hologram:
+          True: { state: visible }
+          False: { state: icon }
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 15
+        mask:
+        - GhostImpassable
+  - type: Eye
+    drawFov: false
+  - type: TTS # Corvax-TTS
+    voice: glados
+  - type: ContentEye
+    maxZoom: 2.0, 2.0
+  - type: Tag
+    tags:
+    - CanPilot
+    - BypassInteractionRangeChecks
+  - type: Input
+    context: AI
+  - type: Physics
+    bodyType: Kinematic
+  - type: CanMoveInAir
+  - type: Body
+  - type: NoSlip
+  - type: SiliconLawBound
+  - type: SiliconLawProvider
+    laws: Crewsimov
+  - type: IonStormTarget
+  - type: AnnounceAuthor
+    name: Искусственный интеллект
+  - type: IntrinsicRadioReceiver
+  - type: IntrinsicRadioTransmitter
+    channels:
+    - Common
+    - CentCom
+    - Command
+    - Engineering
+    - Medical
+    - Science
+    - Security
+    - Service
+    - Supply
+    - Binary
+  - type: RadioName
+    name: ИИ
+  - type: ZombieImmune
+  - type: Access
+    groups:
+    - AllAccess
+    tags:
+    - CentralCommand
+  - type: UserInterface
+    interfaces:
+      enum.SiliconLawsUiKey.Key:
+        type: SiliconLawBoundUserInterface
+      enum.SolarControlConsoleUiKey.Key:
+        type: SolarControlConsoleBoundUserInterface
+      enum.CommunicationsConsoleUiKey.Key:
+        type: CommunicationsConsoleBoundUserInterface
+      enum.CargoConsoleUiKey.Orders:
+        type: CargoOrderConsoleBoundUserInterface
+      enum.CrewMonitoringUIKey.Key:
+        type: CrewMonitoringBoundUserInterface
+      enum.GeneralStationRecordConsoleKey.Key:
+        type: GeneralStationRecordConsoleBoundUserInterface
+      enum.PowerMonitoringConsoleUiKey.Key:
+        type: PowerMonitoringConsoleBoundUserInterface
+  - type: IntrinsicUI
+    uis:
+      enum.SolarControlConsoleUiKey.Key:
+        toggleAction: ActionAGhostShowSolar
+      enum.CommunicationsConsoleUiKey.Key:
+        toggleAction: ActionAGhostShowCommunications
+      enum.CargoConsoleUiKey.Orders:
+        toggleAction: ActionAGhostShowCargo
+      enum.CrewMonitoringUIKey.Key:
+        toggleAction: ActionAGhostShowCrewMonitoring
+      enum.GeneralStationRecordConsoleKey.Key:
+        toggleAction: ActionAGhostShowStationRecords
+      enum.PowerMonitoringConsoleUiKey.Key:
+        toggleAction: ActionAGhostShowPowerMonitor
+  - type: PowerMonitoringConsole
+  - type: PowerMonitoringCableNetworks
+  - type: SolarControlConsole
+  - type: CommunicationsConsole
+    title: Искусственный интеллект
+    color: "#1876ec"
+  - type: UnblockableSpeech
+  - type: CargoOrderConsole
+  - type: CrewMonitoringConsole
+    snap: false
+    precision: 3
+  - type: GeneralStationRecordConsole
+  - type: DeviceNetwork
+    deviceNetId: Wireless
+    receiveFrequencyId: CrewMonitor
+  - type: WirelessNetworkConnection
+    range: 500
+  - type: StationLimitedNetwork
+  - type: SolutionScanner
+  - type: IgnoreUIRange
+  - type: MobState # Ghost warp only works when the entity has a MobState
+    allowedStates:
+    - Alive
+  - type: AI
+    itemsInHands:
+    - DoorRemoteAll
+    - TrayScanner21
+  - type: Hands
+    showInHands: false
+
+- type: entity
+  id: TrayScanner21
+  parent: trayScanner
+  components:
+  - type: TrayScanner
+    range: 21
+
+- type: statusIcon
+  parent: JobIcon
+  id: JobIconAI
+  icon:
+    sprite: /Textures/Interface/Misc/job_icons.rsi
+    state: AI
+
+- type: job
+  id: AI
+  name: искусственный интеллект
+  description: Всевидящий глаз станции. Соблюдайте законы, помогайте экипажу и следите за станцией.
+  playTimeTracker: JobAI
+  canBeAntag: false
+  icon: JobIconAI
+  setPreference: false
+  supervisors: job-supervisors-rd-centcom
+  jobEntity: MobAI
+
+- type: playTimeTracker
+  id: JobAI
+
+- type: entity
+  id: ActionAIToggleVisibility
+  name: Переключить голопроекторы ИИ
+  description: Позволяет персоналу видеть вас
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon: _c4llv07e/Interface/eye.png
+    checkCanInteract: false
+    event: !type:AIToggleVisibilityActionEvent
+
+- type: entity
+  id: ActionAGhostShowPowerMonitor
+  name: Интерфейс питания сети
+  description: Просмотр интерфейса питания станции.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon: _c4llv07e/Interface/power.png
+    iconOn: _c4llv07e/Interface/power.png
+    keywords: [ "AI", "console", "interface" ]
+    priority: -10
+    event: !type:ToggleIntrinsicUIEvent { key: enum.PowerMonitoringConsoleUiKey.Key }

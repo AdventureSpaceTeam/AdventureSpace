@@ -108,6 +108,7 @@
     - type: DoorBolt
     - type: AccessReader
       access: [ [ "Engineering" ] ]
+    - type: AIControlled
 
 - type: entity
   id: Firelock
