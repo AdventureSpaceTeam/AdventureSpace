@@ -3,7 +3,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
-using Content.Corvax.Interfaces.Server;
+using Content.Corvax.Interfaces.Shared;
 using Content.Shared.CCVar;
 using Content.Shared.Sponsors;
 using Robust.Shared.Configuration;
@@ -14,7 +14,7 @@ using Robust.Shared.Utility;
 
 namespace Content.Server.Sponsors;
 
-public sealed class SponsorsManager : IServerSponsorsManager
+public sealed class SponsorsManager : ISharedSponsorsManager
 {
     [Dependency] private readonly IServerNetManager _netMgr = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!;
@@ -147,7 +147,7 @@ public sealed class SponsorsManager : IServerSponsorsManager
         return await response.Content.ReadFromJsonAsync<SponsorInfo>();
     }
 
-    public bool TryGetGhostTheme(NetUserId userId, [NotNullWhen(true)] out string? ghostTheme)
+    public bool TryGetServerGhostTheme(NetUserId userId, [NotNullWhen(true)] out string? ghostTheme)
     {
         if (!_cachedSponsors.ContainsKey(userId) || string.IsNullOrEmpty(_cachedSponsors[userId].GhostTheme))
         {
@@ -159,7 +159,7 @@ public sealed class SponsorsManager : IServerSponsorsManager
         return true;
     }
 
-    public bool TryGetPrototypes(NetUserId userId, [NotNullWhen(true)]  out List<string>? prototypes)
+    public bool TryGetServerPrototypes(NetUserId userId, [NotNullWhen(true)]  out List<string>? prototypes)
     {
         prototypes = null;
         if (!TryGetInfo(userId, out var sponsor))
@@ -174,6 +174,9 @@ public sealed class SponsorsManager : IServerSponsorsManager
 
         return true;
     }
+
+    public List<string> GetClientPrototypes() => throw new NotImplementedException();
+    public bool GetClientAllowedRespawn() => throw new NotImplementedException();
 
     public bool TryGetPriorityAntags(NetUserId userId, [NotNullWhen(true)]  out List<string>? priorityAntags)
     {
@@ -197,7 +200,7 @@ public sealed class SponsorsManager : IServerSponsorsManager
         return true;
     }
 
-    public bool TryGetOocTitle(NetUserId userId, [NotNullWhen(true)] out string? title)
+    public bool TryGetServerOocTitle(NetUserId userId, [NotNullWhen(true)] out string? title)
     {
         if (!_cachedSponsors.ContainsKey(userId) || _cachedSponsors[userId].Tier == null)
         {
@@ -210,7 +213,7 @@ public sealed class SponsorsManager : IServerSponsorsManager
         return title != null;
     }
 
-    public bool TryGetOocColor(NetUserId userId, [NotNullWhen(true)] out Color? color)
+    public bool TryGetServerOocColor(NetUserId userId, [NotNullWhen(true)] out Color? color)
     {
         if (!_cachedSponsors.ContainsKey(userId) || _cachedSponsors[userId].OOCColor == null)
         {
@@ -223,12 +226,12 @@ public sealed class SponsorsManager : IServerSponsorsManager
         return color != null;
     }
 
-    public int GetExtraCharSlots(NetUserId userId)
+    public int GetServerExtraCharSlots(NetUserId userId)
     {
         return !_cachedSponsors.ContainsKey(userId) ? 0 : _cachedSponsors[userId].ExtraSlots;
     }
 
-    public bool HavePriorityJoin(NetUserId userId)
+    public bool HaveServerPriorityJoin(NetUserId userId)
     {
         return _cachedSponsors.ContainsKey(userId) && _cachedSponsors[userId].HavePriorityJoin;
     }
@@ -237,7 +240,7 @@ public sealed class SponsorsManager : IServerSponsorsManager
         return _cachedSponsors.ContainsKey(userId) && _cachedSponsors[userId].Tier > 0;
     }
 
-    public bool AllowedRespawn(NetUserId userId)
+    public bool GetServerAllowedRespawn(NetUserId userId)
     {
         return _cachedSponsors.ContainsKey(userId) && _cachedSponsors[userId].AllowedRespawn;
     }

@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using Content.Client.Administration.Managers;
-using Content.Corvax.Interfaces.Client;
+using Content.Corvax.Interfaces.Shared;
 using Content.Shared.CCVar;
 using Content.Shared.Players;
 using Content.Shared.Players.PlayTimeTracking;
@@ -104,8 +104,8 @@ public sealed class JobRequirementsManager : ISharedPlaytimeManager
         if (player == null)
             return true;
 
-        var sponsors = IoCManager.Resolve<IClientSponsorsManager>(); // Alteros-Sponsors
-        if (sponsors.Prototypes.Contains(job.ID))
+        var sponsors = IoCManager.Resolve<ISharedSponsorsManager>(); // Alteros-Sponsors
+        if (sponsors.GetClientPrototypes().Contains(job.ID))
             return true;
 
         return CheckRoleTime(job.Requirements, out reason);
