@@ -1,4 +1,4 @@
-using Content.Corvax.Interfaces.Server;
+using Content.Corvax.Interfaces.Shared;
 using Content.Shared.Alteros.GhostTheme;
 using Content.Shared.Ghost;
 using Robust.Server.GameObjects;
@@ -21,8 +21,8 @@ public sealed class GhostThemeSystem : EntitySystem
 
     private void OnPlayerAttached(EntityUid uid, GhostComponent component, PlayerAttachedEvent args)
     {
-        var sponsors = IoCManager.Resolve<IServerSponsorsManager>(); // Alteros-Sponsors
-        if (!sponsors.TryGetGhostTheme(args.Player.UserId, out var ghostTheme) ||
+        var sponsors = IoCManager.Resolve<ISharedSponsorsManager>(); // Alteros-Sponsors
+        if (!sponsors.TryGetServerGhostTheme(args.Player.UserId, out var ghostTheme) ||
             !_prototypeManager.TryIndex<GhostThemePrototype>(ghostTheme, out var ghostThemePrototype)
            )
         {

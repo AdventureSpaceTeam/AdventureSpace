@@ -29,6 +29,7 @@ using Content.Shared.Administration.Logs;
 using Content.Shared.Administration.Managers;
 using Content.Shared.Kitchen;
 using Content.Shared.Players.PlayTimeTracking;
+using Content.Corvax.Interfaces.Shared;
 
 namespace Content.Server.IoC
 {
@@ -71,7 +72,7 @@ namespace Content.Server.IoC
             IoCManager.Register<ServerApi>();
 
             // Alteros-Sponsor
-            IoCManager.Register<Content.Corvax.Interfaces.Server.IServerSponsorsManager, SponsorsManager>();
+            IoCManager.Register<Content.Corvax.Interfaces.Shared.ISharedSponsorsManager, SponsorsManager>();
             IoCManager.Register<Content.Corvax.Interfaces.Server.IServerDiscordAuthManager, DiscordAuthManager>();
             IoCManager.Register<Content.Corvax.Interfaces.Server.IServerJoinQueueManager, JoinQueueManager>();
             // Alteros-Sponsor

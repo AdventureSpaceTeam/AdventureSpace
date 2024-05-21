@@ -1,7 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
-using Content.Corvax.Interfaces.Server;
+using Content.Corvax.Interfaces.Shared;
 using Content.Server.EUI;
 using Content.Server.GameTicking;
 using Content.Server.NewLife.UI;
@@ -91,8 +91,8 @@ namespace Content.Server.NewLife
 
         private async Task NetMgrOnConnecting(NetConnectingArgs e)
         {
-            var sponsors = IoCManager.Resolve<IServerSponsorsManager>();
-            if (sponsors.AllowedRespawn(e.UserId))
+            var sponsors = IoCManager.Resolve<ISharedSponsorsManager>();
+            if (sponsors.GetServerAllowedRespawn(e.UserId))
             {
                 if (_newLifeRoundData.ContainsKey(e.UserId))
                     return;
@@ -115,11 +115,11 @@ namespace Content.Server.NewLife
             var stationUid = GetEntity(stationId);
             if (stationUid == null || roleProto == null)
                 return;
-            var sponsors = IoCManager.Resolve<IServerSponsorsManager>();
-            if (!sponsors.AllowedRespawn(player.UserId) || characterId == null)
+            var sponsors = IoCManager.Resolve<ISharedSponsorsManager>();
+            if (!sponsors.GetServerAllowedRespawn(player.UserId) || characterId == null)
                 return;
             _prefsManager.GetPreferences(player.UserId).SetProfile(characterId.Value);
-            _gameTicker.MakeJoinGame(player, stationUid.Value, roleProto, canBeAntag: false);
+            _gameTicker.MakeJoinGame(player, stationUid.Value, roleProto);
         }
 
         private void OpenEui(ICommonSession session)

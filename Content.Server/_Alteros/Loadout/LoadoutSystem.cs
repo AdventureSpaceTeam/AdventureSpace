@@ -1,4 +1,4 @@
-using Content.Corvax.Interfaces.Server;
+using Content.Corvax.Interfaces.Shared;
 using Content.Server.GameTicking;
 using Content.Server.Hands.Systems;
 using Content.Server.Storage.EntitySystems;
@@ -17,7 +17,7 @@ public sealed class LoadoutSystem : EntitySystem
     [Dependency] private readonly InventorySystem _inventorySystem = default!;
     [Dependency] private readonly HandsSystem _handsSystem = default!;
     [Dependency] private readonly StorageSystem _storageSystem = default!;
-    private IServerSponsorsManager? _sponsorsManager;
+    private ISharedSponsorsManager? _sponsorsManager;
 
     public override void Initialize()
     {
@@ -30,7 +30,7 @@ public sealed class LoadoutSystem : EntitySystem
         if (_sponsorsManager == null)
             return;
 
-        if (_sponsorsManager.TryGetPrototypes(ev.Player.UserId, out var prototypes))
+        if (_sponsorsManager.TryGetServerPrototypes(ev.Player.UserId, out var prototypes))
         {
             foreach (var loadoutId in prototypes)
             {

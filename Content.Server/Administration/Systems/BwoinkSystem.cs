@@ -5,7 +5,7 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using Content.Corvax.Interfaces.Server;
+using Content.Corvax.Interfaces.Shared;
 using Content.Server.Administration.Managers;
 using Content.Server.Afk;
 using Content.Server.Discord;
@@ -26,7 +26,7 @@ using Robust.Shared.Utility;
 namespace Content.Server.Administration.Systems
 {
     [UsedImplicitly]
-    public sealed class BwoinkSystem : SharedBwoinkSystem
+    public sealed partial class BwoinkSystem : SharedBwoinkSystem
     {
         [Dependency] private readonly IPlayerManager _playerManager = default!;
         [Dependency] private readonly IAdminManager _adminManager = default!;
@@ -36,6 +36,9 @@ namespace Content.Server.Administration.Systems
         [Dependency] private readonly GameTicker _gameTicker = default!;
         [Dependency] private readonly SharedMindSystem _minds = default!;
         [Dependency] private readonly IAfkManager _afkManager = default!;
+
+        [GeneratedRegex(@"^https://discord\.com/api/webhooks/(\d+)/((?!.*/).*)$")]
+        private static partial Regex DiscordRegex();
 
         private ISawmill _sawmill = default!;
         private readonly HttpClient _httpClient = new();
@@ -158,7 +161,7 @@ namespace Content.Server.Administration.Systems
                 return;
 
             // Basic sanity check and capturing webhook ID and token
-            var match = Regex.Match(url, @"^https://discord\.com/api/webhooks/(\d+)/((?!.*/).*)$");
+            var match = DiscordRegex().Match(url);
 
             if (!match.Success)
             {
@@ -398,7 +401,7 @@ namespace Content.Server.Administration.Systems
             // Alteros-Sponsors-start
             string bwoinkText;
 
-            var sponsors = IoCManager.Resolve<IServerSponsorsManager>();
+            var sponsors = IoCManager.Resolve<ISharedSponsorsManager>();
             if (senderAdmin is not null && senderAdmin.Flags == AdminFlags.Adminhelp) // Mentor. Not full admin. That's why it's colored differently.
             {
                 bwoinkText = $"[color=purple]\\[{senderAdmin.Title}\\] {senderSession.Name}[/color]: {escapedText}";
@@ -409,8 +412,8 @@ namespace Content.Server.Administration.Systems
             }
             else
             {
-                sponsors.TryGetOocColor(message.UserId, out var oocColor);
-                sponsors.TryGetOocTitle(message.UserId, out var sponsorTitle);
+                sponsors.TryGetServerOocColor(message.UserId, out var oocColor);
+                sponsors.TryGetServerOocTitle(message.UserId, out var sponsorTitle);
                 if (oocColor != null)
                 {
                     bwoinkText = $"[color={oocColor.Value.ToHex()}]\\[{sponsorTitle}\\] {senderSession.Name}[/color]: {escapedText}";

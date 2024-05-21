@@ -1,5 +1,5 @@
 using System.Linq;
-using Content.Corvax.Interfaces.Server;
+using Content.Corvax.Interfaces.Shared;
 using Content.Server.Administration.Managers;
 using Content.Server.Chat.Managers;
 using Content.Server.Forensics;
@@ -238,9 +238,9 @@ namespace Content.Server.Administration.Systems
             }
 
             // Alteros-Sponsors-start
-            var sponsors = IoCManager.Resolve<IServerSponsorsManager>();
+            var sponsors = IoCManager.Resolve<ISharedSponsorsManager>();
             var isSponsor = sponsors.IsSponsor(data.UserId);
-            sponsors.TryGetOocTitle(data.UserId, out var sponsorTitle);
+            sponsors.TryGetServerOocTitle(data.UserId, out var sponsorTitle);
 
             return new PlayerInfo(name, entityName, identityName, startingRole, antag, GetNetEntity(session?.AttachedEntity), data.UserId,
                 connected, _roundActivePlayers.Contains(data.UserId), overallPlaytime, isSponsor, sponsorTitle);
