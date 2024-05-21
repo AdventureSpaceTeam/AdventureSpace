@@ -54,4 +54,7 @@ public sealed partial class IdCardComponent : Component
 
     [DataField]
     public LocId FullNameLocId = "access-id-card-component-owner-full-name-job-title-text";
+
+    [DataField]
+    public bool CanMicrowave = true;
 }

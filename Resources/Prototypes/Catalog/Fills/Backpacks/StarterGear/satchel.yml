@@ -236,7 +236,7 @@
       - id: BoxSurvival
       - id: Bible
       - id: RubberStampChaplain
-  
+
 - type: entity
   noSpawn: true
   parent: ClothingBackpackSatchel
@@ -323,8 +323,8 @@
   - type: StorageFill
     contents:
     - id: IndiMedBox
-    - id: AdminPDA
     - id: GasAnalyzer
     - id: trayScanner
+    - id: AccessConfiguratorUniversal
     - id: DoorRemoteAll
   - type: Unremoveable
