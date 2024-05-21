@@ -19,3 +19,11 @@ Entries:
     type: Add
   id: 3
   time: 2024-05-17T01:40:51+03:00
+- author: "DTS"
+  changes:
+  - message: "Добавлены комната для ОСЩ, его шкаф и шкаф для бригмедика на следующие карты:"
+    type: Add
+  - message: "Bagel, Box, Cluster, Core, Fland, Marathon, Meta, Oasis, Omega, Origin, Packed, Starquest"
+    type: Add
+  id: 4
+  time: 2024-05-17T01:40:51+03:00
