@@ -21,7 +21,7 @@ using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
-using Content.Corvax.Interfaces.Server;
+using Content.Corvax.Interfaces.Shared;
 
 namespace Content.Server.Players.PlayTimeTracking;
 
@@ -189,8 +189,8 @@ public sealed class PlayTimeTrackingSystem : EntitySystem
         if (IsBypassingChecks(player))
             return true;
         // Alteros-Sponsors-start
-        var sponsors = IoCManager.Resolve<IServerSponsorsManager>(); // Alteros-Sponsors
-        if (sponsors.TryGetPrototypes(player.UserId, out var prototypes))
+        var sponsors = IoCManager.Resolve<ISharedSponsorsManager>(); // Alteros-Sponsors
+        if (sponsors.TryGetServerPrototypes(player.UserId, out var prototypes))
         {
             if (prototypes.Contains(role))
                 return true;

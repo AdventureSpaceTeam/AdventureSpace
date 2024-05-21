@@ -253,7 +253,8 @@ namespace Content.Server.Chat.Managers
             }
 
             // Corvax-Sponsors-Start
-            if (_sponsorsManager != null && _sponsorsManager.TryGetServerOocColor(player.UserId, out var oocColor))
+            if (_sponsorsManager != null && _sponsorsManager.TryGetServerOocColor(player.UserId, out var oocColor)
+                && _sponsorsManager.TryGetServerOocTitle(player.UserId, out var sponsorTitle))
             {
                 wrappedMessage = Loc.GetString("chat-manager-send-ooc-patron-wrap-message", ("patronColor", oocColor), ("patronTitle", $"\\[{sponsorTitle}\\] "),("playerName", player.Name), ("message", FormattedMessage.EscapeText(message)));
             }

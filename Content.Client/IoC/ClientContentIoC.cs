@@ -57,7 +57,7 @@ namespace Content.Client.IoC
             collection.Register<ISharedPlaytimeManager, JobRequirementsManager>();
 
             // Alteros-Sponsor
-            collection.Register<Content.Corvax.Interfaces.Client.IClientSponsorsManager,SponsorsManager>();
+            collection.Register<Content.Corvax.Interfaces.Shared.ISharedSponsorsManager,SponsorsManager>();
             collection.Register<Content.Corvax.Interfaces.Client.IClientJoinQueueManager,JoinQueueManager>();
             collection.Register<Content.Corvax.Interfaces.Client.IClientDiscordAuthManager,DiscordAuthManager>();
             // Alteros-Sponsor
