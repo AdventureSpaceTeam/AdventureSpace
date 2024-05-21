@@ -1,5 +1,5 @@
 using System.Linq;
-using Content.Corvax.Interfaces.Server;
+using Content.Corvax.Interfaces.Shared;
 using Content.Server.Administration.Managers;
 using Content.Server.Players.PlayTimeTracking;
 using Content.Server.Station.Components;
@@ -245,7 +245,7 @@ public sealed partial class StationJobsSystem
                             if (!jobPlayerOptions.ContainsKey(job))
                                 continue;
 
-                            var sponsors = IoCManager.Resolve<IServerSponsorsManager>(); // Alteros-Sponsors
+                            var sponsors = IoCManager.Resolve<ISharedSponsorsManager>(); // Alteros-Sponsors
 
                             // Picking players it finds that have the job set.
                             var player = sponsors.PickRoleSession(jobPlayerOptions[job], job);

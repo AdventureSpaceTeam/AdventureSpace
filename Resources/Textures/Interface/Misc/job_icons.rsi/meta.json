@@ -194,6 +194,9 @@
         },
         {
             "name": "InitialInfected"
+        },
+        {
+            "name": "Admin"
         }
     ]
 }

@@ -11,16 +11,14 @@ using Content.Client.Info;
 using Content.Client.Launcher;
 using Content.Client.Parallax.Managers;
 using Content.Client.Players.PlayTimeTracking;
-using Content.Client.Preferences;
 using Content.Client.Screenshot;
 using Content.Client.Fullscreen;
 using Content.Client.Stylesheets;
 using Content.Client.Viewport;
 using Content.Client.Voting;
-using Content.Shared.Administration;
 using Content.Shared.Administration.Logs;
-using Content.Shared.Module;
 using Content.Client.Guidebook;
+using Content.Client.Lobby;
 using Content.Client.JoinQueue;
 using Content.Client.Replay;
 using Content.Client.Sponsors;
@@ -59,7 +57,7 @@ namespace Content.Client.IoC
             collection.Register<ISharedPlaytimeManager, JobRequirementsManager>();
 
             // Alteros-Sponsor
-            collection.Register<Content.Corvax.Interfaces.Client.IClientSponsorsManager,SponsorsManager>();
+            collection.Register<Content.Corvax.Interfaces.Shared.ISharedSponsorsManager,SponsorsManager>();
             collection.Register<Content.Corvax.Interfaces.Client.IClientJoinQueueManager,JoinQueueManager>();
             collection.Register<Content.Corvax.Interfaces.Client.IClientDiscordAuthManager,DiscordAuthManager>();
             // Alteros-Sponsor
