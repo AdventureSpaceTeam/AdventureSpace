@@ -142,7 +142,7 @@
     rootTask:
       task: SimpleHostileCompound
   - type: TTS # Corvax-TTS
-    voice: Chen
+    voice: chen
 
 - type: entity
   name: geras
