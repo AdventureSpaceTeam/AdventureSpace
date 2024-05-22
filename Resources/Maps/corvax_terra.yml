@@ -42961,7 +42961,7 @@ entities:
       name: Йорик
     - type: GhostTakeoverAvailable
     - type: TTS
-      voice: Oldnekro
+      voice: oldnekro
     - type: InsideEntityStorage
 - proto: HighSecCommandLocked
   entities:
