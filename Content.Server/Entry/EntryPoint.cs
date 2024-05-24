@@ -31,6 +31,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 using Content.Server.Corvax.GuideGenerator;
+using Content.Corvax.Interfaces.Server;
 
 namespace Content.Server.Entry
 {
@@ -112,6 +113,10 @@ namespace Content.Server.Entry
                 IoCManager.Resolve<Content.Corvax.Interfaces.Server.IServerDiscordAuthManager>().Initialize();
                 IoCManager.Resolve<Content.Corvax.Interfaces.Server.IServerJoinQueueManager>().Initialize();
                 // end-alteros: IoC
+
+                // c4llv07e vpn guard {{
+                IoCManager.Resolve<Content.Corvax.Interfaces.Server.IServerVPNGuardManager>().Initialize();
+                // c4llv07e vpn guard }}
 
                 _voteManager.Initialize();
                 _updateManager.Initialize();
