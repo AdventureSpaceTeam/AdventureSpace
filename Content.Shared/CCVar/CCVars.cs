@@ -2136,6 +2136,19 @@ namespace Content.Shared.CCVar
             CVarDef.Create("greetings.author", "Сервер");
 
         /*
+         * c4llv07e
+         */
+
+        public static readonly CVarDef<string> VpnGuardApiUrl =
+            CVarDef.Create("bunker.vpn_url", "", CVar.SERVERONLY);
+
+        public static readonly CVarDef<string> VpnGuardApiUserId =
+            CVarDef.Create("bunker.vpn_userid", "", CVar.SERVERONLY);
+
+        public static readonly CVarDef<string> VpnGuardApiKey =
+            CVarDef.Create("bunker.vpn_key", "", CVar.SERVERONLY);
+
+        /*
          * Adventure Space WL
          */
 
