@@ -80,7 +80,7 @@ namespace Content.Server.IoC
             // Alteros-Sponsor
 
             // c4llv07e vpn ban {{
-            IoCManager.Register<IServerVPNGuardManager, VpnGuard>();
+            IoCManager.Register<IServerVPNGuardManager, VpnGuardFile>();
             // c4llv07e vpn ban }}
         }
     }
