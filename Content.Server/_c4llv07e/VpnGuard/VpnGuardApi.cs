@@ -5,12 +5,14 @@ using System.Net.Http;
 using System.Net;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Content.Server.Database;
 
 namespace Content.Server._c4llv07e.VpnGuard;
 
-public sealed class VpnGuard : IServerVPNGuardManager
+public sealed class VpnGuardApi : IServerVPNGuardManager
 {
     [Dependency] private readonly IConfigurationManager _cfg = default!;
+    [Dependency] private readonly IServerDbManager _db = default!;
 
     private ISawmill _sawmill = default!;
     private Uri _apiUri = default!;
@@ -30,7 +32,7 @@ public sealed class VpnGuard : IServerVPNGuardManager
 
     public void Initialize()
     {
-        _sawmill = Logger.GetSawmill("c4_VpnGuard");
+        _sawmill = Logger.GetSawmill("c4_VpnGuardApi");
         _cfg.OnValueChanged(CCVars.VpnGuardApiUrl, UpdateUri, true);
         _cfg.OnValueChanged(CCVars.VpnGuardApiUserId, s => _userId = s, true);
         _cfg.OnValueChanged(CCVars.VpnGuardApiKey, s => _apiKey = s, true);

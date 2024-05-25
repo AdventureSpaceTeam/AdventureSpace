@@ -2140,13 +2140,16 @@ namespace Content.Shared.CCVar
          */
 
         public static readonly CVarDef<string> VpnGuardApiUrl =
-            CVarDef.Create("bunker.vpn_url", "", CVar.SERVERONLY);
+            CVarDef.Create("vpnguard.api_url", "", CVar.SERVERONLY);
 
         public static readonly CVarDef<string> VpnGuardApiUserId =
-            CVarDef.Create("bunker.vpn_userid", "", CVar.SERVERONLY);
+            CVarDef.Create("vpnguard.api_userid", "", CVar.SERVERONLY);
 
         public static readonly CVarDef<string> VpnGuardApiKey =
-            CVarDef.Create("bunker.vpn_key", "", CVar.SERVERONLY);
+            CVarDef.Create("vpnguard.api_key", "", CVar.SERVERONLY);
+
+        public static readonly CVarDef<string> VpnGuardFilePath =
+            CVarDef.Create("vpnguard.file_path", "", CVar.SERVERONLY);
 
         /*
          * Adventure Space WL
