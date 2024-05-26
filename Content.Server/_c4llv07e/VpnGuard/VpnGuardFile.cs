@@ -25,26 +25,25 @@ public sealed class VpnGuardFile : IServerVPNGuardManager
             _sawmill.Error("Path for the vpn list is unset");
             return;
         }
-        using StreamReader stream = new(path);
-        if (stream == null)
-        {
-            _sawmill.Error($"Can't open {path} for reading");
-            return;
-        }
-        line_number = 0;
-        while (stream.Peek() >= 0)
-        {
-            content = stream.ReadLine();
-            if (content == null)
-                break;
-            line_number += 1;
-            if (!IPNetwork.TryParse(content, out var ip_net))
+        try {
+            using StreamReader stream = new(path);
+            line_number = 0;
+            while (stream.Peek() >= 0)
             {
-                _sawmill.Warning($"Can't parse ip network on the line {line_number}");
+                content = stream.ReadLine();
+                if (content == null)
+                    break;
+                line_number += 1;
+                if (!IPNetwork.TryParse(content, out var ip_net))
+                {
+                    _sawmill.Warning($"Can't parse ip network on the line {line_number}");
+                }
+                networks.Add(ip_net);
             }
-            networks.Add(ip_net);
+            _sawmill.Debug($"Parsed {line_number} lines");
+        } catch (FileNotFoundException e) {
+            _sawmill.Error($"Can't open vpn list file: {e}");
         }
-        _sawmill.Debug($"Parsed {line_number} lines");
     }
 
     public void Initialize()
