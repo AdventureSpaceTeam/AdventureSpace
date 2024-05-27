@@ -99,6 +99,7 @@ public sealed partial class RoleLoadout : IEquatable<RoleLoadout>
             {
                 var loadout = loadouts[i];
 
+                // Old prototype or otherwise invalid.
                 if (!protoManager.TryIndex(loadout.Prototype, out var loadoutProto))
                 {
                     loadouts.RemoveAt(i);
