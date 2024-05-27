@@ -1,7 +1,6 @@
 using System.Linq;
 using Content.Server.DoAfter;
 using Content.Server.Humanoid;
-using Content.Shared.UserInterface;
 using Content.Shared.DoAfter;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Markings;
@@ -24,7 +23,6 @@ public sealed class MagicMirrorSystem : SharedMagicMirrorSystem
     public override void Initialize()
     {
         base.Initialize();
-        SubscribeLocalEvent<MagicMirrorComponent, ActivatableUIOpenAttemptEvent>(OnOpenUIAttempt);
 
         Subs.BuiEvents<MagicMirrorComponent>(MagicMirrorUiKey.Key,
             subs =>
@@ -36,7 +34,6 @@ public sealed class MagicMirrorSystem : SharedMagicMirrorSystem
             subs.Event<MagicMirrorRemoveSlotMessage>(OnTryMagicMirrorRemoveSlot);
         });
 
-        SubscribeLocalEvent<MagicMirrorComponent, AfterInteractEvent>(OnMagicMirrorInteract);
 
         SubscribeLocalEvent<MagicMirrorComponent, MagicMirrorSelectDoAfterEvent>(OnSelectSlotDoAfter);
         SubscribeLocalEvent<MagicMirrorComponent, MagicMirrorChangeColorDoAfterEvent>(OnChangeColorDoAfter);
@@ -44,31 +41,12 @@ public sealed class MagicMirrorSystem : SharedMagicMirrorSystem
         SubscribeLocalEvent<MagicMirrorComponent, MagicMirrorAddSlotDoAfterEvent>(OnAddSlotDoAfter);
     }
 
-    private void OnMagicMirrorInteract(Entity<MagicMirrorComponent> mirror, ref AfterInteractEvent args)
-    {
-        if (!args.CanReach || args.Target == null)
-            return;
-
-        if (!_uiSystem.TryOpenUi(mirror.Owner, MagicMirrorUiKey.Key, args.User))
-            return;
-
-        UpdateInterface(mirror.Owner, args.Target.Value, mirror.Comp);
-    }
-
-    private void OnOpenUIAttempt(EntityUid uid, MagicMirrorComponent mirror, ActivatableUIOpenAttemptEvent args)
-    {
-        if (!HasComp<HumanoidAppearanceComponent>(args.User))
-            args.Cancel();
-        UpdateInterface(uid, args.User, mirror);
-    }
-
     private void OnMagicMirrorSelect(EntityUid uid, MagicMirrorComponent component, MagicMirrorSelectMessage message)
     {
         if (component.Target is not { } target)
             return;
 
-        if (_doAfterSystem.GetStatus(component.DoAfter) != DoAfterStatus.Invalid)
-            _doAfterSystem.Cancel(component.DoAfter);
+        _doAfterSystem.Cancel(component.DoAfter);
         component.DoAfter = null;
 
         var doAfter = new MagicMirrorSelectDoAfterEvent()
@@ -85,7 +63,8 @@ public sealed class MagicMirrorSystem : SharedMagicMirrorSystem
             BreakOnMove = true,
             BreakOnHandChange = false,
             NeedHand = true
-        }, out var doAfterId);
+        },
+            out var doAfterId);
 
         component.DoAfter = doAfterId;
         _audio.PlayPvs(component.ChangeHairSound, uid);
@@ -139,10 +118,10 @@ public sealed class MagicMirrorSystem : SharedMagicMirrorSystem
             BreakOnMove = true,
             BreakOnHandChange = false,
             NeedHand = true
-        }, out var doAfterId);
+        },
+            out var doAfterId);
 
         component.DoAfter = doAfterId;
-        _audio.PlayPvs(component.ChangeHairSound, uid);
     }
     private void OnChangeColorDoAfter(EntityUid uid, MagicMirrorComponent component, MagicMirrorChangeColorDoAfterEvent args)
     {
@@ -192,7 +171,8 @@ public sealed class MagicMirrorSystem : SharedMagicMirrorSystem
             BreakOnDamage = true,
             BreakOnHandChange = false,
             NeedHand = true
-        }, out var doAfterId);
+        },
+            out var doAfterId);
 
         component.DoAfter = doAfterId;
         _audio.PlayPvs(component.ChangeHairSound, uid);
@@ -244,7 +224,8 @@ public sealed class MagicMirrorSystem : SharedMagicMirrorSystem
             BreakOnMove = true,
             BreakOnHandChange = false,
             NeedHand = true
-        }, out var doAfterId);
+        },
+            out var doAfterId);
 
         component.DoAfter = doAfterId;
         _audio.PlayPvs(component.ChangeHairSound, uid);
