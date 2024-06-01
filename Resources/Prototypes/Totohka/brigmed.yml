@@ -94,7 +94,7 @@
   suffix: ADVENTURE
   components:
   - type: SpawnPoint
-    job_id: brigmedic
+    job_id: Brigmedic
   - type: Sprite
     layers:
       - state: green

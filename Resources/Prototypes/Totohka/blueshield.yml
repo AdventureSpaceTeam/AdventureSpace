@@ -92,7 +92,7 @@
   name: Офицер Синий Щит
   components:
   - type: SpawnPoint
-    job_id: blueshield
+    job_id: Blueshield
   - type: Sprite
     sprite: Totohka/SpawnPoint.rsi
     layers:
@@ -107,7 +107,7 @@
     sprite: /Textures/Totohka/JobIcons.rsi
     state: BlueShieldOfficer
 
-#Рюкзак 
+#Рюкзак
 - type: entity
   parent: ClothingBackpack
   id: ClothingBackpackBlueshield
