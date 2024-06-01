@@ -115,36 +115,6 @@ namespace Content.Client.Administration.UI.Tabs.PlayerTab
 
             UpdateHeaderSymbols();
 
-            var antagCount = 0;
-            var sponsorCount = 0;
-            var useAltColor = false;
-            foreach (var player in sortedPlayers)
-            {
-                if (!_showDisconnected && !player.Connected)
-                    continue;
-
-                if (player.Antag)
-                    antagCount += 1;
-
-                if (player.IsSponsor)
-                    sponsorCount += 1;
-
-                var entry = new PlayerTabEntry(player.Username,
-                    player.CharacterName,
-                    player.IdentityName,
-                    player.StartingJob,
-                    player.SponsorTitle ?? "",
-                    player.Antag ? "Да" : "Нет",
-                    new StyleBoxFlat(useAltColor ? _altColor : _defaultColor),
-                    player.Connected,
-                    player.PlaytimeString);
-                entry.PlayerEntity = player.NetEntity;
-                entry.OnKeyBindDown += args => OnEntryKeyBindDown?.Invoke(entry, args);
-                entry.ToolTip = Loc.GetString("player-tab-entry-tooltip");
-                PlayerList.AddChild(entry);
-
-                useAltColor ^= true;
-            }
             SearchList.PopulateList(sortedPlayers.Select(info => new PlayerListData(info,
                     $"{info.Username} {info.CharacterName} {info.IdentityName} {info.StartingJob}"))
                 .ToList());

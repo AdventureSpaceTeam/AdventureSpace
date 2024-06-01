@@ -5,10 +5,6 @@
     <BoxContainer Orientation="Vertical">
         <BoxContainer Orientation="Horizontal">
             <Label Name="PlayerCount" HorizontalExpand="True" Text="{Loc Player Count}" />
-            <Label Name="SponsorCount" HorizontalExpand="True" SizeFlagsStretchRatio="0.15"
-                   Text="{Loc Player Count}" />
-            <Label Name="AntagCount" HorizontalExpand="True" SizeFlagsStretchRatio="0.15"
-                   Text="{Loc Player Count}" />
             <LineEdit Name="SearchLineEdit" HorizontalExpand="True"
                       PlaceHolder="{Loc player-tab-filter-line-edit-placeholder}" />
             <Button Name="ShowDisconnectedButton" HorizontalExpand="True"
