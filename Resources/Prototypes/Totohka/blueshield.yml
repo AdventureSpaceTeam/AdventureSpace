@@ -34,11 +34,11 @@
     head: ClothingHeadHatBlueshieldBeret
     eyes: ClothingEyesGlassesSecurity
     gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterArmorBasicSlim
+    outerClothing: ClothingOuterArmorBlueshield
     id: BlueshieldPDA
     ears: ClothingHeadsetAltCommand
-    belt: WeaponAdvancedLaser
-    pocket1: FlashlightSeclite
+    belt: WeaponPistolN1984
+    pocket1: WeaponTaser
 
 
 #Карта
@@ -92,7 +92,7 @@
   name: Офицер Синий Щит
   components:
   - type: SpawnPoint
-    job_id: Blueshield
+    job_id: blueshield
   - type: Sprite
     sprite: Totohka/SpawnPoint.rsi
     layers:
@@ -107,7 +107,7 @@
     sprite: /Textures/Totohka/JobIcons.rsi
     state: BlueShieldOfficer
 
-#Рюкзак
+#Рюкзак 
 - type: entity
   parent: ClothingBackpack
   id: ClothingBackpackBlueshield
@@ -126,7 +126,8 @@
     contents:
       - id: BoxSurvivalSecurity
       - id: Flash
-      - id: IndiMedBox
+      - id: MagazineMagnum
+      - id: MagazineMagnum
 
 #Шапка
 - type: entity
@@ -236,3 +237,24 @@
       - id: ClothingOuterHardsuitBlueshield
       - id: TrackingImplanter
       - id: TrackingImplanter
+
+#Броня
+- type: entity
+  parent: ClothingOuterArmorBasic
+  id: ClothingOuterArmorBlueshield
+  name: Улучшенный бронежилет
+  description: Бронежилет укреплённый керамическими пластинами. Несколько мешает движениям, но многократно увеличивает шансы на выживание.
+  components:
+  - type: Sprite
+    sprite: Totohka/armor.rsi
+  - type: Clothing
+    sprite: Totohka/armor.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.5
+        Slash: 0.5
+        Piercing: 0.4
+        Heat: 0.5
+  - type: ExplosionResistance
+    damageCoefficient: 0.80
