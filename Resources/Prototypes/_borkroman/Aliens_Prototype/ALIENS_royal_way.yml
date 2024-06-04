@@ -1,0 +1,177 @@
+- type: body
+  id: HumanInfected
+  name: "human"
+  root: torso
+  slots:
+    head:
+      part: HeadHuman
+      connections:
+      - torso
+      organs:
+        brain: OrganHumanBrainInfected
+        eyes: OrganHumanEyes
+    torso:
+      part: TorsoHuman
+      connections:
+      - right_arm
+      - left_arm
+      - right_leg
+      - left_leg
+      organs:
+        heart: OrganHumanHeart
+        lungs: OrganHumanLungs
+        stomach: OrganHumanStomach
+        liver: OrganHumanLiver
+        kidneys: OrganHumanKidneys
+    right_arm:
+      part: RightArmHuman
+      connections:
+      - right_hand
+    left_arm:
+      part: LeftArmHuman
+      connections:
+      - left_hand
+    right_hand:
+      part: RightHandHuman
+    left_hand:
+      part: LeftHandHuman
+    right_leg:
+      part: RightLegHuman
+      connections:
+      - right_foot
+    left_leg:
+      part: LeftLegHuman
+      connections:
+      - left_foot
+    right_foot:
+      part: RightFootHuman
+    left_foot:
+      part: LeftFootHuman
+
+- type: entity
+  id: OrganHumanBrainInfected
+  parent: OrganHumanBrain
+  components:
+  - type: Brain
+  - type: Nymph
+    entityPrototype: MobAlienSliderRoyal
+    transferMind: true
+
+#Эволюционировать в трутня
+- type: entity
+  id: RoyalAlienEvolutionAction
+  name: Эволюционировать в трутня
+  description: Пришло время стать сильнее.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon:
+      sprite: _borkroman/Aliens_Sprite/AlienActionIcons.rsi
+      state: Alien
+    event: !type:ReformEvent {}
+    useDelay: 180
+
+#Эволюционировать в королеву
+- type: entity
+  id: RoyalQueenEvolutionAction
+  name: Эволюционировать в королеву
+  description: Пришло время стать сильнее.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon:
+      sprite: _borkroman/Aliens_Sprite/AlienActionIcons.rsi
+      state: Queen
+    event: !type:ReformEvent {}
+    useDelay: 180
+
+#Вырваться из груди
+- type: entity
+  id: SliderBreakAction
+  name: Вырваться из груди
+  description: Вы готовы увидеть свет, но это убьёт вашего носителя.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon:
+      sprite: _borkroman/Aliens_Sprite/AlienActionIcons.rsi
+      state: Slider
+    event: !type:GibActionEvent {}
+    checkCanInteract: false
+    checkConsciousness: false
+
+#Королевский ползун
+- type: entity
+  noSpawn: true
+  parent: MobAlienSlider
+  id: MobAlienSliderRoyal
+  components:
+  - type: Reform
+    actionPrototype: AlienEvolutionAction
+    reformTime: 10
+    popupText: Вы  начинаете сбрасывать свой старый панцирь
+    reformPrototype: MobAlienRoyal
+  - type: EmitSoundOnSpawn
+    sound:
+      path: /Audio/_borkroman/Aliens_Audio/Slider_dead.ogg
+      params:
+        volume: -2
+
+#Королевский Трутень
+- type: entity
+  noSpawn: true
+  parent: MobAlien
+  id: MobAlienRoyal
+  components:
+  - type: Reform
+    actionPrototype: RoyalQueenEvolutionAction
+    reformTime: 30
+    popupText: Вы  начинаете сбрасывать свой старый панцирь
+    reformPrototype: MobAlienQueen
+
+- type: entity
+  parent: MobHuman
+  suffix: BORK (Alien)
+  id: MobHumanAlienInfected
+  name: инфицированный
+  components:
+  - type: Body
+    prototype: HumanInfected
+  - type: RandomHumanoidAppearance
+    randomizeName: true
+  - type: Loadout
+    prototypes: [InfectedGear]
+  - type: GhostRole
+    makeSentient: true
+    allowSpeech: true
+    allowMovement: true
+    name: инфицированный
+    description: У вас внутри находится личинка ксеноморфа, но вы об этом ещё не знаете.
+    raffle:
+      settings: short
+  - type: GhostTakeoverAvailable
+  - type: GibAction
+    popupText: С громким треском ваша грудь ломается.
+    actionPrototype: SliderBreakAction
+    allowedStates:
+    - Alive
+    - Critical
+    - Dead
+  - type: PassiveDamage
+    allowedStates:
+    - Alive
+    - Critical
+    damageCap: 1000
+    damage:
+      types:
+        Cellular: 0.2
+        Bloodloss: 0.5
+
+- type: startingGear
+  id: InfectedGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorGreen
+    shoes: ClothingShoesColorBlack
+    id: PassengerPDA
+    belt: ClothingBeltStorageWaistbag
+    ears: ClothingHeadsetGrey

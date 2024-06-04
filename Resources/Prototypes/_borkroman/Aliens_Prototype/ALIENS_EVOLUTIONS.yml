@@ -1,0 +1,69 @@
+#Отрастить яйцеклад
+- type: entity
+  id: EggLayerEvolutionAction
+  name: Отрастить яйцеклад
+  description: Вы не сможете двигаться, но сможете построить армию.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon:
+      sprite: _borkroman/Aliens_Sprite/AlienActionIcons.rsi
+      state: EggLay
+    event: !type:ReformEvent {}
+    useDelay: 60
+
+#Сбросить яйцеклад
+- type: entity
+  id: NOEggLayerEvolutionAction
+  name: Сбросить яйцеклад
+  description: Сбросте яйцеклад и снова двигайтесь.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon:
+      sprite: _borkroman/Aliens_Sprite/AlienActionIcons.rsi
+      state: NoEggLay
+    event: !type:ReformEvent {}
+    useDelay: 20
+
+#Эволюционировать в трутня
+- type: entity
+  id: AlienEvolutionAction
+  name: Эволюционировать в трутня
+  description: Пришло время стать сильнее.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon:
+      sprite: _borkroman/Aliens_Sprite/AlienActionIcons.rsi
+      state: Alien
+    event: !type:ReformEvent {}
+    useDelay: 180
+
+#Эволюционировать в солдата
+- type: entity
+  id: SolderEvolutionAction
+  name: Эволюционировать в солдата
+  description: Пришло время стать сильнее.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon:
+      sprite: _borkroman/Aliens_Sprite/AlienActionIcons.rsi
+      state: Sold
+    event: !type:ReformEvent {}
+    useDelay: 460
+
+#Эволюционировать в преторианца
+- type: entity
+  id: PraetorianEvolutionAction
+  name: Эволюционировать в преторианца
+  description: Пришло время стать сильнее.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon:
+      sprite: _borkroman/Aliens_Sprite/AlienActionIcons.rsi
+      state: Preto
+    event: !type:ReformEvent {}
+    useDelay: 920
