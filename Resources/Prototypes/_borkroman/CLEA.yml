@@ -6,9 +6,9 @@
   description: теперь в новой цветовой гамме!
   components:
   - type: Sprite
-    sprite: Bork/CLEA/CLEA_uniform.rsi
+    sprite: _borkroman/CLEA/CLEA_uniform.rsi
   - type: Clothing
-    sprite: Bork/CLEA/CLEA_uniform.rsi
+    sprite: _borkroman/CLEA/CLEA_uniform.rsi
 
 #Шлем ЦСС
 - type: entity
@@ -18,9 +18,9 @@
   description: им можно колоть орехи
   components:
   - type: Sprite
-    sprite: Bork/CLEA/CLEA_Helmet.rsi
+    sprite: _borkroman/CLEA/CLEA_Helmet.rsi
   - type: Clothing
-    sprite: Bork/CLEA/CLEA_Helmet.rsi
+    sprite: _borkroman/CLEA/CLEA_Helmet.rsi
   - type: Armor
     modifiers:
       coefficients:
@@ -32,6 +32,60 @@
   - type: EyeProtection
     protectionTime: 5
 
+#Кепка офицера ЦСС
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadBaseCapCLEA
+  name: Кепка офицера ЦСС
+  description: Повседневный головной убор ЦСС.
+  components:
+  - type: Sprite
+    sprite: _borkroman/CLEA/CLEA_cap.rsi
+  - type: Clothing
+    sprite: _borkroman/CLEA/CLEA_cap.rsi
+
+#Гарнитура-наушники ЦСС
+- type: entity
+  name: Гарнитура-наушники ЦСС
+  parent: ClothingHeadsetAltCentCom
+  id: CLEAHeadsetAlt
+  description: Гарнитура, оснащенная подавляющими наушниками.
+  components:
+  - type: Sprite
+    sprite: _borkroman/CLEA/CLEA_Headset.rsi
+  - type: Clothing
+    sprite: _borkroman/CLEA/CLEA_Headset.rsi
+
+#Защитные очки ЦСС
+- type: entity
+  parent: [ClothingEyesGlassesSunglasses, ShowSecurityIcons]
+  id: ClothingEyesGlassesCLEA
+  description: Очки, защищающие глаза от яркого света.
+  name: Защитные очки ЦСС
+  components:
+  - type: Sprite
+    sprite: _borkroman/CLEA/CLEA_glasses.rsi
+  - type: Clothing
+    sprite: _borkroman/CLEA/CLEA_glasses.rsi
+  - type: FlashImmunity
+  - type: EyeProtection
+    protectionTime: 5
+
+#Боевые перчатки ЦСС
+- type: entity
+  parent: ClothingHandsGlovesColorBlack
+  id: ClothingHandsGlovesCLEA
+  name: Боевые перчатки ЦСС
+  description: Тактический перчатки элитных солдат.
+  components:
+  - type: Sprite
+    sprite: _borkroman/CLEA/CLEA_Gloves.rsi
+  - type: Clothing
+    sprite: _borkroman/CLEA/CLEA_Gloves.rsi
+  - type: Insulated
+  - type: Fiber
+    fiberMaterial: fibers-insulative
+
 #Противогаз ЦСС
 - type: entity
   parent: ClothingMaskGas
@@ -42,9 +96,9 @@
   - type: Item
     size: Tiny
   - type: Sprite
-    sprite: Bork/CLEA/CLEA_mask.rsi
+    sprite: _borkroman/CLEA/CLEA_mask.rsi
   - type: Clothing
-    sprite: Bork/CLEA/CLEA_mask.rsi
+    sprite: _borkroman/CLEA/CLEA_mask.rsi
   - type: Armor
     modifiers:
       coefficients:
@@ -68,6 +122,10 @@
   name: РПС ЦСС
   description: не сковывает движений!
   components:
+  - type: Sprite
+    sprite: _borkroman/CLEA/CLEA_Webbing.rsi
+  - type: Clothing
+    sprite: _borkroman/CLEA/CLEA_Webbing.rsi
   - type: ExplosionResistance
     damageCoefficient: 0.5
   - type: StorageFill
@@ -85,9 +143,9 @@
   description: Стандартный армейский бронежилет.
   components:
   - type: Sprite
-    sprite: Bork/CLEA/CLEA_armor.rsi
+    sprite: _borkroman/CLEA/CLEA_armor.rsi
   - type: Clothing
-    sprite: Bork/CLEA/CLEA_armor.rsi
+    sprite: _borkroman/CLEA/CLEA_armor.rsi
   - type: Armor
     modifiers:
       coefficients:
@@ -97,6 +155,7 @@
         Heat: 0.80
   - type: ExplosionResistance
     damageCoefficient: 0.90
+  - type: AllowSuitStorage
 
 #ID карта ЦСС
 - type: entity
@@ -105,7 +164,7 @@
   name: ID карта ЦСС
   components:
   - type: Sprite
-    sprite: Bork/CLEA/other/CLEA_IDcard.rsi
+    sprite: _borkroman/CLEA/other/CLEA_IDcard.rsi
     layers:
     - state: silver
     - state: idCLEA
@@ -121,7 +180,7 @@
   name: ID карта Офицера ЦСС
   components:
   - type: Sprite
-    sprite: Bork/CLEA/other/CLEA_IDcard.rsi
+    sprite: _borkroman/CLEA/other/CLEA_IDcard.rsi
     layers:
     - state: silver
     - state: idCLEA
@@ -135,7 +194,7 @@
   parent: JobIcon
   id: JobIconCLEA
   icon:
-    sprite: /Textures/Bork/CLEA/other/CLEA_icon.rsi
+    sprite: _borkroman/CLEA/other/CLEA_icon.rsi
     state: CLEA
 
 #Рюкзак ЦСС
@@ -144,6 +203,10 @@
   id: ClothingMilitaryBackpackCLEA
   name: Рюкзак ЦСС
   components:
+  - type: Sprite
+    sprite: _borkroman/CLEA/CLEA_BackPack.rsi
+  - type: Clothing
+    sprite: _borkroman/CLEA/CLEA_BackPack.rsi
   - type: StorageFill
     contents:
     - id: BoxZiptie
@@ -158,7 +221,7 @@
   description: не такой робастный, как у отряда быстрого реагирования
   components:
   - type: Sprite
-    sprite: Bork/CLEA/other/CLEA_PDA.rsi
+    sprite: _borkroman/CLEA/other/CLEA_PDA.rsi
     layers:
     - map: [ "enum.PdaVisualLayers.Base" ]
     - state: "light_overlay"
@@ -175,7 +238,7 @@
   - type: PdaBorderColor
     borderColor: "#4e4e56"
   - type: Icon
-    sprite: Bork/CLEA/other/CLEA_PDA.rsi
+    sprite: _borkroman/CLEA/other/CLEA_PDA.rsi
     state: pda-CLEA
 
 #КПК офицера ЦСС
@@ -186,7 +249,7 @@
   description: не такой робастный, как у отряда быстрого реагирования
   components:
   - type: Sprite
-    sprite: Bork/CLEA/other/CLEA_PDA_Officer.rsi
+    sprite: _borkroman/CLEA/other/CLEA_PDA.rsi
     layers:
     - map: [ "enum.PdaVisualLayers.Base" ]
     - state: "light_overlay"
@@ -199,102 +262,12 @@
       visible: false
   - type: Pda
     id: CLEAOfficerIDCard
-    state: pda-CLEA
+    state: pda-CLEAOfficer
   - type: PdaBorderColor
     borderColor: "#4e4e56"
   - type: Icon
-    sprite: Bork/CLEA/other/CLEA_PDA_Officer.rsi
-    state: pda-CLEA
-
-#Скафандр ЦСС
-- type: entity
-  parent: ClothingOuterHardsuitSecurity
-  id: ClothingOuterHardsuitCLEA
-  name: Скафандр ЦСС
-  description: базовый боевой скафандр центральных силовых структур
-  components:
-  - type: Sprite
-    sprite: Bork/CLEA/CLEA_hardhuit/CLEA_hardhuit.rsi
-  - type: Clothing
-    sprite: Bork/CLEA/CLEA_hardhuit/CLEA_hardhuit.rsi
-  - type: PressureProtection
-    highPressureMultiplier: 0.5
-    lowPressureMultiplier: 1000
-  - type: ExplosionResistance
-    damageCoefficient: 0.7
-  - type: Armor
-    modifiers:
-      coefficients:
-        Blunt: 0.65
-        Slash: 0.65
-        Piercing: 0.65
-        Caustic: 0.65
-  - type: ClothingSpeedModifier
-    walkModifier: 0.85
-    sprintModifier: 0.85
-  - type: HeldSpeedModifier
-  - type: ToggleableClothing
-    clothingPrototype: ClothingHeadHelmetHardsuitCLEA
-
-- type: entity
-  parent: ClothingHeadHardsuitBase
-  id: ClothingHeadHelmetHardsuitCLEA
-  name: Шлем скафандра ЦСС
-  description: таким шлемом можно колоть орехи
-  components:
-  - type: BreathMask
-  - type: Sprite
-    sprite: Bork/CLEA/CLEA_hardhuit/CLEA_hardhuit_helmet.rsi
-  - type: Clothing
-    sprite: Bork/CLEA/CLEA_hardhuit/CLEA_hardhuit_helmet.rsi
-  - type: PressureProtection
-    highPressureMultiplier: 0.3
-    lowPressureMultiplier: 1000
-
-#Скафандр офицера ЦСС
-- type: entity
-  parent: ClothingOuterHardsuitSecurity
-  id: ClothingOuterHardsuitCLEAOfficer
-  name: Скафандр офицера ЦСС
-  description: базовый боевой скафандр центральных силовых структур
-  components:
-  - type: Sprite
-    sprite: Bork/CLEA/CLEA_hardhuit/CLEA_hardhuit_Officer.rsi
-  - type: Clothing
-    sprite: Bork/CLEA/CLEA_hardhuit/CLEA_hardhuit_Officer.rsi
-  - type: PressureProtection
-    highPressureMultiplier: 0.5
-    lowPressureMultiplier: 1000
-  - type: ExplosionResistance
-    damageCoefficient: 0.6
-  - type: Armor
-    modifiers:
-      coefficients:
-        Blunt: 0.60
-        Slash: 0.60
-        Piercing: 0.60
-        Caustic: 0.60
-  - type: ClothingSpeedModifier
-    walkModifier: 0.90
-    sprintModifier: 0.90
-  - type: HeldSpeedModifier
-  - type: ToggleableClothing
-    clothingPrototype: ClothingHeadHelmetHardsuitCLEAOfficer
-
-- type: entity
-  parent: ClothingHeadHardsuitBase
-  id: ClothingHeadHelmetHardsuitCLEAOfficer
-  name: Шлем скафандра офицера ЦСС
-  description: таким шлемом можно колоть орехи
-  components:
-  - type: BreathMask
-  - type: Sprite
-    sprite: Bork/CLEA/CLEA_hardhuit/CLEA_hardhuit_helmet_Officer.rsi
-  - type: Clothing
-    sprite: Bork/CLEA/CLEA_hardhuit/CLEA_hardhuit_helmet_Officer.rsi
-  - type: PressureProtection
-    highPressureMultiplier: 0.3
-    lowPressureMultiplier: 1000
+    sprite: _borkroman/CLEA/other/CLEA_PDA.rsi
+    state: pda-CLEAOfficer
 
 #ГИР солдата ЦСС
 - type: startingGear
@@ -302,33 +275,17 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitCLEA
     back: ClothingMilitaryBackpackCLEA
-    shoes: ClothingShoesBootsJackSecFilled
+    shoes: ClothingShoesBootsCombatFilled
     head: ClothingHeadHelmetCLEA
-    gloves: ClothingHandsGlovesCombat
+    gloves: ClothingHandsGlovesCLEA
     outerClothing: ClothingOuterArmorCLEA
     mask: ClothingMaskCLEA
     id: CLEAPDA
     belt: ClothingBeltMilitaryWebbingCLEA
     pocket1: WeaponPistolMk58
-    suitstorage: WeaponRifleM90GrenadeLauncher
-    ears: ClothingHeadsetAltCentCom
-    eyes: ClothingEyesGlassesSecurity
-
-- type: startingGear
-  id: CLEAGearFullEVA
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitCLEA
-    back: ClothingMilitaryBackpackCLEA
-    shoes: ClothingShoesBootsJackSecFilled
-    gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterHardsuitCLEA
-    mask: ClothingMaskCLEA
-    id: CLEAPDA
-    belt: ClothingBeltMilitaryWebbingCLEA
-    pocket1: WeaponPistolMk58
-    suitstorage: WeaponRifleM90GrenadeLauncher
-    ears: ClothingHeadsetAltCentCom
-    eyes: ClothingEyesGlassesSecurity
+    suitstorage: WeaponRifleLecter
+    ears: CLEAHeadsetAlt
+    eyes: ClothingEyesGlassesCLEA
 
 #ГИР Офицера ЦСС
 - type: startingGear
@@ -336,34 +293,17 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitCLEA
     back: ClothingMilitaryBackpackCLEA
-    shoes: ClothingShoesBootsJackSecFilled
-    head: ClothingHeadHelmetCLEA
-    gloves: ClothingHandsGlovesCombat
+    shoes: ClothingShoesBootsCombatFilled
+    head: ClothingHeadBaseCapCLEA
+    gloves: ClothingHandsGlovesCLEA
     outerClothing: ClothingOuterArmorCLEA
     mask: ClothingMaskCLEA
     id: CLEAOfficerPDA
     belt: ClothingBeltMilitaryWebbingCLEA
     pocket1: WeaponPistolMk58
-    suitstorage: WeaponRifleM90GrenadeLauncher
-    ears: ClothingHeadsetAltCentCom
-    eyes: ClothingEyesGlassesSecurity
-
-- type: startingGear
-  id: CLEAGearOfficerFullEVA
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitCLEA
-    back: ClothingMilitaryBackpackCLEA
-    shoes: ClothingShoesBootsJackSecFilled
-    gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterHardsuitCLEAOfficer
-    mask: ClothingMaskCLEA
-    id: CLEAOfficerPDA
-    belt: ClothingBeltMilitaryWebbingCLEA
-    pocket1: WeaponPistolMk58
-    suitstorage: WeaponRifleM90GrenadeLauncher
-    ears: ClothingHeadsetAltCentCom
-    eyes: ClothingEyesGlassesSecurity
-
+    suitstorage: WeaponRifleLecter
+    ears: CLEAHeadsetAlt
+    eyes: ClothingEyesGlassesCLEA
 
 # госторолька офицер
 - type: randomHumanoidSettings
@@ -382,23 +322,8 @@
       - NamesFirstCLEAOfficer
       - NamesLastCLEAOfficer
     - type: InitialInfectedExempt
-
-- type: randomHumanoidSettings
-  id: CLEAOfficerEVA
-  randomizeName: false
-  components:
-    - type: MindShield
-    - type: GhostRole
-      name: Офицер ЦСС
-      description: Офицер отряда Центральных Силовых Структур. Пора решать проблемы. #придумаешь сам
-    - type: GhostTakeoverAvailable
-    - type: Loadout
-      prototypes: [ CLEAGearOfficerFullEVA ]
-    - type: RandomMetadata
-      nameSegments:
-      - NamesFirstCLEAOfficer
-      - NamesLastCLEAOfficer
-    - type: InitialInfectedExempt
+    - type: TTS
+      voice: officer_enclave
 
 - type: entity
   id: RandomHumanoidSpawnerCLEAOfficer
@@ -406,30 +331,14 @@
   suffix: BASE
   components:
     - type: Sprite
-      sprite: Markers/jobs.rsi
-      state: cleaofficer
+      sprite: _borkroman/CLEA/other/CLEA_roles.rsi
+      state: Officer
     - type: RandomMetadata
       nameSegments:
       - NamesFirstCLEAOfficer
       - NamesLastCLEAOfficer
     - type: RandomHumanoidSpawner
       settings: CLEAOfficer
-    - type: InitialInfectedExempt
-
-- type: entity
-  id: RandomHumanoidSpawnerCLEAOfficerEVA
-  name: Офицер ЦСС
-  suffix: EVA
-  components:
-    - type: Sprite
-      sprite: Markers/jobs.rsi
-      state: cleaofficer
-    - type: RandomMetadata
-      nameSegments:
-      - NamesFirstCLEAOfficer
-      - NamesLastCLEAOfficer
-    - type: RandomHumanoidSpawner
-      settings: CLEAOfficerEVA
     - type: InitialInfectedExempt
 
 - type: dataset
@@ -464,7 +373,7 @@
     - type: MindShield
     - type: GhostRole
       name: Солдат ЦСС
-      description: Солдат отряда Центральных Силовых Структур. Пора решать проблемы. #придумаешь сам
+      description: Солдат отряда Центральных Силовых Структур. Пора решать проблемы.
     - type: GhostTakeoverAvailable
     - type: Loadout
       prototypes: [ CLEAGearBase ]
@@ -473,23 +382,8 @@
       - NamesFirstCLEABase
       - NamesLastCLEABase
     - type: InitialInfectedExempt
-
-- type: randomHumanoidSettings
-  id: CLEABaseEVA
-  randomizeName: false
-  components:
-    - type: MindShield
-    - type: GhostRole
-      name: Солдат ЦСС
-      description: Солдат отряда Центральных Силовых Структур. Пора решать проблемы. #придумаешь сам
-    - type: GhostTakeoverAvailable
-    - type: Loadout
-      prototypes: [ CLEAGearFullEVA ]
-    - type: RandomMetadata
-      nameSegments:
-      - NamesFirstCLEABase
-      - NamesLastCLEABase
-    - type: InitialInfectedExempt
+    - type: TTS
+      voice: officer_enclave
 
 - type: entity
   id: RandomHumanoidSpawnerCLEABase
@@ -497,30 +391,14 @@
   suffix: BASE
   components:
     - type: Sprite
-      sprite: Markers/jobs.rsi
-      state: cleaofficer
+      sprite: _borkroman/CLEA/other/CLEA_roles.rsi
+      state: Solder
     - type: RandomMetadata
       nameSegments:
       - NamesFirstCLEABase
       - NamesLastCLEABase
     - type: RandomHumanoidSpawner
       settings: CLEABase
-    - type: InitialInfectedExempt
-
-- type: entity
-  id: RandomHumanoidSpawnerCLEABaseEVA
-  name: Солдат ЦСС
-  suffix: EVA
-  components:
-    - type: Sprite
-      sprite: Markers/jobs.rsi
-      state: cleaofficer
-    - type: RandomMetadata
-      nameSegments:
-      - NamesFirstCLEABase
-      - NamesLastCLEABase
-    - type: RandomHumanoidSpawner
-      settings: CLEABaseEVA
     - type: InitialInfectedExempt
 
 - type: dataset
