@@ -25,7 +25,7 @@ namespace Content.Server.Corvax.StationGoal
 
         private void OnRoundStarted(RoundStartedEvent ev)
         {
-            SendRandomGoal();
+            // SendRandomGoal(); c4llv07e: do not send station goal on round start
         }
 
         public bool SendRandomGoal()
