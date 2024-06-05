@@ -166,6 +166,9 @@ public sealed partial class StoreSystem : EntitySystem
     }
 }
 
+[ByRefEvent]
+public readonly record struct SubtractCashEvent(EntityUid Purchaser, string Currency, FixedPoint2 Cost);
+
 public sealed class CurrencyInsertAttemptEvent : CancellableEntityEventArgs
 {
     public readonly EntityUid User;
