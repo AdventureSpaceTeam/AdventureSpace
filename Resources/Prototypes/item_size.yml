@@ -1,7 +1,7 @@
 # Items that can be held completely in one's hand.
 - type: itemSize
   id: Tiny
-  weight: 0
+  weight: 1
   name: item-component-size-Tiny
   defaultShape:
   - 0,0,0,0

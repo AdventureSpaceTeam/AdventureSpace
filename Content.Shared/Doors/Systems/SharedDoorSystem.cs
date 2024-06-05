@@ -800,6 +800,3 @@ public abstract partial class SharedDoorSystem : EntitySystem
     }
     #endregion
 }
-
-[ByRefEvent]
-public readonly record struct DoorEmaggedEvent(EntityUid UserUid);

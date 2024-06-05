@@ -35,10 +35,10 @@ namespace Content.Shared.Lathe
 
         #region Visualizer info
         [DataField]
-        public string? IdleState = null;
+        public string? IdleState;
 
         [DataField]
-        public string? RunningState = null;
+        public string? RunningState;
         #endregion
 
         /// <summary>

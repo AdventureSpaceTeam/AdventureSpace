@@ -6,8 +6,7 @@
   suffix: Chameleon
   components:
     - type: Tag
-      tags: # ignore "WhitelistChameleon" tag
-        - HidesNose
+      tags: [] # ignore "WhitelistChameleon" tag
     - type: Sprite
       sprite: Clothing/Mask/gas.rsi
     - type: Clothing

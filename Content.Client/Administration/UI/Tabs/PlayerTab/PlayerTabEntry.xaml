@@ -5,32 +5,32 @@
                   HorizontalExpand="True"
                   SeparationOverride="4">
         <Label Name="UsernameLabel"
-               SizeFlagsStretchRatio="5"
+               SizeFlagsStretchRatio="3"
                HorizontalExpand="True"
                ClipText="True"/>
         <customControls:VSeparator/>
         <Label Name="CharacterLabel"
-               SizeFlagsStretchRatio="4"
+               SizeFlagsStretchRatio="3"
                HorizontalExpand="True"
                ClipText="True"/>
         <customControls:VSeparator/>
         <Label Name="JobLabel"
-               SizeFlagsStretchRatio="4"
-               HorizontalExpand="True"
-               ClipText="True"/>
-        <customControls:VSeparator/>
-        <Label Name="SponsorLabel"
-               SizeFlagsStretchRatio="5"
-               HorizontalExpand="True"
-               ClipText="True"/>
-        <customControls:VSeparator/>
-        <Label Name="AntagonistLabel"
                SizeFlagsStretchRatio="2"
                HorizontalExpand="True"
                ClipText="True"/>
         <customControls:VSeparator/>
+        <Label Name="SponsorLabel"
+               SizeFlagsStretchRatio="1"
+               HorizontalExpand="True"
+               ClipText="True"/>
+        <customControls:VSeparator/>
+        <Label Name="AntagonistLabel"
+               SizeFlagsStretchRatio="1"
+               HorizontalExpand="True"
+               ClipText="True"/>
+        <customControls:VSeparator/>
         <Label Name="OverallPlaytimeLabel"
-               SizeFlagsStretchRatio="4"
+               SizeFlagsStretchRatio="1"
                HorizontalExpand="True"
                ClipText="True"/>
     </BoxContainer>

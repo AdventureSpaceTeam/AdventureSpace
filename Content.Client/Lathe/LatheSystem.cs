@@ -34,11 +34,9 @@ public sealed class LatheSystem : SharedLatheSystem
             component.RunningState != null &&
             component.IdleState != null)
         {
-            if (component.RunningState != null && component.IdleState != null) {
-                var state = isRunning ? component.RunningState : component.IdleState;
-                args.Sprite.LayerSetAnimationTime(runningLayer, 0f);
-                args.Sprite.LayerSetState(runningLayer, state);
-            }
+            var state = isRunning ? component.RunningState : component.IdleState;
+            args.Sprite.LayerSetAnimationTime(runningLayer, 0f);
+            args.Sprite.LayerSetState(runningLayer, state);
         }
     }
 

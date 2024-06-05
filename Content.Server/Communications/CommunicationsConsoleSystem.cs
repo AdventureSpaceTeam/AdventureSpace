@@ -287,10 +287,10 @@ namespace Content.Server.Communications
             Loc.TryGetString(comp.Title, out var title);
             title ??= comp.Title;
 
-            msg += ". \n" + Loc.GetString("comms-console-announcement-sent-by") + " " + author;
+            msg += "\n" + Loc.GetString("comms-console-announcement-sent-by") + " " + author;
             if (comp.Global)
             {
-                _chatSystem.DispatchGlobalAnnouncement(msg, title, colorOverride: comp.Color);
+                _chatSystem.DispatchGlobalAnnouncement(msg, title, announcementSound: comp.Sound, colorOverride: comp.Color);
 
                 _adminLogger.Add(LogType.Chat, LogImpact.Low, $"{ToPrettyString(message.Actor):player} has sent the following global announcement: {msg}");
                 return;

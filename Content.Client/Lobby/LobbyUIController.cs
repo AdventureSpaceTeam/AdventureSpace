@@ -71,12 +71,9 @@ public sealed partial class LobbyUIController : UIController, IOnStateEntered<Lo
             _profileEditor?.RefreshFlavorText();
         });
 
-        _configurationManager.OnValueChanged(CCVars.GameRoleTimers, args =>
-        {
-            _profileEditor?.RefreshAntags();
-            _profileEditor?.RefreshJobs();
-            _profileEditor?.RefreshLoadouts();
-        });
+        _configurationManager.OnValueChanged(CCVars.GameRoleTimers, _ => RefreshProfileEditor());
+
+        _configurationManager.OnValueChanged(CCVars.GameRoleWhitelist, _ => RefreshProfileEditor());
     }
 
     private LobbyCharacterPreviewPanel? GetLobbyPreview()
@@ -192,6 +189,13 @@ public sealed partial class LobbyUIController : UIController, IOnStateEntered<Lo
         var dummy = LoadProfileEntity(humanoid, null, true);
         PreviewPanel.SetSprite(dummy);
         PreviewPanel.SetSummaryText(humanoid.Summary);
+    }
+
+    private void RefreshProfileEditor()
+    {
+        _profileEditor?.RefreshAntags();
+        _profileEditor?.RefreshJobs();
+        _profileEditor?.RefreshLoadouts();
     }
 
     private void SaveProfile()

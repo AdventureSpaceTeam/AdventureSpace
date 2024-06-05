@@ -149,6 +149,7 @@ namespace Content.Client.PDA
                     ("actualOwnerName", _pdaOwner)));
             }
 
+
             if (state.PdaOwnerInfo.IdOwner != null || state.PdaOwnerInfo.JobTitle != null)
             {
                 _owner = state.PdaOwnerInfo.IdOwner ?? Loc.GetString("comp-pda-ui-unknown");

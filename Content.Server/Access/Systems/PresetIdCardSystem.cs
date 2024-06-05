@@ -13,7 +13,7 @@ namespace Content.Server.Access.Systems;
 public sealed class PresetIdCardSystem : EntitySystem
 {
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly SharedIdCardSystem _cardSystem = default!;
+    [Dependency] private readonly IdCardSystem _cardSystem = default!;
     [Dependency] private readonly SharedAccessSystem _accessSystem = default!;
     [Dependency] private readonly StationSystem _stationSystem = default!;
 
@@ -81,7 +81,6 @@ public sealed class PresetIdCardSystem : EntitySystem
         _accessSystem.SetAccessToJob(uid, job, extended);
 
         _cardSystem.TryChangeJobTitle(uid, job.LocalizedName);
-
         _cardSystem.TryChangeJobDepartment(uid, job);
 
         _cardSystem.TryChangeJobColor(uid, GetJobColor(_prototypeManager, job), job.RadioIsBold);

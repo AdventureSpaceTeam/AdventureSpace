@@ -26,6 +26,7 @@ namespace Content.Server.GameTicking.Commands
                 return;
             }
 
+            var gameMap = IoCManager.Resolve<IGameMapManager>();
             var name = args[0];
 
             _configurationManager.SetCVar(CCVars.GameMap, name);

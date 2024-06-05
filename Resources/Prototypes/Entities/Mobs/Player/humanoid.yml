@@ -626,7 +626,6 @@
 
 - type: randomHumanoidSettings
   id: LostCargoTechnician
-  randomizeName: false
   parent: EventHumanoid
   components:
     - type: GhostRole
@@ -728,7 +727,6 @@
 
 - type: randomHumanoidSettings
   id: TravelingChef
-  randomizeName: false
   parent: EventHumanoid
   components:
     - type: GhostRole
@@ -800,45 +798,22 @@
 
 - type: randomHumanoidSettings
   id: DisasterVictimResearchDirector
-  parent: EventHumanoidMindShielded
-  randomizeName: false
+  parent: DisasterVictimHead
   components:
-    - type: GhostRole
-      name: ghost-role-information-disaster-victim-name
-      description: ghost-role-information-disaster-victim-description
-      rules: ghost-role-information-disaster-victim-rules
-      raffle:
-        settings: default
     - type: Loadout
       prototypes: [ DisasterVictimRD, DisasterVictimRDAlt ]
 
 - type: randomHumanoidSettings
   id: DisasterVictimCMO
-  randomizeName: false
   parent: DisasterVictimHead
   components:
-    - type: GhostRole
-      name: ghost-role-information-disaster-victim-name
-      description: ghost-role-information-disaster-victim-description
-      rules: ghost-role-information-disaster-victim-rules
-      raffle:
-        settings: default
-    - type: GhostTakeoverAvailable
     - type: Loadout
       prototypes: [ DisasterVictimCMO, DisasterVictimCMOAlt ]
 
 - type: randomHumanoidSettings
   id: DisasterVictimCaptain
-  randomizeName: false
   parent: DisasterVictimHead
   components:
-    - type: GhostRole
-      name: ghost-role-information-disaster-victim-name
-      description: ghost-role-information-disaster-victim-description
-      rules: ghost-role-information-disaster-victim-rules
-      raffle:
-        settings: default
-    - type: GhostTakeoverAvailable
     - type: Loadout
       prototypes: [ DisasterVictimCaptain, DisasterVictimCaptainAlt ]
 
@@ -870,7 +845,6 @@
 
 - type: randomHumanoidSettings
   id: SyndieDisasterVictim
-  randomizeName: false
   parent: EventHumanoid
   components:
     - type: NpcFactionMember

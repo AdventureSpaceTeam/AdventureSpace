@@ -24,6 +24,7 @@ using Content.Shared.Mobs.Systems;
 using Content.Shared.Players;
 using Content.Shared.Radio;
 using Content.Shared.Speech;
+using Content.Shared.Whitelist;
 using Robust.Server.Player;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
@@ -62,9 +63,15 @@ public sealed partial class ChatSystem : SharedChatSystem
     [Dependency] private readonly SharedInteractionSystem _interactionSystem = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly ReplacementAccentSystem _wordreplacement = default!;
+    [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
 
-    public const string CentComAnnouncementSound = "/Audio/Corvax/Announcements/centcomm.ogg"; // Corvax-Announcements
+    // Corvax-TTS-Start: Moved from Server to Shared
+    // public const int VoiceRange = 10; // how far voice goes in world units
+    // public const int WhisperClearRange = 2; // how far whisper goes while still being understandable, in world units
+    // public const int WhisperMuffledRange = 5; // how far whisper goes at all, in world units
+    // Corvax-TTS-End
     public const string DefaultAnnouncementSound = "/Audio/Corvax/Announcements/announce.ogg"; // Corvax-Announcements
+    public const string CentComAnnouncementSound = "/Audio/Corvax/Announcements/centcomm.ogg"; // Corvax-Announcements
     public const string NukiesAnnouncementSound = "/Audio/Announcements/war.ogg";
 
     private bool _loocEnabled = true;
@@ -319,27 +326,16 @@ public sealed partial class ChatSystem : SharedChatSystem
         string message,
         string sender = "Central Command",
         bool playSound = true,
+        SoundSpecifier? announcementSound = null,
         Color? colorOverride = null
         )
     {
         var wrappedMessage = Loc.GetString("chat-manager-sender-announcement-wrap-message", ("sender", sender), ("message", FormattedMessage.EscapeText(message)));
         _chatManager.ChatMessageToAll(ChatChannel.Radio, message, wrappedMessage, default, false, true, colorOverride);
-
         if (playSound)
         {
-            SoundSpecifier? announcementSound = null;
-            if (sender == Loc.GetString("admin-announce-announcer-default"))
-            {
-                announcementSound = new SoundPathSpecifier(CentComAnnouncementSound); // Corvax-Announcements: Support custom alert sound from admin panel
-            }
-            if (sender == Loc.GetString("comms-console-announcement-title-nukie"))
-            {
-                announcementSound = new SoundPathSpecifier(NukiesAnnouncementSound);
-            }
-            announcementSound ??= new SoundPathSpecifier(DefaultAnnouncementSound);
-            var announcementFilename = announcementSound.GetSound();
-            var announcementEv = new AnnouncementSpokeEvent(Filter.Broadcast(), announcementFilename, announcementSound.Params, message);
-            RaiseLocalEvent(announcementEv);
+            if (sender == Loc.GetString("admin-announce-announcer-default")) announcementSound = new SoundPathSpecifier(CentComAnnouncementSound); // Corvax-Announcements: Support custom alert sound from admin panel
+            _audio.PlayGlobal(announcementSound?.GetSound() ?? DefaultAnnouncementSound, Filter.Broadcast(), true, announcementSound?.Params ?? AudioParams.Default.WithVolume(-2f));
         }
         _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Global station announcement from {sender}: {message}");
     }
@@ -515,7 +511,7 @@ public sealed partial class ChatSystem : SharedChatSystem
             if (MessageRangeCheck(session, data, range) != MessageRangeCheckResult.Full)
                 continue; // Won't get logged to chat, and ghosts are too far away to see the pop-up, so we just won't send it to them.
 
-            if (data.Range <= WhisperClearRange || data.Observer)
+            if (data.Range <= WhisperClearRange)
                 _chatManager.ChatMessageToOne(ChatChannel.Whisper, message, wrappedMessage, source, false, session.Channel);
             //If listener is too far, they only hear fragments of the message
             //Collisiongroup.Opaque is not ideal for this use. Preferably, there should be a check specifically with "Can Ent1 see Ent2" in mind
@@ -573,6 +569,8 @@ public sealed partial class ChatSystem : SharedChatSystem
             ("entity", ent),
             ("message", FormattedMessage.RemoveMarkup(action)));
 
+        if (checkEmote)
+            TryEmoteChatInput(source, action);
         SendInVoiceRange(ChatChannel.Emotes, action, wrappedMessage, source, range, author);
         if (!hideLog)
             if (name != Name(source))
@@ -845,7 +843,7 @@ public sealed partial class ChatSystem : SharedChatSystem
                 recipients.Add(player, new ICChatRecipientData(-1, true));
         }
 
-        RaiseLocalEvent(new ExpandICChatRecipientstEvent(source, voiceGetRange, recipients));
+        RaiseLocalEvent(new ExpandICChatRecipientsEvent(source, voiceGetRange, recipients));
         return recipients;
     }
 
@@ -890,7 +888,7 @@ public sealed partial class ChatSystem : SharedChatSystem
 ///     This event is raised before chat messages are sent out to clients. This enables some systems to send the chat
 ///     messages to otherwise out-of view entities (e.g. for multiple viewports from cameras).
 /// </summary>
-public record ExpandICChatRecipientstEvent(EntityUid Source, float VoiceRange, Dictionary<ICommonSession, ChatSystem.ICChatRecipientData> Recipients)
+public record ExpandICChatRecipientsEvent(EntityUid Source, float VoiceRange, Dictionary<ICommonSession, ChatSystem.ICChatRecipientData> Recipients)
 {
 }
 
@@ -944,7 +942,6 @@ public sealed class EntitySpokeEvent : EntityEventArgs
     public readonly string Message;
     public readonly string OriginalMessage;
     public readonly string? ObfuscatedMessage; // not null if this was a whisper
-    public readonly bool IsRadio; // radio message is always a whisper
 
     /// <summary>
     ///     If the entity was trying to speak into a radio, this was the channel they were trying to access. If a radio
@@ -959,7 +956,6 @@ public sealed class EntitySpokeEvent : EntityEventArgs
         OriginalMessage = originalMessage; // Corvax-TTS: Spec symbol sanitize
         Channel = channel;
         ObfuscatedMessage = obfuscatedMessage;
-        IsRadio = channel != null;
     }
 }
 
@@ -996,34 +992,4 @@ public enum ChatTransmitRange : byte
     HideChat,
     /// Ghosts can't hear or see it at all. Regular players can if in-range.
     NoGhosts
-}
-
-public sealed class AnnouncementSpokeEvent : EntityEventArgs
-{
-    public readonly Filter Source;
-    public readonly string AnnouncementSound;
-    public readonly AudioParams AnnouncementSoundParams;
-    public readonly string Message;
-
-    public AnnouncementSpokeEvent(Filter source, string announcementSound, AudioParams announcementSoundParams, string message)
-    {
-        Source = source;
-        Message = message;
-        AnnouncementSound = announcementSound;
-        AnnouncementSoundParams = announcementSoundParams;
-    }
-}
-
-public sealed class RadioSpokeEvent : EntityEventArgs
-{
-    public readonly EntityUid Source;
-    public readonly string Message;
-    public readonly EntityUid[] Receivers;
-
-    public RadioSpokeEvent(EntityUid source, string message, EntityUid[] receivers)
-    {
-        Source = source;
-        Message = message;
-        Receivers = receivers;
-    }
 }

@@ -60,13 +60,3 @@
             Mime: [ 1, 1 ]
             Musician: [ 1, 1 ]
             Borg: [ 1 , 1 ]
-            #custom
-#            XO: [ 1, 1 ]
-#            Foreman: [ 1, 1 ]
-#            HeadDoctor: [ 1, 1 ]
-#            Coordinator: [ 1, 1 ]
-#            HightOfficer: [ 1, 1 ]
-#            Storekeeper: [ 1, 1 ]
-#            Explorer: [ 2, 2 ]
-#            Brigmedic: [ 1, 1 ]
-#            Blueshield: [ 1, 1 ]

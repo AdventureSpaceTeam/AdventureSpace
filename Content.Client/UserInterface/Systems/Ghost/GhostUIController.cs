@@ -1,5 +1,6 @@
-﻿using Content.Client.Ghost;
 using Content.Client.NewLife;
+using Content.Client.Gameplay;
+using Content.Client.Ghost;
 using Content.Client.UserInterface.Systems.Gameplay;
 using Content.Client.UserInterface.Systems.Ghost.Widgets;
 using Content.Shared.Ghost;
