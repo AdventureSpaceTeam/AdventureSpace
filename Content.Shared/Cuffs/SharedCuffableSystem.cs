@@ -447,6 +447,10 @@ namespace Content.Shared.Cuffs
 
             _container.Insert(handcuff, component.Container);
             UpdateHeldItems(target, handcuff, component);
+
+            var ev = new CuffedEvent(user, target);
+            RaiseLocalEvent(target, ref ev);
+
             return true;
         }
 

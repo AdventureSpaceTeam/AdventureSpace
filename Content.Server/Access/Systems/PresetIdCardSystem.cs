@@ -97,7 +97,7 @@ public sealed class PresetIdCardSystem : EntitySystem
         var jobCode = job.ID;
 
         var departments = prototypeManager.EnumeratePrototypes<DepartmentPrototype>().ToList();
-        departments.Sort((a, b) => a.Sort.CompareTo(b.Sort));
+        departments.Sort((a, b) => a.Weight.CompareTo(b.Weight));
 
         foreach (var department in from department in departments
                  from jobId in department.Roles

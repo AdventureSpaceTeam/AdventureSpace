@@ -942,6 +942,7 @@ public sealed class EntitySpokeEvent : EntityEventArgs
     public readonly string Message;
     public readonly string OriginalMessage;
     public readonly string? ObfuscatedMessage; // not null if this was a whisper
+    public readonly bool IsRadio; // Sunrise-TTS
 
     /// <summary>
     ///     If the entity was trying to speak into a radio, this was the channel they were trying to access. If a radio
@@ -956,6 +957,7 @@ public sealed class EntitySpokeEvent : EntityEventArgs
         OriginalMessage = originalMessage; // Corvax-TTS: Spec symbol sanitize
         Channel = channel;
         ObfuscatedMessage = obfuscatedMessage;
+        IsRadio = channel != null; // Sunrise-TTS
     }
 }
 
@@ -992,4 +994,34 @@ public enum ChatTransmitRange : byte
     HideChat,
     /// Ghosts can't hear or see it at all. Regular players can if in-range.
     NoGhosts
+}
+
+public sealed class AnnouncementSpokeEvent : EntityEventArgs
+{
+    public readonly Filter Source;
+    public readonly string AnnouncementSound;
+    public readonly AudioParams AnnouncementSoundParams;
+    public readonly string Message;
+
+    public AnnouncementSpokeEvent(Filter source, string announcementSound, AudioParams announcementSoundParams, string message)
+    {
+        Source = source;
+        Message = message;
+        AnnouncementSound = announcementSound;
+        AnnouncementSoundParams = announcementSoundParams;
+    }
+}
+
+public sealed class RadioSpokeEvent : EntityEventArgs
+{
+    public readonly EntityUid Source;
+    public readonly string Message;
+    public readonly EntityUid[] Receivers;
+
+    public RadioSpokeEvent(EntityUid source, string message, EntityUid[] receivers)
+    {
+        Source = source;
+        Message = message;
+        Receivers = receivers;
+    }
 }

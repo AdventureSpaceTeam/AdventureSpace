@@ -101,6 +101,9 @@ public sealed class SlipperySystem : EntitySystem
 
         _stun.TryParalyze(other, TimeSpan.FromSeconds(component.ParalyzeTime), true);
 
+        var evSlipped = new SlippedEvent(other);
+        RaiseLocalEvent(other, ref evSlipped);
+
         // Preventing from playing the slip sound when you are already knocked down.
         if (playSound)
         {
@@ -131,3 +134,6 @@ public record struct SlipCausingAttemptEvent (bool Cancelled);
 /// <param name="Slipped">The entity being slipped</param>
 [ByRefEvent]
 public readonly record struct SlipEvent(EntityUid Slipped);
+
+[ByRefEvent]
+public readonly record struct SlippedEvent(EntityUid Target);

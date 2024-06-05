@@ -97,10 +97,7 @@ namespace Content.Client.UserInterface.Systems.Ghost.Controls.Roles
 
                 if (!requirementsManager.CheckRoleTime(group.Key.Requirements, out reason))
                 {
-                    if (!sponsors.GetClientPrototypes().Contains(group.Key.PrototypeId))
-                    {
-                        hasAccess = false;
-                    }
+                    hasAccess = false;
                 }
 
                 _window.AddEntry(name, description, hasAccess, reason, group, spriteSystem);

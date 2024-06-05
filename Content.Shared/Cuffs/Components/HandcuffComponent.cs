@@ -105,3 +105,10 @@ public record struct UncuffAttemptEvent(EntityUid User, EntityUid Target)
     public readonly EntityUid Target = Target;
     public bool Cancelled = false;
 }
+
+[ByRefEvent]
+public record struct CuffedEvent(EntityUid User, EntityUid Target)
+{
+    public readonly EntityUid User = User;
+    public readonly EntityUid Target = Target;
+}
