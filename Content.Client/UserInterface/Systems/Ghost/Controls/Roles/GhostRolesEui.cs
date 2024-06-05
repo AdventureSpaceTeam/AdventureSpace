@@ -87,7 +87,7 @@ namespace Content.Client.UserInterface.Systems.Ghost.Controls.Roles
             var sponsors = IoCManager.Resolve<ISharedSponsorsManager>(); // Alteros-Sponsors
 
             var groupedRoles = ghostState.GhostRoles.GroupBy(
-                role => (role.Name, role.Description, role.Requirements, role.PrototypeId));
+                role => (role.Name, role.Description, role.Requirements));
             foreach (var group in groupedRoles)
             {
                 var name = group.Key.Name;

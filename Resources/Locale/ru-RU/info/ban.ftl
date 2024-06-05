@@ -28,8 +28,8 @@ cmd-banlistF-hint = <name/user ID>
 cmd-ban_exemption_update-desc = Установить исключение на типы банов игрока.
 cmd-ban_exemption_update-help =
     Использование: ban_exemption_update <player> <flag> [<flag> [...]]
-        Укажите несколько флагов, чтобы дать игроку исключение из нескольких типов банов.
-        Чтобы удалить все исключения, выполните эту команду и укажите единственным флагом "None".
+    Укажите несколько флагов, чтобы дать игроку исключение из нескольких типов банов.
+    Чтобы удалить все исключения, выполните эту команду и укажите единственным флагом "None".
 cmd-ban_exemption_update-nargs = Ожидалось хотя бы 2 аргумента
 cmd-ban_exemption_update-locate = Не удалось найти игрока '{ $player }'.
 cmd-ban_exemption_update-invalid-flag = Недопустимый флаг '{ $flag }'.

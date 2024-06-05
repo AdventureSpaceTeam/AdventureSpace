@@ -4,7 +4,7 @@
   name: base flatpack
   description: A flatpack used for constructing something.
   categories:
-  - hideSpawnMenu
+  - HideSpawnMenu
   components:
   - type: Item
     size: Large
@@ -34,7 +34,7 @@
       cpu_science: "#D381C9"
       cpu_supply: "#A46106"
   - type: StaticPrice
-    price: 0
+    price: 250
 
 - type: entity
   parent: BaseFlatpack

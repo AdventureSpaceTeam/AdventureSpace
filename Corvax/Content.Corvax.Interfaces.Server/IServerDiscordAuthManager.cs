@@ -1,4 +1,5 @@
 ﻿using Content.Corvax.Interfaces.Shared;
+using Robust.Server.Player;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
 

@@ -297,8 +297,3 @@
     - type: CleansForensics
     - type: Fiber
       fiberColor: fibers-white
-    - type: Butcherable
-      butcheringType: Knife
-      spawned:
-      - id: MaterialCloth1
-        amount: 1
