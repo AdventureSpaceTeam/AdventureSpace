@@ -1,5 +1,49 @@
 - type: entity
   save: false
+  name: Бездомный
+  parent: BaseMobHuman
+  id: BaseMobHoboPerson
+  abstract: true
+  components:
+  - type: VisibleGhosts
+  - type: DeadHearing
+
+- type: entity
+  parent: BaseSpeciesDummy
+  id: MobHoboPersonDummy
+  noSpawn: true
+  components:
+    - type: HumanoidAppearance
+
+- type: startingGear
+  id: HoboGear
+  equipment:
+    shoes: ClothingShoesBootsWinter
+    jumpsuit: ClothingUniformJumpsuitColorBrown
+    gloves: ClothingHandsGlovesFingerless
+    head: ClothingHeadHatFedoraBrown
+    neck: ClothingNeckScarfStripedBrown
+    belt: ClothingBeltStorageWaistbag
+    outerClothing: ClothingOuterCoatTrench
+    ears: ClothingHeadsetGrey
+  innerClothingSkirt: ClothingUniformJumpskirtColorGrey
+
+- type: entity
+  parent: BaseGameRule
+  id: HoboSpawn
+  noSpawn: true
+  components:
+  - type: StationEvent
+    weight: 10
+    duration: 1
+    earliestStart: 20
+    reoccurrenceDelay: 20
+    minimumPlayers: 5
+  - type: RandomSpawnRule
+    prototype: MobHoboGhost
+
+- type: entity
+  save: false
   parent: BaseMobHoboPerson
   name: Бездомный
   id: MobHoboPerson

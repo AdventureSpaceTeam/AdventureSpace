@@ -6,9 +6,9 @@ using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
-namespace Content.Shared.Hobo.Components;
+namespace Content.Shared._c4llv07e.VisibleGhosts;
 
 [RegisterComponent, NetworkedComponent]
-public sealed partial class HoboComponent : Component
+public sealed partial class VisibleGhostsComponent : Component
 {
 }
