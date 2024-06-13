@@ -1,0 +1,74 @@
+- type: entity
+  description: Милое существо
+  id: c4ll_facehugger
+  name: лицехват
+  parent: BaseMob
+  components:
+  - type: FaceHugger
+  - type: ActionGun
+    action: ActionDragonsBreath
+    gunProto: DragonsBreathGun
+  - type: StatusEffects
+    allowed:
+      - Electrocution
+      - ForcedSleep
+      - KnockedDown
+      - Pacified
+      - SlowedDown
+      - StaminaModifier
+      - Stun
+      - Stutter
+      - TemporaryBlindness
+  - type: Bloodstream
+    bloodMaxVolume: 150
+    bloodlossDamage:
+      types:
+        Bloodloss: 0.5
+    bloodlossHealDamage:
+      types:
+        Bloodloss: -1
+  - type: Sprite
+    drawdepth: Mobs
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: morph
+      sprite: _c4llv07e/morph.rsi
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 50
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      30: Critical
+      60: Dead
+  - type: MovementSpeedModifier
+    baseWalkSpeed : 2.5
+    baseSprintSpeed : 4.5
+  - type: Tag
+    tags:
+    - DoorBumpOpener
+    - VimPilot
+  - type: Climbing
+  - type: Pullable
+  - type: Puller
+    needsHands: false
+
+- type: entity
+  id: c4ll_ActionFaceJump
+  name: Прыгнуть на человека
+  description: TODO(c4llv07e)
+  components:
+  - type: InstantAction
+    icon:
+      sprite: _c4llv07e/morph.rsi
+      state: morph
+    useDelay: 15
+    event: !type:FaceJumpInstantActionEvent
