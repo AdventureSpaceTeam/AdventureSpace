@@ -5,9 +5,10 @@ permissions:
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - 'master'
+  # c4llv07e: Takes too much time
+  # push:
+  #   branches:
+  #     - 'master'
 
 jobs:
   changelog:
