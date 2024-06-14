@@ -1,0 +1,129 @@
+#Струя пламени
+- type: entity
+  id: FireBallFlamethrower
+  name: реактивная смесь
+  parent: BaseBullet
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Heat: 5
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Projectiles/magic.rsi
+    layers:
+    - state: fireball
+      shader: unshaded
+  - type: Ammo
+    muzzleFlash: null
+  - type: IgniteOnCollide
+    fireStacks: 1
+  - type: PointLight
+    enabled: true
+    color: "#ff8d26"
+    radius: 3
+    energy: 2
+  - type: TimedDespawn
+    lifetime: 0.8
+
+#топливный бак M240
+- type: Tag
+  id: TankFlamethrower
+
+- type: entity
+  id: TGMSFuelTankFirethrower
+  name: топливный бак M240
+  description: Содержит горючую реактивную смесь.
+  parent: BaseItem
+  components:
+  - type: Battery
+    maxCharge: 12500
+    startingCharge: 12500
+    pricePerJoule: 0.15
+  - type: Tag
+    tags:
+      - TankFlamethrower
+  - type: ProjectileBatteryAmmoProvider
+    proto: FireBallFlamethrower
+    fireCost: 50
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container
+  - type: Item
+    size: Normal
+    sprite: _borkroman/TGMS_Sprite/TGMS_WEAPON/M240/M240_Mag.rsi
+  - type: Sprite
+    sprite: _borkroman/TGMS_Sprite/TGMS_WEAPON/M240/M240_Mag.rsi
+    state: FuelTankMag
+  - type: Appearance
+
+#M240
+- type: entity
+  name: M240
+  parent: BaseWeaponRifle
+  id: TGMSFirethrowerGunM240
+  description: Лёгкий ручной струйный огнемет. Предназначен для поражения групповых целей в ближнем бою.
+  components:
+  - type: Sprite
+    sprite: _borkroman/TGMS_Sprite/TGMS_WEAPON/M240/M240_icon.rsi
+    layers:
+      - state: base
+        map: ["enum.GunVisualLayers.Base"]
+      - state: mag-0
+        map: ["enum.GunVisualLayers.Mag"]
+  - type: Clothing
+    sprite: _borkroman/TGMS_Sprite/TGMS_WEAPON/M240/M240.rsi
+  - type: Item
+    sprite: _borkroman/TGMS_Sprite/TGMS_WEAPON/M240/M240.rsi
+  - type: Gun
+    projectileSpeed: 8
+    fireRate: 8
+    maxAngle: 90
+    minAngle: 60
+    soundGunshot:
+      collection: FlameShotM240
+      params:
+        volume: 8
+    soundEmpty:
+      path: /Audio/Effects/box_deploy.ogg
+  - type: Wieldable
+  - type: GunWieldBonus
+    minAngle: -30
+    maxAngle: -30
+  - type: AmmoCounter
+  - type: Appearance
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: TGMSFuelTankFirethrower
+        insertSound: /Audio/Weapons/Guns/MagIn/revolver_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/revolver_magout.ogg
+        priority: 2
+        whitelist:
+          tags:
+            - TankFlamethrower
+  - type: ChamberMagazineAmmoProvider
+    boltClosed: null
+  - type: MagazineAmmoProvider
+  - type: MagazineVisuals
+    magState: mag
+    steps: 1
+    zeroVisible: true
+  - type: ContainerContainer
+    containers:
+      gun_magazine: !type:ContainerSlot
+      gun_chamber: !type:ContainerSlot
+  - type: ClothingSpeedModifier
+    walkModifier: 0.85
+    sprintModifier: 0.85
+  - type: HeldSpeedModifier
+  - type: UseDelay
+    delay: 0.5
+
+- type: soundCollection
+  id: FlameShotM240
+  files:
+  - /Audio/_borkroman/TGMS_Audio/M240/flameShot_1.ogg
+  - /Audio/_borkroman/TGMS_Audio/M240/flameShot_2.ogg
+  - /Audio/_borkroman/TGMS_Audio/M240/flameShot_3.ogg
+  - /Audio/_borkroman/TGMS_Audio/M240/flameShot_4.ogg

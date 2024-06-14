@@ -1,0 +1,184 @@
+#ID карта Морпеха
+- type: entity
+  parent: ERTLeaderIDCard
+  id: TGMSMarineIDCard
+  name: ID карта Морпеха
+  components:
+  - type: Sprite
+    sprite: _borkroman/TGMS_Sprite/TGMS_other/TGMS_IDcard.rsi
+    layers:
+    - state: Marine
+    - state: idMarine
+  - type: Item
+  - type: IdCard
+    jobTitle: Морпех
+    jobIcon: JobIconTGMSMarine
+
+#Иконка Морпеха
+- type: statusIcon
+  parent: JobIcon
+  id: JobIconTGMSMarine
+  icon:
+    sprite: _borkroman/TGMS_Sprite/TGMS_other/TGMS_icons.rsi
+    state: Marine
+
+#КПК Морпеха
+- type: entity
+  parent: BasePDA
+  id: TGMSMarinePDA
+  name: КПК Морпеха
+  description: Потрёпанный боями КПК.
+  components:
+  - type: Sprite
+    sprite: _borkroman/TGMS_Sprite/TGMS_other/TGMS_PDA.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+  - type: Pda
+    id: TGMSMarineIDCard
+    state: pda-Marine
+  - type: PdaBorderColor
+    borderColor: "#7f846b"
+  - type: Icon
+    sprite: _borkroman/TGMS_Sprite/TGMS_other/TGMS_PDA.rsi
+    state: pda-Marine
+
+
+
+
+#ID карта Командира отряда
+- type: entity
+  parent: ERTLeaderIDCard
+  id: TGMSMarineCommanderIDCard
+  name: ID карта Командира отряда
+  components:
+  - type: Sprite
+    sprite: _borkroman/TGMS_Sprite/TGMS_other/TGMS_IDcard.rsi
+    layers:
+    - state: Marine
+    - state: idCommander
+  - type: Item
+  - type: IdCard
+    jobTitle: Командир отряда
+    jobIcon: JobIconTGMSMarineCommander
+
+#Иконка Командира отряда
+- type: statusIcon
+  parent: JobIcon
+  id: JobIconTGMSMarineCommander
+  icon:
+    sprite: _borkroman/TGMS_Sprite/TGMS_other/TGMS_icons.rsi
+    state: Commander
+
+#КПК Командира отряда
+- type: entity
+  parent: TGMSMarinePDA
+  id: TGMSMarineCommanderPDA
+  name: КПК Командира отряда
+  description: Потрёпанный боями КПК.
+  components:
+  - type: Pda
+    id: TGMSMarineCommanderIDCard
+    state: pda-Commander
+  - type: PdaBorderColor
+    borderColor: "#7f846b"
+  - type: Icon
+    sprite: _borkroman/TGMS_Sprite/TGMS_other/TGMS_PDA.rsi
+    state: pda-Commander
+
+
+
+
+#ID карта Полевого медика
+- type: entity
+  parent: ERTLeaderIDCard
+  id: TGMSMarineMedicalIDCard
+  name: ID карта Полевого медика
+  components:
+  - type: Sprite
+    sprite: _borkroman/TGMS_Sprite/TGMS_other/TGMS_IDcard.rsi
+    layers:
+    - state: Marine
+    - state: idMedical
+  - type: Item
+  - type: IdCard
+    jobTitle: Полевой медик
+    jobIcon: JobIconTGMSMarineMedical
+
+#Иконка Полевого медика
+- type: statusIcon
+  parent: JobIcon
+  id: JobIconTGMSMarineMedical
+  icon:
+    sprite: _borkroman/TGMS_Sprite/TGMS_other/TGMS_icons.rsi
+    state: Medical
+
+#КПК Полевого медика
+- type: entity
+  parent: TGMSMarinePDA
+  id: TGMSMarineMedicalPDA
+  name: КПК Полевого медика
+  description: Потрёпанный боями КПК.
+  components:
+  - type: Pda
+    id: TGMSMarineMedicalIDCard
+    state: pda-Medical
+  - type: PdaBorderColor
+    borderColor: "#7f846b"
+  - type: Icon
+    sprite: _borkroman/TGMS_Sprite/TGMS_other/TGMS_PDA.rsi
+    state: pda-Medical
+  - type: HealthAnalyzer
+    scanDelay: 1
+    scanningEndSound:
+      path: "/Audio/Items/Medical/healthscanner.ogg"
+
+
+
+
+#ID карта Специалиста
+- type: entity
+  parent: ERTLeaderIDCard
+  id: TGMSMarineSpecIDCard
+  name: ID карта Специалиста
+  components:
+  - type: Sprite
+    sprite: _borkroman/TGMS_Sprite/TGMS_other/TGMS_IDcard.rsi
+    layers:
+    - state: Marine
+    - state: idSpec
+  - type: Item
+  - type: IdCard
+    jobTitle: Специалист
+    jobIcon: JobIconTGMSMarineSpec
+
+#Иконка Специалиста
+- type: statusIcon
+  parent: JobIcon
+  id: JobIconTGMSMarineSpec
+  icon:
+    sprite: _borkroman/TGMS_Sprite/TGMS_other/TGMS_icons.rsi
+    state: Spec
+
+#КПК Специалиста
+- type: entity
+  parent: TGMSMarinePDA
+  id: TGMSMarineSpecPDA
+  name: КПК Специалиста
+  description: Потрёпанный боями КПК.
+  components:
+  - type: Pda
+    id: TGMSMarineSpecIDCard
+    state: pda-Spec
+  - type: PdaBorderColor
+    borderColor: "#7f846b"
+  - type: Icon
+    sprite: _borkroman/TGMS_Sprite/TGMS_other/TGMS_PDA.rsi
+    state: pda-Spec

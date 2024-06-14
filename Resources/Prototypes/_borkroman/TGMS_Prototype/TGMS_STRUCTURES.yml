@@ -1,0 +1,154 @@
+#Шкаф Морпеха
+- type: entity
+  id: TGMSMarineClosetBase
+  name: Шкаф Морпеха
+  parent: LockerBaseSecure
+  description: Хранилище базового снаряжения морпеха.
+  components:
+  - type: Sprite
+    sprite: _borkroman/TGMS_Sprite/TGMS_Structures/TGMS_Closet.rsi
+    noRot: true
+    layers:
+    - state: Marine
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: Marine_door
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: welded
+      visible: false
+      map: ["enum.WeldableLayers.BaseWelded"]
+    - state: locked
+      map: ["enum.LockVisualLayers.Lock"]
+      shader: unshaded
+  - type: Appearance
+  - type: EntityStorageVisuals
+    stateBaseClosed: Marine
+    stateDoorOpen: Marine_open
+    stateDoorClosed: Marine_door
+  - type: AccessReader
+    access: [["Security"]]
+
+- type: entity
+  id: TGMSMarineClosetFull
+  name: Шкаф Морпеха
+  suffix: Заполненный
+  parent: TGMSMarineClosetBase
+  components:
+  - type: StorageFill
+    contents:
+      - id: ClothingHandsGlovesColorBlack
+      - id: TGMSMarineUniformBase
+      - id: TGMSMarineUniformShirt
+      - id: TGMSMarineBootsBase
+      - id: TGMSMarineHeadsetAlt
+      - id: TGMSBackpackBase
+      - id: TGMSMarineHelmetHeadBand
+      - id: ClothingMaskNeckGaiter
+      - id: ClothingMaskNeckGaiterRed
+      - id: TGMSBoxSurvival
+
+#Раздатчик оружия
+- type: entity
+  parent: VendingMachine
+  id: TGMSVendingMachineWeaponsDistributor
+  name: Раздатчик оружия
+  description: Автомат-хранилище для оружия.
+  components:
+  - type: VendingMachine
+    pack: WeaponsDistributorInventory
+    offState: off
+    brokenState: broken
+    normalState: normal-unshaded
+  - type: Sprite
+    sprite: _borkroman/TGMS_Sprite/TGMS_Structures/TGMS_WeaponsDistributor.rsi
+    layers:
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.Base"]
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
+      shader: unshaded
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: AccessReader
+    access: [["Security"]]
+
+- type: vendingMachineInventory
+  id: WeaponsDistributorInventory
+  startingInventory:
+    TGMSWeaponRifleM41A: 4
+    TGMSWeaponPistolVP78: 8
+    TGMSWeaponShotgunM37A2: 4
+    TGMSWeaponRifleM41AE2: 2
+    TGMSCaseUA571C: 2
+
+#Раздатчик Боеприпасов
+- type: entity
+  parent: VendingMachine
+  id: TGMSVendingMachineAmmunitionDistributor
+  name: Раздатчик боеприпасов
+  description: Автомат-хранилище боеприпасов.
+  components:
+  - type: VendingMachine
+    pack: AmmunitionDistributorInventory
+    offState: off
+    brokenState: broken
+    normalState: normal-unshaded
+  - type: Sprite
+    sprite: _borkroman/TGMS_Sprite/TGMS_Structures/TGMS_AmmunitionDistributor.rsi
+    layers:
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.Base"]
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
+      shader: unshaded
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: AccessReader
+    access: [["Security"]]
+
+- type: vendingMachineInventory
+  id: AmmunitionDistributorInventory
+  startingInventory:
+    MagazineCaselessRifle10x24: 12
+    MagazinePistolCaselessRifle: 16
+    TGMSAmmoProviderShotgunShell: 12
+    TGMSMagazineM41AE2: 6
+
+#Раздатчик Снаряжения
+- type: entity
+  parent: VendingMachine
+  id: TGMSVendingMachineEquipmentDistributor
+  name: Раздатчик Снаряжения
+  description: Автомат-хранилище брони и прочего снаряжения.
+  components:
+  - type: VendingMachine
+    pack: EquipmentDistributorInventory
+    offState: off
+    brokenState: broken
+    normalState: normal-unshaded
+  - type: Sprite
+    sprite: _borkroman/TGMS_Sprite/TGMS_Structures/TGMS_EquipmentDistributor.rsi
+    layers:
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.Base"]
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
+      shader: unshaded
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: AccessReader
+    access: [["Security"]]
+
+- type: vendingMachineInventory
+  id: EquipmentDistributorInventory
+  startingInventory:
+    TGMSMarineHelmetM10: 4
+    TGMSMarineHelmetM10А1: 4
+    TGMSMarineHelmetM30: 4
+    TGMSMarineWebbingBase: 4
+    TGMSMarineShotgunWebbing: 4
+    TGMSMarineArmorM3: 2
+    TGMSMarineArmorM3Drawing: 2
+    TGMSMarineArmorM56: 4
+    TGMSMarineBootsArmor: 4
+    TGMSMarineGlovesArmor: 2
+    TGMSMarineFlashlight: 6
