@@ -199,6 +199,11 @@
   parent: MobXeno
   id: BaseMobAlien
   components:
+  - type: ContentEye
+    maxZoom: 2.5,2.5
+  - type: Blindable
+  - type: PermanentBlindness
+    blindness: 3
   - type: Tag
     tags:
     - FootstepSound

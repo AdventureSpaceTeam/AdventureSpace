@@ -1,0 +1,469 @@
+#Униформа Морпеха
+- type: entity
+  parent: ClothingUniformBase
+  id: TGMSMarineUniformBase
+  name: Униформа Морпеха
+  description: Потрёпанная униформа колониальной пехоты.
+  components:
+  - type: Sprite
+    sprite: _borkroman/TGMS_Sprite/TGMS_Uniform/BaseUniform.rsi
+  - type: Clothing
+    sprite: _borkroman/TGMS_Sprite/TGMS_Uniform/BaseUniform.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: TGMSMarineUniformShirt
+  name: Майка Морпеха
+  description: Потрёпанная майка колониальной пехоты.
+  components:
+  - type: Sprite
+    sprite: _borkroman/TGMS_Sprite/TGMS_Uniform/ShirtUniform.rsi
+  - type: Clothing
+    sprite: _borkroman/TGMS_Sprite/TGMS_Uniform/ShirtUniform.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: TGMSMarineCommanderUniform
+  name: Униформа Командира отряда
+  description: Отличительная униформа командира.
+  components:
+  - type: Sprite
+    sprite: _borkroman/TGMS_Sprite/TGMS_Uniform/CommanderUniform.rsi
+  - type: Clothing
+    sprite: _borkroman/TGMS_Sprite/TGMS_Uniform/CommanderUniform.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: TGMSMarineMedicalUniform
+  name: Униформа Полевого медика
+  description: Отличительная униформа медика Колониального корпуса.
+  components:
+  - type: Sprite
+    sprite: _borkroman/TGMS_Sprite/TGMS_Uniform/MedicalUniform.rsi
+  - type: Clothing
+    sprite: _borkroman/TGMS_Sprite/TGMS_Uniform/MedicalUniform.rsi
+
+#Шлем M10
+- type: entity
+  parent: [ClothingHeadBase, ShowSecurityIcons]
+  id: TGMSMarineHelmetM10
+  name: Шлем M10
+  description: Военный шлем, обеспечивающий превосходную защиту головы.
+  components:
+  - type: Sprite
+    sprite: _borkroman/TGMS_Sprite/TGMS_Helmet/M10_helmet.rsi
+  - type: Clothing
+    sprite: _borkroman/TGMS_Sprite/TGMS_Helmet/M10_helmet.rsi
+  - type: HideLayerClothing
+    slots:
+    - Hair
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.75
+        Slash: 0.75
+        Piercing: 0.75
+        Heat: 0.75
+        Caustic: 0.90
+
+- type: entity
+  parent: [TGMSMarineHelmetM10, ShowSecurityIcons, ClothingHeadLightBase]
+  id: TGMSMarineHelmetM10А1
+  name: Шлем M10А1
+  description: Военный шлем, обеспечивающий превосходную защиту головы, снабжен фонариком.
+  components:
+  - type: Sprite
+    sprite: _borkroman/TGMS_Sprite/TGMS_Helmet/M10_helmet_commander.rsi
+    layers:
+    - state: icon
+    - state: icon-flash
+      visible: false
+      map: [ "light" ]
+  - type: Clothing
+    sprite: _borkroman/TGMS_Sprite/TGMS_Helmet/M10_helmet_commander.rsi
+    equippedPrefix: off
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellHigh
+
+- type: entity
+  parent: TGMSMarineHelmetM10
+  id: TGMSMarineMedicalHelmetM10
+  name: Шлем M10 Полевого медика
+  description: Военный шлем М10 оснащенный медицинским визором.
+  components:
+  - type: Sprite
+    sprite: _borkroman/TGMS_Sprite/TGMS_Helmet/M10_helmet_medical.rsi
+  - type: Clothing
+    sprite: _borkroman/TGMS_Sprite/TGMS_Helmet/M10_helmet_medical.rsi
+  - type: ShowHealthBars
+    damageContainers:
+    - Biological
+
+#Шлем M30
+- type: entity
+  parent: [TGMSMarineHelmetM10А1, ShowSecurityIcons]
+  id: TGMSMarineHelmetM30
+  name: Шлем M30
+  description: Тактический шлем, оснащенный визором.
+  components:
+  - type: Sprite
+    sprite: _borkroman/TGMS_Sprite/TGMS_Helmet/M30_helmet.rsi
+    layers:
+    - state: icon
+    - state: icon-flash
+      visible: false
+      map: [ "light" ]
+  - type: Clothing
+    sprite: _borkroman/TGMS_Sprite/TGMS_Helmet/M30_helmet.rsi
+    equippedPrefix: off
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellHigh
+  - type: HideLayerClothing
+    slots:
+    - Hair
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.65
+        Slash: 0.70
+        Piercing: 0.70
+        Heat: 0.70
+        Caustic: 0.90
+
+#Бандана Колониального корпуса
+- type: entity
+  parent: ClothingHeadBase
+  id: TGMSMarineHelmetHeadBand
+  name: Бандана Колониального корпуса
+  description: Просто красная тряпка, которую морпехи любят надевать на голову.
+  components:
+  - type: Sprite
+    sprite: _borkroman/TGMS_Sprite/TGMS_Helmet/headband.rsi
+  - type: Clothing
+    sprite: _borkroman/TGMS_Sprite/TGMS_Helmet/headband.rsi
+
+#Боевой пояс колониальной пехоты
+- type: entity
+  parent: [ClothingBeltStorageBase, ContentsExplosionResistanceBase]
+  id: TGMSMarineWebbingBase
+  name: Боевой пояс колониальной пехоты
+  description: Облегченная версия боевого РПС.
+  components:
+  - type: Sprite
+    sprite: _borkroman/TGMS_Sprite/TGMS_Belt/TGMS_BaseWebbing.rsi
+  - type: Clothing
+    sprite: _borkroman/TGMS_Sprite/TGMS_Belt/TGMS_BaseWebbing.rsi
+  - type: ExplosionResistance
+    damageCoefficient: 0.5
+
+#Боевой пояс для картечи
+- type: entity
+  parent: ClothingBeltStorageWaistbag
+  id: TGMSMarineShotgunWebbing
+  name: Боевой пояс для картечи
+  description: Универсальный пояс, совмещающий патронташ и РПС.
+  components:
+  - type: Sprite
+    sprite: _borkroman/TGMS_Sprite/TGMS_Belt/TGMS_ShotgunWebbing.rsi
+  - type: Clothing
+    sprite: _borkroman/TGMS_Sprite/TGMS_Belt/TGMS_ShotgunWebbing.rsi
+  - type: ExplosionResistance
+    damageCoefficient: 0.5
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+        - ShellShotgun
+    capacity: 24
+    mayTransfer: true
+
+#Бронежилет M3
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: TGMSMarineArmorM3
+  name: Бронежилет M3
+  description: Стандартная система баллистической защиты, используемая Колониальным корпусом.
+  components:
+  - type: Sprite
+    sprite: _borkroman/TGMS_Sprite/TGMS_Armor/M3_armor.rsi
+  - type: Clothing
+    sprite: _borkroman/TGMS_Sprite/TGMS_Armor/M3_armor.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.60
+        Slash: 0.60
+        Piercing: 0.50
+        Heat: 0.75
+        Caustic: 0.85
+  - type: ExplosionResistance
+    damageCoefficient: 0.85
+  - type: ClothingSpeedModifier
+    walkModifier: 0.90
+    sprintModifier: 0.90
+  - type: Item
+    size: Huge
+  - type: AllowSuitStorage
+
+- type: entity
+  parent: TGMSMarineArmorM3
+  id: TGMSMarineArmorM3Drawing
+  name: Бронежилет M3 с рисунком
+  description: Бронежилет М3, помеченный индивидуальным рисунком владельца.
+  components:
+  - type: Sprite
+    sprite: _borkroman/TGMS_Sprite/TGMS_Armor/M3_drawing_armor.rsi
+  - type: Clothing
+    sprite: _borkroman/TGMS_Sprite/TGMS_Armor/M3_drawing_armor.rsi
+
+#Бронежилет M56
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: TGMSMarineArmorM56
+  name: Бронежилет M56
+  description: Лёгкая версия бронежилета М3.
+  components:
+  - type: Sprite
+    sprite: _borkroman/TGMS_Sprite/TGMS_Armor/M56_lightarmor.rsi
+  - type: Clothing
+    sprite: _borkroman/TGMS_Sprite/TGMS_Armor/M56_lightarmor.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.75
+        Slash: 0.70
+        Piercing: 0.65
+        Heat: 0.85
+        Caustic: 0.90
+  - type: ExplosionResistance
+    damageCoefficient: 0.85
+  - type: Item
+    size: Huge
+  - type: AllowSuitStorage
+
+- type: entity
+  parent: TGMSMarineArmorM56
+  id: TGMSMarineArmorM56Medical
+  name: Бронежилет M56 полевого медика
+  description: Бронежилет M56 в отличительной окраске медиков.
+  components:
+  - type: Sprite
+    sprite: _borkroman/TGMS_Sprite/TGMS_Armor/M56_medical.rsi
+  - type: Clothing
+    sprite: _borkroman/TGMS_Sprite/TGMS_Armor/M56_medical.rsi
+
+#Защитные ботинки
+- type: entity
+  parent: ClothingShoesMilitaryBase
+  id: TGMSMarineBootsArmor
+  name: Защитные ботинки
+  description: Ботинки, оснащенные защитными пластинами для ног.
+  components:
+  - type: Sprite
+    sprite: _borkroman/TGMS_Sprite/TGMS_Boots/Armor_boots.rsi
+  - type: Clothing
+    sprite: _borkroman/TGMS_Sprite/TGMS_Boots/Armor_boots.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.95
+        Slash: 0.95
+        Piercing: 0.95
+        Heat: 0.95
+        Caustic: 0.95
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepBoots
+  - type: ContainerFill
+    containers:
+      item:
+      - CombatKnife
+
+- type: entity
+  parent: ClothingShoesMilitaryBase
+  id: TGMSMarineBootsBase
+  name: Ботинки Морпеха
+  description: Стандартная обувь колониальной пехоты.
+  components:
+  - type: Sprite
+    sprite: _borkroman/TGMS_Sprite/TGMS_Boots/Base_boots.rsi
+  - type: Clothing
+    sprite: _borkroman/TGMS_Sprite/TGMS_Boots/Base_boots.rsi
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepBoots
+
+#Защитные перчатки
+- type: entity
+  parent: ClothingHandsGlovesColorBlack
+  id: TGMSMarineGlovesArmor
+  name: Защитные перчатки
+  description: Тактический перчатки с защитой для рук.
+  components:
+  - type: Sprite
+    sprite: _borkroman/TGMS_Sprite/TGMS_Glover/Armor_glover.rsi
+  - type: Clothing
+    sprite: _borkroman/TGMS_Sprite/TGMS_Glover/Armor_glover.rsi
+  - type: Insulated
+  - type: Fiber
+    fiberMaterial: fibers-insulative
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.95
+        Slash: 0.95
+        Piercing: 0.95
+        Heat: 0.95
+        Caustic: 0.95
+
+#Гарнитура колониального корпуса
+- type: entity
+  parent: ClothingHeadsetAltCentCom
+  id: TGMSMarineHeadsetAlt
+  description: Компактная гарнитура для связи между солдатами.
+  name: Гарнитура Колониального корпуса
+  components:
+  - type: Sprite
+    sprite: _borkroman/TGMS_Sprite/TGMS_other/TGMS_Headset.rsi
+  - type: Clothing
+    sprite: _borkroman/TGMS_Sprite/TGMS_other/TGMS_Headset.rsi
+
+#Противогаз колониального корпуса
+- type: entity
+  parent: ClothingMaskGas
+  id: TGMSMarineMask
+  name: Противогаз колониального корпуса
+  description: не освежает дыхание
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: _borkroman/TGMS_Sprite/TGMS_other/TGMS_mask.rsi
+  - type: Clothing
+    sprite: _borkroman/TGMS_Sprite/TGMS_other/TGMS_mask.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.95
+        Slash: 0.95
+        Piercing: 0.95
+        Heat: 0.95
+  - type: IngestionBlocker
+  - type: IdentityBlocker
+  - type: Tag
+    tags:
+    - HidesHair
+  - type: FlashImmunity
+  - type: EyeProtection
+    protectionTime: 5
+
+#Рюкзак Колонильного корпуса
+- type: entity
+  parent: ClothingBackpack
+  id: TGMSBackpackBase
+  name: Рюкзак Колонильного корпуса
+  description: Это очень прочный рюкзак.
+  components:
+  - type: Sprite
+    sprite: _borkroman/TGMS_Sprite/TGMS_BackPack/TGMS_BaseBackpack.rsi
+
+#Медицинский рюкзак Колонильного корпуса
+- type: entity
+  parent: ClothingBackpack
+  id: TGMSMedicalBackpack
+  name: Медицинский рюкзак Колонильного корпуса
+  description: Это очень прочный рюкзак.
+  components:
+  - type: Sprite
+    sprite: _borkroman/TGMS_Sprite/TGMS_BackPack/TGMS_MedicalBackpack.rsi
+
+#Расширенный рюкзак Колонильного корпуса
+- type: entity
+  parent: ClothingBackpack
+  id: TGMSSpecialistBackpack
+  name: Расширенный рюкзак Колонильного корпуса
+  description: Это очень прочный рюкзак.
+  components:
+  - type: Sprite
+    sprite: _borkroman/TGMS_Sprite/TGMS_BackPack/TGMS_SpecialistBackpack.rsi
+  - type: Storage
+    maxItemSize: Huge
+    grid:
+    - 0,0,7,4
+
+#Наплечный фонарь
+- type: entity
+  parent: ClothingNeckBase
+  id: TGMSMarineFlashlight
+  name: Наплечный фонарь
+  description: Надежный фонарь Колониального корпуса, освобождающий обе руки.
+  components:
+  - type: Sprite
+    sprite: _borkroman/TGMS_Sprite/TGMS_other/TGMS_flashlight.rsi
+    layers:
+    - state: flashlight
+    - state: flashlight-overlay
+      shader: unshaded
+      visible: false
+      map: [ "light" ]
+  - type: Clothing
+    equippedPrefix: off
+  - type: PointLight
+    enabled: false
+    mask: /Textures/Effects/LightMasks/cone.png
+    autoRot: true
+    radius: 5
+    energy: 2
+    netsync: false
+  - type: Appearance
+  - type: HandheldLight
+    addPrefix: false
+    blinkingBehaviourId: blinking
+    radiatingBehaviourId: radiating
+  - type: LightBehaviour
+    behaviours:
+      - !type:FadeBehaviour
+        id: radiating
+        interpolate: Linear
+        maxDuration: 2.0
+        startValue: 3.0
+        endValue: 2.0
+        isLooped: true
+        reverseWhenFinished: true
+      - !type:PulseBehaviour
+        id: blinking
+        interpolate: Nearest
+        maxDuration: 1.0
+        minValue: 0.1
+        maxValue: 2.0
+        isLooped: true
+  - type: ToggleableLightVisuals
+    spriteLayer: light
+    inhandVisuals:
+      left:
+      - state: inhand-left-light
+        shader: unshaded
+      right:
+      - state: inhand-right-light
+        shader: unshaded
+    clothingVisuals:
+      neck:
+      - state: on-equipped-NECK
+        shader: unshaded
+  - type: PowerCellSlot
+    cellSlotId: cell_slot
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellHigh
+  - type: Item
+    heldPrefix: off
+  - type: ContainerContainer
+    containers:
+      cell_slot: !type:ContainerSlot
