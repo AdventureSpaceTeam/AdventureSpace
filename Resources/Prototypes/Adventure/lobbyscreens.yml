@@ -22,3 +22,10 @@
   id: WafelSynd
   background: /Textures/Adventure/LobbyScreens/synd.png
 
+- type: lobbyBackground
+  id: LimelingFelenidCmo
+  background: /Textures/Adventure/LobbyScreens/limeling_felenid_cmo.png
+
+- type: lobbyBackground
+  id: RikylkaMices
+  background: /Textures/Adventure/LobbyScreens/rikylka_mices.png
