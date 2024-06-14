@@ -38,8 +38,8 @@
       gun_magazine:
         name: Magazine
         startingItem: MagazineCaselessRifle10x24
-        insertSound: /Audio/_borkroman/missing_audio/MagIn/magin1.ogg
-        ejectSound: /Audio/_borkroman/missing_audio/MagOut/magout3.ogg
+        insertSound: /Audio/_borkroman/MagIn/magin1.ogg
+        ejectSound: /Audio/_borkroman/MagOut/magout3.ogg
         priority: 2
         whitelist:
           tags:
@@ -204,8 +204,8 @@
       gun_magazine:
         name: Magazine
         startingItem: TGMSMagazineM41AE2
-        insertSound: /Audio/_borkroman/missing_audio/MagIn/magin1.ogg
-        ejectSound: /Audio/_borkroman/missing_audio/MagOut/magout3.ogg
+        insertSound: /Audio/_borkroman/MagIn/magin1.ogg
+        ejectSound: /Audio/_borkroman/MagOut/magout3.ogg
         priority: 2
         whitelist:
           tags:
@@ -336,3 +336,6 @@
       walkModifier: 0.80
       sprintModifier: 0.80
     - type: HeldSpeedModifier
+
+- type: Tag
+  id: TGMSMagazineM41AE2
