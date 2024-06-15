@@ -268,6 +268,18 @@ namespace Content.Server.Chat.Managers
             }
             // Corvax-Sponsors-End
 
+            // c4llv07e fix admins OOC names {{
+            var adminData = _adminManager.GetAdminData(player);
+            if (adminData != null)
+            {
+                var title = adminData.Title ?? "Admin";
+                // We don't use admin color here because it will be overrided anyway
+                wrappedMessage = Loc.GetString(
+                    "chat-manager-send-ooc-admin-wrap-message", ("adminTitle", title),
+                    ("playerName", player.Name), ("message", FormattedMessage.EscapeText(message)));
+            }
+            // c4llv07e }}
+
             //TODO: player.Name color, this will need to change the structure of the MsgChatMessage
             ChatMessageToAll(ChatChannel.OOC, message, wrappedMessage, EntityUid.Invalid, hideChat: false, recordReplay: true, colorOverride: colorOverride, author: player.UserId);
             _mommiLink.SendOOCMessage(player.Name, message);
