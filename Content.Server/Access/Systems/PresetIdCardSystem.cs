@@ -86,10 +86,8 @@ public sealed class PresetIdCardSystem : EntitySystem
         _cardSystem.TryChangeJobColor(uid, GetJobColor(_prototypeManager, job), job.RadioIsBold);
 
 
-        if (_prototypeManager.TryIndex<StatusIconPrototype>(job.Icon, out var jobIcon))
-        {
+        if (_prototypeManager.TryIndex(job.Icon, out var jobIcon))
             _cardSystem.TryChangeJobIcon(uid, jobIcon);
-        }
     }
 
     public static string GetJobColor(IPrototypeManager prototypeManager, IPrototype job)
