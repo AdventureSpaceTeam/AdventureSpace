@@ -56,11 +56,10 @@ public sealed class DonateUplinkSystem : EntitySystem
             return;
         if (!_timing.IsFirstTimePredicted)
             return;
-        if (!(TryComp<ToolComponent>(args.Used, out var tool)
-              && tool.Qualities.Contains("Screwing")))
+        if (!_tool.HasQuality(args.Used, "Screwing"))
             return;
         args.Handled = true;
-        _tool.UseTool(args.Used, args.User, ent.Owner, 1f, "Screwing", new DonateUplinkScrewingFinishedEvent(), toolComponent: tool);
+        _tool.UseTool(args.Used, args.User, ent.Owner, 1f, "Screwing", new DonateUplinkScrewingFinishedEvent());
     }
 
     private void OnDeconstructed(Entity<DonateUplinkComponent> ent, ref DonateUplinkScrewingFinishedEvent args)

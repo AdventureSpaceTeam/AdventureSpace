@@ -145,7 +145,7 @@ namespace Content.Server.NewLife
                 {
                     if (!_playTimeTrackings.IsAllowed(session, job.Key))
                         continue;
-                    availableStationJobs.Add((_prototypeManager.Index<JobPrototype>(job.Key), job.Value));
+                    availableStationJobs.Add((_prototypeManager.Index<JobPrototype>(job.Key), (uint?)job.Value));
                 }
 
                 availableStationJobs.Sort((x, y) =>
