@@ -106,6 +106,12 @@ public record struct UncuffAttemptEvent(EntityUid User, EntityUid Target)
     public bool Cancelled = false;
 }
 
+/// <summary>
+/// Event raised on an entity being uncuffed to determine any modifiers to the amount of time it takes to uncuff them.
+/// </summary>
+[ByRefEvent]
+public record struct ModifyUncuffDurationEvent(EntityUid User, EntityUid Target, float Duration);
+
 [ByRefEvent]
 public record struct CuffedEvent(EntityUid User, EntityUid Target)
 {
