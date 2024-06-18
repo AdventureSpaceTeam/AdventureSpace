@@ -24,7 +24,7 @@ namespace Content.Shared.CCVar
         ///     Guide Entry Prototype ID to be displayed as the server rules.
         /// </summary>
         public static readonly CVarDef<string> RulesFile =
-            CVarDef.Create("server.rules_file", "DefaultRuleset", CVar.REPLICATED | CVar.SERVER);
+            CVarDef.Create("server.rules_file", "AdventureRuleset", CVar.REPLICATED | CVar.SERVER); // c4llv07e fix rules
 
         /// <summary>
         ///     Guide entry that is displayed by default when a guide is opened.
