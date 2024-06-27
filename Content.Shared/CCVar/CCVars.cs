@@ -451,6 +451,24 @@ namespace Content.Shared.CCVar
         public static readonly CVarDef<string> RoundEndSoundCollection =
             CVarDef.Create("game.round_end_sound_collection", "RoundEnd", CVar.SERVERONLY);
 
+        /// <summary>
+        /// Whether or not to add every player as a global override to PVS at round end.
+        /// This will allow all players to see their clothing in the round screen player list screen,
+        /// but may cause lag during round end with very high player counts.
+        /// </summary>
+        public static readonly CVarDef<bool> RoundEndPVSOverrides =
+            CVarDef.Create("game.round_end_pvs_overrides", true, CVar.SERVERONLY);
+
+        /// <summary>
+        /// If true, players can place objects onto tabletop games like chess boards.
+        /// </summary>
+        /// <remarks>
+        /// This feature is currently highly abusable and can easily be used to crash the server,
+        /// so it's off by default.
+        /// </remarks>
+        public static readonly CVarDef<bool> GameTabletopPlace =
+            CVarDef.Create("game.tabletop_place", false, CVar.SERVERONLY);
+
         /*
          * Discord
          */
