@@ -1,8 +1,12 @@
 using System.Linq;
 using System.Text.Json.Serialization;
+using Content.Server.Body.Components;
+using Content.Shared.Body.Prototypes;
 using Content.Shared.Chemistry.Reaction;
 using Content.Shared.Chemistry.Reagent;
 using Content.Server.Corvax.GuideGenerator;
+using Content.Shared.EntityEffects;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server.GuideGenerator;
 
@@ -89,7 +93,7 @@ public sealed class ReactionEntry
 
     [JsonIgnore]
     // Corvax-Wiki-End
-    public List<ReagentEffect> Effects { get; }
+    public List<EntityEffect> Effects { get; }
 
     public ReactionEntry(ReactionPrototype proto)
     {
