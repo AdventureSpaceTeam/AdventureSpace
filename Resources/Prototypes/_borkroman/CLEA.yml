@@ -321,7 +321,7 @@
       nameSegments:
       - NamesFirstCLEAOfficer
       - NamesLastCLEAOfficer
-    - type: InitialInfectedExempt
+    - type: AntagImmune
     - type: TTS
       voice: officer_enclave
 
@@ -339,7 +339,7 @@
       - NamesLastCLEAOfficer
     - type: RandomHumanoidSpawner
       settings: CLEAOfficer
-    - type: InitialInfectedExempt
+    - type: AntagImmune
 
 - type: dataset
   id: NamesFirstCLEAOfficer
@@ -381,7 +381,7 @@
       nameSegments:
       - NamesFirstCLEABase
       - NamesLastCLEABase
-    - type: InitialInfectedExempt
+    - type: AntagImmune
     - type: TTS
       voice: officer_enclave
 
@@ -399,7 +399,7 @@
       - NamesLastCLEABase
     - type: RandomHumanoidSpawner
       settings: CLEABase
-    - type: InitialInfectedExempt
+    - type: AntagImmune
 
 - type: dataset
   id: NamesFirstCLEABase
