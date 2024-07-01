@@ -2,6 +2,7 @@
 using Content.Client.Changelog;
 using Content.Client.Chat.Managers;
 using Content.Client.Clickable;
+using Content.Client.DebugMon;
 using Content.Client.SS220.TTS;
 using Content.Client.Options;
 using Content.Client.DiscordAuth;
@@ -53,6 +54,7 @@ namespace Content.Client.IoC
             collection.Register<DocumentParsingManager>();
             collection.Register<ContentReplayPlaybackManager, ContentReplayPlaybackManager>();
             collection.Register<ISharedPlaytimeManager, JobRequirementsManager>();
+            collection.Register<DebugMonitorManager>();
 
             // Alteros-Sponsor
             collection.Register<Content.Corvax.Interfaces.Shared.ISharedSponsorsManager,SponsorsManager>();
