@@ -16,7 +16,6 @@ public sealed class TypingIndicatorSystem : SharedTypingIndicatorSystem
     private readonly TimeSpan _typingTimeout = TimeSpan.FromSeconds(2);
     private TimeSpan _lastTextChange;
     private bool _isClientTyping;
-    private bool _isClientChatFocused; // Corvax-TypingIndicator
 
     public override void Initialize()
     {
@@ -32,10 +31,7 @@ public sealed class TypingIndicatorSystem : SharedTypingIndicatorSystem
             return;
 
         // client typed something - show typing indicator
-        // Corvax-TypingIndicator-Start
-        _isClientTyping = true;
-        ClientUpdateTyping();
-        // Corvax-TypingIndicator-End
+        ClientUpdateTyping(true);
         _lastTextChange = _time.CurTime;
     }
 
@@ -46,11 +42,7 @@ public sealed class TypingIndicatorSystem : SharedTypingIndicatorSystem
             return;
 
         // client submitted text - hide typing indicator
-        // Corvax-TypingIndicator-Start
-        _isClientTyping = false;
-        _isClientChatFocused = false;
-        ClientUpdateTyping();
-        // Corvax-TypingIndicator-End
+        ClientUpdateTyping(false);
     }
 
     // Corvax-TypingIndicator-Start
@@ -61,8 +53,7 @@ public sealed class TypingIndicatorSystem : SharedTypingIndicatorSystem
             return;
 
         // client submitted text - hide typing indicator
-        _isClientChatFocused = isFocused;
-        ClientUpdateTyping();
+        ClientUpdateTyping(isFocused);
     }
     // Corvax-TypingIndicator-End
 
@@ -77,34 +68,22 @@ public sealed class TypingIndicatorSystem : SharedTypingIndicatorSystem
             if (dif > _typingTimeout)
             {
                 // client didn't typed anything for a long time - hide indicator
-                // Corvax-TypingIndicator-Start
-                _isClientTyping = false;
-                ClientUpdateTyping();
-                // Corvax-TypingIndicator-End
+                ClientUpdateTyping(false);
             }
         }
     }
 
-    private void ClientUpdateTyping() // Corvax-TypingIndicator
+    private void ClientUpdateTyping(bool isClientTyping)
     {
-        // Corvax-TypingIndicator-Start
-        // if (_isClientTyping == isClientTyping)
-        //     return;
-        // _isClientTyping = isClientTyping;
-        // Corvax-TypingIndicator-End
+        if (_isClientTyping == isClientTyping)
+            return;
 
-        // check if player controls any pawn
+        // check if player controls any entity.
         if (_playerManager.LocalEntity == null)
             return;
 
-        // Corvax-TypingIndicator-Start
-        var state = TypingIndicatorState.None;
-        if (_isClientChatFocused)
-            state = _isClientTyping ? TypingIndicatorState.Typing : TypingIndicatorState.Idle;
-        // Corvax-TypingIndicator-End
-
-        // send a networked event to server
-        RaiseNetworkEvent(new TypingChangedEvent(state)); // Corvax-TypingIndicator
+        _isClientTyping = isClientTyping;
+        RaisePredictiveEvent(new TypingChangedEvent(isClientTyping ? TypingIndicatorState.Typing : TypingIndicatorState.None));
     }
 
     private void OnShowTypingChanged(bool showTyping)
@@ -112,10 +91,7 @@ public sealed class TypingIndicatorSystem : SharedTypingIndicatorSystem
         // hide typing indicator immediately if player don't want to show it anymore
         if (!showTyping)
         {
-            // Corvax-TypingIndicator-Start
-            _isClientTyping = false;
-            ClientUpdateTyping();
-            // Corvax-TypingIndicator-End
+            ClientUpdateTyping(false);
         }
     }
 }
