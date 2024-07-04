@@ -1,0 +1,77 @@
+- type: entity
+  parent: MobHuman
+  id: MobHumanFlesh
+  name: Пожиратель-человек
+  components:
+  - type: Body
+    prototype: Reptilian
+  - type: Wagging
+    action: ActionToggleLightingFleshNightVision
+  - type: Vocal
+    screamAction: ActionFlashScream
+  - type: DamageVisuals
+    damageOverlayGroups:
+      Brute:
+        sprite: Mobs/Effects/brute_damage.rsi
+        color: "#731635"
+  - type: RandomHumanoidAppearance
+    randomizeName: true
+  - type: Spider
+    webPrototype: FleshWeb
+    webAction: ActionFleshWeb
+  - type: IgnoreSpiderWeb
+  - type: ShowHealthBars
+    damageContainers:
+    - Biological
+  - type: TriggerOnMobstateChange
+    mobState:
+    - Dead
+  - type: EmitSoundOnTrigger
+    sound:
+      path: /Audio/_borkroman/FLESH/flesh_dead.ogg
+  - type: Blindable
+  - type: PermanentBlindness
+    blindness: 3
+  - type: NpcFactionMember
+    factions:
+    - Xeno
+  - type: Tag
+    tags:
+    - DoorBumpOpener
+    - Flesh
+    - FootstepSound
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      200: Critical
+      300: Dead
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      150: 0.8
+  - type: Bloodstream
+    bloodReagent: FleshBlood
+    bloodMaxVolume: 350
+  - type: Damageable
+    damageModifierSet: Devourer
+  - type: CombatMode
+    combatToggleAction: ActionFleshCombatModeToggle
+  - type: PassiveDamage
+    allowedStates:
+    - Alive
+    - Critical
+    damageCap: 1000
+    damage:
+      groups:
+        Brute: -1.50
+        Burn: -1.50
+        Airloss: -1.50
+        Toxin: -1.50
+        Genetic: -1.50
+  - type: Reform
+    actionPrototype: FleshReformAction
+    reformTime: 5
+    popupText: Ваше тело раздувается и теряет форму.
+    reformPrototype: MobFleshDevourer
+  - type: EmitSoundOnSpawn
+    sound:
+      collection: FleshRoarCollection
