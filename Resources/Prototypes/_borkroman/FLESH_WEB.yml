@@ -1,0 +1,98 @@
+#Сухожилия плоти
+- type: entity
+  id: FleshWeb
+  name: Сухожилия плоти
+  placement:
+    mode: SnapgridCenter
+    snap:
+      - Wall
+  components:
+    - type: DamageContacts
+      damage:
+        groups:
+          Brute: -0.5
+          Burn: -0.5
+          Airloss: -0.5
+          Toxin: -0.5
+          Genetic: -0.5
+      ignoreWhitelist:
+        tags:
+        - Flesh
+    - type: MeleeSound
+      soundGroups:
+        Brute:
+          path:
+            "/Audio/Weapons/slash.ogg"
+    - type: Sprite
+      sprite: _borkroman/FLESH/flesh_web.rsi
+      layers:
+        - state: flesh1
+          map: ["spiderWebLayer"]
+      drawdepth: FloorTiles
+    - type: Appearance
+    - type: RandomSprite
+      available:
+      - 0:
+          flesh1: ""
+      - 0:
+          flesh2: ""
+      - 0:
+          flesh3: ""
+      - 0:
+          flesh4: ""
+    - type: Clickable
+    - type: Transform
+      anchored: true
+    - type: Physics
+    - type: Fixtures
+      fixtures:
+        fix1:
+          hard: false
+          density: 7
+          shape:
+            !type:PhysShapeAabb
+            bounds: "-0.5,-0.5,0.5,0.5"
+          layer:
+          - MidImpassable
+    - type: Damageable
+      damageModifierSet: Devourer
+    - type: Destructible
+      thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 30
+        behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+        - !type:SpawnEntitiesBehavior
+          spawn:
+            FoodMeat:
+              min: 1
+              max: 2
+    - type: Temperature
+      heatDamage:
+        types:
+          Heat: 10
+      coldDamage: {}
+      ColdDamageThreshold: 0
+    - type: Flammable
+      fireSpread: true
+      cold:
+        types: {}
+      damage:
+        types:
+          Heat: 10
+    - type: Reactive
+      groups:
+        Flammable: [Touch]
+        Extinguish: [Touch]
+    - type: SpiderWebObject
+    - type: SpeedModifierContacts
+      walkSpeedModifier: 0.5
+      sprintSpeedModifier: 0.5
+      ignoreWhitelist:
+        components:
+            - IgnoreSpiderWeb
+    - type: EmitSoundOnSpawn
+      sound:
+        path: /Audio/_borkroman/FLESH/Flesh_Spawn.ogg

@@ -1,0 +1,107 @@
+#Орать(респрайт)
+- type: entity
+  id: ActionFlashScream
+  name: Кричать
+  description: Издайте ужасный крик.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    useDelay: 10
+    icon:
+      sprite: _borkroman/FLESH/Flesh_ActionIcon.rsi
+      state: Scream
+    event: !type:ScreamActionEvent
+    checkCanInteract: false
+
+#Драться(респрайт)
+- type: entity
+  id: ActionFleshCombatModeToggle
+  name: "[color=red]Боевой режим[/color]"
+  description: УБИВАТЬ УБИВАТЬ УБИВАТЬ УБИВАТЬ!
+  noSpawn: true
+  components:
+  - type: InstantAction
+    checkCanInteract: false
+    checkConsciousness: false
+    icon: _borkroman/FLESH/Flesh_ActionIcon.rsi/NOCombat.png
+    iconOn: _borkroman/FLESH/Flesh_ActionIcon.rsi/Combat.png
+    event: !type:ToggleCombatActionEvent
+    priority: -100
+
+- type: entity
+  id: ActionFleshCombatModeToggleOff
+  parent: ActionFleshCombatModeToggle
+  noSpawn: true
+  components:
+  - type: InstantAction
+    enabled: false
+    autoPopulate: false
+    priority: -100
+
+#Поглоить
+- type: entity
+  id: ActionDevourFlesh
+  name: "[color=red]Поглотить[/color]"
+  description: Поглощайте людей, чтобы утолить свой голод.
+  noSpawn: true
+  components:
+  - type: EntityTargetAction
+    icon: { sprite : _borkroman/FLESH/Flesh_ActionIcon.rsi, state: DevOFF }
+    iconOn: { sprite : _borkroman/FLESH/Flesh_ActionIcon.rsi, state: DevON}
+    event: !type:DevourActionEvent
+    priority: 1
+
+#Пустить сухожилия
+- type: entity
+  id: ActionFleshWeb
+  name: Пустить сухожилия
+  description: Сухожилия - ваш друг и союзнить, распространяйте её чтобы замедлить ваших врагов, а ходьба по ней усиливает вашу регенерацию.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon:
+      sprite: _borkroman/FLESH/Flesh_ActionIcon.rsi
+      state: Web
+    event: !type:SpiderWebActionEvent
+    useDelay: 25
+
+#Принять форму человека
+- type: entity
+  id: HumanReformAction
+  name: Принять форму человека
+  description: Теперь вы человек....ну почти.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon:
+      sprite: _borkroman/FLESH/Flesh_ActionIcon.rsi
+      state: Human
+    event: !type:ReformEvent {}
+    useDelay: 20
+
+#Принять форму плоти
+- type: entity
+  id: FleshReformAction
+  name: Принять форму плоти
+  description: Вернитесь в свою истинную форму.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon:
+      sprite: _borkroman/FLESH/Flesh_ActionIcon.rsi
+      state: Flesh
+    event: !type:ReformEvent {}
+    useDelay: 20
+
+#Сенсорное зрение
+- type: entity
+  id: ActionToggleLightingFleshNightVision
+  name: Сенсорное зрение
+  description: Ваше тело чувствует малейшие колебания, давая полную картину мира.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon: _borkroman/FLESH/Flesh_ActionIcon.rsi/NightVision.png
+    clientExclusive: true
+    checkCanInteract: true
+    event: !type:ToggleLightingActionEvent
