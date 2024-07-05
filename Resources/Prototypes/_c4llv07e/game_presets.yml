@@ -1,0 +1,7 @@
+- type: gamePreset
+  id: Night #For Admin Use: Runs Greenshift but shows "Secret" in lobby.
+  alias:
+  - secretgreenshift
+  name: Судная ночь
+  showInVote: false #Admin Use
+  description: Останьтесь последним выжившим.
