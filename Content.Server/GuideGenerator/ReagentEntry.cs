@@ -109,7 +109,7 @@ public sealed class ReactionEntry
                 .ToDictionary(x => x.Key, x => x.Value);
         Effects = proto.Effects;
 
-        // Corvax-Wiki-Start    
+        // Corvax-Wiki-Start
         ExportEffects = proto.Effects.Select(x => new ReagentEffectEntry(x)).ToList();
         MinTemp = proto.MinimumTemperature;
         MaxTemp = proto.MaximumTemperature;

@@ -672,14 +672,6 @@ namespace Content.Shared.Preferences
             }
         }
 
-        // Corvax-TTS-Start
-        // SHOULD BE NOT PUBLIC, BUT....
-        public static bool CanHaveVoice(TTSVoicePrototype voice, Sex sex)
-        {
-            return voice.RoundStart && sex == Sex.Unsexed || (voice.Sex == sex || voice.Sex == Sex.Unsexed);
-        }
-        // Corvax-TTS-End
-
         /// <summary>
         /// Takes in an IEnumerable of traits and returns a List of the valid traits.
         /// </summary>
@@ -718,6 +710,14 @@ namespace Content.Shared.Preferences
 
             return result;
         }
+
+        // Corvax-TTS-Start
+        // SHOULD BE NOT PUBLIC, BUT....
+        public static bool CanHaveVoice(TTSVoicePrototype voice, Sex sex)
+        {
+            return voice.RoundStart && sex == Sex.Unsexed || (voice.Sex == sex || voice.Sex == Sex.Unsexed);
+        }
+        // Corvax-TTS-End
 
         public ICharacterProfile Validated(ICommonSession session, IDependencyCollection collection, string[] sponsorPrototypes)
         {

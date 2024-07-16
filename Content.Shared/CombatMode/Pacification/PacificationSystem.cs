@@ -62,6 +62,9 @@ public sealed class PacificationSystem : EntitySystem
 
     private void OnShootAttempt(Entity<PacifiedComponent> ent, ref ShotAttemptedEvent args)
     {
+        if (HasComp<PacifismAllowedGunComponent>(args.Used))
+            return;
+
         if (ent.Comp.DisallowGuns)
         {
             ShowPopup(ent, args.Used, "pacified-cannot-fire-gun");
