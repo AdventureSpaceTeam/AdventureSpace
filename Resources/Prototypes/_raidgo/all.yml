@@ -1,0 +1,1679 @@
+- type: entity
+  id: InflatableWallmedi
+  parent: BaseItem
+  name: Раскладная стена
+  description: Думаю её стоит разложить
+  suffix: Middleages
+  components:
+    - type: Sprite
+      sprite: _raidgo/Ages/sprite/foldingwall.rsi
+      state: icon
+    - type: Item
+      sprite: _raidgo/Ages/sprite/foldingwall.rsi
+      size: Small
+    - type: SpawnAfterInteract
+      prototype: WallWoodmedi
+      doAfter: 10
+      removeOnInteract: true
+    - type: Clickable
+# TODO: Add stack sprites + visuals.
+
+- type: entity
+  parent: BaseItem
+  id: Kingkey
+  name: Ключ короля
+  suffix: Middleages
+  description: Выглядит очень дорогим
+  components:
+    - type: Sprite
+      sprite: _raidgo/Ages/sprite/kingkey.rsi
+      state: item_wall
+    - type: Item
+      sprite: _raidgo/Ages/sprite/kingkey.rsi
+      size: Small
+    - type: Access
+      groups:
+      - AllAccess
+    - type: Clothing
+      slots:
+      - idcard
+
+- type: entity
+  name: Ручная карта
+  parent: BaseItem
+  suffix: Middleages
+  id: Agesmap
+  description: Поможет найти дорогу домой
+  components:
+  - type: Sprite
+    sprite: _raidgo/Ages/sprite/map.rsi
+    layers:
+    - state: icon
+    - state: active
+  - type: Item
+    sprite: _raidgo/Ages/sprite/map.rsi
+  - type: HandheldGPS
+  - type: Tag
+    tags:
+    - GPS
+
+- type: entity
+  parent: ComputerComms
+  id: Agescomms
+  name: Стол для подачи обьявлений короля
+  suffix: Middleages
+  description: Позволяет подать обьявление на всё королевство.
+  components:
+  - type: Sprite
+    sprite: _raidgo/Ages/sprite/consolecom.rsi
+    layers:
+      - state: icon
+      - map: ["computerLayerBody"]
+  - type: AccessReader
+    access: [[ "Captain" ]]
+  - type: CommunicationsConsole
+    title: Короля
+    color: "#F39300"
+    canShuttle: false
+    global: true #announce to everyone they're about to fuck shit up
+    sound: _raidgo/sound/king.ogg
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#F39300"
+  - type: ApcPowerReceiver
+    powerLoad: 0
+
+- type: entity
+  name: Кинжал
+  suffix: Middleages
+  parent: CombatKnife
+  id: Agesknife
+  description: Дешёвый, но надёжный.
+  components:
+  - type: Sprite
+    sprite: _raidgo/Ages/sprite/knife.rsi
+    state: icon
+  - type: MeleeWeapon
+    attackRate: 1.0
+    damage:
+      types:
+        Slash: 15
+  - type: Item
+    sprite: _raidgo/Ages/sprite/knife.rsi
+
+- type: entity
+  id: Inflatabledoormedi
+  parent: BaseItem
+  name: Раскладная дверь
+  description: Думаю её стоит разложить
+  suffix: Middleages
+  components:
+    - type: Sprite
+      sprite: _raidgo/Ages/sprite/foldingwall.rsi
+      state: icon
+    - type: Item
+      sprite: _raidgo/Ages/sprite/foldingwall.rsi
+      size: Small
+    - type: SpawnAfterInteract
+      prototype: MediDoorbase
+      doAfter: 10
+      removeOnInteract: true
+    - type: Clickable
+# TODO: Add stack sprites + visuals.
+
+- type: entity
+  id: MediDoorbase
+  parent: BaseStructure
+  name: Деревянная дверь
+  suffix: Middleages
+  description: Красивая, деревянная дверь.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: InteractionOutline
+  - type: Sprite
+    sprite: _raidgo/Ages/sprite/doorbase.rsi
+    layers:
+    - state: closed
+      map: ["enum.DoorVisualLayers.Base"]
+    - state: closed_unlit
+      map: ["enum.DoorVisualLayers.BaseUnlit"]
+    - state: welded
+      map: ["enum.WeldableLayers.BaseWelded"]
+    - state: bolted_unlit
+      map: ["enum.DoorVisualLayers.BaseBolted"]
+    - state: emergency_unlit
+      map: ["enum.DoorVisualLayers.BaseEmergencyAccess"]
+    - state: panel_open
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: AnimationPlayer
+  - type: Physics
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.49,-0.49,0.49,0.49"
+        density: 100
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+  - type: DoorBolt
+  - type: Door
+    closeTimeTwo: 0.4
+    openTimeTwo: 0.4
+    crushDamage:
+      types:
+        Blunt: 50
+    openSound:
+      path: /Audio/Machines/scanning.ogg
+    closeSound:
+      path: /Audio/Machines/scanning.ogg
+    denySound:
+      path: /Audio/Machines/scanning.ogg
+  - type: Airlock
+    openUnlitVisible: true
+  - type: NavMapDoor
+  - type: Appearance
+  - type: WiresVisuals
+  - type: ApcPowerReceiver
+    powerLoad: 0
+  - type: ExtensionCableReceiver
+  - type: Electrified
+    enabled: false
+    usesApcPower: true
+  - type: Airtight
+  - type: Occluder
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Aliens
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 400
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+  - type: IconSmooth
+    key: walls
+    mode: NoSprite
+
+- type: entity
+  id: Inflatablefloormedi
+  parent: BaseItem
+  name: Раскладной пол
+  description: Думаю её стоит разложить
+  suffix: Middleages
+  components:
+    - type: Sprite
+      sprite: _raidgo/Ages/sprite/foldingwall.rsi
+      state: icon
+    - type: Item
+      sprite: _raidgo/Ages/sprite/foldingwall.rsi
+      size: Small
+    - type: SpawnAfterInteract
+      prototype: FlooragesEntity
+      doAfter: 5
+      removeOnInteract: true
+    - type: Clickable
+# TODO: Add stack sprites + visuals.
+
+- type: entity
+  parent: BaseWall
+  id: WallWoodmedi
+  name: Деревянная Стена
+  description: Красивая и грозная стена.
+  suffix: Middleages
+  components:
+  - type: Sprite
+    sprite: _raidgo/Ages/sprite/wallbase.rsi
+  - type: Icon
+    sprite: _raidgo/Ages/sprite/wallbase.rsi
+  - type: Construction
+    graph: Girder
+    node: woodWall
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroyHeavy
+    - trigger:
+        !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroyHeavy
+  - type: IconSmooth
+    key: woods
+    base: wood
+
+- type: entity
+  id: PottedPlantmedi
+  parent: BaseStructureDynamic
+  name: Сталевое дерево
+  suffix: Middleages
+  description: Кто то сказал что сталь не растёт на деревьях?
+  abstract: false
+  components:
+  - type: Transform
+    noRot: true
+  - type: InteractionOutline
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.1
+        density: 190
+        mask:
+        - HighImpassable
+    secretPartName: secret-stash-part-plant
+  - type: ContainerContainer
+    containers:
+      stash: !type:ContainerSlot {}
+  - type: Damageable
+    damageContainer: Inorganic # The pot. Not the plant. Or is it plastic?
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/plant_rustle.ogg
+  - type: Sprite
+    sprite: _raidgo/Ages/sprite/metalplant.rsi
+    state: plant-1
+  - type: TimedSpawner
+    prototypes:
+      - SheetSteel1
+    chance: 1
+    intervalSeconds: 150
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 3
+
+- type: entity
+  id: Inflatableplantmedi
+  parent: BaseItem
+  name: Семяна сталевого дерева
+  description: Волшебно.
+  suffix: Middleages
+  components:
+    - type: Sprite
+      sprite: _raidgo/Ages/sprite/seedmetal.rsi
+      state: icon
+    - type: Item
+      sprite: _raidgo/Ages/sprite/seedmetal.rsi
+      size: Small
+    - type: SpawnAfterInteract
+      prototype: PottedPlantmedi
+      doAfter: 5
+      removeOnInteract: true
+    - type: Clickable
+# TODO: Add stack sprites + visuals.
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckCloakKing
+  name: Плащ Короля
+  suffix: Middleages
+  description: Нося его хочется построить королевство.
+  components:
+  - type: Sprite
+    sprite: _raidgo/Ages/sprite/kingcloak.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatCrownmedi
+  name: Королевская корона
+  suffix: Middleages
+  description: Символ власти. В случае её потери король перестаёт быть королём. Увы.
+  components:
+  - type: Sprite
+    sprite: _raidgo/Ages/sprite/crown.rsi
+  - type: Clothing
+    sprite: _raidgo/Ages/sprite/crown.rsi
+
+- type: entity
+  id: Inflatablelathemedi
+  parent: BaseItem
+  name: Каркас для верстака
+  description: Думаю его стоит разложить
+  suffix: Middleages
+  components:
+    - type: Sprite
+      sprite: _raidgo/Ages/sprite/foldingwall.rsi
+      state: icon
+    - type: Item
+      sprite: _raidgo/Ages/sprite/foldingwall.rsi
+      size: Small
+    - type: SpawnAfterInteract
+      prototype: Medilath
+      doAfter: 30
+      removeOnInteract: true
+    - type: Clickable
+# TODO: Add stack sprites + visuals.
+
+- type: entity
+  id: Inflatableanvilmedi
+  parent: BaseItem
+  name: Каркас для наковальни
+  description: Думаю его стоит разложить
+  suffix: Middleages
+  components:
+    - type: Sprite
+      sprite: _raidgo/Ages/sprite/foldingmetal.rsi
+      state: icon
+    - type: Item
+      sprite: _raidgo/Ages/sprite/foldingmetal.rsi
+      size: Small
+    - type: SpawnAfterInteract
+      prototype: Medianvil
+      doAfter: 30
+      removeOnInteract: true
+    - type: Clickable
+# TODO: Add stack sprites + visuals.
+
+- type: entity
+  parent: BaseItem
+  id: Wardenkey
+  name: Ключ стражника
+  suffix: Middleages
+  description: Выглядит не очень дорогим
+  components:
+    - type: Sprite
+      sprite: _raidgo/Ages/sprite/wardenkey.rsi
+      state: item_wall
+    - type: Item
+      sprite: _raidgo/Ages/sprite/wardenkey.rsi
+      size: Small
+    - type: Access
+      groups:
+      - Engineering
+    - type: Clothing
+      slots:
+      - idcard
+
+- type: entity
+  id: Inflatableplantwoodmedi
+  parent: BaseItem
+  name: Семяна волшебного дерева
+  description: Позволяет собирать доски бесконечно.
+  suffix: Middleages
+  components:
+    - type: Sprite
+      sprite: _raidgo/Ages/sprite/seedwood.rsi
+      state: icon
+    - type: Item
+      sprite: _raidgo/Ages/sprite/seedwood.rsi
+      size: Small
+    - type: SpawnAfterInteract
+      prototype: PottedPlantwoodmedi
+      doAfter: 5
+      removeOnInteract: true
+    - type: Clickable
+# TODO: Add stack sprites + visuals.
+
+- type: entity
+  id: PottedPlantwoodmedi
+  parent: BaseStructureDynamic
+  name: Волшебное дерево
+  suffix: Middleages
+  description: Кто то сказал что доски не растут на деревьях?
+  abstract: false
+  components:
+  - type: Transform
+    noRot: true
+  - type: InteractionOutline
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.1
+        density: 190
+        mask:
+        - HighImpassable
+    secretPartName: secret-stash-part-plant
+  - type: ContainerContainer
+    containers:
+      stash: !type:ContainerSlot {}
+  - type: Damageable
+    damageContainer: Inorganic # The pot. Not the plant. Or is it plastic?
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/plant_rustle.ogg
+  - type: Sprite
+    sprite: _raidgo/Ages/sprite/woodplant.rsi
+    state: plant-1
+  - type: TimedSpawner
+    prototypes:
+      - MaterialWoodPlank1
+    chance: 1
+    intervalSeconds: 120
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 20
+
+- type: entity
+  parent: DrinkBaseCup
+  id: DrinkwoodCup
+  name: Деревянная кружка
+  suffix: Middleages
+  description: Выглядит не очень надёжно.
+  components:
+  - type: Sprite
+    sprite: _raidgo/Ages/sprite/mugwood.rsi
+    layers:
+      - state: icon-0
+      - map: ["enum.SolutionContainerLayers.Fill"]
+        state: icon-3
+        visible: false
+  - type: SolutionContainerVisuals
+    maxFillLevels: 3
+    fillBaseName: icon-
+
+- type: entity
+  id: MediDoorwarden
+  parent: BaseStructure
+  name: Деревянная дверь
+  suffix: Middleages (Стражник)
+  description: Красивая, деревянная дверь.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: InteractionOutline
+  - type: Sprite
+    sprite: _raidgo/Ages/sprite/doorbase.rsi
+    layers:
+    - state: closed
+      map: ["enum.DoorVisualLayers.Base"]
+    - state: closed_unlit
+      map: ["enum.DoorVisualLayers.BaseUnlit"]
+    - state: welded
+      map: ["enum.WeldableLayers.BaseWelded"]
+    - state: bolted_unlit
+      map: ["enum.DoorVisualLayers.BaseBolted"]
+    - state: emergency_unlit
+      map: ["enum.DoorVisualLayers.BaseEmergencyAccess"]
+    - state: panel_open
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: AnimationPlayer
+  - type: Physics
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.49,-0.49,0.49,0.49"
+        density: 100
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+  - type: DoorBolt
+  - type: Door
+    closeTimeTwo: 0.4
+    openTimeTwo: 0.4
+    crushDamage:
+      types:
+        Blunt: 50
+    openSound:
+      path: /Audio/Machines/scanning.ogg
+    closeSound:
+      path: /Audio/Machines/scanning.ogg
+    denySound:
+      path: /Audio/Machines/scanning.ogg
+  - type: Airlock
+    openUnlitVisible: true
+  - type: NavMapDoor
+  - type: AccessReader
+    access: [["Engineering"]]
+  - type: Appearance
+  - type: WiresVisuals
+  - type: ApcPowerReceiver
+    powerLoad: 0
+  - type: ExtensionCableReceiver
+  - type: Electrified
+    enabled: false
+    usesApcPower: true
+  - type: Airtight
+  - type: Occluder
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Aliens
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 400
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+  - type: IconSmooth
+    key: walls
+    mode: NoSprite
+
+- type: entity
+  id: PottedPlantapplemedi
+  parent: BaseStructureDynamic
+  name: Яблочное дерево
+  suffix: Middleages
+  description: Говорят, если яблоко упадёт на голову то ты станешь умным. Но лучше не проверять.
+  abstract: false
+  components:
+  - type: Transform
+    noRot: true
+  - type: InteractionOutline
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.1
+        density: 190
+        mask:
+        - HighImpassable
+    secretPartName: secret-stash-part-plant
+  - type: ContainerContainer
+    containers:
+      stash: !type:ContainerSlot {}
+  - type: Damageable
+    damageContainer: Inorganic # The pot. Not the plant. Or is it plastic?
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/plant_rustle.ogg
+  - type: Sprite
+    sprite: _raidgo/Ages/sprite/appleplant.rsi
+    state: plant-1
+  - type: TimedSpawner
+    prototypes:
+      - FoodApple
+    chance: 1
+    intervalSeconds: 180
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 3
+
+- type: entity
+  parent: BaseHeaterMachine
+  id: firegrillmedi
+  name: Костёр
+  suffix: Middleages
+  description: Настоящее средневековое чудо.
+  components:
+  - type: Sprite
+    # TODO: draw a sprite
+    sprite: _raidgo/Ages/sprite/firegrill.rsi
+    drawdepth: SmallObjects
+    snapCardinals: true
+    layers:
+    - state: icon
+    - map: ["enum.EntityHeaterVisuals.Setting"]
+      shader: unshaded
+      visible: true
+  - type: ApcPowerReceiver
+    powerLoad: 0 # off by default
+  - type: EntityHeater
+  - type: ItemPlacer
+    maxEntities: 4 # big grill, many steaks
+    whitelist:
+      components:
+      - Temperature
+  - type: PlaceableSurface
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: Wood
+  - type: Destructible
+    thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 50
+        behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+  - type: GenericVisualizer
+    visuals:
+      enum.EntityHeaterVisuals.Setting:
+        enum.EntityHeaterVisuals.Setting:
+          Off: { visible: false }
+          Low: { visible: true, state: low }
+          Medium: { visible: true, state: medium }
+          High: { visible: true, state: high }
+  - type: AlwaysHot
+  - type: PointLight
+    radius: 5
+    energy: 3
+    color: "#FFC90C"
+
+- type: entity
+  name: Деревянный туалет
+  suffix: Middleages
+  description: Лучше не смотреть в дыру под ним.
+  id: Woodtoilet
+  parent: SeatBase
+  abstract: false
+  components:
+  - type: Rotatable
+  - type: Sprite
+    sprite: _raidgo/Ages/sprite/toilet.rsi
+    state: disposal
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: Wood
+  - type: Destructible
+    thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 50
+        behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+
+- type: entity
+  id: Inflatableplantapplemedi
+  parent: BaseItem
+  name: Семяна яблочного дерева
+  description: Волшебно.
+  suffix: Middleages
+  components:
+    - type: Sprite
+      sprite: _raidgo/Ages/sprite/appleseeds.rsi
+      state: icon
+    - type: Item
+      sprite: _raidgo/Ages/sprite/appleseeds.rsi
+      size: Small
+    - type: SpawnAfterInteract
+      prototype: PottedPlantapplemedi
+      doAfter: 5
+      removeOnInteract: true
+    - type: Clickable
+# TODO: Add stack sprites + visuals.
+
+- type: entity
+  id: Inflatablewoodtoiletmedi
+  parent: BaseItem
+  name: Каркас для туалета
+  description: Похоже его стоит разложить
+  suffix: Middleages
+  components:
+    - type: Sprite
+      sprite: _raidgo/Ages/sprite/foldingwall.rsi
+      state: icon
+    - type: Item
+      sprite: _raidgo/Ages/sprite/foldingwall.rsi
+      size: Small
+    - type: SpawnAfterInteract
+      prototype: Woodtoilet
+      doAfter: 15
+      removeOnInteract: true
+    - type: Clickable
+# TODO: Add stack sprites + visuals.
+
+- type: entity
+  id: MediDoorking
+  parent: BaseStructure
+  name: Деревянная дверь
+  suffix: Middleages (Король)
+  description: Красивая, деревянная дверь.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: InteractionOutline
+  - type: Sprite
+    sprite: _raidgo/Ages/sprite/doorbase.rsi
+    layers:
+    - state: closed
+      map: ["enum.DoorVisualLayers.Base"]
+    - state: closed_unlit
+      map: ["enum.DoorVisualLayers.BaseUnlit"]
+    - state: welded
+      map: ["enum.WeldableLayers.BaseWelded"]
+    - state: bolted_unlit
+      map: ["enum.DoorVisualLayers.BaseBolted"]
+    - state: emergency_unlit
+      map: ["enum.DoorVisualLayers.BaseEmergencyAccess"]
+    - state: panel_open
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: AnimationPlayer
+  - type: Physics
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.49,-0.49,0.49,0.49"
+        density: 100
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+  - type: DoorBolt
+  - type: Door
+    closeTimeTwo: 0.4
+    openTimeTwo: 0.4
+    crushDamage:
+      types:
+        Blunt: 50
+    openSound:
+      path: /Audio/Machines/scanning.ogg
+    closeSound:
+      path: /Audio/Machines/scanning.ogg
+    denySound:
+      path: /Audio/Machines/scanning.ogg
+  - type: Airlock
+    openUnlitVisible: true
+  - type: NavMapDoor
+  - type: AccessReader
+    access: [["Captain"]]
+  - type: Appearance
+  - type: WiresVisuals
+  - type: ApcPowerReceiver
+    powerLoad: 0
+  - type: ExtensionCableReceiver
+  - type: Electrified
+    enabled: false
+    usesApcPower: true
+  - type: Airtight
+  - type: Occluder
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Aliens
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 400
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+  - type: IconSmooth
+    key: walls
+    mode: NoSprite
+
+- type: entity
+  parent: BaseItem
+  id: clothkey
+  name: Ключ портного
+  suffix: Middleages
+  description: Выглядит не очень дорогим
+  components:
+    - type: Sprite
+      sprite: _raidgo/Ages/sprite/wardenkey.rsi
+      state: item_wall
+    - type: Item
+      sprite: _raidgo/Ages/sprite/wardenkey.rsi
+      size: Small
+    - type: Access
+      groups:
+      - Research
+    - type: Clothing
+      slots:
+      - idcard
+
+- type: entity
+  parent: BaseItem
+  id: anvilkey
+  name: Ключ кузнеца
+  suffix: Middleages
+  description: Выглядит не очень дорогим
+  components:
+    - type: Sprite
+      sprite: _raidgo/Ages/sprite/wardenkey.rsi
+      state: item_wall
+    - type: Item
+      sprite: _raidgo/Ages/sprite/wardenkey.rsi
+      size: Small
+    - type: Access
+      groups:
+      - Service
+    - type: Clothing
+      slots:
+      - idcard
+
+- type: entity
+  id: MediDoorcloth
+  parent: BaseStructure
+  name: Деревянная дверь
+  suffix: Middleages (Портной)
+  description: Красивая, деревянная дверь.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: InteractionOutline
+  - type: Sprite
+    sprite: _raidgo/Ages/sprite/doorbase.rsi
+    layers:
+    - state: closed
+      map: ["enum.DoorVisualLayers.Base"]
+    - state: closed_unlit
+      map: ["enum.DoorVisualLayers.BaseUnlit"]
+    - state: welded
+      map: ["enum.WeldableLayers.BaseWelded"]
+    - state: bolted_unlit
+      map: ["enum.DoorVisualLayers.BaseBolted"]
+    - state: emergency_unlit
+      map: ["enum.DoorVisualLayers.BaseEmergencyAccess"]
+    - state: panel_open
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: AnimationPlayer
+  - type: Physics
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.49,-0.49,0.49,0.49"
+        density: 100
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+  - type: DoorBolt
+  - type: Door
+    closeTimeTwo: 0.4
+    openTimeTwo: 0.4
+    crushDamage:
+      types:
+        Blunt: 50
+    openSound:
+      path: /Audio/Machines/scanning.ogg
+    closeSound:
+      path: /Audio/Machines/scanning.ogg
+    denySound:
+      path: /Audio/Machines/scanning.ogg
+  - type: Airlock
+    openUnlitVisible: true
+  - type: NavMapDoor
+  - type: AccessReader
+    access: [["Research"]]
+  - type: Appearance
+  - type: WiresVisuals
+  - type: ApcPowerReceiver
+    powerLoad: 0
+  - type: ExtensionCableReceiver
+  - type: Electrified
+    enabled: false
+    usesApcPower: true
+  - type: Airtight
+  - type: Occluder
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Aliens
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 400
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+  - type: IconSmooth
+    key: walls
+    mode: NoSprite
+
+- type: entity
+  id: MediDooranvil
+  parent: BaseStructure
+  name: Деревянная дверь
+  suffix: Middleages (Кузнец)
+  description: Красивая, деревянная дверь.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: InteractionOutline
+  - type: Sprite
+    sprite: _raidgo/Ages/sprite/doorbase.rsi
+    layers:
+    - state: closed
+      map: ["enum.DoorVisualLayers.Base"]
+    - state: closed_unlit
+      map: ["enum.DoorVisualLayers.BaseUnlit"]
+    - state: welded
+      map: ["enum.WeldableLayers.BaseWelded"]
+    - state: bolted_unlit
+      map: ["enum.DoorVisualLayers.BaseBolted"]
+    - state: emergency_unlit
+      map: ["enum.DoorVisualLayers.BaseEmergencyAccess"]
+    - state: panel_open
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: AnimationPlayer
+  - type: Physics
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.49,-0.49,0.49,0.49"
+        density: 100
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+  - type: DoorBolt
+  - type: Door
+    closeTimeTwo: 0.4
+    openTimeTwo: 0.4
+    crushDamage:
+      types:
+        Blunt: 50
+    openSound:
+      path: /Audio/Machines/scanning.ogg
+    closeSound:
+      path: /Audio/Machines/scanning.ogg
+    denySound:
+      path: /Audio/Machines/scanning.ogg
+  - type: Airlock
+    openUnlitVisible: true
+  - type: NavMapDoor
+  - type: AccessReader
+    access: [["Service"]]
+  - type: Appearance
+  - type: WiresVisuals
+  - type: ApcPowerReceiver
+    powerLoad: 0
+  - type: ExtensionCableReceiver
+  - type: Electrified
+    enabled: false
+    usesApcPower: true
+  - type: Airtight
+  - type: Occluder
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Aliens
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 400
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+  - type: IconSmooth
+    key: walls
+    mode: NoSprite
+
+- type: entity
+  id: Inflatablewoodavnildoormedi
+  parent: BaseItem
+  name: Раскладная дверь кузнеца
+  description: Похоже её стоит разложить
+  suffix: Middleages
+  components:
+    - type: Sprite
+      sprite: _raidgo/Ages/sprite/foldingwall.rsi
+      state: icon
+    - type: Item
+      sprite: _raidgo/Ages/sprite/foldingwall.rsi
+      size: Small
+    - type: SpawnAfterInteract
+      prototype: MediDooranvil
+      doAfter: 10
+      removeOnInteract: true
+    - type: Clickable
+# TODO: Add stack sprites + visuals.
+
+- type: entity
+  id: Inflatablewoodclothdoormedi
+  parent: BaseItem
+  name: Раскладная дверь портного
+  description: Похоже её стоит разложить
+  suffix: Middleages
+  components:
+    - type: Sprite
+      sprite: _raidgo/Ages/sprite/foldingwall.rsi
+      state: icon
+    - type: Item
+      sprite: _raidgo/Ages/sprite/foldingwall.rsi
+      size: Small
+    - type: SpawnAfterInteract
+      prototype: MediDoorcloth
+      doAfter: 10
+      removeOnInteract: true
+    - type: Clickable
+# TODO: Add stack sprites + visuals.
+
+- type: entity
+  name: Меч
+  suffix: Middleages
+  parent: CombatKnife
+  id: Agessword
+  description: Храбрый меч, служащий владельцу до самой смерти.
+  components:
+  - type: Sprite
+    sprite: _raidgo/Ages/sprite/sword.rsi
+    state: icon
+  - type: MeleeWeapon
+    attackRate: 1.0
+    damage:
+      types:
+        Slash: 20
+  - type: Item
+    sprite: _raidgo/Ages/sprite/sword.rsi
+    size: Large
+  - type: Clothing
+    sprite: Objects/Weapons/Melee/claymore.rsi
+    slots:
+    - back
+
+- type: entity
+  parent: BaseItem
+  id: Bucketwood
+  name: Деревянное ведро
+  suffix: Middleages
+  description: Вода точно не прольётся?
+  components:
+  - type: Drink
+    solution: bucket
+    ignoreEmpty: true
+  - type: Clickable
+  - type: Sprite
+    sprite: _raidgo/Ages/sprite/bucket.rsi
+    layers:
+    - state: icon
+    - map: ["enum.SolutionContainerLayers.Fill"]
+      state: fill-1
+      visible: false
+  - type: Item
+    size: Normal
+  - type: SolutionContainerManager
+    solutions:
+      bucket:
+        maxVol: 250
+  - type: MixableSolution
+    solution: bucket
+  - type: SolutionTransfer
+    transferAmount: 100
+    maxTransferAmount: 100
+    minTransferAmount: 10
+    canChangeTransferAmount: true
+  - type: UserInterface
+    interfaces:
+      enum.TransferAmountUiKey.Key:
+        type: TransferAmountBoundUserInterface
+  - type: MeleeWeapon
+    soundNoDamage:
+      path: "/Audio/Effects/Fluids/splat.ogg"
+    damage:
+      types:
+        Blunt: 0
+  - type: Spillable
+    solution: bucket
+  - type: SpillWhenWorn
+    solution: bucket
+  - type: DrawableSolution
+    solution: bucket
+  - type: RefillableSolution
+    solution: bucket
+  - type: DrainableSolution
+    solution: bucket
+  - type: SolutionItemStatus
+    solution: bucket
+  - type: Appearance
+  - type: SolutionContainerVisuals
+    maxFillLevels: 3
+    fillBaseName: fill-
+  - type: ExaminableSolution
+    solution: bucket
+  - type: Tag
+    tags:
+      - Bucket
+
+- type: entity
+  id: FlooragesEntity
+  name: Деревянный пол
+  suffix: Middleages
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Clickable
+  - type: Sprite
+    sprite: _raidgo/Ages/sprite/floorbase.rsi
+    drawdepth: FloorTiles
+    layers:
+      - state: bananium
+  - type: Transform
+    anchored: true
+  - type: Tag
+    tags:
+      - Catwalk
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: Metallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          MaterialBananium:
+            min: 0
+            max: 0
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: StepTrigger
+    intersectRatio: 0.2
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      slips:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.3,0.4,0.3"
+        hard: false
+        layer:
+        - SlipLayer
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.3,0.4,0.3"
+        density: 1000
+        mask:
+        - ItemMask
+
+- type: entity
+  parent: UnsensoredClothingUniformBase
+  id: ClothingUniformJumpsuitAges
+  name: Крестьянская роба
+  suffix: Middleages
+  description: Поношенная и дряхлая, но зато своя.
+  components:
+  - type: Sprite
+    sprite: _raidgo/Ages/sprite/robe.rsi
+  - type: Clothing
+    sprite: _raidgo/Ages/sprite/robe.rsi
+
+- type: entity
+  parent: BaseItem
+  name: Швабра
+  suffix: Middleages
+  id: MopItemmedi
+  description: Старая дряхлая никчёмная швабра.
+  components:
+  - type: Sprite
+    sprite: _raidgo/Ages/sprite/mop.rsi
+    layers:
+      - state: mop
+      - map: ["enum.SolutionContainerLayers.Fill"]
+        state: fill-3
+        visible: false
+  - type: Appearance
+  - type: SolutionContainerVisuals
+    maxFillLevels: 3
+    fillBaseName: fill-
+    inHandsFillBaseName: -fill-
+    inHandsMaxFillLevels: 2
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 10
+    soundHit:
+      collection: MetalThud
+  - type: Spillable
+    solution: absorbed
+  - type: Wieldable
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Blunt: 5
+  - type: Item
+    size: Large
+    sprite: _raidgo/Ages/sprite/mop.rsi
+  - type: Absorbent
+  - type: SolutionContainerManager
+    solutions:
+      absorbed:
+        maxVol: 100
+  - type: UseDelay
+    delay: 1
+  - type: Tag
+    tags:
+      - Mop
+      - MopBasic
+  - type: GuideHelp
+    guides:
+    - Janitorial
+
+- type: entity
+  name: Посох исцеления
+  suffix: Middleages
+  parent: WeaponStaffBase
+  id: WeaponStaffHealingmedi
+  description: Выглядит очаровывающе.
+  components:
+  - type: Sprite
+    layers:
+    - state: healing
+  - type: Item
+    heldPrefix: healing
+  - type: Gun
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/Magic/staff_healing.ogg
+  - type: BasicEntityAmmoProvider
+    proto: ProjectileHealingBolt
+    capacity: 1
+    count: 1
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 120
+
+- type: entity
+  parent: UnsensoredClothingUniformBase
+  id: ClothingUniformJumpsuitAgesKing
+  name: Королевские одеяния
+  suffix: Middleages
+  description: Богато и прекрасно. Собственность короля.
+  components:
+  - type: Sprite
+    sprite: _raidgo/Ages/sprite/robeking.rsi
+  - type: Clothing
+    sprite: _raidgo/Ages/sprite/robeking.rsi
+
+- type: entity
+  parent: ClothingOuterCoatHoSTrench
+  id: ClothingOuterCoatKingmediGreatcoat
+  name: Шинель короля
+  suffix: Middleages
+  description: Сделана из лучших материалов.
+  components:
+    - type: Sprite
+      sprite: _raidgo/Ages/sprite/kingcoat.rsi
+    - type: Clothing
+      sprite: _raidgo/Ages/sprite/kingcoat.rsi
+    - type: Armor
+      modifiers:
+        coefficients:
+          Blunt: 0.7
+          Slash: 0.7
+          Piercing: 0.4
+          Heat: 0.7
+
+- type: entity
+  parent: ClothingOuterBaseLarge
+  id: ClothingOuterArmormedi
+  name: Железная броня
+  suffix: Middleages
+  description: Великая броня, созданная на коленке.
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Armor/podwars_armor.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Armor/podwars_armor.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.5
+        Slash: 0.5
+        Piercing: 0.6
+        Heat: 0.5
+  - type: GroupExamine
+  - type: ClothingRequiredStepTriggerImmune
+    slots: WITHOUT_POCKET
+  - type: ClothingSpeedModifier
+    walkModifier: 0.8
+    sprintModifier: 0.8
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckCloakWarden
+  name: Плащ Стражника
+  suffix: Middleages
+  description: Нося его хочется унижать всех кто ниже тебя рангом.
+  components:
+  - type: Sprite
+    sprite: _raidgo/Ages/sprite/wardencloak.rsi
+
+- type: entity
+  name: Повязка
+  description: Лекарство от всех болезней(Если все ваши болезни это ожоги факелом и порез куском метала).
+  parent: BaseHealingItem
+  id: Brutepackmedi
+  suffix: Middleages
+  components:
+  - type: Tag
+    tags:
+    - Brutepack
+  - type: Sprite
+    state: gauze
+  - type: Healing
+    damageContainers:
+      - Biological
+    damage:
+      groups:
+        Brute: -30 # 5 for each type in the group
+      types:
+        Heat: -30
+        Cold: -15
+        Caustic: -15
+        Bloodloss: -0.5
+    bloodlossModifier: -10
+    healingBeginSound:
+      path: "/Audio/Items/Medical/brutepack_begin.ogg"
+    healingEndSound:
+      path: "/Audio/Items/Medical/brutepack_end.ogg"
+  - type: Stack
+    stackType: Brutepack
+    count: 10
+  - type: StackPrice
+    price: 5
+
+- type: entity
+  id: PottedPlantclothmedi
+  parent: BaseStructureDynamic
+  name: Тканевое дерево
+  suffix: Middleages
+  description: Кто то сказал что ткань не растёт на деревьях?
+  abstract: false
+  components:
+  - type: Transform
+    noRot: true
+  - type: InteractionOutline
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.1
+        density: 190
+        mask:
+        - HighImpassable
+    secretPartName: secret-stash-part-plant
+  - type: ContainerContainer
+    containers:
+      stash: !type:ContainerSlot {}
+  - type: Damageable
+    damageContainer: Inorganic # The pot. Not the plant. Or is it plastic?
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/plant_rustle.ogg
+  - type: Sprite
+    sprite: _raidgo/Ages/sprite/clothplant.rsi
+    state: plant-1
+  - type: TimedSpawner
+    prototypes:
+      - MaterialCloth1
+    chance: 1
+    intervalSeconds: 120
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 5
+
+- type: entity
+  id: Inflatableplantmedicloth
+  parent: BaseItem
+  name: Семяна тканевого дерева
+  description: Волшебно.
+  suffix: Middleages
+  components:
+    - type: Sprite
+      sprite: _raidgo/Ages/sprite/clothseed.rsi
+      state: icon
+    - type: Item
+      sprite: _raidgo/Ages/sprite/clothseed.rsi
+      size: Small
+    - type: SpawnAfterInteract
+      prototype: PottedPlantclothmedi
+      doAfter: 5
+      removeOnInteract: true
+    - type: Clickable
+# TODO: Add stack sprites + visuals.
+
+- type: entity
+  name: Топор
+  parent: BaseItem
+  id: AxeMedi
+  description: Позволяет добывать дерево. Не ну а что ты ожидал?
+  suffix: Middleages
+  components:
+  - type: Tag
+    tags:
+    - BotanyHatchet
+  - type: Sharp
+  - type: Sprite
+    sprite: _raidgo/Ages/sprite/axe.rsi
+    state: icon
+  - type: MeleeWeapon
+    wideAnimationRotation: 135
+    swingLeft: true
+    damage:
+      types:
+        Slash: 8
+        Piercing: 2
+  - type: Item
+    sprite: _raidgo/Ages/sprite/axe.rsi
+
+- type: entity
+  name: Бочка пива
+  description: Мечта крестьянина.
+  parent: StorageTank
+  id: BeerTankFullAges
+  suffix: Middleages
+  components:
+  - type: Sprite
+    sprite: _raidgo/Ages/sprite/beer.rsi
+    state: kvass
+  - type: SolutionContainerManager
+    solutions:
+      tank:
+        reagents:
+          - ReagentId: Beer
+            Quantity: 1500
+
+- type: entity
+  name: Бочка с водой
+  description: Будем надеяться что эта вода прошла очистку (нет).
+  parent: StorageTank
+  id: WaterTankFullAges
+  suffix: Middleages
+  components:
+  - type: Sprite
+    sprite: _raidgo/Ages/sprite/waterbarrel.rsi
+    state: icon
+  - type: SolutionContainerManager
+    solutions:
+      tank:
+        reagents:
+          - ReagentId: Water
+            Quantity: 1500
+
+- type: entity
+  parent: ClothingBackpack
+  id: ClothingBackpackmiddleages
+  suffix: Middleages
+  name: Мешок
+  description: Рюкзак для бедных.
+  components:
+  - type: Sprite
+    sprite: _raidgo/Ages/sprite/backpack.rsi
+  - type: ClothingSpeedModifier
+    walkModifier: 0.8
+    sprintModifier: 0.8
+
+- type: entity
+  id: Inflatableclothtable
+  parent: BaseItem
+  name: Каркас для стола портного
+  description: Думаю его стоит разложить
+  suffix: Middleages
+  components:
+    - type: Sprite
+      sprite: _raidgo/Ages/sprite/foldingwall.rsi
+      state: icon
+    - type: Item
+      sprite: _raidgo/Ages/sprite/foldingwall.rsi
+      size: Small
+    - type: SpawnAfterInteract
+      prototype: Mediclothtable
+      doAfter: 30
+      removeOnInteract: true
+    - type: Clickable
+
+- type: entity
+  id: MediDoormage
+  parent: BaseStructure
+  name: Деревянная дверь
+  suffix: Middleages (Маг)
+  description: Красивая, деревянная дверь.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: InteractionOutline
+  - type: Sprite
+    sprite: _raidgo/Ages/sprite/doorbase.rsi
+    layers:
+    - state: closed
+      map: ["enum.DoorVisualLayers.Base"]
+    - state: closed_unlit
+      map: ["enum.DoorVisualLayers.BaseUnlit"]
+    - state: welded
+      map: ["enum.WeldableLayers.BaseWelded"]
+    - state: bolted_unlit
+      map: ["enum.DoorVisualLayers.BaseBolted"]
+    - state: emergency_unlit
+      map: ["enum.DoorVisualLayers.BaseEmergencyAccess"]
+    - state: panel_open
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: AnimationPlayer
+  - type: Physics
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.49,-0.49,0.49,0.49"
+        density: 100
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+  - type: DoorBolt
+  - type: Door
+    closeTimeTwo: 0.4
+    openTimeTwo: 0.4
+    crushDamage:
+      types:
+        Blunt: 50
+    openSound:
+      path: /Audio/Machines/scanning.ogg
+    closeSound:
+      path: /Audio/Machines/scanning.ogg
+    denySound:
+      path: /Audio/Machines/scanning.ogg
+  - type: Airlock
+    openUnlitVisible: true
+  - type: NavMapDoor
+  - type: AccessReader
+    access: [["Medical"]]
+  - type: Appearance
+  - type: WiresVisuals
+  - type: ApcPowerReceiver
+    powerLoad: 0
+  - type: ExtensionCableReceiver
+  - type: Electrified
+    enabled: false
+    usesApcPower: true
+  - type: Airtight
+  - type: Occluder
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Aliens
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 400
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+  - type: IconSmooth
+    key: walls
+    mode: NoSprite
+
+- type: entity
+  parent: BaseItem
+  id: Kingmage
+  name: Ключ Мага
+  suffix: Middleages
+  description: Выглядит довольно дорогим
+  components:
+    - type: Sprite
+      sprite: _raidgo/Ages/sprite/kingkey.rsi
+      state: item_wall
+    - type: Item
+      sprite: _raidgo/Ages/sprite/kingkey.rsi
+      size: Small
+    - type: Access
+      groups:
+      - Medical
+      - Engineering
+    - type: Clothing
+      slots:
+      - idcard
