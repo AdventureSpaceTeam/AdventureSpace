@@ -10,7 +10,6 @@ namespace Content.Client._c4llv07e.Morph;
 
 public sealed class SharedMorphSystem : EntitySystem
 {
-    [Dependency] private readonly IResourceCache _resourceCache = default!;
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
 
     public override void Initialize()

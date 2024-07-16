@@ -12,7 +12,6 @@ namespace Content.Server._c4llv07e.VpnGuard;
 public sealed class VpnGuardApi : IServerVPNGuardManager
 {
     [Dependency] private readonly IConfigurationManager _cfg = default!;
-    [Dependency] private readonly IServerDbManager _db = default!;
 
     private ISawmill _sawmill = default!;
     private Uri _apiUri = default!;
