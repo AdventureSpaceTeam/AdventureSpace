@@ -29,3 +29,7 @@
 - type: lobbyBackground
   id: RikylkaMices
   background: /Textures/Adventure/LobbyScreens/rikylka_mices.png
+
+- type: lobbyBackground
+  id: RikylkaChimestry
+  background: /Textures/Adventure/LobbyScreens/rikylka_chimestry.png
