@@ -21,10 +21,7 @@ public sealed class VpnGuardFile : IServerVPNGuardManager
         string path;
         path = _cfg.GetCVar(CCVars.VpnGuardFilePath);
         if (path == string.Empty)
-        {
-            _sawmill.Error("Path for the vpn list is unset");
             return;
-        }
         try {
             using StreamReader stream = new(path);
             line_number = 0;
