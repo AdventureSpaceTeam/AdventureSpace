@@ -12,8 +12,6 @@ namespace Content.Server._c4llv07e.Aliens;
 public sealed class FaceJumpSystem : EntitySystem
 {
     [Dependency] private readonly ActionsSystem _actions = default!;
-    [Dependency] private readonly ThrowingSystem _throwingSystem = default!;
-    [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
 
     public override void Initialize()
     {
