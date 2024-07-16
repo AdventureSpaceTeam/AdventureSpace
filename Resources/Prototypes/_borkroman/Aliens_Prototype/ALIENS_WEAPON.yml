@@ -109,7 +109,7 @@
   components:
   - type: InstantAction
     itemIconStyle: NoItem
-    event: !type:ToggleMagbootsEvent
+    event: !type:ToggleActionEvent
     icon: { sprite: _borkroman/Aliens_Sprite/AlienActionIcons.rsi, state: claw }
     iconOn: { sprite: _borkroman/Aliens_Sprite/AlienActionIcons.rsi, state: claw }
 

@@ -545,7 +545,7 @@
 - type: Tag
   id: DrinkSpaceGlue
 
-- type: Tag 
+- type: Tag
   id: Dropper
 
 - type: Tag
@@ -1357,6 +1357,3 @@
 
 - type: Tag
   id: PockerChips
-
-- type: Tag # c4llv07e
-  id: Dropper
