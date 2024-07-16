@@ -1,0 +1,19 @@
+- type: entity
+  parent: ClothingOuterArmorBasic
+  id: BlueShieldArmoredTrench
+  name: Укреплённый тренч офицера "синий щит"
+  description: Тренч из самых лучших синтетических материалов и с прочными вставками из керамических пластин. Не мешает движениям, но защищает на ура
+  components:
+  - type: Sprite
+    sprite: _depresh/Clothing/OuterClothing/Coats/BH.rsi
+  - type: Clothing
+    sprite: _depresh/Clothing/OuterClothing/Coats/BH.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.40
+        Slash: 0.40
+        Piercing: 0.50
+        Heat: 0.50
+  - type: ExplosionResistance
+    damageCoefficient: 0.75
