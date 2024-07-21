@@ -30,12 +30,14 @@
   equipment:
     shoes: ClothingShoesColorRed
     gloves: ClothingHandsGlovesNitrile
+    head: ClothingHeadHatBeretBrigmedic
+    jumpsuit: ClothingUniformJumpsuitBrigmedic
     eyes: ClothingEyesHudMedical
     mask: ClothingMaskBreathMedicalSecurity
     id: BrigmedicPDAADV
     ears: ClothingHeadsetBrigmedic
     belt: ClothingBeltMedicalFilled
-
+  innerClothingSkirt: ClothingUniformJumpskirtBrigmedic
 #Карта
 - type: entity
   parent: BrigmedicIDCard
