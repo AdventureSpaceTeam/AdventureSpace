@@ -34,7 +34,8 @@ using Robust.Shared.ContentPack;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
-using Content.Corvax.Interfaces.Server;
+using Content.Corvax.Interfaces.Server; // c4llv07e vpn guard
+using Content.Server.Adventure.Config; // c4llv07e adventure config
 
 namespace Content.Server.Entry
 {
@@ -116,9 +117,8 @@ namespace Content.Server.Entry
                 IoCManager.Resolve<Content.Corvax.Interfaces.Server.IServerJoinQueueManager>().Initialize();
                 // end-alteros: IoC
 
-                // c4llv07e vpn guard {{
-                IoCManager.Resolve<Content.Corvax.Interfaces.Server.IServerVPNGuardManager>().Initialize();
-                // c4llv07e vpn guard }}
+                IoCManager.Resolve<Content.Corvax.Interfaces.Server.IServerVPNGuardManager>().Initialize(); // c4llv07e vpn guard
+                IoCManager.Resolve<AdventureConfigManager>().Initialize(); // c4llv07e config manager
 
                 _voteManager.Initialize();
                 _updateManager.Initialize();
