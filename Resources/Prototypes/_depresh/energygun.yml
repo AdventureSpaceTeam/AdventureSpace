@@ -1,0 +1,109 @@
+- type: entity
+  name: Энергетический пистолет
+  parent: BaseWeaponBatterySmall
+  id: energygun
+  description: Оружие для устранения беспорядков в любом их проявлении
+  components:
+  - type: Sprite
+    sprite: _depresh/Objects/Weapons/Guns/Battery/energy_gun.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-unshaded-4
+      map: ["enum.GunVisualLayers.MagUnshaded"]
+      shader: unshaded
+  - type: Gun
+    fireRate: 2
+    projectileSpeed: 75
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+  - type: Item
+    sprite: _depresh/Objects/Weapons/Guns/Battery/energy_gun.rsi
+    size: SmallNormal
+  - type: ProjectileBatteryAmmoProvider
+    proto: LaserBullet
+    fireCost: 200
+  - type: BatteryWeaponFireModes
+    fireModes:
+    - proto: LaserBullet
+      fireCost: 200
+    - proto: BulletDisablerForEnergyGum
+      fireCost: 200
+  - type: Battery
+    maxCharge: 2800
+    startingCharge: 2800
+  - type: MagazineVisuals
+    magState: mag
+    steps: 5
+    zeroVisible: true
+  - type: Appearance
+  - type: StaticPrice
+    price: 1000
+
+- type: entity
+  name: лазер
+  id: LaserBullet
+  parent: EmitterBolt
+  noSpawn: true
+  components:
+  - type: Sprite
+    sprite: _depresh/Objects/Weapons/Guns/Battery/energy_gun.rsi
+    layers:
+    - state: redtrac
+      shader: unshaded
+  - type: Projectile
+    damage:
+      types:
+        Heat: 17
+
+- type: entity
+  name: Станер
+  id: BulletDisablerForEnergyGum
+  parent: BaseBullet
+  noSpawn: true
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles_tg.rsi
+    layers:
+    - state: omnilaser
+      shader: unshaded
+  - type: Ammo
+  - type: Physics
+  - type: Fixtures
+    fixtures:
+      projectile:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.15,-0.3,0.15,0.3"
+        hard: false
+        mask:
+        - Impassable
+        - BulletImpassable
+      fly-by:
+        shape: !type:PhysShapeCircle
+          radius: 1.5
+        layer:
+        - Impassable
+        - MidImpassable
+        - HighImpassable
+        - LowImpassable
+        hard: False
+  - type: Projectile
+    impactEffect: BulletImpactEffectDisabler
+    damage:
+      types:
+        Heat: 5
+    soundHit:
+      collection: WeakHit
+    forceSound: true
+  - type: Reflective
+    reflective:
+    - Energy
+  - type: FlyBySound
+    sound:
+      collection: EnergyMiss
+      params:
+        volume: 5
+  - type: StaminaDamageOnCollide
+    damage: 30
