@@ -25,6 +25,7 @@ namespace Content.Client.Communications.UI
         public TimeSpan? CountdownEnd;
 
         public event Action? OnEmergencyLevel;
+        public event Action? OnCallErt; // c4llv07e fix call ert
         public event Action<string>? OnAlertLevel;
         public event Action<string>? OnAnnounce;
         public event Action<string>? OnBroadcast;
@@ -55,7 +56,7 @@ namespace Content.Client.Communications.UI
             AnnounceButton.OnPressed += _ => OnAnnounce?.Invoke(Rope.Collapse(MessageInput.TextRope));
             AnnounceButton.Disabled = !CanAnnounce;
 
-            CallERTButton.OnPressed += _ => Owner.CallERTButtonPressed();
+            CallERTButton.OnPressed += _ => OnCallErt?.Invoke(); // c4llv07e fix call ert
             BroadcastButton.OnPressed += _ => OnBroadcast?.Invoke(Rope.Collapse(MessageInput.TextRope));
             BroadcastButton.Disabled = !CanBroadcast;
 
