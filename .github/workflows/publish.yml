@@ -1,12 +1,12 @@
 name: Publish
 
-concurrency:
-  group: publish
+#concurrency:
+#  group: publish
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 13 */3 * *'
+  - cron: '0 13 */3 * *'
 
 jobs:
   build:
