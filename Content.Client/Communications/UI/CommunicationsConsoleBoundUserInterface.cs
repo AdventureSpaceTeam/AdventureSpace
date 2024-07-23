@@ -33,6 +33,7 @@ namespace Content.Client.Communications.UI
             _menu.OnBroadcast += BroadcastButtonPressed;
             _menu.OnAlertLevel += AlertLevelSelected;
             _menu.OnEmergencyLevel += EmergencyShuttleButtonPressed;
+            _menu.OnCallErt +=CallERTButtonPressed;
         }
 
         public void AlertLevelSelected(string level)
