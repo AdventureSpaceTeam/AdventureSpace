@@ -29,7 +29,7 @@
     # Alteros-start
     - BaseStationCallErt
     # Alteros-end
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
     - type: Transform
 
@@ -42,7 +42,7 @@
     # Alteros-start
     - BaseStationCallErt
     # Alteros-end
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
     - type: Transform
 
@@ -53,6 +53,6 @@
   - BaseStationJobsSpawning
   - BaseStationRecords
   - BaseStationNanotrasen
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
     - type: Transform
