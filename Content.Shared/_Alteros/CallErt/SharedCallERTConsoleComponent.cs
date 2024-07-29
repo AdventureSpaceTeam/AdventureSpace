@@ -59,7 +59,7 @@ namespace Content.Shared.CallErt
 
     [Serializable, NetSerializable]
     [DataDefinition]
-    public partial class CallErtGroupEnt
+    public sealed partial class CallErtGroupEnt
     {
         public string? Id;
         public ErtGroupStatus Status;
