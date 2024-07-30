@@ -1956,8 +1956,6 @@ entities:
       parent: 407
     - type: Apc
       hasAccess: True
-      lastExternalState: Good
-      lastChargeState: Full
   - uid: 878
     components:
     - type: Transform
@@ -2157,9 +2155,6 @@ entities:
     - type: Transform
       pos: 9.5,-12.5
       parent: 407
-    - type: DeviceLinkSink
-      links:
-      - 1477
 - proto: BoozeDispenser
   entities:
   - uid: 810
@@ -5510,13 +5505,6 @@ entities:
     - type: Transform
       pos: -16.5,2.5
       parent: 407
-- proto: chem_master
-  entities:
-  - uid: 1130
-    components:
-    - type: Transform
-      pos: 2.5,2.5
-      parent: 407
 - proto: ChemDispenser
   entities:
   - uid: 1138
@@ -5530,6 +5518,13 @@ entities:
     components:
     - type: Transform
       pos: 5.5,2.5
+      parent: 407
+- proto: ChemMaster
+  entities:
+  - uid: 1130
+    components:
+    - type: Transform
+      pos: 2.5,2.5
       parent: 407
 - proto: ChurchOrganInstrument
   entities:
@@ -5832,81 +5827,54 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -10.5,12.5
       parent: 407
-    - type: DeviceLinkSink
-      links:
-      - 592
   - uid: 589
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -9.5,12.5
       parent: 407
-    - type: DeviceLinkSink
-      links:
-      - 592
   - uid: 590
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -8.5,11.5
       parent: 407
-    - type: DeviceLinkSink
-      links:
-      - 592
   - uid: 593
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -9.5,11.5
       parent: 407
-    - type: DeviceLinkSink
-      links:
-      - 592
   - uid: 662
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -7.5,11.5
       parent: 407
-    - type: DeviceLinkSink
-      links:
-      - 592
   - uid: 1684
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -5.5,-11.5
       parent: 407
-    - type: DeviceLinkSink
-      links:
-      - 1689
   - uid: 1686
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -4.5,-11.5
       parent: 407
-    - type: DeviceLinkSink
-      links:
-      - 1689
   - uid: 1687
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -3.5,-11.5
       parent: 407
-    - type: DeviceLinkSink
-      links:
-      - 1689
   - uid: 1688
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -2.5,-11.5
       parent: 407
-    - type: DeviceLinkSink
-      links:
-      - 1689
 - proto: CrateArtifactContainer
   entities:
   - uid: 1451
@@ -5952,18 +5920,6 @@ entities:
     - type: SingletonDeviceNetServer
       active: False
       available: False
-- proto: CryogenicSleepUnit
-  entities:
-  - uid: 5
-    components:
-    - type: Transform
-      pos: 6.5,15.5
-      parent: 407
-  - uid: 580
-    components:
-    - type: Transform
-      pos: 10.5,6.5
-      parent: 407
 - proto: CryogenicSleepUnitSpawner
   entities:
   - uid: 2515
@@ -12130,7 +12086,7 @@ entities:
       pos: 7.5,15.5
       parent: 407
     - type: Door
-      secondsUntilStateChange: -23746.262
+      secondsUntilStateChange: -23936.246
       state: Closing
   - uid: 1259
     components:
@@ -12429,12 +12385,8 @@ entities:
   - uid: 1463
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
       pos: 8.5,-11.5
       parent: 407
-    - type: DeviceLinkSink
-      links:
-      - 1465
 - proto: MachineCentrifuge
   entities:
   - uid: 1132
@@ -12507,6 +12459,13 @@ entities:
     components:
     - type: Transform
       pos: 5.5,-18.5
+      parent: 407
+- proto: NuclearBomb
+  entities:
+  - uid: 5
+    components:
+    - type: Transform
+      pos: 6.5,15.5
       parent: 407
 - proto: OreProcessor
   entities:
@@ -12604,6 +12563,15 @@ entities:
     components:
     - type: Transform
       pos: -10.5,12.5
+      parent: 407
+- proto: PlushieCMO
+  entities:
+  - uid: 580
+    components:
+    - type: MetaData
+      name: Я.П.
+    - type: Transform
+      pos: 3.4947019,-6.450326
       parent: 407
 - proto: PortableScrubber
   entities:
@@ -12985,9 +12953,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 4.5,15.5
       parent: 407
-    - type: DeviceLinkSink
-      links:
-      - 93
   - uid: 275
     components:
     - type: Transform
@@ -13017,9 +12982,6 @@ entities:
       rot: 3.141592653589793 rad
       pos: 9.5,6.5
       parent: 407
-    - type: DeviceLinkSink
-      links:
-      - 532
   - uid: 623
     components:
     - type: Transform
@@ -13188,9 +13150,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -8.5,11.5
       parent: 407
-    - type: DeviceLinkSink
-      links:
-      - 592
 - proto: ReinforcedWindow
   entities:
   - uid: 236
@@ -13284,73 +13243,46 @@ entities:
     - type: Transform
       pos: -6.5,3.5
       parent: 407
-    - type: DeviceLinkSink
-      links:
-      - 718
   - uid: 720
     components:
     - type: Transform
       pos: -7.5,3.5
       parent: 407
-    - type: DeviceLinkSink
-      links:
-      - 718
   - uid: 797
     components:
     - type: Transform
       pos: -8.5,2.5
       parent: 407
-    - type: DeviceLinkSink
-      links:
-      - 816
   - uid: 814
     components:
     - type: Transform
       pos: -8.5,1.5
       parent: 407
-    - type: DeviceLinkSink
-      links:
-      - 816
   - uid: 815
     components:
     - type: Transform
       pos: -8.5,0.5
       parent: 407
-    - type: DeviceLinkSink
-      links:
-      - 816
   - uid: 2341
     components:
     - type: Transform
       pos: 2.5,-2.5
       parent: 407
-    - type: DeviceLinkSink
-      links:
-      - 2346
   - uid: 2342
     components:
     - type: Transform
       pos: 3.5,-2.5
       parent: 407
-    - type: DeviceLinkSink
-      links:
-      - 2346
   - uid: 2343
     components:
     - type: Transform
       pos: 4.5,-2.5
       parent: 407
-    - type: DeviceLinkSink
-      links:
-      - 2346
   - uid: 2344
     components:
     - type: Transform
       pos: 6.5,-0.5
       parent: 407
-    - type: DeviceLinkSink
-      links:
-      - 2346
 - proto: ShuttleWindow
   entities:
   - uid: 3
@@ -13950,7 +13882,7 @@ entities:
         - Pressed: Toggle
         2344:
         - Pressed: Toggle
-- proto: SignAtmosMinsky
+- proto: SignAtmos
   entities:
   - uid: 2379
     components:
@@ -13964,7 +13896,7 @@ entities:
     - type: Transform
       pos: -2.5,-6.5
       parent: 407
-- proto: SignChemistry1
+- proto: SignChem
   entities:
   - uid: 1179
     components:
@@ -14107,7 +14039,7 @@ entities:
     - type: Transform
       pos: -2.5,-19.5
       parent: 407
-- proto: soda_dispenser
+- proto: SodaDispenser
   entities:
   - uid: 811
     components:
