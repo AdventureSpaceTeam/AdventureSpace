@@ -42,7 +42,7 @@
   completetime: 10
   applyMaterialDiscount: false
   materials:
-    Wood: 1500
+    Wood: 700
 
 - type: latheRecipe
   id: Medilathedoorrecipe
@@ -50,7 +50,7 @@
   completetime: 10
   applyMaterialDiscount: false
   materials:
-    Wood: 1500
+    Wood: 600
 
 - type: latheRecipe
   id: Medilathefloorrecipe
@@ -116,7 +116,7 @@
   applyMaterialDiscount: false
   materials:
     Steel: 1000
-    Wood: 1000
+    Wood: 300
 
 - type: latheRecipe
   id: Medilathecuprecipe
@@ -148,7 +148,7 @@
   completetime: 10
   applyMaterialDiscount: false
   materials:
-    Wood: 1500
+    Wood: 600
     Steel: 100
 
 - type: latheRecipe
@@ -157,7 +157,7 @@
   completetime: 10
   applyMaterialDiscount: false
   materials:
-    Wood: 1500
+    Wood: 600
     Steel: 100
 
 - type: entity
@@ -279,7 +279,7 @@
   completetime: 10
   applyMaterialDiscount: false
   materials:
-    Wood: 1500
+    Wood: 1000
     Cloth: 100
 
 - type: latheRecipe
