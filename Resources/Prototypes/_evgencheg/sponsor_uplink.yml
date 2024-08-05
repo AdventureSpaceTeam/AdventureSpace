@@ -127,7 +127,10 @@
     key: enum.StoreUiKey.Key
   - type: DonateUplink
   - type: Store
-    preset: StorePresetSponsor
+    categories:
+      - SponsorThings
+    currencyWhitelist:
+      - DonateCrystal
     balance:
       DonateCrystal: 30
   - type: FuckWizards
