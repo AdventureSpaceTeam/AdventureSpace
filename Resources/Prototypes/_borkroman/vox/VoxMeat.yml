@@ -1,0 +1,25 @@
+- type: entity
+  name: Мясо вокса
+  parent: FoodMeatBase
+  id: FoodMeatVox
+  description: Как хорошо и вкусно.
+  components:
+  - type: Tag
+    tags:
+    - Raw
+    - Meat
+  - type: Sprite
+    layers:
+    - state: Vox_Meat
+      sprite: _borkroman/vox/VoxMeat.rsi
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: AmmoniaBlood
+          Quantity: 10
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: AmmoniaBlood
+        Quantity: 10
