@@ -227,7 +227,7 @@
 - type: startingGear
   id: GearSpeciesBreathTool
   equipment:
-    mask: ClothingMaskBreath
+    mask: ClothingMaskGasBreathingTube # _borkroman vox breaching tube
 
 - type: loadout
   id: LoadoutSpeciesBreathToolMedical
@@ -239,7 +239,7 @@
 - type: startingGear
   id: GearSpeciesBreathToolMedical
   equipment:
-    mask: ClothingMaskBreathMedical
+    mask: ClothingMaskGasBreathingTube # _borkroman vox breaching tube
 
 - type: loadout
   id: LoadoutSpeciesBreathToolSecurity
@@ -251,4 +251,4 @@
 - type: startingGear
   id: GearSpeciesBreathToolSecurity
   equipment:
-    mask: ClothingMaskGasSecurity
+    mask: ClothingMaskGasBreathingTube # _borkroman vox breaching tube
