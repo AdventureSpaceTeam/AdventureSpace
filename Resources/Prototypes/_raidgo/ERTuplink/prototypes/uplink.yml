@@ -1,0 +1,1107 @@
+- type: entity
+  name: Блюспейс Кристалл
+  parent: BaseItem
+  id: ERTCrystal
+  suffix: 20 БК
+  components:
+  - type: Sprite
+    sprite: _raidgo/sprite/telecrystal.rsi
+    state: telecrystal
+  - type: Item
+    sprite: _raidgo/sprite/telecrystal.rsi
+    size: Tiny
+  - type: Stack
+    count: 20
+    stackType: Telecrystal
+  - type: StaticPrice
+    price: 0
+  - type: StackPrice
+    price: 200
+  - type: Currency
+    price:
+      ERTCrystal: 1
+
+- type: entity
+  parent: ERTCrystal
+  id: ERTCrystal1
+  name: Блюспейс Кристалл
+  suffix: 1 БК
+  components:
+  - type: Stack
+    count: 1
+
+- type: currency
+  id: ERTCrystal
+  displayName: Блюспейс Кристаллы
+  cash:
+    1: ERTCrystal1
+  canWithdraw: true
+
+- type: storeCategory
+  id: ERTweapons
+  name: Оружие
+
+- type: listing
+  id: WeaponRevolverMatebaERT
+  productEntity: WeaponRevolverMateba
+  cost:
+    ERTCrystal: 4
+  categories:
+  - ERTPistol
+
+- type: listing
+  id: WeaponPulsePistolERT
+  productEntity: WeaponPulsePistol
+  cost:
+    ERTCrystal: 4
+  categories:
+  - ERTPistol
+
+- type: listing
+  id: WeaponSubMachineGunWt550ERT
+  productEntity: WeaponSubMachineGunWt550
+  cost:
+    ERTCrystal: 10
+  categories:
+  - ERTweapons
+
+- type: listing
+  id: WeaponRifleLecterERT
+  productEntity: WeaponRifleLecter
+  cost:
+    ERTCrystal: 15
+  categories:
+  - ERTweapons
+
+- type: listing
+  id: EnergySwordERT
+  productEntity: EnergySwordERT
+  cost:
+    ERTCrystal: 12
+  categories:
+  - ERTweapons
+
+- type: listing
+  id: WeaponPlasmaGunERT
+  productEntity: WeaponPlasmaGun
+  cost:
+    ERTCrystal: 16
+  categories:
+  - ERTweapons
+
+- type: entity
+  parent: BaseItem
+  id: ERTuplink
+  name: Терминал ОБР
+  suffix: Adventure
+  description: Терминал который использует ОБР в специальных операциях.
+  components:
+  - type: Item
+    size: Small
+    sprite: _raidgo/sprite/communication.rsi
+  - type: UserInterface
+    interfaces:
+      enum.StoreUiKey.Key:
+        type: StoreBoundUserInterface
+  - type: ActivatableUI
+    key: enum.StoreUiKey.Key
+  - type: Sprite
+    sprite: _raidgo/sprite/communication.rsi
+    layers:
+    - state: old-radio
+  - type: Appearance
+  - type: StaticPrice
+    price: 100
+  - type: Store
+    categories:
+      - ERTweapons
+      - ERTammo
+      - ERTPistol
+      - ERTnanit
+      - ERTmore
+      - ERTbombs
+      - ERTmedicine
+    currencyWhitelist:
+      - ERTCrystal
+    balance:
+      ERTCrystal: 25
+
+- type: storeCategory
+  id: ERTammo
+  name: Боеприпасы
+
+- type: listing
+  id: PlasmaMagazinERT
+  description: Перезаряжаемый магазин для плазменной винтовки.
+  productEntity: PlasmaMagazin
+  cost:
+    ERTCrystal: 4
+  categories:
+  - ERTammo
+
+- type: listing
+  id: MagazineRifleERT
+  productEntity: MagazineRifle
+  description: Магазин калибра 20. Винтовочный подходящий для лектера.
+  cost:
+    ERTCrystal: 6
+  categories:
+  - ERTammo
+
+- type: listing
+  id: MagazineRifleIncendiaryERT
+  productEntity: MagazineRifleIncendiary
+  description: Магазин калибра 20. Винтовочный подходящий для лектера.
+  cost:
+    ERTCrystal: 6
+  categories:
+  - ERTammo
+
+- type: listing
+  id: MagazineRifleUraniumERT
+  productEntity: MagazineRifleUranium
+  description: Магазин калибра 20. Винтовочный подходящий для лектера.
+  cost:
+    ERTCrystal: 6
+  categories:
+  - ERTammo
+
+- type: storeCategory
+  id: ERTPistol
+  name: Пистолеты
+
+- type: listing
+  id: WeaponPistolMk58ERT
+  productEntity: WeaponPistolMk58
+  cost:
+    ERTCrystal: 3
+  categories:
+  - ERTPistol
+
+- type: listing
+  id: MagazinePistolERT
+  productEntity: MagazinePistol
+  description: Магазин калибра 35 авто. Подходящий для простых пистолетов.
+  cost:
+    ERTCrystal: 2
+  categories:
+  - ERTammo
+
+- type: listing
+  id: MagazinePistolIncendiaryERT
+  productEntity: MagazinePistolIncendiary
+  description: Магазин калибра 35 авто. Подходящий для простых пистолетов.
+  cost:
+    ERTCrystal: 3
+  categories:
+  - ERTammo
+
+- type: listing
+  id: MagazinePistolUraniumERT
+  productEntity: MagazinePistolUranium
+  description: Магазин калибра 35 авто. Подходящий для простых пистолетов.
+  cost:
+    ERTCrystal: 3
+  categories:
+  - ERTammo
+
+- type: listing
+  id: SpeedLoaderMagnumERT
+  productEntity: SpeedLoaderMagnum
+  description: Магазин калибра 45 магнум. Подходит для револьверов.
+  cost:
+    ERTCrystal: 3
+  categories:
+  - ERTammo
+
+- type: listing
+  id: SpeedLoaderMagnumIncendiaryERT
+  productEntity: SpeedLoaderMagnumIncendiary
+  description: Магазин калибра 45 магнум. Подходит для револьверов.
+  cost:
+    ERTCrystal: 4
+  categories:
+  - ERTammo
+
+- type: listing
+  id: SpeedLoaderMagnumUraniumERT
+  productEntity: SpeedLoaderMagnumUranium
+  description: Магазин калибра 45 магнум. Подходит для револьверов.
+  cost:
+    ERTCrystal: 4
+  categories:
+  - ERTammo
+
+- type: listing
+  id: MagazinePistolSubMachineGunTopMountedERT
+  productEntity: MagazinePistolSubMachineGunTopMounted
+  description: Магазин калибра 35 авто. Подходит для пистолетов-пулемётов.
+  cost:
+    ERTCrystal: 4
+  categories:
+  - ERTammo
+
+- type: storeCategory
+  id: ERTmore
+  name: Разное
+
+- type: listing
+  id: ClothingShoesBootsMagSciERT
+  productEntity: ClothingShoesBootsMagSci
+  cost:
+    ERTCrystal: 4
+  categories:
+  - ERTmore
+
+- type: listing
+  id: HandheldCrewMonitorERT
+  productEntity: HandheldCrewMonitor
+  cost:
+    ERTCrystal: 3
+  categories:
+  - ERTmore
+
+- type: listing
+  id: PinpointerNuclearERT
+  productEntity: PinpointerNuclear
+  cost:
+    ERTCrystal: 2
+  categories:
+  - ERTmore
+
+- type: listing
+  id: CrowbarERT
+  productEntity: Crowbar
+  cost:
+    ERTCrystal: 1
+  categories:
+  - ERTmore
+
+- type: listing
+  id: PortableRechargerERT
+  productEntity: PortableRecharger
+  cost:
+    ERTCrystal: 4
+  categories:
+  - ERTmore
+
+- type: listing
+  id: CombatMedipenERT
+  productEntity: CombatMedipen
+  cost:
+    ERTCrystal: 3
+  categories:
+  - ERTmedicine
+
+- type: listing
+  id: TapePlayerERT
+  productEntity: TapePlayer
+  cost:
+    ERTCrystal: 1
+  categories:
+  - ERTmusic
+
+- type: storeCategory
+  id: ERTmusic
+  name: Музыка
+
+#   conditions:
+#  - !type:ListingLimitedStockCondition
+#    stock: 1
+
+- type: storeCategory
+  id: ERTmedicine
+  name: Медицина
+
+- type: listing
+  id: GauzeERT
+  productEntity: Gauze
+  cost:
+    ERTCrystal: 1
+  categories:
+  - ERTmedicine
+
+- type: listing
+  id: OintmentERT
+  productEntity: Ointment
+  cost:
+    ERTCrystal: 1
+  categories:
+  - ERTmedicine
+
+- type: listing
+  id: BrutepackedERT
+  productEntity: Brutepack
+  cost:
+    ERTCrystal: 1
+  categories:
+  - ERTmedicine
+
+- type: listing
+  id: BrutepackERT
+  productEntity: Brutepack
+  cost:
+    ERTCrystal: 1
+  categories:
+  - ERTmedicine
+
+- type: storeCategory
+  id: ERTbombs
+  name: Взрывчатка
+
+- type: listing
+  id: ClusterGrenadeERT
+  productEntity: ClusterGrenade
+  cost:
+    ERTCrystal: 3
+  categories:
+  - ERTbombs
+
+- type: listing
+  id: ClusterBangFullERT
+  productEntity: ClusterBangFull
+  cost:
+    ERTCrystal: 2
+  categories:
+  - ERTbombs
+
+- type: listing
+  id: EmpGrenadeERT
+  productEntity: EmpGrenade
+  cost:
+    ERTCrystal: 2
+  categories:
+  - ERTbombs
+
+- type: listing
+  id: GrenadeShrapnelERT
+  productEntity: GrenadeShrapnel
+  cost:
+    ERTCrystal: 2
+  categories:
+  - ERTbombs
+
+- type: listing
+  id: MetalFoamGrenadeERT
+  productEntity: MetalFoamGrenade
+  cost:
+    ERTCrystal: 1
+  categories:
+  - ERTbombs
+
+- type: listing
+  id: SmokeGrenadeERT
+  productEntity: SmokeGrenade
+  cost:
+    ERTCrystal: 1
+  categories:
+  - ERTbombs
+
+- type: listing
+  id: GrenadeIncendiaryERT
+  productEntity: GrenadeIncendiary
+  cost:
+    ERTCrystal: 2
+  categories:
+  - ERTbombs
+
+- type: listing
+  id: ExGrenadeERT
+  productEntity: ExGrenade
+  cost:
+    ERTCrystal: 2
+  categories:
+  - ERTbombs
+
+- type: listing
+  id: TearGasGrenadeERT
+  productEntity: TearGasGrenade
+  cost:
+    ERTCrystal: 2
+  categories:
+  - ERTbombs
+
+- type: listing
+  id: GrenadeFlashBangERT
+  productEntity: GrenadeFlashBang
+  cost:
+    ERTCrystal: 1
+  categories:
+  - ERTbombs
+
+- type: listing
+  id: GrenadeStingerERT
+  productEntity: GrenadeStinger
+  cost:
+    ERTCrystal: 1
+  categories:
+  - ERTbombs
+
+- type: listing
+  id: JetpackBlueFilledERT
+  productEntity: JetpackBlueFilled
+  cost:
+    ERTCrystal: 2
+  categories:
+  - ERTmore
+
+- type: entity
+  parent: BaseItem
+  id: ERTuplinkMED
+  name: Терминал ОБР медика
+  suffix: Adventure
+  description: Терминал который использует ОБР медики в специальных операциях.
+  components:
+  - type: Item
+    size: Small
+    sprite: _raidgo/sprite/communication.rsi
+  - type: UserInterface
+    interfaces:
+      enum.StoreUiKey.Key:
+        type: StoreBoundUserInterface
+  - type: ActivatableUI
+    key: enum.StoreUiKey.Key
+  - type: Sprite
+    sprite: _raidgo/sprite/communication.rsi
+    layers:
+    - state: old-radio
+  - type: Appearance
+  - type: StaticPrice
+    price: 100
+  - type: Store
+    categories:
+      - ERTammo
+      - ERTPistol
+      - ERTmore
+      - ERTbombs
+      - ERTnanit
+      - ERTmedicine
+      - ERTmedic
+    currencyWhitelist:
+      - ERTCrystal
+    balance:
+      ERTCrystal: 25
+
+- type: listing
+  id: WeaponPulseCarbineERT
+  productEntity: WeaponPulseCarbine
+  cost:
+    ERTCrystal: 16
+  categories:
+  - ERTweapons
+
+- type: listing
+  id: WeaponPulseRifleERT
+  productEntity: WeaponPulseRifle
+  cost:
+    ERTCrystal: 20
+  categories:
+  - ERTweapons
+
+- type: storeCategory
+  id: ERTmedic
+  name: ОБР медик
+
+- type: listing
+  id: HyposprayERTbuy
+  productEntity: HyposprayERT
+  cost:
+    ERTCrystal: 8
+  categories:
+  - ERTmedic
+  conditions:
+  - !type:ListingLimitedStockCondition
+   stock: 1
+
+- type: listing
+  id: MedicatedSutureERT
+  productEntity: MedicatedSuture
+  cost:
+    ERTCrystal: 2
+  categories:
+  - ERTmedic
+
+- type: listing
+  id: RegenerativeMeshERT
+  productEntity: RegenerativeMesh
+  cost:
+    ERTCrystal: 2
+  categories:
+  - ERTmedic
+
+- type: listing
+  id: DefibrillatorERT
+  productEntity: Defibrillator
+  cost:
+    ERTCrystal: 3
+  categories:
+  - ERTmedic
+
+- type: listing
+  id: PowerCellMicroreactorERT
+  productEntity: PowerCellMicroreactor
+  cost:
+    ERTCrystal: 4
+  categories:
+  - ERTmedic
+
+- type: listing
+  id: MaterialBiomassERT
+  productEntity: MaterialBiomass
+  cost:
+    ERTCrystal: 3
+  categories:
+  - ERTmedic
+
+- type: listing
+  id: MedkitCombatFilledERT
+  productEntity: MedkitCombatFilled
+  cost:
+    ERTCrystal: 4
+  categories:
+  - ERTmedic
+  conditions:
+  - !type:ListingLimitedStockCondition
+   stock: 1
+
+- type: storeCategory
+  id: ERTengi
+  name: ОБР инженер
+
+- type: entity
+  parent: BaseItem
+  id: ERTuplinkENGI
+  name: Терминал ОБР инженера
+  suffix: Adventure
+  description: Терминал который используют ОБР инженеры в специальных операциях.
+  components:
+  - type: Item
+    size: Small
+    sprite: _raidgo/sprite/communication.rsi
+  - type: UserInterface
+    interfaces:
+      enum.StoreUiKey.Key:
+        type: StoreBoundUserInterface
+  - type: ActivatableUI
+    key: enum.StoreUiKey.Key
+  - type: Sprite
+    sprite: _raidgo/sprite/communication.rsi
+    layers:
+    - state: old-radio
+  - type: Appearance
+  - type: StaticPrice
+    price: 100
+  - type: Store
+    categories:
+      - ERTammo
+      - ERTPistol
+      - ERTmore
+      - ERTbombs
+      - ERTmedicine
+      - ERTengi
+      - ERTnanit
+    currencyWhitelist:
+      - ERTCrystal
+    balance:
+      ERTCrystal: 25
+
+- type: listing
+  id: JawsOfLifeERT
+  productEntity: JawsOfLife
+  cost:
+    ERTCrystal: 3
+  categories:
+  - ERTengi
+
+- type: listing
+  id: CableHVStackERT
+  productEntity: CableHVStack
+  cost:
+    ERTCrystal: 1
+  categories:
+  - ERTengi
+
+- type: listing
+  id: CableApcStackERT
+  productEntity: CableApcStack
+  cost:
+    ERTCrystal: 1
+  categories:
+  - ERTengi
+
+- type: listing
+  id: CableMVStackERT
+  productEntity: CableMVStack
+  cost:
+    ERTCrystal: 1
+  categories:
+  - ERTengi
+
+- type: listing
+  id: RCDRechargingERT
+  productEntity: RCDRecharging
+  cost:
+    ERTCrystal: 8
+  categories:
+  - ERTengi
+  conditions:
+  - !type:ListingLimitedStockCondition
+   stock: 1
+
+- type: storeCategory
+  id: ERTleader
+  name: ОБР лидер
+
+- type: entity
+  parent: BaseItem
+  id: ERTuplinkleader
+  name: Терминал ОБР лидера
+  suffix: Adventure
+  description: Терминал который используют ОБР лидеры в специальных операциях.
+  components:
+  - type: Item
+    size: Small
+    sprite: _raidgo/sprite/communicationleader.rsi
+  - type: UserInterface
+    interfaces:
+      enum.StoreUiKey.Key:
+        type: StoreBoundUserInterface
+  - type: ActivatableUI
+    key: enum.StoreUiKey.Key
+  - type: Sprite
+    sprite: _raidgo/sprite/communicationleader.rsi
+    layers:
+    - state: old-radio
+  - type: Appearance
+  - type: StaticPrice
+    price: 100
+  - type: Store
+    categories:
+      - ERTweapons
+      - ERTammo
+      - ERTPistol
+      - ERTmore
+      - ERTmedic
+      - ERTbombs
+      - ERTmedicine
+      - ERTengi
+      - ERTnanit
+      - ERTleader
+    currencyWhitelist:
+      - ERTCrystal
+    balance:
+      ERTCrystal: 30
+
+- type: listing
+  id: WeaponPlasmaSniperERT
+  productEntity: WeaponPlasmaSniper
+  cost:
+    ERTCrystal: 17
+  categories:
+  - ERTleader
+
+- type: listing
+  id: WeaponSniperHristovERT
+  productEntity: WeaponSniperHristov
+  cost:
+    ERTCrystal: 15
+  categories:
+  - ERTleader
+
+- type: listing
+  id: MagazineBoxAntiMaterielERT
+  productEntity: MagazineBoxAntiMateriel
+  cost:
+    ERTCrystal: 3
+  categories:
+  - ERTleader
+
+- type: listing
+  id: PlasmaSniperMagazinERT
+  productEntity: PlasmaSniperMagazin
+  cost:
+    ERTCrystal: 3
+  categories:
+  - ERTleader
+
+- type: listing
+  id: PlushieSharki_MakcuERT
+  productEntity: PlushieSharki_Makcu
+  cost:
+    ERTCrystal: 1
+  categories:
+  - ERTleader
+  conditions:
+  - !type:ListingLimitedStockCondition
+   stock: 1
+
+- type: listing
+  id: ClothingShoesBootsMagAdvtwoERT
+  productEntity: ClothingShoesBootsMagAdv
+  cost:
+    ERTCrystal: 5
+  categories:
+  - ERTleader
+  conditions:
+  - !type:ListingLimitedStockCondition
+   stock: 1
+
+- type: listing
+  id: WeaponDisablerERT
+  productEntity: WeaponDisabler
+  cost:
+    ERTCrystal: 2
+  categories:
+  - ERTPistol
+
+- type: listing
+  id: OmnizineChemistryBottleERT
+  productEntity: OmnizineChemistryBottle
+  cost:
+    ERTCrystal: 3
+  categories:
+  - ERTmedic
+
+- type: storeCategory
+  id: ERTnanit
+  name: Наниты
+
+- type: listing
+  id: InjectorMediumNanit'sERT
+  productEntity: InjectorMediumNanit's
+  cost:
+    ERTCrystal: 5
+  categories:
+  - ERTnanit
+  conditions:
+  - !type:ListingLimitedStockCondition
+   stock: 1
+
+- type: entity
+  parent: BaseItem
+  id: ERTuplinkоjanitor
+  name: Терминал ОБР уборщика
+  suffix: Adventure
+  description: Терминал который используют ОБР уборщики в специальных операциях.
+  components:
+  - type: Item
+    size: Small
+    sprite: _raidgo/sprite/communication.rsi
+  - type: UserInterface
+    interfaces:
+      enum.StoreUiKey.Key:
+        type: StoreBoundUserInterface
+  - type: ActivatableUI
+    key: enum.StoreUiKey.Key
+  - type: Sprite
+    sprite: _raidgo/sprite/communication.rsi
+    layers:
+    - state: old-radio
+  - type: Appearance
+  - type: StaticPrice
+    price: 100
+  - type: Store
+    categories:
+      - ERTammo
+      - ERTPistol
+      - ERTmore
+      - ERTbombs
+      - ERTmedicine
+      - ERTnanit
+      - ERTjanitor
+    currencyWhitelist:
+      - ERTCrystal
+    balance:
+      ERTCrystal: 25
+
+- type: storeCategory
+  id: ERTjanitor
+  name: ОБР уборщик
+
+- type: listing
+  id: MobCleanBotERT
+  productEntity: MobCleanBot
+  cost:
+    ERTCrystal: 3
+  categories:
+  - ERTjanitor
+
+- type: listing
+  id: AdvMopItemERT
+  productEntity: AdvMopItem
+  cost:
+    ERTCrystal: 4
+  categories:
+  - ERTjanitor
+
+- type: listing
+  id: TrashBagBlueERT
+  productEntity: TrashBagBlue
+  description: Позволяет убирать даже самые грязные места.
+  cost:
+    ERTCrystal: 2
+  categories:
+  - ERTjanitor
+
+- type: listing
+  id: ClothingShoesBootsMagAdvERT
+  productEntity: ClothingShoesBootsMagAdv
+  cost:
+    ERTCrystal: 4
+  categories:
+  - ERTjanitor
+  conditions:
+  - !type:ListingLimitedStockCondition
+   stock: 1
+
+- type: listing
+  id: CleanerGrenadeERT
+  productEntity: CleanerGrenade
+  cost:
+    ERTCrystal: 2
+  categories:
+  - ERTjanitor
+
+- type: entity
+  parent: BaseItem
+  id: ERTuplinklight
+  name: Терминал ОБР священника
+  suffix: Adventure
+  description: Терминал который используют ОБР священники в специальных операциях.
+  components:
+  - type: Item
+    size: Small
+    sprite: _raidgo/sprite/communication.rsi
+  - type: UserInterface
+    interfaces:
+      enum.StoreUiKey.Key:
+        type: StoreBoundUserInterface
+  - type: ActivatableUI
+    key: enum.StoreUiKey.Key
+  - type: Sprite
+    sprite: _raidgo/sprite/communication.rsi
+    layers:
+    - state: old-radio
+  - type: Appearance
+  - type: StaticPrice
+    price: 100
+  - type: Store
+    categories:
+      - ERTammo
+      - ERTPistol
+      - ERTmore
+      - ERTbombs
+      - ERTmedicine
+      - ERTnanit
+      - ERTlight
+    currencyWhitelist:
+      - ERTCrystal
+    balance:
+      ERTCrystal: 25
+
+- type: storeCategory
+  id: ERTlight
+  name: ОБР священник
+
+- type: listing
+  id: AltarNanotrasenERT
+  productEntity: AltarNanotrasen
+  cost:
+    ERTCrystal: 4
+  categories:
+  - ERTlight
+
+- type: listing
+  id: FoodBakedBunHotXERT
+  productEntity: FoodBakedBunHotX
+  cost:
+    ERTCrystal: 2
+  categories:
+  - ERTlight
+
+- type: listing
+  id: Bible
+  productEntity: Bible
+  cost:
+    ERTCrystal: 2
+  categories:
+  - ERTlight
+
+- type: listing
+  id: BoxCandleERT
+  productEntity: BoxCandle
+  cost:
+    ERTCrystal: 3
+  categories:
+  - ERTlight
+
+- type: listing
+  id: BoxBodyBagERT
+  productEntity: BoxBodyBag
+  cost:
+    ERTCrystal: 3
+  categories:
+  - ERTlight
+
+- type: listing
+  id: LanternERT
+  productEntity: Lantern
+  cost:
+    ERTCrystal: 1
+  categories:
+  - ERTlight
+
+- type: listing
+  id: LighterERT
+  productEntity: Lighter
+  cost:
+    ERTCrystal: 1
+  categories:
+  - ERTlight
+
+- type: entity
+  parent: BaseItem
+  id: Cburnuplink
+  name: Терминал РХБЗЗ
+  suffix: Adventure
+  description: Терминал который используют оперативники РХБЗЗ в специальных операциях.
+  components:
+  - type: Item
+    size: Small
+    sprite: _raidgo/sprite/communication.rsi
+  - type: UserInterface
+    interfaces:
+      enum.StoreUiKey.Key:
+        type: StoreBoundUserInterface
+  - type: ActivatableUI
+    key: enum.StoreUiKey.Key
+  - type: Sprite
+    sprite: _raidgo/sprite/communication.rsi
+    layers:
+    - state: old-radio
+  - type: Appearance
+  - type: StaticPrice
+    price: 100
+  - type: Store
+    categories:
+      - ERTmore
+      - ERTbombs
+      - ERTmedicine
+      - ERTnanit
+      - CBURNweapons
+      - CBURNammo
+    currencyWhitelist:
+      - ERTCrystal
+    balance:
+      ERTCrystal: 25
+
+- type: storeCategory
+  id: CBURNweapons
+  name: Оружие
+
+- type: listing
+  id: TGMSFirethrowerGunM240ERT
+  productEntity: TGMSFirethrowerGunM240
+  cost:
+    ERTCrystal: 17
+  categories:
+  - CBURNweapons
+
+- type: listing
+  id: TGMSFuelTankFirethrowerERT
+  productEntity: TGMSFuelTankFirethrower
+  cost:
+    ERTCrystal: 3
+  categories:
+  - CBURNammo
+
+- type: storeCategory
+  id: CBURNammo
+  name: Боеприпасы
+
+- type: listing
+  id: WeaponShotgunKammererCburn
+  productEntity: WeaponShotgunKammerer
+  cost:
+    ERTCrystal: 13
+  categories:
+  - CBURNweapons
+
+- type: listing
+  id: WeaponShotgunEnforcerCburn
+  productEntity: WeaponShotgunEnforcer
+  cost:
+    ERTCrystal: 16
+  categories:
+  - CBURNweapons
+
+- type: listing
+  id: WeaponLaserGunCNURN
+  productEntity: WeaponLaserGun
+  cost:
+    ERTCrystal: 8
+  categories:
+  - CBURNweapons
+
+- type: listing
+  id: MagazineShotgunIncendiaryCburn
+  productEntity: MagazineShotgunIncendiary
+  description: Патроны для дробовика, удобно лежащие в барабане.
+  cost:
+    ERTCrystal: 3
+  categories:
+  - CBURNammo
+
+- type: listing
+  id: MagazineShotgunCburn
+  productEntity: MagazineShotgun
+  description: Патроны для дробовика, удобно лежащие в барабане.
+  cost:
+    ERTCrystal: 2
+  categories:
+  - CBURNammo
+
+- type: listing
+  id: MagazineShotgunSlugCburn
+  productEntity: MagazineShotgunSlug
+  description: Патроны для дробовика, удобно лежащие в барабане.
+  cost:
+    ERTCrystal: 3
+  categories:
+  - CBURNammo
+
+- type: entity
+  parent: BaseItem
+  id: Cburnuplinkleader
+  name: Терминал командира РХБЗЗ 
+  suffix: Adventure
+  description: Терминал который используют командиры РХБЗЗ в специальных операциях.
+  components:
+  - type: Item
+    size: Small
+    sprite: _raidgo/sprite/communication.rsi
+  - type: UserInterface
+    interfaces:
+      enum.StoreUiKey.Key:
+        type: StoreBoundUserInterface
+  - type: ActivatableUI
+    key: enum.StoreUiKey.Key
+  - type: Sprite
+    sprite: _raidgo/sprite/communication.rsi
+    layers:
+    - state: old-radio
+  - type: Appearance
+  - type: StaticPrice
+    price: 100
+  - type: Store
+    categories:
+      - ERTmore
+      - ERTbombs
+      - ERTmedicine
+      - ERTnanit
+      - CBURNweapons
+      - CBURNammo
+    currencyWhitelist:
+      - ERTCrystal
+    balance:
+      ERTCrystal: 30
