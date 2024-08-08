@@ -1,0 +1,13 @@
+- type: entity
+  parent: ClothingMaskPullableBase
+  id: ClothingMaskGasBreathingTube
+  name: Дыхательная трубка
+  description: компактная трубка для дыхания, не припятствует приёму пищи.
+  components:
+  - type: Sprite
+    sprite: _borkroman/vox/breathing_tube.rsi
+  - type: Clothing
+    sprite: _borkroman/vox/breathing_tube.rsi
+  - type: BreathMask
+  - type: Item
+    size: Tiny

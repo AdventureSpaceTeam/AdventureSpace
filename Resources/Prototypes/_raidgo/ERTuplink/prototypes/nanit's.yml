@@ -1,0 +1,103 @@
+- type: reagent
+  id: fullnanit's
+  name: reagent-name-Сильные-наниты
+  group: Medicine
+  desc: reagent-desc-наниты
+  physicalDesc: На-вид-как-нанобиомашины
+  flavor: Роботизированное
+  color: "#0b0612"
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:CureZombieInfection
+          innoculate: true
+          conditions:
+            - !type:ReagentThreshold
+              min: 5
+      - !type:ChemHealEyeDamage
+      - !type:HealthChange
+        damage:
+          groups:
+            Burn: -20
+            Toxin: -16
+            Airloss: -16
+            Brute: -20
+    Narcotic:
+      effects:
+      - !type:MovespeedModifier
+        walkSpeedModifier: 2
+        sprintSpeedModifier: 2
+      - !type:GenericStatusEffect
+        key: Stun
+        time: 3
+        type: Remove
+      - !type:GenericStatusEffect
+        key: KnockedDown
+        time: 3
+        type: Remove
+
+- type: reagent
+  id: Mediumnanit's
+  name: reagent-name-Сердние-наниты
+  group: Medicine
+  desc: reagent-desc-наниты
+  physicalDesc: На-вид-как-нанобиомашины
+  flavor: Роботизированное
+  color: "#0b0612"
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:ChemHealEyeDamage
+      - !type:HealthChange
+        damage:
+          groups:
+            Burn: -10
+            Toxin: -8
+            Airloss: -8
+            Brute: -10
+    Narcotic:
+      effects:
+      - !type:MovespeedModifier
+        walkSpeedModifier: 1.5
+        sprintSpeedModifier: 1.5
+      - !type:GenericStatusEffect
+        key: Stun
+        time: 3
+        type: Remove
+      - !type:GenericStatusEffect
+        key: KnockedDown
+        time: 3
+        type: Remove
+
+- type: reagent
+  id: weaknanit's
+  name: reagent-name-Слабые-наниты
+  group: Medicine
+  desc: reagent-desc-наниты
+  physicalDesc: На-вид-как-нанобиомашины
+  flavor: Роботизированное
+  color: "#0b0612"
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:ChemHealEyeDamage
+      - !type:HealthChange
+        damage:
+          groups:
+            Burn: -6
+            Toxin: -4
+            Airloss: -4
+            Brute: -6
+    Narcotic:
+      effects:
+      - !type:MovespeedModifier
+        walkSpeedModifier: 1.2
+        sprintSpeedModifier: 1.2
+      - !type:GenericStatusEffect
+        key: Stun
+        time: 3
+        type: Remove
+      - !type:GenericStatusEffect
+        key: KnockedDown
+        time: 3
+        type: Remove
