@@ -4,6 +4,10 @@
   name: офицер синий щит
   description: Защищайте командный состав и ВИП персон Центрального Командования
   playTimeTracker: JobBlueshield
+  requirements:
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 10800 #3 hrs
   startingGear: BlueshieldGear
   icon: "JobIconBlueshield"
   requireAdminNotify: true
@@ -92,7 +96,7 @@
   name: Офицер Синий Щит
   components:
   - type: SpawnPoint
-    job_id: blueshield
+    job_id: Blueshield
   - type: Sprite
     sprite: Totohka/SpawnPoint.rsi
     layers:

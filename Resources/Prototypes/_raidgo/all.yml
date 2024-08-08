@@ -5,6 +5,10 @@
   description: Думаю её стоит разложить
   suffix: Middleages
   components:
+    - type: Stack
+      stackType: InflatableWallmedi
+      count: 1
+      maxCountOverride: 1
     - type: Sprite
       sprite: _raidgo/Ages/sprite/foldingwall.rsi
       state: icon
@@ -109,6 +113,10 @@
   description: Думаю её стоит разложить
   suffix: Middleages
   components:
+    - type: Stack
+      stackType: Inflatabledoormedi
+      count: 1
+      maxCountOverride: 1
     - type: Sprite
       sprite: _raidgo/Ages/sprite/foldingwall.rsi
       state: icon
@@ -211,6 +219,10 @@
   description: Думаю её стоит разложить
   suffix: Middleages
   components:
+    - type: Stack
+      stackType: Inflatabledoormedi
+      count: 1
+      maxCountOverride: 1
     - type: Sprite
       sprite: _raidgo/Ages/sprite/foldingwall.rsi
       state: icon
@@ -317,6 +329,10 @@
   description: Волшебно.
   suffix: Middleages
   components:
+    - type: Stack
+      stackType: Inflatabledoormedi
+      count: 1
+      maxCountOverride: 1
     - type: Sprite
       sprite: _raidgo/Ages/sprite/seedmetal.rsi
       state: icon
@@ -359,6 +375,10 @@
   description: Думаю его стоит разложить
   suffix: Middleages
   components:
+    - type: Stack
+      stackType: Inflatabledoormedi
+      count: 1
+      maxCountOverride: 1
     - type: Sprite
       sprite: _raidgo/Ages/sprite/foldingwall.rsi
       state: icon
@@ -379,6 +399,10 @@
   description: Думаю его стоит разложить
   suffix: Middleages
   components:
+    - type: Stack
+      stackType: Inflatabledoormedi
+      count: 1
+      maxCountOverride: 1
     - type: Sprite
       sprite: _raidgo/Ages/sprite/foldingmetal.rsi
       state: icon
@@ -419,6 +443,10 @@
   description: Позволяет собирать доски бесконечно.
   suffix: Middleages
   components:
+    - type: Stack
+      stackType: Inflatabledoormedi
+      count: 1
+      maxCountOverride: 1
     - type: Sprite
       sprite: _raidgo/Ages/sprite/seedwood.rsi
       state: icon
@@ -716,6 +744,10 @@
   description: Волшебно.
   suffix: Middleages
   components:
+    - type: Stack
+      stackType: Inflatabledoormedi
+      count: 1
+      maxCountOverride: 1
     - type: Sprite
       sprite: _raidgo/Ages/sprite/appleseeds.rsi
       state: icon
@@ -736,6 +768,10 @@
   description: Похоже его стоит разложить
   suffix: Middleages
   components:
+    - type: Stack
+      stackType: Inflatabledoormedi
+      count: 1
+      maxCountOverride: 1
     - type: Sprite
       sprite: _raidgo/Ages/sprite/foldingwall.rsi
       state: icon
@@ -1048,6 +1084,10 @@
   description: Похоже её стоит разложить
   suffix: Middleages
   components:
+    - type: Stack
+      stackType: Inflatabledoormedi
+      count: 1
+      maxCountOverride: 1
     - type: Sprite
       sprite: _raidgo/Ages/sprite/foldingwall.rsi
       state: icon
@@ -1068,6 +1108,10 @@
   description: Похоже её стоит разложить
   suffix: Middleages
   components:
+    - type: Stack
+      stackType: Inflatabledoormedi
+      count: 1
+      maxCountOverride: 1
     - type: Sprite
       sprite: _raidgo/Ages/sprite/foldingwall.rsi
       state: icon
@@ -1470,6 +1514,10 @@
   description: Волшебно.
   suffix: Middleages
   components:
+    - type: Stack
+      stackType: Inflatabledoormedi
+      count: 1
+      maxCountOverride: 1
     - type: Sprite
       sprite: _raidgo/Ages/sprite/clothseed.rsi
       state: icon
@@ -1561,6 +1609,10 @@
   description: Думаю его стоит разложить
   suffix: Middleages
   components:
+    - type: Stack
+      stackType: Inflatabledoormedi
+      count: 1
+      maxCountOverride: 1
     - type: Sprite
       sprite: _raidgo/Ages/sprite/foldingwall.rsi
       state: icon

@@ -20,7 +20,7 @@
     - SemiAuto
   - type: Item
     sprite: _depresh/Objects/Weapons/Guns/Battery/energy_gun.rsi
-    size: SmallNormal
+    size: Small
   - type: ProjectileBatteryAmmoProvider
     proto: LaserBullet
     fireCost: 200
