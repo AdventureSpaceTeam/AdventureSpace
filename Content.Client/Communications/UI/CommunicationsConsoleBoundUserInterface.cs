@@ -7,7 +7,7 @@ using Robust.Shared.Configuration;
 using Robust.Shared.Timing;
 using Robust.Shared.Network;
 using Content.Shared.CallErt;
-using Content.Client._Alteros.CallErt;
+using Content.Client.AdventurePrivate._Alteros.CallErt;
 
 namespace Content.Client.Communications.UI
 {
