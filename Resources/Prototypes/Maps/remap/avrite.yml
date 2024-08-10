@@ -4,7 +4,7 @@
   mapPath: /Maps/remap/Adventureavrite.yml
   maxRandomOffset: 0
   randomRotation: false
-  minPlayers: 25
+  minPlayers: 40
   stations:
     advAvrit:
       stationProto: StandardNanotrasenStation
