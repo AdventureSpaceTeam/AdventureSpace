@@ -6,7 +6,6 @@ using Content.Server.Afk;
 using Content.Server.Chat.Managers;
 using Content.Server.Connection;
 using Content.Server.Corvax.GuideGenerator;
-using Content.Server.Corvax.TTS;
 using Content.Server.Database;
 using Content.Server.EUI;
 using Content.Server.GameTicking;
@@ -23,6 +22,7 @@ using Content.Server.Players.RateLimiting;
 using Content.Server.Preferences.Managers;
 using Content.Server.ServerInfo;
 using Content.Server.ServerUpdates;
+using Content.Server.SS220.TTS;
 using Content.Server.Voting.Managers;
 using Content.Shared.CCVar;
 using Content.Shared.Kitchen;
@@ -34,6 +34,8 @@ using Robust.Shared.ContentPack;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
+using Content.Corvax.Interfaces.Server; // c4llv07e vpn guard
+using Content.Server.Adventure.Config; // c4llv07e adventure config
 
 namespace Content.Server.Entry
 {
@@ -109,6 +111,15 @@ namespace Content.Server.Entry
                 IoCManager.Resolve<ServerInfoManager>().Initialize();
                 IoCManager.Resolve<ServerApi>().Initialize();
 
+                // start-alteros: IoC
+                IoCManager.Resolve<Content.Corvax.Interfaces.Shared.ISharedSponsorsManager>().Initialize();
+                IoCManager.Resolve<Content.Corvax.Interfaces.Server.IServerDiscordAuthManager>().Initialize();
+                IoCManager.Resolve<Content.Corvax.Interfaces.Server.IServerJoinQueueManager>().Initialize();
+                // end-alteros: IoC
+
+                IoCManager.Resolve<Content.Corvax.Interfaces.Server.IServerVPNGuardManager>().Initialize(); // c4llv07e vpn guard
+                IoCManager.Resolve<AdventureConfigManager>().Initialize(); // c4llv07e config manager
+
                 _voteManager.Initialize();
                 _updateManager.Initialize();
                 _playTimeTracking.Initialize();
@@ -159,6 +170,9 @@ namespace Content.Server.Entry
                 IoCManager.Resolve<IGameMapManager>().Initialize();
                 IoCManager.Resolve<IEntitySystemManager>().GetEntitySystem<GameTicker>().PostInitialize();
                 IoCManager.Resolve<IBanManager>().Initialize();
+                // start-alteros: IoC
+                IoCManager.Resolve<Content.Corvax.Interfaces.Server.IServerJoinQueueManager>().PostInitialize();
+                // end-alteros: IoC
             }
         }
 

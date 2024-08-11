@@ -2,6 +2,7 @@
   id: LizardFrillsAquatic
   bodyPart: HeadSide
   markingCategory: HeadSide
+  sponsorOnly: false
   speciesRestriction: [Reptilian]
   sprites:
   - sprite: Mobs/Customization/reptilian_parts.rsi
@@ -11,6 +12,7 @@
   id: LizardFrillsShort
   bodyPart: HeadSide
   markingCategory: HeadSide
+  sponsorOnly: false
   speciesRestriction: [Reptilian]
   sprites:
   - sprite: Mobs/Customization/reptilian_parts.rsi
@@ -20,6 +22,7 @@
   id: LizardFrillsSimple
   bodyPart: HeadSide
   markingCategory: HeadSide
+  sponsorOnly: false
   speciesRestriction: [Reptilian]
   sprites:
   - sprite: Mobs/Customization/reptilian_parts.rsi
@@ -29,6 +32,7 @@
   id: LizardFrillsDivinity
   bodyPart: HeadSide
   markingCategory: HeadSide
+  sponsorOnly: false
   speciesRestriction: [Reptilian]
   sprites:
   - sprite: Mobs/Customization/reptilian_parts.rsi
@@ -38,6 +42,7 @@
   id: LizardFrillsBig
   bodyPart: HeadSide
   markingCategory: HeadSide
+  sponsorOnly: false
   speciesRestriction: [Reptilian]
   sprites:
   - sprite: Mobs/Customization/reptilian_parts.rsi
@@ -47,6 +52,7 @@
   id: LizardFrillsAxolotl
   bodyPart: HeadSide
   markingCategory: HeadSide
+  sponsorOnly: false
   speciesRestriction: [Reptilian]
   sprites:
   - sprite: Mobs/Customization/reptilian_parts.rsi
@@ -56,6 +62,7 @@
   id: LizardFrillsHood
   bodyPart: HeadSide
   markingCategory: HeadSide
+  sponsorOnly: false
   speciesRestriction: [Reptilian]
   sprites:
   - sprite: Mobs/Customization/reptilian_parts.rsi
@@ -76,6 +83,7 @@
   id: LizardHornsAngler
   bodyPart: HeadTop
   markingCategory: HeadTop
+  sponsorOnly: false
   speciesRestriction: [Reptilian]
   sprites:
   - sprite: Mobs/Customization/reptilian_parts.rsi
@@ -85,6 +93,7 @@
   id: LizardHornsCurled
   bodyPart: HeadTop
   markingCategory: HeadTop
+  sponsorOnly: false
   speciesRestriction: [Reptilian]
   sprites:
   - sprite: Mobs/Customization/reptilian_parts.rsi
@@ -94,6 +103,7 @@
   id: LizardHornsRam
   bodyPart: HeadTop
   markingCategory: HeadTop
+  sponsorOnly: false
   speciesRestriction: [Reptilian]
   sprites:
   - sprite: Mobs/Customization/reptilian_parts.rsi
@@ -103,6 +113,7 @@
   id: LizardHornsShort
   bodyPart: HeadTop
   markingCategory: HeadTop
+  sponsorOnly: false
   speciesRestriction: [Reptilian]
   sprites:
   - sprite: Mobs/Customization/reptilian_parts.rsi
@@ -112,6 +123,7 @@
   id: LizardHornsSimple
   bodyPart: HeadTop
   markingCategory: HeadTop
+  sponsorOnly: false
   speciesRestriction: [Reptilian]
   sprites:
   - sprite: Mobs/Customization/reptilian_parts.rsi
@@ -121,6 +133,7 @@
   id: LizardHornsDouble
   bodyPart: HeadTop
   markingCategory: HeadTop
+  sponsorOnly: false
   speciesRestriction: [Reptilian]
   sprites:
   - sprite: Mobs/Customization/reptilian_parts.rsi
@@ -130,6 +143,7 @@
   id: LizardTailSmooth
   bodyPart: Tail
   markingCategory: Tail
+  sponsorOnly: false
   speciesRestriction: [Reptilian]
   sprites:
   - sprite: Mobs/Customization/reptilian_parts.rsi
@@ -141,6 +155,7 @@
   id: LizardTailLarge
   bodyPart: Tail
   markingCategory: Tail
+  sponsorOnly: false
   speciesRestriction: [Reptilian]
   sprites:
   - sprite: Mobs/Customization/reptilian_parts.rsi
@@ -150,6 +165,7 @@
   id: LizardTailSpikes
   bodyPart: Tail
   markingCategory: Tail
+  sponsorOnly: false
   speciesRestriction: [Reptilian]
   sprites:
   - sprite: Mobs/Customization/reptilian_parts.rsi
@@ -159,6 +175,7 @@
   id: LizardTailLTiger
   bodyPart: Tail
   markingCategory: Tail
+  sponsorOnly: false
   speciesRestriction: [Reptilian]
   sprites:
   - sprite: Mobs/Customization/reptilian_parts.rsi
@@ -168,6 +185,7 @@
   id: LizardTailDTiger
   bodyPart: Tail
   markingCategory: Tail
+  sponsorOnly: false
   speciesRestriction: [Reptilian]
   sprites:
   - sprite: Mobs/Customization/reptilian_parts.rsi
@@ -177,6 +195,7 @@
   id: LizardSnoutRound
   bodyPart: Snout
   markingCategory: Snout
+  sponsorOnly: false
   forcedColoring: true
   speciesRestriction: [Reptilian]
   sprites:
@@ -187,6 +206,7 @@
   id: LizardSnoutSharp
   bodyPart: Snout
   markingCategory: Snout
+  sponsorOnly: false
   forcedColoring: true
   speciesRestriction: [Reptilian]
   sprites:
@@ -208,6 +228,7 @@
   id: LizardChestTiger
   bodyPart: Chest
   markingCategory: Chest
+  sponsorOnly: false
   speciesRestriction: [Reptilian]
   sprites:
   - sprite: Mobs/Customization/reptilian_parts.rsi
@@ -217,6 +238,7 @@
   id: LizardHeadTiger
   bodyPart: Head
   markingCategory: Head
+  sponsorOnly: false
   speciesRestriction: [Reptilian]
   sprites:
   - sprite: Mobs/Customization/reptilian_parts.rsi
@@ -226,6 +248,7 @@
   id: LizardLArmTiger
   bodyPart: LArm
   markingCategory: Arms
+  sponsorOnly: false
   speciesRestriction: [Reptilian]
   sprites:
   - sprite: Mobs/Customization/reptilian_parts.rsi
@@ -235,6 +258,7 @@
   id: LizardLLegTiger
   bodyPart: LLeg
   markingCategory: Legs
+  sponsorOnly: false
   speciesRestriction: [Reptilian]
   sprites:
   - sprite: Mobs/Customization/reptilian_parts.rsi
@@ -244,6 +268,7 @@
   id: LizardRArmTiger
   bodyPart: RArm
   markingCategory: Arms
+  sponsorOnly: false
   speciesRestriction: [Reptilian]
   sprites:
   - sprite: Mobs/Customization/reptilian_parts.rsi
@@ -253,6 +278,7 @@
   id: LizardRLegTiger
   bodyPart: RLeg
   markingCategory: Legs
+  sponsorOnly: false
   speciesRestriction: [Reptilian]
   sprites:
   - sprite: Mobs/Customization/reptilian_parts.rsi
@@ -262,6 +288,7 @@
   id: LizardHornsArgali
   bodyPart: HeadTop
   markingCategory: HeadTop
+  sponsorOnly: false
   speciesRestriction: [Reptilian]
   sprites:
   - sprite: Mobs/Customization/reptilian_parts.rsi
@@ -271,6 +298,7 @@
   id: LizardHornsAyrshire
   bodyPart: HeadTop
   markingCategory: HeadTop
+  sponsorOnly: false
   speciesRestriction: [Reptilian]
   sprites:
   - sprite: Mobs/Customization/reptilian_parts.rsi
@@ -280,6 +308,7 @@
   id: LizardHornsMyrsore
   bodyPart: HeadTop
   markingCategory: HeadTop
+  sponsorOnly: false
   speciesRestriction: [Reptilian]
   sprites:
   - sprite: Mobs/Customization/reptilian_parts.rsi
@@ -289,6 +318,7 @@
   id: LizardHornsBighorn
   bodyPart: HeadTop
   markingCategory: HeadTop
+  sponsorOnly: false
   speciesRestriction: [Reptilian]
   sprites:
   - sprite: Mobs/Customization/reptilian_parts.rsi
@@ -307,6 +337,7 @@
   id: LizardHornsKoboldEars
   bodyPart: HeadTop
   markingCategory: HeadTop
+  sponsorOnly: false
   speciesRestriction: [Reptilian]
   sprites:
   - sprite: Mobs/Customization/reptilian_parts.rsi
@@ -316,6 +347,7 @@
   id: LizardHornsFloppyKoboldEars
   bodyPart: HeadSide
   markingCategory: HeadSide
+  sponsorOnly: false
   speciesRestriction: [Reptilian]
   sprites:
   - sprite: Mobs/Customization/reptilian_parts.rsi
@@ -325,6 +357,7 @@
   id: LizardChestUnderbelly
   bodyPart: Chest
   markingCategory: Chest
+  sponsorOnly: false
   speciesRestriction: [Reptilian]
   sprites:
   - sprite: Mobs/Customization/reptilian_parts.rsi
@@ -334,6 +367,7 @@
   id: LizardChestBackspikes
   bodyPart: Chest
   markingCategory: Chest
+  sponsorOnly: false
   speciesRestriction: [Reptilian]
   sprites:
   - sprite: Mobs/Customization/reptilian_parts.rsi
@@ -344,6 +378,7 @@
   id: LizardTailSmoothAnimated
   bodyPart: Tail
   markingCategory: Tail
+  sponsorOnly: false
   speciesRestriction: []
   sprites:
     - sprite: Mobs/Customization/reptilian_parts.rsi
@@ -355,6 +390,7 @@
   id: LizardTailSpikesAnimated
   bodyPart: Tail
   markingCategory: Tail
+  sponsorOnly: false
   speciesRestriction: []
   sprites:
     - sprite: Mobs/Customization/reptilian_parts.rsi
@@ -364,6 +400,7 @@
   id: LizardTailLTigerAnimated
   bodyPart: Tail
   markingCategory: Tail
+  sponsorOnly: false
   speciesRestriction: []
   sprites:
     - sprite: Mobs/Customization/reptilian_parts.rsi
@@ -373,6 +410,7 @@
   id: LizardTailDTigerAnimated
   bodyPart: Tail
   markingCategory: Tail
+  sponsorOnly: false
   speciesRestriction: []
   sprites:
     - sprite: Mobs/Customization/reptilian_parts.rsi

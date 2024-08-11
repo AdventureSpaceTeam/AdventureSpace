@@ -132,3 +132,9 @@ public sealed partial class ConstructionInteractDoAfterEvent : DoAfterEvent
 public sealed partial class WelderRefineDoAfterEvent : SimpleDoAfterEvent
 {
 }
+
+[ByRefEvent]
+public record struct ItemConstructionCreated(EntityUid Item)
+{
+    public readonly EntityUid Item = Item;
+}

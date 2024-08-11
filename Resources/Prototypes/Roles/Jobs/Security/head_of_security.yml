@@ -6,17 +6,15 @@
   requirements:
     - !type:RoleTimeRequirement
       role: JobWarden
-      time: 36000 #10 hrs # Corvax-RoleTime
+      time: 18000 #5 hrs # Corvax-RoleTime
 #    - !type:RoleTimeRequirement
 #      role: JobSecurityOfficer
 #      time: 36000 #10 hrs
     - !type:DepartmentTimeRequirement
       department: Security
-      time: 108000 #50 hrs # Corvax-RoleTime
+      time: 72000 #20 hrs # Corvax-RoleTime
 #    - !type:OverallPlaytimeRequirement
 #      time: 144000 #40 hrs
-    - !type:AgeRequirement
-      requiredAge: 20
   weight: 10
   startingGear: HoSGear
   icon: "JobIconHeadOfSecurity"

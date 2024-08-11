@@ -1,0 +1,169 @@
+- type: Tag
+  id: MagazineBattleSyringes
+
+- type: Tag
+  id: BattleSyringe
+
+- type: entity
+  name: Боевой шприц
+  parent: BaseItem
+  description: Имеет лучшую баллистику
+  id: BattleSyringe
+  components:
+  - type: MeleeWeapon
+    damage:
+      types:
+        Piercing: 1
+  - type: EmbeddableProjectile
+    offset: 0.0,0.0
+    removalTime: 0.0
+    minimumSpeed: 1.0
+  - type: Damageable
+    damageContainer: Inorganic
+  - type: Sprite
+    sprite: Objects/Specific/Chemistry/syringe.rsi
+    state: syringeproj
+  - type: ThrowingAngle
+    angle: 0
+  - type: Icon
+    sprite: Objects/Specific/Chemistry/syringe.rsi
+    state: syringeproj
+  - type: Item
+    size: Tiny
+    sprite: Objects/Specific/Chemistry/syringe.rsi
+    heldPrefix: 0
+  - type: SolutionContainerManager
+    solutions:
+      injector:
+        maxVol: 8
+  - type: Ammo
+    muzzleFlash: null
+  - type: Injector
+    injectOnly: false
+  - type: InjectableSolution
+    solution: injector
+  - type: ExaminableSolution
+    solution: injector
+  - type: SolutionInjectOnEmbed
+    transferAmount: 8
+    solution: injector
+  - type: MeleeChemicalInjector
+    solution: injector
+  - type: TrashOnSolutionEmpty
+    solution: injector
+  - type: Appearance
+  - type: Tag
+    tags:
+    - BattleSyringe
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Piercing: 1
+
+- type: entity
+  id: MagazineBattleSyringes
+  name: Магазин (боевые шприцы)
+  parent: BaseItem
+  components:
+  - type: Tag
+    tags:
+      - MagazineBattleSyringes
+  - type: BallisticAmmoProvider
+    proto: BattleSyringe
+    mayTransfer: true
+    whitelist:
+      tags:
+        - BattleSyringe
+    soundRack: /Audio/Adventure/Syringegun/insert_syringe.ogg
+    soundInsert: /Audio/Adventure/Syringegun/insert_syringe.ogg
+    capacity: 30
+  - type: Item
+    size: Small
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Ammunition/Magazine/LightRifle/light_rifle_mag.rsi
+    state: base
+  - type: Appearance
+
+- type: entity
+  id: MagazineBattleSyringesEmpty
+  parent: MagazineBattleSyringes
+  suffix: пустой
+  components:
+  - type: BallisticAmmoProvider
+    proto: null
+
+- type: entity
+  name: Шприцемёт
+  parent: BaseItem
+  id: WeaponSyringeGun
+  description: Быстрое лечение на поле боя!
+  components:
+  - type: Sprite
+    sprite: Adventure/syringegun.rsi
+    state: syringegun
+  - type: Gun
+    fireRate: 4
+    selectedMode: FullAuto
+    availableModes:
+      - FullAuto
+    soundGunshot:
+      path: /Audio/Adventure/Syringegun/fire_syringe.ogg
+    cameraRecoilScalar: 0.0
+    minAngle: 0.0
+    maxAngle: 1.0
+    projectileSpeed: 30
+  - type: ChamberMagazineAmmoProvider
+    soundRack:
+      path: /Audio/Adventure/Syringegun/insert_syringe.ogg
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: MagazineBattleSyringes
+        insertSound: /Audio/Adventure/Syringegun/insert_syringe.ogg
+        ejectSound: /Audio/Adventure/Syringegun/insert_syringe.ogg
+        priority: 2
+        whitelist:
+          tags:
+            - MagazineBattleSyringes
+      gun_chamber:
+        name: Chamber
+        startingItem: BattleSyringe
+        priority: 1
+        whitelist:
+          tags:
+            - BattleSyringe
+  - type: ContainerContainer
+    containers:
+      gun_magazine: !type:ContainerSlot
+      gun_chamber: !type:ContainerSlot
+  - type: Appearance
+  - type: Item
+    size: Huge
+  - type: AmmoCounter
+  - type: StaticPrice
+    price: 500
+
+- type: entity
+  suffix: ноктурин
+  parent: BattleSyringe
+  id: BattleSyringeNocturine
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      injector:
+        maxVol: 8
+        reagents:
+        - ReagentId: Nocturine
+          Quantity: 30
+
+- type: entity
+  id: MagazineBattleSyringesNocturine
+  parent: MagazineBattleSyringes
+  suffix: ноктурин
+  components:
+  - type: BallisticAmmoProvider
+    proto: BattleSyringeNocturine

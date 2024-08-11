@@ -55,15 +55,16 @@
   - PetsNT
   - Zombie
 
-- type: npcFaction
-  id: Xeno
-  hostile:
-  - NanoTrasen
-  - Syndicate
-  - Passive
-  - PetsNT
-  - Zombie
-  - Revolutionary
+# See: Resources/Prototypes/_borkroman/Aliens_Prototype/ALIENS_BASEMOB.yml:2
+# - type: npcFaction
+#   id: Xeno
+#   hostile:
+#   - NanoTrasen
+#   - Syndicate
+#   - Passive
+#   - PetsNT
+#   - Zombie
+#   - Revolutionary
 
 - type: npcFaction
   id: Zombie

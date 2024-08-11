@@ -28,6 +28,13 @@
         amount: 5
   - type: Bloodstream
     bloodReagent: Sugar
+  - type: GhostRole
+    prob: 1
+    name: ghost-role-information-Gingerbread-name
+    allowMovement: true
+    description: ghost-role-information-Gingerbread-description
+    rules: ghost-role-information-Gingerbread-rules
+  - type: GhostTakeoverAvailable
   - type: Fixtures
     fixtures:
       fix1:

@@ -27,7 +27,7 @@ public sealed partial class CryostorageComponent : Component
     /// </summary>
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     [AutoNetworkedField]
-    public TimeSpan GracePeriod = TimeSpan.FromMinutes(5f);
+    public TimeSpan? GracePeriod = TimeSpan.FromMinutes(5f);
 
     /// <summary>
     /// A list of players who have actively entered cryostorage.

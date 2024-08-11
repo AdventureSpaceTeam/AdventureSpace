@@ -146,6 +146,7 @@
   - type: StaticPrice
     price: 100
   - type: PryUnpowered
+  - type: AIControlled
 
 - type: entity
   id: BaseSecureWindoor

@@ -1,0 +1,195 @@
+#Плазменная батарея
+- type: entity
+  id: PlasmaMagazin
+  name: Плазменная батарея
+  description: Батарея, для заряда плазменного оружия
+  suffix: BORK
+  parent: BaseItem
+  components:
+  - type: Battery
+    maxCharge: 1000
+    startingCharge: 1000
+    pricePerJoule: 0.15
+  - type: Sprite
+    sprite: /Textures/Bork/PlasmaRiffle/PlasmaMag.rsi
+    layers:
+      - state: PlasmaMag
+        map: ["enum.GunVisualLayers.Base"]
+      - state: mag-unshaded-4
+        map: ["enum.GunVisualLayers.MagUnshaded"]
+        shader: unshaded
+  - type: MagazineVisuals
+    magState: mag
+    steps: 5
+  - type: SolutionContainerManager
+    solutions:
+      battery:
+        maxVol: 5
+  - type: InjectableSolution
+    solution: battery
+  - type: DrawableSolution
+    solution: battery
+  - type: Extractable
+    juiceSolution:
+      reagents:
+        - ReagentId: Zinc
+          Quantity: 5
+  - type: Tag
+    tags:
+      - PlasmaMag
+  - type: Appearance
+  - type: PowerCellVisuals
+  - type: ProjectileBatteryAmmoProvider
+    proto: BulletPlasmaLaser
+    fireCost: 40
+
+- type: entity
+  id: PlasmaMagazinPrint
+  name: Плазменная батарея
+  suffix: BORK(Print)
+  parent: PlasmaMagazin
+  components:
+  - type: Battery
+    maxCharge: 1000
+    startingCharge: 0
+    pricePerJoule: 0.15
+
+- type: entity
+  id: BulletPlasmaLaser
+  name: Плазменный сгусток
+  parent: BaseBullet
+  noSpawn: true
+  components:
+  - type: Sprite
+    sprite: /Textures/Bork/PlasmaRiffle/PlasmaBulletShot.rsi
+    layers:
+    - state: PlasmaBullet
+  - type: Ammo
+  - type: Projectile
+    muzzleFlashEffect:
+    damage:
+      types:
+        Shock: 12
+  - type: PointLight
+    enabled: true
+    color: "#ff22d9"
+    radius: 2.0
+    energy: 2.0
+
+#Плазменная винтовка
+- type: entity
+  id: WeaponPlasmaGun
+  name: Плазменная винтовка
+  description: Для наибольшей точности, держите в двух руках!
+  suffix: BORK
+  parent: BaseItem
+  components:
+  - type: Sprite
+    sprite: /Textures/Bork/PlasmaRiffle/PlasmaRiffle/PlasmaRiffle_icon.rsi
+    layers:
+      - state: base
+        map: ["enum.GunVisualLayers.Base"]
+      - state: mag-4
+        map: ["enum.GunVisualLayers.Mag"]
+      - state: mag-unshaded-4
+        map: ["enum.GunVisualLayers.MagUnshaded"]
+        shader: unshaded
+  - type: Item
+    sprite: /Textures/Bork/PlasmaRiffle/PlasmaRiffle/PlasmaRiffle.rsi
+    size: Huge
+  - type: Clothing
+    sprite: /Textures/Bork/PlasmaRiffle/PlasmaRiffle/PlasmaRiffle.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: AmmoCounter
+  - type: Gun
+    fireRate: 3
+    minAngle: 25
+    maxAngle: 35
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/plasma_cutter.ogg
+  - type: Wieldable
+  - type: GunWieldBonus
+    minAngle: -21
+    maxAngle: -31
+  - type: UseDelay
+    delay: 0.5
+  - type: MagazineAmmoProvider
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: PlasmaMagazin
+        insertSound: /Audio/Weapons/Guns/MagIn/kinetic_reload.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/sfrifle_magout.ogg
+        whitelist:
+          tags:
+            - PlasmaMag
+  - type: Appearance
+  - type: StaticPrice
+    price: 2500
+  - type: ContainerContainer
+    containers:
+      gun_magazine: !type:ContainerSlot
+      gun_chamber: !type:ContainerSlot
+  - type: MagazineVisuals
+    magState: mag
+    steps: 5
+    zeroVisible: true
+
+- type: entity
+  id: WeaponPlasmaGunPrint
+  name: Плазменная винтовка
+  suffix: BORK(Print)
+  parent: WeaponPlasmaGun
+  components:
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: PlasmaMagazinPrint
+        insertSound: /Audio/Weapons/Guns/MagIn/kinetic_reload.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/sfrifle_magout.ogg
+        whitelist:
+          tags:
+            - PlasmaMag
+
+- type: entity
+  parent: GunSafe
+  suffix: BORK
+  id: GunSafePlasmaGun
+  name: Оружейный сейф плазменных винтовок
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponPlasmaGun
+      amount: 2
+    - id: PlasmaMagazin
+      amount: 4
+
+# рецепты
+- type: latheRecipe
+  id: WeaponPlasmaGunPrint
+  result: WeaponPlasmaGunPrint
+  category: Weapons
+  completetime: 3
+  materials:
+     Steel: 2000
+     Gold: 500
+     Uranium: 1000
+     Plastic: 500
+
+- type: latheRecipe
+  id: PlasmaMagazinPrint
+  result: PlasmaMagazinPrint
+  category: Ammo
+  completetime: 3
+  materials:
+     Steel: 500
+     Uranium: 500
+     Glass: 250

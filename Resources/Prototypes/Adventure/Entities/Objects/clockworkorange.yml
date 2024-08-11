@@ -1,0 +1,61 @@
+- type: entity
+  parent: SeedBase
+  name: пакет семян заводного апельсина
+  id: ClockworkOrangeSeeds
+  components:
+    - type: Seed
+      seedId: clockworkorange
+    - type: Sprite
+      sprite: DTS/Produce/clockworkorange.rsi
+
+- type: seed
+  id: clockworkorange
+  name: семена заводного апельсина
+  noun: seeds-noun-seeds
+  displayName: заводной апельсин
+  plantRsi: DTS/Produce/clockworkorange.rsi
+  packetPrototype: ClockworkOrangeSeeds
+  productPrototypes:
+    - FoodClockworkOrange
+  harvestRepeat: Repeat
+  lifespan: 55
+  maturation: 6
+  production: 6
+  yield: 3
+  potency: 10
+  idealLight: 8
+  chemicals:
+    Milk:
+      Min: 1
+      Max: 5
+      PotencyDivisor: 20
+    Stimulants:
+      Min: 1
+      Max: 4
+      PotencyDivisor: 25
+    MindbreakerToxin:
+      Min: 1
+      Max: 4
+      PotencyDivisor: 25
+
+- type: entity
+  name: заводной апельсин
+  parent: FoodLemon
+  id: FoodClockworkOrange
+  description: Отдаёт молоком.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - ultraviolence
+  - type: Sprite
+    sprite: DTS/Produce/clockworkorange.rsi
+  - type: Produce
+    seedId: clockworkorange
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: Milk
+        Quantity: 5
+  - type: Tag
+    tags:
+    - Fruit

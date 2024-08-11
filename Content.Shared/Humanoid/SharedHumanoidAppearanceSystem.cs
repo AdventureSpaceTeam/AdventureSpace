@@ -6,9 +6,9 @@ using Content.Shared.Decals;
 using Content.Shared.Examine;
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.Humanoid.Prototypes;
-using Content.Shared.Corvax.TTS;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Preferences;
+using Content.Shared.SS220.TTS;
 using Robust.Shared;
 using Robust.Shared.Configuration;
 using Robust.Shared.GameObjects.Components.Localization;
@@ -43,12 +43,12 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
     [ValidatePrototypeId<SpeciesPrototype>]
     public const string DefaultSpecies = "Human";
     // Corvax-TTS-Start
-    public const string DefaultVoice = "Garithos";
+    public const string DefaultVoice = "gman";
     public static readonly Dictionary<Sex, string> DefaultSexVoice = new()
     {
-        {Sex.Male, "Garithos"},
-        {Sex.Female, "Maiev"},
-        {Sex.Unsexed, "Myron"},
+        {Sex.Male, "Eugene"},
+        {Sex.Female, "Kseniya"},
+        {Sex.Unsexed, "Xenia"}
     };
     // Corvax-TTS-End
 
@@ -392,7 +392,7 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
         }
 
         EnsureDefaultMarkings(uid, humanoid);
-        SetTTSVoice(uid, profile.Voice, humanoid); // Corvax-TTS
+        SetTTSVoice(uid, profile.Voice, humanoid); // White-TTS
 
         humanoid.Gender = profile.Gender;
         if (TryComp<GrammarComponent>(uid, out var grammar))

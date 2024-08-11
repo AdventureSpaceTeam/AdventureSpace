@@ -1,6 +1,6 @@
 using System.Linq;
 using Content.Client.Guidebook;
-using Content.Client.Corvax.TTS;
+using Content.Client.SS220.TTS;
 using Content.Client.Humanoid;
 using Content.Client.Inventory;
 using Content.Client.Lobby.UI;
@@ -24,6 +24,7 @@ using Robust.Client.UserInterface.Controllers;
 using Robust.Shared.Configuration;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization.Manager;
 using Robust.Shared.Utility;
 
 namespace Content.Client.Lobby;

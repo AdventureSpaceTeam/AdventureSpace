@@ -2,8 +2,10 @@
 using Content.Client.Changelog;
 using Content.Client.Chat.Managers;
 using Content.Client.Clickable;
-using Content.Client.Corvax.TTS;
 using Content.Client.DebugMon;
+using Content.Client.SS220.TTS;
+using Content.Client.Options;
+using Content.Client.DiscordAuth;
 using Content.Client.Eui;
 using Content.Client.Fullscreen;
 using Content.Client.GhostKick;
@@ -19,6 +21,9 @@ using Content.Client.Viewport;
 using Content.Client.Voting;
 using Content.Shared.Administration.Logs;
 using Content.Client.Lobby;
+using Content.Client.JoinQueue;
+using Content.Client.Replay;
+using Content.Client.Sponsors;
 using Content.Shared.Administration.Managers;
 using Content.Shared.Players.PlayTimeTracking;
 
@@ -52,6 +57,12 @@ namespace Content.Client.IoC
             collection.Register<ISharedPlaytimeManager, JobRequirementsManager>();
             collection.Register<MappingManager>();
             collection.Register<DebugMonitorManager>();
+
+            // Alteros-Sponsor
+            collection.Register<Content.Corvax.Interfaces.Shared.ISharedSponsorsManager,SponsorsManager>();
+            collection.Register<Content.Corvax.Interfaces.Client.IClientJoinQueueManager,JoinQueueManager>();
+            collection.Register<Content.Corvax.Interfaces.Client.IClientDiscordAuthManager,DiscordAuthManager>();
+            // Alteros-Sponsor
         }
     }
 }

@@ -24,7 +24,7 @@ namespace Content.Shared.CCVar
         ///     Guide Entry Prototype ID to be displayed as the server rules.
         /// </summary>
         public static readonly CVarDef<string> RulesFile =
-            CVarDef.Create("server.rules_file", "DefaultRuleset", CVar.REPLICATED | CVar.SERVER);
+            CVarDef.Create("server.rules_file", "AdventureRuleset", CVar.REPLICATED | CVar.SERVER); // c4llv07e fix rules
 
         /// <summary>
         ///     Guide entry that is displayed by default when a guide is opened.
@@ -71,6 +71,25 @@ namespace Content.Shared.CCVar
         /// </summary>
         public static readonly CVarDef<float> AmbienceVolume =
             CVarDef.Create("ambience.volume", 1.5f, CVar.ARCHIVE | CVar.CLIENTONLY);
+
+        /// <summary>
+        /// AHelp volume.
+        /// </summary>
+        public static readonly CVarDef<float> AHelpVolume =
+            CVarDef.Create("ahelp.volume", 0.0f, CVar.ARCHIVE | CVar.CLIENTONLY);
+
+        /// <summary>
+        /// AHelp Sound on/off.
+        /// </summary>
+        public static readonly CVarDef<bool> AHelpSoundsEnabled =
+            CVarDef.Create("audio.ahelp_sounds_enabled", true, CVar.ARCHIVE | CVar.CLIENTONLY);
+
+        public const float MasterMultiplier = 2f;
+
+        // Midi is on engine so deal
+        public const float MidiMultiplier = 3f;
+
+        public const float AmbienceMultiplier = 2f;
 
         /// <summary>
         /// Ambience music volume.
@@ -1588,6 +1607,9 @@ namespace Content.Shared.CCVar
         public static readonly CVarDef<bool> EmergencyEarlyLaunchAllowed =
             CVarDef.Create("shuttle.emergency_early_launch_allowed", false, CVar.SERVERONLY);
 
+        public static readonly CVarDef<bool> CanCallEmergency =
+            CVarDef.Create("shuttle.can_call_emergency", true, CVar.SERVERONLY);
+
         /// <summary>
         /// How long the emergency shuttle remains docked with the station, in seconds.
         /// </summary>
@@ -2217,6 +2239,98 @@ namespace Content.Shared.CCVar
         /// </summary>
         public static readonly CVarDef<float> PointingCooldownSeconds =
             CVarDef.Create("pointing.cooldown_seconds", 0.5f, CVar.SERVERONLY);
+
+        /*
+         * News
+         */
+
+        /// <summary>
+        /// Maximum number of characters that can be specified in the news name
+        /// </summary>
+        public static readonly CVarDef<int> NewsNameLimit =
+            CVarDef.Create("news.name_limit", 25, CVar.SERVER | CVar.REPLICATED);
+
+        /// <summary>
+        /// Maximum number of characters that can be specified in the news content
+        /// </summary>
+        public static readonly CVarDef<int> NewsContentLimit =
+            CVarDef.Create("news.content_limit", 2048, CVar.SERVER | CVar.REPLICATED);
+
+        /*
+        * New Life
+        */
+
+        public static readonly CVarDef<int> NewLifeTimeout =
+            CVarDef.Create("newlife.timeout", 30);
+
+        /*
+         * Discord Auth
+         */
+
+        public static readonly CVarDef<bool> DiscordAuthEnabled =
+            CVarDef.Create("discord_auth.enabled", false, CVar.SERVERONLY);
+
+        public static readonly CVarDef<string> DiscordAuthApiUrl =
+            CVarDef.Create("discord_auth.api_url", "", CVar.SERVERONLY);
+
+        public static readonly CVarDef<bool> DiscordAuthCheckMember =
+            CVarDef.Create("discord_auth.check_member", false, CVar.SERVERONLY);
+
+        public static readonly CVarDef<string> DiscordAuthApiKey =
+            CVarDef.Create("discord_auth.api_key", "", CVar.SERVERONLY | CVar.CONFIDENTIAL);
+
+        /*
+         * Queue
+         */
+
+        public static readonly CVarDef<bool>
+            QueueEnabled = CVarDef.Create("queue.enabled", false, CVar.SERVERONLY);
+
+        /*
+         * Sponsor API
+         */
+
+        public static readonly CVarDef<string> SponsorsApiUrl =
+            CVarDef.Create("sponsor.api_url", "", CVar.SERVERONLY);
+
+        /*
+         *  Greetings
+         */
+
+        public static readonly CVarDef<bool> GreetingsEnable =
+            CVarDef.Create("greetings.enable", false);
+
+        public static readonly CVarDef<string> GreetingsMessage =
+            CVarDef.Create("greetings.message", "Привет");
+
+        public static readonly CVarDef<string> GreetingsAuthor =
+            CVarDef.Create("greetings.author", "Сервер");
+
+        /*
+         * c4llv07e
+         */
+
+        public static readonly CVarDef<string> VpnGuardApiUrl =
+            CVarDef.Create("vpnguard.api_url", "", CVar.SERVERONLY);
+
+        public static readonly CVarDef<string> VpnGuardApiUserId =
+            CVarDef.Create("vpnguard.api_userid", "", CVar.SERVERONLY);
+
+        public static readonly CVarDef<string> VpnGuardApiKey =
+            CVarDef.Create("vpnguard.api_key", "", CVar.SERVERONLY);
+
+        public static readonly CVarDef<string> VpnGuardFilePath =
+            CVarDef.Create("vpnguard.file_path", "", CVar.SERVERONLY);
+
+        /*
+         * Adventure Space WL
+         */
+
+        public static readonly CVarDef<float> RnDPointsModifier =
+            CVarDef.Create("game.research_modifier", 1.0f, CVar.SERVER | CVar.REPLICATED);
+
+        public static readonly CVarDef<float> RnDTickSizeModifier =
+            CVarDef.Create("game.research_tick_size_modifier", 1.0f, CVar.SERVER | CVar.REPLICATED);
 
         /*
          * DEBUG

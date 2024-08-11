@@ -205,3 +205,21 @@
   - ShuttleGunDusterCircuitboard
   technologyPrerequisites:
   - BasicShuttleArmament
+
+# Плазменное оружие
+- type: technology
+  id: PlasmaWeapon
+  name: Плазменное оружие
+  icon: 
+    sprite: Bork/PlasmaRiffle/PlasmaRiffle/PlasmaRiffle_icon.rsi
+    state: icon
+  discipline: Arsenal
+  tier: 3
+  cost: 15000
+  recipeUnlocks:
+  - WeaponPlasmaGunPrint
+  - WeaponPlasmaSniperPrint
+  - PlasmaMagazinPrint
+  - PlasmaSniperMagazinPrint
+  technologyPrerequisites:
+  - ExperimentalBatteryAmmo

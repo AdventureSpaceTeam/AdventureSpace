@@ -119,6 +119,7 @@
     belt: ClothingBeltBandolier
   storage:
     back:
+    - BoxSurvivalEngineering
     - WeaponShotgunDoubleBarreled
     - BoxShotgunIncendiary
     - GrenadeFlashBang

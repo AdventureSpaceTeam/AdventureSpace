@@ -1,0 +1,341 @@
+#M41A
+- type: entity
+  name: M41A
+  parent: BaseWeaponRifle
+  id: TGMSWeaponRifleM41A
+  description: Штурмовая винтовка импульсного действия под безгильзовый патрон 10×24 мм. В частности, он использовался Колониальной морской пехотой.
+  components:
+  - type: Sprite
+    sprite: _borkroman/TGMS_Sprite/TGMS_WEAPON/M41A/M41A_icon.rsi
+    layers:
+      - state: base
+        map: ["enum.GunVisualLayers.Base"]
+      - state: mag-0
+        map: ["enum.GunVisualLayers.Mag"]
+  - type: Item
+    sprite: _borkroman/TGMS_Sprite/TGMS_WEAPON/M41A/M41A.rsi
+  - type: Clothing
+    sprite: _borkroman/TGMS_Sprite/TGMS_WEAPON/M41A/M41A.rsi
+  - type: Gun
+    minAngle: 25
+    maxAngle: 35
+    angleIncrease: 4
+    angleDecay: 16
+    fireRate: 8
+    soundGunshot:
+      collection: M41AShot
+  - type: Wieldable
+  - type: GunWieldBonus
+    minAngle: -21
+    maxAngle: -31
+  - type: UseDelay
+    delay: 0.5
+  - type: ChamberMagazineAmmoProvider
+    soundRack:
+      path: /Audio/Weapons/Guns/Cock/ltrifle_cock.ogg
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: MagazineCaselessRifle10x24
+        insertSound: /Audio/_borkroman/MagIn/magin1.ogg
+        ejectSound: /Audio/_borkroman/MagOut/magout3.ogg
+        priority: 2
+        whitelist:
+          tags:
+            - MagazineCaselessRifle
+      gun_chamber:
+        name: Chamber
+        startingItem: CartridgeCaselessRifle
+        priority: 1
+        whitelist:
+          tags:
+            - CartridgeCaselessRifle
+  - type: ContainerContainer
+    containers:
+      gun_magazine: !type:ContainerSlot
+      gun_chamber: !type:ContainerSlot
+  - type: MagazineVisuals
+    magState: mag
+    steps: 1
+    zeroVisible: true
+  - type: Appearance
+
+- type: soundCollection
+  id: M41AShot
+  files:
+  - /Audio/_borkroman/TGMS_Audio/M41a_Pulse_Rifle/M41a_1.ogg
+  - /Audio/_borkroman/TGMS_Audio/M41a_Pulse_Rifle/M41a_2.ogg
+  - /Audio/_borkroman/TGMS_Audio/M41a_Pulse_Rifle/M41a_3.ogg
+  - /Audio/_borkroman/TGMS_Audio/M41a_Pulse_Rifle/M41a_4.ogg
+  - /Audio/_borkroman/TGMS_Audio/M41a_Pulse_Rifle/M41a_5.ogg
+
+#VP-78
+- type: entity
+  name: VP-78
+  parent: WeaponPistolN1984
+  description: Использовался Колониальной морской пехотой США в качестве стандартного личного оружия.
+  id: TGMSWeaponPistolVP78
+  components:
+  - type: Sprite
+    sprite: _borkroman/TGMS_Sprite/TGMS_WEAPON/VP-78.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Item
+    sprite: _borkroman/TGMS_Sprite/TGMS_WEAPON/VP-78.rsi
+  - type: Gun
+    minAngle: 5
+    maxAngle: 10
+    fireRate: 6
+    soundGunshot:
+      path: /Audio/_borkroman/TGMS_Audio/VP-78/VP-78_Shot.ogg
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: MagazinePistolCaselessRifle
+        insertSound: /Audio/_borkroman/TGMS_Audio/VP-78/VP-78_MagIn.ogg
+        ejectSound: /Audio/_borkroman/TGMS_Audio/VP-78/VP-78_MagOut.ogg
+        priority: 2
+        whitelist:
+          tags:
+            - MagazinePistolCaselessRifle
+      gun_chamber:
+        name: Chamber
+        startingItem: CartridgeCaselessRifle
+        priority: 1
+        whitelist:
+          tags:
+            - CartridgeCaselessRifle
+
+#M37A2
+- type: entity
+  name: M37A2
+  parent: [BaseWeaponShotgun, BaseGunWieldable]
+  id: TGMSWeaponShotgunM37A2
+  description: Простое и эффективное помповое ружье.
+  components:
+  - type: Sprite
+    sprite: _borkroman/TGMS_Sprite/TGMS_WEAPON/M37A2/M37A2_icon.rsi
+  - type: Clothing
+    sprite: _borkroman/TGMS_Sprite/TGMS_WEAPON/M37A2/M37A2.rsi
+  - type: Item
+    sprite: _borkroman/TGMS_Sprite/TGMS_WEAPON/M37A2/M37A2.rsi
+  - type: BallisticAmmoProvider
+    capacity: 8
+  - type: Gun
+    selectedMode: SemiAuto
+    availableModes:
+      - SemiAuto
+    fireRate: 1.5
+    soundGunshot:
+      path: /Audio/_borkroman/TGMS_Audio/M37A2/M37A2_Shot.ogg
+  - type: GunRequiresWield
+  - type: UseDelay
+    delay: 0.5
+
+- type: entity
+  name: Коробка картечи
+  parent: BaseAmmoProvider
+  id: TGMSAmmoProviderShotgunShell
+  components:
+    - type: Sprite
+      sprite: _borkroman/TGMS_Sprite/TGMS_WEAPON/M37A2/ShotGunAmmorBox.rsi
+      layers:
+      - state: base
+        map: ["enum.GunVisualLayers.Base"]
+      - state: mag-1
+        map: ["enum.GunVisualLayers.Mag"]
+    - type: BallisticAmmoProvider
+      proto: ShellShotgun
+      mayTransfer: true
+      whitelist:
+        tags:
+        - ShellShotgun
+      capacity: 8
+    - type: Appearance
+    - type: MagazineVisuals
+      magState: mag
+      steps: 2
+      zeroVisible: false
+    - type: Item
+      size: Small
+
+#M41AE2
+- type: entity
+  name: M41AE2
+  parent: BaseWeaponRifle
+  id: TGMSWeaponRifleM41AE2
+  description: Тяжёлая штурмовая винтовка импульсного действия под безгильзовый патрон 10×24 мм. В частности, он использовался Колониальной морской пехотой.
+  components:
+  - type: Sprite
+    sprite: _borkroman/TGMS_Sprite/TGMS_WEAPON/M41AE2/M41AE2_icon.rsi
+    layers:
+      - state: base
+        map: ["enum.GunVisualLayers.Base"]
+      - state: mag-0
+        map: ["enum.GunVisualLayers.Mag"]
+  - type: Item
+    sprite: _borkroman/TGMS_Sprite/TGMS_WEAPON/M41AE2/M41AE2.rsi
+  - type: Clothing
+    sprite: _borkroman/TGMS_Sprite/TGMS_WEAPON/M41AE2/M41AE2.rsi
+  - type: Gun
+    minAngle: 25
+    maxAngle: 45
+    angleIncrease: 4
+    angleDecay: 16
+    fireRate: 8
+    soundGunshot:
+      collection: M41AShot
+  - type: Wieldable
+  - type: GunWieldBonus
+    minAngle: -20
+    maxAngle: -25
+  - type: UseDelay
+    delay: 0.5
+  - type: ChamberMagazineAmmoProvider
+    soundRack:
+      path: /Audio/Weapons/Guns/Cock/ltrifle_cock.ogg
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: TGMSMagazineM41AE2
+        insertSound: /Audio/_borkroman/MagIn/magin1.ogg
+        ejectSound: /Audio/_borkroman/MagOut/magout3.ogg
+        priority: 2
+        whitelist:
+          tags:
+            - TGMSMagazineM41AE2
+      gun_chamber:
+        name: Chamber
+        startingItem: CartridgeCaselessRifle
+        priority: 1
+        whitelist:
+          tags:
+            - CartridgeCaselessRifle
+  - type: ContainerContainer
+    containers:
+      gun_magazine: !type:ContainerSlot
+      gun_chamber: !type:ContainerSlot
+  - type: MagazineVisuals
+    magState: mag
+    steps: 1
+    zeroVisible: true
+  - type: Appearance
+  - type: ClothingSpeedModifier
+    walkModifier: 0.90
+    sprintModifier: 0.90
+  - type: HeldSpeedModifier
+
+- type: entity
+  id: TGMSMagazineM41AE2
+  name: Магазин M41AE2
+  parent: BaseMagazineLightRifle
+  components:
+  - type: Tag
+    tags:
+      - TGMSMagazineM41AE2
+  - type: BallisticAmmoProvider
+    mayTransfer: true
+    whitelist:
+      tags:
+        - CartridgeCaselessRifle
+    proto: CartridgeCaselessRifle
+    capacity: 300
+  - type: Sprite
+    sprite: _borkroman/TGMS_Sprite/TGMS_WEAPON/M41AE2/M41AE2Mag.rsi
+  - type: Gun
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+
+#автоматический пулемет UA 571-C
+- type: entity
+  name: автоматический пулемет UA 571-C
+  description: Автоматизированная система защиты периметра.
+  parent: BaseWeaponTurret
+  id: WeaponTurretTGMS
+  components:
+    - type: DisassembleOnAltVerb
+      prototype: TGMSCaseUA571C
+      doAfter: 5
+    - type: NpcFactionMember
+      factions:
+        - NanoTrasen
+    - type: Sprite
+      sprite: _borkroman/TGMS_Sprite/TGMS_WEAPON/UA 571-C.rsi
+      noRot: true
+      layers:
+        - state: turret
+    - type: BallisticAmmoProvider
+      proto: CartridgeCaselessRifle
+      capacity: 600
+    - type: Gun
+      minAngle: 5
+      maxAngle: 20
+      angleIncrease: 4
+      angleDecay: 16
+      fireRate: 8
+      soundGunshot:
+        collection: M41AShot
+      selectedMode: FullAuto
+    - type: HTN
+      rootTask:
+        task: TurretCompound
+      blackboard:
+        SoundTargetInLOS: !type:SoundPathSpecifier
+          path: /Audio/Effects/double_beep.ogg
+    - type: Damageable
+      damageContainer: Inorganic
+    - type: Destructible
+      thresholds:
+        - trigger:
+            !type:DamageTrigger
+            damage: 150
+          behaviors:
+            - !type:DoActsBehavior
+              acts: [ "Destruction" ]
+            - !type:PlaySoundBehavior
+              sound:
+                collection: MetalGlassBreak
+            - !type:SpawnEntitiesBehavior
+              spawn:
+                SheetSteel1:
+                  min: 2
+                  max: 3
+
+#Кейс UA 571-C
+- type: entity
+  id: TGMSCaseUA571C
+  parent: BaseItem
+  name: Кейс UA 571-C
+  description: Прост и надёжен.
+  components:
+    - type: Sprite
+      sprite: _borkroman/TGMS_Sprite/TGMS_WEAPON/UA 571-C.rsi
+      state: icon
+    - type: Item
+      sprite: _borkroman/TGMS_Sprite/TGMS_WEAPON/UA 571-C.rsi
+      size: Huge
+    - type: SpawnAfterInteract
+      prototype: WeaponTurretTGMS
+      doAfter: 5
+      removeOnInteract: true
+    - type: Clickable
+    - type: Clothing
+      quickEquip: false
+      slots:
+      - back
+    - type: ClothingSpeedModifier
+      walkModifier: 0.80
+      sprintModifier: 0.80
+    - type: HeldSpeedModifier
+
+- type: Tag
+  id: TGMSMagazineM41AE2

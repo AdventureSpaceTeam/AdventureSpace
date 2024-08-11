@@ -15,6 +15,11 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Replays;
 using Robust.Shared.Utility;
+using Content.Shared.Access.Components;
+using Content.Shared.Inventory;
+using Content.Shared.PDA;
+using System.Globalization;
+using Content.Server.Popups;
 
 namespace Content.Server.Radio.EntitySystems;
 
@@ -28,6 +33,8 @@ public sealed class RadioSystem : EntitySystem
     [Dependency] private readonly IAdminLogManager _adminLogger = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly PopupSystem _popup = default!;
+    [Dependency] private readonly InventorySystem _inventorySystem = default!;
     [Dependency] private readonly ChatSystem _chat = default!;
 
     // set used to prevent radio feedback loops.
@@ -84,6 +91,9 @@ public sealed class RadioSystem : EntitySystem
 
         name = FormattedMessage.EscapeText(name);
 
+        // SS220 department-radio-color
+        var formattedName = $"[color={GetIdCardColor(messageSource)}]{GetIdCardName(messageSource)}{name}[/color]";
+
         SpeechVerbPrototype speech;
         if (mask != null
             && mask.Enabled
@@ -99,13 +109,18 @@ public sealed class RadioSystem : EntitySystem
             ? FormattedMessage.EscapeText(message)
             : message;
 
+        if (GetIdCardIsBold(messageSource))
+        {
+            content = $"[bold]{content}[/bold]";
+        }
+
         var wrappedMessage = Loc.GetString(speech.Bold ? "chat-radio-message-wrap-bold" : "chat-radio-message-wrap",
             ("color", channel.Color),
             ("fontType", speech.FontId),
             ("fontSize", speech.FontSize),
             ("verb", Loc.GetString(_random.Pick(speech.SpeechVerbStrings))),
             ("channel", $"\\[{channel.LocalizedName}\\]"),
-            ("name", name),
+            ("name", formattedName),
             ("message", content));
 
         // most radios are relayed to chat, so lets parse the chat message beforehand
@@ -156,6 +171,15 @@ public sealed class RadioSystem : EntitySystem
             RaiseLocalEvent(receiver, ref ev);
         }
 
+        var receiversEnum = EntityQueryEnumerator<ActiveRadioComponent, TransformComponent>();
+        var receivers = new List<EntityUid>();
+        while (receiversEnum.MoveNext(out var receiver, out var _, out var _))
+        {
+            receivers.Add(receiver);
+        }
+        // Dispatch TTS radio speech event for every receiver
+        RaiseLocalEvent(new RadioSpokeEvent(messageSource, message, receivers.ToArray()));
+
         if (name != Name(messageSource))
             _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Radio message from {ToPrettyString(messageSource):user} as {name} on {channel.LocalizedName}: {message}");
         else
@@ -164,6 +188,56 @@ public sealed class RadioSystem : EntitySystem
         _replay.RecordServerMessage(chat);
         _messages.Remove(message);
     }
+
+    private IdCardComponent? GetIdCard(EntityUid senderUid)
+    {
+        if (!_inventorySystem.TryGetSlotEntity(senderUid, "id", out var idUid))
+            return null;
+
+        if (EntityManager.TryGetComponent(idUid, out PdaComponent? pda) && pda.ContainedId is not null)
+        {
+            // PDA
+            if (TryComp<IdCardComponent>(pda.ContainedId, out var idComp))
+                return idComp;
+        }
+        else if (EntityManager.TryGetComponent(idUid, out IdCardComponent? id))
+        {
+            // ID Card
+            return id;
+        }
+
+        return null;
+    }
+
+    // SS220 radio-department-tag begin
+    private string GetIdCardName(EntityUid senderUid)
+    {
+        var idCardTitle = Loc.GetString("chat-radio-no-id");
+        idCardTitle = GetIdCard(senderUid)?.JobTitle ?? idCardTitle;
+
+        if (TryComp<RadioNameComponent>(senderUid, out var radioName) &&
+            radioName.Name != string.Empty)
+            idCardTitle = radioName.Name;
+
+        var textInfo = CultureInfo.CurrentCulture.TextInfo;
+        idCardTitle = textInfo.ToTitleCase(idCardTitle);
+
+        return $"\\[{idCardTitle}\\] ";
+    }
+    // S220 radio-department-tag end
+
+    // SS220 department-radio-color begin
+    private string GetIdCardColor(EntityUid senderUid)
+    {
+        var color = GetIdCard(senderUid)?.JobColor;
+        return (!string.IsNullOrEmpty(color)) ? color : "#9FED58";
+    }
+
+    private bool GetIdCardIsBold(EntityUid senderUid)
+    {
+        return GetIdCard(senderUid)?.RadioBold ?? false;
+    }
+    // SS220 department-radio-color end
 
     /// <inheritdoc cref="TelecomServerComponent"/>
     private bool HasActiveServer(MapId mapId, string channelId)

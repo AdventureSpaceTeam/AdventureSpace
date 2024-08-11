@@ -49,6 +49,7 @@
   - HeadOfSecurity
   - ResearchDirector
   - Quartermaster
+  - Blueshield
   primary: false
   weight: 100
 
@@ -89,6 +90,7 @@
   - Pilot # Corvax-Pilot
   - Detective
   - Warden
+  - Brigmedic
 
 - type: department
   id: Science

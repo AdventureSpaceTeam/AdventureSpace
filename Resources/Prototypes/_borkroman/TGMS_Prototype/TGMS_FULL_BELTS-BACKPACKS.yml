@@ -1,0 +1,87 @@
+- type: entity
+  name: Аварийный запас Морпеха
+  parent: BoxCardboard
+  id: TGMSBoxSurvival
+  description: Эта коробка способна спасти вам жизнь.
+  components:
+  - type: StorageFill
+    contents:
+    - id: Flare
+      amount: 3
+    - id: EmergencyMedipen
+      amount: 1
+    - id: ExtendedEmergencyOxygenTankFilled
+    - id: TGMSMarineMask
+    - id: FoodSnackNutribrick
+  - type: Item
+    size: Normal
+  - type: Sprite
+    layers:
+      - state: internals
+      - state: emergencytank
+
+- type: entity
+  parent: TGMSSpecialistBackpack
+  id: TGMSSpecialistBackpackFull
+  suffix: Заполненный
+  components:
+  - type: StorageFill
+    contents:
+    - id: MagazineBoxCaselessRifleBig
+      amount: 4
+    - id: TGMSAmmoProviderShotgunShell
+      amount: 4
+    - id: ExGrenade
+      amount: 2
+    - id: GrenadeIncendiary
+      amount: 2
+    - id: CrowbarRed
+    - id: TGMSBoxSurvival
+
+- type: entity
+  parent: TGMSBackpackBase
+  id: TGMSBackpackFull
+  suffix: Заполненный
+  components:
+  - type: StorageFill
+    contents:
+    - id: TGMSBoxSurvival
+    - id: CrowbarRed
+    - id: GrenadeShrapnel
+      amount: 2
+
+- type: entity
+  parent: TGMSMedicalBackpack
+  id: TGMSMedicalBackpackFull
+  suffix: Заполненный
+  components:
+  - type: StorageFill
+    contents:
+    - id: TGMSBoxSurvival
+    - id: MedkitCombatFilled
+      amount: 2
+    - id: EmergencyMedipen
+      amount: 4
+    - id: CrowbarRed
+
+- type: entity
+  parent: TGMSMarineWebbingBase
+  id: TGMSMarineWebbingFull
+  suffix: Заполненный
+  components:
+  - type: StorageFill
+    contents:
+    - id: MagazineCaselessRifle10x24
+      amount: 4
+    - id: MagazinePistolCaselessRifle
+      amount: 2
+
+- type: entity
+  parent: TGMSMarineShotgunWebbing
+  id: TGMSMarineShotgunWebbingFull
+  suffix: Заполненный
+  components:
+  - type: StorageFill
+    contents:
+    - id: TGMSAmmoProviderShotgunShell
+      amount: 4

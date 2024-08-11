@@ -2,7 +2,6 @@ using Content.Client.Administration.Managers;
 using Content.Client.Changelog;
 using Content.Client.Chat.Managers;
 using Content.Client.DebugMon;
-using Content.Client.Corvax.TTS;
 using Content.Client.Options;
 using Content.Client.Eui;
 using Content.Client.Fullscreen;
@@ -25,6 +24,7 @@ using Content.Client.Voting;
 using Content.Shared.Ame.Components;
 using Content.Shared.Gravity;
 using Content.Shared.Localizations;
+using Content.Corvax.Interfaces.Shared;
 using Robust.Client;
 using Robust.Client.Graphics;
 using Robust.Client.Input;
@@ -122,6 +122,8 @@ namespace Content.Client.Entry
             _prototypeManager.RegisterIgnore("nukeopsRole");
             _prototypeManager.RegisterIgnore("stationGoal"); // Corvax-StationGoal
             _prototypeManager.RegisterIgnore("ghostRoleRaffleDecider");
+            _prototypeManager.RegisterIgnore("ertGroups"); // Alteros-ERTCALL
+            _prototypeManager.RegisterIgnore("loadoutItem"); // c4llv07e-fix-loadout
 
             _componentFactory.GenerateNetIds();
             _adminManager.Initialize();
@@ -162,6 +164,12 @@ namespace Content.Client.Entry
             _userInterfaceManager.SetDefaultTheme("SS14DefaultTheme");
             _userInterfaceManager.SetActiveTheme(_configManager.GetCVar(CVars.InterfaceTheme));
             _documentParsingManager.Initialize();
+
+            // start-alteros: ioc
+            IoCManager.Resolve<Content.Corvax.Interfaces.Shared.ISharedSponsorsManager>().Initialize();
+            IoCManager.Resolve<Content.Corvax.Interfaces.Client.IClientJoinQueueManager>().Initialize();
+            IoCManager.Resolve<Content.Corvax.Interfaces.Client.IClientDiscordAuthManager>().Initialize();
+            // end-alteros: ioc
 
             _baseClient.RunLevelChanged += (_, args) =>
             {

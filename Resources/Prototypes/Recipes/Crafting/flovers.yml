@@ -1,0 +1,59 @@
+- type: construction
+  name: bouquet of engineering tulips
+  id: InjTulpBucket
+  graph: InjTulpBucket
+  startNode: start
+  targetNode: bucket
+  category: construction-category-misc
+  objectType: Item
+  icon:
+    sprite: Objects/Decoration/Flovers/inj-bucket.rsi
+    state: icon
+
+- type: construction
+  name: bouquet of roses
+  id: RosesBucket
+  graph: RosesBucket
+  startNode: start
+  targetNode: bucket
+  category: construction-category-misc
+  objectType: Item
+  icon:
+    sprite: Objects/Decoration/Flovers/rose_bucket.rsi
+    state: icon
+
+- type: construction
+  name: bouquet of orchids
+  id: OrhFlovBucket
+  graph: OrhFlovBucket
+  startNode: start
+  targetNode: bucket
+  category: construction-category-misc
+  objectType: Item
+  icon:
+    sprite: Objects/Decoration/Flovers/orh_bucket.rsi
+    state: icon
+
+- type: construction
+  name: flower bouquet
+  id: TulpBucket
+  graph: TulpBucket
+  startNode: start
+  targetNode: bucket
+  category: construction-category-misc
+  objectType: Item
+  icon:
+    sprite: Objects/Decoration/Flovers/flov_bucket.rsi
+    state: icon
+
+- type: construction
+  name: assorted bouquet
+  id: AssorFlovBucket
+  graph: AssorFlovBucket
+  startNode: start
+  targetNode: bucket
+  category: construction-category-misc
+  objectType: Item
+  icon:
+    sprite: Objects/Decoration/Flovers/assor_bucket.rsi
+    state: icon

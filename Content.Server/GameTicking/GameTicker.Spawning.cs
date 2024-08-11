@@ -4,9 +4,11 @@ using System.Numerics;
 using Content.Server.Administration.Managers;
 using Content.Server.GameTicking.Events;
 using Content.Server.Ghost;
+using Content.Server.NewLife;
 using Content.Server.Spawners.Components;
 using Content.Server.Speech.Components;
 using Content.Server.Station.Components;
+using Content.Shared.CCVar;
 using Content.Shared.Database;
 using Content.Shared.Mind;
 using Content.Shared.Players;
@@ -28,6 +30,8 @@ namespace Content.Server.GameTicking
     {
         [Dependency] private readonly IAdminManager _adminManager = default!;
         [Dependency] private readonly SharedJobSystem _jobs = default!;
+        [Dependency] private readonly NewLifeSystem _newLifeSystem = default!;
+
 
         [ValidatePrototypeId<EntityPrototype>]
         public const string ObserverPrototypeName = "MobObserver";
@@ -174,6 +178,11 @@ namespace Content.Server.GameTicking
                 JoinAsObserver(player);
                 return;
             }
+
+            // Alteros-Sponsors-start
+            _newLifeSystem.AddUsedCharactersForRespawn(player.UserId, _prefsManager.GetPreferences(player.UserId).SelectedCharacterIndex);
+            _newLifeSystem.SetNextAllowRespawn(player.UserId, _gameTiming.CurTime + TimeSpan.FromMinutes(_newLifeSystem.NewLifeTimeout));
+            // Alteros-Sponsors-stop
 
             // We raise this event to allow other systems to handle spawning this player themselves. (e.g. late-join wizard, etc)
             var bev = new PlayerBeforeSpawnEvent(player, character, jobId, lateJoin, station);

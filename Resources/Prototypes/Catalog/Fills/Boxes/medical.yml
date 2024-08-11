@@ -123,3 +123,37 @@
     layers:
       - state: box
       - state: vials
+
+- type: entity
+  name: индивидуальная аптечка
+  parent: BaseStorageItem
+  id: IndiMedBox
+  description: Аптечка для самолечения небольших травм.
+  components:
+  - type: Sprite
+    sprite: Objects/Storage/indimedbox.rsi
+    layers:
+      - map: [ base ]
+        state: close
+  - type: Storage
+    grid:
+    - 0,0,2,2
+  - type: StorageFill
+    contents:
+      - id: NamedPillHyronalin
+      - id: PillCharcoal
+      - id: NamedPillDexalin
+      - id: Brutepack1
+        amount: 2
+      - id: Gauze
+      - id: Ointment1
+        amount: 2
+  - type: Item
+    size: Normal
+  - type: GenericVisualizer
+    visuals:
+      enum.StorageVisuals.Open:
+        base:
+          True: { state: open }
+          False: { state: close }
+  - type: Appearance

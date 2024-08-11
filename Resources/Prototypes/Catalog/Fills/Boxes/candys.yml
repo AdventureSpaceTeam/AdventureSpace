@@ -1,0 +1,120 @@
+- type: entity
+  id: CandyBoxBase
+  parent: BaseStorageItem
+  abstract: true
+  components:
+  - type: Sprite
+    layers:
+      - map: [ base ]
+        state: close
+  - type: Storage
+    maxItemSize: Tiny
+    grid:
+    - 0,0,3,1
+  - type: Item
+    size: Normal
+  - type: GenericVisualizer
+    visuals:
+      enum.StorageVisuals.Open:
+        base:
+          True: { state: open }
+          False: { state: close }
+  - type: Appearance
+
+- type: entity
+  name: коробка ассорти-конфет
+  parent: CandyBoxBase
+  id: AssortedCandyBox
+  description: Коробка самых разных конфет.
+  components:
+  - type: StorageFill
+    contents:
+    - id: GreenWrapCandy
+    - id: BlueWrapCandy
+    - id: CyanWrapCandy
+    - id: RedWrapCandy
+    - id: YellowWrapCandy
+    - id: OrangeWrapCandy
+    - id: PurpleWrapCandy
+    - id: RainbowWrapCandy
+      prob: 0.25
+  - type: Sprite
+    sprite: Objects/Storage/CandyBoxes/assorted.rsi
+    state: close
+
+- type: entity
+  name: коробка синих конфет
+  parent: CandyBoxBase
+  id: BlueCandyBox
+  components:
+  - type: StorageFill
+    contents:
+    - id: CyanWrapCandy
+      amount: 4
+    - id: BlueWrapCandy
+      amount: 4
+  - type: Sprite
+    sprite: Objects/Storage/CandyBoxes/cyan-blue.rsi
+    state: close
+
+- type: entity
+  name: коробка жёлтых конфет
+  parent: CandyBoxBase
+  id: YellowCandyBox
+  components:
+  - type: StorageFill
+    contents:
+    - id: YellowWrapCandy
+      amount: 4
+    - id: OrangeWrapCandy
+      amount: 4
+  - type: Sprite
+    sprite: Objects/Storage/CandyBoxes/orange-yellow.rsi
+    state: close
+
+- type: entity
+  name: коробка красных конфет
+  parent: CandyBoxBase
+  id: RedCandyBox
+  components:
+  - type: StorageFill
+    contents:
+    - id: RedWrapCandy
+      amount: 4
+    - id: PurpleWrapCandy
+      amount: 4
+  - type: Sprite
+    sprite: Objects/Storage/CandyBoxes/red-purple.rsi
+    state: close
+
+- type: entity
+  name: коробка зелёных конфет
+  parent: CandyBoxBase
+  id: GreenCandyBox
+  components:
+  - type: StorageFill
+    contents:
+    - id: GreenWrapCandy
+      amount: 4
+    - id: WhiteWrapCandy
+      amount: 4
+  - type: Sprite
+    sprite: Objects/Storage/CandyBoxes/green-white.rsi
+    state: close
+
+- type: entity
+  name: коробка необычных конфет
+  parent: CandyBoxBase
+  id: TerCandyBox
+  components:
+  - type: StorageFill
+    contents:
+    - id: SpicyWrapCandy
+      amount: 2
+    - id: SourWrapCandy
+      amount: 2
+    - id: ClothWrapCandy
+      amount: 4
+  - type: Sprite
+    sprite: Objects/Storage/CandyBoxes/assorted.rsi
+    state: close

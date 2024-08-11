@@ -1,0 +1,109 @@
+#Роль
+- type: job
+  id: Brigmedic
+  name: бригмедик
+  description: Оказывайте медицинскую помощь заключенным и сотрудникам службы безопасности.
+  playTimeTracker: JobBrigmedic
+  requirements:
+    - !type:DepartmentTimeRequirement
+      department: Medical
+      time: 7200 #2 hrs # Corvax-RoleTime
+  startingGear: BrigmedicGearADVENT
+  icon: "JobIconBrigmedic"
+  requireAdminNotify: true
+  supervisors: job-supervisors-hos
+  canBeAntag: false
+  access:
+  - Security
+  - Medical
+  - Maintenance
+  - Cryogenics
+  - External
+  - Brig
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+  - !type:AddComponentSpecial
+
+- type: playTimeTracker
+  id: JobBrigmedic
+
+#Гир
+- type: startingGear
+  id: BrigmedicGearADVENT
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitBrigmedic
+    outerClothing: ClothingOuterCoatAMG
+    back: ClothingBackpackBrigmedic
+    shoes: ClothingShoesColorRed
+    gloves: ClothingHandsGlovesNitrile
+    eyes: ClothingEyesHudMedical
+    head: ClothingHeadHatBeretBrigmedic
+    id: BrigmedicPDA
+    ears: ClothingHeadsetBrigmedic
+    mask: ClothingMaskBreathMedicalSecurity
+    belt: ClothingBeltMedicalFilled
+
+#Карта
+- type: entity
+  parent: BrigmedicIDCard
+  id: BrigmedicIDCardADV
+  suffix: ADVENTURE
+  name: ID карта бригмедика
+  components:
+  - type: PresetIdCard
+    job: Brigmedic
+
+- type: entity
+  parent: BrigmedicPDA
+  id: BrigmedicPDAADV
+  name: КПК бригмедика
+  components:
+  - type: Pda
+    id: BrigmedicIDCardADV
+
+#Сумки
+- type: entity
+  noSpawn: true
+  parent: ClothingBackpackBrigmedic
+  id: ClothingBackpackBrigmedicFilledADV
+  components:
+  - type: StorageFill
+    contents:
+      - id: BoxSurvivalMedical
+      - id: Flash
+      - id: IndiMedBox
+
+- type: entity
+  noSpawn: true
+  parent: ClothingBackpackSatchelBrigmedic
+  id: ClothingBackpackSatchelBrigmedicFilledADV
+  components:
+  - type: StorageFill
+    contents:
+      - id: BoxSurvivalMedical
+      - id: Flash
+
+- type: entity
+  noSpawn: true
+  parent: ClothingBackpackDuffelBrigmedic
+  id: ClothingBackpackDuffelBrigmedicFilledADV
+  components:
+  - type: StorageFill
+    contents:
+      - id: BoxSurvivalMedical
+      - id: Flash
+
+#Спавнер
+- type: entity
+  id: SpawnPointBrigmedicAdven
+  parent: SpawnPointJobBase
+  name: brigmedic
+  suffix: ADVENTURE
+  components:
+  - type: SpawnPoint
+    job_id: Brigmedic
+  - type: Sprite
+    layers:
+      - state: green
+      - state: brigmedic

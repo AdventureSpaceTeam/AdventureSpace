@@ -1,3 +1,4 @@
+using Content.Shared.Whitelist;
 using Robust.Shared.Map;
 using Robust.Shared.Utility;
 
@@ -26,4 +27,9 @@ public sealed partial class StationCentcommComponent : Component
 
     [DataField]
     public EntityUid? MapEntity;
+
+    // Alteros-start
+    [DataField("shuttleWhitelist")]
+    public EntityWhitelist? ShuttleWhitelist;
+    // Alteros-end
 }

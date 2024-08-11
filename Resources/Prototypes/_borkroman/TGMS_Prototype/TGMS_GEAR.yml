@@ -1,0 +1,74 @@
+- type: startingGear
+  id: TGMSMarineGearBase
+  equipment:
+    jumpsuit: TGMSMarineUniformBase
+    shoes: TGMSMarineBootsBase
+    id: TGMSMarinePDA
+
+#ГИР Морпеха
+- type: startingGear
+  id: TGMSMarineGearFull
+  equipment:
+    jumpsuit: TGMSMarineUniformBase
+    shoes: TGMSMarineBootsArmor
+    head: TGMSMarineHelmetM10
+    gloves: TGMSMarineGlovesArmor
+    outerClothing: TGMSMarineArmorM3
+    id: TGMSMarinePDA
+    belt: TGMSMarineWebbingFull
+    pocket1: TGMSWeaponPistolVP78
+    suitstorage: TGMSWeaponRifleM41A
+    ears: TGMSMarineHeadsetAlt
+    back: TGMSBackpackFull
+    neck: TGMSMarineFlashlight
+
+#ГИР Командира
+- type: startingGear
+  id: TGMSMarineCommanderGearFull
+  equipment:
+    jumpsuit: TGMSMarineCommanderUniform
+    shoes: TGMSMarineBootsArmor
+    head: TGMSMarineHelmetM10А1
+    gloves: TGMSMarineGlovesArmor
+    outerClothing: TGMSMarineArmorM3Drawing
+    id: TGMSMarineCommanderPDA
+    belt: TGMSMarineWebbingFull
+    pocket1: TGMSWeaponPistolVP78
+    suitstorage: TGMSWeaponRifleM41A
+    ears: TGMSMarineHeadsetAlt
+    back: TGMSBackpackFull
+    neck: TGMSMarineFlashlight
+
+#ГИР Полевого медика
+- type: startingGear
+  id: TGMSMarineMedicalGearFull
+  equipment:
+    jumpsuit: TGMSMarineMedicalUniform
+    shoes: TGMSMarineBootsArmor
+    head: TGMSMarineMedicalHelmetM10
+    gloves: TGMSMarineGlovesArmor
+    outerClothing: TGMSMarineArmorM56Medical
+    id: TGMSMarineMedicalPDA
+    belt: TGMSMarineShotgunWebbingFull
+    pocket1: TGMSWeaponPistolVP78
+    suitstorage: TGMSWeaponShotgunM37A2
+    ears: TGMSMarineHeadsetAlt
+    back: TGMSMedicalBackpackFull
+    neck: TGMSMarineFlashlight
+
+#ГИР Специалиста
+- type: startingGear
+  id: TGMSMarineSpecialistGearFull
+  equipment:
+    jumpsuit: TGMSMarineUniformShirt
+    shoes: TGMSMarineBootsArmor
+    head: TGMSMarineHelmetM30
+    gloves: TGMSMarineGlovesArmor
+    outerClothing: TGMSMarineArmorM3
+    id: TGMSMarineSpecPDA
+    belt: TGMSMarineWebbingFull
+    pocket1: TGMSWeaponPistolVP78
+    suitstorage: TGMSWeaponRifleM41A
+    ears: TGMSMarineHeadsetAlt
+    back: TGMSSpecialistBackpackFull
+    neck: TGMSMarineFlashlight

@@ -1,0 +1,166 @@
+- type: latheRecipe
+  id: Document
+  result: Paper
+  completetime: 1
+  materials:
+    PaperDocument: 100
+
+- type: entity
+  id: Printer
+  parent: [ BaseMachinePowered, ConstructibleMachine ]
+  name: принтер
+  description: Позволяет печатать документы.
+  components:
+  - type: Sprite
+    sprite: Adventure/Structures/Machines/printer.rsi
+    drawdepth: SmallObjects
+    snapCardinals: true
+    layers:
+    - state: icon
+      map: ["enum.LatheVisualLayers.IsRunning"]
+    - state: unlit
+      shader: unshaded
+      map: ["enum.PowerDeviceVisualLayers.Powered"]
+    # - state: inserting
+    #   map: ["enum.MaterialStorageVisualLayers.Inserting"]
+  - type: MaterialStorage
+    useInsertingAnimation: false
+    whitelist:
+      tags:
+        - Document
+    storage:
+      SheetPrinter: 0
+  - type: Machine
+    board: PrinterMachineCircuitboard
+  - type: Lathe
+    # idleState: icon
+    # runningState: building
+    staticRecipes:
+      - Document0
+      - Document1
+      - Document2
+      - Document3
+      - Document4
+      - Document5
+      - Document6
+      - Document7
+      - Document8
+      - Document9
+      - Document10
+      - Document11
+      - Document12
+      - Document13
+      - Document14
+      - Document15
+      - Document16
+      - Document17
+      - Document18
+      - Document19
+      - Document20
+      - Document21
+      - Document22
+      - Document23
+      - Document24
+      - Document25
+      - Document26
+      - Document27
+      - Document28
+      - Document29
+      - Document30
+      - Document31
+      - Document32
+      - Document33
+      - Document34
+      - Document35
+      - Document36
+      - Document37
+      - Document38
+      - Document39
+      - Document40
+      - Document41
+      - Document42
+      - Document43
+      - Document44
+      - Document45
+      - Document46
+      - Document47
+      - Document48
+      - Document49
+      - Document50
+      - Document51
+      - Document52
+      - Document53
+  - type: Appearance
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.4"
+        density: 25
+        mask:
+        - TabletopMachineMask
+        layer:
+        - TabletopMachineLayer
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:ChangeConstructionNodeBehavior
+        node: machineFrame
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: ActivatableUI
+    key: enum.LatheUiKey.Key
+  - type: ActivatableUIRequiresPower
+  - type: UserInterface
+    interfaces:
+      enum.LatheUiKey.Key:
+        type: LatheBoundUserInterface
+      enum.ResearchClientUiKey.Key:
+        type: ResearchClientBoundUserInterface
+  - type: Transform
+    anchored: true
+  - type: Pullable
+  - type: StaticPrice
+    price: 800
+  - type: ResearchClient
+  - type: TechnologyDatabase
+
+- type: entity
+  id: PrinterMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: Плата принтера
+  description: Микросхема для создания принтера
+  components:
+    - type: Sprite
+      state: cpuboard_adv
+    - type: MachineBoard
+      prototype: Printer
+      requirements:
+        MatterBin: 3
+        Manipulator: 1
+      materialRequirements:
+        Glass: 1
+
+- type: latheRecipe
+  id: PrinterMachineCircuitboard
+  result: PrinterMachineCircuitboard
+  completetime: 4
+  materials:
+     Steel: 100
+     Glass: 900
+
+- type: entity
+  parent: BaseFlatpack
+  id: PrinterFlatpack
+  name: упакованный принтер
+  description: Упаковка, при помощи которой можно создать принтер.
+  components:
+  - type: Flatpack
+    entity: Printer

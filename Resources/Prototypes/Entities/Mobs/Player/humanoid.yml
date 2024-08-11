@@ -503,6 +503,32 @@
       - NamesFirstMilitary
       - NamesLastMilitary
 
+# Alteros-start
+- type: entity
+  id: RandomHumanoidSpawnerERTClown
+  name: ERT clown
+  components:
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    state: clown
+  - type: RandomHumanoidSpawner
+    settings: ERTClown
+
+- type: randomHumanoidSettings
+  id: ERTClown
+  components:
+  - type: Loadout
+    prototypes: [ ERTClownGear ]
+  - type: GhostRole
+    name: ghost-role-information-ert-clown-name
+    description: ghost-role-information-ert-clown-description
+  - type: GhostTakeoverAvailable
+  - type: RandomMetadata
+    nameSegments:
+    - NamesFirstMilitary
+    - NamesLastMilitary
+# Alteros-end
+
 ## Central Command
 
 - type: entity

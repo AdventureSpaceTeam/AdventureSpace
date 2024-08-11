@@ -6,7 +6,7 @@
   requirements:
     - !type:RoleTimeRequirement
       role: JobAtmosphericTechnician
-      time: 36000 #10 hrs # Corvax-RoleTime
+      time: 10800 #3 hrs # Adventure playtime requirements
 #    - !type:RoleTimeRequirement
 #      role: JobStationEngineer
 #      time: 21600 #6 hrs

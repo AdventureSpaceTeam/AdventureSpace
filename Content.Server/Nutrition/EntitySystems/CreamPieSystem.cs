@@ -96,6 +96,9 @@ namespace Content.Server.Nutrition.EntitySystems
             {
                 otherPlayers.RemovePlayer(actor.PlayerSession);
             }
+            var ev = new CreamedEvent(args.Target);
+            RaiseLocalEvent(args.Target, ref ev);
+
             _popup.PopupEntity(Loc.GetString("cream-pied-component-on-hit-by-message-others", ("owner", uid), ("thrower", args.Thrown)), uid, otherPlayers, false);
         }
 
@@ -105,3 +108,6 @@ namespace Content.Server.Nutrition.EntitySystems
         }
     }
 }
+
+[ByRefEvent]
+public readonly record struct CreamedEvent(EntityUid Target);

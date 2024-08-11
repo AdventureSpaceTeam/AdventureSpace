@@ -1,9 +1,9 @@
 # also used in MakeGhostRuleWindow and MakeGhostRoleCommand
 ghost-role-component-default-rules =
     Вы не помните ничего из своей предыдущей жизни, если администратор не сказал вам обратное.
-                                     Вы не помните ничего из своей предыдущей жизни и не помните ничего из того, что узнали, будучи призраком.
-                                     Вам разрешается помнить знания об игре в целом, например, как готовить, как использовать предметы и т.д.
-                                     Вам [color=red]НЕ[/color] разрешается помнить, имя, внешность и т.д. вашего предыдущего персонажа.
+    Вы не помните ничего из своей предыдущей жизни и не помните ничего из того, что узнали, будучи призраком.
+    Вам разрешается помнить знания об игре в целом, например, как готовить, как использовать предметы и т.д.
+    Вам [color=red]НЕ[/color] разрешается помнить, имя, внешность и т.д. вашего предыдущего персонажа.
 ghost-role-information-nonantagonist-rules =
     Вы - [color=green][bold]Неантагонист[/bold][/color]. Поэтому вы не должны стремиться причинить вред станции и её экипажу.
     Вы не помните ничего из своей предыдущей жизни и не помните ничего из того, что узнали, будучи призраком.
@@ -139,6 +139,10 @@ ghost-role-information-SyndiCat-description = Вы - верный дрессир
 ghost-role-information-SyndiCat-rules = Вы [color=red][bold]Командный антагонист[/bold][/color], в команде с агентом, который вас призвал.
 ghost-role-information-Cak-name = Корт
 ghost-role-information-Cak-description = Вы - любимое дитя шеф-повара. Вы - живой торт-кот.
+ghost-role-information-Cak-rules = Вы - живой съедобный сладкий кот. Ваша задача - найти своё место в этом мире, где всё хочет вас съесть.
+
+ghost-role-information-ert-clown-name = ОБР Клоун
+ghost-role-information-ert-clown-description = Оказывайте психологическую помощь станции.
 ghost-role-information-BreadDog-name = Хлебака
 ghost-role-information-BreadDog-description = Вы - любимое дитя шеф-повара. Вы - живая хлебная собака.
 ghost-role-information-space-ninja-name = Космический ниндзя
@@ -172,6 +176,9 @@ ghost-role-information-disaster-victim-description = Вы спаслись на 
 ghost-role-information-syndie-disaster-victim-name = Жертва катастрофы из Синдиката
 ghost-role-information-syndie-disaster-victim-description = Вы - обычный пассажир со станции Синдиката. К несчастью, спасательная капсула закинула вас во вражеский сектор...
 ghost-role-information-artifact-name = Разумный артефакт
-ghost-role-information-artifact-description = Осуществляйте свои инопланетные прихоти. Принудительно активируйте свои узлы во благо или во зло.
-ghost-role-information-syndie-assaultborg-name = Штурмовой киборг Синдиката
-ghost-role-information-syndie-assaultborg-description = Ядерным оперативникам требуется подкрепление. Вы, хладнокремниевая машина для убийств, будете им помогать. Больше дакки!
+ghost-role-information-artifact-description =
+    Осуществляйте свои инопланетные прихоти.
+    Принудительно активируйте свои узлы во благо или во зло.
+ghost-role-information-Gingerbread-name = Пряничный человечек
+ghost-role-information-Gingerbread-description = Вы любимый ребенок шеф-повара. Вы живой пряничный человечек.
+ghost-role-information-Gingerbread-rules = Вы съедобный человечек из печенья. Ваша задача найти свое место в этом мире, где всё хочет вас съесть.

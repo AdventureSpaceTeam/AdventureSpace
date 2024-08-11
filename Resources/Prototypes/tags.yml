@@ -548,7 +548,7 @@
 - type: Tag
   id: DrinkSpaceGlue
 
-- type: Tag 
+- type: Tag
   id: Dropper
 
 - type: Tag
@@ -1357,3 +1357,9 @@
   id: WriteIgnoreStamps
 
 # ALPHABETICAL
+
+- type: Tag
+  id: Card
+
+- type: Tag
+  id: PockerChips

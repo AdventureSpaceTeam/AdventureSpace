@@ -8,7 +8,7 @@
   requirements:
     - !type:RoleTimeRequirement
       role: JobChemist
-      time: 18000 #5 hrs # Corvax-RoleTime
+      time: 14400 #4 hrs # Adventure playtime requirements
 #    - !type:RoleTimeRequirement
 #      role: JobMedicalDoctor
 #      time: 21600 #6 hrs

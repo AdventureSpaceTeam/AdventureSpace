@@ -1,3 +1,5 @@
+using Content.Server._DTS;
+using Content.Server._c4llv07e;
 using Content.Server.Administration;
 using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
@@ -5,13 +7,14 @@ using Content.Server.Administration.Notes;
 using Content.Server.Afk;
 using Content.Server.Chat.Managers;
 using Content.Server.Connection;
-using Content.Server.Corvax.TTS;
 using Content.Server.Database;
 using Content.Server.Discord;
+using Content.Server.DiscordAuth;
 using Content.Server.EUI;
 using Content.Server.GhostKick;
 using Content.Server.Info;
 using Content.Server.Mapping;
+using Content.Server.JoinQueue;
 using Content.Server.Maps;
 using Content.Server.MoMMI;
 using Content.Server.NodeContainer.NodeGroups;
@@ -22,12 +25,18 @@ using Content.Server.Players.RateLimiting;
 using Content.Server.Preferences.Managers;
 using Content.Server.ServerInfo;
 using Content.Server.ServerUpdates;
+using Content.Server.Sponsors;
+using Content.Server.SS220.TTS;
 using Content.Server.Voting.Managers;
 using Content.Server.Worldgen.Tools;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Administration.Managers;
 using Content.Shared.Kitchen;
 using Content.Shared.Players.PlayTimeTracking;
+using Content.Corvax.Interfaces.Shared;
+using Content.Corvax.Interfaces.Server;
+using Content.Server._c4llv07e.VpnGuard; // c4llv07e vpn guard
+using Content.Server.Adventure.Config; // c4llv07e adventure config
 
 namespace Content.Server.IoC
 {
@@ -50,7 +59,8 @@ namespace Content.Server.IoC
             IoCManager.Register<IVoteManager, VoteManager>();
             IoCManager.Register<IPlayerLocator, PlayerLocator>();
             IoCManager.Register<IAfkManager, AfkManager>();
-            IoCManager.Register<IGameMapManager, GameMapManager>();
+            IoCManager.Register<MapSystem, MapSystem>(); // c4llv07e edit
+            IoCManager.Register<IGameMapManager, DTSMapManager>(); // DTS EDIT
             IoCManager.Register<RulesManager, RulesManager>();
             IoCManager.Register<IBanManager, BanManager>();
             IoCManager.Register<ContentNetworkResourceManager>();
@@ -70,6 +80,15 @@ namespace Content.Server.IoC
             IoCManager.Register<JobWhitelistManager>();
             IoCManager.Register<PlayerRateLimitManager>();
             IoCManager.Register<MappingManager>();
+
+            // Alteros-Sponsor
+            IoCManager.Register<Content.Corvax.Interfaces.Shared.ISharedSponsorsManager, SponsorsManager>();
+            IoCManager.Register<Content.Corvax.Interfaces.Server.IServerDiscordAuthManager, DiscordAuthManager>();
+            IoCManager.Register<Content.Corvax.Interfaces.Server.IServerJoinQueueManager, JoinQueueManager>();
+            // Alteros-Sponsor
+
+            IoCManager.Register<IServerVPNGuardManager, VpnGuardFile>(); // c4llv07e vpn ban
+            IoCManager.Register<AdventureConfigManager>(); // c4llv07e config manager
         }
     }
 }

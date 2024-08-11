@@ -1,0 +1,9 @@
+- type: emote
+  name: Визг
+  id: Hissing
+  category: Vocal
+  chatMessages: [Шипит!]
+  chatTriggers:
+    - шипит
+    - шипит.
+    - шипит!

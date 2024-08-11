@@ -1,9 +1,7 @@
 name: No submodule update checker
 
 on:
-  pull_request:
-    paths:
-      - 'RobustToolbox'
+  workflow_dispatch:
 
 jobs:
   this_aint_right:

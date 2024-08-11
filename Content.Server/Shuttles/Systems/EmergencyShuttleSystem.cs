@@ -1,5 +1,6 @@
 using System.Numerics;
 using System.Threading;
+using Content.Server._Sunrise.Shuttles;
 using Content.Server.Access.Systems;
 using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
@@ -7,6 +8,7 @@ using Content.Server.Chat.Systems;
 using Content.Server.Communications;
 using Content.Server.DeviceNetwork.Components;
 using Content.Server.DeviceNetwork.Systems;
+using Content.Server.GameTicking;
 using Content.Server.GameTicking.Events;
 using Content.Server.Pinpointer;
 using Content.Server.Popups;
@@ -71,6 +73,8 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
 
     private const float ShuttleSpawnBuffer = 1f;
 
+    public TimeSpan? DockTime;
+
     private bool _emergencyShuttleEnabled;
 
     [ValidatePrototypeId<TagPrototype>]
@@ -91,7 +95,13 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
         SubscribeLocalEvent<EmergencyShuttleComponent, FTLStartedEvent>(OnEmergencyFTL);
         SubscribeLocalEvent<EmergencyShuttleComponent, FTLCompletedEvent>(OnEmergencyFTLComplete);
         SubscribeNetworkEvent<EmergencyShuttleRequestPositionMessage>(OnShuttleRequestPosition);
+        SubscribeLocalEvent<RoundEndTextAppendEvent>(OnRoundEnded);
         InitializeEmergencyConsole();
+    }
+
+    private void OnRoundEnded(RoundEndTextAppendEvent ev)
+    {
+        DockTime = null;
     }
 
     private void OnRoundStart(RoundStartingEvent ev)
@@ -270,6 +280,8 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
         }
 
         var targetGrid = _station.GetLargestGrid(Comp<StationDataComponent>(stationUid));
+
+        DockTime = _timing.CurTime;
 
         // UHH GOOD LUCK
         if (targetGrid == null)
@@ -525,6 +537,9 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
             Log.Error($"Unable to spawn emergency shuttle {shuttlePath} for {ToPrettyString(ent)}");
             return;
         }
+        // Alteros-start
+        EnsureComp<EvacShuttleComponent>(shuttle.Value);
+        // Alteros-end
 
         ent.Comp2.ShuttleIndex += Comp<MapGridComponent>(shuttle.Value).LocalAABB.Width + ShuttleSpawnBuffer;
 

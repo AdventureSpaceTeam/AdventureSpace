@@ -1,0 +1,77 @@
+- type: entity
+  name: Инъектор сильных нанитов
+  parent: BaseItem
+  description: Стерильный инъектор самых сильных нанитов. Это передовая разработка НТ, предназначенная только для самых элитных отрядов, таких как Эскадрон Смерти. Он способен вылечить практически все, однако не способен восстановить тело из отдельных органов. Также он сильно стимулирует организм, улучшая реакцию и обеспечивая огромные дозы адреналина в кровь, который, к удивлению, не наносит вреда.
+  id: InjectorFullNanit's
+  components:
+  - type: Sprite
+    sprite: _raidgo/sprite/nanit.rsi
+    state: combat_hypo
+  - type: Item
+    sprite: /Uploaded/ERTuplink/sprite/nanit.rsi
+  - type: SolutionContainerManager
+    solutions:
+      hypospray:
+        reagents:
+        - ReagentId: fullnanit's
+          Quantity: 100
+        maxVol: 100
+  - type: Hypospray
+    onlyAffectsMobs: false
+    injectOnly: true
+  - type: UseDelay
+    delay: 0.5
+  - type: StaticPrice
+    price: 0
+
+- type: entity
+  name: Инъектор средних нанитов
+  parent: BaseItem
+  description: Стерильный инъектор нанитов. Это передовая разработка НТ, предназначенная для элитных отрядов, например, таких как ОБР или РХБЗЗ. Способен излечить многие недуги, однако не восстановит тело из органов. Также стимулирует организм, улучшая реакцию и обеспечивая адреналин в кровь.
+  id: InjectorMediumNanit's
+  components:
+  - type: Sprite
+    sprite: _raidgo/sprite/nanit.rsi
+    state: combat_hypo
+  - type: Item
+    sprite: _raidgo/sprite/nanit.rsi
+  - type: SolutionContainerManager
+    solutions:
+      hypospray:
+        reagents:
+        - ReagentId: Mediumnanit's
+          Quantity: 30
+        maxVol: 30
+  - type: Hypospray
+    onlyAffectsMobs: false
+    injectOnly: true
+  - type: UseDelay
+    delay: 0.5
+  - type: StaticPrice
+    price: 0
+
+- type: entity
+  name: Инъектор слабых нанитов
+  parent: BaseItem
+  description: Стерильный инъектор нанитов. Это передовая разработка НТ, предназначенная для боевых отрядов, таких как ЦСС. Способен излечить многие недуги, однако не восстановит тело из органов. Также немного стимулирует организм, улучшая реакцию и обеспечивая небольшой приток адреналина в кровь.
+  id: InjectorWeakNanit's
+  components:
+  - type: Sprite
+    sprite: _raidgo/sprite/nanit.rsi
+    state: combat_hypo
+  - type: Item
+    sprite: _raidgo/sprite/nanit.rsi
+  - type: SolutionContainerManager
+    solutions:
+      hypospray:
+        reagents:
+        - ReagentId: weaknanit's
+          Quantity: 30
+        maxVol: 30
+  - type: Hypospray
+    onlyAffectsMobs: false
+    injectOnly: true
+  - type: UseDelay
+    delay: 0.5
+  - type: StaticPrice
+    price: 0

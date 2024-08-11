@@ -9,8 +9,10 @@ using Content.Shared.Charges.Systems;
 using Content.Shared.Eye.Blinding.Components;
 using Content.Shared.Flash;
 using Content.Shared.IdentityManagement;
+using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Inventory;
+using Content.Shared.Physics;
 using Content.Shared.Tag;
 using Content.Shared.Traits.Assorted;
 using Content.Shared.Weapons.Melee.Events;
@@ -20,6 +22,7 @@ using Robust.Server.Audio;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Random;
+using Robust.Shared.Timing;
 using InventoryComponent = Content.Shared.Inventory.InventoryComponent;
 
 namespace Content.Server.Flash
@@ -30,8 +33,10 @@ namespace Content.Server.Flash
         [Dependency] private readonly AudioSystem _audio = default!;
         [Dependency] private readonly SharedChargesSystem _charges = default!;
         [Dependency] private readonly EntityLookupSystem _entityLookup = default!;
+        [Dependency] private readonly IGameTiming _timing = default!;
         [Dependency] private readonly SharedTransformSystem _transform = default!;
         [Dependency] private readonly ExamineSystemShared _examine = default!;
+        [Dependency] private readonly SharedInteractionSystem _interaction = default!;
         [Dependency] private readonly InventorySystem _inventory = default!;
         [Dependency] private readonly PopupSystem _popup = default!;
         [Dependency] private readonly StunSystem _stun = default!;

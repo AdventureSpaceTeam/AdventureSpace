@@ -151,6 +151,7 @@ namespace Content.Server.Ghost
         {
             // Allow this entity to be seen by other ghosts.
             var visibility = EnsureComp<VisibilityComponent>(uid);
+            var eye = EnsureComp<EyeComponent>(uid);
 
             if (_ticker.RunLevel != GameRunLevel.PostRound)
             {
@@ -158,6 +159,7 @@ namespace Content.Server.Ghost
                 _visibilitySystem.RemoveLayer((uid, visibility), (int) VisibilityFlags.Normal, false);
                 _visibilitySystem.RefreshVisibility(uid, visibilityComponent: visibility);
             }
+            _eye.SetVisibilityMask(uid, eye.VisibilityMask | (int) VisibilityFlags.AI, eye);
 
             SetCanSeeGhosts(uid, true);
 

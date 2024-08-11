@@ -1,0 +1,264 @@
+#Роль
+- type: job
+  id: Blueshield
+  name: офицер синий щит
+  description: Защищайте командный состав и ВИП персон Центрального Командования
+  playTimeTracker: JobBlueshield
+  requirements:
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 10800 #3 hrs
+  startingGear: BlueshieldGear
+  icon: "JobIconBlueshield"
+  requireAdminNotify: true
+  supervisors: job-supervisors-centcom
+  canBeAntag: false
+  access:
+  - Command
+  - Security
+  - Maintenance
+  - Cryogenics
+  - External
+  - Brig
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+  - !type:AddComponentSpecial
+
+- type: playTimeTracker
+  id: JobBlueshield
+
+#Гир
+- type: startingGear
+  id: BlueshieldGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitBlueshield
+    back: ClothingBackpackBlueshieldFilled
+    shoes: ClothingShoesBootsCombatFilled
+    head: ClothingHeadHatBlueshieldBeret
+    eyes: ClothingEyesGlassesSecurity
+    gloves: ClothingHandsGlovesCombat
+    outerClothing: ClothingOuterArmorBlueshield
+    id: BlueshieldPDA
+    ears: ClothingHeadsetAltCommand
+    belt: WeaponPistolN1984
+    pocket1: WeaponTaser
+
+
+#Карта
+- type: entity
+  parent: IDCardStandard
+  id: BlueshieldIDCard
+  name: ID карта офицера синего щита
+  components:
+  - type: Sprite
+    sprite: Totohka/ID.rsi
+    layers:
+    - state: silver
+    - state: idblueshield
+  - type: Item
+    heldPrefix: silver
+  - type: PresetIdCard
+    job: Blueshield
+
+- type: entity
+  name: Кпк офицера синего щита
+  parent: BasePDA
+  id: BlueshieldPDA
+  description: Пахнет безопасностью
+  components:
+  - type: Sprite
+    sprite: Totohka/PDA.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+  - type: Pda
+    id: BlueshieldIDCard
+    state: pda-blueshield
+  - type: PdaBorderColor
+    borderColor: "#3c485a"
+    accentVColor: "#3c485a"
+  - type: Icon
+    sprite: Totohka/PDA.rsi
+    state: pda-blueshield
+
+#Спавнер
+- type: entity
+  id: SpawnPointBlueshield
+  parent: SpawnPointJobBase
+  name: Офицер Синий Щит
+  components:
+  - type: SpawnPoint
+    job_id: Blueshield
+  - type: Sprite
+    sprite: Totohka/SpawnPoint.rsi
+    layers:
+      - state: green
+      - state: Blueshield
+
+#Иконка
+- type: statusIcon
+  parent: JobIcon
+  id: JobIconBlueshield
+  icon:
+    sprite: /Textures/Totohka/JobIcons.rsi
+    state: BlueShieldOfficer
+
+#Рюкзак 
+- type: entity
+  parent: ClothingBackpack
+  id: ClothingBackpackBlueshield
+  name: Рюкзак офицера синего щита
+  description: Особенный рюкзак для элитного офицера синего щита! А стоп... он же пассажирский
+  components:
+  - type: Sprite
+    sprite: Totohka/Backpacks/blueshield.rsi
+
+- type: entity
+  noSpawn: true
+  parent: ClothingBackpackBlueshield
+  id: ClothingBackpackBlueshieldFilled
+  components:
+  - type: StorageFill
+    contents:
+      - id: BoxSurvivalSecurity
+      - id: Flash
+      - id: MagazineMagnum
+      - id: MagazineMagnum
+
+#Шапка
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatBlueshieldBeret
+  name: Тёмно-синий берет
+  description: Тёмно-синий берет из дюроткани показывает статус своего владельца.
+  components:
+    - type: Sprite
+      sprite: Totohka/Hats/blueshield_beret.rsi
+    - type: Clothing
+      sprite: Totohka/Hats/blueshield_beret.rsi
+
+#Униформа
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitBlueshield
+  name: Униформа офицера синего щита
+  description: Этикетка гласит "A special suit made for the best of the elites under CentCom" Что бы это значило?
+  components:
+  - type: Sprite
+    sprite: Totohka/Uniform/Blueshield.rsi
+  - type: Clothing
+    sprite: Totohka/Uniform/Blueshield.rsi
+
+#Хардсьют
+- type: entity
+  parent: ClothingHeadHardsuitWithLightBase
+  id: ClothingHeadHelmetHardsuitBlueshield
+  name: Шлем скафандра офицера синего щита
+  description: Укреплённый шлем с новой системой NT-HUD, которая не работает.
+  components:
+  - type: BreathMask
+  - type: Sprite
+    sprite: Totohka/Hardsuit/Head/Blueshield.rsi
+  - type: Clothing
+    sprite: Totohka/Hardsuit/Head/Blueshield.rsi
+  - type: PointLight
+    color: cyan
+  - type: PressureProtection
+    highPressureMultiplier: 0.45
+    lowPressureMultiplier: 1000
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.9
+
+- type: entity
+  parent: ClothingOuterHardsuitSecurity
+  id: ClothingOuterHardsuitBlueshield
+  name: Скафандр офицера синего щита
+  description: Специальный костюм защищающий от внешний угроз. С дополнительным слоем брони.
+  components:
+  - type: Sprite
+    sprite: Totohka/Hardsuit/Suit/Blueshield.rsi
+  - type: Clothing
+    sprite: Totohka/Hardsuit/Suit/Blueshield.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 0.45
+    lowPressureMultiplier: 1000
+  - type: ExplosionResistance
+    damageCoefficient: 0.6
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.6
+        Slash: 0.5
+        Piercing: 0.5
+        Radiation: 0.5
+        Caustic: 0.6
+  - type: ClothingSpeedModifier
+    walkModifier: 0.8
+    sprintModifier: 0.8
+  - type: HeldSpeedModifier
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitBlueshield
+
+#Шкаф
+- type: entity
+  id: LockerBlueshield
+  parent: LockerBase
+  name: Шкаф Офицера синего щита
+  components:
+  - type: Appearance
+  - type: EntityStorageVisuals
+    stateBaseClosed: Blueshield
+    stateDoorOpen: blueshield_open
+    stateDoorClosed: Blueshield_door
+  - type: AccessReader
+    access: [ [ "Command" ] ]
+
+- type: entity
+  id: LockerBlueshieldFilledHardsuit
+  suffix: Filled, Hardsuit
+  parent: LockerBlueshield
+  components:
+  - type: StorageFill
+    contents:
+      - id: ClothingHeadHatBlueshieldBeret
+      - id: HandheldGPSBasic
+      - id: MedkitCombatFilled
+      - id: MedkitFilled
+      - id: HandheldCrewMonitor
+      - id: ClothingOuterHardsuitBlueshield
+      - id: TrackingImplanter
+      - id: TrackingImplanter
+
+#Броня
+- type: entity
+  parent: ClothingOuterArmorBasic
+  id: ClothingOuterArmorBlueshield
+  name: Улучшенный бронежилет
+  description: Бронежилет укреплённый керамическими пластинами. Несколько мешает движениям, но многократно увеличивает шансы на выживание.
+  components:
+  - type: Sprite
+    sprite: Totohka/armor.rsi
+  - type: Clothing
+    sprite: Totohka/armor.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.5
+        Slash: 0.5
+        Piercing: 0.4
+        Heat: 0.5
+  - type: ExplosionResistance
+    damageCoefficient: 0.80

@@ -1,0 +1,429 @@
+- type: entity
+  parent: FoodBase
+  id: CandyBase
+  abstract: true
+  components:
+  - type: Food
+  - type: Tag
+    tags:
+      - FoodSnack
+  - type: Sprite
+    sprite: Objects/Consumable/Food/candys.rsi
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 7
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 1
+        - ReagentId: Sugar
+          Quantity: 2
+  - type: Item
+    sprite: Objects/Consumable/Food/candys.rsi
+    size: Tiny
+
+- type: entity
+  id: GreenWrapCandy
+  parent: BaseItem
+  name: конфета
+  components:
+  - type: Sprite
+    sprite: Objects/Consumable/Food/candys.rsi
+    state: GreenWrapCandy
+  - type: Tag
+    tags:
+      - FoodSnack
+  - type: SpawnItemsOnUse
+    items:
+      - id: GreenWrap
+      - id: GreenCandy
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+  - type: Item
+    size: Tiny
+
+- type: entity
+  id: GreenCandy
+  parent: CandyBase
+  name: конфета
+  components:
+  - type: FlavorProfile
+    flavors:
+      - chocolate
+  - type: Sprite
+    state: GreenCandy
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 4
+        reagents:
+        - ReagentId: JuiceLime
+          Quantity: 2
+
+- type: entity
+  id: BlueWrapCandy
+  parent: BaseItem
+  name: конфета
+  components:
+  - type: Sprite
+    sprite: Objects/Consumable/Food/candys.rsi
+    state: BlueWrapCandy
+  - type: Tag
+    tags:
+      - FoodSnack
+  - type: SpawnItemsOnUse
+    items:
+      - id: BlueWrap
+      - id: BlueCandy
+        prob: 0.9
+      - id: BlueDyloveneCandy
+        prob: 0.1
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+  - type: Item
+    size: Tiny
+
+- type: entity
+  id: BlueCandy
+  parent: CandyBase
+  name: конфета
+  components:
+  - type: FlavorProfile
+    flavors:
+      - chocolate
+  - type: Sprite
+    state: BlueCandy
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 4
+        reagents:
+        - ReagentId: JuiceBerry
+          Quantity: 2
+
+- type: entity
+  id: CyanWrapCandy
+  parent: BaseItem
+  name: конфета
+  components:
+  - type: Sprite
+    sprite: Objects/Consumable/Food/candys.rsi
+    state: CyanWrapCandy
+  - type: Tag
+    tags:
+      - FoodSnack
+  - type: SpawnItemsOnUse
+    items:
+      - id: CyanWrap
+      - id: CyanCandy
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+  - type: Item
+    size: Tiny
+
+- type: entity
+  id: CyanCandy
+  parent: CandyBase
+  name: конфета
+  components:
+  - type: FlavorProfile
+    flavors:
+      - chocolate
+  - type: Sprite
+    state: CyanCandy
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 4
+        reagents:
+        - ReagentId: BlueCuracao
+          Quantity: 2
+
+- type: entity
+  id: RedWrapCandy
+  parent: BaseItem
+  name: конфета
+  components:
+  - type: Sprite
+    sprite: Objects/Consumable/Food/candys.rsi
+    state: RedWrapCandy
+  - type: Tag
+    tags:
+      - FoodSnack
+  - type: SpawnItemsOnUse
+    items:
+      - id: RedWrap
+      - id: RedCandy
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+  - type: Item
+    size: Tiny
+
+- type: entity
+  id: RedCandy
+  parent: CandyBase
+  name: конфета
+  components:
+  - type: FlavorProfile
+    flavors:
+      - chocolate
+  - type: Sprite
+    state: RedCandy
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 4
+        reagents:
+        - ReagentId: JuiceWatermelon
+          Quantity: 2
+
+- type: entity
+  id: RainbowWrapCandy
+  parent: BaseItem
+  name: конфета
+  components:
+  - type: Sprite
+    sprite: Objects/Consumable/Food/candys.rsi
+    state: RainbowWrapCandy
+  - type: Tag
+    tags:
+      - FoodSnack
+  - type: SpawnItemsOnUse
+    items:
+      - id: RainbowWrap
+      - id: RainbowCandy
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+  - type: Item
+    size: Tiny
+
+- type: entity
+  id: RainbowCandy
+  parent: CandyBase
+  name: конфета
+  components:
+  - type: FlavorProfile
+    flavors:
+      - chocolate
+  - type: Sprite
+    state: RainbowCandy
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 4
+        reagents:
+        - ReagentId: THC
+          Quantity: 2
+
+- type: entity
+  id: YellowWrapCandy
+  parent: BaseItem
+  name: конфета
+  components:
+  - type: Sprite
+    sprite: Objects/Consumable/Food/candys.rsi
+    state: YellowWrapCandy
+  - type: Tag
+    tags:
+      - FoodSnack
+  - type: SpawnItemsOnUse
+    items:
+      - id: YellowWrap
+      - id: YellowCandy
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+  - type: Item
+    size: Tiny
+
+- type: entity
+  id: YellowCandy
+  parent: CandyBase
+  name: конфета
+  components:
+  - type: FlavorProfile
+    flavors:
+      - chocolate
+  - type: Sprite
+    state: YellowCandy
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 4
+        reagents:
+        - ReagentId: JuiceBanana
+          Quantity: 2
+
+- type: entity
+  id: OrangeWrapCandy
+  parent: BaseItem
+  name: конфета
+  components:
+  - type: Sprite
+    sprite: Objects/Consumable/Food/candys.rsi
+    state: OrangeWrapCandy
+  - type: Tag
+    tags:
+      - FoodSnack
+  - type: SpawnItemsOnUse
+    items:
+      - id: OrangeWrap
+      - id: OrangeCandy
+        prob: 0.9
+      - id: OrangeBicaridineCandy
+        prob: 0.1
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+  - type: Item
+    size: Tiny
+
+- type: entity
+  id: OrangeCandy
+  parent: CandyBase
+  name: конфета
+  components:
+  - type: FlavorProfile
+    flavors:
+      - chocolate
+  - type: Sprite
+    state: OrangeCandy
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 4
+        reagents:
+        - ReagentId: JuiceCarrot
+          Quantity: 2
+
+- type: entity
+  id: PurpleWrapCandy
+  parent: BaseItem
+  name: конфета
+  components:
+  - type: Sprite
+    sprite: Objects/Consumable/Food/candys.rsi
+    state: PurpleWrapCandy
+  - type: Tag
+    tags:
+      - FoodSnack
+  - type: SpawnItemsOnUse
+    items:
+      - id: PurpleWrap
+      - id: PurpleCandy
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+  - type: Item
+    size: Tiny
+
+- type: entity
+  id: PurpleCandy
+  parent: CandyBase
+  name: конфета
+  components:
+  - type: FlavorProfile
+    flavors:
+      - chocolate
+  - type: Sprite
+    state: PurpleCandy
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 4
+        reagents:
+        - ReagentId: JuiceGrape
+          Quantity: 2
+
+- type: entity
+  id: WhiteWrapCandy
+  parent: BaseItem
+  name: конфета
+  components:
+  - type: Sprite
+    sprite: Objects/Consumable/Food/candys.rsi
+    state: WhiteWrapCandy
+  - type: Tag
+    tags:
+      - FoodSnack
+  - type: SpawnItemsOnUse
+    items:
+      - id: WhiteWrap
+      - id: WhiteCandy
+        prob: 0.9
+      - id: WhiteOmnizineCandy
+        prob: 0.1
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+  - type: Item
+    size: Tiny
+
+- type: entity
+  id: WhiteCandy
+  parent: CandyBase
+  name: конфета
+  components:
+  - type: FlavorProfile
+    flavors:
+      - chocolate
+  - type: Sprite
+    state: WhiteCandy
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 4
+        reagents:
+        - ReagentId: Milk
+          Quantity: 2
+
+
+- type: entity
+  id: BlueDyloveneCandy
+  parent: CandyBase
+  name: конфета
+  components:
+  - type: FlavorProfile
+    flavors:
+      - chocolate
+  - type: Sprite
+    state: BlueCandy
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 4
+        reagents:
+        - ReagentId: Dylovene
+          Quantity: 2
+
+- type: entity
+  id: OrangeBicaridineCandy
+  parent: CandyBase
+  name: конфета
+  components:
+  - type: FlavorProfile
+    flavors:
+      - chocolate
+  - type: Sprite
+    state: OrangeCandy
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 4
+        reagents:
+        - ReagentId: Bicaridine
+          Quantity: 2
+
+- type: entity
+  id: WhiteOmnizineCandy
+  parent: CandyBase
+  name: конфета
+  components:
+  - type: FlavorProfile
+    flavors:
+      - chocolate
+  - type: Sprite
+    state: WhiteCandy
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 4
+        reagents:
+        - ReagentId: Omnizine
+          Quantity: 2

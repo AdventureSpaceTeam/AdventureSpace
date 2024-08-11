@@ -32,6 +32,7 @@
     pocket2: FlashlightSeclite
   storage:
     back:
+    - BoxSurvivalEngineering
     - WeaponDisabler
     - MedicatedSuture
     - RegenerativeMesh
@@ -50,6 +51,7 @@
     neck: ClothingNeckMantleERTLeader # Corvax-Clothing
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitERTLeader
+    suitstorage: AirTankFilled
     id: ERTLeaderPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltSecurityFilled
@@ -57,6 +59,7 @@
     pocket2: FlashlightSeclite
   storage:
     back:
+    - BoxSurvivalEngineering
     - WeaponDisabler
     - MedicatedSuture
     - RegenerativeMesh
@@ -84,6 +87,7 @@
   - WeaponRifleLecter
   storage:
     back:
+    - BoxSurvivalEngineering
     - WeaponDisabler
     - MedicatedSuture
     - RegenerativeMesh
@@ -129,6 +133,7 @@
     pocket2: DrinkWaterBottleFull
   storage:
     back:
+    - BoxSurvivalEngineering
     - BoxCandle
     - BoxBodyBag
     - DrinkWaterMelonJuiceJug
@@ -160,6 +165,7 @@
     pocket2: DrinkWaterBottleFull
   storage:
     back:
+    - BoxSurvivalEngineering
     - BoxCandle
     - BoxBodyBag
     - DrinkWaterMelonJuiceJug
@@ -206,6 +212,7 @@
     pocket2: GasAnalyzer
   storage:
     back:
+    - BoxSurvivalEngineering
     - trayScanner
     - RCD
     - RCDAmmo
@@ -234,6 +241,7 @@
     pocket2: GasAnalyzer
   storage:
     back:
+    - BoxSurvivalEngineering
     - trayScanner
     - RCD
     - RCDAmmo
@@ -278,6 +286,7 @@
     pocket2: FlashlightSeclite
   storage:
     back:
+    - BoxSurvivalEngineering
     - WeaponDisabler
     - MedicatedSuture
     - RegenerativeMesh
@@ -302,6 +311,7 @@
     pocket2: FlashlightSeclite
   storage:
     back:
+    - BoxSurvivalEngineering
     - WeaponDisabler
     - MedicatedSuture
     - RegenerativeMesh
@@ -328,6 +338,7 @@
     - WeaponRifleLecter
   storage:
     back:
+    - BoxSurvivalEngineering
     - WeaponDisabler
     - MedicatedSuture
     - RegenerativeMesh
@@ -367,6 +378,7 @@
     pocket1: Flare
   storage:
     back:
+    - BoxSurvivalMedical # Is this actually supposed to be Medical? All other ERT has Extended
     - Hypospray
     - MedkitAdvancedFilled
     - CrowbarRed
@@ -390,6 +402,7 @@
     pocket1: Flare
   storage:
     back:
+    - BoxSurvivalMedical # Is this actually supposed to be Medical? All other ERT has Extended
     - Hypospray
     - MedkitAdvancedFilled
     - CrowbarRed
@@ -428,6 +441,7 @@
     pocket1: Flare
   storage:
     back:
+    - BoxSurvivalEngineering
     - LightReplacer
     - BoxLightMixed
     - BoxLightMixed
@@ -450,9 +464,24 @@
     pocket1: Flare
   storage:
     back:
+    - BoxSurvivalEngineering
     - LightReplacer
     - BoxLightMixed
     - BoxLightMixed
     - Soap
     - CrowbarRed
     - AdvMopItem
+
+# Alteros-start
+- type: startingGear
+  id: ERTClownGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitClown
+    back: ClothingBackpackERTClownFilled
+    shoes: ClothingShoesClown
+    mask: ClothingMaskClown
+    pocket1: BikeHorn
+    pocket2: ClownRecorder
+    id: ERTLeaderPDA
+    ears: ClothingHeadsetAltCommand
+# Alteros-end

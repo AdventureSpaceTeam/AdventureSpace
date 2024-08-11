@@ -32,6 +32,9 @@
       "name": "captain"
     },
     {
+      "name": "bso"
+    },
+    {
       "name": "cargo_tech"
     },
     {
@@ -201,6 +204,9 @@
     },
     {
       "name": "zookeeper"
+    },
+    {
+      "name": "cleaofficer"
     }
   ]
 }

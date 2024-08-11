@@ -5,6 +5,7 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Content.Corvax.Interfaces.Shared;
 using Content.Server.Administration.Managers;
 using Content.Server.Afk;
 using Content.Server.Database;
@@ -564,35 +565,38 @@ namespace Content.Server.Administration.Systems
 
             var escapedText = FormattedMessage.EscapeText(message.Text);
 
+            // Alteros-Sponsors-start
             string bwoinkText;
-            string adminPrefix = "";
 
-            //Getting an administrator position
-            if (_config.GetCVar(CCVars.AhelpAdminPrefix) && senderAdmin is not null && senderAdmin.Title is not null)
-            {
-                adminPrefix = $"[bold]\\[{senderAdmin.Title}\\][/bold] ";
-            }
-
+            var sponsors = IoCManager.Resolve<ISharedSponsorsManager>();
             if (senderAdmin is not null &&
                 senderAdmin.Flags ==
                 AdminFlags.Adminhelp) // Mentor. Not full admin. That's why it's colored differently.
             {
-                bwoinkText = $"[color=purple]{adminPrefix}{senderSession.Name}[/color]";
+                bwoinkText = $"[color=purple]\\[{senderAdmin.Title}\\] {senderSession.Name}[/color]: {escapedText}";
             }
             else if (senderAdmin is not null && senderAdmin.HasFlag(AdminFlags.Adminhelp))
             {
-                bwoinkText = $"[color=red]{adminPrefix}{senderSession.Name}[/color]";
+                bwoinkText = $"[color=red]\\[{senderAdmin.Title}\\] {senderSession.Name}[/color]: {escapedText}";
             }
             else
             {
-                bwoinkText = $"{senderSession.Name}";
+                sponsors.TryGetServerOocColor(message.UserId, out var oocColor);
+                sponsors.TryGetServerOocTitle(message.UserId, out var sponsorTitle);
+                if (oocColor != null)
+                {
+                    bwoinkText = $"[color={oocColor.Value.ToHex()}]\\[{sponsorTitle}\\] {senderSession.Name}[/color]: {escapedText}";
+                }
+                else
+                {
+                    bwoinkText = $"\\[{sponsorTitle}\\] {senderSession.Name}: {escapedText}";
+                }
             }
-
-            bwoinkText = $"{(message.PlaySound ? "" : "(S) ")}{bwoinkText}: {escapedText}";
 
             // If it's not an admin / admin chooses to keep the sound then play it.
             var playSound = !senderAHelpAdmin || message.PlaySound;
             var msg = new BwoinkTextMessage(message.UserId, senderSession.UserId, bwoinkText, playSound: playSound);
+            // Alteros-Sponsors-end
 
             LogBwoink(msg);
 
@@ -694,7 +698,7 @@ namespace Content.Server.Administration.Systems
                 .ToList();
         }
 
-        private IList<INetChannel> GetTargetAdmins()
+        public IList<INetChannel> GetTargetAdmins()
         {
             return _adminManager.ActiveAdmins
                 .Where(p => _adminManager.GetAdminData(p)?.HasFlag(AdminFlags.Adminhelp) ?? false)

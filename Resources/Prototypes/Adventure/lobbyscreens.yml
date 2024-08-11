@@ -1,0 +1,35 @@
+﻿- type: lobbyBackground
+  id: WafelErp
+  background: /Textures/Adventure/LobbyScreens/erp.png
+
+- type: lobbyBackground
+  id: WafelRHBZZ
+  background: /Textures/Adventure/LobbyScreens/rhbzz.png
+
+- type: lobbyBackground
+  id: WafelUtil
+  background: /Textures/Adventure/LobbyScreens/util.png
+
+- type: lobbyBackground
+  id: WafelNuke
+  background: /Textures/Adventure/LobbyScreens/nuke.png
+
+- type: lobbyBackground
+  id: WafelOBR
+  background: /Textures/Adventure/LobbyScreens/obr.png
+
+- type: lobbyBackground
+  id: WafelSynd
+  background: /Textures/Adventure/LobbyScreens/synd.png
+
+- type: lobbyBackground
+  id: LimelingFelenidCmo
+  background: /Textures/Adventure/LobbyScreens/limeling_felenid_cmo.png
+
+- type: lobbyBackground
+  id: RikylkaMices
+  background: /Textures/Adventure/LobbyScreens/rikylka_mices.png
+
+- type: lobbyBackground
+  id: RikylkaChimestry
+  background: /Textures/Adventure/LobbyScreens/rikylka_chimestry.png

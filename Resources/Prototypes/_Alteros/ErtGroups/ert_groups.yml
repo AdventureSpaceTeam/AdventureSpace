@@ -1,0 +1,65 @@
+﻿- type: ertGroups
+  id: stationErtsGroups
+  groups:
+    medical:
+      name: medical
+      shuttle: Maps/_Alteros/Shuttles/medical_ert_shuttle.yml
+      waitingTime: 60
+      humansList:
+        SpawnerERTMedicalEVA: 5
+      requirements:
+        DeadPercent: 30
+    security:
+      name: security
+      shuttle: Maps/_Alteros/Shuttles/officer_ert_shuttle.yml
+      waitingTime: 180
+      humansList:
+        SpawnerERTLeader: 1
+        SpawnerERTSecurity: 4
+      requirements:
+        DeadPercent: 40
+        DeadHeads: 3
+        NukiesOnStation: 3
+    janitor:
+      name: janitor
+      shuttle: Maps/_Alteros/Shuttles/cleaner_ert_shuttle.yml
+      waitingTime: 360
+      humansList:
+        SpawnerERTJanitor: 5
+      requirements:
+        PuddlesCount: 100
+    engineer:
+      name: engineer
+      shuttle: Maps/_Alteros/Shuttles/engineer_ert_shuttle.yml
+      waitingTime: 240
+      humansList:
+        SpawnerERTEngineerEVA: 5
+      requirements:
+        DangerAlarmCount: 10
+    cburn:
+      name: cburn
+      shuttle: Maps/_Alteros/Shuttles/cburn_ert_shuttle.yml
+      waitingTime: 600
+      humansList:
+        SpawnerCBURNUnit: 5
+      requirements:
+        ZombiePercent: 50
+    deathSquad:
+      name: death-squad
+      announcement: false
+      showInConsole: false
+      shuttle: Maps/_Alteros/Shuttles/death_squad_shuttle.yml
+      waitingTime: 60
+      humansList:
+        SpawnerDeathSquad: 5
+    centcomOfficial:
+      name: centcom-official
+      announcement: true
+      showInConsole: false
+      shuttle: Maps/_Alteros/Shuttles/centcom_shuttle.yml
+      waitingTime: 60
+      humansList:
+        SpawnerCentcomOfficial: 1
+        SpawnerERTSecurity: 2
+      requirements:
+        RoundDuration: 90

@@ -1,0 +1,5 @@
+﻿- type: loadoutItem
+  id: BaseAdvenUplinkLoadout
+  entity: DonateUplink
+  sponsorOnly: true
+  whitelistJobs: [Visitor, ServiceWorker, Musician, Mime, Librarian, Lawyer, Janitor, Detective, Clown, Chef, Chaplain, Botanist, Bartender, Passenger, Warden, SecurityOfficer, SecurityCadet, HeadOfSecurity, Scientist, HeadOfSecurity, ResearchDirector, Paramedic, ResearchAssistant, MedicalDoctor, ChiefMedicalOfficer, Chemist, TechnicalAssistant, StationEngineer, ChiefEngineer, IAA, CargoTechnician, Quartermaster, SalvageSpecialist, Captain, HeadOfPersonnel, AtmosphericTechnician]

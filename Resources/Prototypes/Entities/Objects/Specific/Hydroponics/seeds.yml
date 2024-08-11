@@ -646,3 +646,53 @@
       seedId: pyrotton
     - type: Sprite
       sprite: Objects/Specific/Hydroponics/pyrotton.rsi
+
+- type: entity
+  parent: SeedBase
+  name: пакет семян (белая роза)
+  id: WhiteRoseSeeds
+  components:
+    - type: Seed
+      seedId: whiterose
+    - type: Sprite
+      sprite: Objects/Specific/Hydroponics/Flovers/white_rose.rsi
+
+- type: entity
+  parent: SeedBase
+  name: пакет семян (красная роза)
+  id: RedRoseSeeds
+  components:
+    - type: Seed
+      seedId: redrose
+    - type: Sprite
+      sprite: Objects/Specific/Hydroponics/Flovers/red_rose.rsi
+
+- type: entity
+  parent: SeedBase
+  name: пакет семян (тюльпан)
+  id: TulpanSeeds
+  components:
+    - type: Seed
+      seedId: tulpan
+    - type: Sprite
+      sprite: Objects/Specific/Hydroponics/Flovers/tulpan.rsi
+
+- type: entity
+  parent: SeedBase
+  name: пакет семян (орхидея)
+  id: OrhideaSeeds
+  components:
+    - type: Seed
+      seedId: orhidea
+    - type: Sprite
+      sprite: Objects/Specific/Hydroponics/Flovers/orhidea.rsi
+
+- type: entity
+  parent: SeedBase
+  name: пакет семян (гвоздика)
+  id: GvozdikaSeeds
+  components:
+    - type: Seed
+      seedId: gvozdika
+    - type: Sprite
+      sprite: Objects/Specific/Hydroponics/Flovers/gvozdika.rsi

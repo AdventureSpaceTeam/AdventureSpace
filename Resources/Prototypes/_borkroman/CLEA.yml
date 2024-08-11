@@ -1,0 +1,425 @@
+#Комбинезон ЦСС
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitCLEA
+  name: Комбинезон ЦСС
+  description: теперь в новой цветовой гамме!
+  components:
+  - type: Sprite
+    sprite: _borkroman/CLEA/CLEA_uniform.rsi
+  - type: Clothing
+    sprite: _borkroman/CLEA/CLEA_uniform.rsi
+
+#Шлем ЦСС
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHelmetCLEA
+  name: Шлем ЦСС
+  description: им можно колоть орехи
+  components:
+  - type: Sprite
+    sprite: _borkroman/CLEA/CLEA_Helmet.rsi
+  - type: Clothing
+    sprite: _borkroman/CLEA/CLEA_Helmet.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.90
+        Slash: 0.90
+        Piercing: 0.90
+        Heat: 0.90
+  - type: FlashImmunity
+  - type: EyeProtection
+    protectionTime: 5
+
+#Кепка офицера ЦСС
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadBaseCapCLEA
+  name: Кепка офицера ЦСС
+  description: Повседневный головной убор ЦСС.
+  components:
+  - type: Sprite
+    sprite: _borkroman/CLEA/CLEA_cap.rsi
+  - type: Clothing
+    sprite: _borkroman/CLEA/CLEA_cap.rsi
+
+#Гарнитура-наушники ЦСС
+- type: entity
+  name: Гарнитура-наушники ЦСС
+  parent: ClothingHeadsetAltCentCom
+  id: CLEAHeadsetAlt
+  description: Гарнитура, оснащенная подавляющими наушниками.
+  components:
+  - type: Sprite
+    sprite: _borkroman/CLEA/CLEA_Headset.rsi
+  - type: Clothing
+    sprite: _borkroman/CLEA/CLEA_Headset.rsi
+
+#Защитные очки ЦСС
+- type: entity
+  parent: [ClothingEyesGlassesSunglasses, ShowSecurityIcons]
+  id: ClothingEyesGlassesCLEA
+  description: Очки, защищающие глаза от яркого света.
+  name: Защитные очки ЦСС
+  components:
+  - type: Sprite
+    sprite: _borkroman/CLEA/CLEA_glasses.rsi
+  - type: Clothing
+    sprite: _borkroman/CLEA/CLEA_glasses.rsi
+  - type: FlashImmunity
+  - type: EyeProtection
+    protectionTime: 5
+
+#Боевые перчатки ЦСС
+- type: entity
+  parent: ClothingHandsGlovesColorBlack
+  id: ClothingHandsGlovesCLEA
+  name: Боевые перчатки ЦСС
+  description: Тактический перчатки элитных солдат.
+  components:
+  - type: Sprite
+    sprite: _borkroman/CLEA/CLEA_Gloves.rsi
+  - type: Clothing
+    sprite: _borkroman/CLEA/CLEA_Gloves.rsi
+  - type: Insulated
+  - type: Fiber
+    fiberMaterial: fibers-insulative
+
+#Противогаз ЦСС
+- type: entity
+  parent: ClothingMaskGas
+  id: ClothingMaskCLEA
+  name: Противогаз ЦСС
+  description: не освежает дыхание
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: _borkroman/CLEA/CLEA_mask.rsi
+  - type: Clothing
+    sprite: _borkroman/CLEA/CLEA_mask.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.95
+        Slash: 0.95
+        Piercing: 0.95
+        Heat: 0.95
+  - type: IngestionBlocker
+  - type: IdentityBlocker
+  - type: Tag
+    tags:
+    - HidesHair
+  - type: FlashImmunity
+  - type: EyeProtection
+    protectionTime: 5
+
+#РПС ЦСС
+- type: entity
+  parent: ClothingBeltMilitaryWebbing
+  id: ClothingBeltMilitaryWebbingCLEA
+  name: РПС ЦСС
+  description: не сковывает движений!
+  components:
+  - type: Sprite
+    sprite: _borkroman/CLEA/CLEA_Webbing.rsi
+  - type: Clothing
+    sprite: _borkroman/CLEA/CLEA_Webbing.rsi
+  - type: ExplosionResistance
+    damageCoefficient: 0.5
+  - type: StorageFill
+    contents:
+    - id: MagazineRifle
+      amount: 3
+    - id: MagazinePistol
+      amount: 2
+
+#Боевой Бронежилет ЦСС
+- type: entity
+  parent: ClothingOuterBaseMedium
+  id: ClothingOuterArmorCLEA
+  name: Боевой Бронежилет ЦСС
+  description: Стандартный армейский бронежилет.
+  components:
+  - type: Sprite
+    sprite: _borkroman/CLEA/CLEA_armor.rsi
+  - type: Clothing
+    sprite: _borkroman/CLEA/CLEA_armor.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.80
+        Slash: 0.80
+        Piercing: 0.80
+        Heat: 0.80
+  - type: ExplosionResistance
+    damageCoefficient: 0.90
+  - type: AllowSuitStorage
+
+#ID карта ЦСС
+- type: entity
+  parent: ERTLeaderIDCard
+  id: CLEAIDCard
+  name: ID карта ЦСС
+  components:
+  - type: Sprite
+    sprite: _borkroman/CLEA/other/CLEA_IDcard.rsi
+    layers:
+    - state: silver
+    - state: idCLEA
+  - type: Item
+  - type: IdCard
+    jobTitle: Солдат ЦСС
+    jobIcon: JobIconCLEA
+
+#ID карта офицера ЦСС
+- type: entity
+  parent: ERTLeaderIDCard
+  id: CLEAOfficerIDCard
+  name: ID карта Офицера ЦСС
+  components:
+  - type: Sprite
+    sprite: _borkroman/CLEA/other/CLEA_IDcard.rsi
+    layers:
+    - state: silver
+    - state: idCLEA
+  - type: Item
+  - type: IdCard
+    jobTitle: Офицер ЦСС
+    jobIcon: JobIconCLEA
+
+#Иконка ЦСС
+- type: statusIcon
+  parent: JobIcon
+  id: JobIconCLEA
+  icon:
+    sprite: _borkroman/CLEA/other/CLEA_icon.rsi
+    state: CLEA
+
+#Рюкзак ЦСС
+- type: entity
+  parent: ClothingBackpackSecurity
+  id: ClothingMilitaryBackpackCLEA
+  name: Рюкзак ЦСС
+  components:
+  - type: Sprite
+    sprite: _borkroman/CLEA/CLEA_BackPack.rsi
+  - type: Clothing
+    sprite: _borkroman/CLEA/CLEA_BackPack.rsi
+  - type: StorageFill
+    contents:
+    - id: BoxZiptie
+    - id: CrowbarRed
+    - id: DoubleEmergencyOxygenTankFilled
+
+#КПК ЦСС
+- type: entity
+  parent: BasePDA
+  id: CLEAPDA
+  name: КПК солдата ЦСС
+  description: не такой робастный, как у отряда быстрого реагирования
+  components:
+  - type: Sprite
+    sprite: _borkroman/CLEA/other/CLEA_PDA.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+  - type: Pda
+    id: CLEAIDCard
+    state: pda-CLEA
+  - type: PdaBorderColor
+    borderColor: "#4e4e56"
+  - type: Icon
+    sprite: _borkroman/CLEA/other/CLEA_PDA.rsi
+    state: pda-CLEA
+
+#КПК офицера ЦСС
+- type: entity
+  parent: BasePDA
+  id: CLEAOfficerPDA
+  name: КПК Офицера ЦСС
+  description: не такой робастный, как у отряда быстрого реагирования
+  components:
+  - type: Sprite
+    sprite: _borkroman/CLEA/other/CLEA_PDA.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+  - type: Pda
+    id: CLEAOfficerIDCard
+    state: pda-CLEAOfficer
+  - type: PdaBorderColor
+    borderColor: "#4e4e56"
+  - type: Icon
+    sprite: _borkroman/CLEA/other/CLEA_PDA.rsi
+    state: pda-CLEAOfficer
+
+#ГИР солдата ЦСС
+- type: startingGear
+  id: CLEAGearBase
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCLEA
+    back: ClothingMilitaryBackpackCLEA
+    shoes: ClothingShoesBootsCombatFilled
+    head: ClothingHeadHelmetCLEA
+    gloves: ClothingHandsGlovesCLEA
+    outerClothing: ClothingOuterArmorCLEA
+    mask: ClothingMaskCLEA
+    id: CLEAPDA
+    belt: ClothingBeltMilitaryWebbingCLEA
+    pocket1: WeaponPistolMk58
+    suitstorage: WeaponRifleLecter
+    ears: CLEAHeadsetAlt
+    eyes: ClothingEyesGlassesCLEA
+
+#ГИР Офицера ЦСС
+- type: startingGear
+  id: CLEAGearOfficerBase
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCLEA
+    back: ClothingMilitaryBackpackCLEA
+    shoes: ClothingShoesBootsCombatFilled
+    head: ClothingHeadBaseCapCLEA
+    gloves: ClothingHandsGlovesCLEA
+    outerClothing: ClothingOuterArmorCLEA
+    mask: ClothingMaskCLEA
+    id: CLEAOfficerPDA
+    belt: ClothingBeltMilitaryWebbingCLEA
+    pocket1: WeaponPistolMk58
+    suitstorage: WeaponRifleLecter
+    ears: CLEAHeadsetAlt
+    eyes: ClothingEyesGlassesCLEA
+
+# госторолька офицер
+- type: randomHumanoidSettings
+  id: CLEAOfficer
+  randomizeName: false
+  components:
+    - type: MindShield
+    - type: GhostRole
+      name: Офицер ЦСС
+      description: Офицер отряда Центральных Силовых Структур. Пора решать проблемы. #придумаешь сам
+    - type: GhostTakeoverAvailable
+    - type: Loadout
+      prototypes: [ CLEAGearOfficerBase ]
+    - type: RandomMetadata
+      nameSegments:
+      - NamesFirstCLEAOfficer
+      - NamesLastCLEAOfficer
+    - type: AntagImmune
+    - type: TTS
+      voice: officer_enclave
+
+- type: entity
+  id: RandomHumanoidSpawnerCLEAOfficer
+  name: Офицер ЦСС
+  suffix: BASE
+  components:
+    - type: Sprite
+      sprite: _borkroman/CLEA/other/CLEA_roles.rsi
+      state: Officer
+    - type: RandomMetadata
+      nameSegments:
+      - NamesFirstCLEAOfficer
+      - NamesLastCLEAOfficer
+    - type: RandomHumanoidSpawner
+      settings: CLEAOfficer
+    - type: AntagImmune
+
+- type: dataset
+  id: NamesFirstCLEAOfficer
+  values:
+  - Лейтенант
+  - Капитан
+  - Майор
+
+- type: dataset
+  id: NamesLastCLEAOfficer
+  values:
+  - Ястреб
+  - Ворон
+  - Бугор
+  - Браво
+  - Фокс
+  - Хикс
+  - Гроза
+  - Каир
+  - Геварра
+  - Рекс
+  - Вольф
+  - Бизон
+# /госторолька офицер
+
+# госторолька солдат
+- type: randomHumanoidSettings
+  id: CLEABase
+  randomizeName: false
+  components:
+    - type: MindShield
+    - type: GhostRole
+      name: Солдат ЦСС
+      description: Солдат отряда Центральных Силовых Структур. Пора решать проблемы.
+    - type: GhostTakeoverAvailable
+    - type: Loadout
+      prototypes: [ CLEAGearBase ]
+    - type: RandomMetadata
+      nameSegments:
+      - NamesFirstCLEABase
+      - NamesLastCLEABase
+    - type: AntagImmune
+    - type: TTS
+      voice: officer_enclave
+
+- type: entity
+  id: RandomHumanoidSpawnerCLEABase
+  name: Солдат ЦСС
+  suffix: BASE
+  components:
+    - type: Sprite
+      sprite: _borkroman/CLEA/other/CLEA_roles.rsi
+      state: Solder
+    - type: RandomMetadata
+      nameSegments:
+      - NamesFirstCLEABase
+      - NamesLastCLEABase
+    - type: RandomHumanoidSpawner
+      settings: CLEABase
+    - type: AntagImmune
+
+- type: dataset
+  id: NamesFirstCLEABase
+  values:
+  - Рядовой
+  - Ефрейтор
+
+- type: dataset
+  id: NamesLastCLEABase
+  values:
+  - Ястреб
+  - Ворон
+  - Бугор
+  - Браво
+  - Фокс
+  - Хикс
+  - Гроза
+  - Каир
+  - Геварра
+  - Рекс
+  - Вольф
+  - Бизон
+# /госторолька солдат

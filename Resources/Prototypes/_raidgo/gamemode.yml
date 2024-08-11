@@ -1,0 +1,7 @@
+- type: gamePreset
+  id: Middleages #For Admin Use: Runs Greenshift but shows "Secret" in lobby.
+  alias:
+  - secretgreenshift
+  name: Средневековье
+  showInVote: false #Admin Use
+  description: Ивент проводимый гейм-мастером. Слушайте его указания.

@@ -1,12 +1,12 @@
 using System.Linq;
 using System.Text.RegularExpressions;
 using Content.Shared.CCVar;
-using Content.Shared.Corvax.TTS;
 using Content.Shared.GameTicking;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Preferences.Loadouts;
 using Content.Shared.Roles;
+using Content.Shared.SS220.TTS;
 using Content.Shared.Traits;
 using Robust.Shared.Collections;
 using Robust.Shared.Configuration;

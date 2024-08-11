@@ -1,0 +1,24 @@
+- type: entity
+  name: Суши
+  parent: FoodMealBase
+  id: FoodMealSushi
+  description: Суши.
+  components:
+  - type: Food
+    trash: FoodPlateSmall
+  - type: FlavorProfile
+    flavors:
+      - fishy
+  - type: Sprite
+    sprite: Objects/Consumable/Food/sushi.rsi
+    state: sushi
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 18
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 6
+  - type: Tag
+    tags:
+    - Meat

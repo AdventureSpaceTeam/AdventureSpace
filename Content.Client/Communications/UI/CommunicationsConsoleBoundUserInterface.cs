@@ -1,14 +1,20 @@
 ﻿using Content.Shared.CCVar;
+using Robust.Client.Player;
 using Content.Shared.Chat;
 using Content.Shared.Communications;
 using Robust.Client.UserInterface;
 using Robust.Shared.Configuration;
 using Robust.Shared.Timing;
+using Robust.Shared.Network;
+using Content.Shared.CallErt;
+using Content.Client.AdventurePrivate._Alteros.CallErt;
 
 namespace Content.Client.Communications.UI
 {
     public sealed class CommunicationsConsoleBoundUserInterface : BoundUserInterface
     {
+        [Dependency] private readonly IGameTiming _gameTiming = default!;
+        [Dependency] private readonly IPlayerManager _playerManager = default!;
         [Dependency] private readonly IConfigurationManager _cfg = default!;
 
         [ViewVariables]
@@ -27,6 +33,7 @@ namespace Content.Client.Communications.UI
             _menu.OnBroadcast += BroadcastButtonPressed;
             _menu.OnAlertLevel += AlertLevelSelected;
             _menu.OnEmergencyLevel += EmergencyShuttleButtonPressed;
+            _menu.OnCallErt +=CallERTButtonPressed;
         }
 
         public void AlertLevelSelected(string level)
@@ -35,6 +42,15 @@ namespace Content.Client.Communications.UI
             {
                 _menu.CurrentLevel = level;
                 SendMessage(new CommunicationsConsoleSelectAlertLevelMessage(level));
+            }
+        }
+
+        public void CallERTButtonPressed()
+        {
+
+            if (_playerManager.LocalUser is NetUserId netid)
+            {
+                SendMessage(new CommunicationsConsoleOpenERTCallMessage(netid));
             }
         }
 

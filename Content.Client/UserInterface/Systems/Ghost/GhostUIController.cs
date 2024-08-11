@@ -1,4 +1,5 @@
-﻿using Content.Client.Gameplay;
+using Content.Client.NewLife;
+using Content.Client.Gameplay;
 using Content.Client.Ghost;
 using Content.Client.UserInterface.Systems.Gameplay;
 using Content.Client.UserInterface.Systems.Ghost.Widgets;
@@ -14,6 +15,7 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
     [Dependency] private readonly IEntityNetworkManager _net = default!;
 
     [UISystemDependency] private readonly GhostSystem? _system = default;
+    [UISystemDependency] private readonly NewLifeSystem? _respawnMenu = default;
 
     private GhostGui? Gui => UIManager.GetActiveUIWidgetOrNull<GhostGui>();
 
@@ -125,6 +127,9 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
         Gui.RequestWarpsPressed += RequestWarps;
         Gui.ReturnToBodyPressed += ReturnToBody;
         Gui.GhostRolesPressed += GhostRolesPressed;
+        // Alteros-Sponsors-start
+        Gui.RespawnPressed += Respawn;
+        // Alteros-Sponsors-end
         Gui.TargetWindow.WarpClicked += OnWarpClicked;
         Gui.TargetWindow.OnGhostnadoClicked += OnGhostnadoClicked;
 
@@ -148,6 +153,13 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
     {
         _system?.ReturnToBody();
     }
+
+    // Alteros-Sponsors-start
+    private void Respawn()
+    {
+        _respawnMenu?.OpenRespawnMenu();
+    }
+    // Alteros-Sponsors-end
 
     private void RequestWarps()
     {

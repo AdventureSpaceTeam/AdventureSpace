@@ -574,6 +574,7 @@
     access: [[ "Command" ]]
   - type: CommunicationsConsole
     title: comms-console-announcement-title-station
+  - type: CallErtConsole
   - type: DeviceNetwork
     transmitFrequencyId: ShuttleTimer
   - type: ActivatableUI
@@ -582,6 +583,8 @@
     interfaces:
       enum.CommunicationsConsoleUiKey.Key:
         type: CommunicationsConsoleBoundUserInterface
+      enum.CallErtConsoleUiKey.Key:
+        type: CallErtConsoleBoundUserInterface
   - type: Computer
     board: CommsComputerCircuitboard
   - type: PointLight

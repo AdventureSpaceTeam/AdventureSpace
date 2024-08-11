@@ -15,6 +15,7 @@ using Content.Server.Shuttles.Systems;
 using Content.Server.Station.Systems;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
+using Content.Shared.CallErt;
 using Content.Shared.CCVar;
 using Content.Shared.Chat;
 using Content.Shared.Communications;
@@ -23,7 +24,9 @@ using Content.Shared.DeviceNetwork;
 using Content.Shared.Emag.Components;
 using Content.Shared.Popups;
 using Robust.Server.GameObjects;
+using Robust.Server.Player;
 using Robust.Shared.Configuration;
+using Content.Shared._c4llv07e.AnnounceAuthor;
 
 namespace Content.Server.Communications
 {
@@ -42,6 +45,7 @@ namespace Content.Server.Communications
         [Dependency] private readonly UserInterfaceSystem _uiSystem = default!;
         [Dependency] private readonly IConfigurationManager _cfg = default!;
         [Dependency] private readonly IAdminLogManager _adminLogger = default!;
+        [Dependency] private readonly IPlayerManager _playerManager = default!;
 
         private const float UIUpdateInterval = 5.0f;
 
@@ -55,6 +59,7 @@ namespace Content.Server.Communications
 
             // Messages from the BUI
             SubscribeLocalEvent<CommunicationsConsoleComponent, CommunicationsConsoleSelectAlertLevelMessage>(OnSelectAlertLevelMessage);
+            SubscribeLocalEvent<CommunicationsConsoleComponent, CommunicationsConsoleOpenERTCallMessage>(OnOpenERTCall);
             SubscribeLocalEvent<CommunicationsConsoleComponent, CommunicationsConsoleAnnounceMessage>(OnAnnounceMessage);
             SubscribeLocalEvent<CommunicationsConsoleComponent, CommunicationsConsoleBroadcastMessage>(OnBroadcastMessage);
             SubscribeLocalEvent<CommunicationsConsoleComponent, CommunicationsConsoleCallEmergencyShuttleMessage>(OnCallShuttleMessage);
@@ -199,13 +204,12 @@ namespace Content.Server.Communications
             if (_emergency.EmergencyShuttleArrived || !_roundEndSystem.CanCallOrRecall())
                 return false;
 
-            // Ensure that we can communicate with the shuttle (either call or recall)
-            if (!comp.CanShuttle)
+            if (!_cfg.GetCVar(CCVars.CanCallEmergency))
                 return false;
 
             // Calling shuttle checks
             if (_roundEndSystem.ExpectedCountdownEnd is null)
-                return true;
+                return comp.CanShuttle;
 
             // Recalling shuttle checks
             var recallThreshold = _cfg.GetCVar(CCVars.EmergencyRecallTurningPoint);
@@ -216,6 +220,13 @@ namespace Content.Server.Communications
                 return false;
 
             return !(left.TotalSeconds / expected.TotalSeconds < recallThreshold);
+        }
+
+        private void OnOpenERTCall(EntityUid uid, CommunicationsConsoleComponent comp, CommunicationsConsoleOpenERTCallMessage message)
+        {
+            if (!_playerManager.TryGetSessionById(message.NetId, out var session))
+                return;
+            _uiSystem.OpenUi(uid, CallErtConsoleUiKey.Key, session);
         }
 
         private void OnSelectAlertLevelMessage(EntityUid uid, CommunicationsConsoleComponent comp, CommunicationsConsoleSelectAlertLevelMessage message)
@@ -258,6 +269,11 @@ namespace Content.Server.Communications
                 if (_idCardSystem.TryFindIdCard(mob, out var id))
                 {
                     author = $"{id.Comp.FullName} ({CultureInfo.CurrentCulture.TextInfo.ToTitleCase(id.Comp.JobTitle ?? string.Empty)})".Trim();
+                }
+
+                if (TryComp<AnnounceAuthorComponent>(mob, out var announceAuthor))
+                {
+                    author = announceAuthor.Name;
                 }
             }
 

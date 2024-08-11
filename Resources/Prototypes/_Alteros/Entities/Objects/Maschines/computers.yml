@@ -1,0 +1,64 @@
+- type: entity
+  id: ComputerCallErtConsole
+  parent: BaseComputer
+  name: консоль запроса ОБР
+  suffix: ERTCALL
+  description:
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: comm
+    - map: ["computerLayerKeys"]
+      state: generic_keys
+  - type: CallErtConsole
+  - type: ActivatableUI
+    key: enum.CallErtConsoleUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.CallErtConsoleUiKey.Key:
+        type: CallErtConsoleBoundUserInterface
+  - type: Computer
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#b89f25"
+  - type: AccessReader
+    access: [["Captain"], ["HeadOfPersonnel"]]
+
+
+- type: entity
+  id: ComputerApproveErtConsole
+  parent: BaseComputer
+  name: консоль принятия ОБР
+  suffix: ERTCALL
+  description:
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: comm
+    - map: ["computerLayerKeys"]
+      state: generic_keys
+  - type: ApproveErtConsole
+  - type: ActivatableUI
+    key: enum.ApproveErtConsoleUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.ApproveErtConsoleUiKey.Key:
+        type: ApproveErtConsoleBoundUserInterface
+  - type: Computer
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#b89f25"
+  - type: AccessReader
+    access: [["CentralCommand"]]

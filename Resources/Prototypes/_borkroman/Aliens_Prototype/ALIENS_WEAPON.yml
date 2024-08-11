@@ -1,0 +1,256 @@
+#Чутьё Королевы
+- type: entity
+  name: Чутьё Королевы
+  description: Вы можете чувствовать свою королеву, где бы она не находилась.
+  parent: BaseItem
+  noSpawn: true
+  id: PinpointerAlien
+  components:
+  - type: Unremoveable
+  - type: Transform
+    noRot: True
+  - type: Sprite
+    noRot: True
+    sprite: _borkroman/Aliens_Sprite/Alien_instinct.rsi
+    layers:
+    - state: instinct_Queen
+      map: ["enum.PinpointerLayers.Base"]
+    - state: pinonnull
+      map: ["enum.PinpointerLayers.Screen"]
+      shader: unshaded
+      visible: false
+  - type: Icon
+    sprite: _borkroman/Aliens_Sprite/Alien_instinct.rsi
+    state: instinct_Queen
+  - type: Item
+    sprite: _borkroman/Aliens_Sprite/Alien_instinct.rsi
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.PinpointerVisuals.IsActive:
+        enum.PinpointerLayers.Screen:
+          True: { visible: True }
+          False: { visible: False }
+      enum.PinpointerVisuals.TargetDistance:
+        enum.PinpointerLayers.Screen:
+          Unknown: { state: pinonnull }
+          Reached: { state: pinondirect }
+          Close: { state: pinonclose }
+          Medium: { state: pinonmedium }
+          Far: { state: pinonfar }
+  - type: AnimationPlayer
+  - type: Pinpointer
+    component: EggLayer
+    targetName: Королева
+
+#Чувство жертвы
+- type: entity
+  name: Чувство жертвы
+  description: Вы можете чувствовать ближайшего гуманоида.
+  parent: PinpointerAlien
+  noSpawn: true
+  id: PinpointerAlienHumanoid
+  components:
+  - type: Unremoveable
+  - type: Sprite
+    noRot: True
+    sprite: _borkroman/Aliens_Sprite/Alien_instinct.rsi
+    layers:
+    - state: instinct_Humanoid
+      map: ["enum.PinpointerLayers.Base"]
+    - state: pinonnull
+      map: ["enum.PinpointerLayers.Screen"]
+      shader: unshaded
+      visible: false
+  - type: Icon
+    sprite: _borkroman/Aliens_Sprite/Alien_instinct.rsi
+    state: instinct_Humanoid
+  - type: Pinpointer
+    component: HumanoidAppearance
+    targetName: Гуманоиды
+
+#Когти ксеноморфа
+- type: entity
+  parent: ClothingShoesBase
+  id: ShoesAlienClaw
+  noSpawn: true
+  name: Когти ксеноморфа
+  description: .
+  components:
+    - type: Sprite
+      sprite: _borkroman/Aliens_Sprite/AlienActionIcons.rsi
+      layers:
+      - state: claw
+        map: [ "enum.ToggleVisuals.Layer" ]
+    - type: Magboots
+      toggleAction: ActionToggleAlienClaw
+    - type: ClothingSpeedModifier
+      walkModifier: 1
+      sprintModifier: 1
+    - type: Appearance
+    - type: GenericVisualizer
+      visuals:
+        enum.ToggleVisuals.Toggled:
+          enum.ToggleVisuals.Layer:
+            True: {state: claw}
+            False: {state: claw}
+    - type: Unremoveable
+    - type: FootstepModifier
+      footstepSoundCollection:
+        collection: AlienFootStepCollection
+        params:
+          volume: -12
+
+- type: entity
+  id: ActionToggleAlienClaw
+  name: Вцепиться когтями
+  description: Используйте свои когти чтобы игнорировать гравитацию.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    itemIconStyle: NoItem
+    event: !type:ToggleActionEvent
+    icon: { sprite: _borkroman/Aliens_Sprite/AlienActionIcons.rsi, state: claw }
+    iconOn: { sprite: _borkroman/Aliens_Sprite/AlienActionIcons.rsi, state: claw }
+
+- type: soundCollection
+  id: AlienFootStepCollection
+  files:
+  - /Audio/_borkroman/Aliens_Audio/Alien_FootStep1.ogg
+  - /Audio/_borkroman/Aliens_Audio/Alien_FootStep2.ogg
+  - /Audio/_borkroman/Aliens_Audio/Alien_FootStep3.ogg
+  - /Audio/_borkroman/Aliens_Audio/Alien_FootStep4.ogg
+  - /Audio/_borkroman/Aliens_Audio/Alien_FootStep5.ogg
+  - /Audio/_borkroman/Aliens_Audio/Alien_FootStep6.ogg
+  - /Audio/_borkroman/Aliens_Audio/Alien_FootStep7.ogg
+
+- type: soundCollection
+  id: SliderFootStepCollection
+  files:
+  - /Audio/_borkroman/Aliens_Audio/Slider_FootStep1.ogg
+  - /Audio/_borkroman/Aliens_Audio/Slider_FootStep2.ogg
+  - /Audio/_borkroman/Aliens_Audio/Slider_FootStep3.ogg
+
+#Кислотный плевок
+- type: entity
+  id: BulletAcidAlien
+  name: Кислотный плевок
+  parent: BaseBullet
+  noSpawn: true
+  components:
+    - type: Sprite
+      noRot: false
+      sprite: _borkroman/Aliens_Sprite/acid_spit.rsi
+      layers:
+        - state: acidspit
+    - type: TimedDespawn
+      lifetime: 1
+    - type: EmitSoundOnSpawn
+      sound:
+        path: /Audio/_borkroman/Aliens_Audio/alien_acid_shot.ogg
+    - type: Projectile
+      impactEffect: BulletImpactEffectKinetic
+      damage:
+        types:
+          Caustic: 20
+          Structural: 300
+
+- type: entity
+  noSpawn: true
+  id: AlienGun
+  name: Кислотная железа
+  description: железа выделяющая часть кислоты из крови ксеноморфа.
+  components:
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 5
+  - type: BasicEntityAmmoProvider
+    proto: BulletAcidAlien
+    capacity: 1
+    count: 1
+  - type: Gun
+    soundGunshot:
+      path: /Audio/_borkroman/Aliens_Audio/alien_scream_2.ogg
+    projectileSpeed: 10
+
+- type: entity
+  noSpawn: true
+  id: ActionAcidAlien
+  name: Кислотный плевок
+  description: Используйте свою слюну чтобы убивать врагов (доступно раз в 5 секунд).
+  components:
+  - type: WorldTargetAction
+    useDelay: 5
+    itemIconStyle: BigAction
+    icon:
+      sprite: _borkroman/Aliens_Sprite/AlienActionIcons.rsi
+      state: Acid
+    event: !type:ActionGunShootEvent
+    priority: 100
+    checkCanAccess: false
+    range: 0
+
+#Плевок нейрокислотой
+- type: entity
+  id: BulletNeuro
+  name: Плевок нейрокислотой
+  parent: BaseBullet
+  noSpawn: true
+  description: .
+  components:
+  - type: Sprite
+    noRot: false
+    sprite: _borkroman/Aliens_Sprite/acid_spit.rsi
+    layers:
+    - state: neuro
+  - type: EmitSoundOnSpawn
+    sound:
+      path: /Audio/_borkroman/Aliens_Audio/alien_acid_shot.ogg
+  - type: Projectile
+    impactEffect: BulletImpactEffectKinetic
+    damage:
+      groups:
+        Brute: -75
+        Airloss: -75
+        Toxin: -75
+        Genetic: -75
+      types:
+        Caustic: 10
+        Heat: -75
+        Shock: -75
+        Cold: -75
+  - type: TimedDespawn
+    lifetime: 1
+
+- type: entity
+  noSpawn: true
+  id: AlienGunNeuro
+  name: Железа нейрокислоты
+  description: Результат эволюции ккислотной железы.
+  components:
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 30
+  - type: BasicEntityAmmoProvider
+    proto: BulletNeuro
+    capacity: 1
+    count: 1
+  - type: Gun
+    soundGunshot:
+      path: /Audio/_borkroman/Aliens_Audio/alien_scream_2.ogg
+    projectileSpeed: 10
+
+- type: entity
+  noSpawn: true
+  id: ActionNeuroAlien
+  name: Плевок нейрокислотой
+  description: Нейрокислота способна восстановить 25 единиц любого урона (доступно раз в 30 секунд).
+  components:
+  - type: WorldTargetAction
+    useDelay: 5
+    itemIconStyle: BigAction
+    icon:
+      sprite: _borkroman/Aliens_Sprite/AlienActionIcons.rsi
+      state: Neuro
+    event: !type:ActionGunShootEvent
+    priority: 100
+    checkCanAccess: false
+    range: 0

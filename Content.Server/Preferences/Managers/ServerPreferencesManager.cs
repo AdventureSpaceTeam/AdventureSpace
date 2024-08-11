@@ -4,12 +4,16 @@ using System.Threading;
 using System.Threading.Tasks;
 using Content.Corvax.Interfaces.Shared;
 using Content.Server.Database;
+using Content.Server.Humanoid;
 using Content.Shared.CCVar;
+using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Preferences;
+using Content.Shared.Roles;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
 namespace Content.Server.Preferences.Managers

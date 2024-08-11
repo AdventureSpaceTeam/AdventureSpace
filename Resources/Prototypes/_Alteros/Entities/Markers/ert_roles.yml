@@ -1,0 +1,208 @@
+﻿- type: entity
+  id: SpawnerERTClown
+  name: ОБР клоун
+  suffix: спавнер
+  parent: MarkerBase
+  components:
+  - type: GhostRole
+    name: ghost-role-information-ert-clown-name
+    description: ghost-role-information-ert-clown-description
+    requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 36000 # 10 hrs
+    - !type:RoleTimeRequirement
+      role: JobClown
+      time: 7200 # 2 hrs
+    - !type:DepartmentTimeRequirement
+      department: Command
+      time: 7200 # 2 hrs
+  - type: GhostRoleRandomHumanoidSpawner
+    settings: ERTClown
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    state: clown
+
+- type: entity
+  id: SpawnerERTEngineerEVA
+  name: ОБР инженер
+  suffix: спавнер
+  parent: MarkerBase
+  components:
+  - type: GhostRole
+    name: ghost-role-information-ert-engineer-name
+    description: ghost-role-information-ert-engineer-description
+    requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 36000 # 10 hrs
+    - !type:DepartmentTimeRequirement
+      department: Engineering
+      time: 7200 # 2 hrs
+    - !type:DepartmentTimeRequirement
+      department: Command
+      time: 7200 # 2 hrs
+  - type: GhostRoleRandomHumanoidSpawner
+    settings: ERTEngineerEVA
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    state: ertengineereva
+
+- type: entity
+  id: SpawnerCBURNUnit
+  name: Агент РХБЗЗ
+  suffix: спавнер
+  parent: MarkerBase
+  components:
+  - type: GhostRole
+    name: ghost-role-information-cburn-agent-name
+    description: ghost-role-information-cburn-agent-description
+    requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 36000 # 10 hrs
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 7200 # 2 hrs
+    - !type:DepartmentTimeRequirement
+      department: Command
+      time: 7200 # 2 hrs
+  - type: GhostRoleRandomHumanoidSpawner
+    settings: CBURNAgent
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    state: cburn
+
+
+- type: entity
+  id: SpawnerERTJanitor
+  name: ОБР уборщик
+  suffix: спавнер
+  parent: MarkerBase
+  components:
+  - type: GhostRole
+    name: ghost-role-information-ert-janitor-name
+    description: ghost-role-information-ert-janitor-description
+    requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 36000 # 10 hrs
+    - !type:RoleTimeRequirement
+      role: JobJanitor
+      time: 7200 # 2 hrs
+    - !type:DepartmentTimeRequirement
+      department: Command
+      time: 7200 # 2 hrs
+  - type: GhostRoleRandomHumanoidSpawner
+    settings: ERTJanitor
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    state: ertjanitor
+
+- type: entity
+  id: SpawnerDeathSquad
+  name: Агент Эскадрона смерти
+  suffix: спавнер
+  parent: MarkerBase
+  components:
+  - type: GhostRole
+    name: ghost-role-information-Death-Squad-name
+    description: ghost-role-information-Death-Squad-description
+    requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 36000 # 10 hrs
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 7200 # 2 hrs
+    - !type:DepartmentTimeRequirement
+      department: Command
+      time: 7200 # 2 hrs
+  - type: GhostRoleRandomHumanoidSpawner
+    settings: DeathSquad
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Hardsuits/deathsquad.rsi
+    state: icon
+
+- type: entity
+  id: SpawnerERTMedicalEVA
+  name: ОБР медик
+  suffix: спавнер
+  parent: MarkerBase
+  components:
+  - type: GhostRole
+    name: ghost-role-information-ert-medical-name
+    description: ghost-role-information-ert-medical-description
+    requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 36000 # 10 hrs
+    - !type:DepartmentTimeRequirement
+      department: Medical
+      time: 7200 # 2 hrs
+    - !type:DepartmentTimeRequirement
+      department: Command
+      time: 7200 # 2 hrs
+  - type: GhostRoleRandomHumanoidSpawner
+    settings: ERTMedicalEVA
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    state: ertmedicaleva
+
+- type: entity
+  id: SpawnerERTSecurity
+  name: ОБР офицер безопасности
+  suffix: спавнер
+  parent: MarkerBase
+  components:
+  - type: GhostRole
+    name: ghost-role-information-ert-security-name
+    description: ghost-role-information-ert-security-description
+    requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 36000 # 10 hrs
+    - !type:DepartmentTimeRequirement
+      department: Medical
+      time: 7200 # 2 hrs
+    - !type:DepartmentTimeRequirement
+      department: Command
+      time: 7200 # 2 hrs
+  - type: GhostRoleRandomHumanoidSpawner
+    settings: ERTSecurity
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    state: ertsecurity
+
+- type: entity
+  id: SpawnerERTLeader
+  name: ОБР лидер
+  suffix: спавнер
+  parent: MarkerBase
+  components:
+  - type: GhostRole
+    name: ghost-role-information-ert-leader-name
+    description: ghost-role-information-ert-leader-description
+    requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 36000 # 10 hrs
+    - !type:DepartmentTimeRequirement
+      department: Command
+      time: 14400 # 4 hrs
+  - type: GhostRoleRandomHumanoidSpawner
+    settings: ERTLeader
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    state: ertleader
+
+- type: entity
+  id: SpawnerCentcomOfficial
+  name: Представитель Центком
+  suffix: спавнер
+  parent: MarkerBase
+  components:
+  - type: GhostRole
+    name: ghost-role-information-centcom-official-name
+    description: ghost-role-information-centcom-official-description
+    requirements:
+    - !type:DepartmentTimeRequirement
+      department: Command
+      time: 36000 # 10 hrs
+  - type: GhostRoleRandomHumanoidSpawner
+    settings: CentcomOfficial
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    state: centcom

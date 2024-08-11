@@ -1,12 +1,14 @@
 ﻿using Content.Server.Players.PlayTimeTracking;
 using Content.Shared.Administration;
 using Content.Shared.Players.PlayTimeTracking;
+using Content.Shared.Roles;
 using Robust.Server.Player;
 using Robust.Shared.Console;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server.Administration.Commands;
 
-[AdminCommand(AdminFlags.Permissions)] // Corvax-DiscordRoles
+[AdminCommand(AdminFlags.Admin)] // TODO(c4llv07e): It was AdminFlags.Moderator
 public sealed class PlayTimeAddOverallCommand : IConsoleCommand
 {
     [Dependency] private readonly IPlayerManager _playerManager = default!;
@@ -58,7 +60,7 @@ public sealed class PlayTimeAddOverallCommand : IConsoleCommand
     }
 }
 
-[AdminCommand(AdminFlags.Permissions)] // Corvax-DiscordRoles
+[AdminCommand(AdminFlags.Admin)] // TODO(c4llv07e): It was AdminFlags.Moderator
 public sealed class PlayTimeAddRoleCommand : IConsoleCommand
 {
     [Dependency] private readonly IPlayerManager _playerManager = default!;
@@ -123,7 +125,83 @@ public sealed class PlayTimeAddRoleCommand : IConsoleCommand
     }
 }
 
-[AdminCommand(AdminFlags.Moderator)]
+[AdminCommand(AdminFlags.Admin)]
+public sealed class PlayTimeAddDepartmentCommand : IConsoleCommand
+{
+    [Dependency] private readonly IPlayerManager _playerManager = default!;
+    [Dependency] private readonly PlayTimeTrackingManager _playTimeTracking = default!;
+    [Dependency] private readonly IPrototypeManager _protoManager = default!;
+
+    public string Command => "playtime_adddepartment";
+    public string Description => Loc.GetString("cmd-playtime_adddepartment-desc");
+    public string Help => Loc.GetString("cmd-playtime_adddepartment-help", ("command", Command));
+
+    public async void Execute(IConsoleShell shell, string argStr, string[] args)
+    {
+        if (args.Length != 3)
+        {
+            shell.WriteError(Loc.GetString("cmd-playtime_adddepartment-error-args"));
+            return;
+        }
+
+        var userName = args[0];
+        if (!_playerManager.TryGetSessionByUsername(userName, out var player))
+        {
+            shell.WriteError(Loc.GetString("parse-session-fail", ("username", userName)));
+            return;
+        }
+
+        var department = args[1];
+
+        var m = args[2];
+        if (!int.TryParse(m, out var minutes))
+        {
+            shell.WriteError(Loc.GetString("parse-minutes-fail", ("minutes", minutes)));
+            return;
+        }
+
+        if (!_protoManager.TryIndex<DepartmentPrototype>(department, out var proto))
+        {
+            shell.WriteError(Loc.GetString("parse-department-fail", ("department", department)));
+            return;
+        }
+
+        foreach (var role_name in proto.Roles)
+        {
+            var role = "Job" + role_name;
+            _playTimeTracking.AddTimeToTracker(player, role, TimeSpan.FromMinutes(minutes));
+            var time = _playTimeTracking.GetPlayTimeForTracker(player, role);
+            shell.WriteLine(Loc.GetString("cmd-playtime_adddepartment-succeed",
+                                          ("username", userName),
+                                          ("role", role),
+                                          ("time", time)));
+        }
+    }
+
+    public CompletionResult GetCompletion(IConsoleShell shell, string[] args)
+    {
+        if (args.Length == 1)
+        {
+            return CompletionResult.FromHintOptions(
+                CompletionHelper.SessionNames(players: _playerManager),
+                Loc.GetString("cmd-playtime_addrole-arg-user"));
+        }
+
+        if (args.Length == 2)
+        {
+            return CompletionResult.FromHintOptions(
+                CompletionHelper.PrototypeIDs<DepartmentPrototype>(),
+                Loc.GetString("cmd-playtime_adddepartment-arg-department"));
+        }
+
+        if (args.Length == 3)
+            return CompletionResult.FromHint(Loc.GetString("cmd-playtime_addrole-arg-minutes"));
+
+        return CompletionResult.Empty;
+    }
+}
+
+[AdminCommand(AdminFlags.Admin)] // TODO(c4llv07e): It was AdminFlags.Moderator
 public sealed class PlayTimeGetOverallCommand : IConsoleCommand
 {
     [Dependency] private readonly IPlayerManager _playerManager = default!;
@@ -168,7 +246,7 @@ public sealed class PlayTimeGetOverallCommand : IConsoleCommand
     }
 }
 
-[AdminCommand(AdminFlags.Moderator)]
+[AdminCommand(AdminFlags.Admin)] // TODO(c4llv07e): It was AdminFlags.Moderator
 public sealed class PlayTimeGetRoleCommand : IConsoleCommand
 {
     [Dependency] private readonly IPlayerManager _playerManager = default!;
@@ -247,7 +325,7 @@ public sealed class PlayTimeGetRoleCommand : IConsoleCommand
 /// <summary>
 /// Saves the timers for a particular player immediately
 /// </summary>
-[AdminCommand(AdminFlags.Moderator)]
+[AdminCommand(AdminFlags.Admin)] // TODO(c4llv07e): It was AdminFlags.Moderator
 public sealed class PlayTimeSaveCommand : IConsoleCommand
 {
     [Dependency] private readonly IPlayerManager _playerManager = default!;

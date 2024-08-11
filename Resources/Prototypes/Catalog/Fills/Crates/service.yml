@@ -13,6 +13,7 @@
       - id: WetFloorSign
         amount: 2
       - id: Soap
+      - id: SprayPaint
       - id: SprayBottleSpaceCleaner
         amount: 2
       - id: TrashBag

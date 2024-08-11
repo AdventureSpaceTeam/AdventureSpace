@@ -1,5 +1,7 @@
 using System.Linq;
 using Content.Corvax.Interfaces.Server;
+using Content.Shared.Administration;
+using Content.Server.Administration.Systems;
 using Content.Server.Database;
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
@@ -12,6 +14,7 @@ using Robust.Server.Player;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Enums;
+using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
@@ -24,11 +27,36 @@ namespace Content.Server.GameTicking
         [Dependency] private readonly IPlayerManager _playerManager = default!;
         [Dependency] private readonly IServerDbManager _dbManager = default!;
         [Dependency] private readonly SharedAudioSystem _audioSystem = default!;
+        [Dependency] private readonly BwoinkSystem _bwoinkSystem = default!;
+
+        // Alteros-start
+        private bool _greetingsEnabled;
+        private string _greetingsMessage = "";
+        private string _greetingsAuthor = "";
 
         private void InitializePlayer()
         {
             _playerManager.PlayerStatusChanged += PlayerStatusChanged;
+            _cfg.OnValueChanged(CCVars.GreetingsEnable, SetGreetingsEnabled, true);
+            _cfg.OnValueChanged(CCVars.GreetingsMessage, SetGreetingsMessage, true);
+            _cfg.OnValueChanged(CCVars.GreetingsAuthor, SetGreetingsAuthor, true);
         }
+
+        private void SetGreetingsEnabled(bool value)
+        {
+            _greetingsEnabled = value;
+        }
+
+        private void SetGreetingsMessage(string value)
+        {
+            _greetingsMessage = value;
+        }
+
+        private void SetGreetingsAuthor(string value)
+        {
+            _greetingsAuthor = value;
+        }
+        // Alteros-end
 
         private async void PlayerStatusChanged(object? sender, SessionStatusEventArgs args)
         {
@@ -71,6 +99,22 @@ namespace Content.Server.GameTicking
                     var record = await _dbManager.GetPlayerRecordByUserId(args.Session.UserId);
                     var firstConnection = record != null &&
                                           Math.Abs((record.FirstSeenTime - record.LastSeenTime).TotalMinutes) < 1;
+
+                    // Alteros-start
+                    if (firstConnection && _greetingsEnabled)
+                    {
+                        var bwoinkText = $"[color=red]{_greetingsAuthor}[/color]: {_greetingsMessage}";
+                        var msg = new SharedBwoinkSystem.BwoinkTextMessage(args.Session.UserId, new NetUserId(Guid.Empty), bwoinkText);
+                        RaiseNetworkEvent(msg, session.ConnectedClient);
+                        var admins = _bwoinkSystem.GetTargetAdmins();
+
+                        // Notify all admins
+                        foreach (var channel in admins)
+                        {
+                            RaiseNetworkEvent(msg, channel);
+                        }
+                    }
+                    // Alteros-end
 
                     _chatManager.SendAdminAnnouncement(firstConnection
                         ? Loc.GetString("player-first-join-message", ("name", args.Session.Name))

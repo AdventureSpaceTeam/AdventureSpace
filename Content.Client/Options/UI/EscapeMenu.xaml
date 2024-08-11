@@ -8,6 +8,7 @@
     <BoxContainer Orientation="Vertical" SeparationOverride="4" MinWidth="150">
         <changelog:ChangelogButton Access="Public" Name="ChangelogButton"/>
         <ui:VoteCallMenuButton />
+        <Button Access="Public" Name="OpenDiscordButton" Text="Discord проекта" />
         <Button Access="Public" Name="OptionsButton" Text="{Loc 'ui-escape-options'}" />
         <Button Access="Public" Name="RulesButton" Text="{Loc 'ui-escape-rules'}" />
         <Button Access="Public" Name="GuidebookButton" Text="{Loc 'ui-escape-guidebook'}" />

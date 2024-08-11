@@ -40,7 +40,7 @@ public sealed class RoundEndSummaryUIController : UIController,
             return;
 
         _window = new RoundEndSummaryWindow(message.GamemodeTitle, message.RoundEndText,
-            message.RoundDuration, message.RoundId, message.AllPlayersEndInfo, EntityManager);
+            message.RoundDuration, message.RoundId, message.AllPlayersEndInfo, message.RoundEndStats, message.StatisticEntries, EntityManager);
     }
 
     public void OnSystemLoaded(ClientGameTicker system)

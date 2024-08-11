@@ -8,6 +8,7 @@ using Content.Shared.Database;
 using Content.Shared.Examine;
 using Content.Shared.Remotes.EntitySystems;
 using Content.Shared.Remotes.Components;
+using Content.Shared.Tag;
 
 namespace Content.Shared.Remotes
 {
@@ -17,6 +18,7 @@ namespace Content.Shared.Remotes
         [Dependency] private readonly AirlockSystem _airlock = default!;
         [Dependency] private readonly DoorSystem _doorSystem = default!;
         [Dependency] private readonly ExamineSystemShared _examine = default!;
+        [Dependency] private readonly TagSystem _tag = default!;
         public override void Initialize()
         {
             base.Initialize();

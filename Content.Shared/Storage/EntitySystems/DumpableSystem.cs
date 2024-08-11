@@ -11,6 +11,7 @@ using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
+using Robust.Shared.Timing;
 
 namespace Content.Shared.Storage.EntitySystems;
 
@@ -18,17 +19,19 @@ public sealed class DumpableSystem : EntitySystem
 {
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly SharedDisposalUnitSystem _disposalUnitSystem = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
     [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
 
-    private EntityQuery<ItemComponent> _itemQuery;
+    private EntityQuery<TransformComponent> _xformQuery;
 
     public override void Initialize()
     {
         base.Initialize();
-        _itemQuery = GetEntityQuery<ItemComponent>();
+        _xformQuery = GetEntityQuery<TransformComponent>();
         SubscribeLocalEvent<DumpableComponent, AfterInteractEvent>(OnAfterInteract, after: new[]{ typeof(SharedEntityStorageSystem) });
         SubscribeLocalEvent<DumpableComponent, GetVerbsEvent<AlternativeVerb>>(AddDumpVerb);
         SubscribeLocalEvent<DumpableComponent, GetVerbsEvent<UtilityVerb>>(AddUtilityVerbs);
@@ -75,6 +78,9 @@ public sealed class DumpableSystem : EntitySystem
 
     private void AddUtilityVerbs(EntityUid uid, DumpableComponent dumpable, GetVerbsEvent<UtilityVerb> args)
     {
+        if (!_timing.IsFirstTimePredicted)
+            return;
+
         if (!args.CanAccess || !args.CanInteract)
             return;
 
@@ -110,7 +116,7 @@ public sealed class DumpableSystem : EntitySystem
         }
     }
 
-    private void StartDoAfter(EntityUid storageUid, EntityUid targetUid, EntityUid userUid, DumpableComponent dumpable)
+    private void StartDoAfter(EntityUid storageUid, EntityUid? targetUid, EntityUid userUid, DumpableComponent dumpable)
     {
         if (!TryComp<StorageComponent>(storageUid, out var storage))
             return;
@@ -119,7 +125,7 @@ public sealed class DumpableSystem : EntitySystem
 
         foreach (var entity in storage.Container.ContainedEntities)
         {
-            if (!_itemQuery.TryGetComponent(entity, out var itemComp) ||
+            if (!TryComp<ItemComponent>(entity, out var itemComp) ||
                 !_prototypeManager.TryIndex(itemComp.Size, out var itemSize))
             {
                 continue;
@@ -130,6 +136,9 @@ public sealed class DumpableSystem : EntitySystem
 
         delay *= (float) dumpable.DelayPerItem.TotalSeconds * dumpable.Multiplier;
 
+        if (delay == 0)
+            delay = 1;
+
         _doAfterSystem.TryStartDoAfter(new DoAfterArgs(EntityManager, userUid, delay, new DumpableDoAfterEvent(), storageUid, target: targetUid, used: storageUid)
         {
             BreakOnMove = true,
@@ -137,49 +146,60 @@ public sealed class DumpableSystem : EntitySystem
         });
     }
 
-    private void OnDoAfter(EntityUid uid, DumpableComponent component, DumpableDoAfterEvent args)
+    private void OnDoAfter(EntityUid uid, DumpableComponent component, DoAfterEvent args)
     {
-        if (args.Handled || args.Cancelled || !TryComp<StorageComponent>(uid, out var storage) || storage.Container.ContainedEntities.Count == 0)
+        /*if (!_timing.IsFirstTimePredicted)
+            return;*/
+
+        if (args.Handled || args.Cancelled || !TryComp<StorageComponent>(uid, out var storage))
             return;
 
-        var dumpQueue = new Queue<EntityUid>(storage.Container.ContainedEntities);
+        List<EntityUid> dumpQueue = storage.Container.ContainedEntities.ToList();
 
-        var dumped = false;
+        if (dumpQueue.Count == 0)
+            return;
 
-        if (_disposalUnitSystem.HasDisposals(args.Args.Target))
+        if (component.Random)
+            for (int i = 0; i < dumpQueue.Count; i++)
+            {
+                int randomIndex = _random.Next(i, dumpQueue.Count);
+                var temp = dumpQueue[i];
+                dumpQueue[i] = dumpQueue[randomIndex];
+                dumpQueue[randomIndex] = temp;
+            }
+
+        //Queue<EntityUid> dumpQueue = new Queue<EntityUid>(entities);
+
+        foreach (var entity in dumpQueue)
         {
-            dumped = true;
+            var transform = Transform(entity);
+            _container.AttachParentToContainerOrGrid((entity, transform));
+            _transformSystem.SetLocalPositionRotation(entity, transform.LocalPosition + _random.NextVector2Box() / 2 * component.Distance, _random.NextAngle() * component.Distance, transform);
+        }
+
+        if (args.Args.Target == null)
+            return;
+
+
+        if (_disposalUnitSystem.HasDisposals(args.Args.Target.Value))
+        {
 
             foreach (var entity in dumpQueue)
             {
                 _disposalUnitSystem.DoInsertDisposalUnit(args.Args.Target.Value, entity, args.Args.User);
             }
         }
-        else if (HasComp<PlaceableSurfaceComponent>(args.Args.Target))
+        else if (HasComp<PlaceableSurfaceComponent>(args.Args.Target.Value))
         {
-            dumped = true;
 
-            var (targetPos, targetRot) = _transformSystem.GetWorldPositionRotation(args.Args.Target.Value);
+            var targetPos = _xformQuery.GetComponent(args.Args.Target.Value).LocalPosition;
 
             foreach (var entity in dumpQueue)
             {
-                _transformSystem.SetWorldPositionRotation(entity, targetPos + _random.NextVector2Box() / 4, targetRot);
-            }
-        }
-        else
-        {
-            var targetPos = _transformSystem.GetWorldPosition(uid);
-
-            foreach (var entity in dumpQueue)
-            {
-                var transform = Transform(entity);
-                _transformSystem.SetWorldPositionRotation(entity, targetPos + _random.NextVector2Box() / 4, _random.NextAngle(), transform);
+                _transformSystem.SetLocalPosition(entity, targetPos + (_random.NextVector2Box() / 4) * component.Distance);
             }
         }
 
-        if (dumped)
-        {
-            _audio.PlayPredicted(component.DumpSound, uid, args.User);
-        }
+        _audio.PlayPvs(component.DumpSound, uid);
     }
 }

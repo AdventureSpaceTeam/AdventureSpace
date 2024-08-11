@@ -1,0 +1,86 @@
+- type: entity
+  parent: SeedBase
+  name: пакет спор стеклошляпника
+  id: GlasscapSeeds
+  components:
+    - type: Seed
+      seedId: glasscap
+    - type: Sprite
+      sprite: DTS/Produce/glasscap.rsi
+
+- type: seed
+  id: glasscap
+  name: семена стеклошляпника
+  noun: seeds-noun-spores
+  displayName: стеклошляпник
+  plantRsi: DTS/Produce/glasscap.rsi
+  packetPrototype: GlasscapSeeds
+  productPrototypes:
+    - GlassLog
+  lifespan: 80
+  maturation: 10
+  ligneous: true
+  production: 3
+  yield: 3
+  potency: 1
+  growthStages: 3
+  waterConsumption: 0.60
+  nutrientConsumption: 0.80
+  lightTolerance: 6
+  idealHeat: 288
+  
+- type: entity
+  name: бревно стеклошляпника
+  description: Кто сказал, что стекло не растёт на деревьях?
+  id: GlassLog
+  parent: ProduceBase
+  components:
+  - type: Sprite
+    sprite: DTS/Produce/glasscap.rsi
+  - type: SolutionContainerManager
+  - type: Produce
+    seedId: glasscap
+  - type: Log
+    spawnedPrototype: SheetGlass1
+    spawnCount: 1
+  - type: Damageable
+    damageContainer: Inorganic
+  - type: DamageOnLand
+    damage:
+      types:
+        Blunt: 5
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors: #excess damage (nuke?). avoid computational cost of spawning entities.
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 5
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: GlassBreak
+          params:
+            volume: -8
+      - !type:DoActsBehavior
+        acts: [ "Breakage" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 10
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: GlassBreak
+          params:
+            volume: -8
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          ShardGlass:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]

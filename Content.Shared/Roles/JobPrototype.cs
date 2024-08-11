@@ -1,9 +1,11 @@
 using Content.Shared.Access;
 using Content.Shared.Guidebook;
 using Content.Shared.Players.PlayTimeTracking;
+using Content.Shared.Roles;
 using Content.Shared.StatusIcon;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.List;
 
 namespace Content.Shared.Roles
 {
@@ -62,6 +64,9 @@ namespace Content.Shared.Roles
 
         [DataField("canBeAntag")]
         public bool CanBeAntag { get; private set; } = true;
+
+        [DataField("radioBold")]
+        public bool RadioIsBold { get; } = false;
 
         /// <summary>
         ///     The "weight" or importance of this job. If this number is large, the job system will assign this job

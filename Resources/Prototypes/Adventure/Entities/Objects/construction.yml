@@ -1,0 +1,66 @@
+ #Construction Helmet
+- type: entity
+  parent: ClothingHeadHardsuitWithLightBase
+  id: ClothingHeadHelmetConstruction
+  noSpawn: true
+  name: Шлем строительного скафандра
+  description: Шлем строительного скафандра. Теперь с фонариком!
+  components:
+  - type: BreathMask
+  - type: Sprite
+    sprite: DTS/Construction/Helmet/construction2.rsi
+  - type: Clothing
+    sprite: DTS/Construction/Helmet/construction2.rsi
+  - type: IngestionBlocker
+  - type: PressureProtection
+    highPressureMultiplier: 0.525
+    lowPressureMultiplier: 1000
+  - type: PointLight
+    radius: 7
+    energy: 3
+
+ #Construction Armor
+- type: entity
+  parent: ClothingOuterBaseLarge
+  id: ClothingOuterArmorConstruction
+  name: Строительный скафандр
+  description: Сильно замедляет движение, но позволяет работать в космосе гуманоидам любой профессии. По крайней мере, пока не кончится воздух в баллоне...
+  components:
+  - type: Sprite
+    sprite: DTS/Construction/Armor/construction.rsi
+  - type: Clothing
+    sprite: DTS/Construction/Armor/construction.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 0.02
+    lowPressureMultiplier: 1000
+  - type: TemperatureProtection
+    coefficient: 0.001
+  - type: ExplosionResistance
+    damageCoefficient: 0.9
+  - type: Armor
+    modifiers:
+      coefficients:
+        Radiation: 0.8
+  - type: ClothingSpeedModifier
+    walkModifier: 0.4
+    sprintModifier: 0.3
+  - type: HeldSpeedModifier
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetConstruction
+    
+ #Suit Storage
+- type: entity
+  id: SuitStorageConstruction
+  name: хранилище скафандра
+  parent: SuitStorageBase
+  suffix: Construction
+  components:
+  - type: StorageFill
+    contents:
+        - id: OxygenTankFilled
+        - id: ClothingOuterArmorConstruction
+        - id: RCD
+        - id: RCDAmmo
+        - id: RCDAmmo
+        - id: RCDAmmo
+        - id: RCDAmmo

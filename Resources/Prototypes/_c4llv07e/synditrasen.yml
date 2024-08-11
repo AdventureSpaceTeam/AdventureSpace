@@ -1,0 +1,8 @@
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckCloakSyndiTrasen
+  name: Плащ СиндиТрейзен
+  description: Подарок Куинку от... агента?
+  components:
+  - type: Sprite
+    sprite: _c4llv07e/synditrasen.rsi

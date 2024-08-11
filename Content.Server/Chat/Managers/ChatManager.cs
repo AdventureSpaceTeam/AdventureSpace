@@ -259,11 +259,24 @@ namespace Content.Server.Chat.Managers
             }
 
             // Corvax-Sponsors-Start
-            if (_sponsorsManager != null && _sponsorsManager.TryGetServerOocColor(player.UserId, out var oocColor))
+            if (_sponsorsManager != null && _sponsorsManager.TryGetServerOocColor(player.UserId, out var oocColor)
+                && _sponsorsManager.TryGetServerOocTitle(player.UserId, out var sponsorTitle))
             {
-                wrappedMessage = Loc.GetString("chat-manager-send-ooc-patron-wrap-message", ("patronColor", oocColor),("playerName", player.Name), ("message", FormattedMessage.EscapeText(message)));
+                wrappedMessage = Loc.GetString("chat-manager-send-ooc-patron-wrap-message", ("patronColor", oocColor), ("patronTitle", $"\\[{sponsorTitle}\\] "),("playerName", player.Name), ("message", FormattedMessage.EscapeText(message)));
             }
             // Corvax-Sponsors-End
+
+            // c4llv07e fix admins OOC names {{
+            var adminData = _adminManager.GetAdminData(player);
+            if (adminData != null)
+            {
+                var title = adminData.Title ?? "Admin";
+                // We don't use admin color here because it will be overrided anyway
+                wrappedMessage = Loc.GetString(
+                    "chat-manager-send-ooc-admin-wrap-message", ("adminTitle", title),
+                    ("playerName", player.Name), ("message", FormattedMessage.EscapeText(message)));
+            }
+            // c4llv07e }}
 
             //TODO: player.Name color, this will need to change the structure of the MsgChatMessage
             ChatMessageToAll(ChatChannel.OOC, message, wrappedMessage, EntityUid.Invalid, hideChat: false, recordReplay: true, colorOverride: colorOverride, author: player.UserId);

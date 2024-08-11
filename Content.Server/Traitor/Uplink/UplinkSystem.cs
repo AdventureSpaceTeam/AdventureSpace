@@ -5,6 +5,7 @@ using Content.Shared.PDA;
 using Content.Server.Store.Components;
 using Content.Shared.FixedPoint;
 using Content.Shared.Store;
+using Content.Shared._c4llv07e.FuckWizards;
 using Content.Shared.Store.Components;
 
 namespace Content.Server.Traitor.Uplink
@@ -63,6 +64,7 @@ namespace Content.Server.Traitor.Uplink
                 while (containerSlotEnumerator.MoveNext(out var pdaUid))
                 {
                     if (!pdaUid.ContainedEntity.HasValue) continue;
+                    if (HasComp<FuckWizardsComponent>(pdaUid.ContainedEntity.Value)) continue;
 
                     if (HasComp<PdaComponent>(pdaUid.ContainedEntity.Value) || HasComp<StoreComponent>(pdaUid.ContainedEntity.Value))
                         return pdaUid.ContainedEntity.Value;
@@ -72,6 +74,7 @@ namespace Content.Server.Traitor.Uplink
             // Also check hands
             foreach (var item in _handsSystem.EnumerateHeld(user))
             {
+                if (HasComp<FuckWizardsComponent>(item)) continue;
                 if (HasComp<PdaComponent>(item) || HasComp<StoreComponent>(item))
                     return item;
             }

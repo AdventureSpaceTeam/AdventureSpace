@@ -1,0 +1,59 @@
+name: Publish-c4llv07e
+
+concurrency:
+  group: publish-c4llv07e
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: c4llv07e
+
+    steps:
+    - uses: actions/checkout@v4.1.1
+      with:
+        submodules: 'recursive'
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v4.0.0
+      with:
+        dotnet-version: 8.0.x
+
+    - name: Get Engine Tag
+      run: |
+        cd RobustToolbox
+        git fetch --depth=1
+
+    - name: Install dependencies
+      run: dotnet restore
+
+    - name: Build Packaging
+      run: dotnet build Content.Packaging --configuration Release --no-restore /m
+
+    - name: Package server
+      run: dotnet run --project Content.Packaging server --platform linux-x64 --hybrid-acz
+
+    - name: Shuffle files around
+      run: |
+        mkdir "release/${{ github.sha }}"
+        mv release/*.zip "release/${{ github.sha }}"
+
+    - name: Upload files to centcomm
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+        source: "release/${{ github.sha }}"
+        target: "/var/www/html/builds_dir/builds/"
+        strip_components: 1
+
+    - name: Update manifest JSON
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+        script: pwsh /var/www/html/push.ps1 ${{ github.sha }}

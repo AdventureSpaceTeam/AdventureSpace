@@ -1,0 +1,41 @@
+- type: gameMap
+  id: SeasonFive
+  mapName: 'SeasonFive'
+  mapPath: /Maps/seasonfive.yml
+  minPlayers: 50
+  stations:
+    SeasonFive:
+      stationProto: StandardNanotrasenStation
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: '{0} Experimental Station {1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: 'TG'
+        - type: StationEmergencyShuttle
+          emergencyShuttlePath: /Maps/Shuttles/emergency_box.yml
+        - type: StationJobs
+          overflowJobs:
+            - Passenger
+          availableJobs:
+            #service
+            Captain: [ -1, -1 ]
+            IAA: [ -1, -1 ] # Corvax-IAA
+            HeadOfPersonnel: [ -1, -1 ]
+            XO: [ -1, -1 ]
+            #engineering
+            ChiefEngineer: [ -1, -1 ]
+            Foreman: [ -1, -1 ]
+            #medical
+            ChiefMedicalOfficer: [ -1, -1 ]
+            HeadDoctor: [ -1, -1 ]
+            #science
+            ResearchDirector: [ -1, -1 ]
+            Coordinator: [ -1, -1 ]
+            Borg: [ 2, 2 ]
+            #security
+            HeadOfSecurity: [ -1, -1 ]
+            HightOfficer: [ -1, -1 ]
+            #supply
+            Quartermaster: [ -1, -1 ]
+            Storekeeper: [ -1, -1 ]

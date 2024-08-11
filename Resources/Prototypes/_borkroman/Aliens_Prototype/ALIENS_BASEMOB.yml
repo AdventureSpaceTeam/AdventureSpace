@@ -1,0 +1,307 @@
+- type: npcFaction
+  id: Xeno
+  hostile:
+    - NanoTrasen
+    - PetsNT
+    - Zombie
+    - Passive
+    - SimpleHostile
+    - SimpleNeutral
+    - Dragon
+    - Revolutionary
+    - Flesh
+    - FleshHuman
+    - Blob
+    - Mouse
+    - Syndicate
+
+- type: entity
+  parent: BaseSubdermalImplant
+  id: AlienImplant
+  name: Коллективное чувство
+  description: Чувство коллективного разума, если дрон попадет в критическое состояние или умрет.
+  noSpawn: true
+  components:
+    - type: SubdermalImplant
+      permanent: true
+      whitelist:
+        components:
+        - MobState
+    - type: TriggerOnMobstateChange
+      mobState:
+      - Critical
+      - Dead
+    - type: Rattle
+      radioChannel: Alian
+
+- type: typingIndicator
+  id: bork_alien
+  spritePath: _borkroman/Aliens_Sprite/Alien_Typing.rsi
+  typingState: alien0
+  idleState: alien3
+
+#мясо чужих
+- type: entity
+  name: Мясо ксеноморфа
+  parent: FoodMeatXeno
+  id: FoodMeatAlian
+  description: Кусок мяса ксеноморфа, пропитанный кислотой.
+  components:
+  - type: Sprite
+    sprite: _borkroman/Aliens_Sprite/alian_meat.rsi
+    layers:
+      - state: Alian
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: XenoBloodAcid
+          Quantity: 20
+        - ReagentId: AlienSilicon
+          Quantity: 10
+
+- type: entity
+  name: Нейрожелеза
+  parent: FoodMeatXeno
+  id: FoodMeatAlianNeuro
+  description: Орган взрослой особи ксеноморфа, выделяющий неройкислоту.
+  components:
+  - type: Sprite
+    sprite: _borkroman/Aliens_Sprite/alian_meat.rsi
+    layers:
+      - state: neuro_organ
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: XenoNeuroAcid
+          Quantity: 20
+        - ReagentId: XenoBloodAcid
+          Quantity: 5
+        - ReagentId: AlienSilicon
+          Quantity: 5
+
+#Звуки
+- type: soundCollection
+  id: AliensDead
+  files:
+  - /Audio/_borkroman/Aliens_Audio/alien_dead_1.ogg
+  - /Audio/_borkroman/Aliens_Audio/alien_dead_2.ogg
+
+- type: emoteSounds
+  id: AlienScream
+  sounds:
+    Scream:
+      collection: AlienScreamCollection
+
+- type: soundCollection
+  id: AlienScreamCollection
+  files:
+  - /Audio/_borkroman/Aliens_Audio/alien_scream_1.ogg
+  - /Audio/_borkroman/Aliens_Audio/alien_scream_2.ogg
+  - /Audio/_borkroman/Aliens_Audio/alien_scream_3.ogg
+  - /Audio/_borkroman/Aliens_Audio/alien_dead_2.ogg
+
+- type: speechSounds
+  id: AlienSpeach
+  saySound:
+    path: /Audio/_borkroman/Aliens_Audio/alien_speach_1.ogg
+  askSound:
+    path: /Audio/_borkroman/Aliens_Audio/alien_speach_2.ogg
+  exclaimSound:
+    path: /Audio/_borkroman/Aliens_Audio/alien_speach_3.ogg
+
+- type: emoteSounds
+  id: QueenRoar
+  sounds:
+    Scream:
+      collection: QueenRoarCollection
+
+- type: soundCollection
+  id: QueenRoarCollection
+  files:
+  - /Audio/_borkroman/Aliens_Audio/Queen_roar_1.ogg
+  - /Audio/_borkroman/Aliens_Audio/Queen_roar_2.ogg
+  - /Audio/_borkroman/Aliens_Audio/Queen_roar_3.ogg
+  - /Audio/_borkroman/Aliens_Audio/Queen_roar_4.ogg
+  - /Audio/_borkroman/Aliens_Audio/Queen_roar_5.ogg
+
+- type: speechSounds
+  id: SliderSpeach
+  saySound:
+    path: /Audio/_borkroman/Aliens_Audio/Slider_speach.ogg
+  askSound:
+    path: /Audio/_borkroman/Aliens_Audio/Slider_speach.ogg
+  exclaimSound:
+    path: /Audio/_borkroman/Aliens_Audio/Slider_speach.ogg
+
+
+- type: soundCollection
+  id: AlienScreamAttack
+  files:
+  - /Audio/_borkroman/Aliens_Audio/alien_scream_attack_1.1.ogg
+  - /Audio/_borkroman/Aliens_Audio/alien_scream_attack_1.2.ogg
+  - /Audio/_borkroman/Aliens_Audio/alien_scream_attack_1.3.ogg
+  - /Audio/_borkroman/Aliens_Audio/alien_scream_attack_2.1.ogg
+  - /Audio/_borkroman/Aliens_Audio/alien_scream_attack_2.2.ogg
+  - /Audio/_borkroman/Aliens_Audio/alien_scream_attack_2.3.ogg
+  - /Audio/_borkroman/Aliens_Audio/alien_scream_attack_3.1.ogg
+  - /Audio/_borkroman/Aliens_Audio/alien_scream_attack_3.2.ogg
+  - /Audio/_borkroman/Aliens_Audio/alien_scream_attack_3.3.ogg
+
+#Броня Чужих
+- type: damageModifierSet
+  id: Aliens
+  coefficients:
+    Caustic: 0.0
+    Blunt: 0.75
+    Slash: 0.75
+    Piercing: 0.70
+    Heat: 1.5
+
+- type: nameIdentifierGroup
+  id: Alien
+  prefix: LV
+  minValue: 2
+  maxValue: 426
+
+- type: nameIdentifierGroup
+  id: Queen
+  prefix: LV
+  minValue: 1
+  maxValue: 1
+
+#Радио Чужих
+- type: radioChannel
+  id: Alian
+  name: Коллективный разум ксеноморфов
+  keycode: 'ч'
+  frequency: 426
+  color: "#d9f500"
+  longRange: true
+
+#Смерть Чужих
+- type: emote
+  id: AlienDeathgasp
+  name: chat-emote-name-deathgasp
+  icon: Interface/Emotes/deathgasp.png
+  chatMessages: ["Ксеноморф издаёт предсмертный крик, оседает и замирает..."]
+
+- type: Tag
+  id: Alien
+
+- type: Tag
+  id: AlienQueen
+
+#База Ксенов
+- type: entity
+  abstract: true
+  parent: MobXeno
+  id: BaseMobAlien
+  components:
+  - type: ContentEye
+    maxZoom: 2.5,2.5
+  - type: Blindable
+  - type: PermanentBlindness
+    blindness: 3
+  - type: Tag
+    tags:
+    - FootstepSound
+    - DoorBumpOpener
+    - Alien
+  - type: Wagging
+    action: ActionToggleLightingAlienNightVision
+  - type: AutoImplant
+    implants:
+    - AlienImplant
+  - type: Deathgasp
+    prototype: AlienDeathgasp
+  - type: MobState
+    allowedStates:
+    - Alive
+    - Critical
+    - Dead
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: running
+      Critical:
+        Base: crit
+      Dead:
+        Base: dead
+  - type: CombatMode
+    combatToggleAction: ActionAlienCombatModeToggle
+  - type: TypingIndicator
+    proto: bork_alien
+  - type: Access
+    tags:
+    - AlienAccess
+  - type: ShowHealthBars
+    damageContainers:
+    - Biological
+  - type: NameIdentifier
+    group: Alien
+  - type: Bloodstream
+    bloodlossDamage:
+      types:
+        Bloodloss: 0
+    bloodlossHealDamage:
+      types:
+        Bloodloss: -1
+    bloodReagent: XenoBloodAcid
+    bloodMaxVolume: 100
+  - type: StatusEffects
+    allowed:
+    - Stun
+  - type: TriggerOnMobstateChange
+    mobState:
+    - Dead
+  - type: EmitSoundOnTrigger
+    sound:
+      collection: AliensDead
+      params:
+        volume: -2
+  - type: Damageable
+    damageModifierSet: Aliens
+  - type: IgnoreSpiderWeb
+  - type: Speech
+    speechVerb: LargeMob
+    speechSounds: AlienSpeach
+  - type: Vocal
+    screamAction: ActionAlienScream
+    sounds:
+      Male: AlienScream
+      Female: AlienScream
+      Unsexed: AlienScream
+  - type: EmitSoundOnSpawn
+    sound:
+      path: /Audio/_borkroman/Aliens_Audio/Slider_spawn.ogg
+      params:
+        volume: -8
+  - type: IntrinsicRadioReceiver
+  - type: IntrinsicRadioTransmitter
+    channels:
+    - Alian
+  - type: ActiveRadio
+    channels:
+    - Alian
+  - type: Puller
+    needsHands: false
+  - type: PassiveDamage
+    allowedStates:
+    - Alive
+    - Critical
+    damageCap: 1000
+    damage:
+      groups:
+        Brute: -1.50
+        Burn: -1.50
+        Airloss: -1.50
+        Toxin: -1.50
+        Genetic: -1.50
+  - type: Emoting
+  - type: Inventory
+    templateId: Alien
+  - type: InventorySlots
+  - type: Loadout
+    prototypes: [AlienGear]

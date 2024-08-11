@@ -1,0 +1,47 @@
+- type: ghostTheme
+  id: tier1
+  components:
+  - type: Sprite
+    noRot: true
+    overrideContainerOcclusion: true # Ghosts always show up regardless of where they're contained.
+    drawdepth: Ghosts
+    sprite: Mobs/Ghosts/ghost_human.rsi
+    color: "#0bda51"
+    layers:
+    - state: animated
+
+- type: ghostTheme
+  id: tier2
+  components:
+  - type: Sprite
+    noRot: true
+    overrideContainerOcclusion: true # Ghosts always show up regardless of where they're contained.
+    drawdepth: Ghosts
+    sprite: Mobs/Ghosts/ghost_human.rsi
+    color: "#9966cc"
+    layers:
+    - state: animated
+
+- type: ghostTheme
+  id: tier3
+  components:
+    - type: Sprite
+      noRot: true
+      overrideContainerOcclusion: true # Ghosts always show up regardless of where they're contained.
+      drawdepth: Ghosts
+      sprite: Mobs/Ghosts/ghost_human.rsi
+      color: "#ffd700"
+      layers:
+      - state: animated
+
+- type: ghostTheme
+  id: tier4
+  components:
+  - type: Sprite
+    noRot: true
+    overrideContainerOcclusion: true # Ghosts always show up regardless of where they're contained.
+    drawdepth: Ghosts
+    sprite: Mobs/Ghosts/ghost_human.rsi
+    color: "#ca3a27"
+    layers:
+    - state: animated

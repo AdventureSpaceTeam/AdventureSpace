@@ -1,3 +1,4 @@
+using Content.Server.StatsBoard;
 using Content.Shared.Roles;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
@@ -189,6 +190,8 @@ namespace Content.Shared.GameTicking
         public int RoundId { get; }
         public int PlayerCount { get; }
         public RoundEndPlayerInfo[] AllPlayersEndInfo { get; }
+        public string RoundEndStats { get; }
+        public StatisticEntry[] StatisticEntries { get; }
 
         /// <summary>
         /// Sound gets networked due to how entity lifecycle works between client / server and to avoid clipping.
@@ -202,6 +205,8 @@ namespace Content.Shared.GameTicking
             int roundId,
             int playerCount,
             RoundEndPlayerInfo[] allPlayersEndInfo,
+            string roundEndStats,
+            StatisticEntry[] statisticEntries,
             string? restartSound)
         {
             GamemodeTitle = gamemodeTitle;
@@ -210,6 +215,8 @@ namespace Content.Shared.GameTicking
             RoundId = roundId;
             PlayerCount = playerCount;
             AllPlayersEndInfo = allPlayersEndInfo;
+            RoundEndStats = roundEndStats;
+            StatisticEntries = statisticEntries;
             RestartSound = restartSound;
         }
     }

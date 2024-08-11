@@ -9,7 +9,7 @@ whitelist-playercount-invalid =
                *[other] ->  и ниже { $max } игроков, так что, возможно, вы сможете присоединиться позже.
             }
     }
-whitelist-not-whitelisted-rp = Вас нет в вайтлисте. Чтобы попасть в вайтлист, посетите наш Discord (ссылку можно найти по адресу https://discord.station14.ru).
+whitelist-not-whitelisted-rp = Вас нет в вайтлисте. Чтобы попасть в вайтлист, посетите наш Discord (ссылку можно найти по адресу https://discord.gg/AdvSpace).
 cmd-whitelistadd-desc = Добавить игрока в вайтлист сервера.
 cmd-whitelistadd-help = Использование: whitelistadd <username>
 cmd-whitelistadd-existing = { $username } уже находится в вайтлисте!
@@ -24,9 +24,9 @@ cmd-whitelistremove-not-found = Не удалось найти игрока '{ $
 cmd-whitelistremove-arg-player = [player]
 cmd-kicknonwhitelisted-desc = Кикнуть всег игроков не в белом списке с сервера.
 cmd-kicknonwhitelisted-help = Использование: kicknonwhitelisted
-ban-banned-permanent = Этот бан можно только обжаловать. Для этого посетите { $link }.
-ban-banned-permanent-appeal = Этот бан можно только обжаловать. Для этого посетите { $link }.
-ban-expires = Вы получили бан на { $duration } минут, и он истечёт { $time } по UTC (для московского времени добавьте 3 часа).
+ban-banned-permanent = Этот бан можно только обжаловать. Для этого посетите https://discord.gg/AdvSpace.
+ban-banned-permanent-appeal = Этот бан можно только обжаловать. Для этого посетите https://discord.gg/AdvSpace.
+ban-expires = Вы получили бан который истечёт в { $time } (для москосвкого времени добавьте 3 часа) или вы можете его обжаловать тут - https://discord.gg/AdvSpace.
 ban-banned-1 = Вам, или другому пользователю этого компьютера или соединения, запрещено здесь играть.
 ban-banned-2 = Причина бана: "{ $reason }"
 ban-banned-3 = Попытки обойти этот бан, например, путём создания нового аккаунта, будут фиксироваться.
@@ -44,3 +44,9 @@ baby-jail-account-denied = This server is a newbie server, intended for new play
 baby-jail-account-denied-reason = This server is a newbie server, intended for new players and those who want to help them. New connections by accounts that are too old or are not on a whitelist are not accepted. Check out some other servers and see everything Space Station 14 has to offer. Have fun! Reason: "{ $reason }"
 baby-jail-account-reason-account = Your Space Station 14 account is too old. It must be younger than { $minutes } minutes
 baby-jail-account-reason-overall = Your overall playtime on the server must be younger than { $minutes } $minutes
+# c4llv07e queue localization start
+queue-title = Очередь
+queue-quit = Выйти
+queue-position = Ваша позиция
+queue-total = Всего в очереди
+# c4llv07e queue localization end

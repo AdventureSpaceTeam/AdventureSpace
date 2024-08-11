@@ -231,7 +231,7 @@
     - Robotics
   - type: StepTriggerImmune
   - type: TTS # Corvax-TTS
-    voice: TrainingRobot
+    voice: glados
 
 - type: entity
   abstract: true

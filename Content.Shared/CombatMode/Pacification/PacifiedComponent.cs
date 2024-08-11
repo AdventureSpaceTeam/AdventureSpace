@@ -18,12 +18,18 @@ namespace Content.Shared.CombatMode.Pacification;
 public sealed partial class PacifiedComponent : Component
 {
     [DataField]
+    [ViewVariables(VVAccess.ReadWrite)]
     public bool DisallowDisarm = false;
+
+    [DataField]
+    [ViewVariables(VVAccess.ReadWrite)]
+    public bool DisallowGuns = false;
 
     /// <summary>
     ///  If true, this will disable combat entirely instead of only disallowing attacking living creatures and harmful things.
     /// </summary>
     [DataField]
+    [ViewVariables(VVAccess.ReadWrite)]
     public bool DisallowAllCombat = false;
 
 

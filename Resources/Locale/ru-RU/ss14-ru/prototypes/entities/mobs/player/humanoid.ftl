@@ -81,3 +81,7 @@ ent-SyndieDisasterVictimSpawner = жертва катастрофы Синдик
     .desc = { ent-MarkerBase.desc }
 ent-RandomHumanoidSyndieDisasterVictim = жертва катастрофы Синдикат роль призрака
     .desc = { "" }
+
+ent-RandomHumanoidSpawnerERTClown = ОБР клоун
+    .suffix = Роль ОБР
+    .desc = { "" }

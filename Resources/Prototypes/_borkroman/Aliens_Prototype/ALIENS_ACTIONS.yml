@@ -1,0 +1,138 @@
+#Отложить яйцо
+- type: entity
+  id: ActionAlienLayEgg
+  name: Отложить яйцо
+  description: Дети такие милые, когда убивают людей за вас.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon:
+      sprite: _borkroman/Aliens_Sprite/AlienActionIcons.rsi
+      state: Egg
+    useDelay: 120
+    event: !type:EggLayInstantActionEvent
+
+#Строительство слизи
+- type: entity
+  id: ActionAlienWeb
+  name: Пустить слизь
+  description: Слизь - ваш друг и союзнить, распространяйте её чтобы замедлить ваших врагов, а ходьба по ней усиливает вашу регенерацию.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon:
+      sprite: _borkroman/Aliens_Sprite/AlienActionIcons.rsi
+      state: Web
+    event: !type:SpiderWebActionEvent
+    useDelay: 25
+
+#Строительство стены
+- type: entity
+  id: ActionSpawnAlianWall
+  name: Построить стену улья
+  description: Возведите стену для защиты улья.
+  noSpawn: true
+  components:
+  - type: WorldTargetAction
+    useDelay: 20
+    range: 1.5
+    itemIconStyle: BigAction
+    icon:
+      sprite: _borkroman/Aliens_Sprite/AlienActionIcons.rsi
+      state: Wall
+    event: !type:WorldSpawnSpellEvent
+      prototypes:
+      - id: AlianWallSpawn
+        amount: 1
+
+#Строительство двери улья
+- type: entity
+  id: ActionSpawnAlienDoor
+  name: Построить проход улья
+  description: Органическая дверь, с доступом только у взрослых ксеноморфов.
+  noSpawn: true
+  components:
+  - type: WorldTargetAction
+    useDelay: 30
+    range: 1.5
+    itemIconStyle: BigAction
+    icon:
+      sprite: _borkroman/Aliens_Sprite/AlienActionIcons.rsi
+      state: Door
+    event: !type:WorldSpawnSpellEvent
+      prototypes:
+      - id: AlienDoorSpawn
+        amount: 1
+
+#Строительство мембраны улья
+- type: entity
+  id: ActionSpawnAlienMembran
+  name: Построить мембрану улья
+  description: Тонкая мембрана, наносящая кислотные повреждения всем кто через неё ходит, но вам это не грозит.
+  noSpawn: true
+  components:
+  - type: WorldTargetAction
+    useDelay: 40
+    range: 1.5
+    itemIconStyle: BigAction
+    icon:
+      sprite: _borkroman/Aliens_Sprite/AlienActionIcons.rsi
+      state: Membran
+    event: !type:WorldSpawnSpellEvent
+      prototypes:
+      - id: AlianMembran
+        amount: 1
+
+#Орать(респрайт)
+- type: entity
+  id: ActionAlienScream
+  name: Кричать
+  description: Выпустите эмоции наружу.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    useDelay: 10
+    icon:
+      sprite: _borkroman/Aliens_Sprite/AlienActionIcons.rsi
+      state: Scream
+    event: !type:ScreamActionEvent
+    checkCanInteract: false
+
+#Драться(респрайт)
+- type: entity
+  id: ActionAlienCombatModeToggle
+  name: "[color=red]Боевой режим[/color]"
+  description: УБИВАТЬ УБИВАТЬ УБИВАТЬ УБИВАТЬ!
+  noSpawn: true
+  components:
+  - type: InstantAction
+    checkCanInteract: false
+    checkConsciousness: false
+    icon: _borkroman/Aliens_Sprite/AlienActionIcons.rsi/NOcombat.png
+    iconOn: _borkroman/Aliens_Sprite/AlienActionIcons.rsi/combat.png
+    event: !type:ToggleCombatActionEvent
+    priority: -100
+
+- type: entity
+  id: ActionAlienCombatModeToggleOff
+  parent: ActionAlienCombatModeToggle
+  noSpawn: true
+  components:
+  - type: InstantAction
+    enabled: false
+    autoPopulate: false
+    priority: -100
+
+#Ночное зрение
+- type: entity
+  id: ActionToggleLightingAlienNightVision
+  name: Ночное зрение
+  description: Переключите своё зрение в режим ночного зрения, чтобы видеть всё!
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon: _borkroman/Aliens_Sprite/AlienActionIcons.rsi/NONightVision.png
+    iconOn: _borkroman/Aliens_Sprite/AlienActionIcons.rsi/NightVision.png
+    clientExclusive: true
+    checkCanInteract: false
+    event: !type:ToggleLightingActionEvent

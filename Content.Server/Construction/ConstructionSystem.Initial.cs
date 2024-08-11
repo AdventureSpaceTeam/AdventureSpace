@@ -395,6 +395,9 @@ namespace Content.Server.Construction
                     Transform(user).Coordinates) is not { Valid: true } item)
                 return false;
 
+            var ev = new ItemConstructionCreated(item);
+            RaiseLocalEvent(user, ref ev);
+
             // Just in case this is a stack, attempt to merge it. If it isn't a stack, this will just normally pick up
             // or drop the item as normal.
             _stackSystem.TryMergeToHands(item, user);

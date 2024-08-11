@@ -1,15 +1,18 @@
 using System.Linq;
+using Content.Server._DTS;
 using Content.Server.Announcements;
 using Content.Server.Discord;
 using Content.Server.GameTicking.Events;
 using Content.Server.Ghost;
 using Content.Server.Maps;
 using Content.Shared.CCVar;
+using Content.Server.Voting.Managers;
 using Content.Shared.Database;
 using Content.Shared.GameTicking;
 using Content.Shared.Mind;
 using Content.Shared.Players;
 using Content.Shared.Preferences;
+using Content.Shared.Voting;
 using JetBrains.Annotations;
 using Prometheus;
 using Robust.Server.Maps;
@@ -20,6 +23,7 @@ using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
+using Content.Server.StatsBoard;
 
 namespace Content.Server.GameTicking
 {
@@ -27,6 +31,8 @@ namespace Content.Server.GameTicking
     {
         [Dependency] private readonly DiscordWebhook _discord = default!;
         [Dependency] private readonly ITaskManager _taskManager = default!;
+        [Dependency] private readonly IVoteManager _voteManager = default!;
+        [Dependency] private readonly StatsBoardSystem _statsBoardSystem = default!;
 
         private static readonly Counter RoundNumberMetric = Metrics.CreateCounter(
             "ss14_round_number",
@@ -110,6 +116,7 @@ namespace Content.Server.GameTicking
             if (mainStationMap != null)
             {
                 maps.Add(mainStationMap);
+                RaiseLocalEvent(new MainStationMapSelected(mainStationMap!));
             }
             else
             {
@@ -428,6 +435,10 @@ namespace Content.Server.GameTicking
             var listOfPlayerInfoFinal = listOfPlayerInfo.OrderBy(pi => pi.PlayerOOCName).ToArray();
             var sound = RoundEndSoundCollection == null ? null : _audio.GetSound(new SoundCollectionSpecifier(RoundEndSoundCollection));
 
+            var roundStats = _statsBoardSystem.GetRoundStats();
+
+            var statisticEntries = _statsBoardSystem.GetStatisticEntries();
+
             var roundEndMessageEvent = new RoundEndMessageEvent(
                 gamemodeTitle,
                 roundEndText,
@@ -435,6 +446,8 @@ namespace Content.Server.GameTicking
                 RoundId,
                 listOfPlayerInfoFinal.Length,
                 listOfPlayerInfoFinal,
+                roundStats,
+                statisticEntries,
                 sound
             );
             RaiseNetworkEvent(roundEndMessageEvent);
@@ -513,6 +526,18 @@ namespace Content.Server.GameTicking
                     _roundStartCountdownHasNotStartedYetDueToNoPlayers = true;
                 else
                     _roundStartTime = _gameTiming.CurTime + LobbyDuration;
+
+                //DTS EDIT
+                if (_cfg.GetCVar(DTSCvars.AutoMapVoteOnRoundEnd))
+                {
+                    _voteManager.CreateStandardVote(null, StandardVoteType.Map);
+                }
+
+                if (_cfg.GetCVar(DTSCvars.AutoGameModVoteOnRoundEnd))
+                {
+                    _voteManager.CreateStandardVote(null, StandardVoteType.Preset);
+                }
+                //DTS END
 
                 SendStatusToAll();
                 UpdateInfoText();

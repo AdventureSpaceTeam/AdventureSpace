@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Corvax.Interfaces.Shared;
 using Content.Server.Administration.Managers;
 using Content.Server.Chat.Managers;
 using Content.Server.Forensics;
@@ -249,8 +250,14 @@ namespace Content.Server.Administration.Systems
                 overallPlaytime = playTime;
             }
 
+            // Alteros-Sponsors-start
+            var sponsors = IoCManager.Resolve<ISharedSponsorsManager>();
+            var isSponsor = sponsors.IsSponsor(data.UserId);
+            sponsors.TryGetServerOocTitle(data.UserId, out var sponsorTitle);
+
             return new PlayerInfo(name, entityName, identityName, startingRole, antag, GetNetEntity(session?.AttachedEntity), data.UserId,
-                connected, _roundActivePlayers.Contains(data.UserId), overallPlaytime);
+                connected, _roundActivePlayers.Contains(data.UserId), overallPlaytime, isSponsor, sponsorTitle);
+            // Alteros-Sponsors-end
         }
 
         private void OnPanicBunkerChanged(bool enabled)

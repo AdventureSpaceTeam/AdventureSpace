@@ -1,5 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using Content.Client.Lobby;
+using Content.Client.Administration.Managers;
+using Content.Corvax.Interfaces.Shared;
 using Content.Shared.CCVar;
 using Content.Shared.Players;
 using Content.Shared.Players.JobWhitelist;
@@ -24,6 +26,7 @@ public sealed class JobRequirementsManager : ISharedPlaytimeManager
     [Dependency] private readonly IEntityManager _entManager = default!;
     [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly IPrototypeManager _prototypes = default!;
+    [Dependency] private readonly IClientAdminManager _adminManager = default!;
 
     private readonly Dictionary<string, TimeSpan> _roles = new();
     private readonly List<string> _roleBans = new();
@@ -84,6 +87,11 @@ public sealed class JobRequirementsManager : ISharedPlaytimeManager
         Updated?.Invoke();
     }
 
+    private bool IsBypassedChecks()
+    {
+        return _adminManager.IsActive();
+    }
+
     private void RxJobWhitelist(MsgJobWhitelist message)
     {
         _jobWhitelists.Clear();
@@ -106,6 +114,10 @@ public sealed class JobRequirementsManager : ISharedPlaytimeManager
 
         var player = _playerManager.LocalSession;
         if (player == null)
+            return true;
+
+        var sponsors = IoCManager.Resolve<ISharedSponsorsManager>(); // Alteros-Sponsors
+        if (sponsors.GetClientPrototypes().Contains(job.ID))
             return true;
 
         return CheckRoleRequirements(job, profile, out reason);

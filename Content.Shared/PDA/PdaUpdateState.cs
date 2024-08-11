@@ -49,5 +49,8 @@ namespace Content.Shared.PDA
         public string? JobTitle;
         public string? StationAlertLevel;
         public Color StationAlertColor;
+        public TimeSpan? ShuttleCallTime;
+        public TimeSpan? EvacShuttleArrivalTime;
+        public TimeSpan? EvacShuttleLaunchTime;
     }
 }

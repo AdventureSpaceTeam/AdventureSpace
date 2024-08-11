@@ -1,0 +1,43 @@
+- type: entity
+  name: шафл-машинка
+  id: Shuffler
+  parent: BaseStorageItem
+  components:
+  - type: Sprite
+    sprite: Objects/Devices/shuffler.rsi
+    layers:
+      - state: icon-0
+        map: ["enum.StorageFillLayers.Fill"]
+      - map: [ anim ]
+        state: animation
+        visible: false
+      - map: [ base ]
+        state: close
+  - type: Storage
+    maxItemSize: Normal
+    grid:
+    - 0,0,12,3
+    quickInsert: true
+    areaInsert: true
+    storageInsertSound:
+      collection: shufflerInsert
+    whitelist:
+      tags:
+        - Card
+  - type: Appearance
+  - type: StorageFillVisualizer
+    maxFillLevels: 3
+    fillBaseName: icon
+  - type: GenericVisualizer
+    visuals:
+      enum.StorageVisuals.Open:
+        base:
+          True: { visible: False }
+          False: { visible: True }
+  - type: Dumpable
+    distance: 0.1
+  - type: Item
+    size: Normal
+  - type: Blend
+    sound:
+      collection: shufflerRustle

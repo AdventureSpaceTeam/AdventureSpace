@@ -1,0 +1,28 @@
+﻿- type: entity
+  parent: BaseItem
+  id: TapePlayer
+  name: плеер
+  description: Революция в области музыкального исскуства, убийца музыкантов.
+  components:
+  - type: Appearance
+  - type: Sprite
+    sprite: _Alteros/Entities/Objects/Devices/tape_player.rsi
+    state: icon
+  - type: TapePlayer
+    volume: -4
+    rolloffFactor: 1.2
+    maxDistance: 10
+    tapeSlot:
+      insertSound: /Audio/_Alteros/TapePlayer/insert_tape.ogg
+      ejectSound: /Audio/_Alteros/TapePlayer/eject_tape.ogg
+      whitelist:
+        components:
+        - MusicTape
+  - type: Item
+    size: Small
+  - type: ItemSlots
+  - type: ContainerContainer
+    containers:
+      tape: !type:ContainerSlot
+  - type: EmitSoundOnUse
+    sound: "/Audio/_Alteros/TapePlayer/switch.ogg"

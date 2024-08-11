@@ -1,0 +1,202 @@
+#Плазменная батарея снайперки
+- type: entity
+  id: PlasmaSniperMagazin
+  name: Плазменная батарея "Виверны"
+  description: Батарея, для заряда плазменной винтовки "Виверна"
+  suffix: BORK
+  parent: BaseItem
+  components:
+  - type: Battery
+    maxCharge: 1000
+    startingCharge: 1000
+    pricePerJoule: 0.15
+  - type: Sprite
+    sprite: /Textures/Bork/PlasmaSniper/PlasmaSniperMag.rsi
+    layers:
+      - state: PlasmaSniperMag
+        map: ["enum.GunVisualLayers.Base"]
+      - state: mag-unshaded-3
+        map: ["enum.GunVisualLayers.MagUnshaded"]
+        shader: unshaded
+  - type: MagazineVisuals
+    magState: mag
+    steps: 4
+  - type: SolutionContainerManager
+    solutions:
+      battery:
+        maxVol: 5
+  - type: InjectableSolution
+    solution: battery
+  - type: DrawableSolution
+    solution: battery
+  - type: Extractable
+    juiceSolution:
+      reagents:
+        - ReagentId: Zinc
+          Quantity: 5
+  - type: Tag
+    tags:
+      - PlasmaMagSniper
+  - type: Appearance
+  - type: PowerCellVisuals
+  - type: ProjectileBatteryAmmoProvider
+    proto: BulletPlasmaLaserSniper
+    fireCost: 333.33
+
+- type: entity
+  id: PlasmaSniperMagazinPrint
+  name: Плазменная батарея "Виверны"
+  suffix: BORK(Print)
+  parent: PlasmaSniperMagazin
+  components:
+  - type: Battery
+    maxCharge: 1000
+    startingCharge: 0
+    pricePerJoule: 0.15
+
+- type: entity
+  id: BulletPlasmaLaserSniper
+  name: Плазменный сгусток
+  parent: BaseBullet
+  noSpawn: true
+  components:
+  - type: Sprite
+    sprite: /Textures/Bork/PlasmaSniper/PlasmaBulletShotSniper.rsi
+    layers:
+    - state: PlasmaBullet
+  - type: Ammo
+  - type: Projectile
+    muzzleFlashEffect:
+    damage:
+      types:
+        Shock: 80
+  - type: PointLight
+    enabled: true
+    color: "#ff22d9"
+    radius: 2.0
+    energy: 2.0
+
+#Плазменная снайперская винтовка
+- type: entity
+  id: WeaponPlasmaSniper
+  name: Плазменная винтовка "Виверна"
+  description: Плазменная снайперская винтовка убойной силы.
+  suffix: BORK
+  parent: BaseItem
+  components:
+  - type: Sprite
+    sprite: /Textures/Bork/PlasmaSniper/PlasmaSniper/PlasmaSniper_icon.rsi
+    layers:
+      - state: base
+        map: ["enum.GunVisualLayers.Base"]
+      - state: mag-3
+        map: ["enum.GunVisualLayers.Mag"]
+      - state: mag-unshaded-3
+        map: ["enum.GunVisualLayers.MagUnshaded"]
+        shader: unshaded
+  - type: Item
+    sprite: /Textures/Bork/PlasmaSniper/PlasmaSniper/PlasmaSniper.rsi
+    size: Huge
+  - type: Clothing
+    sprite: /Textures/Bork/PlasmaSniper/PlasmaSniper/PlasmaSniper.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: AmmoCounter
+  - type: Gun
+    fireRate: 0.5
+    minAngle: 25
+    maxAngle: 35
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/plasma_cutter.ogg
+  - type: Wieldable
+  - type: GunWieldBonus
+    minAngle: -21
+    maxAngle: -31
+  - type: UseDelay
+    delay: 0.5
+  - type: MagazineAmmoProvider
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: PlasmaSniperMagazin
+        insertSound: /Audio/Weapons/Guns/MagIn/kinetic_reload.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/sfrifle_magout.ogg
+        whitelist:
+          tags:
+            - PlasmaMagSniper
+  - type: Appearance
+  - type: StaticPrice
+    price: 2500
+  - type: ContainerContainer
+    containers:
+      gun_magazine: !type:ContainerSlot
+      gun_chamber: !type:ContainerSlot
+  - type: MagazineVisuals
+    magState: mag
+    steps: 4
+    zeroVisible: true
+  - type: ClothingSpeedModifier
+    walkModifier: 0.75
+    sprintModifier: 0.75
+  - type: GunRequiresWield
+
+- type: entity
+  id: WeaponPlasmaSniperPrint
+  name: Плазменная винтовка "Виверна"
+  suffix: BORK(Print)
+  parent: WeaponPlasmaSniper
+  components:
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: PlasmaSniperMagazinPrint
+        insertSound: /Audio/Weapons/Guns/MagIn/kinetic_reload.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/sfrifle_magout.ogg
+        whitelist:
+          tags:
+            - PlasmaMagSniper
+
+- type: entity
+  parent: GunSafe
+  suffix: BORK
+  id: GunSafePlasmaSniper
+  name: Оружейный сейф "Виверна" 
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponPlasmaSniper
+      amount: 1
+    - id: PlasmaSniperMagazin
+      amount: 2
+
+- type: Tag
+  id: PlasmaMagSniper
+
+# рецепты
+- type: latheRecipe
+  id: WeaponPlasmaSniperPrint
+  result: WeaponPlasmaSniperPrint
+  category: Weapons
+  completetime: 3
+  materials:
+     Steel: 2500
+     Gold: 750
+     Uranium: 1500
+     Plastic: 750
+
+- type: latheRecipe
+  id: PlasmaSniperMagazinPrint
+  result: PlasmaSniperMagazinPrint
+  category: Ammo
+  completetime: 3
+  materials:
+     Steel: 750
+     Uranium: 750
+     Glass: 500

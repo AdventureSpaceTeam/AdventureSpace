@@ -56,6 +56,9 @@ public sealed partial class MaterialStorageComponent : Component
     [DataField]
     public SoundSpecifier? InsertingSound;
 
+    [DataField]
+    public bool UseInsertingAnimation = true;
+
     /// <summary>
     /// How long the inserting animation will play
     /// </summary>
@@ -118,4 +121,3 @@ public sealed class EjectMaterialMessage : EntityEventArgs
         SheetsToExtract = sheetsToExtract;
     }
 }
-

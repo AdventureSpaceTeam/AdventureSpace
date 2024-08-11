@@ -1,0 +1,18 @@
+﻿- type: entity
+  name: магнитофон
+  description: Проигрывает кассеты.
+  parent: TapePlayer
+  id: AdventureRadio
+  components:
+  - type: Sprite
+    sprite: _Alteros/Entities/Objects/Devices/radio.rsi
+    layers:
+    - state: radio
+  - type: Item
+    size: Normal
+    sprite: _Alteros/Entities/Objects/Devices/radio.rsi
+    heldPrefix: radio
+  - type: TapePlayer
+    volume: -2
+    rolloffFactor: 1
+    maxDistance: 13

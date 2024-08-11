@@ -70,3 +70,15 @@
       emergencyLightColor: DarkViolet
       forceEnableEmergencyLights: true
       shuttleTime: 1200
+    Midnight:
+      announcement: Обьявляется судная ночь, правила больше не действуют, убийства разрешены. Кооперироваться можно только в команды из двух человек. Последная команда или человек что остануться в живых получат 300000 кредитов. Слава НТ!!!
+      selectable: false
+      sound:
+        path: /Audio/Misc/epsilon.ogg
+        params:
+          volume: -2
+      disableSelection: true
+      color: DarkViolet
+      emergencyLightColor: DarkViolet
+      forceEnableEmergencyLights: true
+      shuttleTime: 5000

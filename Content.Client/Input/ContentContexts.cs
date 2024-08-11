@@ -107,6 +107,19 @@ namespace Content.Client.Input
             aghost.AddFunction(ContentKeyFunctions.MovePulledObject);
             aghost.AddFunction(ContentKeyFunctions.ReleasePulledObject);
 
+            var ai = contexts.New("AI", "common");
+            ai.AddFunction(EngineKeyFunctions.MoveUp);
+            ai.AddFunction(EngineKeyFunctions.MoveDown);
+            ai.AddFunction(EngineKeyFunctions.MoveLeft);
+            ai.AddFunction(EngineKeyFunctions.MoveRight);
+            ai.AddFunction(EngineKeyFunctions.Walk);
+            ai.AddFunction(ContentKeyFunctions.SwapHands);
+            ai.AddFunction(ContentKeyFunctions.UseItemInHand);
+            ai.AddFunction(ContentKeyFunctions.AltUseItemInHand);
+            ai.AddFunction(ContentKeyFunctions.ActivateItemInWorld);
+            ai.AddFunction(ContentKeyFunctions.AltActivateItemInWorld);
+
+
             var ghost = contexts.New("ghost", "human");
             ghost.AddFunction(EngineKeyFunctions.MoveUp);
             ghost.AddFunction(EngineKeyFunctions.MoveDown);

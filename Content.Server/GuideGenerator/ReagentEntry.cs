@@ -1,5 +1,7 @@
 using System.Linq;
 using System.Text.Json.Serialization;
+using Content.Server.Body.Components;
+using Content.Shared.Body.Prototypes;
 using Content.Shared.Chemistry.Reaction;
 using Content.Shared.Chemistry.Reagent;
 using Content.Server.Corvax.GuideGenerator;

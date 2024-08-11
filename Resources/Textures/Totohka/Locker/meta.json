@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "copyright": "By borkroman",
+  "license": "CC-BY-SA-3.0",
+  "states": [
+    {
+      "name": "sparking",
+      "delays": [
+        [
+          0.1,
+          0.1,
+          0.1,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "tac"
+    },
+    {
+      "name": "tac_door"
+    },
+    {
+      "name": "tac_open"
+    },
+    {
+      "name": "unlocked"
+    }
+  ]
+}

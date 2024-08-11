@@ -258,6 +258,8 @@
   packetPrototype: OrangeSeeds
   productPrototypes:
     - FoodOrange
+  mutationPrototypes:
+    - clockworkorange
   harvestRepeat: Repeat
   lifespan: 55
   maturation: 6
@@ -386,6 +388,7 @@
     - Log
   mutationPrototypes:
     - steelcap
+    - glasscap
   lifespan: 80
   maturation: 15
   ligneous: true
@@ -1092,6 +1095,8 @@
   packetPrototype: AloeSeeds
   productPrototypes:
     - FoodAloe
+  mutationPrototypes:
+    - blueagava
   lifespan: 25
   maturation: 10
   production: 3
@@ -1649,6 +1654,75 @@
     - pyrotton
   lifespan: 25
   maturation: 8
+  production: 1
+  yield: 1
+  potency: 5
+  idealLight: 8
+  growthStages: 3
+  waterConsumption: 0.60
+  chemicals:
+    Fiber:
+      Min: 5
+      Max: 10
+      PotencyDivisor: 20
+
+- type: seed
+  id: whiterose
+  name: семена белой розы
+  noun: seeds-noun-seeds
+  displayName: белая роза
+  plantRsi: Objects/Specific/Hydroponics/Flovers/white_rose.rsi
+  packetPrototype: WhiteRoseSeeds
+  productPrototypes:
+    - WhiteRose
+  lifespan: 25
+  maturation: 8
+  production: 1
+  yield: 1
+  potency: 5
+  idealLight: 8
+  growthStages: 3
+  waterConsumption: 0.60
+  chemicals:
+    Fiber:
+      Min: 5
+      Max: 10
+      PotencyDivisor: 20
+
+- type: seed
+  id: redrose
+  name: семена красной розы
+  noun: seeds-noun-seeds
+  displayName: красная роза
+  plantRsi: Objects/Specific/Hydroponics/Flovers/red_rose.rsi
+  packetPrototype: RedRoseSeeds
+  productPrototypes:
+    - RedRose
+  lifespan: 25
+  maturation: 8
+  production: 1
+  yield: 1
+  potency: 5
+  idealLight: 8
+  growthStages: 3
+  waterConsumption: 0.60
+  chemicals:
+    Fiber:
+      Min: 5
+      Max: 10
+      PotencyDivisor: 20
+
+- type: seed
+  id: tulpan
+  name: семена тюльпанов
+  noun: seeds-noun-seeds
+  displayName: тюльпан
+  plantRsi: Objects/Specific/Hydroponics/Flovers/tulpan.rsi
+  packetPrototype: TulpanSeeds
+  productPrototypes:
+    - Tulpan
+  lifespan: 25
+  maturation: 8
   production: 3
   yield: 3
   potency: 5
@@ -1687,3 +1761,49 @@
       Min: 4
       Max: 8
       PotencyDivisor: 30
+
+- type: seed
+  id: orhidea
+  name: семена орхидеи
+  noun: seeds-noun-seeds
+  displayName: орхидея
+  plantRsi: Objects/Specific/Hydroponics/Flovers/orhidea.rsi
+  packetPrototype: OrhideaSeeds
+  productPrototypes:
+    - Orhidea
+  lifespan: 25
+  maturation: 8
+  production: 1
+  yield: 1
+  potency: 5
+  idealLight: 8
+  growthStages: 3
+  waterConsumption: 0.60
+  chemicals:
+    Fiber:
+      Min: 5
+      Max: 10
+      PotencyDivisor: 20
+
+- type: seed
+  id: gvozdika
+  name: семена гвоздик
+  noun: seeds-noun-seeds
+  displayName: гвоздика
+  plantRsi: Objects/Specific/Hydroponics/Flovers/gvozdika.rsi
+  packetPrototype: GvozdikaSeeds
+  productPrototypes:
+    - Gvozdika
+  lifespan: 25
+  maturation: 8
+  production: 3
+  yield: 3
+  potency: 5
+  idealLight: 8
+  growthStages: 3
+  waterConsumption: 0.60
+  chemicals:
+    Fiber:
+      Min: 5
+      Max: 10
+      PotencyDivisor: 20

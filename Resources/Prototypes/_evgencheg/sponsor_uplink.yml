@@ -1,0 +1,136 @@
+- type: entity
+  name: адвенчурценты
+  parent: BaseItem
+  id: DonateCrystal
+  suffix: 20 BR
+  components:
+  - type: Sprite
+    sprite: _evgencheg/telecrystal.rsi
+    state: telecrystal
+  - type: Item
+    sprite: _evgencheg/telecrystal.rsi
+    size: Tiny
+  - type: Stack
+    count: 20
+    stackType: DonateCrystal
+  - type: StaticPrice
+    price: 0
+  - type: StackPrice
+    price: 200
+  - type: Currency
+    price:
+      DonateCrystal: 1
+
+- type: entity
+  parent: DonateCrystal
+  id: DonateCrystal1
+  name: адвенчурценты
+  suffix: 1
+  components:
+  - type: Stack
+    count: 1
+
+- type: currency
+  id: DonateCrystal
+  displayName: адвенчурценты
+  cash:
+    1: DonateCrystal1
+  canWithdraw: true
+
+- type: storeCategory
+  id: SponsorThings
+  name: Плюшки
+
+- type: listing
+  id: UplinkSponsorCloth2
+  productEntity: ClothingCloakAtmosian
+  cost:
+    DonateCrystal: 5
+  categories:
+  - SponsorThings
+
+- type: listing
+  id: UplinkSponsorCloth3
+  productEntity: ClothingCloakGamer
+  cost:
+    DonateCrystal: 7
+  categories:
+  - SponsorThings
+
+- type: listing
+  id: UplinkSponsorCloth5
+  productEntity: ClothingUniformJumpsuitUSSPBlack
+  cost:
+    DonateCrystal: 3
+  categories:
+  - SponsorThings
+
+- type: listing
+  id: UplinkSponsorCloth6
+  productEntity: ClothingCloakGreenLegendarySponsor
+  cost:
+    DonateCrystal: 5
+  categories:
+  - SponsorThings
+
+- type: listing
+  id: UplinkSponsorCloth7
+  productEntity: ClothingCloakBlackLegendarySponsor
+  cost:
+    DonateCrystal: 5
+  categories:
+  - SponsorThings
+
+- type: listing
+  id: UplinkSponsorCloth8
+  productEntity: ClothingCloakVavevSponsor
+  cost:
+    DonateCrystal: 6
+  categories:
+  - SponsorThings
+
+
+- type: storePreset
+  id: StorePresetSponsor
+  storeName: Sponsor
+  categories:
+  - SponsorThings
+  currencyWhitelist:
+  - DonateCrystal
+
+- type: entity
+  parent: BaseItem
+  id: DonateUplink
+  name: адвенчурлинк
+  suffix: 30
+  components:
+  - type: Sprite
+    sprite: _evgencheg/communication.rsi
+    layers:
+    - state: old-radio
+      map: ["enum.DonateUplinkVisualLayers.Base"]
+  - type: Item
+    sprite: _evgencheg/communication.rsi
+    heldPrefix: old-radio
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.DonateUplinkVisualLayers.Opened:
+        enum.DonateUplinkVisualLayers.Base:
+          True: { state: "open" }
+          False: { state: "old-radio" }
+  - type: UserInterface
+    interfaces:
+      enum.StoreUiKey.Key:
+        type: StoreBoundUserInterface
+  - type: ActivatableUI
+    key: enum.StoreUiKey.Key
+  - type: DonateUplink
+  - type: Store
+    categories:
+      - SponsorThings
+    currencyWhitelist:
+      - DonateCrystal
+    balance:
+      DonateCrystal: 30
+  - type: FuckWizards

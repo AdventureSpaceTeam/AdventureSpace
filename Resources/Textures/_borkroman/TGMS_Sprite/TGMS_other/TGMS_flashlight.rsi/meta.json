@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "made by borkroman",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "flashlight"
+    },
+    {
+      "name": "flashlight-on"
+    },
+    {
+      "name": "flashlight-overlay"
+    },
+    {
+      "name": "inhand-left",
+      "directions": 4
+    },
+    {
+      "name": "inhand-right",
+      "directions": 4
+    },
+    {
+      "name": "inhand-left-light",
+      "directions": 4
+    },
+    {
+      "name": "inhand-right-light",
+      "directions": 4
+    },
+    {
+      "name": "on-equipped-NECK",
+      "directions": 4
+    },
+    {
+      "name": "off-equipped-NECK",
+      "directions": 4
+    }
+  ]
+}

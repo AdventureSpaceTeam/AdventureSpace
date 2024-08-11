@@ -1,6 +1,7 @@
 using Content.Client.UserInterface.Controls;
 using Content.Shared.Ghost.Roles;
 using Content.Shared.Ghost.Roles.Components;
+using Robust.Client.GameObjects;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.XAML;

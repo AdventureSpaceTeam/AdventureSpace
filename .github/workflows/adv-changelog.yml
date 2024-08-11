@@ -1,0 +1,25 @@
+﻿name: Adv changelog generator
+
+permissions:
+  contents: write
+
+on:
+  workflow_dispatch:
+  # c4llv07e: Takes too much time
+  # push:
+  #   branches:
+  #     - 'master'
+
+jobs:
+  changelog:
+    name: Adv changelog generator
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3.6.0
+      with:
+        fetch-depth: 0
+    - name: Generate changelog
+      run: Tools/adv_changelog.sh
+    - uses: stefanzweifel/git-auto-commit-action@v5
+      with:
+        commit_message: Automated changelog generation

@@ -26,7 +26,11 @@ namespace Content.Server.Corvax.StationGoal
         public override void Initialize()
         {
             base.Initialize();
+            // c4llv07e start (disable station goal) {{
+            /*
             SubscribeLocalEvent<RoundStartingEvent>(OnRoundStarting);
+            */
+            // c4llv07e end }}
         }
 
         private void OnRoundStarting(RoundStartingEvent ev)

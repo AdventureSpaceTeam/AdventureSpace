@@ -438,9 +438,12 @@
   shouldCelebrate:
     !type:FridayThirteenth { }
 
-- type: holiday
-  id: PrideMonth
-  name: holiday-name-pride-month
-  beginDay: 1
-  endDay: 31
-  beginMonth: June
+## c4llv07e remove pridemonth {{
+## see Resources/Prototypes/_c4llv07e/stuff.yml
+# - type: holiday
+#   id: PrideMonth
+#   name: holiday-name-pride-month
+#   beginDay: 1
+#   endDay: 31
+#   beginMonth: June
+## c4llv07e }}

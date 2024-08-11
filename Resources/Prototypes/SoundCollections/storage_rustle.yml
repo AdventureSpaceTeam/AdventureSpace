@@ -13,3 +13,14 @@
   - /Audio/Effects/trashbag1.ogg
   - /Audio/Effects/trashbag2.ogg
   - /Audio/Effects/trashbag3.ogg
+
+- type: soundCollection
+  id: shufflerInsert
+  files:
+  - /Audio/Effects/shuffler_insert1.ogg
+  - /Audio/Effects/shuffler_insert2.ogg
+
+- type: soundCollection
+  id: shufflerRustle
+  files:
+  - /Audio/Effects/shuffler_rustle.ogg

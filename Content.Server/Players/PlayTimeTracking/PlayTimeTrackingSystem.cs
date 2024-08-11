@@ -8,6 +8,8 @@ using Content.Server.GameTicking.Events;
 using Content.Server.Mind;
 using Content.Server.Preferences.Managers;
 using Content.Server.Station.Events;
+using Content.Server.Roles;
+using Content.Server.Database;
 using Content.Shared.CCVar;
 using Content.Shared.GameTicking;
 using Content.Shared.Mobs;
@@ -16,12 +18,14 @@ using Content.Shared.Players;
 using Content.Shared.Players.PlayTimeTracking;
 using Content.Shared.Preferences;
 using Content.Shared.Roles;
+using Robust.Server.GameObjects;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
+using Content.Corvax.Interfaces.Shared;
 
 namespace Content.Server.Players.PlayTimeTracking;
 
@@ -199,6 +203,15 @@ public sealed class PlayTimeTrackingSystem : EntitySystem
 
     public bool IsAllowed(ICommonSession player, string role)
     {
+        // Alteros-Sponsors-start
+        var sponsors = IoCManager.Resolve<ISharedSponsorsManager>(); // Alteros-Sponsors
+        if (sponsors.TryGetServerPrototypes(player.UserId, out var prototypes))
+        {
+            if (prototypes.Contains(role))
+                return true;
+        }
+        // Alteros-Sponsors-stop
+
         if (!_prototypes.TryIndex<JobPrototype>(role, out var job) ||
             !_cfg.GetCVar(CCVars.GameRoleTimers))
             return true;

@@ -1,11 +1,14 @@
+using System.Linq;
 using Content.Server.Administration.Logs;
 using Content.Server.Chat.Systems;
 using Content.Server.GameTicking.Rules;
+using Content.Server.GameTicking.Rules.Components;
 using Content.Server.Station.Systems;
 using Content.Server.StationEvents.Components;
 using Content.Shared.Database;
 using Content.Shared.GameTicking.Components;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Map;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 
@@ -17,6 +20,7 @@ namespace Content.Server.StationEvents.Events;
 public abstract class StationEventSystem<T> : GameRuleSystem<T> where T : IComponent
 {
     [Dependency] protected readonly IAdminLogManager AdminLogManager = default!;
+    [Dependency] protected readonly IMapManager MapManager = default!;
     [Dependency] protected readonly IPrototypeManager PrototypeManager = default!;
     [Dependency] protected readonly ChatSystem ChatSystem = default!;
     [Dependency] protected readonly SharedAudioSystem Audio = default!;

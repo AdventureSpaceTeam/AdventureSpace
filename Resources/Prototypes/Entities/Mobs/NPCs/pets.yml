@@ -539,7 +539,7 @@
 
 - type: entity
   name: Hamlet
-  parent: MobHamster
+  parent: MobHamster2
   id: MobHamsterHamlet
   description: A grumpy, cute and fluffy hamster.
   components:
@@ -568,7 +568,7 @@
     successChance: 1
     interactSuccessString: petting-success-hamster
     interactFailureString: petting-failure-hamster
-    interactSuccessSpawn: EffectHearts
+    interactSuccessSpawn: SpaceCash10
     interactSuccessSound:
       path: /Audio/Animals/fox_squeak.ogg
   - type: Butcherable
@@ -585,6 +585,148 @@
     - Hamster
     - VimPilot
     - ChefPilot
+
+- type: entity
+  name: hamster fake
+  parent: [ SimpleMobBase, MobCombat ]
+  id: MobHamster2
+  description: A cute, fluffy, robust hamster.
+  components:
+  - type: GhostRole
+    makeSentient: true
+    allowSpeech: true
+    allowMovement: true
+    name: ghost-role-information-hamster-name
+    description: ghost-role-information-hamster-description
+  - type: GhostTakeoverAvailable
+  - type: Speech
+    speechVerb: SmallMob
+    speechSounds: Squeak
+    allowedEmotes: ['Squeak']
+  - type: Sprite
+    drawdepth: SmallMobs
+    sprite: Mobs/Animals/hamster.rsi
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base", "movement"]
+      state: hamster-0
+  - type: SpriteMovement
+    movementLayers:
+      movement:
+        state: hamster-moving-0
+    noMovementLayers:
+      movement:
+        state: hamster-0
+  - type: Physics
+  - type: FaxableObject
+    insertingState: inserting_hamster
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.2
+        density: 120
+        mask:
+        - SmallMobMask
+        layer:
+        - SmallMobLayer
+  - type: MobState
+  - type: Deathgasp
+  - type: MobStateActions
+    actions:
+      Critical:
+      - ActionCritSuccumb
+      - ActionCritFakeDeath
+      - ActionCritLastWords
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      40: Critical
+      60: Dead
+  - type: MovementSpeedModifier
+    baseWalkSpeed : 4
+    baseSprintSpeed : 4
+  - type: Inventory
+    speciesId: hamster
+    templateId: hamster
+  - type: InventorySlots
+  - type: Strippable
+  - type: UserInterface
+    interfaces:
+      enum.StrippingUiKey.Key:
+        type: StrippableBoundUserInterface
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: hamster-0
+      Critical:
+        Base: dead-0
+      Dead:
+        Base: splat-0
+  - type: Food
+  - type: Hunger
+    baseDecayRate: 0.3
+  - type: Extractable
+    grindableSolutionName: food
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 10
+        - ReagentId: Blood
+          Quantity: 55
+        - ReagentId: Fat
+          Quantity: 5
+  - type: Butcherable
+    spawned:
+    - id: FoodMeat
+      amount: 1
+  - type: ReplacementAccent
+    accent: mouse
+  - type: Tag
+    tags:
+    - VimPilot
+    - Trash
+    - Hamster
+    - Meat
+  - type: Respirator
+    damage:
+      types:
+        Asphyxiation: 0.25
+    damageRecovery:
+      types:
+        Asphyxiation: -0.25
+  - type: Barotrauma
+    damage:
+      types:
+        Blunt: 0.1
+  - type: CombatMode
+  - type: MeleeWeapon
+    soundHit:
+        path: /Audio/Effects/bite.ogg
+    angle: 0
+    animation: WeaponArcBite
+    damage:
+      types:
+        Piercing: 2
+  - type: InteractionPopup
+    successChance: 0.4
+    interactSuccessString: petting-success-hamster
+    interactFailureString: petting-failure-hamster
+    interactSuccessSpawn: EffectHearts
+    interactSuccessSound:
+      path: /Audio/Animals/fox_squeak.ogg
+  - type: Bloodstream
+    bloodMaxVolume: 60
+  - type: CanEscapeInventory
+    baseResistTime: 3
+  - type: MobPrice
+    price: 60
+  - type: NonSpreaderZombie
+  - type: FireVisuals
+    sprite: Mobs/Effects/onfire.rsi
+    normalState: Mouse_burning
 
 - type: entity
   name: Shiva

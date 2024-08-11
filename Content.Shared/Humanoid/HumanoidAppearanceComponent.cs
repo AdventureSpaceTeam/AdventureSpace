@@ -1,6 +1,6 @@
-using Content.Shared.Corvax.TTS;
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.Humanoid.Prototypes;
+using Content.Shared.SS220.TTS;
 using Robust.Shared.Enums;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
@@ -51,7 +51,7 @@ public sealed partial class HumanoidAppearanceComponent : Component
     /// <summary>
     ///     Current voice. Used for correct cloning.
     /// </summary>
-    [DataField("voice")]
+    [DataField]
     public ProtoId<TTSVoicePrototype> Voice { get; set; } = SharedHumanoidAppearanceSystem.DefaultVoice;
     // Corvax-TTS-End
 

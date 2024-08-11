@@ -19,6 +19,13 @@
     layers:
     - state: paper
       map: ["base"]
+# NOTE(c4llv07e): commented paper fix, expecting it to be working in upstream
+#    - state: paper_words
+#      map: ["enum.PaperVisualLayers.Writing"]
+#      visible: false
+#    - state: paper_stamp-generic
+#      map: ["enum.PaperVisualLayers.Stamp"]
+#      visible: false
   - type: Tag
     tags:
     - Document

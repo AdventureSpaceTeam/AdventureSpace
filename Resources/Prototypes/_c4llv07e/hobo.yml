@@ -1,0 +1,73 @@
+- type: entity
+  save: false
+  name: Бездомный
+  parent: BaseMobHuman
+  id: BaseMobHoboPerson
+  abstract: true
+  components:
+  - type: VisibleGhosts
+  - type: DeadHearing
+
+- type: entity
+  parent: BaseSpeciesDummy
+  id: MobHoboPersonDummy
+  noSpawn: true
+  components:
+    - type: HumanoidAppearance
+
+- type: startingGear
+  id: HoboGear
+  equipment:
+    shoes: ClothingShoesBootsWinter
+    jumpsuit: ClothingUniformJumpsuitColorBrown
+    gloves: ClothingHandsGlovesFingerless
+    head: ClothingHeadHatFedoraBrown
+    neck: ClothingNeckScarfStripedBrown
+    belt: ClothingBeltStorageWaistbag
+    outerClothing: ClothingOuterCoatTrench
+    ears: ClothingHeadsetGrey
+  innerClothingSkirt: ClothingUniformJumpskirtColorGrey
+
+- type: entity
+  parent: BaseGameRule
+  id: HoboSpawn
+  noSpawn: true
+  components:
+  - type: StationEvent
+    weight: 10
+    duration: 1
+    earliestStart: 20
+    reoccurrenceDelay: 20
+    minimumPlayers: 5
+  - type: RandomSpawnRule
+    prototype: MobHoboGhost
+
+- type: entity
+  save: false
+  parent: BaseMobHoboPerson
+  name: Бездомный
+  id: MobHoboPerson
+  components:
+  - type: InteractionPopup
+    successChance: 1
+    interactSuccessString: hugging-success-generic
+    interactSuccessSound: /Audio/Effects/thudswoosh.ogg
+    messagePerceivedByOthers: hugging-success-generic-others
+  - type: Loadout
+    prototypes: [HoboGear]
+  - type: RandomHumanoidAppearance
+
+- type: entity
+  parent: MobHoboPerson
+  id: MobHoboGhost
+  suffix: Гост роль
+  components:
+  - type: GhostRole
+    name: Бездомный
+    description: Загадочно появившийся на станции бездомный.
+    rules: >-
+           Вы не помните ничего из своей предыдущей жизни, если администратор не сказал вам обратное.
+           Вам разрешается помнить знания об игре в целом, например, как готовить, как использовать предметы и т.д.
+           Вам [color=red]НЕ[/color] разрешается помнить, имя, внешность и т.д. вашего предыдущего персонажа.
+           Вам [color=red]НЕ[/color] разрешается рассказывать или пользоваться метаинформацей, полученной от призраков.
+  - type: GhostTakeoverAvailable

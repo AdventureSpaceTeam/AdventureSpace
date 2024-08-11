@@ -1,0 +1,10 @@
+- type: gameMapPool
+  id: AdventureMapPool
+  maps:
+  - AdventureAvrite
+  - AdventureBagel
+  - AdventureBox
+  - AdventureCluster
+  - AdventureDelta
+  - AdventureMaus
+  - Starquest

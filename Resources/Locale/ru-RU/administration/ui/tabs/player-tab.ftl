@@ -10,3 +10,6 @@ player-tab-entry-tooltip = Игровое время отображается к
 player-tab-filter-line-edit-placeholder = Фильтр
 player-tab-is-antag-yes = ДА
 player-tab-is-antag-no = НЕТ
+
+# Sunrise-edit
+player-tab-sponsor = Спонсор

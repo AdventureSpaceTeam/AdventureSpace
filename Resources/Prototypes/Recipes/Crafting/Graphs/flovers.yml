@@ -1,0 +1,211 @@
+- type: constructionGraph
+  id: InjTulpBucket
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: bucket
+      steps:
+      - tag: Paper
+        icon:
+          sprite: Objects/Misc/bureaucracy.rsi
+          state: paper
+        name: paper
+      - material: Cable
+        amount: 5
+      - tag: Handcuffs
+        icon:
+          sprite: Objects/Misc/cablecuffs.rsi
+          state: cuff
+          color: red
+        name: cuffs
+        doAfter: 10
+  - node: bucket
+    entity: InjBucket
+
+- type: constructionGraph
+  id: RosesBucket
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: bucket
+      steps:
+      - tag: RedRose
+        icon:
+          sprite: Objects/Decoration/Flovers/red_rose.rsi
+          state: icon
+        name: red rose
+      - tag: RedRose
+        icon:
+          sprite: Objects/Decoration/Flovers/red_rose.rsi
+          state: icon
+        name: red rose
+      - tag: RedRose
+        icon:
+          sprite: Objects/Decoration/Flovers/red_rose.rsi
+          state: icon
+        name: red rose
+
+      - tag: RedRose
+        icon:
+          sprite: Objects/Decoration/Flovers/red_rose.rsi
+          state: icon
+        name: red rose
+
+      - tag: WhiteRose
+        icon:
+          sprite: Objects/Decoration/Flovers/white_rose.rsi
+          state: icon
+        name: white rose
+      - tag: WhiteRose
+        icon:
+          sprite: Objects/Decoration/Flovers/white_rose.rsi
+          state: icon
+        name: white rose
+
+      - tag: Handcuffs
+        icon:
+          sprite: Objects/Misc/cablecuffs.rsi
+          state: cuff
+          color: red
+        name: cuffs
+        doAfter: 10
+  - node: bucket
+    entity: RoseBucket
+
+- type: constructionGraph
+  id: OrhFlovBucket
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: bucket
+      steps:
+
+      - tag: Orhidea
+        icon:
+          sprite: Objects/Decoration/Flovers/orhidea.rsi
+          state: icon
+        name: orhidea
+      - tag: Orhidea
+        icon:
+          sprite: Objects/Decoration/Flovers/orhidea.rsi
+          state: icon
+        name: orhidea
+      - tag: Orhidea
+        icon:
+          sprite: Objects/Decoration/Flovers/orhidea.rsi
+          state: icon
+        name: orhidea
+
+      - tag: Handcuffs
+        icon:
+          sprite: Objects/Misc/cablecuffs.rsi
+          state: cuff
+          color: red
+        name: cuffs
+        doAfter: 10
+  - node: bucket
+    entity: OrhBucket
+
+- type: constructionGraph
+  id: TulpBucket
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: bucket
+      steps:
+      - tag: Paper
+        icon:
+          sprite: Objects/Misc/bureaucracy.rsi
+          state: paper
+        name: paper
+
+      - tag: Tulpan
+        icon:
+          sprite: Objects/Decoration/Flovers/tulpan.rsi
+          state: icon
+        name: tulip
+      - tag: Tulpan
+        icon:
+          sprite: Objects/Decoration/Flovers/tulpan.rsi
+          state: icon
+        name: tulip
+
+      - tag: Gvozdika
+        icon:
+          sprite: Objects/Decoration/Flovers/gvozdika.rsi
+          state: icon
+        name: carnation
+      - tag: Gvozdika
+        icon:
+          sprite: Objects/Decoration/Flovers/gvozdika.rsi
+          state: icon
+        name: carnation
+      - tag: Gvozdika
+        icon:
+          sprite: Objects/Decoration/Flovers/gvozdika.rsi
+          state: icon
+        name: carnation
+
+      - tag: Handcuffs
+        icon:
+          sprite: Objects/Misc/cablecuffs.rsi
+          state: cuff
+          color: red
+        name: cuffs
+        doAfter: 10
+  - node: bucket
+    entity: FlowBucket
+
+- type: constructionGraph
+  id: AssorFlovBucket
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: bucket
+      steps:
+      - tag: Paper
+        icon:
+          sprite: Objects/Misc/bureaucracy.rsi
+          state: paper
+        name: paper
+
+      - tag: RedRose
+        icon:
+          sprite: Objects/Decoration/Flovers/red_rose.rsi
+          state: icon
+        name: red rose
+      - tag: WhiteRose
+        icon:
+          sprite: Objects/Decoration/Flovers/white_rose.rsi
+          state: icon
+        name: white rose
+      - tag: Orhidea
+        icon:
+          sprite: Objects/Decoration/Flovers/orhidea.rsi
+          state: icon
+        name: orhidea
+      - tag: Tulpan
+        icon:
+          sprite: Objects/Decoration/Flovers/tulpan.rsi
+          state: icon
+        name: tulip
+      - tag: Gvozdika
+        icon:
+          sprite: Objects/Decoration/Flovers/gvozdika.rsi
+          state: icon
+        name: carnation
+
+      - tag: Handcuffs
+        icon:
+          sprite: Objects/Misc/cablecuffs.rsi
+          state: cuff
+          color: red
+        name: cuffs
+        doAfter: 10
+  - node: bucket
+    entity: AssortBucket

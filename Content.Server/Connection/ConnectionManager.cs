@@ -254,28 +254,28 @@ namespace Content.Server.Connection
                             ("reason", Loc.GetString("panic-bunker-account-reason-overall", ("minutes", minOverallMinutes)))), null);
                 }
 
-                // Corvax-VPNGuard-Start
-                if (_vpnGuardMgr == null) // "lazyload" because of problems with dependency resolve order
-                    IoCManager.Instance!.TryResolveType(out _vpnGuardMgr);
-
-                var denyVpn = false;
-                if (_cfg.GetCVar(CCCVars.PanicBunkerDenyVPN) && _vpnGuardMgr != null)
-                {
-                    denyVpn = await _vpnGuardMgr.IsConnectionVpn(e.IP.Address);
-                    if (denyVpn)
-                    {
-                        return (ConnectionDenyReason.Panic,
-                            Loc.GetString("panic-bunker-account-denied-reason",
-                                ("reason", Loc.GetString("panic-bunker-account-reason-vpn"))), null);
-                    }
-                }
-                // Corvax-VPNGuard-End
-
-                if ((!validAccountAge || !haveMinOverallTime || denyVpn) && !bypassAllowed) // Corvax-VPNGuard
+                if ((!validAccountAge || !haveMinOverallTime) && !bypassAllowed)
                 {
                     return (ConnectionDenyReason.Panic, Loc.GetString("panic-bunker-account-denied"), null);
                 }
             }
+
+            // c4llv07e vpn {{
+            if (_vpnGuardMgr == null) // "lazyload" because of problems with dependency resolve order
+                IoCManager.Instance!.TryResolveType(out _vpnGuardMgr);
+
+            var denyVpn = false;
+            if (_cfg.GetCVar(CCCVars.PanicBunkerDenyVPN) && _vpnGuardMgr != null)
+            {
+                denyVpn = await _vpnGuardMgr.IsConnectionVpn(e.IP.Address);
+                if (denyVpn)
+                {
+                    return (ConnectionDenyReason.Panic,
+                            Loc.GetString("panic-bunker-account-denied-reason",
+                                          ("reason", Loc.GetString("panic-bunker-account-reason-vpn"))), null);
+                }
+            }
+            // c4llv07e vpn }}
 
             if (_cfg.GetCVar(CCVars.BabyJailEnabled) && adminData == null)
             {

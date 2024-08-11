@@ -1,0 +1,64 @@
+- type: entity
+  parent: SeedBase
+  name: пакет семян голубой агавы
+  description: "Бодрящее"
+  id: BlueAgavaSeeds
+  components:
+    - type: Seed
+      seedId: blueagava
+    - type: Sprite
+      sprite: DTS/Produce/blueagava.rsi
+
+- type: seed
+  id: blueagava
+  name: семена голубой агавы
+  noun: seeds-noun-seeds
+  displayName: голубая агава
+  plantRsi: DTS/Produce/blueagava.rsi
+  packetPrototype: BlueAgavaSeeds
+  productPrototypes:
+    - FoodBlueAgava
+  lifespan: 25
+  maturation: 10
+  production: 3
+  yield: 3
+  potency: 10
+  growthStages: 5
+  waterConsumption: 0.60
+  chemicals:
+    Aloe:
+      Min: 1
+      Max: 10
+      PotencyDivisor: 10
+    Tequila:
+      Min: 1
+      Max: 20
+      PotencyDivisor: 4
+
+- type: entity
+  name: Голубая агава
+  parent: FoodProduceBase
+  id: FoodBlueAgava
+  description: Какое опьяняющее алоэ!
+  components:
+  - type: FlavorProfile
+    flavors:
+      - tequila
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 20
+        reagents:
+        - ReagentId: Aloe
+          Quantity: 10
+        - ReagentId: Tequila
+          Quantity: 20
+  - type: Sprite
+    sprite: DTS/Produce/blueagava.rsi
+  - type: Produce
+    seedId: blueagava
+  - type: Extractable
+    grindableSolutionName: food
+  - type: Tag
+    tags:
+    - Vegetable

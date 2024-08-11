@@ -115,6 +115,7 @@
       color: Red
       enabled: false
       castShadows: false
+    - type: AIControlled
 
 - type: entity
   id: Firelock

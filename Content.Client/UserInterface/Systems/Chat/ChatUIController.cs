@@ -17,6 +17,8 @@ using Content.Shared.Administration;
 using Content.Shared.CCVar;
 using Content.Shared.Chat;
 using Content.Shared.Damage.ForceSay;
+using Content.Shared.Examine;
+using Content.Shared.Eye;
 using Content.Shared.Decals;
 using Content.Shared.Input;
 using Content.Shared.Radio;
@@ -852,7 +854,11 @@ public sealed class ChatUIController : UIController
                 break;
 
             case ChatChannel.Dead:
-                if (_ghost is not {IsGhost: true})
+                if (_ghost is not {IsGhost: true} &&
+                    (EntityManager.TryGetComponent<EyeComponent>(
+                        _player.LocalPlayer?.ControlledEntity,
+                        out var eyeComp) &&
+                     (eyeComp.VisibilityMask & (int)VisibilityFlags.Ghost) == 0))
                     break;
 
                 AddSpeechBubble(msg, SpeechBubble.SpeechType.Say);

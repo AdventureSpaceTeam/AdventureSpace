@@ -1,0 +1,167 @@
+- type: dataset
+  id: TGMSFirstNamesCommander
+  values:
+  - Штаб-сержант
+  - Командор-сержант
+
+- type: dataset
+  id: TGMSFirstNamesOfficer
+  values:
+  - Сержант
+  - Капрал
+  - Младший сержант
+
+- type: dataset
+  id: TGMSFirstNamesMarine
+  values:
+  - Рядовой
+  - Рядовой 1 класса
+  - Младший капрал
+
+- type: dataset
+  id: TGMSLastNamesMarine
+  values:
+  - Хадсон
+  - Фрост
+  - Дрейк
+  - Сайд
+  - Сефора
+  - Хикс
+  - Онил
+  - Уинтерс
+  - Скотт
+  - Рипли
+  - Элиен
+  - Клэрисон
+
+- type: entity
+  parent: TGMSMobHumanMarine
+  id: TGMSMobHumanMarine0
+  suffix: Без снаряжения
+  components:
+  - type: Loadout
+    prototypes: [TGMSMarineGearBase]
+
+- type: entity
+  parent: MobHuman
+  id: TGMSMobHumanMarine
+  name: Морпех
+  components:
+  - type: RandomMetadata
+    nameSegments:
+    - TGMSFirstNamesMarine
+    - TGMSLastNamesMarine
+  - type: MindShield
+  - type: RandomHumanoidAppearance
+    randomizeName: false
+  - type: Loadout
+    prototypes: [TGMSMarineGearFull]
+  - type: GhostRole
+    makeSentient: true
+    allowSpeech: true
+    allowMovement: true
+    name: Морпех
+    description: Выполняйте приказы своего командира. Выполните миссию любой ценой.
+    raffle:
+      settings: short
+  - type: GhostTakeoverAvailable
+  - type: Icon
+    sprite: _borkroman/TGMS_Sprite/TGMS_other/TGMS_Roles.rsi
+    state: Marine
+
+- type: entity
+  parent: MobHuman
+  id: TGMSMobHumanMarineCommander
+  name: Командир отряда
+  components:
+  - type: RandomMetadata
+    nameSegments:
+    - TGMSFirstNamesCommander
+    - TGMSLastNamesMarine
+  - type: MindShield
+  - type: RandomHumanoidAppearance
+    randomizeName: false
+  - type: Loadout
+    prototypes: [TGMSMarineCommanderGearFull]
+  - type: GhostRole
+    makeSentient: true
+    allowSpeech: true
+    allowMovement: true
+    name: Командир отряда
+    description: Перед вами стоит трудная задача. Выполните миссию любой ценой.
+    raffle:
+      settings: short
+  - type: GhostTakeoverAvailable
+  - type: Icon
+    sprite: _borkroman/TGMS_Sprite/TGMS_other/TGMS_Roles.rsi
+    state: Commander
+
+- type: entity
+  parent: MobHuman
+  id: TGMSMobHumanMarineMedical
+  name: Полевой медик
+  components:
+  - type: RandomMetadata
+    nameSegments:
+    - TGMSFirstNamesOfficer
+    - TGMSLastNamesMarine
+  - type: MindShield
+  - type: RandomHumanoidAppearance
+    randomizeName: false
+  - type: Loadout
+    prototypes: [TGMSMarineMedicalGearFull]
+  - type: GhostRole
+    makeSentient: true
+    allowSpeech: true
+    allowMovement: true
+    name: Полевой медик
+    description: Обеспечте выживание всех членов своего отряда. Выполните миссию любой ценой.
+    raffle:
+      settings: short
+  - type: GhostTakeoverAvailable
+  - type: Icon
+    sprite: _borkroman/TGMS_Sprite/TGMS_other/TGMS_Roles.rsi
+    state: Medical
+
+- type: entity
+  parent: MobHuman
+  id: TGMSMobHumanMarineSpecialist
+  name: Специалист
+  components:
+  - type: RandomMetadata
+    nameSegments:
+    - TGMSFirstNamesOfficer
+    - TGMSLastNamesMarine
+  - type: MindShield
+  - type: RandomHumanoidAppearance
+    randomizeName: false
+  - type: Loadout
+    prototypes: [TGMSMarineSpecialistGearFull]
+  - type: GhostRole
+    makeSentient: true
+    allowSpeech: true
+    allowMovement: true
+    name: Специалист
+    description: Ваша задача - поддерживать отряд и обеспечивать его боеприпасами. Выполните миссию любой ценой.
+    raffle:
+      settings: short
+  - type: GhostTakeoverAvailable
+  - type: Icon
+    sprite: _borkroman/TGMS_Sprite/TGMS_other/TGMS_Roles.rsi
+    state: Spec
+
+#БОТЫ
+- type: entity
+  name: Морпех
+  parent: TGMSMobHumanMarine
+  id: TGMSMobHumanMarineNPC
+  suffix: TGMS-NPC
+  components:
+    - type: NpcFactionMember
+      factions:
+        - NanoTrasen
+    - type: InputMover
+    - type: MobMover
+    - type: HTN
+      rootTask:
+        task: SimpleHumanoidHostileCompound

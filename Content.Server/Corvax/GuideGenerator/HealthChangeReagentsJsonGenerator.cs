@@ -89,4 +89,3 @@ public sealed class HealthChangeReagentsJsonGenerator
         file.Write(JsonSerializer.Serialize(healthChangeReagentsSorted, serializeOptions));
     }
 }
-

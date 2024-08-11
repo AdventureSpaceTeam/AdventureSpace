@@ -1,0 +1,84 @@
+- type: Tag
+  id: RedRose
+
+- type: Tag
+  id: WhiteRose
+
+- type: Tag
+  id: Tulpan
+
+- type: Tag
+  id: Orhidea
+
+- type: Tag
+  id: Gvozdika
+
+- type: entity
+  parent: BaseItem
+  id: RedRose
+  name: красная роза
+  components:
+  - type: Tag
+    tags:
+    - RedRose
+  - type: Sprite
+    sprite: Objects/Decoration/Flovers/red_rose.rsi
+    state: icon
+  - type: Item
+    sprite: Objects/Decoration/Flovers/red_rose.rsi
+
+- type: entity
+  parent: BaseItem
+  id: WhiteRose
+  name: белая роза
+  components:
+  - type: Tag
+    tags:
+    - WhiteRose
+  - type: Sprite
+    sprite: Objects/Decoration/Flovers/white_rose.rsi
+    state: icon
+  - type: Item
+    sprite: Objects/Decoration/Flovers/white_rose.rsi
+
+- type: entity
+  parent: BaseItem
+  id: Tulpan
+  name: тюльпан
+  components:
+  - type: Tag
+    tags:
+    - Tulpan
+  - type: Sprite
+    sprite: Objects/Decoration/Flovers/tulpan.rsi
+    state: icon
+  - type: Item
+    sprite: Objects/Decoration/Flovers/tulpan.rsi
+
+- type: entity
+  parent: BaseItem
+  id: Orhidea
+  name: орхидея
+  components:
+  - type: Tag
+    tags:
+    - Orhidea
+  - type: Sprite
+    sprite: Objects/Decoration/Flovers/orhidea.rsi
+    state: icon
+  - type: Item
+    sprite: Objects/Decoration/Flovers/orhidea.rsi
+
+- type: entity
+  parent: BaseItem
+  id: Gvozdika
+  name: гвоздика
+  components:
+  - type: Tag
+    tags:
+    - Gvozdika
+  - type: Sprite
+    sprite: Objects/Decoration/Flovers/gvozdika.rsi
+    state: icon
+  - type: Item
+    sprite: Objects/Decoration/Flovers/gvozdika.rsi

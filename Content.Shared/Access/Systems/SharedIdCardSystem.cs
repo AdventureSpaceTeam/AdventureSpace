@@ -193,6 +193,35 @@ public abstract class SharedIdCardSystem : EntitySystem
     }
 
     /// <summary>
+    /// Attempts to change the job color of a card.
+    /// Returns true/false.
+    /// </summary>
+    /// <remarks>
+    /// If provided with a player's EntityUid to the player parameter, adds the change to the admin logs.
+    /// </remarks>
+    public bool TryChangeJobColor(EntityUid uid, string? jobColor, bool boldRadio = false, IdCardComponent? id = null, EntityUid? player = null)
+    {
+        if (!Resolve(uid, ref id))
+            return false;
+
+        if (id.JobColor == jobColor && id.RadioBold == boldRadio)
+            return true;
+
+        id.JobColor = jobColor;
+        id.RadioBold = boldRadio;
+        Dirty(id);
+        UpdateEntityName(uid, id);
+
+        if (player != null)
+        {
+            _adminLogger.Add(LogType.Identity, LogImpact.Low,
+                $"{ToPrettyString(player.Value):player} has changed the job color of {ToPrettyString(uid):entity} to {jobColor} ");
+        }
+
+        return true;
+    }
+
+    /// <summary>
     /// Changes the name of the id's owner.
     /// </summary>
     /// <remarks>

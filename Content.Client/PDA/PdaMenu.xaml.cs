@@ -25,6 +25,9 @@ namespace Content.Client.PDA
         public const int SettingsView = 2;
         public const int ProgramContentView = 3;
 
+        private TimeSpan? _shuttleCallTime;
+        private TimeSpan? _shuttleArrivalTime;
+        private TimeSpan? _shuttleLaunchTime;
 
         private string _pdaOwner = Loc.GetString("comp-pda-ui-unknown");
         private string _owner = Loc.GetString("comp-pda-ui-unknown");
@@ -32,7 +35,6 @@ namespace Content.Client.PDA
         private string _stationName = Loc.GetString("comp-pda-ui-unknown");
         private string _alertLevel = Loc.GetString("comp-pda-ui-unknown");
         private string _instructions = Loc.GetString("comp-pda-ui-unknown");
-        
 
         private int _currentView;
 
@@ -125,7 +127,7 @@ namespace Content.Client.PDA
                 _clipboard.SetText(_instructions);
             };
 
-            
+
 
 
             HideAllViews();
@@ -135,6 +137,10 @@ namespace Content.Client.PDA
         public void UpdateState(PdaUpdateState state)
         {
             FlashLightToggleButton.IsActive = state.FlashlightEnabled;
+
+            _shuttleCallTime = state.PdaOwnerInfo.ShuttleCallTime;
+            _shuttleArrivalTime = state.PdaOwnerInfo.EvacShuttleArrivalTime;
+            _shuttleLaunchTime = state.PdaOwnerInfo.EvacShuttleLaunchTime;
 
             if (state.PdaOwnerInfo.ActualOwnerName != null)
             {
@@ -160,12 +166,37 @@ namespace Content.Client.PDA
             _stationName = state.StationName ?? Loc.GetString("comp-pda-ui-unknown");
             StationNameLabel.SetMarkup(Loc.GetString("comp-pda-ui-station",
                 ("station", _stationName)));
-            
+
 
             var stationTime = _gameTiming.CurTime.Subtract(_gameTicker.RoundStartTimeSpan);
 
             StationTimeLabel.SetMarkup(Loc.GetString("comp-pda-ui-station-time",
                 ("time", stationTime.ToString("hh\\:mm\\:ss"))));
+
+            if (state.PdaOwnerInfo.EvacShuttleLaunchTime != null)
+            {
+                var remaining = TimeSpan.FromSeconds(Math.Max((state.PdaOwnerInfo.EvacShuttleLaunchTime.Value - _gameTiming.CurTime).TotalSeconds, 0));
+                ShuttleTimeLabel.SetMarkup(Loc.GetString("comp-pda-ui-shuttle-launch-time",
+                    ("time", remaining.ToString("hh\\:mm\\:ss"))));
+            }
+            else
+            {
+                if (state.PdaOwnerInfo.EvacShuttleArrivalTime != null)
+                {
+                    var remaining = TimeSpan.FromSeconds(Math.Max((state.PdaOwnerInfo.EvacShuttleArrivalTime.Value - _gameTiming.CurTime).TotalSeconds, 0));
+                    ShuttleTimeLabel.SetMarkup(Loc.GetString("comp-pda-ui-shuttle-arrival-time",
+                        ("time", remaining.ToString("hh\\:mm\\:ss"))));
+                }
+                else
+                {
+                    if (state.PdaOwnerInfo.ShuttleCallTime != null)
+                    {
+                        var remaining = TimeSpan.FromSeconds(Math.Max((state.PdaOwnerInfo.ShuttleCallTime.Value - _gameTiming.CurTime).TotalSeconds, 0));
+                        ShuttleTimeLabel.SetMarkup(Loc.GetString("comp-pda-ui-shuttle-call-time",
+                            ("time", remaining.ToString("hh\\:mm\\:ss"))));
+                    }
+                }
+            }
 
             var alertLevel = state.PdaOwnerInfo.StationAlertLevel;
             var alertColor = state.PdaOwnerInfo.StationAlertColor;
@@ -340,6 +371,31 @@ namespace Content.Client.PDA
 
             StationTimeLabel.SetMarkup(Loc.GetString("comp-pda-ui-station-time",
                 ("time", stationTime.ToString("hh\\:mm\\:ss"))));
+
+            if (_shuttleLaunchTime != null)
+            {
+                var remaining = TimeSpan.FromSeconds(Math.Max((_shuttleLaunchTime.Value - _gameTiming.CurTime).TotalSeconds, 0));
+                ShuttleTimeLabel.SetMarkup(Loc.GetString("comp-pda-ui-shuttle-launch-time",
+                    ("time", remaining.ToString("hh\\:mm\\:ss"))));
+            }
+            else
+            {
+                if (_shuttleArrivalTime != null)
+                {
+                    var remaining = TimeSpan.FromSeconds(Math.Max((_shuttleArrivalTime.Value - _gameTiming.CurTime).TotalSeconds, 0));
+                    ShuttleTimeLabel.SetMarkup(Loc.GetString("comp-pda-ui-shuttle-arrival-time",
+                        ("time", remaining.ToString("hh\\:mm\\:ss"))));
+                }
+                else
+                {
+                    if (_shuttleCallTime != null)
+                    {
+                        var remaining = TimeSpan.FromSeconds(Math.Max((_shuttleCallTime.Value - _gameTiming.CurTime).TotalSeconds, 0));
+                        ShuttleTimeLabel.SetMarkup(Loc.GetString("comp-pda-ui-shuttle-call-time",
+                            ("time", remaining.ToString("hh\\:mm\\:ss"))));
+                    }
+                }
+            }
         }
     }
 }

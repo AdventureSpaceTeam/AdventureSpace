@@ -3,6 +3,7 @@ using Content.Server.Storage.EntitySystems;
 using Content.Server.Store.Systems;
 using Content.Shared.FixedPoint;
 using Content.Shared.Store;
+using Robust.Shared.Prototypes;
 using Content.Shared.Store.Components;
 using Robust.Shared.Random;
 
