@@ -3,7 +3,7 @@ using System.Numerics;
 using Content.Client._Sunrise.StatsBoard;
 using Content.Client.Message;
 using Content.Client.Players;
-using Content.Server.StatsBoard;
+using Content.Shared.StatsBoard;
 using Content.Shared.GameTicking;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.CustomControls;
