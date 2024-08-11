@@ -40,7 +40,9 @@ jobs:
 
     # (c4llv07e) Adventure private code start
     - name: Download Adventure's private parts
-      if: ${{ secrets.ADV_SSH_DEPLOY_SERVER != '' }}
+      env:
+        TEST_KEY: ${{ secrets.ADV_SSH_DEPLOY_SERVER }}
+      if: ${{ env.TEST_KEY != '' }}
       run: |
         eval `ssh-agent -s`
         ssh-add - <<< '${{ secrets.ADV_SSH_DEPLOY_CLIENT }}'
