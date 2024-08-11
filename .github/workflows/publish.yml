@@ -47,8 +47,10 @@ jobs:
         eval `ssh-agent -s`
         ssh-add - <<< '${{ secrets.ADV_SSH_DEPLOY_CLIENT }}'
         git submodule add --force git@github.com:AdventureSpaceTeam/PrivateClient.git Content.Client/AdventurePrivate
+        eval `ssh-agent -s`
         ssh-add - <<< '${{ secrets.ADV_SSH_DEPLOY_SERVER }}'
         git submodule add --force git@github.com:AdventureSpaceTeam/PrivateServer.git Content.Server/AdventurePrivate
+        eval `ssh-agent -s`
         ssh-add - <<< '${{ secrets.ADV_SSH_DEPLOY_SHARED }}'
         git submodule add --force git@github.com:AdventureSpaceTeam/PrivateShared.git Content.Shared/AdventurePrivate
     # (c4llv07e) Adventure private code end
