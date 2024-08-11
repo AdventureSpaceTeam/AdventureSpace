@@ -38,6 +38,19 @@ jobs:
         cp -R Secrets/Resources/Textures Resources/Textures/CorvaxSecrets
     # Corvax-Secrets-End
 
+    # (c4llv07e) Adventure private code start
+    - name: Download Adventure's private parts
+      if: ${{ secrets.ADV_SSH_DEPLOY_SERVER != '' }}
+      run: |
+        eval `ssh-agent -s`
+        ssh-add - <<< '${{ secrets.ADV_SSH_DEPLOY_CLIENT }}'
+        ssh-add - <<< '${{ secrets.ADV_SSH_DEPLOY_SERVER }}'
+        ssh-add - <<< '${{ secrets.ADV_SSH_DEPLOY_SHARED }}'
+        git submodule add --force git@github.com:AdventureSpaceTeam/PrivateClient.git Content.Client/AdventurePrivate
+        git submodule add --force git@github.com:AdventureSpaceTeam/PrivateServer.git Content.Server/AdventurePrivate
+        git submodule add --force git@github.com:AdventureSpaceTeam/PrivateShared.git Content.Shared/AdventurePrivate
+    # (c4llv07e) Adventure private code end
+
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v4.0.0
       with:
