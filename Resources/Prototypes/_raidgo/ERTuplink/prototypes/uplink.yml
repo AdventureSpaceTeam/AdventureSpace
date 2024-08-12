@@ -330,14 +330,6 @@
   - ERTmedicine
 
 - type: listing
-  id: BrutepackedERT
-  productEntity: Brutepack
-  cost:
-    ERTCrystal: 1
-  categories:
-  - ERTmedicine
-
-- type: listing
   id: BrutepackERT
   productEntity: Brutepack
   cost:
