@@ -29,10 +29,6 @@ namespace Content.Server.GameTicking
         /// </summary>
         [Dependency] private readonly SharedGameTicker _gameTicker = default!;
 
-        // Corvax-Queue-Start
-        [Dependency] private readonly IServerJoinQueueManager _joinQueueManager = default!;
-        // Corvax-Queue-End
-
         private void InitializeStatusShell()
         {
             IoCManager.Resolve<IStatusHost>().OnStatusRequest += GetStatusResponse;

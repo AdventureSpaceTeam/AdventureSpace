@@ -568,7 +568,9 @@ namespace Content.Server.Administration.Systems
             // Alteros-Sponsors-start
             string bwoinkText;
 
-            var sponsors = IoCManager.Resolve<ISharedSponsorsManager>();
+            ISharedSponsorsManager? sponsors = null;
+            if (Type.GetType("AdventurePrivateBuild") != null)
+                sponsors = IoCManager.Resolve<ISharedSponsorsManager>();
             if (senderAdmin is not null &&
                 senderAdmin.Flags ==
                 AdminFlags.Adminhelp) // Mentor. Not full admin. That's why it's colored differently.
@@ -581,8 +583,13 @@ namespace Content.Server.Administration.Systems
             }
             else
             {
-                sponsors.TryGetServerOocColor(message.UserId, out var oocColor);
-                sponsors.TryGetServerOocTitle(message.UserId, out var sponsorTitle);
+                Color? oocColor = null;
+                string? sponsorTitle = null;
+                if (sponsors != null)
+                {
+                    sponsors.TryGetServerOocColor(message.UserId, out oocColor);
+                    sponsors.TryGetServerOocTitle(message.UserId, out sponsorTitle);
+                }
                 if (oocColor != null)
                 {
                     bwoinkText = $"[color={oocColor.Value.ToHex()}]\\[{sponsorTitle}\\] {senderSession.Name}[/color]: {escapedText}";

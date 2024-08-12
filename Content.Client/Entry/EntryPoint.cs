@@ -38,6 +38,8 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Replays;
 using Robust.Shared.Timing;
 
+using System.Reflection; // c4llv07e private build
+
 namespace Content.Client.Entry
 {
     public sealed class EntryPoint : GameClient
@@ -165,11 +167,16 @@ namespace Content.Client.Entry
             _userInterfaceManager.SetActiveTheme(_configManager.GetCVar(CVars.InterfaceTheme));
             _documentParsingManager.Initialize();
 
-            // start-alteros: ioc
-            IoCManager.Resolve<Content.Corvax.Interfaces.Shared.ISharedSponsorsManager>().Initialize();
-            IoCManager.Resolve<Content.Corvax.Interfaces.Client.IClientJoinQueueManager>().Initialize();
-            IoCManager.Resolve<Content.Corvax.Interfaces.Client.IClientDiscordAuthManager>().Initialize();
-            // end-alteros: ioc
+            // c4llv07e private parts start
+            if (Type.GetType("AdventruePrivateBuild") != null)
+            {
+                // start-alteros: ioc
+                IoCManager.Resolve<Content.Corvax.Interfaces.Shared.ISharedSponsorsManager>().Initialize();
+                IoCManager.Resolve<Content.Corvax.Interfaces.Client.IClientJoinQueueManager>().Initialize();
+                IoCManager.Resolve<Content.Corvax.Interfaces.Client.IClientDiscordAuthManager>().Initialize();
+                // end-alteros: ioc
+            }
+            // c4llv07e private parts end
 
             _baseClient.RunLevelChanged += (_, args) =>
             {

@@ -15,7 +15,7 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
     [Dependency] private readonly IEntityNetworkManager _net = default!;
 
     [UISystemDependency] private readonly GhostSystem? _system = default;
-    [UISystemDependency] private readonly NewLifeSystem? _respawnMenu = default;
+    [UISystemDependency] private readonly INewLifeSystem? _respawnMenu = default;
 
     private GhostGui? Gui => UIManager.GetActiveUIWidgetOrNull<GhostGui>();
 

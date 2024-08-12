@@ -37,6 +37,7 @@ using Content.Corvax.Interfaces.Shared;
 using Content.Corvax.Interfaces.Server;
 using Content.Server._c4llv07e.VpnGuard; // c4llv07e vpn guard
 using Content.Server.Adventure.Config; // c4llv07e adventure config
+using System.Reflection; // c4llv07e private IoC
 
 namespace Content.Server.IoC
 {
@@ -81,11 +82,14 @@ namespace Content.Server.IoC
             IoCManager.Register<PlayerRateLimitManager>();
             IoCManager.Register<MappingManager>();
 
-            // Alteros-Sponsor
-            IoCManager.Register<Content.Corvax.Interfaces.Shared.ISharedSponsorsManager, SponsorsManager>();
-            IoCManager.Register<Content.Corvax.Interfaces.Server.IServerDiscordAuthManager, DiscordAuthManager>();
-            IoCManager.Register<Content.Corvax.Interfaces.Server.IServerJoinQueueManager, JoinQueueManager>();
-            // Alteros-Sponsor
+            Type.GetType("AdventureClientPrivatePartIoC")?
+                .GetMethod("Activate", BindingFlags.Public | BindingFlags.Static)?
+                .Invoke(null, null);
+            // // Alteros-Sponsor
+            // IoCManager.Register<Content.Corvax.Interfaces.Shared.ISharedSponsorsManager, SponsorsManager>();
+            // IoCManager.Register<Content.Corvax.Interfaces.Server.IServerDiscordAuthManager, DiscordAuthManager>();
+            // IoCManager.Register<Content.Corvax.Interfaces.Server.IServerJoinQueueManager, JoinQueueManager>();
+            // // Alteros-Sponsor
 
             IoCManager.Register<IServerVPNGuardManager, VpnGuardFile>(); // c4llv07e vpn ban
             IoCManager.Register<AdventureConfigManager>(); // c4llv07e config manager

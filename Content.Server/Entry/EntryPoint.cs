@@ -37,6 +37,8 @@ using Robust.Shared.Utility;
 using Content.Corvax.Interfaces.Server; // c4llv07e vpn guard
 using Content.Server.Adventure.Config; // c4llv07e adventure config
 
+using System.Reflection; // c4llv07e private build
+
 namespace Content.Server.Entry
 {
     public sealed class EntryPoint : GameServer
@@ -111,11 +113,15 @@ namespace Content.Server.Entry
                 IoCManager.Resolve<ServerInfoManager>().Initialize();
                 IoCManager.Resolve<ServerApi>().Initialize();
 
-                // start-alteros: IoC
-                IoCManager.Resolve<Content.Corvax.Interfaces.Shared.ISharedSponsorsManager>().Initialize();
-                IoCManager.Resolve<Content.Corvax.Interfaces.Server.IServerDiscordAuthManager>().Initialize();
-                IoCManager.Resolve<Content.Corvax.Interfaces.Server.IServerJoinQueueManager>().Initialize();
-                // end-alteros: IoC
+                // c4llv07e private parts start
+                if (Type.GetType("AdventruePrivateBuild") != null)
+                {
+                    // start-alteros: IoC
+                    IoCManager.Resolve<Content.Corvax.Interfaces.Shared.ISharedSponsorsManager>().Initialize();
+                    IoCManager.Resolve<Content.Corvax.Interfaces.Server.IServerDiscordAuthManager>().Initialize();
+                    IoCManager.Resolve<Content.Corvax.Interfaces.Server.IServerJoinQueueManager>().Initialize();
+                    // end-alteros: IoC
+                }
 
                 IoCManager.Resolve<Content.Corvax.Interfaces.Server.IServerVPNGuardManager>().Initialize(); // c4llv07e vpn guard
                 IoCManager.Resolve<AdventureConfigManager>().Initialize(); // c4llv07e config manager
@@ -170,9 +176,14 @@ namespace Content.Server.Entry
                 IoCManager.Resolve<IGameMapManager>().Initialize();
                 IoCManager.Resolve<IEntitySystemManager>().GetEntitySystem<GameTicker>().PostInitialize();
                 IoCManager.Resolve<IBanManager>().Initialize();
-                // start-alteros: IoC
-                IoCManager.Resolve<Content.Corvax.Interfaces.Server.IServerJoinQueueManager>().PostInitialize();
-                // end-alteros: IoC
+                // c4llv07e adventrue private build start
+                if (Type.GetType("AdventruePrivateBuild") != null)
+                {
+                    // start-alteros: IoC
+                    IoCManager.Resolve<Content.Corvax.Interfaces.Server.IServerJoinQueueManager>().PostInitialize();
+                    // end-alteros: IoC
+                }
+                // c4llv07e adventrue private build end
             }
         }
 

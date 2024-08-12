@@ -27,6 +27,9 @@ using Content.Client.Sponsors;
 using Content.Shared.Administration.Managers;
 using Content.Shared.Players.PlayTimeTracking;
 
+using Content.Client.Adventure.PrivateIoC;
+using System.Reflection; // c4llv07e private build
+
 namespace Content.Client.IoC
 {
     internal static class ClientContentIoC
@@ -58,11 +61,13 @@ namespace Content.Client.IoC
             collection.Register<MappingManager>();
             collection.Register<DebugMonitorManager>();
 
-            // Alteros-Sponsor
-            collection.Register<Content.Corvax.Interfaces.Shared.ISharedSponsorsManager,SponsorsManager>();
-            collection.Register<Content.Corvax.Interfaces.Client.IClientJoinQueueManager,JoinQueueManager>();
-            collection.Register<Content.Corvax.Interfaces.Client.IClientDiscordAuthManager,DiscordAuthManager>();
-            // Alteros-Sponsor
+            var adventurePrivateClientIoC = new AdventurePrivateClientIoC();
+            adventurePrivateClientIoC.PublicCall(collection);
+            // // Alteros-Sponsor
+            // collection.Register<Content.Corvax.Interfaces.Shared.ISharedSponsorsManager,SponsorsManager>();
+            // collection.Register<Content.Corvax.Interfaces.Client.IClientJoinQueueManager,JoinQueueManager>();
+            // collection.Register<Content.Corvax.Interfaces.Client.IClientDiscordAuthManager,DiscordAuthManager>();
+            // // Alteros-Sponsor
         }
     }
 }

@@ -1,0 +1,1 @@
+namespace Content.Client.Sponsors;

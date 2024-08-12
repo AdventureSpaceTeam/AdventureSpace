@@ -54,9 +54,11 @@ public sealed partial class GhostGui : UIWidget
             }
         }
 
-        // Alteros-Sponsors-start
-        var sponsors = IoCManager.Resolve<ISharedSponsorsManager>(); // Alteros-Sponsors
-        if (sponsors.GetClientAllowedRespawn())
+        // c4llv07e private build start
+        ISharedSponsorsManager? sponsors = null;
+        if (Type.GetType("AdventurePrivateBuild") != null)
+            sponsors = IoCManager.Resolve<ISharedSponsorsManager>(); // Alteros-Sponsors
+        if (sponsors != null && sponsors.GetClientAllowedRespawn())
         {
             RespawnButton.Disabled = false;
             RespawnButton.Text = Loc.GetString("new-life-gui-button");
@@ -67,6 +69,7 @@ public sealed partial class GhostGui : UIWidget
             RespawnButton.Text = Loc.GetString("new-life-gui-button-disable");
         }
         // Alteros-Sponsors-end
+        // c4llv07e private build end
 
         TargetWindow.Populate();
     }

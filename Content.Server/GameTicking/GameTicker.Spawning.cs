@@ -30,7 +30,6 @@ namespace Content.Server.GameTicking
     {
         [Dependency] private readonly IAdminManager _adminManager = default!;
         [Dependency] private readonly SharedJobSystem _jobs = default!;
-        [Dependency] private readonly NewLifeSystem _newLifeSystem = default!;
 
 
         [ValidatePrototypeId<EntityPrototype>]
@@ -179,10 +178,16 @@ namespace Content.Server.GameTicking
                 return;
             }
 
-            // Alteros-Sponsors-start
-            _newLifeSystem.AddUsedCharactersForRespawn(player.UserId, _prefsManager.GetPreferences(player.UserId).SelectedCharacterIndex);
-            _newLifeSystem.SetNextAllowRespawn(player.UserId, _gameTiming.CurTime + TimeSpan.FromMinutes(_newLifeSystem.NewLifeTimeout));
-            // Alteros-Sponsors-stop
+            // c4llv07e adventure private build start
+            if (Type.GetType("AdventurePrivateBuild") != null)
+            {
+                var newlife = IoCManager.Resolve<INewLifeSystem>();
+                // Alteros-Sponsors-start
+                newlife.AddUsedCharactersForRespawn(player.UserId, _prefsManager.GetPreferences(player.UserId).SelectedCharacterIndex);
+                newlife.SetNextAllowRespawn(player.UserId, _gameTiming.CurTime + TimeSpan.FromMinutes(newlife.NewLifeTimeout));
+                // Alteros-Sponsors-stop
+            }
+            // c4llv07e adventure private build end
 
             // We raise this event to allow other systems to handle spawning this player themselves. (e.g. late-join wizard, etc)
             var bev = new PlayerBeforeSpawnEvent(player, character, jobId, lateJoin, station);
