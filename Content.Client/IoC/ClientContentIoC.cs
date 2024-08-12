@@ -3,7 +3,7 @@ using Content.Client.Changelog;
 using Content.Client.Chat.Managers;
 using Content.Client.Clickable;
 using Content.Client.DebugMon;
-using Content.Client.SS220.TTS;
+using Content.Client.Corvax.TTS;
 using Content.Client.Options;
 using Content.Client.DiscordAuth;
 using Content.Client.Eui;

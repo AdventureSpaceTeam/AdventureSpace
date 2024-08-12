@@ -5,7 +5,7 @@ using Content.Shared.Inventory.Events;
 using Content.Shared.Radio;
 using Content.Shared.Radio.Components;
 using Content.Shared.Radio.EntitySystems;
-using Content.Shared.SS220.TTS;
+using Content.Shared.Corvax.TTS;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
 

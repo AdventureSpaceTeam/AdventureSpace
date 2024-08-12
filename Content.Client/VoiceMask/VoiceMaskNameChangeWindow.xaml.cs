@@ -1,5 +1,5 @@
 using System.Linq;
-using Content.Shared.SS220.TTS;
+using Content.Shared.Corvax.TTS;
 using Content.Client.UserInterface.Controls;
 using Content.Shared.Corvax.CCCVars;
 using Content.Shared.Speech;
