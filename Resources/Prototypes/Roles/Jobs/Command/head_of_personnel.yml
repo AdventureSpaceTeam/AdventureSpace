@@ -8,16 +8,25 @@
       department: Engineering
       time: 18000 #5 hrs # Corvax-RoleTime
     - !type:DepartmentTimeRequirement
+      department: Cargo
+      time: 18000 #5 hrs # Corvax-RoleTime
+    - !type:DepartmentTimeRequirement
+      department: Science
+      time: 18000 #5 hrs # Corvax-RoleTime
+    - !type:DepartmentTimeRequirement
+      department: Civilian
+      time: 18000 #5 hrs # Corvax-RoleTime
+    - !type:DepartmentTimeRequirement
       department: Medical
       time: 18000 #5 hrs # Corvax-RoleTime
     - !type:DepartmentTimeRequirement
       department: Security
       time: 18000 #5 hrs # Corvax-RoleTime
-#    - !type:DepartmentTimeRequirement
-#      department: Command
-#      time: 54000 # 15 hours
+    - !type:DepartmentTimeRequirement
+      department: Command
+      time: 18000 # 5 hours
     - !type:OverallPlaytimeRequirement
-      time: 54000 #15 hrs # Adventure playtime requirements
+      time: 54000 #15 hrs # Corvax-RoleTime
     - !type:AgeRequirement
       requiredAge: 20
   weight: 20

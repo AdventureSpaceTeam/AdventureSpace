@@ -6,9 +6,9 @@
   requirements:
     - !type:RoleTimeRequirement
       role: JobMedicalDoctor
-      time: 14400 #4 hrs
+      time: 21600 #6 hrs
     - !type:OverallPlaytimeRequirement
-      time: 18000 #5 hrs # Adventure playtime requirements
+      time: 18000 #3 hrs
   startingGear: ParamedicGear
   icon: "JobIconParamedic"
   supervisors: job-supervisors-cmo
