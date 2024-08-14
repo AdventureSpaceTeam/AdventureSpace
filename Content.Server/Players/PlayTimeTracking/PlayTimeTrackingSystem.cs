@@ -27,8 +27,6 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 using Content.Corvax.Interfaces.Shared;
 
-using System.Reflection; // c4llv07e adventure private build
-
 namespace Content.Server.Players.PlayTimeTracking;
 
 /// <summary>
@@ -205,20 +203,6 @@ public sealed class PlayTimeTrackingSystem : EntitySystem
 
     public bool IsAllowed(ICommonSession player, string role)
     {
-        // c4llv07e adventure private build start
-        if (Type.GetType("AdventurePrivateBuild") != null)
-        {
-            // Alteros-Sponsors-start
-            var sponsors = IoCManager.Resolve<ISharedSponsorsManager>(); // Alteros-Sponsors
-            if (sponsors.TryGetServerPrototypes(player.UserId, out var prototypes))
-            {
-                if (prototypes.Contains(role))
-                    return true;
-            }
-            // Alteros-Sponsors-stop
-        }
-        // c4llv07e adventure private build end
-
         if (!_prototypes.TryIndex<JobPrototype>(role, out var job) ||
             !_cfg.GetCVar(CCVars.GameRoleTimers))
             return true;

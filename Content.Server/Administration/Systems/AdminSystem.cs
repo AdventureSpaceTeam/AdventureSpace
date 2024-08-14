@@ -252,26 +252,10 @@ namespace Content.Server.Administration.Systems
                 overallPlaytime = playTime;
             }
 
-            // c4llv07e adventure private build start
-            // Alteros-Sponsors-start
-            if (Type.GetType("AdventurePrivateBuild") != null)
-            {
-                var sponsors = IoCManager.Resolve<ISharedSponsorsManager>();
-                var isSponsor = sponsors.IsSponsor(data.UserId);
-                sponsors.TryGetServerOocTitle(data.UserId, out var sponsorTitle);
-
-                return new PlayerInfo(name, entityName, identityName, startingRole, antag,
-                                      GetNetEntity(session?.AttachedEntity), data.UserId,
-                                      connected, _roundActivePlayers.Contains(data.UserId),
-                                      overallPlaytime, isSponsor, sponsorTitle);
-            }
-
             return new PlayerInfo(name, entityName, identityName, startingRole, antag,
                                   GetNetEntity(session?.AttachedEntity), data.UserId,
                                   connected, _roundActivePlayers.Contains(data.UserId),
                                   overallPlaytime, false, null);
-            // Alteros-Sponsors-end
-            // c4llv07e adventure private build end
         }
 
         private void OnPanicBunkerChanged(bool enabled)

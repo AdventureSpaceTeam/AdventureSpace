@@ -16,8 +16,6 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
-using System.Reflection; // c4llv07e adventure private build
-
 namespace Content.Client.Players.PlayTimeTracking;
 
 public sealed class JobRequirementsManager : ISharedPlaytimeManager
@@ -117,15 +115,6 @@ public sealed class JobRequirementsManager : ISharedPlaytimeManager
         var player = _playerManager.LocalSession;
         if (player == null)
             return true;
-
-        // c4llv07e adventure private build start
-        if (Type.GetType("AdventurePrivateBuild") != null)
-        {
-            var sponsors = IoCManager.Resolve<ISharedSponsorsManager>(); // Alteros-Sponsors
-            if (sponsors.GetClientPrototypes().Contains(job.ID))
-                return true;
-        }
-        // c4llv07e adventure private build end
 
         return CheckRoleRequirements(job, profile, out reason);
     }

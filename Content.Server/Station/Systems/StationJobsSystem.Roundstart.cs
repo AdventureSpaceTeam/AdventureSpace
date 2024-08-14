@@ -11,8 +11,6 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
 
-using System.Reflection; // c4llv07e adventure private build
-
 namespace Content.Server.Station.Systems;
 
 // Contains code for round-start spawning.
@@ -247,19 +245,8 @@ public sealed partial class StationJobsSystem
                             if (!jobPlayerOptions.ContainsKey(job))
                                 continue;
 
-                            // c4llv07e adventure private build start
-                            NetUserId player;
-                            if (Type.GetType("AdventurePrivateBuild") != null)
-                            {
-                                var sponsors = IoCManager.Resolve<ISharedSponsorsManager>(); // Alteros-Sponsors
-                                player = sponsors.PickRoleSession(jobPlayerOptions[job], job);
-                            }
-                            else
-                            {
-                                // Picking players it finds that have the job set.
-                                player = _random.Pick(jobPlayerOptions[job]);
-                            }
-                            // c4llv07e adventure private build end
+                            // Picking players it finds that have the job set.
+                            var player = _random.Pick(jobPlayerOptions[job]);
                             AssignPlayer(player, job, station);
                             stationShares[station]--;
 
