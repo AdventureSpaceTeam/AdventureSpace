@@ -92,7 +92,7 @@ public sealed class TTSSystem : EntitySystem
 
     private float AdjustVolume(bool isWhisper)
     {
-        var volume = MinimalVolume + SharedAudioSystem.GainToVolume(_volume);
+        var volume = MinimalVolume + SharedAudioSystem.GainToVolume(_volume * 3.0f);
 
         if (isWhisper)
         {
