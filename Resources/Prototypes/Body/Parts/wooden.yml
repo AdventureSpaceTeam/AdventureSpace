@@ -1,0 +1,455 @@
+- type: entity
+  id: PartWooden
+  parent: BaseItem
+  name: "деревянный протез"
+  abstract: true
+  components:
+    - type: Damageable
+      damageModifierSet: Wood
+      damageContainer: Inorganic
+    - type: BodyPart
+    - type: SurgeryBodyPart
+      species: universal
+    - type: ContainerContainer
+      containers:
+        bodypart: !type:Container
+          ents: [ ]
+        attachment: !type:Container
+          ents: [ ]
+        slotAttachment: !type:Container
+          ents: [ ]
+    - type: StaticPrice
+      price: 50
+
+- type: entity
+  id: LeftArmWooden
+  name: "Левая деревянная рука"
+  description: "Деревянный протез с простым шарниром, позволяющим ограниченно выполнять функции обычной руки."
+  parent: PartWooden
+  components:
+    - type: Sprite
+      netsync: true
+      sprite: DarkStation/MainGame/Mobs/Species/Bionic/Parts/wooden.rsi
+      state: "l_arm_icon"
+    - type: Icon
+      sprite: DarkStation/MainGame/Mobs/Species/Bionic/Parts/wooden.rsi
+      state: "l_arm_icon"
+    - type: BodyPart
+      partType: Arm
+      symmetry: Left
+    - type: Construction
+      graph: WoodenArmLeftG
+      node: arml
+    - type: SurgeryBodyPart
+      visuals:
+        speciesSprite: MobWoodenLArm
+        overrideColor: true
+
+- type: entity
+  id: RightArmWooden
+  name: "Правая деревянная рука"
+  description: "Деревянный протез с простым шарниром, позволяющим ограниченно выполнять функции обычной руки."
+  parent: PartWooden
+  components:
+    - type: Sprite
+      netsync: true
+      sprite: DarkStation/MainGame/Mobs/Species/Bionic/Parts/wooden.rsi
+      state: "r_arm_icon"
+    - type: Icon
+      sprite: DarkStation/MainGame/Mobs/Species/Bionic/Parts/wooden.rsi
+      state: "r_arm_icon"
+    - type: BodyPart
+      partType: Arm
+      symmetry: Right
+    - type: Construction
+      graph: WoodenArmRightG
+      node: armr
+    - type: SurgeryBodyPart
+      visuals:
+        speciesSprite: MobWoodenRArm
+        overrideColor: true
+
+- type: entity
+  id: LeftHandWooden
+  name: "Левая деревянная кисть"
+  description: "Простая деревянная кисть, позволяющая ограниченно выполнять функции обычной кисти."
+  parent: [ PartWooden, BaseLeftHand ]
+  components:
+    - type: Sprite
+      netsync: true
+      sprite: DarkStation/MainGame/Mobs/Species/Bionic/Parts/wooden.rsi
+      state: "l_hand_icon"
+    - type: Icon
+      sprite: DarkStation/MainGame/Mobs/Species/Bionic/Parts/wooden.rsi
+      state: "l_hand_icon"
+    - type: BodyPart
+      partType: Hand
+      symmetry: Left
+    - type: Construction
+      graph: WoodenHandLeftG
+      node: handl
+    - type: SurgeryBodyPart
+      visuals:
+        speciesSprite: MobWoodenLHand
+        overrideColor: true
+
+
+- type: entity
+  id: RightHandWooden
+  name: "Правая деревянная кисть"
+  description: "Простая деревянная кисть, позволяющая ограниченно выполнять функции обычной кисти."
+  parent: [ PartWooden, BaseRightHand ]
+  components:
+    - type: Sprite
+      netsync: true
+      sprite: DarkStation/MainGame/Mobs/Species/Bionic/Parts/wooden.rsi
+      state: "r_hand_icon"
+    - type: Icon
+      sprite: DarkStation/MainGame/Mobs/Species/Bionic/Parts/wooden.rsi
+      state: "r_hand_icon"
+    - type: BodyPart
+      partType: Hand
+      symmetry: Right
+    - type: Construction
+      graph: WoodenHandRightG
+      node: handr
+    - type: SurgeryBodyPart
+      visuals:
+        speciesSprite: MobWoodenRHand
+        overrideColor: true
+
+- type: entity
+  id: LeftLegWooden
+  name: "Левая деревянная нога"
+  description: "Деревянный протез ноги, позволяющий передвигаться, если нет лучших вариантов."
+  parent: [ PartWooden, BaseLeftLeg ]
+  components:
+    - type: Sprite
+      netsync: true
+      sprite: DarkStation/MainGame/Mobs/Species/Bionic/Parts/wooden.rsi
+      state: "l_leg_icon"
+    - type: Icon
+      sprite: DarkStation/MainGame/Mobs/Species/Bionic/Parts/wooden.rsi
+      state: "l_leg_icon"
+    - type: BodyPart
+      partType: Leg
+      symmetry: Left
+    - type: MovementBodyPart
+      walkSpeed: 2.0
+      sprintSpeed: 3.5
+    - type: Construction
+      graph: WoodenLegLeftG
+      node: legl
+    - type: SurgeryBodyPart
+      visuals:
+        speciesSprite: MobWoodenLLeg
+        overrideColor: true
+
+- type: entity
+  id: RightLegWooden
+  name: "Правая деревянная нога"
+  description: "Деревянный протез ноги, позволяющий передвигаться, если нет лучших вариантов."
+  parent: [ PartWooden, BaseRightLeg ]
+  components:
+    - type: Sprite
+      netsync: true
+      sprite: DarkStation/MainGame/Mobs/Species/Bionic/Parts/wooden.rsi
+      state: "r_leg_icon"
+    - type: Icon
+      sprite: DarkStation/MainGame/Mobs/Species/Bionic/Parts/wooden.rsi
+      state: "r_leg_icon"
+    - type: BodyPart
+      partType: Leg
+      symmetry: Right
+    - type: MovementBodyPart
+      walkSpeed: 2.0
+      sprintSpeed: 3.5
+    - type: Construction
+      graph: WoodenLegRightG
+      node: legr
+    - type: SurgeryBodyPart
+      visuals:
+        speciesSprite: MobWoodenRLeg
+        overrideColor: true
+
+- type: entity
+  id: LeftFootWooden
+  name: "Левая деревянная стопа"
+  description: "Деревянный протез стопы, позволяющий передвигаться, если нет лучших вариантов."
+  parent: PartWooden
+  components:
+    - type: Sprite
+      netsync: true
+      sprite: DarkStation/MainGame/Mobs/Species/Bionic/Parts/wooden.rsi
+      state: "l_foot_icon"
+    - type: Icon
+      sprite: DarkStation/MainGame/Mobs/Species/Bionic/Parts/wooden.rsi
+      state: "l_foot_icon"
+    - type: BodyPart
+      partType: Foot
+      symmetry: Left
+    - type: Construction
+      graph: WoodenFootLeftG
+      node: footl
+    - type: SurgeryBodyPart
+      visuals:
+        speciesSprite: MobWoodenLFoot
+        overrideColor: true
+
+- type: entity
+  id: RightFootWooden
+  name: "Правая деревянная стопа"
+  description: "Деревянный протез стопы, позволяющий передвигаться, если нет лучших вариантов."
+  parent: PartWooden
+  components:
+    - type: Sprite
+      netsync: true
+      sprite: DarkStation/MainGame/Mobs/Species/Bionic/Parts/wooden.rsi
+      state: "r_foot_icon"
+    - type: Icon
+      sprite: DarkStation/MainGame/Mobs/Species/Bionic/Parts/wooden.rsi
+      state: "r_foot_icon"
+    - type: BodyPart
+      partType: Foot
+      symmetry: Right
+    - type: Construction
+      graph: WoodenFootRightG
+      node: footr
+    - type: SurgeryBodyPart
+      visuals:
+        speciesSprite: MobWoodenRFoot
+        overrideColor: true
+
+## Крафты
+
+## Руки
+
+- type: construction
+  name: деревянный протез руки (левый, с кистью)
+  id: woodenarmleft
+  graph: WoodenArmLeftG
+  startNode: start
+  targetNode: arml
+  category: construction-category-tools
+  description: Простой деревянный протез руки.
+  icon:
+    sprite: DarkStation/MainGame/Mobs/Species/Bionic/Parts/wooden.rsi
+    state: "l_arm_icon"
+  objectType: Item
+
+- type: constructionGraph
+  id: WoodenArmLeftG
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: arml
+          steps:
+            - material: WoodPlank
+              amount: 5
+            - material: Steel
+              amount: 1
+              doAfter: 4
+    - node: arml
+      entity: LeftWoodenArmHand
+
+- type: construction
+  name: деревянный протез руки (правый, с кистью)
+  id: woodenarmright
+  graph: WoodenArmRightG
+  startNode: start
+  targetNode: armr
+  category: construction-category-tools
+  description: Простой деревянный протез руки.
+  icon:
+    sprite: DarkStation/MainGame/Mobs/Species/Bionic/Parts/wooden.rsi
+    state: "r_arm_icon"
+  objectType: Item
+
+- type: constructionGraph
+  id: WoodenArmRightG
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: armr
+          steps:
+            - material: WoodPlank
+              amount: 5
+            - material: Steel
+              amount: 1
+              doAfter: 4
+    - node: armr
+      entity: RightWoodenArmHand
+
+## Кисти
+
+- type: construction
+  name: деревянный протез кисти (левый)
+  id: woodenhandleft
+  graph: WoodenHandLeftG
+  startNode: start
+  targetNode: handl
+  category: construction-category-tools
+  description: Простой деревянный протез кисти.
+  icon:
+    sprite: DarkStation/MainGame/Mobs/Species/Bionic/Parts/wooden.rsi
+    state: "l_hand_icon"
+  objectType: Item
+
+- type: constructionGraph
+  id: WoodenHandLeftG
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: handl
+          steps:
+            - material: WoodPlank
+              amount: 3
+              doAfter: 4
+    - node: handl
+      entity: LeftHandWooden
+
+- type: construction
+  name: деревянный протез кисти (правый)
+  id: woodenhandright
+  graph: WoodenHandRightG
+  startNode: start
+  targetNode: handr
+  category: construction-category-tools
+  description: Простой деревянный протез кисти.
+  icon:
+    sprite: DarkStation/MainGame/Mobs/Species/Bionic/Parts/wooden.rsi
+    state: "r_hand_icon"
+  objectType: Item
+
+- type: constructionGraph
+  id: WoodenHandRightG
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: handr
+          steps:
+            - material: WoodPlank
+              amount: 3
+              doAfter: 4
+    - node: handr
+      entity: RightHandWooden
+
+## Ноги
+
+- type: construction
+  name: деревянный протез ноги (левый)
+  id: woodenlegleft
+  graph: WoodenLegLeftG
+  startNode: start
+  targetNode: legl
+  category: construction-category-tools
+  description: Простой деревянный протез ноги.
+  icon:
+    sprite: DarkStation/MainGame/Mobs/Species/Bionic/Parts/wooden.rsi
+    state: "l_leg_icon"
+  objectType: Item
+
+- type: constructionGraph
+  id: WoodenLegLeftG
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: legl
+          steps:
+            - material: WoodPlank
+              amount: 5
+            - material: Steel
+              amount: 1
+              doAfter: 4
+    - node: legl
+      entity: LeftLegFootWooden
+
+- type: construction
+  name: деревянный протез ноги (правый)
+  id: woodenlegright
+  graph: WoodenLegRightG
+  startNode: start
+  targetNode: legr
+  category: construction-category-tools
+  description: Простой деревянный протез ноги.
+  icon:
+    sprite: DarkStation/MainGame/Mobs/Species/Bionic/Parts/wooden.rsi
+    state: "r_leg_icon"
+  objectType: Item
+
+- type: constructionGraph
+  id: WoodenLegRightG
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: legr
+          steps:
+            - material: WoodPlank
+              amount: 5
+            - material: Steel
+              amount: 1
+              doAfter: 4
+    - node: legr
+      entity: RightLegFootWooden
+
+## Стопы
+
+- type: construction
+  name: деревянный протез стопы (левый)
+  id: woodenfootleft
+  graph: WoodenFootLeftG
+  startNode: start
+  targetNode: footl
+  category: construction-category-tools
+  description: Простой деревянный протез стопы.
+  icon:
+    sprite: DarkStation/MainGame/Mobs/Species/Bionic/Parts/wooden.rsi
+    state: "l_foot_icon"
+  objectType: Item
+
+- type: constructionGraph
+  id: WoodenFootLeftG
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: footl
+          steps:
+            - material: WoodPlank
+              amount: 3
+              doAfter: 4
+    - node: footl
+      entity: LeftFootWooden
+
+- type: construction
+  name: деревянный протез стопы (правый)
+  id: woodenfootright
+  graph: WoodenFootRightG
+  startNode: start
+  targetNode: footr
+  category: construction-category-tools
+  description: Простой деревянный протез стопы.
+  icon:
+    sprite: DarkStation/MainGame/Mobs/Species/Bionic/Parts/wooden.rsi
+    state: "r_foot_icon"
+  objectType: Item
+
+- type: constructionGraph
+  id: WoodenFootRightG
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: footr
+          steps:
+            - material: WoodPlank
+              amount: 3
+              doAfter: 4
+    - node: footr
+      entity: RightFootWooden

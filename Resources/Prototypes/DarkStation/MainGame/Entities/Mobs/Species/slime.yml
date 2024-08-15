@@ -1,0 +1,42 @@
+﻿- type: entity
+  save: false
+  id: BaseSlimeSurgery
+  abstract: true
+  components:
+  - type: TargetDoll
+  - type: Surgery
+    compatibleSpecies:
+    - slime
+    - universal
+  - type: SurgeryDamage
+    damage:
+      Incisor:
+        types:
+          Asphyxiation: 5 #slimes are not very much affected by procedures
+      SmallClamp:
+        types:
+          Asphyxiation: 0
+      LargeClamp:
+        types:
+          Asphyxiation: 0
+      Saw:
+        types:
+          Asphyxiation: 25
+      Drill:
+        types:
+          Asphyxiation: 25
+      Suture:
+        types:
+          Asphyxiation: 10
+      HardSuture:
+        types:
+          Asphyxiation: 15
+      Cauterizer:
+        types:
+          Asphyxiation: 35 #they take a bit more pain from cauterizer
+      Manipulator:
+        types:
+          Asphyxiation: 10
+      Retractor:
+        types:
+          Asphyxiation: 5

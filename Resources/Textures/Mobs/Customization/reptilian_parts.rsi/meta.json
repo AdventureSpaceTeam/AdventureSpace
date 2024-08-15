@@ -612,6 +612,9 @@
     {
       "name": "frills_neckfull",
       "directions": 4
-    }
+    },
+      {
+          "name": "tail_icon"
+      }
   ]
 }

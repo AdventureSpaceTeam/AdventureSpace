@@ -37,11 +37,13 @@
     - map: [ "enum.HumanoidVisualLayers.HeadSide" ]
     - map: [ "enum.HumanoidVisualLayers.HeadTop" ]
     - map: [ "enum.HumanoidVisualLayers.Tail" ]
+    - map: [ "enum.HumanoidVisualLayers.Wings" ]
+    - map: [ "enum.HumanoidVisualLayers.Paws" ]
     - map: [ "mask" ]
     - map: [ "head" ]
     - map: [ "pocket1" ]
     - map: [ "pocket2" ]
-    - map: ["enum.HumanoidVisualLayers.Handcuffs"]
+    - map: [ "enum.HumanoidVisualLayers.Handcuffs" ]
       color: "#ffffff"
       sprite: Objects/Misc/handcuffs.rsi
       state: body-overlay-2
@@ -49,6 +51,10 @@
     - map: [ "clownedon" ] # Dynamically generated
       sprite: "Effects/creampie.rsi"
       state: "creampie_human"
+      visible: false
+    - map: [ "zombieSmokerTongue" ]
+      sprite: "DarkStation/MainGame/Mobs/Zombie/Smoker/tongue.rsi"
+      state: tongue
       visible: false
   - type: DamageVisuals
     thresholds: [ 10, 20, 30, 50, 70, 100 ]
@@ -69,8 +75,12 @@
     visuals:
       enum.CreamPiedVisuals.Creamed:
         clownedon: # Not 'creampied' bc I can already see Skyrat complaining about conflicts.
-          True: {visible: true}
-          False: {visible: false}
+          True: { visible: true }
+          False: { visible: false }
+      enum.ZombieSmokerVisuals.Cuffed:
+        zombieSmokerTongue:
+          True: { visible: true }
+          False: { visible: false }
   - type: StatusIcon
     bounds: -0.5,-0.5,0.5,0.5
   - type: RotationVisuals
@@ -108,10 +118,10 @@
     groups:
       Flammable: [ Touch ]
       Extinguish: [ Touch ]
-      Acidic: [Touch, Ingestion]
+      Acidic: [ Touch, Ingestion ]
     reactions:
-    - reagents: [Water, SpaceCleaner]
-      methods: [Touch]
+    - reagents: [ Water, SpaceCleaner ]
+      methods: [ Touch ]
       effects:
       - !type:WashCreamPieReaction
   - type: StatusEffects
@@ -132,8 +142,6 @@
     - Pacified
     - StaminaModifier
     - Flashed
-    - RadiationProtection
-    - Drowsiness
   - type: Body
     prototype: Human
     requiredLegs: 2
@@ -161,13 +169,13 @@
     damage:
       types:
         Blunt: 5
+  - type: TTS # Corvax-TTS
   - type: SleepEmitSound
   - type: SSDIndicator
   - type: StandingState
   - type: Dna
   - type: MindContainer
     showExamineInfo: true
-  - type: CanEnterCryostorage
   - type: InteractionPopup
     successChance: 1
     interactSuccessString: hugging-success-generic
@@ -187,6 +195,8 @@
         type: HumanoidMarkingModifierBoundUserInterface
       enum.StrippingUiKey.Key:
         type: StrippableBoundUserInterface
+      enum.SurgeryUiKey.Key:
+        type: SurgeryBoundUserInterface
   - type: Puller
   - type: Speech
     speechSounds: Alto
@@ -237,6 +247,7 @@
       groups:
         Brute: -0.07
   - type: Fingerprint
+
   - type: Blindable
   # Other
   - type: Temperature
@@ -250,11 +261,6 @@
     heatDamage:
       types:
         Heat: 1.5 #per second, scales with temperature & other constants
-  - type: TemperatureSpeed
-    thresholds:
-      293: 0.8
-      280: 0.6
-      260: 0.4
   - type: ThermalRegulator
     metabolismHeat: 800
     radiatedHeat: 100
@@ -267,8 +273,8 @@
   - type: Butcherable
     butcheringType: Spike # TODO human.
     spawned:
-      - id: FoodMeat
-        amount: 5
+    - id: FoodMeat
+      amount: 5
   - type: Respirator
     damage:
       types:
@@ -328,6 +334,8 @@
     - map: [ "enum.HumanoidVisualLayers.HeadSide" ]
     - map: [ "enum.HumanoidVisualLayers.HeadTop" ]
     - map: [ "enum.HumanoidVisualLayers.Tail" ]
+    - map: [ "enum.HumanoidVisualLayers.Wings" ]
+    - map: [ "enum.HumanoidVisualLayers.Paws" ]
     - map: [ "mask" ]
     - map: [ "head" ]
     - map: [ "pocket1" ]

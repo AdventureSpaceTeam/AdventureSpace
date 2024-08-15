@@ -6,31 +6,46 @@
     head:
       part: HeadHuman
       connections:
-      - torso
+        - torso
       organs:
-        brain: OrganHumanBrain
-        eyes: OrganHumanEyes
+        brain:
+          organ: OrganHumanBrain
+          type: Brain
+        eyes:
+          organ: OrganHumanEyes
+          type: Eye
+          internal: false
     torso:
       part: TorsoHuman
       connections:
-      - right arm
-      - left arm
-      - right leg
-      - left leg
+        - right arm
+        - left arm
+        - right leg
+        - left leg
       organs:
-        heart: OrganDwarfHeart
-        lungs: OrganHumanLungs
-        stomach: OrganDwarfStomach
-        liver: OrganDwarfLiver
-        kidneys: OrganHumanKidneys
+        heart:
+          organ: OrganDwarfHeart
+          type: Heart
+        lungs:
+          organ: OrganHumanLungs
+          type: Lung
+        stomach:
+          organ: OrganDwarfStomach
+          type: Stomach
+        liver:
+          organ: OrganDwarfLiver
+          type: Liver
+        kidneys:
+          organ: OrganHumanKidneys
+          type: Kidney
     right arm:
       part: RightArmHuman
       connections:
-      - right hand
+        - right hand
     left arm:
       part: LeftArmHuman
       connections:
-      - left hand
+        - left hand
     right hand:
       part: RightHandHuman
     left hand:
@@ -38,11 +53,11 @@
     right leg:
       part: RightLegHuman
       connections:
-      - right foot
+        - right foot
     left leg:
       part: LeftLegHuman
       connections:
-      - left foot
+        - left foot
     right foot:
       part: RightFootHuman
     left foot:

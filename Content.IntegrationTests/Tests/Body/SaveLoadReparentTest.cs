@@ -70,7 +70,7 @@ public sealed class SaveLoadReparentTest
                     }
                 });
 
-                foreach (var (slotId, slot) in component.Children)
+                foreach (var (slotId, slot) in component.Childs)
                 {
                     Assert.Multiple(() =>
                     {
@@ -149,7 +149,7 @@ public sealed class SaveLoadReparentTest
                         Assert.That(parent.Value, Is.Not.EqualTo(default(EntityUid)));
                     });
 
-                    foreach (var (slotId, slot) in component.Children)
+                    foreach (var (slotId, slot) in component.Childs)
                     {
                         Assert.Multiple(() =>
                         {

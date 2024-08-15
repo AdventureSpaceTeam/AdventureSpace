@@ -1,7 +1,7 @@
 - type: entity
   save: false
   name: Urist McHands The Dwarf
-  parent: BaseMobSpeciesOrganic
+  parent: [ BaseMobSpeciesOrganic, BaseHumanSurgery ]
   id: BaseMobDwarf
   abstract: true
   components:
@@ -23,6 +23,7 @@
     scale: 1, 0.8
   - type: Body
     prototype: Dwarf
+    species: human
     requiredLegs: 2
   - type: Butcherable
     butcheringType: Spike

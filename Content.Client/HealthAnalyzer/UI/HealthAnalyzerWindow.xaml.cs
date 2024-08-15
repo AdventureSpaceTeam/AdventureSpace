@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Numerics;
+using System.Text;
 using Content.Shared.Atmos;
 using Content.Client.UserInterface.Controls;
 using Content.Shared.Damage;
@@ -29,7 +30,7 @@ namespace Content.Client.HealthAnalyzer.UI
         private readonly IResourceCache _cache;
 
         private const int AnalyzerHeight = 430;
-        private const int AnalyzerWidth = 300;
+        private const int AnalyzerWidth = 600;
 
         public HealthAnalyzerWindow()
         {
@@ -40,6 +41,15 @@ namespace Content.Client.HealthAnalyzer.UI
             _spriteSystem = _entityManager.System<SpriteSystem>();
             _prototypes = dependencies.Resolve<IPrototypeManager>();
             _cache = dependencies.Resolve<IResourceCache>();
+            SetupSplitContainer();
+        }
+
+        private void SetupSplitContainer()
+        {
+            SplitContainer.ResizeMode = SplitContainer.SplitResizeMode.RespectChildrenMinSize;
+            SplitContainer.SplitWidth = 2;
+            SplitContainer.SplitEdgeSeparation = 1f;
+            SplitContainer.StretchDirection = SplitContainer.SplitStretchDirection.TopLeft;
         }
 
         public void Populate(HealthAnalyzerScannedUserMessage msg)
@@ -108,6 +118,7 @@ namespace Content.Client.HealthAnalyzer.UI
             IReadOnlyDictionary<string, FixedPoint2> damagePerType = damageable.Damage.DamageDict;
 
             DrawDiagnosticGroups(damageSortedGroups, damagePerType);
+            DrawOrgansState(msg.OrganConditions);
 
             if (_entityManager.TryGetComponent(target, out HungerComponent? hunger)
                 && hunger.StarvationDamage != null
@@ -124,6 +135,18 @@ namespace Content.Client.HealthAnalyzer.UI
 
             SetHeight = AnalyzerHeight;
             SetWidth = AnalyzerWidth;
+        }
+
+        private void DrawOrgansState(Dictionary<string, string> organs)
+        {
+            var organsState = new StringBuilder("Состояние органов: \n");
+
+            foreach (var organ in organs)
+            {
+                organsState.Append($"\n{organ.Key}: {organ.Value}\n");
+            }
+
+            OrganStatus.SetMessage(FormattedMessage.FromMarkup(organsState.ToString()));
         }
 
         private void DrawDiagnosticGroups(

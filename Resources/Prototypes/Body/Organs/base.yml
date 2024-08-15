@@ -1,0 +1,13 @@
+﻿- type: entity
+  id: BaseHeart
+  abstract: true
+  components:
+  - type: CirculatoryPump
+    organKey: heart
+    strainDamageMod: 0.01
+    strainMod: 180
+    strainRecovery: 1
+    strainCeiling: 0
+    maxDamageThreshold: 10
+  - type: Organ
+    organType: Heart

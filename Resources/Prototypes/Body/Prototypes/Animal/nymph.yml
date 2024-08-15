@@ -8,12 +8,24 @@
       connections:
       - legs
       organs:
-        brain: OrganDionaBrain
-        lungs: OrganAnimalLungs
-        stomach: OrganAnimalStomach
-        liver: OrganAnimalLiver
-        heart: OrganAnimalHeart
-        kidneys: OrganAnimalKidneys
+        brain:
+          organ: OrganDionaBrain
+          type: Brain
+        lungs:
+          organ: OrganAnimalLungs
+          type: Lung
+        stomach:
+          organ: OrganAnimalStomach
+          type: Stomach
+        liver:
+          organ: OrganAnimalLiver
+          type: Liver
+        heart:
+          organ: OrganAnimalHeart
+          type: Heart
+        kidneys:
+          organ: OrganAnimalKidneys
+          type: Kidney
     legs:
       part: LegsAnimal
       connections:
@@ -31,11 +43,21 @@
       connections:
       - legs
       organs:
-        lungs: OrganDionaLungs
-        stomach: OrganAnimalStomach
-        liver: OrganAnimalLiver
-        heart: OrganAnimalHeart
-        kidneys: OrganAnimalKidneys
+        lungs:
+          organ: OrganDionaLungs
+          type: Lung
+        stomach:
+          organ: OrganAnimalStomach
+          type: Stomach
+        liver:
+          organ: OrganAnimalLiver
+          type: Liver
+        heart:
+          organ: OrganAnimalHeart
+          type: Heart
+        kidneys:
+          organ: OrganAnimalKidneys
+          type: Kidney
     legs:
       part: LegsAnimal
       connections:
@@ -53,11 +75,21 @@
       connections:
       - legs
       organs:
-        lungs: OrganAnimalLungs
-        stomach: OrganDionaStomach
-        liver: OrganAnimalLiver
-        heart: OrganAnimalHeart
-        kidneys: OrganAnimalKidneys
+        lungs:
+          organ: OrganAnimalLungs
+          type: Lung
+        stomach:
+          organ: OrganDionaStomach
+          type: Stomach
+        liver:
+          organ: OrganAnimalLiver
+          type: Liver
+        heart:
+          organ: OrganAnimalHeart
+          type: Heart
+        kidneys:
+          organ: OrganAnimalKidneys
+          type: Kidney
     legs:
       part: LegsAnimal
       connections:

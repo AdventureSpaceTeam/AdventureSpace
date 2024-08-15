@@ -1,0 +1,41 @@
+﻿- type: entity
+  save: false
+  id: BaseDionaSurgery
+  abstract: true
+  components:
+  - type: TargetDoll
+  - type: Surgery
+    compatibleSpecies:
+    - diona
+  - type: SurgeryDamage
+    damage:
+      Incisor:
+        types:
+          Asphyxiation: 5
+      SmallClamp:
+        types:
+          Asphyxiation: 0
+      LargeClamp:
+        types:
+          Asphyxiation: 0
+      Saw:
+        types:
+          Asphyxiation: 50 #not as affected by sawing and incisions
+      Drill:
+        types:
+          Asphyxiation: 25
+      Suture:
+        types:
+          Asphyxiation: 10
+      HardSuture:
+        types:
+          Asphyxiation: 15
+      Cauterizer:
+        types:
+          Asphyxiation: 50 #hurt more by burning
+      Manipulator:
+        types:
+          Asphyxiation: 10
+      Retractor:
+        types:
+          Asphyxiation: 10

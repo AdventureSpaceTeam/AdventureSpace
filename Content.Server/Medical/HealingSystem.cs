@@ -37,6 +37,7 @@ public sealed class HealingSystem : EntitySystem
     [Dependency] private readonly MobThresholdSystem _mobThresholdSystem = default!;
     [Dependency] private readonly PopupSystem _popupSystem = default!;
     [Dependency] private readonly SolutionContainerSystem _solutionContainerSystem = default!;
+    // [Dependency] private readonly IDiseasesBridge _diseasesBridge = default!;
 
     public override void Initialize()
     {
@@ -55,13 +56,15 @@ public sealed class HealingSystem : EntitySystem
 
         if (args.Handled || args.Cancelled)
             return;
-
-        if (healing.DamageContainers is not null &&
-            entity.Comp.DamageContainerID is not null &&
-            !healing.DamageContainers.Contains(entity.Comp.DamageContainerID))
-        {
-            return;
-        }
+        //
+        // var healedDisease = _diseasesBridge.TryHealDisease(args.Used.Value, entity.Owner);
+        // if (!healedDisease &&
+        //     healing.DamageContainers is not null &&
+        //     entity.Comp.DamageContainerID is not null &&
+        //     !healing.DamageContainers.Contains(entity.Comp.DamageContainerID))
+        // {
+        //     return;
+        // }
 
         // Heal some bloodloss damage.
         if (healing.BloodlossModifier != 0)
@@ -82,8 +85,8 @@ public sealed class HealingSystem : EntitySystem
 
         var healed = _damageable.TryChangeDamage(entity.Owner, healing.Damage, true, origin: args.Args.User);
 
-        if (healed == null && healing.BloodlossModifier != 0)
-            return;
+        // if (!healedDisease && healed == null && healing.BloodlossModifier != 0)
+        //     return;
 
         var total = healed?.GetTotal() ?? FixedPoint2.Zero;
 
@@ -119,6 +122,9 @@ public sealed class HealingSystem : EntitySystem
         if (!args.Repeat && !dontRepeat)
             _popupSystem.PopupEntity(Loc.GetString("medical-item-finished-using", ("item", args.Used)), entity.Owner, args.User);
         args.Handled = true;
+
+        var ev = new EntityHealedEvent(total);
+        RaiseLocalEvent(entity.Owner, ref ev);
     }
 
     private bool HasDamage(DamageableComponent component, HealingComponent healing)
@@ -159,12 +165,13 @@ public sealed class HealingSystem : EntitySystem
         if (!TryComp<DamageableComponent>(target, out var targetDamage))
             return false;
 
-        if (component.DamageContainers is not null &&
-            targetDamage.DamageContainerID is not null &&
-            !component.DamageContainers.Contains(targetDamage.DamageContainerID))
-        {
-            return false;
-        }
+        // var canHealDisease = _diseasesBridge.CanHealDisease(uid, target);
+        // if (component.DamageContainers is not null &&
+        //     targetDamage.DamageContainerID is not null &&
+        //     !component.DamageContainers.Contains(targetDamage.DamageContainerID) && !canHealDisease)
+        // {
+        //     return false;
+        // }
 
         if (user != target && !_interactionSystem.InRangeUnobstructed(user, target, popup: true))
             return false;
@@ -173,6 +180,7 @@ public sealed class HealingSystem : EntitySystem
             return false;
 
         var anythingToDo =
+            // canHealDisease || HasDamage(targetDamage, component) ||
             HasDamage(targetDamage, component) ||
             component.ModifyBloodLevel > 0 // Special case if healing item can restore lost blood...
                 && TryComp<BloodstreamComponent>(target, out var bloodstream)

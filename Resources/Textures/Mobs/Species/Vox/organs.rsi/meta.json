@@ -1,0 +1,41 @@
+{
+    "version": 1,
+    "license": "Собственная лицензия. Полный запрет на копирование и использование вне проекта Dark Station без одобрения текущего владельца проекта",
+    "copyright": "Roisi DS",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "brain"
+        },
+        {
+            "name": "lung-l"
+        },
+        {
+            "name": "lung-r"
+        },
+        {
+            "name": "eyeball-l"
+        },
+        {
+            "name": "eyeball-r"
+        },
+        {
+            "name": "kidney-l"
+        },
+        {
+            "name": "kidney-r"
+        },
+        {
+            "name": "liver"
+        },
+        {
+            "name": "heart"
+        },
+        {
+            "name": "heart-on"
+        }
+    ]
+}

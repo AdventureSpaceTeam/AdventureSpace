@@ -7,7 +7,29 @@
     - type: Sprite
       sprite: Mobs/Species/Slime/organs.rsi
       state: brain-slime
+    - type: Organ
+      organType: Brain
+      species: slime
+    - type: Brain
     - type: Stomach
+    - type: DStomach
+      organKey: stomach
+      maxDamageThreshold: 200 #make this a bit more resilient due to the multiple functions #if its brain is also its lungs, then I'm making its stomach also its liver and kidneys okay?
+    - type: ToxinRemover
+      organKey: kidney
+      embedded: true
+      maxDamageThreshold: 800 #make this a bit more resilient due to the multiple functions
+    - type: ToxinFilter
+      organKey: liver
+      embedded: true
+      maxDamageThreshold: 600 #make this a bit more resilient due to the multiple functions
+    - type: CirculatoryPump
+      organKey: heart
+      strainDamageMod: 0.01
+      strainMod: 180
+      strainRecovery: 1
+      strainCeiling: 0
+      maxDamageThreshold: 10
     - type: Metabolizer
       maxReagents: 3
       metabolizerTypes: [ Slime ]
@@ -36,8 +58,13 @@
       layers:
         - state: lung-l-slime
         - state: lung-r-slime
+    - type: Organ
+      organType: Lung
+      species: slimes
     - type: Lung
       alert: LowNitrogen
+    - type: DLungs
+      organKey: lungs
     - type: Metabolizer
       removeEmpty: true
       solutionOnBody: false

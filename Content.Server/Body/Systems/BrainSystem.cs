@@ -1,5 +1,6 @@
 using Content.Server.Body.Components;
 using Content.Server.Ghost.Components;
+using Content.Shared.AdventurePrivate._Alteros.Medical.Surgery.Events.Organs;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Events;
 using Content.Shared.Mind;
@@ -23,6 +24,7 @@ namespace Content.Server.Body.Systems
 
         private void HandleMind(EntityUid newEntity, EntityUid oldEntity)
         {
+            Log.Debug($"HandleMind {newEntity} {oldEntity}");
             if (TerminatingOrDeleted(newEntity) || TerminatingOrDeleted(oldEntity))
                 return;
 
@@ -37,6 +39,9 @@ namespace Content.Server.Body.Systems
                 return;
 
             _mindSystem.TransferTo(mindId, newEntity, mind: mind);
+
+            var pumpEv = new SurgeryRequestPump();
+            RaiseLocalEvent(newEntity, ref pumpEv);
         }
 
         private void OnPointAttempt(Entity<BrainComponent> ent, ref PointAttemptEvent args)

@@ -13,14 +13,17 @@ public sealed class HealthAnalyzerScannedUserMessage : BoundUserInterfaceMessage
     public float BloodLevel;
     public bool? ScanMode;
     public bool? Bleeding;
+    public Dictionary<string, string> OrganConditions;
+    public bool Sedated;
 
-    public HealthAnalyzerScannedUserMessage(NetEntity? targetEntity, float temperature, float bloodLevel, bool? scanMode, bool? bleeding)
+    public HealthAnalyzerScannedUserMessage(NetEntity? targetEntity, float temperature, float bloodLevel, bool? scanMode, bool? bleeding, Dictionary<string,string> organConditions, bool sedated)
     {
         TargetEntity = targetEntity;
         Temperature = temperature;
         BloodLevel = bloodLevel;
+        OrganConditions = organConditions;
+        Sedated = sedated;
         ScanMode = scanMode;
         Bleeding = bleeding;
     }
 }
-

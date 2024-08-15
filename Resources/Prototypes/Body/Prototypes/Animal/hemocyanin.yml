@@ -8,11 +8,24 @@
       connections:
       - legs
       organs:
-        lungs: OrganAnimalLungs
-        stomach: OrganAnimalStomach
-        liver: OrganAnimalLiver
-        heart: OrganArachnidHeart
-        kidneys: OrganAnimalKidneys
+        brain:
+          organ: OrganAnimalBrain
+          type: Brain
+        lungs:
+          organ: OrganAnimalLungs
+          type: Lung
+        stomach:
+          organ: OrganAnimalStomach
+          type: Stomach
+        liver:
+          organ: OrganAnimalLiver
+          type: Liver
+        heart:
+          organ: OrganArachnidHeart
+          type: Heart
+        kidneys:
+          organ: OrganAnimalKidneys
+          type: Kidney
     legs:
       part: LegsAnimal
       connections:

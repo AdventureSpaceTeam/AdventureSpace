@@ -1,0 +1,42 @@
+- type: entity
+  save: false
+  id: BaseVoxSurgery
+  abstract: true
+  components:
+  - type: TargetDoll
+  - type: Surgery
+    compatibleSpecies:
+    - vox
+    - universal
+  - type: SurgeryDamage
+    damage:
+      Incisor:
+        types:
+          Asphyxiation: 20
+      SmallClamp:
+        types:
+          Asphyxiation: 0
+      LargeClamp:
+        types:
+          Asphyxiation: 0
+      Saw:
+        types:
+          Asphyxiation: 75
+      Drill:
+        types:
+          Asphyxiation: 25
+      Suture:
+        types:
+          Asphyxiation: 10
+      HardSuture:
+        types:
+          Asphyxiation: 15
+      Cauterizer:
+        types:
+          Asphyxiation: 15
+      Manipulator:
+        types:
+          Asphyxiation: 10
+      Retractor:
+        types:
+          Asphyxiation: 10

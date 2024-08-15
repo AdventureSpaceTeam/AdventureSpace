@@ -1,0 +1,41 @@
+﻿- type: entity
+  save: false
+  id: BaseSynthSurgery
+  abstract: true
+  components:
+  - type: TargetDoll
+  - type: Surgery
+    compatibleSpecies:
+    - universal
+  - type: SurgeryDamage
+    damage:
+      Incisor:
+        types:
+          Asphyxiation: 10
+      SmallClamp:
+        types:
+          Asphyxiation: 0
+      LargeClamp:
+        types:
+          Asphyxiation: 0
+      Saw:
+        types:
+          Asphyxiation: 50
+      Drill:
+        types:
+          Asphyxiation: 10
+      Suture:
+        types:
+          Asphyxiation: 5
+      HardSuture:
+        types:
+          Asphyxiation: 10
+      Cauterizer:
+        types:
+          Asphyxiation: 10
+      Manipulator:
+        types:
+          Asphyxiation: 10
+      Retractor:
+        types:
+          Asphyxiation: 5

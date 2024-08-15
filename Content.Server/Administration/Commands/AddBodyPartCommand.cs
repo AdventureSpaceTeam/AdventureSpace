@@ -12,7 +12,7 @@ namespace Content.Server.Administration.Commands
 
         public string Command => "addbodypart";
         public string Description => "Adds a given entity to a containing body.";
-        public string Help => "Usage: addbodypart <entity uid> <body uid> <part slot> <part type>";
+        public string Help => "Usage: addbodypart <entity uid> <body uid> <part slot> <part type> <part symmetry (optional)>";
 
         public void Execute(IConsoleShell shell, string argStr, string[] args)
         {
@@ -39,9 +39,14 @@ namespace Content.Server.Administration.Commands
             var bodySystem = _entManager.System<BodySystem>();
 
 
+            var partSymmetry = BodyPartSymmetry.None;
+            if (args.Length == 5)
+            {
+                Enum.TryParse(args[4], out partSymmetry);
+            }
 
             if (Enum.TryParse<BodyPartType>(args[3], out var partType) &&
-                bodySystem.TryCreatePartSlotAndAttach(parentId, args[2], childId, partType))
+                bodySystem.TryCreatePartSlotAndAttach(parentId, args[2], childId, partType, partSymmetry))
             {
                 shell.WriteLine($@"Added {childId} to {parentId}.");
             }

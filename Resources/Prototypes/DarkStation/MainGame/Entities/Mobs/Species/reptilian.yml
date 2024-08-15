@@ -1,0 +1,42 @@
+﻿- type: entity
+  save: false
+  id: BaseReptilianSurgery
+  abstract: true
+  components:
+  - type: TargetDoll
+  - type: Surgery
+    compatibleSpecies:
+    - reptilian
+    - universal
+  - type: SurgeryDamage
+    damage:
+      Incisor:
+        types:
+          Asphyxiation: 15 #lizards are a little tougher
+      SmallClamp:
+        types:
+          Asphyxiation: 0
+      LargeClamp:
+        types:
+          Asphyxiation: 0
+      Saw:
+        types:
+          Asphyxiation: 65 #lizards are a little tougher
+      Drill:
+        types:
+          Asphyxiation: 25
+      Suture:
+        types:
+          Asphyxiation: 10
+      HardSuture:
+        types:
+          Asphyxiation: 15
+      Cauterizer:
+        types:
+          Asphyxiation: 15
+      Manipulator:
+        types:
+          Asphyxiation: 10
+      Retractor:
+        types:
+          Asphyxiation: 10

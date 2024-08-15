@@ -1,0 +1,115 @@
+﻿- type: entity
+  id: PartBionic
+  parent: BaseItem
+  name: "бионическая часть"
+  abstract: true
+  components:
+  - type: Damageable
+    damageContainer: Biological
+  - type: BodyPart
+  - type: SurgeryBodyPart
+    species: universal
+  - type: ContainerContainer
+    containers:
+      bodypart: !type:Container
+        ents: [ ]
+      attachment: !type:Container
+        ents: [ ]
+      slotAttachment: !type:Container
+        ents: [ ]
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  id: LeftDrillArm
+  name: "левая рука бур"
+  parent: PartBionic
+  components:
+  - type: Sprite
+    netsync: true
+    sprite: DarkStation/MainGame/Mobs/Species/Bionic/Parts/drill_arm.rsi
+    state: "l_arm_icon"
+  - type: Icon
+    sprite: DarkStation/MainGame/Mobs/Species/Bionic/Parts/drill_arm.rsi
+    state: "l_arm_icon"
+  - type: BodyPart
+    partType: Arm
+    symmetry: Left
+  - type: BionicBodyPart
+    components:
+    - type: ArmDrill
+  - type: SurgeryBodyPart
+    visuals:
+      speciesSprite: MobDrillBionicLArm
+      overrideColor: true
+
+- type: entity
+  id: RightDrillArm
+  name: "правая рука бур"
+  parent: PartBionic
+  components:
+  - type: Sprite
+    netsync: true
+    sprite: DarkStation/MainGame/Mobs/Species/Bionic/Parts/drill_arm.rsi
+    state: "r_arm_icon"
+  - type: Icon
+    sprite: DarkStation/MainGame/Mobs/Species/Bionic/Parts/drill_arm.rsi
+    state: "r_arm_icon"
+  - type: BodyPart
+    partType: Arm
+    symmetry: Right
+  - type: BionicBodyPart
+    components:
+    - type: ArmDrill
+  - type: SurgeryBodyPart
+    visuals:
+      speciesSprite: MobDrillBionicRArm
+      overrideColor: true
+
+- type: entity
+  id: LeftLegPower
+  name: "левая силовая нога"
+  parent: [ PartBionic, BaseLeftLeg ]
+  components:
+  - type: Sprite
+    netsync: true
+    sprite: DarkStation/MainGame/Mobs/Species/Bionic/Parts/power_leg.rsi
+    state: "l_leg_icon"
+  - type: Icon
+    netsync: true
+    sprite: DarkStation/MainGame/Mobs/Species/Bionic/Parts/power_leg.rsi
+    state: "l_leg_icon"
+  - type: BodyPart
+    partType: Leg
+    symmetry: Left
+  - type: MovementBodyPart
+    walkSpeed: 5
+    sprintSpeed: 6
+  - type: SurgeryBodyPart
+    visuals:
+      speciesSprite: MobPowerLLeg
+      overrideColor: true
+
+- type: entity
+  id: RightLegPower
+  name: "правая силовая нога"
+  parent: [ PartBionic, BaseRightLeg ]
+  components:
+  - type: Sprite
+    netsync: true
+    sprite: DarkStation/MainGame/Mobs/Species/Bionic/Parts/power_leg.rsi
+    state: "r_leg_icon"
+  - type: Icon
+    netsync: true
+    sprite: DarkStation/MainGame/Mobs/Species/Bionic/Parts/power_leg.rsi
+    state: "r_leg_icon"
+  - type: BodyPart
+    partType: Leg
+    symmetry: Right
+  - type: MovementBodyPart
+    walkSpeed: 5
+    sprintSpeed: 6
+  - type: SurgeryBodyPart
+    visuals:
+      speciesSprite: MobPowerRLeg
+      overrideColor: true

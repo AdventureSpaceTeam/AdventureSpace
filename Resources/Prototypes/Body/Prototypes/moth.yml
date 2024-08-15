@@ -1,6 +1,7 @@
-﻿- type: body
+- type: body
   id: Moth
   name: "moth"
+  species: moth
   root: torso
   slots:
     head:
@@ -8,21 +9,37 @@
       connections:
       - torso
       organs:
-        brain: OrganHumanBrain
-        eyes: OrganHumanEyes
+        brain:
+          organ: OrganHumanBrain
+          type: Brain
+        eyes:
+          organ: OrganHumanEyes
+          type: Eye
+          internal: false
     torso:
       part: TorsoMoth
-      organs:
-        heart: OrganAnimalHeart
-        lungs: OrganHumanLungs
-        stomach: OrganMothStomach
-        liver: OrganAnimalLiver
-        kidneys: OrganHumanKidneys
       connections:
       - right arm
       - left arm
       - right leg
       - left leg
+      - wings
+      organs:
+        heart:
+          organ: OrganAnimalHeart
+          type: Heart
+        lungs:
+          organ: OrganHumanLungs
+          type: Lung
+        stomach:
+          organ: OrganMothStomach
+          type: Stomach
+        liver:
+          organ: OrganAnimalLiver
+          type: Liver
+        kidneys:
+          organ: OrganHumanKidneys
+          type: Kidney
     right arm:
       part: RightArmMoth
       connections:
@@ -47,3 +64,5 @@
       part: RightFootMoth
     left foot:
       part: LeftFootMoth
+    wings:
+      part: WingsMoth

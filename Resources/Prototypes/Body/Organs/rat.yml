@@ -5,6 +5,8 @@
   components:
   - type: Metabolizer
     metabolizerTypes: [ Rat ]
+  - type: Organ
+    species: animal
 
 - type: entity
   id: OrganRatStomach

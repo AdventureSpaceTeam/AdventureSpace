@@ -2,48 +2,64 @@
   id: Human
   name: "human"
   root: torso
+  species: human
   slots:
     head:
       part: HeadHuman
       connections:
       - torso
       organs:
-        brain: OrganHumanBrain
-        eyes: OrganHumanEyes
+        brain:
+          organ: OrganHumanBrain
+          type: Brain
+        eyes:
+          organ: OrganHumanEyes
+          type: Eye
+          internal: false
     torso:
       part: TorsoHuman
       connections:
-      - right_arm
-      - left_arm
-      - right_leg
-      - left_leg
+      - right arm
+      - left arm
+      - right leg
+      - left leg
       organs:
-        heart: OrganHumanHeart
-        lungs: OrganHumanLungs
-        stomach: OrganHumanStomach
-        liver: OrganHumanLiver
-        kidneys: OrganHumanKidneys
-    right_arm:
+        heart:
+          organ: OrganHumanHeart
+          type: Heart
+        lungs:
+          organ: OrganHumanLungs
+          type: Lung
+        stomach:
+          organ: OrganHumanStomach
+          type: Stomach
+        liver:
+          organ: OrganHumanLiver
+          type: Liver
+        kidneys:
+          organ: OrganHumanKidneys
+          type: Kidney
+    right arm:
       part: RightArmHuman
       connections:
-      - right_hand
-    left_arm:
+      - right hand
+    left arm:
       part: LeftArmHuman
       connections:
-      - left_hand
-    right_hand:
+      - left hand
+    right hand:
       part: RightHandHuman
-    left_hand:
+    left hand:
       part: LeftHandHuman
-    right_leg:
+    right leg:
       part: RightLegHuman
       connections:
-      - right_foot
-    left_leg:
+      - right foot
+    left leg:
       part: LeftLegHuman
       connections:
-      - left_foot
-    right_foot:
+      - left foot
+    right foot:
       part: RightFootHuman
-    left_foot:
+    left foot:
       part: LeftFootHuman

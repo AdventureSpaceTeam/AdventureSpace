@@ -107,7 +107,16 @@ public sealed class HungerSystem : EntitySystem
             component.Thresholds[HungerThreshold.Dead],
             component.Thresholds[HungerThreshold.Overfed]);
         UpdateCurrentThreshold(uid, component);
+        UpdateOverfedStrain(uid, component);
         Dirty(uid, component);
+    }
+
+    private void UpdateOverfedStrain(EntityUid uid, HungerComponent? component = null)
+    {
+        if (!Resolve(uid, ref component))
+            return;
+
+        component.OverfedStrain = component.CurrentThreshold == HungerThreshold.Overfed ? component.CurrentHunger : 0f;
     }
 
     private void UpdateCurrentThreshold(EntityUid uid, HungerComponent? component = null)
@@ -186,6 +195,7 @@ public sealed class HungerSystem : EntitySystem
                 value = threshold.Value;
             }
         }
+
         return result;
     }
 
@@ -253,4 +263,3 @@ public sealed class HungerSystem : EntitySystem
         }
     }
 }
-

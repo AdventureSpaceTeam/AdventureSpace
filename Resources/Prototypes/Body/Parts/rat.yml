@@ -12,7 +12,7 @@
     damageContainer: Biological
   - type: Tag
     tags:
-      - Trash
+    - Trash
   # TODO get a proper rat king & servant torso sprite.
   # currently their torso is just a small dead rat....
   - type: Sprite

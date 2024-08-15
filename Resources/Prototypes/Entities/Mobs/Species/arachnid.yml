@@ -1,7 +1,7 @@
 - type: entity
   save: false
   name: Urist McWebs
-  parent: BaseMobSpeciesOrganic
+  parent: [ BaseMobSpeciesOrganic, BaseHumanSurgery ]
   id: BaseMobArachnid
   abstract: true
   components:
@@ -90,7 +90,7 @@
       - map: [ "eyes" ]
       - map: [ "belt" ]
       - map: [ "id" ]
-      - map: [ "enum.HumanoidVisualLayers.Tail" ] # Mentioned in moth code: This needs renaming lol.
+      - map: [ "enum.HumanoidVisualLayers.Paws" ] # Mentioned in moth code: This needs renaming lol.
       - map: [ "neck" ]
       - map: [ "back" ]
       - map: [ "enum.HumanoidVisualLayers.FacialHair" ]

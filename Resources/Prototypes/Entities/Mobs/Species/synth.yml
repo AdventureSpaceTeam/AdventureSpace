@@ -1,0 +1,46 @@
+﻿# Anything human specific (e.g. UI, input) goes under MobSynth
+- type: entity
+  name: Synthetic
+  parent: [BaseMobSpeciesOrganic, BaseSynthSurgery]
+  id: BaseMobSynth
+  abstract: true
+  components:
+    - type: HumanoidAppearance
+      species: Synth
+    - type: Icon
+      sprite: Mobs/Species/Bionic/parts.rsi
+      state: full
+    - type: Body
+      prototype: Synth
+      species: universal
+      requiredLegs: 2
+    - type: Hunger
+    - type: Thirst
+
+- type: entity
+  name: Urist McHands
+  id: MobSynthDummy
+  parent: BaseSpeciesDummy
+  noSpawn: true
+
+- type: entity
+  name: Урист МакСинтетик
+  parent: [BaseMobSpeciesOrganic, BaseSynthSurgery]
+  id: BaseMobSynthBrain
+  abstract: true
+  components:
+    - type: UserInterface
+      interfaces:
+        enum.SurgeryUiKey.Key:
+          type: SurgeryBoundUserInterface
+    - type: HumanoidAppearance
+      species: Synth
+    - type: Icon
+      sprite: Mobs/Species/Bionic/parts.rsi
+      state: full
+    - type: Body
+      prototype: SynthBrain
+      species: universal
+      requiredLegs: 2
+    - type: Hunger
+    - type: Thirst

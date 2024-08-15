@@ -4,7 +4,10 @@
   name: ruminant stomach
   categories: [ HideSpawnMenu ]
   components:
-  - type: SolutionContainerManager
-    solutions:
-      stomach:
-        maxVol: 80
+    - type: Organ
+      organType: Stomach
+      species: animal
+    - type: SolutionContainerManager
+      solutions:
+        stomach:
+          maxVol: 80

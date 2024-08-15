@@ -48,14 +48,14 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
         {
             oldLayers.Remove(key);
             if (!component.CustomBaseLayers.ContainsKey(key))
-                SetLayerData(component, sprite, key, id, sexMorph: true);
+                SetLayerData(component, sprite, key, id, false, sexMorph: true);
         }
 
         // add custom layers
         foreach (var (key, info) in component.CustomBaseLayers)
         {
             oldLayers.Remove(key);
-            SetLayerData(component, sprite, key, info.Id, sexMorph: false, color: info.Color);
+            SetLayerData(component, sprite, key, info.Id, false, sexMorph: false, color: info.Color);
         }
 
         // hide old layers
@@ -72,6 +72,7 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
         SpriteComponent sprite,
         HumanoidVisualLayers key,
         string? protoId,
+        bool ignoreSkinByCustom,
         bool sexMorph = false,
         Color? color = null)
     {
@@ -91,7 +92,7 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
         var proto = _prototypeManager.Index<HumanoidSpeciesSpriteLayer>(protoId);
         component.BaseLayers[key] = proto;
 
-        if (proto.MatchSkin)
+        if (proto.MatchSkin && !ignoreSkinByCustom)
             layer.Color = component.SkinColor.WithAlpha(proto.LayerAlpha);
 
         if (proto.BaseSprite != null)
