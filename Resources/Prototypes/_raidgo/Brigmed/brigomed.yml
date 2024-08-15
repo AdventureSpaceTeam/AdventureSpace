@@ -2,6 +2,7 @@
   parent: VendingMachine
   id: VendingMachineMedicalBrig
   name: БригоМед Плюс
+  suffix: Adventure
   description: Это медицинский раздатчик препаратов. Только натуральные химикаты!
   components:
   - type: VendingMachine
