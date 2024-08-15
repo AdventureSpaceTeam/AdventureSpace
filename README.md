@@ -3,6 +3,12 @@
 [Дискорд](https://discord.gg/AD5rBEu9hk)
 [Вики](https://adventure-space.ru/)
 
+## Сборка
+
+Данная сборка имеет закрытые части, без которых оригинальный билд не собирается. Для сборки без них была создана ветка [open](https://github.com/AdventureSpaceTeam/AdventureSpace/tree/open), из которой удалены все зависимости от приватных частей.
+
+Для перехода в неё, пропишите `git switch open` в проекте, после чего содержимое вашей папки поменяется на открытую версию. Про сборку Space station 14 можете прочитать на [сайте документации](https://docs.spacestation14.com/en/general-development/setup/setting-up-a-development-environment.html).
+
 ## Лицензия
 
 Весь код репозитория лицензирован под [APGLv3](https://github.com/AdventureSpaceTeam/AdventureSpace/blob/master/license-agplv3.txt).
