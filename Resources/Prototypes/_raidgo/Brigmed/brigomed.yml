@@ -1,0 +1,52 @@
+- type: entity
+  parent: VendingMachine
+  id: VendingMachineMedicalBrig
+  name: БригоМед Плюс
+  description: Это медицинский раздатчик препаратов. Только натуральные химикаты!
+  components:
+  - type: VendingMachine
+    pack: BrigoMedPlusInventory
+    offState: off
+    brokenState: broken
+    normalState: normal-unshaded
+    ejectState: eject-unshaded
+    denyState: deny-unshaded
+    ejectDelay: 0.6
+  - type: Advertise
+    pack: NanoMedAds
+  - type: SpeakOnUIClosed
+    pack: GenericVendGoodbyes
+  - type: Sprite
+    sprite: _raidgo/Brigomed.rsi
+    layers:
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.Base"]
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
+      shader: unshaded
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: AccessReader
+    access: [["Medical"]]
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#9dc5c9"
+  - type: GuideHelp
+    guides:
+    - Medical Doctor
+
+- type: vendingMachineInventory
+  id: BrigoMedPlusInventory
+  startingInventory:
+    HandheldHealthAnalyzer: 3
+    EmergencyMedipen: 2
+    Brutepack: 3
+    Ointment: 3
+    Bloodpack: 3
+    Tourniquet: 3
+    EpinephrineChemistryBottle: 3
+    Syringe: 4
+    SyringeBicaridine: 3
+    SyringeDermaline: 3
+    ClothingEyesHudMedSec: 1
