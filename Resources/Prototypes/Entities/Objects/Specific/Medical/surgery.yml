@@ -32,7 +32,9 @@
         Heat: 5
     soundHit:
       path: /Audio/Effects/lightburn.ogg
-
+  - type: SurgeryTool
+    sound: /Audio/Effects/lightburn.ogg
+  - type: SurgeryCauterizer
 # Drill
 
 - type: entity
@@ -57,7 +59,9 @@
       path: /Audio/Items/drill_hit.ogg
   - type: StaticPrice
     price: 40
-
+  - type: SurgeryTool
+    sound: /Audio/Items/drill_hit.ogg
+  - type: SurgeryDrill
 # Scalpel
 
 - type: entity
@@ -86,6 +90,9 @@
         Slash: 8
     soundHit:
       path: /Audio/Weapons/bladeslice.ogg
+  - type: SurgeryTool
+    sound: /Audio/Effects/Fluids/blood1.ogg
+  - type: SurgeryIncisor
 
 - type: entity
   name: shiv
@@ -97,6 +104,9 @@
     state: shiv
   - type: Item
     heldPrefix: shiv
+  - type: SurgeryTool
+    sound: /Audio/Effects/Fluids/blood1.ogg
+  - type: SurgeryIncisor
 
 - type: entity
   name: advanced scalpel
@@ -112,6 +122,9 @@
     damage:
       types:
         Slash: 12
+  - type: SurgeryTool
+    sound: /Audio/Effects/Fluids/blood1.ogg
+  - type: SurgeryIncisor
 
 - type: entity
   name: laser scalpel
@@ -123,7 +136,10 @@
     state: laser
   - type: Item
     heldPrefix: laser
-
+  - type: SurgeryTool
+    sound: /Audio/Effects/Fluids/blood1.ogg
+  - type: SurgeryIncisor
+  - type: SurgeryCauterizer
 # Scissors
 
 - type: entity
@@ -138,6 +154,10 @@
   - type: Item
     sprite: Objects/Specific/Medical/Surgery/scissors.rsi
     storedRotation: 90
+  - type: SurgeryTool
+    sound: /Audio/Effects/Fluids/blood1.ogg
+  - type: SurgeryManipulator
+  - type: SurgeryRetractor
 
 - type: entity
   name: hemostat
@@ -150,7 +170,10 @@
   - type: Item
     heldPrefix: hemostat
     storedRotation: 90
-
+  - type: SurgeryTool
+    sound: /Audio/Effects/Fluids/blood1.ogg
+  - type: SurgerySmallClamp
+  - type: SurgeryManipulator
   # - type: entity
   #   name: bone setter
   #   id: BoneSetter
@@ -179,6 +202,9 @@
   - type: Tool
     qualities:
       - Sawing
+  - type: SurgeryTool
+    sound: /Audio/Effects/gib1.ogg
+  - type: SurgerySaw
 # No melee for regular saw because have you ever seen someone use a band saw as a weapon? It's dumb.
 
 - type: entity
@@ -200,6 +226,9 @@
       path: /Audio/Weapons/bladeslice.ogg
   - type: Tool
     speedModifier: 0.5
+  - type: SurgeryTool
+    sound: /Audio/Effects/gib1.ogg
+  - type: SurgerySaw
 
 - type: entity
   name: circular saw
@@ -219,6 +248,9 @@
       path: /Audio/Items/drill_hit.ogg
   - type: Tool
     speedModifier: 1.5
+  - type: SurgeryTool
+    sound: /Audio/Items/drill_hit.ogg
+  - type: SurgerySaw
 
 - type: entity
   name: advanced circular saw
@@ -234,3 +266,55 @@
     attackRate: 1.5
   - type: Tool
     speedModifier: 2.0
+  - type: SurgeryTool
+    sound: /Audio/Items/drill_hit.ogg
+  - type: SurgerySaw
+
+- type: entity
+  name: хирургическая нить
+  id: Suture
+  parent: BaseToolSurgery
+  description: Хирургическая нить, используемая для зашивания разрезов и ран.
+  components:
+  - type: Sprite
+    sprite: Objects/Specific/Medical/Surgery/suture.rsi
+    state: suture
+  - type: Item
+    sprite: Objects/Specific/Medical/Surgery/suture.rsi
+  - type: SurgeryTool
+    sound: /Audio/Effects/Fluids/blood1.ogg
+  - type: SurgerySuture
+
+- type: entity
+  name: металическая хирургическая нить
+  id: MetalSuture
+  parent: BaseToolSurgery
+  description: Для закрытия грудины используется более твердая хирургическая нить. Также может использоваться для закрытия экзоскелетов некоторых видов.
+  components:
+  - type: Sprite
+    sprite: Objects/Specific/Medical/Surgery/suture.rsi
+    state: metalsuture
+  - type: Item
+    sprite: Objects/Specific/Medical/Surgery/suture.rsi
+  - type: SurgeryTool
+    sound: /Audio/Effects/Fluids/blood1.ogg
+  - type: SurgerySuture
+  - type: SurgeryHardSuture
+
+- type: entity
+  name: импровизированный жгут
+  id: ClothTourniquet
+  parent: BaseToolSurgery
+  description: Жгут, сделанный на скорую руку из ткани
+  components:
+  - type: Construction
+    graph: makeshifttourniquet
+    node: clothtourniquet
+  - type: Sprite
+    sprite: Objects/Specific/Medical/Surgery/tourniquet.rsi
+    state: clothtourniquet
+  - type: Item
+    sprite: Objects/Specific/Medical/Surgery/tourniquet.rsi
+  - type: SurgeryTool
+    sound: /Audio/Items/jumpsuit_equip.ogg
+  - type: SurgeryLargeClamp
