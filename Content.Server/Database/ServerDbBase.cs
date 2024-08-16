@@ -1297,8 +1297,7 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
             notes.AddRange(
                 (await (from note in db.DbContext.AdminNotes
                         where note.PlayerUserId == player &&
-                              !note.Deleted &&
-                              (note.ExpirationTime == null || DateTime.UtcNow < note.ExpirationTime)
+                              !note.Deleted
                         select note)
                     .Include(note => note.Round)
                     .ThenInclude(r => r!.Server)
