@@ -39,7 +39,7 @@ public partial class SharedBodySystem
         }
 
         if (TryComp(insertedUid, out OrganComponent? organ))
-            AddOrgan((insertedUid, organ), ent.Comp.Body.Value, ent);
+            AddOrgan((insertedUid, organ), ent.Comp.Body.Value, ent, slotId);
     }
 
     private void OnBodyPartRemoved(Entity<BodyPartComponent> ent, ref EntRemovedFromContainerMessage args)
@@ -48,8 +48,8 @@ public partial class SharedBodySystem
         var removedUid = args.Entity;
         var slotId = args.Container.ID;
 
-        DebugTools.Assert(!TryComp(removedUid, out BodyPartComponent? b) || b.Body == ent.Comp.Body);
-        DebugTools.Assert(!TryComp(removedUid, out OrganComponent? o) || o.Body == ent.Comp.Body);
+        // DebugTools.Assert(!TryComp(removedUid, out BodyPartComponent? b) || b.Body == ent.Comp.Body);
+        // DebugTools.Assert(!TryComp(removedUid, out OrganComponent? o) || o.Body == ent.Comp.Body);
 
         if (TryComp(removedUid, out BodyPartComponent? part) && part.Body is not null)
         {
@@ -93,7 +93,7 @@ public partial class SharedBodySystem
             }
         }
 
-        foreach (var slotId in ent.Comp.Children.Keys)
+        foreach (var slotId in ent.Comp.Childs.Keys)
         {
             if (!Containers.TryGetContainer(ent, GetPartSlotContainerId(slotId), out var container))
                 continue;
@@ -114,10 +114,26 @@ public partial class SharedBodySystem
         Dirty(partEnt, partEnt.Comp);
         partEnt.Comp.Body = bodyEnt;
 
+        var slot = GetBodyPartSlot(bodyEnt, GetSlotWithoutContainer(slotId));
+        if (slot != null)
+        {
+            slot.BodyPart = GetNetEntity(partEnt);
+            slot.Cauterised = false;
+        }
+
+        partEnt.Comp.BodyPartSlot = slot;
+        partEnt.Comp.Body = bodyEnt;
+
+
         var ev = new BodyPartAddedEvent(slotId, partEnt);
         RaiseLocalEvent(bodyEnt, ref ev);
 
         AddLeg(partEnt, bodyEnt);
+    }
+
+    private string GetSlotWithoutContainer(string slotId)
+    {
+        return slotId.Replace(PartSlotContainerIdPrefix, "");
     }
 
     protected virtual void RemovePart(
@@ -127,7 +143,14 @@ public partial class SharedBodySystem
     {
         Resolve(bodyEnt, ref bodyEnt.Comp, logMissing: false);
         Dirty(partEnt, partEnt.Comp);
+
+        if (partEnt.Comp.BodyPartSlot != null)
+        {
+            partEnt.Comp.BodyPartSlot.BodyPart = null;
+        }
+
         partEnt.Comp.Body = null;
+        partEnt.Comp.BodyPartSlot = null;
 
         var ev = new BodyPartRemovedEvent(slotId, partEnt);
         RaiseLocalEvent(bodyEnt, ref ev);
@@ -189,7 +212,7 @@ public partial class SharedBodySystem
     /// </summary>
     public EntityUid? GetParentPartOrNull(EntityUid uid)
     {
-        if (!Containers.TryGetContainingContainer((uid, null, null), out var container))
+        if (!Containers.TryGetContainingContainer(uid, out var container))
             return null;
 
         var parent = container.Owner;
@@ -205,7 +228,7 @@ public partial class SharedBodySystem
     /// </summary>
     public (EntityUid Parent, string Slot)? GetParentPartAndSlotOrNull(EntityUid uid)
     {
-        if (!Containers.TryGetContainingContainer((uid, null, null), out var container))
+        if (!Containers.TryGetContainingContainer(uid, out var container))
             return null;
 
         var slotId = GetPartSlotContainerIdFromContainer(container.ID);
@@ -216,7 +239,7 @@ public partial class SharedBodySystem
         var parent = container.Owner;
 
         if (!TryComp<BodyPartComponent>(parent, out var parentBody)
-            || !parentBody.Children.ContainsKey(slotId))
+            || !parentBody.Childs.ContainsKey(slotId))
             return null;
 
         return (parent, slotId);
@@ -235,7 +258,7 @@ public partial class SharedBodySystem
         parentUid = null;
         parentComponent = null;
 
-        if (Containers.TryGetContainingContainer((partUid, null, null), out var container) &&
+        if (Containers.TryGetContainingContainer(partUid, out var container) &&
             TryComp(container.Owner, out parentComponent))
         {
             parentUid = container.Owner;
@@ -254,14 +277,15 @@ public partial class SharedBodySystem
         EntityUid partUid,
         string slotId,
         BodyPartType partType,
+        BodyPartSymmetry symmetry,
         BodyPartComponent? part = null)
     {
         if (!Resolve(partUid, ref part, logMissing: false))
             return null;
 
         Containers.EnsureContainer<ContainerSlot>(partUid, GetPartSlotContainerId(slotId));
-        var partSlot = new BodyPartSlot(slotId, partType);
-        part.Children.Add(slotId, partSlot);
+        var partSlot = new BodyPartSlot(slotId, GetNetEntity(partUid),partType, symmetry);
+        part.Childs.Add(slotId, partSlot);
         Dirty(partUid, part);
         return partSlot;
     }
@@ -274,6 +298,7 @@ public partial class SharedBodySystem
         EntityUid? partId,
         string slotId,
         BodyPartType partType,
+        BodyPartSymmetry symmetry,
         [NotNullWhen(true)] out BodyPartSlot? slot,
         BodyPartComponent? part = null)
     {
@@ -286,9 +311,9 @@ public partial class SharedBodySystem
         }
 
         Containers.EnsureContainer<ContainerSlot>(partId.Value, GetPartSlotContainerId(slotId));
-        slot = new BodyPartSlot(slotId, partType);
+        slot = new BodyPartSlot(slotId, GetNetEntity(partId.Value), partType, symmetry);
 
-        if (!part.Children.TryAdd(slotId, slot.Value))
+        if (!part.Childs.TryAdd(slotId, slot))
             return false;
 
         Dirty(partId.Value, part);
@@ -300,10 +325,11 @@ public partial class SharedBodySystem
         string slotId,
         EntityUid childId,
         BodyPartType partType,
+        BodyPartSymmetry symmetry,
         BodyPartComponent? parent = null,
         BodyPartComponent? child = null)
     {
-        return TryCreatePartSlot(parentId, slotId, partType, out _, parent)
+        return TryCreatePartSlot(parentId, slotId, partType, symmetry, out _, parent)
                && AttachPart(parentId, slotId, childId, parent, child);
     }
 
@@ -383,7 +409,7 @@ public partial class SharedBodySystem
     {
         return Resolve(partId, ref part, logMissing: false)
             && Resolve(parentId, ref parentPart, logMissing: false)
-            && parentPart.Children.TryGetValue(slotId, out var parentSlotData)
+            && parentPart.Childs.TryGetValue(slotId, out var parentSlotData)
             && part.PartType == parentSlotData.Type
             && Containers.TryGetContainer(parentId, GetPartSlotContainerId(slotId), out var container)
             && Containers.CanInsert(partId, container);
@@ -416,7 +442,7 @@ public partial class SharedBodySystem
         BodyPartComponent? part = null)
     {
         return Resolve(parentPartId, ref parentPart, logMissing: false)
-            && parentPart.Children.TryGetValue(slotId, out var slot)
+            && parentPart.Childs.TryGetValue(slotId, out var slot)
             && AttachPart(parentPartId, slot, partId, parentPart, part);
     }
 
@@ -433,7 +459,7 @@ public partial class SharedBodySystem
         if (!Resolve(parentPartId, ref parentPart, logMissing: false)
             || !Resolve(partId, ref part, logMissing: false)
             || !CanAttachPart(parentPartId, slot.Id, partId, parentPart, part)
-            || !parentPart.Children.ContainsKey(slot.Id))
+            || !parentPart.Childs.ContainsKey(slot.Id))
         {
             return false;
         }
@@ -444,7 +470,15 @@ public partial class SharedBodySystem
             return false;
         }
 
-        return Containers.Insert(partId, container);
+        if (!HasComp<BodyComponent>(partId))
+            return Containers.Insert(partId, container);
+
+        var realPartId = GetBodyChildren(partId).FirstOrNull()?.Id;
+        if (realPartId == null)
+            return false;
+
+        QueueDel(partId);
+        return Containers.Insert(realPartId.Value, container);
     }
 
     #endregion
@@ -514,13 +548,12 @@ public partial class SharedBodySystem
     /// </summary>
     public IEnumerable<BaseContainer> GetPartContainers(EntityUid id, BodyPartComponent? part = null)
     {
-        if (!Resolve(id, ref part, logMissing: false) ||
-            part.Children.Count == 0)
+        if (!Resolve(id, ref part, logMissing: false) || part.Childs.Count == 0)
         {
             yield break;
         }
 
-        foreach (var slotId in part.Children.Keys)
+        foreach (var slotId in part.Childs.Keys)
         {
             var containerSlotId = GetPartSlotContainerId(slotId);
 
@@ -551,7 +584,7 @@ public partial class SharedBodySystem
 
         yield return (partId, part);
 
-        foreach (var slotId in part.Children.Keys)
+        foreach (var slotId in part.Childs.Keys)
         {
             var containerSlotId = GetPartSlotContainerId(slotId);
 
@@ -581,7 +614,7 @@ public partial class SharedBodySystem
         if (!Resolve(partId, ref part, logMissing: false))
             yield break;
 
-        foreach (var (slotId, slot) in part.Children)
+        foreach (var (slotId, slot) in part.Childs)
         {
             yield return slot;
 
@@ -735,7 +768,7 @@ public partial class SharedBodySystem
         if (TryGetParentBodyPart(partId, out var parentUid, out _))
             yield return parentUid.Value;
 
-        foreach (var slotId in part.Children.Keys)
+        foreach (var slotId in part.Childs.Keys)
         {
             var container = Containers.GetContainer(partId, GetPartSlotContainerId(slotId));
 
@@ -791,4 +824,32 @@ public partial class SharedBodySystem
     }
 
     #endregion
+
+    public IEnumerable<(EntityUid Id, BodyPartComponent Component)> GetBodyChildrenOfTypes(
+        EntityUid bodyId,
+        ICollection<BodyPartType> types,
+        BodyComponent? body = null
+    )
+    {
+        foreach (var part in GetBodyChildren(bodyId, body))
+        {
+            if (types.Contains(part.Component.PartType) )
+                yield return part;
+        }
+    }
+
+    public void RequestRemovePart(Entity<BodyPartComponent> entity)
+    {
+        var parentBodyPart = GetEntity(entity.Comp.BodyPartSlot?.BodyPart);
+        if (parentBodyPart == null || entity.Comp.BodyPartSlot == null)
+            return;
+
+        if (!Containers.TryGetContainer(parentBodyPart.Value, GetPartSlotContainerId(entity.Comp.BodyPartSlot.Id),
+                out var container))
+        {
+            return;
+        }
+
+        Containers.Remove(entity.Owner, container);
+    }
 }

@@ -62,3 +62,6 @@
         Brute: 3
       types:
         Structural: 12
+  - type: SurgeryTool
+    sound: /Audio/Items/drill_hit.ogg
+  - type: SurgeryDrill

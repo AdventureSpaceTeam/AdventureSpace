@@ -1,0 +1,51 @@
+﻿- type: body
+  id: LeftArmHandWooden
+  name: "Левая деревянная рука "
+  root: left arm
+  species: universal
+  slots:
+    left arm:
+      part: LeftArmWooden
+      connections:
+        - left hand
+    left hand:
+      part: LeftHandWooden
+
+- type: body
+  id: RightArmHandWooden
+  name: "Правая деревянная рука "
+  root: right arm
+  species: universal
+  slots:
+    right arm:
+      part: RightArmWooden
+      connections:
+        - right hand
+    right hand:
+      part: RightHandWooden
+
+- type: body
+  id: LeftLegFootWooden
+  name: "Левая деревянная нога"
+  root: left leg
+  species: universal
+  slots:
+    left leg:
+      part: LeftLegWooden
+      connections:
+        - left foot
+    left foot:
+      part: LeftFootWooden
+
+- type: body
+  id: RightLegFootWooden
+  name: "Правая деревянная нога"
+  root: left leg
+  species: universal
+  slots:
+    left leg:
+      part: RightLegWooden
+      connections:
+        - left foot
+    left foot:
+      part: RightFootWooden

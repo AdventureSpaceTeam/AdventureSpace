@@ -103,11 +103,12 @@ public sealed partial class HumanoidAppearanceComponent : Component
 [Serializable, NetSerializable]
 public readonly partial struct CustomBaseLayerInfo
 {
-    public CustomBaseLayerInfo(string? id, Color? color = null)
+    public CustomBaseLayerInfo(string? id, bool overrideColor = false, Color? color = null)
     {
-        DebugTools.Assert(id == null || IoCManager.Resolve<IPrototypeManager>().HasIndex<HumanoidSpeciesSpriteLayer>(id));
+        // DebugTools.Assert(id == null || IoCManager.Resolve<IPrototypeManager>().HasIndex<HumanoidSpeciesSpriteLayer>(id));
         Id = id;
         Color = color;
+        OverrideColor = overrideColor;
     }
 
     /// <summary>
@@ -121,4 +122,7 @@ public readonly partial struct CustomBaseLayerInfo
     /// </summary>
     [DataField]
     public Color? Color { get; init; }
+
+    [DataField]
+    public bool OverrideColor { get; init; }
 }

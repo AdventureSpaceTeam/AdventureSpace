@@ -13,4 +13,16 @@ public sealed partial class OrganComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public EntityUid? Body;
+
+    [DataField("parent")]
+    public OrganSlot? ParentSlot;
+
+    [DataField("organType")]
+    public OrganType OrganType = OrganType.Other;
+
+    [DataField("internal")]
+    public bool Internal = true;
+
+    [DataField("species", required: true)]
+    public string Species = "";
 }

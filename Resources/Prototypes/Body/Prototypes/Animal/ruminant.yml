@@ -2,21 +2,37 @@
   id: AnimalRuminant
   name: "ruminant"
   root: torso
+  species: animal
   slots:
     torso:
       part: TorsoAnimal
       connections:
-      - legs
+        - legs
       organs:
-        lungs: OrganAnimalLungs
-        stomach: OrganAnimalRuminantStomach
-        stomach2: OrganAnimalRuminantStomach
-        liver: OrganAnimalLiver
-        heart: OrganAnimalHeart
-        kidneys: OrganAnimalKidneys
+        brain: #Ага, человеческий, альтернативы то нет.
+          organ: OrganHumanBrain
+          type: Brain
+        lungs:
+          organ: OrganAnimalLungs
+          type: Lung
+        stomach:
+          organ: OrganAnimalRuminantStomach
+          type: Stomach
+        stomach2:
+          organ: OrganAnimalRuminantStomach
+          type: Stomach
+        liver:
+          organ: OrganAnimalLiver
+          type: Liver
+        heart:
+          organ: OrganAnimalHeart
+          type: Heart
+        kidneys:
+          organ: OrganAnimalKidneys
+          type: Kidney
     legs:
       part: LegsAnimal
       connections:
-      - feet
+        - feet
     feet:
       part: FeetAnimal

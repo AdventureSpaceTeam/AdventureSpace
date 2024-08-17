@@ -14,6 +14,7 @@
     state: full
   - type: Body
     prototype: Skeleton
+    species: skeleton
     requiredLegs: 2
     gibSound: /Audio/Effects/bone_rattle.ogg
   - type: Damageable
@@ -62,9 +63,9 @@
         density: 130
         restitution: 0.0
         mask:
-          - MobMask
+        - MobMask
         layer:
-          - MobLayer
+        - MobLayer
   - type: Reactive
     groups:
       Flammable: [ Touch ]
@@ -81,11 +82,11 @@
       methods: [ Touch ]
       effects: # TODO: when magic is around - make a milk transformation to a skeleton monster
       - !type:HealthChange
-        scaleByQuantity: true
+        scaled: true
         damage:
           groups:
-            Burn: -2 # healing obviously up to discussion
-            Brute: -1.5 # these groups are the only 2 possible ways to damage a skeleton
+            Burn: -1 # healing obviously up to discussion
+            Brute: -1 # these groups are the only 2 possible ways to damage a skeleton
       - !type:PopupMessage
         type: Local
         visualType: Large
@@ -94,11 +95,11 @@
     - reagents: [ MilkOat ]
       methods: [ Touch ]
       effects:
-        - !type:PopupMessage
-          type: Local
-          visualType: Large
-          messages: [ "skeleton-sprayed-by-oat-milk-popup" ]
-          probability: 0.5
+      - !type:PopupMessage
+        type: Local
+        visualType: Large
+        messages: [ "skeleton-sprayed-by-oat-milk-popup" ]
+        probability: 0.5
   - type: FireVisuals
     alternateState: Standing
   - type: FlashImmunity

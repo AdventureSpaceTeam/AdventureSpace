@@ -1,6 +1,6 @@
 - type: entity
   name: Urist McSlime
-  parent: BaseMobSpeciesOrganic
+  parent: [ BaseMobSpeciesOrganic, BaseSlimeSurgery ]
   id: BaseMobSlimePerson
   abstract: true
   components:
@@ -11,6 +11,7 @@
     state: full
   - type: Body
     prototype: Slime
+    species: slime
     requiredLegs: 2
   # they like eat it idk lol
   - type: Storage
@@ -34,6 +35,8 @@
         type: HumanoidMarkingModifierBoundUserInterface
       enum.StrippingUiKey.Key:
         type: StrippableBoundUserInterface
+      enum.SurgeryUiKey.Key:
+        type: SurgeryBoundUserInterface
   # to prevent bag open/honk spam
   - type: UseDelay
     delay: 0.5
@@ -43,6 +46,15 @@
     speechVerb: Slime
     speechSounds: Slime
     allowedEmotes: ['Squish']
+  - type: ToxinRemover
+    organKey: kidney
+    embedded: true
+    maxDamageThreshold: 600
+  - type: ToxinFilter
+    organKey: liver
+    embedded: true
+    maxDamageThreshold: 500
+  - type: EyeSight
   - type: TypingIndicator
     proto: slime
   - type: Vocal

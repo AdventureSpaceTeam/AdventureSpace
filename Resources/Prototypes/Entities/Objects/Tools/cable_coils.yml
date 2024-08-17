@@ -29,6 +29,12 @@
   - type: PhysicalComposition
     materialComposition:
       Steel: 15
+  - type: SurgeryTool
+    sound: /Audio/Items/jumpsuit_equip.ogg
+  - type: SurgerySmallClamp
+  - type: SurgeryLargeClamp
+  - type: SurgerySuture
+  - type: SurgeryHardSuture
 
 - type: entity
   id: CableHVStack

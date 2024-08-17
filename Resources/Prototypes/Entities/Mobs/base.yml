@@ -43,7 +43,7 @@
   - type: MovementSpeedModifier
   - type: Polymorphable
   - type: StatusIcon
-  - type: TTS # Corvax-TTS
+  - type: TTS
   - type: RequireProjectileTarget
     active: False
 

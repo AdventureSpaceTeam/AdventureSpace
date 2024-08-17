@@ -12,6 +12,8 @@
       - Pill
       - Crayon
       - Paper
+  - type: DStomach
+    organKey: stomach
   - type: SolutionContainerManager
     solutions:
       stomach:
@@ -21,3 +23,5 @@
         reagents:
         - ReagentId: UncookedAnimalProteins
           Quantity: 5
+  - type: StaticPrice
+    price: 660

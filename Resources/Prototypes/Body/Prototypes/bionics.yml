@@ -1,0 +1,51 @@
+﻿- type: body
+  id: LeftDrillArmHand
+  name: "Левая рука бур"
+  root: left arm
+  species: universal
+  slots:
+    left arm:
+      part: LeftDrillArm
+      connections:
+        - left hand
+    left hand:
+      part: LeftHandSynth
+
+- type: body
+  id: RightDrillArmHand
+  name: "Правая рука бур"
+  root: right arm
+  species: universal
+  slots:
+    right arm:
+      part: RightDrillArm
+      connections:
+        - right hand
+    right hand:
+      part: RightHandSynth
+
+- type: body
+  id: LeftPowerLegFoot
+  name: "Левая силовая нога"
+  root: left leg
+  species: universal
+  slots:
+    left leg:
+      part: LeftLegPower
+      connections:
+        - left foot
+    left foot:
+      part: LeftFootSynth
+
+- type: body
+  id: RightPowerLegFoot
+  name: "Правая силовая нога"
+  root: right leg
+  species: universal
+  slots:
+    right leg:
+      part: RightLegPower
+      connections:
+        - right foot
+    right foot:
+      part: RightFootSynth

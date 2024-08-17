@@ -443,7 +443,8 @@ public sealed partial class ExplosionSystem : SharedExplosionSystem
             {
                 // TODO EXPLOSIONS turn explosions into entities, and pass the the entity in as the damage origin.
                 _damageableSystem.TryChangeDamage(entity, damage, ignoreResistances: true);
-
+                var explosionEv = new ExplosionHitEvent(damage);
+                RaiseLocalEvent(uid, ref explosionEv);
             }
         }
 

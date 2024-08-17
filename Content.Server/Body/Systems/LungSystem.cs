@@ -1,11 +1,18 @@
+using System.Linq;
 using Content.Server.Atmos.Components;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Body.Components;
+using Content.Server.Body.Events;
 using Content.Server.Chemistry.Containers.EntitySystems;
 using Content.Shared.Atmos;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Clothing;
 using Content.Shared.Inventory.Events;
+using Robust.Shared.Prototypes;
+using Content.Shared.Chemistry.Reagent;
+using Content.Server.Popups;
+using Content.Shared.Rejuvenate;
+using Content.Shared.Body.Organ;
 
 namespace Content.Server.Body.Systems;
 
@@ -73,13 +80,34 @@ public sealed class LungSystem : EntitySystem
         }
     }
 
-    public void GasToReagent(EntityUid uid, LungComponent lung)
+    public void GasToReagent(EntityUid lungs, EntityUid user, LungComponent lung)
     {
-        if (!_solutionContainerSystem.ResolveSolution(uid, lung.SolutionName, ref lung.Solution, out var solution))
+        if (!_solutionContainerSystem.ResolveSolution(lungs, lung.SolutionName, ref lung.Solution, out var solution))
             return;
 
-        GasToReagent(lung.Air, solution);
+        GasToReagent(user, lung, solution);
         _solutionContainerSystem.UpdateChemicals(lung.Solution.Value);
+    }
+
+    private void GasToReagent(EntityUid user, LungComponent lungs, Solution solution)
+    {
+        foreach (var gasId in Enum.GetValues<Gas>())
+        {
+            var i = (int) gasId;
+            var moles = lungs.Air[i];
+            if (moles <= 0)
+                continue;
+
+            var reagent = _atmosphereSystem.GasReagents[i];
+            if (reagent is null)
+                continue;
+
+            var amount = moles * Atmospherics.BreathMolesToReagentMultiplier;
+            solution.AddReagent(reagent, amount);
+
+            var ev = new OnEntityBreathGas(reagent, amount);
+            RaiseLocalEvent(user, ref ev);
+        }
     }
 
     private void GasToReagent(GasMixture gas, Solution solution)

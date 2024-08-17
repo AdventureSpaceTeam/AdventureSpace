@@ -1,9 +1,66 @@
 - type: entity
+  id: BaseVoxOrgan
+  parent: BaseItem
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: Mobs/Species/Vox/organs.rsi
+  - type: Organ
+    species: vox
+  - type: Food
+  - type: Extractable
+    grindableSolutionName: organ
+  - type: SolutionContainerManager
+    solutions:
+      organ:
+        maxVol: 10
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 10
+      food:
+        maxVol: 5
+        reagents:
+        - ReagentId: UncookedAnimalProteins
+          Quantity: 5
+  - type: StaticPrice
+    price: 300
+  - type: Tag
+    tags:
+    - Meat
+
+- type: entity
   id: OrganVoxLungs
-  parent: OrganHumanLungs
+  parent: [ BaseVoxOrgan, OrganHumanLungs ]
   suffix: "vox"
   components:
   - type: Metabolizer
     metabolizerTypes: [ Vox ]
   - type: Lung
     alert: LowNitrogen
+  - type: DLungs
+    organKey: lungs
+  - type: StaticPrice
+    price: 560
+
+- type: entity
+  id: OrganVoxBrain
+  parent: [ BaseVoxOrgan, OrganHumanBrain ]
+
+- type: entity
+  id: OrganVoxEyes
+  parent: [ BaseVoxOrgan, OrganHumanEyes ]
+  components:
+  - type: Sprite
+    state: eyeballs
+
+- type: entity
+  id: OrganVoxHeart
+  parent: [ BaseVoxOrgan, OrganHumanHeart ]
+
+- type: entity
+  id: OrganVoxLiver
+  parent: [ BaseVoxOrgan, OrganHumanLiver ]
+
+- type: entity
+  id: OrganVoxKidneys
+  parent: [ BaseVoxOrgan, OrganHumanKidneys ]

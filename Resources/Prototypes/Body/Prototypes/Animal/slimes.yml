@@ -1,18 +1,23 @@
 ﻿- type: body
   id: Slimes
   name: "slimes"
+  species: slime
   root: torso
   slots:
     torso:
       part: TorsoSlime
       connections:
-      - legs
+        - legs
       organs:
-        core: SentientSlimesCore
-        lungs: OrganSlimesLungs
+        core:
+          organ: SentientSlimesCore
+          type: Brain
+        lungs:
+          organ: OrganSlimesLungs
+          type: Lung
     legs:
       part: LegsAnimal
       connections:
-      - feet
+        - feet
     feet:
       part: FeetAnimal

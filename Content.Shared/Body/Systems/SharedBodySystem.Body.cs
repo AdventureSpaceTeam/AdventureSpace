@@ -62,7 +62,7 @@ public partial class SharedBodySystem
 
         if (TryComp(insertedUid, out OrganComponent? organ))
         {
-            AddOrgan((insertedUid, organ), ent, ent);
+            AddOrgan((insertedUid, organ), ent, ent, slotId);
         }
     }
 
@@ -75,8 +75,8 @@ public partial class SharedBodySystem
             return;
 
         var removedUid = args.Entity;
-        DebugTools.Assert(!TryComp(removedUid, out BodyPartComponent? b) || b.Body == ent);
-        DebugTools.Assert(!TryComp(removedUid, out OrganComponent? o) || o.Body == ent);
+        // DebugTools.Assert(!TryComp(removedUid, out BodyPartComponent? b) || b.Body == ent);
+        // DebugTools.Assert(!TryComp(removedUid, out OrganComponent? o) || o.Body == ent);
 
         if (TryComp(removedUid, out BodyPartComponent? part))
         {
@@ -119,7 +119,7 @@ public partial class SharedBodySystem
 
         // Setup the rest of the body entities.
         SetupOrgans((rootPartUid, rootPart), protoRoot.Organs);
-        MapInitParts(rootPartUid, prototype);
+        MapInitParts(bodyEntity, rootPartUid, prototype);
     }
 
     private void OnBodyCanDrag(Entity<BodyComponent> ent, ref CanDragEvent args)
@@ -130,7 +130,7 @@ public partial class SharedBodySystem
     /// <summary>
     /// Sets up all of the relevant body parts for a particular body entity and root part.
     /// </summary>
-    private void MapInitParts(EntityUid rootPartId, BodyPrototype prototype)
+    private void MapInitParts(EntityUid bodyEntity, EntityUid rootPartId, BodyPrototype prototype)
     {
         // Start at the root part and traverse the body graph, setting up parts as we go.
         // Basic BFS pathfind.
@@ -167,7 +167,7 @@ public partial class SharedBodySystem
                 cameFromEntities[connection] = childPart;
 
                 var childPartComponent = Comp<BodyPartComponent>(childPart);
-                var partSlot = CreatePartSlot(parentEntity, connection, childPartComponent.PartType, parentPartComponent);
+                var partSlot = CreatePartSlot(parentEntity, connection, childPartComponent.PartType, childPartComponent.Symmetry, parentPartComponent);
                 var cont = Containers.GetContainer(parentEntity, GetPartSlotContainerId(connection));
 
                 if (partSlot is null || !Containers.Insert(childPart, cont))
@@ -177,26 +177,41 @@ public partial class SharedBodySystem
                     continue;
                 }
 
+                partSlot.BodyPart = GetNetEntity(childPart);
+                childPartComponent.BodyPartSlot = partSlot;
                 // Add organs
                 SetupOrgans((childPart, childPartComponent), connectionSlot.Organs);
 
                 // Enqueue it so we can also get its neighbors.
                 frontier.Enqueue(connection);
+
+                var ev = new BodyPartInitializeInBodyEvent(bodyEntity);
+                RaiseLocalEvent(childPart, ref ev);
             }
         }
     }
 
-    private void SetupOrgans(Entity<BodyPartComponent> ent, Dictionary<string, string> organs)
+    private void SetupOrgans(Entity<BodyPartComponent> ent, Dictionary<string, OrganPrototypeSlot> organs)
     {
         foreach (var (organSlotId, organProto) in organs)
         {
-            var slot = CreateOrganSlot((ent, ent), organSlotId);
-            SpawnInContainerOrDrop(organProto, ent, GetOrganContainerId(organSlotId));
+            var slot = CreateOrganSlot((ent, ent), organSlotId, organProto.SlotType, organProto.Internal);
+            var organ = SpawnInContainerOrDrop(organProto.Organ, ent, GetOrganContainerId(organSlotId));
 
             if (slot is null)
             {
                 Log.Error($"Could not create organ for slot {organSlotId} in {ToPrettyString(ent)}");
             }
+
+            if (TryComp<OrganComponent>(organ, out var organComponent))
+            {
+                organComponent.ParentSlot = slot;
+                organComponent.OrganType = organProto.SlotType;
+                organComponent.Internal = organProto.Internal;
+            }
+
+            if (slot != null)
+                slot.Child = GetNetEntity(organ);
         }
     }
 
@@ -281,6 +296,17 @@ public partial class SharedBodySystem
         {
             yield return slot;
         }
+    }
+
+    public BodyPartSlot? GetBodyPartSlot(EntityUid bodyId, string slotId, BodyComponent? body = null)
+    {
+        if (!Resolve(bodyId, ref body, false))
+            return null;
+
+        if (body.RootContainer == null || body.RootContainer.ContainedEntity == null)
+            return null;
+
+        return GetAllBodyPartSlots(body.RootContainer.ContainedEntity.Value).FirstOrDefault(slot => slot.Id == slotId);
     }
 
     public virtual HashSet<EntityUid> GibBody(

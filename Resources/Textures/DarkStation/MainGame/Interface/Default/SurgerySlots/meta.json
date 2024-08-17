@@ -1,0 +1,80 @@
+{
+    "version": 1,
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "license": "CC-BY-NC-SA-3.0",
+    "copyright": "Taken from https://github.com/goonstation/goonstation at commit e77d85d9c1d93aa32da7702737ceeac2b56738ac, slightly modified by PixelTK",
+    "states": [
+        {
+            "name": "Arm"
+        },
+        {
+            "name": "Attachment"
+        },
+        {
+            "name": "Bleeding"
+        },
+        {
+            "name": "Bleeding_Icon"
+        },
+        {
+            "name": "Brain"
+        },
+        {
+            "name": "Cauterised"
+        },
+        {
+            "name": "Cauterised_Icon"
+        },
+        {
+            "name": "Eye"
+        },
+        {
+            "name": "Foot"
+        },
+        {
+            "name": "FreeSpace"
+        },
+        {
+            "name": "Hand"
+        },
+        {
+            "name": "Head"
+        },
+        {
+            "name": "Heart"
+        },
+        {
+            "name": "Kidney"
+        },
+        {
+            "name": "Leg"
+        },
+        {
+            "name": "Liver"
+        },
+        {
+            "name": "Lung"
+        },
+        {
+            "name": "Other"
+        },
+        {
+            "name": "Stomach"
+        },
+        {
+            "name": "Torso"
+        },
+        {
+            "name": "Fallback_Icon"
+        },
+        {
+            "name": "Wings"
+        },
+        {
+            "name": "Paws"
+        }
+    ]
+}

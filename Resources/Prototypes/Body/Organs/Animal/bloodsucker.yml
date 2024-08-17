@@ -24,3 +24,7 @@
   components:
   - type: Metabolizer
     metabolizerTypes: [ Bloodsucker ]
+  - type: CirculatoryPump
+    organKey: heart
+    maxDamageThreshold: 10
+    brainless: true

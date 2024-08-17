@@ -6,6 +6,16 @@
   name: "arachnid body part"
   abstract: true
   components:
+  - type: SurgeryBodyPart
+    species: arachnid
+  - type: ContainerContainer
+    containers:
+      bodypart: !type:Container
+        ents: [ ]
+      attachment: !type:Container
+        ents: [ ]
+      slotAttachment: !type:Container
+        ents: [ ]
   - type: Extractable
     juiceSolution:
       reagents:
@@ -22,6 +32,11 @@
   - type: Sprite
     sprite: Mobs/Species/Arachnid/parts.rsi
     state: "torso_m"
+  - type: SurgeryBodyPart
+    state:
+      incisable: true
+      endoSkeleton: true
+    container: true
   - type: Extractable
     juiceSolution:
       reagents:
@@ -29,6 +44,9 @@
         Quantity: 10
       - ReagentId: CopperBlood
         Quantity: 20
+  - type: Tag
+    tags:
+    - Torso
 
 - type: entity
   id: HeadArachnid
@@ -38,6 +56,13 @@
   - type: Sprite
     sprite: Mobs/Species/Arachnid/parts.rsi
     state: "head_m"
+  - type: SurgeryBodyPart
+    visuals:
+      speciesSprite: MobArachnidHead
+    state:
+      incisable: true
+      endoSkeleton: true
+    container: true
   - type: Extractable
     juiceSolution:
       reagents:
@@ -45,6 +70,9 @@
         Quantity: 5
       - ReagentId: CopperBlood
         Quantity: 10
+  - type: Tag
+    tags:
+    - Head
 
 - type: entity
   id: LeftArmArachnid
@@ -54,6 +82,9 @@
   - type: Sprite
     sprite: Mobs/Species/Arachnid/parts.rsi
     state: "l_arm"
+  - type: SurgeryBodyPart
+    visuals:
+      speciesSprite: MobArachnidLArm
 
 - type: entity
   id: RightArmArachnid
@@ -63,6 +94,9 @@
   - type: Sprite
     sprite: Mobs/Species/Arachnid/parts.rsi
     state: "r_arm"
+  - type: SurgeryBodyPart
+    visuals:
+      speciesSprite: MobArachnidRArm
 
 - type: entity
   id: LeftHandArachnid
@@ -72,6 +106,9 @@
   - type: Sprite
     sprite: Mobs/Species/Arachnid/parts.rsi
     state: "l_hand"
+  - type: SurgeryBodyPart
+    visuals:
+      speciesSprite: MobArachnidLHand
 
 - type: entity
   id: RightHandArachnid
@@ -81,6 +118,9 @@
   - type: Sprite
     sprite: Mobs/Species/Arachnid/parts.rsi
     state: "r_hand"
+  - type: SurgeryBodyPart
+    visuals:
+      speciesSprite: MobArachnidRHand
 
 - type: entity
   id: LeftLegArachnid
@@ -91,6 +131,9 @@
     sprite: Mobs/Species/Arachnid/parts.rsi
     state: "l_leg"
   - type: MovementBodyPart
+  - type: SurgeryBodyPart
+    visuals:
+      speciesSprite: MobArachnidLLeg
 
 - type: entity
   id: RightLegArachnid
@@ -101,6 +144,9 @@
     sprite: Mobs/Species/Arachnid/parts.rsi
     state: "r_leg"
   - type: MovementBodyPart
+  - type: SurgeryBodyPart
+    visuals:
+      speciesSprite: MobArachnidRLeg
 
 - type: entity
   id: LeftFootArachnid
@@ -110,6 +156,9 @@
   - type: Sprite
     sprite: Mobs/Species/Arachnid/parts.rsi
     state: "l_foot"
+  - type: SurgeryBodyPart
+    visuals:
+      speciesSprite: MobArachnidLFoot
 
 - type: entity
   id: RightFootArachnid
@@ -119,3 +168,24 @@
   - type: Sprite
     sprite: Mobs/Species/Arachnid/parts.rsi
     state: "r_foot"
+  - type: SurgeryBodyPart
+    visuals:
+      speciesSprite: MobArachnidRFoot
+      
+- type: entity
+  id: ArachnidPaws
+  name: "лапы Арахнида"
+  parent: PartArachnid
+  components:
+  - type: Sprite
+    netsync: true
+    sprite: Mobs/Customization/Arachnid/appendages.rsi
+    state: paws_icon
+  - type: Icon
+    sprite: Mobs/Customization/Arachnid/appendages.rsi
+    state: paws_icon
+  - type: BodyPart
+    partType: Paws
+  - type: SurgeryBodyPart
+    visuals:
+      speciesSprite: MobHumanoidAnyMarking

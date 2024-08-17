@@ -1,7 +1,7 @@
 - type: entity
   save: false
   name: Urisst' Mzhand
-  parent: BaseMobSpeciesOrganic
+  parent: [ BaseMobSpeciesOrganic, BaseReptilianSurgery ]
   id: BaseMobReptilian
   abstract: true
   components:
@@ -20,6 +20,7 @@
     state: full
   - type: Body
     prototype: Reptilian
+    species: reptilian
     requiredLegs: 2
   - type: Butcherable
     butcheringType: Spike
@@ -55,15 +56,10 @@
     specificHeat: 42
     coldDamage:
       types:
-        Cold : 0.1 #per second, scales with temperature & other constants
+        Cold: 0.1 #per second, scales with temperature & other constants
     heatDamage:
       types:
-        Heat : 1.5 #per second, scales with temperature & other constants
-  - type: TemperatureSpeed
-    thresholds:
-      301: 0.8
-      295: 0.6
-      285: 0.4
+        Heat: 1.5 #per second, scales with temperature & other constants
   - type: Wagging
   - type: Inventory
     speciesId: reptilian

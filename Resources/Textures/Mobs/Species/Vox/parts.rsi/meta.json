@@ -1,70 +1,118 @@
 {
-  "version": 1,
-  "license": "CC-BY-SA-3.0",
-  "copyright": "Taken from https://github.com/vgstation-coders/vgstation13 at 02ff588d59b3c560c685d9ca75e882d32a72d8cb, and modified by Bhijn, Errant and Flareguy",
-  "size": {
-    "x": 32,
-    "y": 32
-  },
-  "states": [
-    {
-      "name": "eyes",
-      "directions": 4
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Taken from https://github.com/vgstation-coders/vgstation13 at 02ff588d59b3c560c685d9ca75e882d32a72d8cb, and modified by Bhijn, Errant and Flareguy",
+    "size": {
+        "x": 32,
+        "y": 32
     },
-    {
-      "name": "full"
-    },
-    {
-      "name": "groin",
-      "directions": 4
-    },
-    {
-      "name": "head",
-      "directions": 4
-    },
-    {
-      "name": "l_arm",
-      "directions": 4
-    },
-    {
-      "name": "l_foot",
-      "directions": 4
-    },
-    {
-      "name": "l_hand",
-      "directions": 4
-    },
-    {
-      "name": "l_leg",
-      "directions": 4
-    },
-    {
-      "name": "overlay_husk",
-      "directions": 4
-    },
-    {
-      "name": "r_arm",
-      "directions": 4
-    },
-    {
-      "name": "r_foot",
-      "directions": 4
-    },
-    {
-      "name": "r_hand",
-      "directions": 4
-    },
-    {
-      "name": "r_leg",
-      "directions": 4
-    },
-    {
-      "name": "torso",
-      "directions": 4
-    },
-    {
-      "name": "vox_m",
-      "directions": 4
-    }
-  ]
+    "states": [
+        {
+            "name": "eyes",
+            "directions": 4
+        },
+        {
+            "name": "full"
+        },
+        {
+            "name": "groin",
+            "directions": 4
+        },
+        {
+            "name": "head",
+            "directions": 4
+        },
+        {
+            "name": "l_arm",
+            "directions": 4
+        },
+        {
+            "name": "l_foot",
+            "directions": 4
+        },
+        {
+            "name": "l_hand",
+            "directions": 4
+        },
+        {
+            "name": "l_leg",
+            "directions": 4
+        },
+        {
+            "name": "overlay_husk",
+            "directions": 4
+        },
+        {
+            "name": "r_arm",
+            "directions": 4
+        },
+        {
+            "name": "r_foot",
+            "directions": 4
+        },
+        {
+            "name": "r_hand",
+            "directions": 4
+        },
+        {
+            "name": "r_leg",
+            "directions": 4
+        },
+        {
+            "name": "torso",
+            "directions": 4
+        },
+        {
+            "name": "vox_m",
+            "directions": 4
+        },
+        {
+            "name": "torso_icon"
+        },
+        {
+            "name": "torso_incised_icon"
+        },
+        {
+            "name": "torso_retracted_icon"
+        },
+        {
+            "name": "torso_opened_icon"
+        },
+        {
+            "name": "head_icon"
+        },
+        {
+            "name": "head_incised_icon"
+        },
+        {
+            "name": "head_retracted_icon"
+        },
+        {
+            "name": "head_opened_icon"
+        },
+        {
+            "name": "l_arm_icon"
+        },
+        {
+            "name": "r_arm_icon"
+        },
+        {
+            "name": "l_leg_icon"
+        },
+        {
+            "name": "r_leg_icon"
+        },
+        {
+            "name": "l_hand_icon"
+        },
+        {
+            "name": "r_hand_icon"
+        },
+        {
+            "name": "l_foot_icon"
+        },
+        {
+            "name": "r_foot_icon"
+        }
+    ]
 }

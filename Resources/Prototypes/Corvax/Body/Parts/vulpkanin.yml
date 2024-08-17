@@ -13,6 +13,8 @@
             Quantity: 3
           - ReagentId: Blood
             Quantity: 10
+    - type: SurgeryBodyPart
+      species: vulpkanin
 
 - type: entity
   id: TorsoVulpkanin
@@ -29,6 +31,11 @@
             Quantity: 10
           - ReagentId: Blood
             Quantity: 20
+    - type: SurgeryBodyPart
+      state:
+        incisable: true
+        endoSkeleton: true
+      container: true
 
 - type: entity
   id: HeadVulpkanin
@@ -45,6 +52,23 @@
             Quantity: 5
           - ReagentId: Blood
             Quantity: 10
+    - type: Input
+      context: "ghost"
+    - type: MovementSpeedModifier
+      baseWalkSpeed: 0
+      baseSprintSpeed: 0
+    - type: InputMover
+    - type: GhostOnMove
+    - type: SurgeryBodyPart
+      visuals:
+        speciesSprite: MobVulpkaninHead
+      state:
+        incisable: true
+        endoSkeleton: true
+      container: true
+    - type: Tag
+      tags:
+      - Head
 
 - type: entity
   id: LeftArmVulpkanin
@@ -54,6 +78,9 @@
     - type: Sprite
       sprite: Corvax/Mobs/Species/Vulpkanin/parts.rsi
       state: "l_arm"
+    - type: SurgeryBodyPart
+      visuals:
+        speciesSprite: MobVulpkaninLArm
 
 - type: entity
   id: RightArmVulpkanin
@@ -63,6 +90,9 @@
     - type: Sprite
       sprite: Corvax/Mobs/Species/Vulpkanin/parts.rsi
       state: "r_arm"
+    - type: SurgeryBodyPart
+      visuals:
+        speciesSprite: MobVulpkaninRArm
 
 - type: entity
   id: LeftHandVulpkanin
@@ -72,6 +102,9 @@
     - type: Sprite
       sprite: Corvax/Mobs/Species/Vulpkanin/parts.rsi
       state: "l_hand"
+    - type: SurgeryBodyPart
+      visuals:
+        speciesSprite: MobVulpkaninLHand
 
 - type: entity
   id: RightHandVulpkanin
@@ -81,6 +114,9 @@
     - type: Sprite
       sprite: Corvax/Mobs/Species/Vulpkanin/parts.rsi
       state: "r_hand"
+    - type: SurgeryBodyPart
+      visuals:
+        speciesSprite: MobVulpkaninRHand
 
 - type: entity
   id: LeftLegVulpkanin
@@ -93,6 +129,9 @@
     - type: MovementBodyPart
       walkSpeed : 2.7
       sprintSpeed : 4.5
+    - type: SurgeryBodyPart
+      visuals:
+        speciesSprite: MobVulpkaninLLeg
 
 - type: entity
   id: RightLegVulpkanin
@@ -105,6 +144,9 @@
     - type: MovementBodyPart
       walkSpeed : 2.7
       sprintSpeed : 4.5
+    - type: SurgeryBodyPart
+      visuals:
+        speciesSprite: MobVulpkaninRLeg
 
 - type: entity
   id: LeftFootVulpkanin
@@ -114,6 +156,9 @@
     - type: Sprite
       sprite: Corvax/Mobs/Species/Vulpkanin/parts.rsi
       state: "l_foot"
+    - type: SurgeryBodyPart
+      visuals:
+        speciesSprite: MobVulpkaninRFoot
 
 - type: entity
   id: RightFootVulpkanin
@@ -123,3 +168,24 @@
     - type: Sprite
       sprite: Corvax/Mobs/Species/Vulpkanin/parts.rsi
       state: "r_foot"
+    - type: SurgeryBodyPart
+      visuals:
+        speciesSprite: MobVulpkaninRFoot
+
+- type: entity
+  id: TailVulpkanin
+  name: "пушистый, мягкий хвост"
+  parent: PartVulpkanin
+  components:
+  - type: Sprite
+    netsync: true
+    sprite: Corvax/Mobs/Customization/vulpkanin.rsi
+    state: tail_icon
+  - type: Icon
+    sprite: Corvax/Mobs/Customization/vulpkanin.rsi
+    state: tail_icon
+  - type: BodyPart
+    partType: Tail
+  - type: SurgeryBodyPart
+    visuals:
+      speciesSprite: MobHumanoidAnyMarking

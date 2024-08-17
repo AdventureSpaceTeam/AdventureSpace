@@ -1,4 +1,5 @@
-﻿using Content.Client.Administration.Managers;
+﻿using Content.Client._c4llv07e.Bridges;
+using Content.Client.Administration.Managers;
 using Content.Client.Changelog;
 using Content.Client.Chat.Managers;
 using Content.Client.Clickable;
@@ -63,6 +64,7 @@ namespace Content.Client.IoC
             collection.Register<Content.Corvax.Interfaces.Client.IClientJoinQueueManager,JoinQueueManager>();
             collection.Register<Content.Corvax.Interfaces.Client.IClientDiscordAuthManager,DiscordAuthManager>();
             // Alteros-Sponsor
+            collection.RegisterInstance<ITargetDollWidgetBridge>(new StubTargetDollWidgetBridge());
         }
     }
 }

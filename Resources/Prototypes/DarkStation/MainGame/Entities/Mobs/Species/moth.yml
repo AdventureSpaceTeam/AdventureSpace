@@ -1,0 +1,42 @@
+﻿- type: entity
+  save: false
+  id: BaseMothSurgery
+  abstract: true
+  components:
+  - type: TargetDoll
+  - type: Surgery
+    compatibleSpecies:
+    - moth
+    - universal
+  - type: SurgeryDamage
+    damage:
+      Incisor:
+        types:
+          Asphyxiation: 30 #internal organs are more sensitive due to exoskeleton
+      SmallClamp:
+        types:
+          Asphyxiation: 0
+      LargeClamp:
+        types:
+          Asphyxiation: 0
+      Saw:
+        types:
+          Asphyxiation: 65 #exo skeleton offers pain resistance here
+      Drill:
+        types:
+          Asphyxiation: 25
+      Suture:
+        types:
+          Asphyxiation: 10
+      HardSuture:
+        types:
+          Asphyxiation: 15
+      Cauterizer:
+        types:
+          Asphyxiation: 15
+      Manipulator:
+        types:
+          Asphyxiation: 10
+      Retractor:
+        types:
+          Asphyxiation: 10

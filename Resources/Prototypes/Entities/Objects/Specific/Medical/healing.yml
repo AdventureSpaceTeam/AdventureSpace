@@ -255,6 +255,9 @@
         path: "/Audio/Items/Medical/brutepack_begin.ogg"
       healingEndSound:
         path: "/Audio/Items/Medical/brutepack_end.ogg"
+    - type: SurgeryTool
+      sound: /Audio/Items/jumpsuit_equip.ogg
+    - type: SurgeryLargeClamp
 
 - type: entity
   name: roll of gauze

@@ -1,7 +1,7 @@
 - type: entity
   save: false
   name: Urist McPlants
-  parent: BaseMobSpeciesOrganic
+  parent: [ BaseMobSpeciesOrganic, BaseDionaSurgery ]
   id: BaseMobDiona
   abstract: true
   components:
@@ -16,6 +16,7 @@
     state: full
   - type: Body
     prototype: Diona
+    species: diona
     requiredLegs: 2
   - type: Damageable
     damageContainer: Biological
@@ -28,18 +29,18 @@
   - type: Butcherable
     butcheringType: Spike
     spawned:
-      - id: FoodMeatPlant
-        amount: 5
+    - id: FoodMeatPlant
+      amount: 5
   - type: Bloodstream
-    bloodReagent: Sap
+    bloodReagent: Water
   - type: Reactive
     groups:
       Flammable: [ Touch ]
       Extinguish: [ Touch ]
-      Acidic: [Touch, Ingestion]
+      Acidic: [ Touch, Ingestion ]
     reactions:
-    - reagents: [Water, SpaceCleaner]
-      methods: [Touch]
+    - reagents: [ Water, SpaceCleaner ]
+      methods: [ Touch ]
       effects:
       - !type:WashCreamPieReaction
     - reagents: [ PlantBGone ]
@@ -79,7 +80,7 @@
         density: 300 #weighs more than humans because wood
         restitution: 0.0
         mask:
-          - MobMask
+        - MobMask
         layer:
           - MobLayer
   - type: Speech
@@ -91,7 +92,6 @@
       Unsexed: UnisexDiona
   - type: BodyEmotes
     soundsId: DionaBodyEmotes
-  - type: Pacified # Corvax-DionaPacifist
   - type: IgnoreKudzu
   - type: IgniteOnHeatDamage
     fireStacks: 1

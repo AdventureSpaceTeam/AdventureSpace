@@ -6,6 +6,7 @@
   - type: Sprite
     sprite: Mobs/Species/Human/organs.rsi
   - type: Organ
+    species: human
   - type: Food
   - type: Extractable
     grindableSolutionName: organ
@@ -26,6 +27,8 @@
   - type: Tag
     tags:
       - Meat
+  - type: StaticPrice
+    price: 300
 
 - type: entity
   id: BaseHumanOrgan
@@ -43,6 +46,8 @@
   - type: Sprite
     state: brain
   - type: Organ
+    organType: Brain
+    species: universal #lets allow brain transfer to be a little easier
   - type: Input
     context: "ghost"
   - type: Brain
@@ -67,7 +72,9 @@
   - type: FlavorProfile
     flavors:
       - people
-  
+  - type: StaticPrice
+    price: 800
+
 - type: entity
   id: OrganHumanEyes
   parent: BaseHumanOrgan
@@ -78,6 +85,12 @@
     layers:
       - state: eyeball-l
       - state: eyeball-r
+  - type: Organ
+    organType: Eye
+    species: universal
+  - type: EyeSight
+  - type: StaticPrice
+    price: 200
 
 - type: entity
   id: OrganHumanTongue
@@ -87,6 +100,9 @@
   components:
   - type: Sprite
     state: tongue
+  - type: Organ
+  - type: StaticPrice
+    price: 100
 
 - type: entity
   id: OrganHumanAppendix
@@ -98,6 +114,9 @@
     - state: appendix
     - state: appendix-inflamed
       visible: false
+  - type: Organ
+  - type: StaticPrice
+    price: 50
 
 - type: entity
   id: OrganHumanEars
@@ -107,6 +126,9 @@
   components:
   - type: Sprite
     state: ears
+  - type: Organ
+  - type: StaticPrice
+    price: 100
 
 - type: entity
   id: OrganHumanLungs
@@ -118,7 +140,12 @@
     layers:
       - state: lung-l
       - state: lung-r
+  - type: Organ
+    organType: Lung
+    species: universal #TODO make alternate lungs for non-human humanoids
   - type: Lung
+  - type: DLungs
+    organKey: lungs
   - type: Metabolizer
     removeEmpty: true
     solutionOnBody: false
@@ -141,18 +168,17 @@
         reagents:
         - ReagentId: UncookedAnimalProteins
           Quantity: 5
+  - type: StaticPrice
+    price: 700
 
 - type: entity
   id: OrganHumanHeart
-  parent: BaseHumanOrgan
+  parent: [BaseHumanOrgan, BaseHeart]
   name: heart
   description: "I feel bad for the heartless bastard who lost this."
   components:
   - type: Sprite
     state: heart-on
-  # The heart 'metabolizes' medicines and poisons that aren't filtered out by other organs.
-  # This is done because these chemicals need to have some effect even if they aren't being filtered out of your body.
-  # You're technically 'immune to poison' without a heart, but.. uhh, you'll have bigger problems on your hands.
   - type: Metabolizer
     maxReagents: 2
     metabolizerTypes: [Human]
@@ -160,6 +186,12 @@
     - id: Medicine
     - id: Poison
     - id: Narcotic
+  - type: StaticPrice
+    price: 800
+  - type: Tag
+    tags:
+    - Heart
+    - Meat
 
 - type: entity
   id: OrganHumanStomach
@@ -169,6 +201,8 @@
   components:
   - type: Sprite
     state: stomach
+  - type: Organ
+    organType: Stomach
   - type: SolutionContainerManager
     solutions:
       stomach:
@@ -179,6 +213,8 @@
         - ReagentId: UncookedAnimalProteins
           Quantity: 5
   - type: Stomach
+  - type: DStomach
+    organKey: stomach
   # The stomach metabolizes stuff like foods and drinks.
   # TODO: Have it work off of the ent's solution container, and move this
   # to intestines instead.
@@ -189,6 +225,8 @@
     groups:
     - id: Food
     - id: Drink
+  - type: StaticPrice
+    price: 500
 
 - type: entity
   id: OrganHumanLiver
@@ -198,12 +236,21 @@
   components:
   - type: Sprite
     state: liver
+  - type: Organ
+    organType: Liver
+    species: universal
+  - type: ToxinFilter
+    organKey: liver
+    embedded: true
+    maxDamageThreshold: 500
   - type: Metabolizer # The liver metabolizes certain chemicals only, like alcohol.
     maxReagents: 1
     metabolizerTypes: [Human]
     groups:
     - id: Alcohol
       rateModifier: 0.1 # removes alcohol very slowly along with the stomach removing it as a drink
+  - type: StaticPrice
+    price: 550
 
 - type: entity
   id: OrganHumanKidneys
@@ -215,8 +262,17 @@
     layers:
       - state: kidney-l
       - state: kidney-r
+  - type: Organ
+    organType: Kidney
+    species: universal
+  - type: ToxinRemover
+    organKey: kidney
+    embedded: true
+    maxDamageThreshold: 600
   # The kidneys just remove anything that doesn't currently have any metabolisms, as a stopgap.
   - type: Metabolizer
     maxReagents: 5
     metabolizerTypes: [Human]
     removeEmpty: true
+  - type: StaticPrice
+    price: 700

@@ -57,7 +57,7 @@ public sealed partial class HumanoidMarkingModifierWindow : DefaultWindow
         }
 
         string? state = _protoMan.HasIndex<HumanoidSpeciesSpriteLayer>(modifier.Text) ? modifier.Text : null;
-        OnLayerInfoModified?.Invoke(layer, new CustomBaseLayerInfo(state, modifier.Color));
+        OnLayerInfoModified?.Invoke(layer, new CustomBaseLayerInfo(state, false, modifier.Color));
     }
     public void SetState(
         MarkingSet markings,

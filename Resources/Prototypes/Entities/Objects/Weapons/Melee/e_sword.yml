@@ -79,6 +79,10 @@
   - type: Reflect
   - type: IgnitionSource
     temperature: 700
+  - type: SurgeryTool
+    sound: /Audio/Weapons/eblade1.ogg
+  - type: SurgerySaw
+  - type: SurgeryCauterizer
 # Corvax-HiddenDesc-Start
   - type: HiddenDescription
     entries:
@@ -212,6 +216,10 @@
   - type: Tag
     tags:
     - Write
+  - type: SurgeryTool
+    sound: /Audio/Weapons/eblade1.ogg
+  - type: SurgeryCauterizer
+  - type: SurgeryIncisor
 # Corvax-HiddenDesc-Start
   - type: HiddenDescription
     entries:

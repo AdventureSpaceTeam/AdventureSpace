@@ -8,11 +8,21 @@
       connections:
       - legs
       organs:
-        lungs: OrganAnimalLungs
-        stomach: OrganBloodsuckerStomach
-        liver: OrganBloodsuckerLiver
-        heart: OrganBloodsuckerHeart
-        kidneys: OrganAnimalKidneys
+        lungs:
+          organ: OrganAnimalLungs
+          type: Lung
+        stomach:
+          organ: OrganBloodsuckerStomach
+          type: Stomach
+        liver:
+          organ: OrganBloodsuckerLiver
+          type: Liver
+        heart:
+          organ: OrganBloodsuckerHeart
+          type: Heart
+        kidneys:
+          organ: OrganAnimalKidneys
+          type: Kidney
     legs:
       part: LegsAnimal
       connections:

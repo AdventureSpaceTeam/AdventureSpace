@@ -6,15 +6,39 @@
   components:
   - type: StorageFill
     contents:
-      - id: MedkitFilled
-        amount: 2
-      - id: Gauze
-        amount: 2
-      - id: Bloodpack
-        amount: 2
-      - id: BoxLatexGloves
-      - id: BoxSterileMask
-      - id: BoxMouthSwab
+    - id: MedkitFilled
+      amount: 2
+    - id: Gauze
+      amount: 2
+    - id: Bloodpack
+      amount: 20
+    - id: BoxLatexGloves
+    - id: BoxSterileMask
+    - id: BoxMouthSwab
+    - id: Tourniquet
+      amount: 4
+    - id: Suture
+      amount: 2
+    - id: MetalSuture
+      amount: 2
+    - id: NitrousOxideTankFilled
+      amount: 2
+    - id: ClothingMaskBreathMedical
+      amount: 2
+    - id: ClothingOuterHospitalGown
+      amount: 2
+    - id: Hemostat
+      amount: 4
+    - id: Scalpel
+      amount: 1
+    - id: Retractor
+      amount: 4
+    - id: Cautery
+      amount: 1
+    - id: Drill
+      amount: 1
+    - id: Saw
+      amount: 1
 
 - type: entity
   id: CrateChemistrySupplies

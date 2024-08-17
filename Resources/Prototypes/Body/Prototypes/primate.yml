@@ -1,24 +1,42 @@
 ﻿- type: body
   id: Primate
   name: "primate"
+  species: primate
   root: torso
   slots:
     torso:
       part: TorsoAnimal
       connections:
-      - hands
-      - legs
+        - hands
+        - legs
       organs:
-        lungs: OrganAnimalLungs
-        stomach: OrganAnimalStomach
-        liver: OrganAnimalLiver
-        heart: OrganAnimalHeart
-        kidneys: OrganAnimalKidneys
+        brain:
+          organ: OrganHumanBrain
+          type: Brain
+        eyes:
+          organ: OrganHumanEyes
+          type: Eye
+          internal: false
+        lungs:
+          organ: OrganAnimalLungs
+          type: Lung
+        stomach:
+          organ: OrganAnimalStomach
+          type: Stomach
+        liver:
+          organ: OrganAnimalLiver
+          type: Liver
+        heart:
+          organ: OrganAnimalHeart
+          type: Heart
+        kidneys:
+          organ: OrganAnimalKidneys
+          type: Kidney
     hands:
       part: HandsAnimal
     legs:
       part: LegsAnimal
       connections:
-      - feet
+        - feet
     feet:
       part: FeetAnimal

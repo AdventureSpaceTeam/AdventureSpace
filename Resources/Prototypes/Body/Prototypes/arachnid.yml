@@ -2,27 +2,44 @@
   id: Arachnid
   name: "arachnid"
   root: torso
+  species: arachnid
   slots:
     head:
       part: HeadArachnid
       connections:
       - torso
       organs:
-        brain: OrganHumanBrain
-        eyes: OrganArachnidEyes
+        brain:
+          organ: OrganHumanBrain
+          type: Brain
+        eyes:
+          organ: OrganArachnidEyes
+          type: Eye
+          internal: false
     torso:
       part: TorsoArachnid
-      organs:
-        heart: OrganArachnidHeart
-        lungs: OrganAnimalLungs
-        stomach: OrganArachnidStomach
-        liver: OrganArachnidLiver
-        kidneys: OrganArachnidKidneys
       connections:
       - right arm
       - left arm
       - right leg
       - left leg
+      - paws
+      organs:
+        heart:
+          organ: OrganArachnidHeart
+          type: Heart
+        lungs:
+          organ: OrganArachnidLungs
+          type: Lung
+        stomach:
+          organ: OrganArachnidStomach
+          type: Stomach
+        liver:
+          organ: OrganArachnidLiver
+          type: Liver
+        kidneys:
+          organ: OrganArachnidKidneys
+          type: Kidney
     right arm:
       part: RightArmArachnid
       connections:
@@ -47,3 +64,5 @@
       part: RightFootArachnid
     left foot:
       part: LeftFootArachnid
+    paws:
+      part: ArachnidPaws

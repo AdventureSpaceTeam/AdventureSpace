@@ -6,6 +6,7 @@
   - type: Sprite
     sprite: Mobs/Species/Diona/organs.rsi
   - type: Organ
+    species: diona
   - type: Food
   - type: Extractable
     grindableSolutionName: organ
@@ -24,6 +25,8 @@
   - type: FlavorProfile
     flavors:
       - people
+  - type: StaticPrice
+    price: 330
 
 - type: entity
   id: OrganDionaBrain
@@ -48,6 +51,9 @@
         reagents:
         - ReagentId: GreyMatter
           Quantity: 5
+  - type: Brain
+    organType: Brain
+    species: diona
 
 - type: entity
   id: OrganDionaEyes
@@ -59,6 +65,11 @@
     layers:
       - state: eyeball-l
       - state: eyeball-r
+  - type: Organ
+    organType: Eye
+  - type: EyeSight
+  - type: StaticPrice
+    price: 350
 
 - type: entity
   id: OrganDionaStomach
@@ -68,6 +79,9 @@
   components:
   - type: Sprite
     state: stomach
+  - type: Organ
+    organType: Stomach
+    species: diona
   - type: SolutionContainerManager
     solutions:
       stomach:
@@ -78,6 +92,24 @@
         - ReagentId: UncookedAnimalProteins
           Quantity: 5
   - type: Stomach
+  - type: DStomach
+    organKey: stomach
+    maxDamageThreshold: 200 #make this a bit more resilient due to the multiple functions #if its brain is also its lungs, then I'm making its stomach also its liver and kidneys okay?
+  - type: ToxinRemover
+    organKey: kidney
+    embedded: true
+    maxDamageThreshold: 800 #make this a bit more resilient due to the multiple functions
+  - type: ToxinFilter
+    organKey: liver
+    embedded: true
+    maxDamageThreshold: 600 #make this a bit more resilient due to the multiple functions
+  - type: CirculatoryPump
+    organKey: heart
+    strainDamageMod: 0.01
+    strainMod: 180
+    strainRecovery: 1
+    strainCeiling: 0
+    maxDamageThreshold: 10
   - type: Metabolizer
     maxReagents: 6
     metabolizerTypes: [ Plant ]
@@ -90,6 +122,8 @@
       - id: Narcotic
       - id: Alcohol
         rateModifier: 0.1
+  - type: StaticPrice
+    price: 700
 
 - type: entity
   id: OrganDionaLungs
@@ -102,7 +136,9 @@
     layers:
       - state: lung-l
       - state: lung-r
-  - type: Lung 
+  - type: Lung
+  - type: DLungs
+    organKey: lungs
   - type: Metabolizer
     removeEmpty: true
     solutionOnBody: false
@@ -131,7 +167,7 @@
   description: "The source of incredible, unending intelligence. Honk."
   components:
   - type: Brain
-  - type: Nymph # This will make the organs turn into a nymph when they're removed. 
+  - type: Nymph # This will make the organs turn into a nymph when they're removed.
     entityPrototype: OrganDionaNymphBrain
     transferMind: true
 
@@ -170,15 +206,23 @@
 
 - type: entity
   id: OrganDionaNymphStomach
-  parent: MobDionaNymphAccent 
+  parent: MobDionaNymphAccent
   categories: [ HideSpawnMenu ]
   name: diona nymph
   suffix: Stomach
-  description: Contains the stomach of a formerly fully-formed Diona. It doesn't taste any better for it. 
+  description: Contains the stomach of a formerly fully-formed Diona. It doesn't taste any better for it.
   components:
   - type: IsDeadIC
   - type: Body
     prototype: AnimalNymphStomach
+  - type: CirculatoryPump
+    organKey: heart
+    strainDamageMod: 0.01
+    strainMod: 180
+    strainRecovery: 1
+    strainCeiling: 0
+    maxDamageThreshold: 10
+    brainless: true
 
 - type: entity
   id: OrganDionaNymphLungs
@@ -186,8 +230,16 @@
   categories: [ HideSpawnMenu ]
   name: diona nymph
   suffix: Lungs
-  description: Contains the lungs of a formerly fully-formed Diona. Breathtaking. 
+  description: Contains the lungs of a formerly fully-formed Diona. Breathtaking.
   components:
   - type: IsDeadIC
   - type: Body
     prototype: AnimalNymphLungs
+  - type: CirculatoryPump
+    organKey: heart
+    strainDamageMod: 0.01
+    strainMod: 180
+    strainRecovery: 1
+    strainCeiling: 0
+    maxDamageThreshold: 10
+    brainless: true

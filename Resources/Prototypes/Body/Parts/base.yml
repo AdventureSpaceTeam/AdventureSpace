@@ -2,13 +2,15 @@
 # TODO BODY: Part damage
 - type: entity
   id: BasePart
-  parent: BaseItem
+  parent: [ BaseItem, BaseSurgeryWoundable]
   name: "body part"
   abstract: true
   components:
   - type: Damageable
     damageContainer: Biological
   - type: BodyPart
+  - type: SurgeryBodyPart
+    species: universal
   - type: Gibbable
   - type: ContainerContainer
     containers:
@@ -16,9 +18,6 @@
         ents: []
   - type: StaticPrice
     price: 100
-  - type: Tag
-    tags:
-      - Trash
 
 - type: entity
   id: BaseTorso
@@ -28,6 +27,12 @@
   components:
   - type: BodyPart
     partType: Torso
+  - type: SurgeryBodyPart
+    species: universal
+  - type: SurgeryWoundablePart
+    canBeDollTarget: false
+  - type: StaticPrice
+    price: 500
 
 - type: entity
   id: BaseHead
@@ -38,11 +43,18 @@
   - type: BodyPart
     partType: Head
     vital: true
+  - type: SurgeryBodyPart
+    species: universal
   - type: Input
     context: "ghost"
+  - type: SurgeryWoundablePart
+    maxDamage: 120
+    canBeExplosionTarget: false
   - type: Tag
     tags:
-      - Head
+    - Head
+  - type: StaticPrice
+    price: 700
 
 - type: entity
   id: BaseLeftArm
@@ -53,6 +65,13 @@
   - type: BodyPart
     partType: Arm
     symmetry: Left
+  - type: SurgeryBodyPart
+    species: universal
+  - type: StaticPrice
+    price: 400
+  - type: Tag
+    tags:
+    - LArm
 
 - type: entity
   id: BaseRightArm
@@ -63,6 +82,13 @@
   - type: BodyPart
     partType: Arm
     symmetry: Right
+  - type: SurgeryBodyPart
+    species: universal
+  - type: StaticPrice
+    price: 400
+  - type: Tag
+    tags:
+    - RArm
 
 - type: entity
   id: BaseLeftHand
@@ -73,6 +99,10 @@
   - type: BodyPart
     partType: Hand
     symmetry: Left
+  - type: SurgeryBodyPart
+    species: universal
+  - type: StaticPrice
+    price: 200
 
 - type: entity
   id: BaseRightHand
@@ -83,6 +113,10 @@
   - type: BodyPart
     partType: Hand
     symmetry: Right
+  - type: SurgeryBodyPart
+    species: universal
+  - type: StaticPrice
+    price: 200
 
 - type: entity
   id: BaseLeftLeg
@@ -93,7 +127,14 @@
   - type: BodyPart
     partType: Leg
     symmetry: Left
+  - type: SurgeryBodyPart
+    species: universal
   - type: MovementBodyPart
+  - type: StaticPrice
+    price: 450
+  - type: Tag
+    tags:
+    - LLeg
 
 - type: entity
   id: BaseRightLeg
@@ -104,7 +145,14 @@
   - type: BodyPart
     partType: Leg
     symmetry: Right
+  - type: SurgeryBodyPart
+    species: universal
   - type: MovementBodyPart
+  - type: StaticPrice
+    price: 450
+  - type: Tag
+    tags:
+    - RLeg
 
 - type: entity
   id: BaseLeftFoot
@@ -115,6 +163,10 @@
   - type: BodyPart
     partType: Foot
     symmetry: Left
+  - type: SurgeryBodyPart
+    species: universal
+  - type: StaticPrice
+    price: 300
 
 - type: entity
   id: BaseRightFoot
@@ -125,3 +177,7 @@
   - type: BodyPart
     partType: Foot
     symmetry: Right
+  - type: SurgeryBodyPart
+    species: universal
+  - type: StaticPrice
+    price: 300

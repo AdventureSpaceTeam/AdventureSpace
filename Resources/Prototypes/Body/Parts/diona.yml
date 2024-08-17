@@ -1,97 +1,152 @@
 - type: entity
   id: PartDiona
-  parent: [BaseItem, BasePart]
+  parent: [ BaseItem, BasePart ]
   name: "diona body part"
   abstract: true
   components:
+  - type: Damageable
+    damageContainer: Biological
+  - type: BodyPart
+  - type: SurgeryBodyPart
+    state:
+      exoSkeleton: true #probably the best representation
+      incisable: false #wood all the way through, no incisions needed just a saw
+      endoSkeleton: false
+    species: diona
+  - type: ContainerContainer
+    containers:
+      bodypart: !type:Container
+        ents: [ ]
+      attachment: !type:Container
+        ents: [ ]
+      slotAttachment: !type:Container
+        ents: [ ]
   - type: Sprite
     sprite: Mobs/Species/Diona/parts.rsi
+  - type: StaticPrice
+    price: 100
 
 - type: entity
   id: TorsoDiona
   name: "diona torso"
-  parent: [PartDiona, BaseTorso]
+  parent: [ PartDiona, BaseTorso ]
   components:
   - type: Sprite
     state: "torso_m"
+  - type: SurgeryBodyPart
+    container: true
 
 - type: entity
   id: HeadDiona
   name: "diona head"
-  parent: [PartDiona, BaseHead]
+  parent: [ PartDiona, BaseHead ]
   components:
   - type: Sprite
-    state: "head_m"
+    state: "head_icon"
+  - type: Tag
+    tags:
+    - Head
+  - type: SurgeryBodyPart
+    visuals:
+      speciesSprite: MobDionaHead
+    container: true
 
 - type: entity
   id: LeftArmDiona
   name: "left diona arm"
-  parent: [PartDiona, BaseLeftArm]
+  parent: [ PartDiona, BaseLeftArm ]
   components:
   - type: Sprite
     state: "l_arm"
+  - type: SurgeryBodyPart
+    visuals:
+      speciesSprite: MobDionaLArm
+    state:
+      exoSkeleton: false
 
 - type: entity
   id: RightArmDiona
   name: "right diona arm"
-  parent: [PartDiona, BaseRightArm]
+  parent: [ PartDiona, BaseRightArm ]
   components:
   - type: Sprite
     state: "r_arm"
+  - type: SurgeryBodyPart
+    visuals:
+      speciesSprite: MobDionaRArm
+    state:
+      exoSkeleton: false
 
 - type: entity
   id: LeftHandDiona
   name: "left diona hand"
-  parent: [PartDiona, BaseLeftHand]
+  parent: [ PartDiona, BaseLeftHand ]
   components:
   - type: Sprite
     state: "l_hand"
+  - type: SurgeryBodyPart
+    visuals:
+      speciesSprite: MobDionaLHand
+    state:
+      exoSkeleton: false
 
 - type: entity
   id: RightHandDiona
   name: "right diona hand"
-  parent: [PartDiona, BaseRightHand]
+  parent: [ PartDiona, BaseRightHand ]
   components:
   - type: Sprite
     state: "r_hand"
+  - type: SurgeryBodyPart
+    visuals:
+      speciesSprite: MobDionaRHand
+    state:
+      exoSkeleton: false
 
 - type: entity
   id: LeftLegDiona
   name: "left diona leg"
-  parent: [PartDiona, BaseLeftLeg]
+  parent: [ PartDiona, BaseLeftLeg ]
   components:
   - type: Sprite
     state: "l_leg"
+  - type: SurgeryBodyPart
+    visuals:
+      speciesSprite: MobDionaLLeg
+    state:
+      exoSkeleton: false
 
 - type: entity
   id: RightLegDiona
   name: "right diona leg"
-  parent: [PartDiona, BaseRightLeg]
+  parent: [ PartDiona, BaseRightLeg ]
   components:
   - type: Sprite
     state: "r_leg"
-  - type: BodyPart
-    partType: Leg
-    symmetry: Right
+  - type: SurgeryBodyPart
+    visuals:
+      speciesSprite: MobDionaRLeg
+    state:
+      exoSkeleton: false
 
 - type: entity
   id: LeftFootDiona
   name: "left diona foot"
-  parent: [PartDiona, BaseLeftFoot]
+  parent: [ PartDiona, BaseLeftFoot ]
   components:
   - type: Sprite
     state: "l_foot"
-  - type: BodyPart
-    partType: Foot
-    symmetry: Left
+  - type: SurgeryBodyPart
+    visuals:
+      speciesSprite: MobDionaLFoot
 
 - type: entity
   id: RightFootDiona
   name: "right diona foot"
-  parent: [PartDiona, BaseRightFoot]
+  parent: [ PartDiona, BaseRightFoot ]
   components:
   - type: Sprite
     state: "r_foot"
-  - type: BodyPart
-    partType: Foot
-    symmetry: Right
+  - type: SurgeryBodyPart
+    visuals:
+      speciesSprite: MobDionaRFoot

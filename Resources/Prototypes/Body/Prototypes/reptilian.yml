@@ -1,6 +1,7 @@
 ﻿- type: body
   name: "reptilian"
   id: Reptilian
+  species: reptilian
   root: torso
   slots:
     head:
@@ -8,21 +9,37 @@
       connections:
       - torso
       organs:
-        brain: OrganHumanBrain
-        eyes: OrganHumanEyes
+        brain:
+          organ: OrganHumanBrain
+          type: Brain
+        eyes:
+          organ: OrganHumanEyes
+          type: Eye
+          internal: false
     torso:
       part: TorsoReptilian
       organs:
-        heart: OrganAnimalHeart
-        lungs: OrganHumanLungs
-        stomach: OrganReptilianStomach
-        liver: OrganAnimalLiver
-        kidneys: OrganHumanKidneys
+        heart:
+          organ: OrganAnimalHeart
+          type: Heart
+        lungs:
+          organ: OrganHumanLungs
+          type: Lung
+        stomach:
+          organ: OrganReptilianStomach
+          type: Stomach
+        liver:
+          organ: OrganAnimalLiver
+          type: Liver
+        kidneys:
+          organ: OrganHumanKidneys
+          type: Kidney
       connections:
       - right arm
       - left arm
       - right leg
       - left leg
+      - tail
     right arm:
       part: RightArmReptilian
       connections:
@@ -47,3 +64,5 @@
       part: RightFootReptilian
     left foot:
       part: LeftFootReptilian
+    tail:
+      part: TailReptilian

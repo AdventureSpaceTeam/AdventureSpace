@@ -6,6 +6,7 @@
   - type: Sprite
     sprite: Mobs/Species/Arachnid/organs.rsi
   - type: Organ
+    species: arachnid
   - type: Food
   - type: Extractable
     grindableSolutionName: organ
@@ -24,6 +25,8 @@
   - type: Tag
     tags:
       - Meat
+  - type: StaticPrice
+    price: 300
 
 - type: entity
   id: OrganArachnidStomach
@@ -34,6 +37,8 @@
   - type: Sprite
     sprite: Mobs/Species/Arachnid/organs.rsi
     state: stomach
+  - type: Organ
+    organType: Stomach
   - type: Stomach
     updateInterval: 1.5
   - type: SolutionContainerManager
@@ -47,6 +52,9 @@
           Quantity: 5
   - type: Metabolizer
     updateInterval: 1.5
+    metabolizerTypes: [ Arachnid ]
+  - type: StaticPrice
+    price: 580
 
 - type: entity
   id: OrganArachnidLungs
@@ -58,16 +66,21 @@
     layers:
       - state: lung-l
       - state: lung-r
+  - type: Organ
+    organType: Lung
+    species: universal #TODO make alternate lungs for non-human humanoids
   - type: Lung
+  - type: DLungs
+    organKey: lungs
   - type: Metabolizer
-    updateInterval: 1.5
+    updateInterval: 1.2
     removeEmpty: true
     solutionOnBody: false
     solution: "Lung"
-    metabolizerTypes: [ Human ]
+    metabolizerTypes: [ Arachnid ]
     groups:
-    - id: Gas
-      rateModifier: 100.0
+      - id: Gas
+        rateModifier: 100.0
   - type: SolutionContainerManager
     solutions:
       organ:
@@ -82,10 +95,12 @@
         reagents:
         - ReagentId: UncookedAnimalProteins
           Quantity: 5
+  - type: StaticPrice
+    price: 700
 
 - type: entity
   id: OrganArachnidHeart
-  parent: BaseArachnidOrgan
+  parent: [ BaseArachnidOrgan, BaseHeart]
   name: heart
   description: "A disgustingly persistent little biological pump made for spiders."
   components:
@@ -99,27 +114,41 @@
     - id: Medicine
     - id: Poison
     - id: Narcotic
+  - type: StaticPrice
+    price: 800
+  - type: Tag
+    tags:
+    - Heart
+    - Meat
 
 - type: entity
   id: OrganArachnidLiver
-  parent: BaseHumanOrgan
+  parent: BaseArachnidOrgan
   name: liver
   description: "Pairing suggestion: chianti and fava beans."
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: liver
+  - type: Organ
+    organType: Liver
+  - type: ToxinFilter
+    organKey: liver
+    embedded: true
+    maxDamageThreshold: 500
   - type: Metabolizer # The liver metabolizes certain chemicals only, like alcohol.
     updateInterval: 1.5
     maxReagents: 1
-    metabolizerTypes: [Animal]
+    metabolizerTypes: [ Arachnid ]
     groups:
     - id: Alcohol
       rateModifier: 0.1 # removes alcohol very slowly along with the stomach removing it as a drink
+  - type: StaticPrice
+    price: 600
 
 - type: entity
   id: OrganArachnidKidneys
-  parent: BaseHumanOrgan
+  parent: BaseArachnidOrgan
   name: kidneys
   description: "Filters toxins from the bloodstream."
   categories: [ HideSpawnMenu ]
@@ -128,12 +157,20 @@
     layers:
       - state: kidney-l
       - state: kidney-r
+  - type: Organ
+    organType: Kidney
+  - type: ToxinRemover
+    organKey: kidney
+    embedded: true
+    maxDamageThreshold: 600
   # The kidneys just remove anything that doesn't currently have any metabolisms, as a stopgap.
   - type: Metabolizer
     updateInterval: 1.5
     maxReagents: 5
-    metabolizerTypes: [Animal]
+    metabolizerTypes: [ Arachnid ]
     removeEmpty: true
+  - type: StaticPrice
+    price: 660
 
 - type: entity
   id: OrganArachnidEyes
@@ -145,6 +182,12 @@
     layers:
       - state: eyeball-l
       - state: eyeball-r
+  - type: Organ
+    organType: Eye
+    species: universal
+  - type: EyeSight
+  - type: StaticPrice
+    price: 399
 
 - type: entity
   id: OrganArachnidTongue
@@ -154,3 +197,5 @@
   components:
   - type: Sprite
     state: tongue
+  - type: StaticPrice
+    price: 230

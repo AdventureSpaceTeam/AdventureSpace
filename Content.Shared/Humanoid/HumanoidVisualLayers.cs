@@ -7,6 +7,8 @@ namespace Content.Shared.Humanoid
     public enum HumanoidVisualLayers : byte
     {
         Tail,
+        Wings,
+        Paws,
         Hair,
         FacialHair,
         Chest,

@@ -78,6 +78,9 @@
     {
       "name": "freaky_secondary",
       "directions": 4
-    }
+    }, 
+      {
+          "name": "paws_icon"
+      }
   ]
 }
