@@ -142,12 +142,13 @@
   - type: TrayScanner
     range: 21
 
-- type: statusIcon
+- type: jobIcon
   parent: JobIcon
   id: JobIconAI
   icon:
     sprite: /Textures/Interface/Misc/job_icons.rsi
     state: AI
+  jobName: искусственный интеллект
 
 - type: job
   id: AI

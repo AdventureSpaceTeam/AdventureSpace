@@ -104,14 +104,15 @@
       - state: Blueshield
 
 #Иконка
-- type: statusIcon
+- type: jobIcon
   parent: JobIcon
   id: JobIconBlueshield
   icon:
     sprite: /Textures/Totohka/JobIcons.rsi
     state: BlueShieldOfficer
+  jobName: синий щит
 
-#Рюкзак 
+#Рюкзак
 - type: entity
   parent: ClothingBackpack
   id: ClothingBackpackBlueshield
