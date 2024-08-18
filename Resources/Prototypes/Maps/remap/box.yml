@@ -2,7 +2,7 @@
   id: AdventureBox
   mapName: 'Box Station'
   mapPath: /Maps/remap/Adventurebox.yml
-  minPlayers: 20
+  minPlayers: 15
   stations:
     advBoxstation:
       stationProto: StandardNanotrasenStation
