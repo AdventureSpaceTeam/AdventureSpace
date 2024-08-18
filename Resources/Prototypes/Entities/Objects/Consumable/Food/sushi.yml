@@ -5,7 +5,8 @@
   description: Суши.
   components:
   - type: Food
-    trash: FoodPlateSmall
+    trash:
+    - FoodPlateSmall
   - type: FlavorProfile
     flavors:
       - fishy

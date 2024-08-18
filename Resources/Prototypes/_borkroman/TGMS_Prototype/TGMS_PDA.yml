@@ -15,12 +15,13 @@
     jobIcon: JobIconTGMSMarine
 
 #Иконка Морпеха
-- type: statusIcon
+- type: jobIcon
   parent: JobIcon
   id: JobIconTGMSMarine
   icon:
     sprite: _borkroman/TGMS_Sprite/TGMS_other/TGMS_icons.rsi
     state: Marine
+  jobName: морпех
 
 #КПК Морпеха
 - type: entity
@@ -70,12 +71,13 @@
     jobIcon: JobIconTGMSMarineCommander
 
 #Иконка Командира отряда
-- type: statusIcon
+- type: jobIcon
   parent: JobIcon
   id: JobIconTGMSMarineCommander
   icon:
     sprite: _borkroman/TGMS_Sprite/TGMS_other/TGMS_icons.rsi
     state: Commander
+  jobName: командир
 
 #КПК Командира отряда
 - type: entity
@@ -113,12 +115,13 @@
     jobIcon: JobIconTGMSMarineMedical
 
 #Иконка Полевого медика
-- type: statusIcon
+- type: jobIcon
   parent: JobIcon
   id: JobIconTGMSMarineMedical
   icon:
     sprite: _borkroman/TGMS_Sprite/TGMS_other/TGMS_icons.rsi
     state: Medical
+  jobName: полевой медик
 
 #КПК Полевого медика
 - type: entity
@@ -160,12 +163,13 @@
     jobIcon: JobIconTGMSMarineSpec
 
 #Иконка Специалиста
-- type: statusIcon
+- type: jobIcon
   parent: JobIcon
   id: JobIconTGMSMarineSpec
   icon:
     sprite: _borkroman/TGMS_Sprite/TGMS_other/TGMS_icons.rsi
     state: Spec
+  jobName: специалист
 
 #КПК Специалиста
 - type: entity

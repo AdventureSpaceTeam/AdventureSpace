@@ -190,12 +190,13 @@
     jobIcon: JobIconCLEA
 
 #Иконка ЦСС
-- type: statusIcon
+- type: jobIcon
   parent: JobIcon
   id: JobIconCLEA
   icon:
     sprite: _borkroman/CLEA/other/CLEA_icon.rsi
     state: CLEA
+  jobName: ЦСС
 
 #Рюкзак ЦСС
 - type: entity
