@@ -1,0 +1,162 @@
+﻿- type: entity
+  id: ActionPontificDarkPrayer
+  name: "Темный Молебнен"
+  description: "Понтифик падает наземь, вознося молитвы во тьму, наделяющую его скверной"
+  noSpawn: true
+  components:
+    - type: InstantAction
+      icon:
+        sprite: DarkStation/MainGame/DarkForces/Pontific/pontiff/actions.rsi
+        state: prayer
+      useDelay: 120
+      itemIconStyle: NoItem
+      event: !type:PontificDarkPrayerEvent
+        felCost: 0
+
+- type: entity
+  id: ActionPontificLungeOfFaith
+  name: "Выпад веры"
+  description: "Увеличивает скорость и урон Понтифика в 1.25 раз. Требует 20 скверны"
+  noSpawn: true
+  components:
+    - type: InstantAction
+      icon:
+        sprite: DarkStation/MainGame/DarkForces/Pontific/pontiff/actions.rsi
+        state: faith_attack
+      useDelay: 60
+      itemIconStyle: NoItem
+      event: !type:PontificLungeOfFaithEvent
+        felCost: 20
+
+- type: entity
+  id: ActionPontificBloodyAltar
+  name: "Кровавый алтарь"
+  description: "Понтифик молебном вызывает из тьмы алтарь, увеличивающих количество очков при последующим молебне в 1.75 раз. Требует 180 скверны"
+  noSpawn: true
+  components:
+    - type: InstantAction
+      icon:
+        sprite: DarkStation/MainGame/DarkForces/Pontific/pontiff/actions.rsi
+        state: desecrated_statue
+      useDelay: 120
+      itemIconStyle: NoItem
+      event: !type:PontificBloodyAltarEvent
+        felCost: 180
+
+- type: entity
+  id: ActionPontificSpawnMonk
+  name: "Призыв служителя"
+  description: "Призывает проклятого монаха церкви Гартулла. Требует 50 скверны"
+  noSpawn: true
+  components:
+    - type: InstantAction
+      icon:
+        sprite: DarkStation/MainGame/DarkForces/Pontific/pontiff/actions.rsi
+        state: call_monk
+      useDelay: 240
+      itemIconStyle: NoItem
+      event: !type:PontificSpawnMonkEvent
+        felCost: 50
+
+- type: entity
+  id: ActionPontificSpawnGuardian
+  name: "Слово храмовника"
+  description: "Призывает рыцаря церкви Гартулла. Требует 75 скверны"
+  noSpawn: true
+  components:
+    - type: InstantAction
+      icon:
+        sprite: DarkStation/MainGame/DarkForces/Pontific/pontiff/actions.rsi
+        state: call_guardian
+      useDelay: 240
+      itemIconStyle: NoItem
+      event: !type:PontificSpawnGuardianEvent
+        felCost: 75
+
+- type: entity
+  id: ActionPontificFelLightning
+  name: "Великое осквернение"
+  description: "Мощная молния наполенная скверной. Требует 55 скверны"
+  noSpawn: true
+  components:
+    - type: EntityTargetAction
+      icon:
+        sprite: DarkStation/MainGame/DarkForces/Pontific/pontiff/actions.rsi
+        state: fel_lightning
+      useDelay: 15
+      itemIconStyle: NoItem
+      event: !type:PontificFelLightningEvent
+        felCost: 55
+      whitelist:
+        components:
+          - Body
+      canTargetSelf: false
+      interactOnMiss: false
+      range: 6
+
+- type: entity
+  id: ActionPontificFlameSwords
+  name: "Скверное пламя"
+  description: "Мечи Понтифика загораются скверным пламенем, увеличивая скорость и урон Понтифика в 1.75 раз. Требует 40 скверны"
+  noSpawn: true
+  components:
+    - type: InstantAction
+      icon:
+        sprite: DarkStation/MainGame/DarkForces/Pontific/pontiff/actions.rsi
+        state: flame_swords
+      useDelay: 60
+      itemIconStyle: NoItem
+      event: !type:PontificFlameSwordsEvent
+        felCost: 40
+
+- type: entity
+  id: ActionPontificKudzu
+  name: "Осквернённые лилии"
+  description: "Создает осквернённые лилии, которые распространяются и медленно заполняют станцию. Наносит урон скверной при контакте"
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon:
+      sprite: DarkStation/MainGame/DarkForces/Pontific/pontiff/actions.rsi
+      state: kudzu
+    useDelay: 180
+    itemIconStyle: NoItem
+    event: !type:PontificKudzuEvent
+      felCost: 50
+
+#for action
+- type: entity
+  name: "молния скверны"
+  id: PontificLightning
+  noSpawn: true
+  components:
+    - type: Sprite
+      sprite: /Textures/Effects/lightning.rsi
+      drawdepth: Effects
+      layers:
+        - state: "lightning_3"
+          color: plum
+          shader: unshaded
+    - type: Physics
+      canCollide: false
+    - type: Lightning
+    - type: PointLight
+      enabled: true
+      color: plum
+      radius: 3.5
+      softness: 1
+      autoRot: true
+      castShadows: false
+    - type: DesecratedLightning
+      felDamage: 50
+      shouldConvertOnTwiceAttack: true
+    - type: StunOnCollide
+      stunAmount: 5
+      knockdownAmount: 5
+    - type: Beam
+      sound: /Audio/Effects/Lightning/lightningshock.ogg
+    - type: TimedDespawn
+      lifetime: 3
+    - type: Tag
+      tags:
+        - HideContextMenu

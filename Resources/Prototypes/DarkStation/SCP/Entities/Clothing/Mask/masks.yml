@@ -1,0 +1,19 @@
+﻿- type: entity
+  id: ClothingMaskGasSCPMog
+  parent: ClothingMaskGasSecurity
+  name: "Противогаз отряда МОГ"
+  description: "Обычный противогаз, ничего особенного"
+  components:
+  - type: Sprite
+    sprite: DarkStation/SCP/Clothing/Mask/mog.rsi
+  - type: Clothing
+    sprite: DarkStation/SCP/Clothing/Mask/mog.rsi
+
+- type: entity
+  id: ClothingMaskGasSCPSecurity
+  parent: ClothingMaskGasSecurity
+  components:
+  - type: Sprite
+    sprite: DarkStation/SCP/Clothing/Mask/security.rsi
+  - type: Clothing
+    sprite: DarkStation/SCP/Clothing/Mask/security.rsi

@@ -1,0 +1,104 @@
+﻿- type: diseaseStage
+  id: ColdSneeze
+  symptom: Sneeze
+  mutationThreshold: 240
+  cure:
+    HotCocoa:
+      symptomThresholdIncrease: 3
+      pausedMutationOnCure: false
+    Tea:
+      symptomThresholdIncrease: 3
+      pausedMutationOnCure: false
+      timesToCurePermanent: 2
+    GreenTea:
+      symptomThresholdIncrease: 3
+      pausedMutationOnCure: false
+      timesToCurePermanent: 2
+
+- type: diseaseStage
+  id: ColdCough
+  symptom: CoughDamage
+  mutationThreshold: 240
+  cure:
+    Bicaridine:
+      symptomThresholdIncrease: 3
+      pausedMutationOnCure: true
+      timesToCurePermanent: 2
+    Tea:
+      symptomThresholdIncrease: 1
+      pausedMutationOnCure: false
+    GreenTea:
+      symptomThresholdIncrease: 1
+      pausedMutationOnCure: false
+
+- type: diseaseStage
+  id: BirdFluSneeze
+  symptom: Sneeze
+  mutationThreshold: 240
+  cure:
+    HotCocoa:
+      symptomThresholdIncrease: 3
+    Tea:
+      symptomThresholdIncrease: 3
+    GreenTea:
+      symptomThresholdIncrease: 3
+
+- type: diseaseStage
+  id: BirdFluCough
+  symptom: CoughDamage
+  mutationThreshold: 240
+  cure:
+    Bicaridine:
+      symptomThresholdIncrease: 3
+      pausedMutationOnCure: true
+    Tea:
+      symptomThresholdIncrease: 1
+    GreenTea:
+      symptomThresholdIncrease: 1
+
+- type: diseaseStage
+  id: BirdFluVomit
+  symptom: VomitWithStomachDamage
+  mutationThreshold: 240
+  cure:
+    Dermaline:
+      symptomThresholdIncrease: 3
+
+- type: diseaseStage
+  id: AsthmaAttack
+  symptom: AsthmaAttack
+  symptomThreshold: 300
+  cure:
+    Dexalin:
+      symptomThresholdIncrease: 3
+
+#Plague
+- type: diseaseStage
+  id: PlagueCough
+  symptom: PlagueCough
+  mutationThreshold: 180
+  cure:
+    Bicardine:
+      symptomThresholdIncrease: 3
+
+- type: diseaseStage
+  id: PlagueAbscess
+  symptom: PlagueAbscess
+  cure:
+    Bicardine:
+
+#Scabies
+- type: diseaseStage
+  id: ScabiesScratch
+  symptom: ScabiesScratch
+  symptomThreshold: 120
+#  symptomThreshold: 120
+  mutationThreshold: 10
+#  mutationThreshold: 90
+
+- type: diseaseStage
+  id: ScabiesRash
+  symptom: ScabiesRash
+  symptomThreshold: 10
+#  symptomThreshold: 120
+

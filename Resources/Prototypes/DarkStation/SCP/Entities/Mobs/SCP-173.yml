@@ -1,0 +1,133 @@
+- type: damageModifierSet
+  id: SCP173
+  coefficients:
+    Bloodloss: 0
+    Blunt: 0.5
+    Cellular: 0
+    Cold: 0
+    Heat: 0
+    Piercing: 0.1
+    Poison: 0
+    Radiation: 0
+    Shock: 0
+    Slash: 0
+
+- type: soundCollection
+  id: 173Spooks
+  files:
+  - /Audio/DarkStation/SCP/Horror/Horror0.ogg
+  - /Audio/DarkStation/SCP/Horror/Horror3.ogg
+  - /Audio/DarkStation/SCP/Horror/Horror4.ogg
+  - /Audio/DarkStation/SCP/Horror/Horror5.ogg
+
+- type: soundCollection
+  id: 173Scares
+  files:
+  - /Audio/DarkStation/SCP/Horror/Horror1.ogg
+  - /Audio/DarkStation/SCP/Horror/Horror2.ogg
+  - /Audio/DarkStation/SCP/Horror/Horror6.ogg
+
+- type: soundCollection
+  id: 173Kills
+  files:
+  - /Audio/DarkStation/SCP/173/NeckSnap1.ogg
+  - /Audio/DarkStation/SCP/173/NeckSnap2.ogg
+  - /Audio/DarkStation/SCP/173/NeckSnap3.ogg
+
+- type: soundCollection
+  id: 173Rattle
+  files:
+  - /Audio/DarkStation/SCP/173/Rattle1.ogg
+  - /Audio/DarkStation/SCP/173/Rattle2.ogg
+  - /Audio/DarkStation/SCP/173/Rattle3.ogg
+
+- type: soundCollection
+  id: 173DoorOpen
+  files:
+  - /Audio/DarkStation/SCP/173/DoorOpen173.ogg
+
+- type: reagent
+  id: SCP173Blood
+  name: Жидкость SCP-173
+  group: Biological
+  desc: reagent-desc-blood
+  flavor: metallic
+  color: "#993300"
+  slippery: true
+  physicalDesc: reagent-physical-desc-ferrous
+  tileReactions:
+  - !type:SCP173TileReaction { }
+
+- type: entity
+  id: MobSCP173
+  parent: SCPMobBase
+  name: "SCP-173"
+  description: "Не моргай."
+  components:
+  - type: SCP173
+    spooksSoundCollection:
+      collection: 173Spooks
+    scaresSoundCollection:
+      collection: 173Scares
+    killSoundCollection:
+      collection: 173Kills
+    doorOpenSound:
+      collection: 173DoorOpen
+  - type: SCP173Freeze
+  - type: SCPDoorPryer
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4
+    baseSprintSpeed: 10
+  - type: Body
+  - type: Sprite
+    drawdepth: Mobs
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      sprite: DarkStation/SCP/Mobs/scp173.rsi
+      offset: 0,0.4
+      state: alive
+  - type: Physics
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape: !type:PhysShapeCircle
+          radius: 0.4
+        density: 1000
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      5000: Dead
+  - type: ReplacementAccent
+    accent: mute
+  - type: GhostRole
+    allowMovement: true
+    name: ghost-role-information-scp-173-name
+    description: ghost-role-information-scp-173-description
+    rules: "Будучи агрессивным обьектом SCP убейте всё живое на станции."
+  - type: CombatMode
+    disarm: null
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      path: /Audio/Effects/bite.ogg
+    angle: 5
+    animation: WeaponArcBite
+    damage:
+      types:
+        Piercing: 250
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: SCP173
+  - type: NoSlip
+  - type: Insulated
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: 173Rattle
+      params:
+        variation: 0.1
+
+

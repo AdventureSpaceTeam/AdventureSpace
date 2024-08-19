@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "size":
+  {
+    "x": 32,
+    "y": 32
+  },
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Собственная лицензия бла-бла-бла, сделано @temhbiubouh для самого себя же и для проекта Dark Station, все совпадения с Масс Эффект случайны и являются вашей больной фантазией бла-бла-бла",
+  "states":
+  [
+    {
+      "name": "fenris",
+      "directions": 4
+    },
+    {
+        "name": "glow",
+        "directions": 4
+    },
+    {
+      "name": "fenris_dead",
+      "directions": 1
+    }
+  ]
+}

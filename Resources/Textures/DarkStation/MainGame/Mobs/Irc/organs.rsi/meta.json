@@ -1,0 +1,115 @@
+{
+    "version": 1,
+    "license": "Собственная лицензия. Полный запрет на копирование и использование вне проекта Dark Station без одобрения текущего владельца проекта",
+    "copyright": "Ynotka DS",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "appendix"
+        },
+        {
+            "name": "appendix-inflamed"
+        },
+        {
+            "name": "brain-open"
+        },
+        {
+            "name": "eyes"
+        },
+        {
+            "name": "eyes-animated",
+            "delays": [
+                [
+                    0.5,
+                    0.5
+                ]
+            ]
+        },
+        {
+            "name": "heart"
+        },
+        {
+            "name": "heart-animated",
+            "delays": [
+                [
+                    0.2,
+                    0.3,
+                    0.3,
+                    0.4,
+                    0.5,
+                    0.5,
+                    0.4,
+                    0.3,
+                    0.3,
+                    0.2
+                ]
+            ]
+        },
+        {
+            "name": "kidneys"
+        },
+        {
+            "name": "kidney-l"
+        },
+        {
+            "name": "kidney-r"
+        },
+        {
+            "name": "lungs"
+        },
+        {
+            "name": "lungs-animated",
+            "delays": [
+                [
+                    0.2,
+                    0.2,
+                    0.3,
+                    0.3,
+                    0.3,
+                    0.2
+                ]
+            ]
+        },
+        {
+            "name": "lung-l"
+        },
+        {
+            "name": "lungs-l-animated",
+            "delays": [
+                [
+                    0.2,
+                    0.2,
+                    0.3,
+                    0.3,
+                    0.3,
+                    0.2
+                ]
+            ]
+        },
+        {
+            "name": "lung-r"
+        },
+        {
+            "name": "lungs-r-animated",
+            "delays": [
+                [
+                    0.2,
+                    0.2,
+                    0.3,
+                    0.3,
+                    0.3,
+                    0.2
+                ]
+            ]
+        },
+        {
+            "name": "liver"
+        },
+        {
+            "name": "stomach"
+        }
+    ]
+}

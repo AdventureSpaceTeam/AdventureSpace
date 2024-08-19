@@ -1,0 +1,96 @@
+﻿- type: entity
+  id: SpawnPointSCPBotanist
+  parent: SpawnPointJobBase
+  name: SCPBotanist
+  components:
+  - type: SpawnPoint
+    job_id: SCPBotanist
+  - type: Sprite
+    layers:
+    - state: green
+    - state: scientist
+
+- type: entity
+  id: SpawnPointSCPChef
+  parent: SpawnPointJobBase
+  name: SCPChef
+  components:
+  - type: SpawnPoint
+    job_id: SCPChef
+  - type: Sprite
+    layers:
+    - state: green
+    - state: scientist
+
+- type: entity
+  id: SpawnPointSCPCommand
+  parent: SpawnPointJobBase
+  name: scpCommand
+  components:
+  - type: SpawnPoint
+    job_id: SCPHead
+  - type: Sprite
+    layers:
+    - state: green
+    - state: scientist
+
+- type: entity
+  id: SpawnPointSCPDClass
+  parent: SpawnPointJobBase
+  name: SCPDClass
+  components:
+  - type: SpawnPoint
+    job_id: SCPDClass
+    max_spawns: 1
+  - type: Sprite
+    layers:
+    - state: green
+    - state: scientist
+
+- type: entity
+  id: SpawnPointSCPStationEngineer
+  parent: SpawnPointJobBase
+  name: SCPStationEngineer
+  components:
+  - type: SpawnPoint
+    job_id: SCPStationEngineer
+  - type: Sprite
+    layers:
+    - state: green
+    - state: scientist
+
+- type: entity
+  id: SpawnPointSCPParamedic
+  parent: SpawnPointJobBase
+  name: scpParamedic
+  components:
+  - type: SpawnPoint
+    job_id: SCPParamedic
+  - type: Sprite
+    layers:
+    - state: green
+    - state: scientist
+
+- type: entity
+  id: SpawnPointSCPScientist
+  parent: SpawnPointJobBase
+  name: scpScientist
+  components:
+  - type: SpawnPoint
+    job_id: SCPScientist
+  - type: Sprite
+    layers:
+    - state: green
+    - state: scientist
+
+- type: entity
+  id: SpawnPointSCPSecurity
+  parent: SpawnPointJobBase
+  name: scpSecurity
+  components:
+  - type: SpawnPoint
+    job_id: SCPSecurity
+  - type: Sprite
+    layers:
+    - state: green
+    - state: scientist

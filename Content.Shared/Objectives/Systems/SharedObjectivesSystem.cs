@@ -91,6 +91,34 @@ public abstract class SharedObjectivesSystem : EntitySystem
         return uid;
     }
 
+    public EntityUid? TryCreateGroupObjective(string proto)
+    {
+        var uid = Spawn(proto);
+        if (!TryComp<ObjectiveComponent>(uid, out var comp))
+        {
+            Del(uid);
+            Log.Error($"Invalid objective prototype {proto}, missing ObjectiveComponent (Group)");
+            return null;
+        }
+
+        var ev = new GroupObjectiveAssignedEvent();
+        RaiseLocalEvent(uid, ref ev);
+
+        if (ev.Cancelled)
+        {
+            Log.Error($"Could not assign objective {proto} for someone");
+            Del(uid);
+            return null;
+        }
+
+        var afterEv = new GroupObjectiveAfterAssignEvent(comp, MetaData(uid));
+        RaiseLocalEvent(uid, ref afterEv);
+
+        Log.Debug($"Created objective {ToPrettyString(uid):objective}");
+        return uid;
+    }
+
+
     /// <summary>
     /// Spawns and assigns an objective for a mind.
     /// The objective is not added to the mind's objectives, mind system does that in TryAddObjective.

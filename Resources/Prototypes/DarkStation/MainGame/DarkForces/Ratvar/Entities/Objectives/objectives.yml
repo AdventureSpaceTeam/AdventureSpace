@@ -1,0 +1,55 @@
+﻿- type: entity
+  id: RatvarConvertObjective
+  noSpawn: true
+  description: "Используйте Алтарь, чтобы конвертировать члена экипажа"
+  components:
+  - type: Objective
+    difficulty: 0.0
+    issuer: "Ратвар"
+    unique: false
+    icon:
+      sprite: DarkStation/MainGame/DarkForces/Ratvar/actions.rsi
+      state: ratvar
+  - type: RatvarConvertObjective
+
+- type: entity
+  id: RatvarBeaconsObjective
+  noSpawn: true
+  description: "Постройте маяки, чтобы набрать как можно больше мощности"
+  components:
+  - type: Objective
+    difficulty: 0.0
+    issuer: "Ратвар"
+    unique: false
+    icon:
+      sprite: DarkStation/MainGame/DarkForces/Ratvar/actions.rsi
+      state: ratvar
+  - type: RatvarBeaconObjective
+
+- type: entity
+  id: RatvarPowerObjective
+  noSpawn: true
+  description: "Накопите мощность, чтобы у нас была сила для призыва Ратвара!"
+  components:
+  - type: Objective
+    difficulty: 0.0
+    issuer: "Ратвар"
+    unique: false
+    icon:
+      sprite: DarkStation/MainGame/DarkForces/Ratvar/actions.rsi
+      state: ratvar
+  - type: RatvarPowerObjective
+
+- type: entity
+  id: RatvarSummonObjective
+  noSpawn: true
+  description: "Мы готовы к призыву Ратвара!"
+  components:
+  - type: Objective
+    difficulty: 0.0
+    issuer: "Ратвар"
+    unique: false
+    icon:
+      sprite: DarkStation/MainGame/DarkForces/Ratvar/actions.rsi
+      state: ratvar
+  - type: RatvarSummonObjective

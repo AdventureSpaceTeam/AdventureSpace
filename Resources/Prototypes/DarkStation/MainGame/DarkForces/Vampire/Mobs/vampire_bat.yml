@@ -1,0 +1,77 @@
+- type: entity
+  name: Летучая мышь
+  parent: SimpleMobBase
+  id: MobVampireBat
+  suffix: Вампирская
+  components:
+    - type: MovementSpeedModifier
+      baseWalkSpeed: 3
+      baseSprintSpeed: 6
+    - type: Sprite
+      drawdepth: Mobs
+      layers:
+        - map: ["enum.DamageStateVisualLayers.Base"]
+          state: bat
+          sprite: Mobs/Animals/bat.rsi
+    - type: Physics
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape: !type:PhysShapeCircle
+            radius: 0.25
+          density: 10
+          mask:
+            - FlyingMobMask
+          layer:
+            - FlyingMobLayer
+    - type: DamageStateVisuals
+      states:
+        Alive:
+          Base: bat
+        Critical:
+          Base: dead
+        Dead:
+          Base: dead
+    - type: Butcherable
+      spawned:
+        - id: FoodMeat
+          amount: 1
+    - type: SentienceTarget
+      flavorKind: station-event-random-sentience-flavor-organic
+    - type: Bloodstream
+      bloodMaxVolume: 50
+    - type: MeleeWeapon
+      hidden: true
+      soundHit:
+        path: /Audio/Effects/bite.ogg
+      angle: 0
+      animation: WeaponArcBite
+      damage:
+        types:
+          Piercing: 2
+    - type: NoSlip
+    - type: Puller
+      needsHands: true
+    - type: NpcFactionMember
+      factions:
+        - Vampire
+    - type: HTN
+      rootTask:
+        task: XenoCompound
+      blackboard:
+        NavInteract: !type:Bool true
+        NavPry: !type:Bool true
+        NavSmash: !type:Bool true
+
+- type: polymorph
+  id: VampireBatPolymorph
+  configuration:
+    entity: MobVampireBat
+    forced: false
+    duration: 60
+    inventory: None
+    allowRepeatedMorphs: true
+    transferDamage: true
+    transferName: true
+    revertOnCrit: true
+    revertOnDeath: true

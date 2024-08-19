@@ -1,0 +1,16 @@
+﻿- type: diseaseCure
+  id: BirdFlu
+  reagents:
+  - PulpedBananaPeel
+
+- type: diseaseCure
+  id: Plague
+  reagents:
+  - Cryptobiolin
+
+- type: diseaseCure
+  id: Scabies
+  reagents:
+  - Aloe
+  externalReagents:
+  - AloeCream

@@ -61,7 +61,7 @@ public abstract class SharedRoleSystem : EntitySystem
         args.Roles.Add(new RoleInfo(component, name, false, playTimeTracker, prototype));
     }
 
-    protected void SubscribeAntagEvents<T>() where T : AntagonistRoleComponent
+    public void SubscribeAntagEvents<T>() where T : AntagonistRoleComponent
     {
         SubscribeLocalEvent((EntityUid _, T component, ref MindGetAllRolesEvent args) =>
         {

@@ -302,6 +302,14 @@ public sealed class StationRecordsSystem : SharedStationRecordsSystem
         records.Records.ClearRecentlyAccessed();
     }
 
+    public void ClearRecentlyAccessed(EntityUid station, StationRecordsComponent? records = null)
+    {
+        if (!Resolve(station, ref records))
+            return;
+
+        records.Records.ClearRecentlyAccessed();
+    }
+
     /// <summary>
     /// Synchronizes a single record's entries for a station.
     /// </summary>

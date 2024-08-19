@@ -1,0 +1,10 @@
+﻿- type: entity
+  id: ClothingHeadSCPSecurityHelmet
+  parent: ClothingHeadHelmetBasic
+  name: "Шлем"
+  description: "Обычный шлем для защиты головы."
+  components:
+  - type: Sprite
+    sprite: DarkStation/SCP/Clothing/Head/Helmets/security.rsi
+  - type: Clothing
+    sprite: DarkStation/SCP/Clothing/Head/Helmets/security.rsi

@@ -19,7 +19,6 @@ using Content.Shared.CombatMode.Pacification;
 using Content.Shared.Damage;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
-using Content.Shared.CombatMode.Pacification;
 using Content.Shared.Humanoid;
 using Content.Shared.Interaction.Components;
 using Content.Shared.Mobs;
@@ -37,6 +36,7 @@ using Content.Shared.Prying.Components;
 using Content.Shared.Traits.Assorted;
 using Robust.Shared.Audio.Systems;
 using Content.Shared.Ghost.Roles.Components;
+using Robust.Shared.Random;
 
 namespace Content.Server.Zombies
 {
@@ -92,6 +92,15 @@ namespace Content.Server.Zombies
                 return;
 
             if (!Resolve(target, ref mobState, logMissing: false))
+                return;
+
+            if (_random.Prob(0.1f) && PolymorphToTank(target))
+                return;
+
+            if (_random.Prob(0.2f) && PolymorphToHunter(target))
+                return;
+
+            if (_random.Prob(0.2f) && PolymorphToSmoker(target))
                 return;
 
             //you're a real zombie now, son.
@@ -164,15 +173,16 @@ namespace Content.Server.Zombies
                 _humanoidAppearance.SetBaseLayerId(target, HumanoidVisualLayers.HeadTop, zombiecomp.BaseLayerExternal, humanoid: huApComp);
                 _humanoidAppearance.SetBaseLayerId(target, HumanoidVisualLayers.Snout, zombiecomp.BaseLayerExternal, humanoid: huApComp);
 
+
                 //This is done here because non-humanoids shouldn't get baller damage
                 //lord forgive me for the hardcoded damage
                 DamageSpecifier dspec = new()
                 {
                     DamageDict = new()
                     {
-                        { "Slash", 13 },
-                        { "Piercing", 7 },
-                        { "Structural", 10 }
+                        {"Slash", 13},
+                        {"Piercing", 7},
+                        {"Structural", 10}
                     }
                 };
                 melee.Damage = dspec;
@@ -235,7 +245,7 @@ namespace Content.Server.Zombies
             if (hasMind && _mind.TryGetSession(mindId, out var session))
             {
                 //Zombie role for player manifest
-                _roles.MindAddRole(mindId, new ZombieRoleComponent { PrototypeId = zombiecomp.ZombieRoleId });
+                _roles.MindAddRole(mindId, new ZombieRoleComponent {PrototypeId = zombiecomp.ZombieRoleId});
 
                 //Greeting message for new bebe zombers
                 _chatMan.DispatchServerMessage(session, Loc.GetString("zombie-infection-greeting"));
@@ -248,7 +258,8 @@ namespace Content.Server.Zombies
                 _npc.WakeNPC(target, htn);
             }
 
-            if (!HasComp<GhostRoleMobSpawnerComponent>(target) && !hasMind) //this specific component gives build test trouble so pop off, ig
+            if (!HasComp<GhostRoleMobSpawnerComponent>(target) &&
+                !hasMind) //this specific component gives build test trouble so pop off, ig
             {
                 //yet more hardcoding. Visit zombie.ftl for more information.
                 var ghostRole = EnsureComp<GhostRoleComponent>(target);

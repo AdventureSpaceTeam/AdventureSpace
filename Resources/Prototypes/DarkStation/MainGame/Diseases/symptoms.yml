@@ -1,0 +1,127 @@
+﻿# Coughts
+- type: symptom
+  id: Cough
+  name: Кашель
+  effects:
+  - !type:DiseaseEmoteEffect
+    emoteId: Cough
+
+- type: symptom
+  id: CoughDamage
+  name: Сухой кашель
+  effects:
+  - !type:DiseaseEmoteEffect
+    emoteId: Cough
+    organsDamage:
+      Lung: 20
+
+- type: symptom
+  id: Sneeze
+  name: Чихание
+  effects:
+  - !type:DiseaseEmoteEffect
+    emoteId: Sneeze
+
+#Vomits
+- type: symptom
+  id: Vomit
+  name: Рвота
+  effects:
+  - !type:DiseaseVomitEffect
+
+- type: symptom
+  id: VomitWithStomachDamage
+  name: Рвота
+  effects:
+  - !type:DiseaseVomitEffect
+    organsDamage:
+      Stomach: 25
+
+- type: symptom
+  id: Dizziness
+  name: Головокружение
+  effects:
+  - !type:DiseaseStatusEffect
+    key: SeeingRainbows
+    time: 15
+    component: SeeingRainbows
+
+- type: symptom
+  id: AsthmaAttack
+  name: Приступ Астмы
+  effects:
+  - !type:DiseaseStaminaEffect
+    damage: 300
+  - !type:DiseasePopupEffect
+    text: "У вас приступ астмы!"
+    organsDamage:
+      Lung: 10
+
+- type: symptom
+  id: PlagueCough
+  name: Чумной кашешь
+  effects:
+  - !type:DiseaseStaminaEffect
+    damage: 300
+    organsDamage:
+      Lung: 10
+  - !type:DiseasePopupEffect
+    text: "Кашель настолько сильный, что ваши легкие как будто разрывает изнутри"
+
+- type: symptom
+  id: PlagueAbscess
+  name: Чумной нарыв
+  effects:
+  - !type:DiseaseVisualEffect
+    sprite: DarkStation/MainGame/Diseases/plague.rsi
+    stages:
+    - type: Torso
+      state: plague-BODY
+    - type: LArm
+      state: plague-LEFT-HAND
+    - type: RArm
+      state: plague-RIGHT-HAND
+    - type: LLeg
+      state: plague-LEFT-LEG
+    - type: RLeg
+      state: plague-RIGHT-LEG
+    - type: Head
+      state: plague-HEAD
+  - !type:DiseasePopupEffect
+    text: "Вы чувсвуете, что на вашем теле появились гнойные нарывы"
+
+#Scabies
+- type: symptom
+  id: ScabiesScratch
+  name: Чесотка
+  effects:
+  - !type:DiseaseStaminaEffect
+    damage: 300
+    healthDamage:
+      types:
+        Blunt: 5
+  - !type:DiseasePopupEffect
+    text: "Вы чешитесь как сумашедший"
+
+- type: symptom
+  id: ScabiesRash
+  name: Сыпь
+  effects:
+  - !type:DiseaseVisualEffect
+    sprite: DarkStation/MainGame/Diseases/scabies.rsi
+    stages:
+    - type: Torso
+      state: scabies-BODY
+    - type: LArm
+      state: scabies-LEFT-HAND
+    - type: RArm
+      state: scabies-RIGHT-HAND
+    - type: LLeg
+      state: scabies-LEFT-LEG
+    - type: RLeg
+      state: scabies-RIGHT-LEG
+    - type: Head
+      state: scabies-HEAD
+  - !type:DiseasePopupEffect
+    text: "Вы чувствуете, что на вашем теле появлется сыпь..."
+

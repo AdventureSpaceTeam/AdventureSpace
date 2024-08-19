@@ -1,0 +1,28 @@
+﻿- type: entity
+  id: VampireBloodObjective
+  noSpawn: true
+  description: "Выпейте указанное количество крови"
+  components:
+  - type: Objective
+    difficulty: 0.0
+    issuer: "Клан вампиров"
+    unique: false
+    icon:
+      sprite: DarkStation/MainGame/DarkForces/Vampire/Mobs/vampire.rsi
+      state: icon
+  - type: VampireBloodObjective
+
+- type: entity
+  id: VampireEnthrallObjective
+  noSpawn: true
+  description: "Сделайте своими рабами указанное количество человек"
+  components:
+  - type: Objective
+    difficulty: 0.0
+    issuer: "Клан вампиров"
+    unique: false
+    icon:
+      sprite: DarkStation/MainGame/DarkForces/Vampire/Mobs/vampire.rsi
+      state: icon
+  - type: VampireEnthrallObjective
+

@@ -1,0 +1,89 @@
+﻿- type: loadout
+  id: SCPSecurityJumpsuit
+  equipment: SCPSecurityJumpsuit
+
+- type: startingGear
+  id: SCPSecurityJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSCPSecurity
+
+- type: loadout
+  id: SCPSecurityJumpsuitNew
+  equipment: SCPSecurityJumpsuitNew
+
+- type: startingGear
+  id: SCPSecurityJumpsuitNew
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSCPSecurityNew
+
+- type: loadout
+  id: SCPSecurityJumpskirt
+  equipment: SCPSecurityJumpskirt
+
+- type: startingGear
+  id: SCPSecurityJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformSkirtSCPSecurity
+
+- type: loadout
+  id: SCPSecurityJumpskirtNew
+  equipment: SCPSecurityJumpskirtNew
+
+- type: startingGear
+  id: SCPSecurityJumpskirtNew
+  equipment:
+    jumpsuit: ClothingUniformSkirtSCPSecurityNew
+
+- type: loadout
+  id: SCPSecurityHelmet
+  equipment: SCPSecurityHelmet
+
+- type: startingGear
+  id: SCPSecurityHelmet
+  equipment:
+    head: ClothingHeadSCPSecurityHelmet
+
+- type: loadout
+  id: SCPSecurityCap
+  equipment: SCPSecurityCap
+
+- type: startingGear
+  id: SCPSecurityCap
+  equipment:
+    head: ClothingHeadSCPSecurityCap
+
+- type: loadout
+  id: SCPSecurityPda
+  equipment: SCPSecurityPda
+
+- type: startingGear
+  id: SCPSecurityPda
+  equipment:
+    id: SCPSecurityPDA
+
+- type: loadout
+  id: SCPSecurityPdaNew
+  equipment: SCPSecurityPdaNew
+
+- type: startingGear
+  id: SCPSecurityPdaNew
+  equipment:
+    id: SCPSecurityPDANew
+
+- type: loadout
+  id: SCPSecurityGloves
+  equipment: SCPSecurityGloves
+
+- type: startingGear
+  id: SCPSecurityGloves
+  equipment:
+    gloves: ClothingHandsGlovesSCPSecurity
+
+- type: loadout
+  id: SCPSecurityVest
+  equipment: SCPSecurityVest
+
+- type: startingGear
+  id: SCPSecurityVest
+  equipment:
+    outerClothing: ClothingOuterSCPSecurityVest

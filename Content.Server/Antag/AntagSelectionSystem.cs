@@ -105,6 +105,9 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
                 args.PlayerPool.Remove(session);
                 GameTicker.PlayerJoinGame(session);
             }
+
+            var ev = new AntagSelectionEnd(comp.SelectedSessions, AntagSelectionTime.PrePlayerSpawn);
+            RaiseLocalEvent(uid, ref ev);
         }
     }
 
@@ -117,6 +120,9 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
                 continue;
 
             ChooseAntags((uid, comp), args.Players);
+
+            var ev = new AntagSelectionEnd(comp.SelectedSessions, AntagSelectionTime.PostPlayerSpawn);
+            RaiseLocalEvent(uid, ref ev);
         }
     }
 
@@ -291,7 +297,7 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
 
         if (!antagEnt.HasValue)
         {
-            var getEntEv = new AntagSelectEntityEvent(session, ent);
+            var getEntEv = new AntagSelectEntityEvent(session, ent, def.PrefRoles);
             RaiseLocalEvent(ent, ref getEntEv, true);
             antagEnt = getEntEv.Entity;
         }
@@ -304,7 +310,7 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
             return;
         }
 
-        var getPosEv = new AntagSelectLocationEvent(session, ent);
+        var getPosEv = new AntagSelectLocationEvent(session, ent, player);
         RaiseLocalEvent(ent, ref getPosEv, true);
         if (getPosEv.Handled)
         {
@@ -343,8 +349,8 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
         if (session != null)
         {
             var curMind = session.GetMind();
-            
-            if (curMind == null || 
+
+            if (curMind == null ||
                 !TryComp<MindComponent>(curMind.Value, out var mindComp) ||
                 mindComp.OwnedEntity != antagEnt)
             {
@@ -480,7 +486,7 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
 /// Only raised if the selected player's current entity is invalid.
 /// </summary>
 [ByRefEvent]
-public record struct AntagSelectEntityEvent(ICommonSession? Session, Entity<AntagSelectionComponent> GameRule)
+public record struct AntagSelectEntityEvent(ICommonSession? Session, Entity<AntagSelectionComponent> GameRule, List<ProtoId<AntagPrototype>> PrefRoles)
 {
     public readonly ICommonSession? Session = Session;
 
@@ -493,7 +499,7 @@ public record struct AntagSelectEntityEvent(ICommonSession? Session, Entity<Anta
 /// Event raised on a game rule entity to determine the location for the antagonist.
 /// </summary>
 [ByRefEvent]
-public record struct AntagSelectLocationEvent(ICommonSession? Session, Entity<AntagSelectionComponent> GameRule)
+public record struct AntagSelectLocationEvent(ICommonSession? Session, Entity<AntagSelectionComponent> GameRule, EntityUid Entity)
 {
     public readonly ICommonSession? Session = Session;
 
@@ -508,3 +514,6 @@ public record struct AntagSelectLocationEvent(ICommonSession? Session, Entity<An
 /// </summary>
 [ByRefEvent]
 public readonly record struct AfterAntagEntitySelectedEvent(ICommonSession? Session, EntityUid EntityUid, Entity<AntagSelectionComponent> GameRule, AntagSelectionDefinition Def);
+
+[ByRefEvent]
+public readonly record struct AntagSelectionEnd(IEnumerable<ICommonSession>? Sessions, AntagSelectionTime selectionTime);

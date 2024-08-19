@@ -1,0 +1,32 @@
+﻿{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Made by TeMHbIu_BouH for DarkStation",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "dropper_empty"
+        },
+        {
+            "name": "dropper_one"
+        },
+        {
+            "name": "dropper_one1"
+        },
+        {
+            "name": "dropper_one2"
+        },
+        {
+            "name": "dropper_one3"
+        },
+        {
+            "name": "dropper_one4"
+        },
+        {
+            "name": "dropper_one5"
+        }
+    ]
+}

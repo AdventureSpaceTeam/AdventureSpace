@@ -1,0 +1,103 @@
+- type: entity
+  id: MobSCP049
+  parent: [ SCPMobBase, MobAtmosStandard]
+  name: "Чумной доктор"
+  description: Не болейте...
+  components:
+  - type: SCP049
+  - type: SCPDoorPryer
+  - type: DiseasesOnSpawn
+    prob: 0.1
+    diseaseId: Plague
+  - type: Inventory
+    templateId: SCP049Inventory
+  - type: InventorySlots
+  - type: Identity
+  - type: IdExaminable
+  - type: Sprite
+    drawdepth: Mobs
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      sprite: DarkStation/SCP/Mobs/scp049.rsi
+      state: alive
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: alive
+      Dead:
+        Base: dead
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: SCPBaseModiferSet
+  - type: Speech
+  - type: GhostRole
+    name: ghost-role-information-scp-049-name
+    description: ghost-role-information-scp-049-description
+    rules: "Вы дружелюбный объект! Вы можете создать себе двух прислужников, а также лечить экипаж."
+    allowMovement: true
+    allowSpeech: true
+  - type: Stamina
+    critThreshold: 250
+  - type: StandingState
+  - type: RotationVisuals
+    defaultRotation: 90
+    horizontalRotation: 90
+  - type: StatusEffects
+    allowed:
+    - Stun
+    - SlowedDown
+    - KnockedDown
+    - Stutter
+    - Pacified
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      800: Dead
+  - type: CombatMode
+    disarm: null
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      collection: Punch
+    angle: 30
+    animation: WeaponArcFist
+    attackRate: 1
+    damage:
+      types:
+        Blunt: 15
+  - type: Hands
+  - type: ComplexInteraction
+  - type: Body
+    prototype: SCP049Body
+  - type: Stripping
+  - type: Strippable
+  - type: UserInterface
+    interfaces:
+      enum.StrippingUiKey.Key:
+        type: StrippableBoundUserInterface
+  - type: Puller
+  - type: Cuffable
+
+
+- type: body
+  id: SCP049Body
+  name: "SCP049"
+  root: torso
+  slots:
+    torso:
+      part: TorsoHuman
+      connections:
+      - right arm
+      - left arm
+    right arm:
+      part: RightArmHuman
+      connections:
+      - right hand
+    left arm:
+      part: LeftArmHuman
+      connections:
+      - left hand
+    right hand:
+      part: RightHandHuman
+    left hand:
+      part: LeftHandHuman

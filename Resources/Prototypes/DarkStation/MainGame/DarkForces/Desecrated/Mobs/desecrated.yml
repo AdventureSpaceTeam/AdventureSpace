@@ -1,0 +1,55 @@
+- type: entity
+  name: Оскверненный
+  id: MobDesecrated
+  parent: BaseDesecrate
+  description: Зараженный скверной
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: DarkStation/MainGame/DarkForces/Pontific/desecrated.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: base
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      150: Dead
+  - type: MeleeWeapon
+    hidden: true
+    angle: 0
+    soundHit:
+      collection: AlienClaw
+    animation: WeaponArcBite
+    damage:
+      groups:
+        Brute: 5
+      types:
+        Fel: 5
+  - type: GhostRole
+    allowMovement: true
+    allowSpeech: true
+    makeSentient: true
+    name: Оскверненный
+    description: Вы - зараженный скверной персонаж. Помогите силам тьмы достичь своих целей
+    rules: Слушайтесь Понтифика!
+  - type: GhostTakeoverAvailable
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4
+    baseSprintSpeed: 5
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      70: 0.9
+      100: 0.8
+      120: 0.5
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: DesecratedModifierSet
+
+- type: damageModifierSet
+  id: DesecratedModifierSet
+  coefficients:
+    Blunt: 0.9
+    Slash: 0.9
+    Piercing: 0.9
+    Caustic: 0.9
+    Fel: 0.0

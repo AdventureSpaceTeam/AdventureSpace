@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Created by @kotik12 for Dark Station",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "smartfridge_open"
+    },
+    {
+      "name": "smartfridge"
+    },
+    {
+      "name": "off"
+    },
+    {
+      "name": "broken"
+    },
+    {
+      "name": "smartfridge_door"
+    }
+  ]
+}

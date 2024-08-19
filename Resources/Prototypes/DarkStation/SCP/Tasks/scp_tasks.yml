@@ -1,0 +1,29 @@
+- type: SCPStationGoal
+  id: SCPAnomalyGun
+  message: scp-goals-gun
+  SCPPrototypes: [ everyone ]
+  components:
+  - type: SCPAnomalyGunGoal
+
+- type: SCPStationGoal
+  id: SCPHeal049
+  message: scp-goals-heal
+  SCPPrototypes: [ MobSCP049 ]
+  components:
+  - type: SCPHealGoal
+    requirementCount: 4
+
+- type: SCPStationGoal
+  id: SCPWalk
+  message: scp-goals-walk
+  SCPPrototypes: [ MobSCP049 , MobSCPSoap ]
+  components:
+  - type: SCPTransferGoal
+
+- type: SCPStationGoal
+  id: SCPRadiation
+  message: scp-goals-radiation
+  SCPPrototypes: [ everyone ]
+  components:
+  - type: SCPRadiationGoal
+    requiredRadiationCount: 100

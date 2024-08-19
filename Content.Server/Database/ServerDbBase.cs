@@ -15,6 +15,7 @@ using Content.Shared.Humanoid.Markings;
 using Content.Shared.Preferences;
 using Content.Shared.Preferences.Loadouts;
 using Content.Shared.Roles;
+using Content.Shared.SecretStation.Sponsors;
 using Content.Shared.Traits;
 using Microsoft.EntityFrameworkCore;
 using Robust.Shared.Enums;
@@ -46,6 +47,7 @@ namespace Content.Server.Database
                 .Include(p => p.Profiles).ThenInclude(h => h.Jobs)
                 .Include(p => p.Profiles).ThenInclude(h => h.Antags)
                 .Include(p => p.Profiles).ThenInclude(h => h.Traits)
+                .Include(p => p.Profiles).ThenInclude(h => h.PatronProfilePet)
                 .Include(p => p.Profiles)
                     .ThenInclude(h => h.Loadouts)
                     .ThenInclude(l => l.Groups)
@@ -241,6 +243,21 @@ namespace Content.Server.Database
                 loadouts[role.RoleName] = loadout;
             }
 
+            var petData = new ProfilePetData();
+            if (profile.PatronProfilePet != null)
+            {
+                petData.PetId = profile.PatronProfilePet.PetId;
+                petData.PetName = profile.PatronProfilePet.PetName;
+            }
+
+            var humanoidAdditionalData = new HumanoidSponsorData
+            {
+                PetData = petData
+            };
+
+            var balance = profile.BankBalance;
+
+
             return new HumanoidCharacterProfile(
                 profile.CharacterName,
                 profile.FlavorText,
@@ -249,6 +266,7 @@ namespace Content.Server.Database
                 profile.Age,
                 sex,
                 gender,
+                balance,
                 new HumanoidCharacterAppearance
                 (
                     profile.HairName,
@@ -259,6 +277,7 @@ namespace Content.Server.Database
                     Color.FromHex(profile.SkinColor),
                     markings
                 ),
+                humanoidAdditionalData,
                 spawnPriority,
                 jobs,
                 (PreferenceUnavailableMode) profile.PreferenceUnavailable,

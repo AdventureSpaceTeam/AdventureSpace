@@ -1,0 +1,30 @@
+{
+    "version": 1,
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "license": "Собственная лицензия. Полный запрет на копирование и использование вне проекта Dark Station без одобрения текущего владельца проекта",
+    "copyright": "Roisi DS",
+    "states": [
+        {
+            "name": "icon"
+        },
+        {
+            "name": "icon_empty"
+        },
+        {
+            "name": "icon_open"
+        },
+        {
+            "name": "fill-1"
+        },
+        {
+            "name": "fill-2"
+        },
+        {
+            "name": "fill-3"
+        }
+    ]
+}
+

@@ -1,0 +1,15 @@
+{
+    "license": "Собственная лицензия. Полный запрет на копирование и использование вне проекта Dark Station без одобрения текущего владельца проекта",
+    "copyright": "Created by DarkStation Team",
+    "version": 1,
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "tongue",
+            "directions": 4
+        }
+    ]
+}

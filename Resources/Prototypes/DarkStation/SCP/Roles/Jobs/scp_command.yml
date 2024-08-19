@@ -1,0 +1,31 @@
+#job
+- type: job
+  id: SCPHead
+  name: "Глава отдела SCP"
+  playTimeTracker: JobSCPHead
+  requirements:
+    - !type:DepartmentTimeRequirement
+      department: SCP
+      time: 21600
+  weight: 20
+  startingGear: SCPHeadGear
+  icon: "JobIconSCPDirector"
+  supervisors: job-supervisors-captain
+  canBeAntag: false
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+  access:
+    - Research
+    - Command
+    - Maintenance
+    - External
+    - SCPCommand
+    - SCP
+
+#Gear
+- type: startingGear
+  id: SCPHeadGear
+  equipment:
+    id: SCPHeadPDA
+    ears: ClothingHeadsetSCPHead

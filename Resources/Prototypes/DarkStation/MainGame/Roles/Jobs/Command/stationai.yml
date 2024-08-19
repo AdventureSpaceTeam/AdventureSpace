@@ -1,0 +1,28 @@
+﻿- type: job
+  id: SAI
+  name: job-name-sai
+  description: job-description-sai
+  playTimeTracker: JobSAI
+  requirements:
+  - !type:DepartmentTimeRequirement
+    department: Medical
+    time: 72000
+  - !type:DepartmentTimeRequirement
+    department: Science
+    time: 72000
+  - !type:DepartmentTimeRequirement
+    department: Security
+    time: 108000
+  - !type:DepartmentTimeRequirement
+    department: Engineering
+    time: 72000
+  weight: 30
+  icon: JobIconStationAI
+  supervisors: "Всему экипажу, но действовать должны согласно своим законам"
+  accessGroups:
+  - AllAccess
+  canBeAntag: false
+  chatHighlight: SAIChatHighlight
+  jobEntity: AINanoTrasenCore
+  alwaysUseSpawner: true
+  joinNotifyCrew: true

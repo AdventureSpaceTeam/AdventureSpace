@@ -1,0 +1,12 @@
+﻿- type: entity
+  id: BulletMagnumSilver
+  name: серебряная пуля (.45 magnum high-velocity)
+  parent: BaseBullet
+  noSpawn: true
+  components:
+  - type: Projectile
+    damageBodyParts: true
+    damage:
+      types:
+        Piercing: 20
+        Holiness: 35

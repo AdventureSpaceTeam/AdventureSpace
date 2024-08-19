@@ -1,0 +1,18 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Taken from Foundation-19 at https://github.com/Foundation-19/Foundation-19/pull/407. Edited by tichys",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "alive",
+            "directions": 4
+        },
+        {
+            "name": "dead"
+        }
+    ]
+}

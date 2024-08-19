@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "ss13 team",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "seed"
+    },
+    {
+      "name": "produce"
+    },
+    {
+        "name": "stage-1"
+    },
+    {
+        "name": "stage-2"
+    },
+    {
+        "name": "stage-3"
+    },
+    {
+        "name": "harvest"
+    },
+    {
+      "name": "dead"
+    }
+  ]
+}

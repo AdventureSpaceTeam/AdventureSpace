@@ -1,0 +1,112 @@
+{
+    "version": 1,
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "copyright": "Created by @kotik12 for Dark Station",
+    "license": "CC-BY-SA-3.0",
+    "states": [
+        {
+            "name": "cargo"
+        },
+        {
+            "name": "cargo_door"
+        },
+        {
+            "name": "cargo_open"
+        },
+        {
+            "name": "chef"
+        },
+        {
+            "name": "chef_door"
+        },
+        {
+            "name": "chef_open"
+        },
+        {
+            "name": "engineering"
+        },
+        {
+            "name": "engineering_door"
+        },
+        {
+            "name": "engineering_open"
+        },
+        {
+            "name": "hydro"
+        },
+        {
+            "name": "hydro_door"
+        },
+        {
+            "name": "hydro_open"
+        },
+        {
+            "name": "rd"
+        },
+        {
+            "name": "rd_door"
+        },
+        {
+            "name": "rd_open"
+        },
+        {
+            "name": "science"
+        },
+        {
+            "name": "science_door"
+        },
+        {
+            "name": "science_open"
+        },
+        {
+            "name": "security"
+        },
+        {
+            "name": "security_door"
+        },
+        {
+            "name": "security_open"
+        },
+        {
+            "name": "med"
+        },
+        {
+            "name": "med_door"
+        },
+        {
+            "name": "med_open"
+        },
+        {
+            "name": "orange"
+        },
+        {
+            "name": "orange_door"
+        },
+        {
+            "name": "orange_open"
+        },
+        {
+            "name": "sparking",
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "welded"
+        },
+        {
+            "name": "generic"
+        },
+        {
+            "name": "generic_door"
+        }
+    ]
+}

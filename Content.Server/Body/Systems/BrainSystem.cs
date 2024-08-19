@@ -1,6 +1,6 @@
 using Content.Server.Body.Components;
 using Content.Server.Ghost.Components;
-using Content.Shared.AdventurePrivate._Alteros.Medical.Surgery.Events.Organs;
+using Content.Shared.AdventureSpace.Medical.Surgery.Events.Organs;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Events;
 using Content.Shared.Mind;

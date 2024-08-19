@@ -1,0 +1,20 @@
+﻿- type: entity
+  id: SCPSoapSlipAction
+  name: "Подножка"
+  description: "Вы отправляете всех кто ходит рядом с вами в путешествие лицом к полу!"
+  noSpawn: true
+  components:
+  - type: EntityTargetAction
+    whitelist:
+      components:
+      - Body
+    canTargetSelf: false
+    checkCanInteract: true
+    interactOnMiss: false
+    icon:
+      sprite: DarkStation/SCP/Mobs/ptrsoap.rsi
+      state: scp_soap
+    useDelay: 45
+    range: 6
+    itemIconStyle: NoItem
+    event: !type:SCPSoapSlipActionEvent

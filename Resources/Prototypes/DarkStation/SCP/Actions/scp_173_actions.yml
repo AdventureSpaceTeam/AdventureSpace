@@ -1,0 +1,27 @@
+﻿- type: entity
+  id: SCP173BlindAction
+  name: "Ослепить"
+  description: "На вас смотрят! Вы можете ослепить всех вокруг себя что позволит вам двигаться."
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon:
+      sprite: DarkStation/SCP/Interface/actions.rsi
+      state: malfunction
+    useDelay: 45
+    itemIconStyle: NoItem
+    event: !type:SCP173BlindEvent
+
+- type: entity
+  id: SCP173ShartAction
+  name: "Протечка"
+  description: "Вы создаёте скользкую лужу под собой"
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon:
+      sprite: DarkStation/SCP/Interface/actions.rsi
+      state: blood
+    useDelay: 30
+    itemIconStyle: NoItem
+    event: !type:SCP173ShartEvent

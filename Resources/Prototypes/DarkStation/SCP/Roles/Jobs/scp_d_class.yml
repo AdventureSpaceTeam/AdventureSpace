@@ -1,0 +1,23 @@
+#Job
+- type: job
+  id: SCPDClass
+  name: Д Класс
+  playTimeTracker: JobSCPDClass
+  startingGear: SCPDClassGear
+  icon: "JobIconSCPDClass"
+  supervisors: "Всем"
+  canBeAntag: false
+  weight: 10
+  alwaysUseSpawner: true
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: DClass
+
+#Gear
+- type: startingGear
+  id: SCPDClassGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitDClass
+    shoes: ClothingShoesColorBlack
+  InnerClothingSkirt: ClothingUniformJumpsuitDClass

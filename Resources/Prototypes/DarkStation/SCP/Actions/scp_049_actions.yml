@@ -1,0 +1,83 @@
+﻿- type: entity
+  id: SCP049HealAction
+  name: "Лечение"
+  description: "Полностью излечите вашу цель"
+  noSpawn: true
+  components:
+  - type: EntityTargetAction
+    whitelist:
+      components:
+      - Body
+    canTargetSelf: false
+    checkCanInteract: true
+    interactOnMiss: false
+    icon:
+      sprite: DarkStation/SCP/Interface/Actions/scp-049.rsi
+      state: heal
+    useDelay: 120
+    range: 6
+    itemIconStyle: NoItem
+    event: !type:SCP049HealEvent
+
+- type: entity
+  id: SCP049ThrallAction
+  name: "Сделать прислужником"
+  description: "Цель станет вашим прислужником, и будет полностью вам подчиняться"
+  noSpawn: true
+  components:
+  - type: EntityTargetAction
+    whitelist:
+      components:
+      - HumanoidAppearance
+    canTargetSelf: false
+    checkCanInteract: true
+    interactOnMiss: false
+    icon:
+      sprite: DarkStation/SCP/Interface/Actions/scp-049.rsi
+      state: thrall
+    useDelay: 300
+    range: 6
+    itemIconStyle: NoItem
+    event: !type:SCP049ThrallEvent
+
+- type: entity
+  id: SCP049UnThrallAction
+  name: "Освободить прислужника"
+  description: "Освобождает цель, делает его обычным человеком"
+  noSpawn: true
+  components:
+  - type: EntityTargetAction
+    whitelist:
+      components:
+      - SCP049Thrall
+    canTargetSelf: false
+    checkCanInteract: true
+    interactOnMiss: false
+    icon:
+      sprite: DarkStation/SCP/Interface/Actions/scp-049.rsi
+      state: freedom
+    useDelay: 10
+    range: 6
+    itemIconStyle: NoItem
+    event: !type:SCP049UnThrallEvent
+
+- type: entity
+  id: SCP049FlashAction
+  name: "Чумной взгляд"
+  description: "Используйте этот взгляд, чтобы оглушить вашу жертву"
+  noSpawn: true
+  components:
+  - type: EntityTargetAction
+    whitelist:
+      components:
+      - HumanoidAppearance
+    canTargetSelf: false
+    checkCanInteract: true
+    interactOnMiss: false
+    icon:
+      sprite: DarkStation/SCP/Interface/Actions/scp-049.rsi
+      state: flash
+    useDelay: 30
+    range: 6
+    itemIconStyle: NoItem
+    event: !type:SCP049FlashEvent

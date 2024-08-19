@@ -1,0 +1,105 @@
+﻿- type: entity
+  parent: IDCardStandard
+  id: SCPBotanistIDCard
+  name: "ID карта ботаника отдела SCP"
+  components:
+  - type: Sprite
+    layers:
+    - state: default
+    - state: idbotanist
+  - type: PresetIdCard
+    job: SCPBotanist
+
+- type: entity
+  parent: IDCardStandard
+  id: SCPChefIDCard
+  name: "ID карта повара отдела SCP"
+  components:
+  - type: Sprite
+    layers:
+    - state: default
+    - state: idcook
+  - type: PresetIdCard
+    job: SCPChef
+
+- type: entity
+  parent: IDCardStandard
+  id: SCPHeadIDCard
+  name: "ID карта главы отдела SCP"
+  components:
+  - type: Sprite
+    layers:
+    - state: default
+    - state: idresearchdirector-scp
+  - type: PresetIdCard
+    job: SCPHead
+
+- type: entity
+  parent: IDCardStandard
+  id: SCPEngineerIDCard
+  name: "ID карта инженера отдела SCP"
+  components:
+  - type: Sprite
+    layers:
+    - state: default
+    - state: idstationengineer-scp
+  - type: PresetIdCard
+    job: SCPEngineer
+
+- type: entity
+  parent: IDCardStandard
+  id: SCPParamedicIDCard
+  name: "ID карта парамедика SCP"
+  components:
+  - type: Sprite
+    layers:
+    - state: default
+    - state: idparamedic
+  - type: PresetIdCard
+    job: SCPParamedic
+
+- type: entity
+  parent: IDCardStandard
+  id: SCPScientistIDCard
+  name: "ID карта ученого SCP"
+  components:
+  - type: Sprite
+    layers:
+    - state: default
+    - state: idscientist-scp
+  - type: PresetIdCard
+    job: SCPScientist
+
+- type: entity
+  parent: IDCardStandard
+  id: SCPSecurityIDCard
+  name: "Старая ID карта сотрудника безопасности SCP"
+  components:
+  - type: Sprite
+    layers:
+    - state: default
+    - state: idsecurityofficer-scp
+  - type: PresetIdCard
+    job: SCPSecurity
+
+- type: entity
+  parent: IDCardStandard
+  id: SCPSecurityIDCardNew
+  name: "ID карта сотрудника безопасности SCP"
+  components:
+  - type: Sprite
+    layers:
+    - state: idsecurityofficer-scp-new
+  - type: PresetIdCard
+    job: SCPSecurity
+
+- type: entity
+  id: SCPMogIDCard
+  parent: CentcomIDCard
+  name: "ID карта отряда МОГ"
+  components:
+  - type: Sprite
+    layers:
+    - state: idmog
+  - type: IdCard
+    jobTitle: "Отряд МОГ"

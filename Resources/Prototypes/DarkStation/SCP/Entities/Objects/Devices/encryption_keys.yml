@@ -1,0 +1,14 @@
+- type: entity
+  parent: EncryptionKey
+  id: EncryptionKeySCP
+  name: Ключ шифрования отдела SCP
+  description: Ключ шифрования для доступа к каналу отдела SCP
+  components:
+  - type: EncryptionKey
+    channels:
+      - SCP
+    defaultChannel: SCP
+  - type: Sprite
+    layers:
+    - state: crypt_gray
+    - state: service_label

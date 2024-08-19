@@ -1,0 +1,5 @@
+﻿- type: entity
+  id: DiseasesController
+  noSpawn: true
+  components:
+  - type: DiseasesController

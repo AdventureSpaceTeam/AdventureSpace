@@ -1,0 +1,6 @@
+- type: statusIcon
+  parent: JobIcon
+  id: JobIconStationAI
+  icon:
+    sprite: ParkStation/Interface/Misc/job_icons.rsi
+    state: stationAI

@@ -3,6 +3,7 @@
          xmlns:humanoid="clr-namespace:Content.Client.Humanoid"
          xmlns:cc="clr-namespace:Content.Client.Administration.UI.CustomControls"
          xmlns:ui="clr-namespace:Content.Client.Lobby.UI"
+         xmlns:sponsors="clr-namespace:Content.Client._c4llv07e.Sponsors"
          HorizontalExpand="True">
         <!-- Left side -->
         <BoxContainer Orientation="Vertical" Margin="10 10 10 10" HorizontalExpand="True">
@@ -142,6 +143,11 @@
                     <!-- Markings -->
                     <ScrollContainer VerticalExpand="True">
                         <humanoid:MarkingPicker Name="Markings" IgnoreCategories="Hair,FacialHair" />
+                    </ScrollContainer>
+                </BoxContainer>
+                <BoxContainer Name="CPatronItemsTab" Orientation="Vertical" Margin="10">
+                    <ScrollContainer VerticalExpand="True">
+                        <sponsors:PatronItemsPicker Name="CPatronItems"/>
                     </ScrollContainer>
                 </BoxContainer>
             </TabContainer>

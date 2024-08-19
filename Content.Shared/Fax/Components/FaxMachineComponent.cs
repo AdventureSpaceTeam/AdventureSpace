@@ -68,6 +68,9 @@ public sealed partial class FaxMachineComponent : Component
     public bool ReceiveStationGoal { get; set; } = false;
     // Corvax-StationGoal-End
 
+    [ViewVariables(VVAccess.ReadWrite)]
+    [DataField("receiveSCPGoal")]
+    public bool ReceiveSCPGoal { get; set; } = false;
     /// <summary>
     /// Sound to play when fax has been emagged
     /// </summary>

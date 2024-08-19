@@ -91,6 +91,23 @@
     {
       "name": "titanium-inhand-right",
       "directions": 4
-    }
+    },
+      {
+          "name": "runicplasteel"
+      },
+      {
+          "name": "runicplasteel2"
+      },
+      {
+          "name": "runicplasteel3"
+      },
+      {
+          "name": "runicplasteel-inhand-left",
+          "directions": 4
+      },
+      {
+          "name": "runicplasteel-inhand-right",
+          "directions": 4
+      }
   ]
 }

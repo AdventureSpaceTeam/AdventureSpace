@@ -1,0 +1,57 @@
+﻿- type: entity
+  id: PontificDarkAltar
+  parent: BaseStructure
+  name: Темный Алтарь Понтифика
+  description: От него разит скверной!
+  components:
+    - type: PontificDarkAltar
+    - type: Sprite
+      layers:
+        - sprite: DarkStation/MainGame/DarkForces/Pontific/Entities/Misc/dark_altar.rsi
+          state: desecrated_statue
+    - type: Icon
+      sprite: DarkStation/MainGame/DarkForces/Pontific/Entities/Misc/dark_altar.rsi
+      state: desecrated_statue
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape:
+            !type:PhysShapeAabb
+            bounds: "-0.45,-0.45,0.45,0.45"
+          density: 60
+          mask:
+            - MachineMask
+          layer:
+            - MachineLayer
+    - type: Damageable
+      damageContainer: Inorganic
+    - type: Climbable
+    - type: Destructible
+      thresholds:
+        - trigger:
+            !type:DamageTrigger
+            damage: 600
+          behaviors:
+            - !type:DoActsBehavior
+              acts: [ "Destruction" ]
+        - trigger:
+            !type:DamageTrigger
+            damage: 300
+          behaviors:
+            - !type:SpawnEntitiesBehavior
+              spawn:
+                SheetSteel:
+                  min: 5
+                  max: 5
+            - !type:PlaySoundBehavior
+              sound:
+                collection: MetalBreak
+            - !type:DoActsBehavior
+              acts: [ "Destruction" ]
+    - type: PointLight
+      enabled: true
+      radius: 2
+      color: red
+    - type: ActiveRadio
+      channels:
+        - Undead

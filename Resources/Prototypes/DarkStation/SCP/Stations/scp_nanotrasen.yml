@@ -1,0 +1,51 @@
+﻿- type: entity
+  id: SCPStationAlertLevels
+  abstract: true
+  components:
+  - type: AlertLevel
+    alertLevelPrototype: SCPStationAlerts
+
+- type: entity
+  id: SCPStationGrids
+  abstract: true
+  components:
+  - type: GridSpawn
+    groups:
+      scpStation: !type:GridSpawnGroup
+        addComponents:
+        - type: SCPStation
+        - type: SCPStationGoal
+        paths:
+        - /Maps/DarkStationMaps/SCP/SCPStation.yml
+      scpShuttle: !type:GridSpawnGroup
+        addComponents:
+        - type: SCPShuttle
+        paths:
+        - /Maps/DarkStationShuttles/SCP/SCPShuttle.yml
+
+- type: entity
+  id: SCPNanotrasenStation
+  parent:
+  - SCPStationAlertLevels
+  - SCPStationGrids
+  - BaseStation
+  - BaseStationNews
+  - BaseStationCargo
+  - BaseStationJobsSpawning
+  - BaseStationRecords
+  - BaseStationArrivals
+  - BaseStationGateway
+  - BaseStationShuttles
+  - BaseStationCentcomm
+  - BaseStationEvacuation
+  - BaseStationMagnet
+  - BaseStationExpeditions
+  - BaseStationSiliconLawCrewsimov
+  - BaseStationAllEventsEligible
+  - BaseStationNanotrasen
+  - BaseStationCrewMembersSalary
+  - BaseCCOConsoleTargetStation
+  noSpawn: true
+  components:
+  - type: Transform
+

@@ -1,0 +1,33 @@
+{
+    "version": 1,
+    "license": "Собственная лицензия. Полный запрет на копирование и использование вне проекта Dark Station без одобрения текущего владельца проекта",
+    "copyright": "Bubanchik DS",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "full_icon"
+        },
+        {
+            "name": "empty_icon"
+        },
+        {
+            "name": "full-inhand-left",
+            "directions": 4
+        },
+        {
+            "name": "empty-inhand-left",
+            "directions": 4
+        },
+        {
+            "name": "full-inhand-right",
+            "directions": 4
+        },
+        {
+            "name": "empty-inhand-right",
+            "directions": 4
+        }
+    ]
+}

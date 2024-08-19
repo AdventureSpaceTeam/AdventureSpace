@@ -1,0 +1,114 @@
+﻿- type: entity
+  parent: BasePDA
+  id: SCPBotanistPDA
+  name: "КПК ботаника отдела SCP"
+  description: КПК для доступа в отдел SCP
+  components:
+  - type: Pda
+    id: SCPBotanistIDCard
+    state: pda-science-scp
+  - type: Icon
+    state: pda-science-scp
+
+- type: entity
+  parent: BasePDA
+  id: SCPChefPDA
+  name: "КПК повара отдела SCP"
+  description: "КПК для доступа в отдел SCP"
+  components:
+  - type: Pda
+    id: SCPChefIDCard
+    state: pda-science-scp
+  - type: Icon
+    state: pda-science-scp
+
+- type: entity
+  parent: BasePDA
+  id: SCPHeadPDA
+  name: "КПК Главы отдела SCP"
+  description: "Покрыто кровью"
+  components:
+  - type: Pda
+    id: SCPHeadIDCard
+    state: pda-rd-scp
+  - type: Icon
+    state: pda-rd-scp
+
+- type: entity
+  parent: BasePDA
+  id: SCPEngineerPDA
+  name: "КПК инженера отдела SCP"
+  description: "КПК для доступа в отдел SCP"
+  components:
+  - type: Pda
+    id: SCPEngineerIDCard
+    state: pda-engineer-scp
+  - type: Icon
+    state: pda-engineer-scp
+
+- type: entity
+  parent: BasePDA
+  id: SCPParamedicPDA
+  name: "КПК Парамедика отдела SCP"
+  description: "Выглядит стерильно"
+  components:
+  - type: Pda
+    id: SCPParamedicIDCard
+    state: pda-paramedic-scp
+  - type: PdaBorderColor
+    borderColor: "#d7d7d0"
+    accentVColor: "#2a4b5b"
+  - type: Icon
+    state: pda-paramedic-scp
+  - type: HealthAnalyzer
+    scanDelay: 0.5
+    scanningEndSound:
+      path: "/Audio/Items/Medical/healthscanner.ogg"
+
+- type: entity
+  parent: BasePDA
+  id: SCPSciencePDA
+  name: "КПК Ученого SCP"
+  description: "Покрыто кровью"
+  components:
+  - type: Pda
+    id: SCPScientistIDCard
+    state: pda-science-scp
+  - type: Icon
+    state: pda-science-scp
+
+- type: entity
+  parent: BasePDA
+  id: SCPSecurityPDA
+  name: "Старый КПК Сотрудника безопасности SCP"
+  description: "КПК для доступа в отдел SCP. КПК в данном дизайне делался на старой фабрике по производству КПК"
+  components:
+  - type: Pda
+    id: SCPSecurityIDCard
+    state: pda-security-scp
+  - type: Icon
+    state: pda-security-scp
+
+- type: entity
+  parent: BasePDA
+  id: SCPSecurityPDANew
+  name: "КПК Сотрудника безопасности SCP"
+  description: "КПК для доступа в отдел SCP"
+  components:
+  - type: Pda
+    id: SCPSecurityIDCardNew
+    state: pda-security-scp-new
+  - type: Icon
+    state: pda-security-scp-new
+
+- type: entity
+  parent: BasePDA
+  id: SCPMogPDA
+  name: "КПК отряда МОГ"
+  description: "Если вы нашли это на станции, кажется станция пала"
+  components:
+  - type: Pda
+    id: SCPMogIDCard
+    state: pda-mog-scp
+  - type: Icon
+    state: pda-mog-scp

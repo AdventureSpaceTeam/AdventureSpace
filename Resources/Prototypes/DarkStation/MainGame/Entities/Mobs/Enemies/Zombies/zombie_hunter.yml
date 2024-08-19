@@ -1,0 +1,62 @@
+﻿- type: entity
+  name: "Охотник"
+  id: MobZombieHunter
+  parent: BaseZombie
+  description: "Не дайте ему напрыгнуть на меня!"
+  components:
+  - type: Sprite
+    drawdepth: OverMobs
+    sprite: DarkStation/MainGame/Mobs/Zombie/hunter.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: hunter
+  - type: GenericVisualizer
+    visuals:
+      enum.HunterVisuals.State:
+        enum.DamageStateVisualLayers.Base:
+          Idle: {
+            state: hunter
+          }
+          Prepare: {
+            state: hunter-seat
+          }
+          Fly: {
+            state: hunter-fly
+          }
+          Attack: {
+            state: hunter-attack
+          }
+  - type: ZombieHunter
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      500: Dead
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      collection: AlienClaw
+    damage:
+      groups:
+        Brute: 15
+    range: 2
+  - type: DamageStateVisuals
+    rotate: true
+    states:
+      Alive:
+        Base: hunter
+      Dead:
+        Base: hunter-death
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 5
+    baseSprintSpeed: 5
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      400: 0.8
+      450: 0.7
+
+- type: entity
+  id: MobZombieHunterReSprite
+  parent: MobZombieHunter
+  components:
+  - type: Sprite
+    sprite: DarkStation/MainGame/Mobs/Zombie/hunter_resprite.rsi

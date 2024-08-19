@@ -1,0 +1,20 @@
+{
+    "version": 1,
+    "license": "Собственная лицензия. Полный запрет на копирование и использование вне проекта Dark Station без одобрения текущего владельца проекта",
+    "copyright": "M1and1B DS",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "stamp-WaP-brown"
+        },
+        {
+            "name": "stamp-WaP-dark"
+        },
+        {
+            "name": "stamp-WaP-pink"
+        }
+    ]
+}

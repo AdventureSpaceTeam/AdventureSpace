@@ -1,0 +1,35 @@
+{
+    "version": 1,
+    "license": "CC0-1.0",
+    "copyright": "Created by TeMHbIuBouH for Dark Station",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "attack"
+        },
+        {
+            "name": "attackOff"
+        },
+        {
+            "name": "follow"
+        },
+        {
+            "name": "followOff"
+        },
+        {
+            "name": "stay"
+        },
+        {
+            "name": "stayOff"
+        },
+        {
+            "name": "make-ghost-role"
+        },
+        {
+            "name": "remove-ghost-role"
+        }
+    ]
+}

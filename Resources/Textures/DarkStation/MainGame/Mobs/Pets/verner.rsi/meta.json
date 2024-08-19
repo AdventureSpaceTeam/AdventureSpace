@@ -1,0 +1,22 @@
+{
+    "version": 1,
+    "size":
+    {
+      "x": 32,
+      "y": 32
+    },
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Создано @roisi165 для Dark Station",
+    "states":
+    [
+      {
+        "name": "verner",
+        "directions": 4
+      },
+
+      {
+        "name": "verner_dead",
+        "directions": 1
+      }
+    ]
+  }

@@ -177,6 +177,11 @@ public sealed partial class NpcFactionSystem : EntitySystem
         }
     }
 
+    public bool ContainsFaction(string faction, EntityUid uid, NpcFactionMemberComponent? factionWith = null)
+    {
+        return Resolve(uid, ref factionWith, false) && factionWith.Factions.Contains(faction);
+    }
+
     /// <remarks>
     /// 1-way and purely faction based, ignores faction exception.
     /// </remarks>

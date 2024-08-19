@@ -1,0 +1,25 @@
+- type: job
+  id: SCPStationEngineer
+  name: Инженер отдела SCP
+  description: Такой же инженер как и на основной станции, но в отделе SCP
+  playTimeTracker: JobSCPStationEngineer
+  requirements:
+    - !type:DepartmentTimeRequirement
+      department: Engineering
+      time: 36000
+  weight: 20
+  startingGear: SCPStationEngineerGear
+  icon: "JobIconSCPStationEngineer"
+  supervisors: job-supervisors-ce
+  access:
+  - Maintenance
+  - Engineering
+  - External
+  - SCP
+
+#Gear
+- type: startingGear
+  id: SCPStationEngineerGear
+  equipment:
+    id: SCPEngineerPDA
+    ears: ClothingHeadsetSCPEngineer

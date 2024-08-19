@@ -1,0 +1,11 @@
+﻿- type: entity
+  id: NarsiCultProgressHolder
+  noSpawn: true
+  components:
+  - type: NarsiCultProgress
+    bloodPoints: 10
+    narsiObjectives:
+      minKills: 2
+      maxKills: 4
+      minRituals: 2
+      maxRituals: 4

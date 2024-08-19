@@ -1,0 +1,7 @@
+﻿- type: entity
+  id: CartridgeMagnumSilver
+  name: патрон серебряный (.45 магнум)
+  parent: BaseCartridgeMagnum
+  components:
+  - type: CartridgeAmmo
+    proto: BulletMagnumSilver

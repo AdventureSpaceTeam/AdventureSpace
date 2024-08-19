@@ -1,0 +1,87 @@
+﻿- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformSCPGos
+  name: "комбинезон главы отдела SCP"
+  description: "Комбинезон главы отдела SCP. Пахнет опасностью"
+  components:
+  - type: Sprite
+    sprite: DarkStation/SCP/Clothing/Uniforms/Jumpsuit/gos.rsi
+  - type: Clothing
+    sprite: DarkStation/SCP/Clothing/Uniforms/Jumpsuit/gos.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitSCPScientist
+  name: "комбинезон ученого SCP"
+  description: "Комбинезон ученого SCP. Пахнет опасностью"
+  components:
+  - type: Sprite
+    sprite: DarkStation/SCP/Clothing/Uniforms/Jumpsuit/scientist.rsi
+  - type: Clothing
+    sprite: DarkStation/SCP/Clothing/Uniforms/Jumpsuit/scientist.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitHydroponicsSCP
+  name: "комбинезон ботаника SCP"
+  description: "Имеет сильный запах земли. Будем надеяться, что он просто грязный, а не весь в земле."
+  components:
+  - type: Sprite
+    sprite: DarkStation/SCP/Clothing/Uniforms/Jumpsuit/botanist.rsi
+  - type: Clothing
+    sprite: DarkStation/SCP/Clothing/Uniforms/Jumpsuit/botanist.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitChefSCP
+  name: "униформа шеф-повара SCP"
+  description: "Без этого нельзя готовить."
+  components:
+  - type: Sprite
+    sprite: DarkStation/SCP/Clothing/Uniforms/Jumpsuit/chef.rsi
+  - type: Clothing
+    sprite: DarkStation/SCP/Clothing/Uniforms/Jumpsuit/chef.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitSCPSecurity
+  name: "комбинезон сотрудника безопасности SCP"
+  description: "Эти ребята явно знают свою работу, да?"
+  components:
+  - type: Sprite
+    sprite: DarkStation/SCP/Clothing/Uniforms/Jumpsuit/security.rsi
+  - type: Clothing
+    sprite: DarkStation/SCP/Clothing/Uniforms/Jumpsuit/security.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitSCPSecurityNew
+  name: "комбинезон сотрудника безопасности SCP"
+  description: "Эти ребята явно знают свою работу, да?"
+  components:
+  - type: Sprite
+    sprite: DarkStation/SCP/Clothing/Uniforms/Jumpsuit/new_security.rsi
+  - type: Clothing
+    sprite: DarkStation/SCP/Clothing/Uniforms/Jumpsuit/new_security.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitDClass
+  name: Униформа сотрудника класса D
+  description: Идеально для различных испытаний..
+  components:
+  - type: Sprite
+    sprite: DarkStation/SCP/Clothing/Uniforms/Jumpsuit/d-class.rsi
+  - type: Clothing
+    sprite: DarkStation/SCP/Clothing/Uniforms/Jumpsuit/d-class.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpskirtSCPMog
+  name: "комбинезон отряда МОГ"
+  description: "Эти парни всегда прибывают вовремя!"
+  components:
+  - type: Sprite
+    sprite: DarkStation/SCP/Clothing/Uniforms/Jumpsuit/mog.rsi
+  - type: Clothing
+    sprite: DarkStation/SCP/Clothing/Uniforms/Jumpsuit/mog.rsi

@@ -1,0 +1,43 @@
+﻿- type: job
+  id: SpCCO
+  name: Оператор ЦК
+  description: Отвечает на запросы станции
+  playTimeTracker: JobSpCCO
+  setPreference: true
+  startingGear: CCOGear
+  icon: "JobIconNanotrasen"
+  requireAdminNotify: true
+  joinNotifyCrew: false
+  supervisors: job-supervisors-centcom
+  canBeAntag: false
+  alwaysUseSpawner: true
+  whitelisted: true
+  sponsorIgnoreWhitelist: false
+  accessGroups:
+  - AllAccessCentCom
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+
+- type: startingGear
+  id: CCOGear
+  equipment:
+    outerClothing: ClothingOuterArmorSecurity
+    id: CentcomPDA
+    ears: ClothingHeadsetAltCentCom
+    belt: WeaponPistolN1984
+    pocket1: BoxFolderBlack
+    pocket2: PenCentcom
+
+
+- type: entity
+  id: SpawnPointSpCCO
+  parent: SpawnPointJobBase
+  name: Оператор ЦК
+  components:
+    - type: SpawnPoint
+      job_id: SpCCO
+    - type: Sprite
+      layers:
+        - state: green
+        - state: captain

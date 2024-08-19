@@ -1,0 +1,35 @@
+- type: gamePreset
+  id: Pontific
+  name: "Понтифик"
+  description: "Древний жрец, который пошел по неправильному пути, явился на станции, чтобы распространить свою веру"
+  showInVote: true
+  rules:
+  - PontificRule
+  - BasicStationEventScheduler
+
+- type: gamePreset
+  id: NarsiCult
+  name: "Культ Нар-Си"
+  description: "Остановите культ, который пытается призвать злое божество"
+  showInVote: true
+  rules:
+  - NarsiCult
+  - BasicStationEventScheduler
+
+- type: gamePreset
+  id: Ratvar
+  name: "Праведники Ратвара"
+  description: "Праведники Ратвара нашли способ, как можно освободить Ратвара из заточения..."
+  showInVote: true
+  rules:
+  - Ratvar
+  - BasicStationEventScheduler
+
+- type: gamePreset
+  id: Vampire
+  name: "Вампиры"
+  description: "На станции присутсвует нежить"
+  showInVote: true
+  rules:
+  - Vampire
+  - BasicStationEventScheduler

@@ -1,0 +1,85 @@
+﻿- type: salaries
+  id: StandardNanoTrasenSalaries
+  salaries:
+
+    #Cargo
+    CargoTechnician: 500
+    SalvageSpecialist: 1000
+    Quartermaster: 2000
+
+    #Civilian
+    Passenger: 0
+    Mime: 300
+    Musician: 300
+    Clown: 300
+    Librarian: 300
+    Boxer: 300
+    Zookeeper: 300
+    Reporter: 350
+
+    ServiceWorker: 400
+
+    Bartender: 500
+    Botanist: 500
+
+    Chaplain: 700
+    Chef: 700
+
+    Janitor: 1000
+
+    #Command
+    HeadOfPersonnel: 2000
+    Captain: 3000
+
+    #Engineering
+    TechnicalAssistant: 500
+    StationEngineer: 1000
+    AtmosphericTechnician: 1300
+    SeniorEngineer: 1700
+    ChiefEngineer: 2000
+
+    #Medical
+    MedicalIntern: 500
+
+    MedicalDoctor: 750
+    Paramedic: 750
+    Psychologist: 750
+
+    Chemist: 1100
+    SeniorPhysician: 1500
+    ChiefMedicalOfficer: 2000
+
+    #Science
+    ResearchAssistant: 600
+    Scientist: 1000
+    SeniorResearcher: 1200
+    ResearchDirector: 2000
+
+    #Security
+    SecurityCadet: 750
+    SecurityOfficer: 1250
+    Detective: 1500
+    SeniorOfficer: 2000
+    Warden: 2500
+    HeadOfSecurity: 2500
+
+    #SCP
+    SCPBotanist: 750
+    SCPChef: 1250
+    SCPHead: 2500
+    SCPDClass: 100 #lol
+    SCPStationEngineer: 1500
+    SCPParamedic: 1500
+    SCPScientist: 1250
+    SCPSecurity: 1500
+
+    #Lawyers
+    Lawyer: 700
+    IAA: 2000
+
+    #Centcomm
+    SpCCO: 2000
+
+    #Borgs
+    Borg: 500
+    SAI: 1500 #lol

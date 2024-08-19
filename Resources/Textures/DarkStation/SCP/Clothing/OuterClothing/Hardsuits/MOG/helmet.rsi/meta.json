@@ -1,0 +1,25 @@
+{
+    "version": 1,
+    "license": "Собственная лицензия. Полный запрет на копирование и использование вне проекта Dark Station без одобрения текущего владельца проекта",
+    "copyright": "Bubanchik DS",
+    "size": {
+      "x": 32,
+      "y": 32
+    },
+    "states": [
+      {
+        "name": "icon"
+      },
+      {
+        "name": "icon-flash"
+      },
+      {
+        "name": "off-equipped-HELMET",
+        "directions": 4
+      },
+      {
+        "name": "on-equipped-HELMET",
+        "directions": 4
+      }
+    ]
+  }

@@ -1,0 +1,52 @@
+﻿- type: entity
+  parent: ClothingHandsBase
+  id: ClothingHandsGlovesMOG
+  name: "Перчатки отряда МОГ"
+  description: "Очень стильные. На них присутствует эмблема автора 'Bubanchik'"
+  components:
+  - type: Sprite
+    sprite: DarkStation/SCP/Clothing/Hands/Gloves/mog.rsi
+  - type: Clothing
+    sprite: DarkStation/SCP/Clothing/Hands/Gloves/mog.rsi
+  - type: GloveHeatResistance
+    heatResistance: 1400
+  - type: Insulated
+  - type: Fiber
+    fiberMaterial: fibers-durathread
+    fiberColor: fibers-regal-blue
+  - type: FingerprintMask
+
+- type: entity
+  parent: ClothingHandsBase
+  id: ClothingHandsGlovesSCPGos
+  name: "Перчатки главы отдела SCP"
+  description: "Очень стильные и крепки"
+  components:
+  - type: Sprite
+    sprite: DarkStation/SCP/Clothing/Hands/Gloves/gos.rsi
+  - type: Clothing
+    sprite: DarkStation/SCP/Clothing/Hands/Gloves/gos.rsi
+  - type: GloveHeatResistance
+    heatResistance: 1400
+  - type: Insulated
+  - type: Fiber
+    fiberMaterial: fibers-durathread
+    fiberColor: fibers-regal-blue
+  - type: FingerprintMask
+
+- type: entity
+  id: ClothingHandsGlovesSCPSecurity
+  parent: ClothingHandsBase
+  name: "Перчатки сотрудника безопасности отдела SCP"
+  description: "Стильные и модные, в них очень удобно держать пистолеты-пулемёты"
+  components:
+  - type: Sprite
+    sprite: DarkStation/SCP/Clothing/Hands/Gloves/security.rsi
+  - type: Clothing
+    sprite: DarkStation/SCP/Clothing/Hands/Gloves/security.rsi
+  - type: GloveHeatResistance
+    heatResistance: 1400
+  - type: Fiber
+    fiberMaterial: fibers-durathread
+    fiberColor: fibers-regal-blue
+  - type: FingerprintMask

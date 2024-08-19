@@ -35,6 +35,7 @@ using Content.Shared.Kitchen;
 using Content.Shared.Players.PlayTimeTracking;
 using Content.Corvax.Interfaces.Shared;
 using Content.Corvax.Interfaces.Server;
+using Content.Server._c4llv07e.Bridges;
 using Content.Server._c4llv07e.VpnGuard; // c4llv07e vpn guard
 using Content.Server.Adventure.Config; // c4llv07e adventure config
 
@@ -89,6 +90,14 @@ namespace Content.Server.IoC
 
             IoCManager.Register<IServerVPNGuardManager, VpnGuardFile>(); // c4llv07e vpn ban
             IoCManager.Register<AdventureConfigManager>(); // c4llv07e config manager
+
+            //TODO REPLACE THIS BY UR
+            IoCManager.RegisterInstance<IAntagBridge>(new StubAntagBridge());
+            IoCManager.RegisterInstance<IVampireBridge>(new StubVampireBridge());
+            IoCManager.RegisterInstance<ISaintedBridge>(new StubSaintedBridge());
+            IoCManager.RegisterInstance<IBankBridge>(new StubBankBridge());
+            IoCManager.RegisterInstance<IDiseasesBridge>(new StubDiseasesBridge());
+            IoCManager.RegisterInstance<ISalaryBridge>(new StubSalaryBridge());
         }
     }
 }

@@ -1,0 +1,145 @@
+﻿#Chef
+- type: loadoutGroup
+  id: SCPChefJumpsuit
+  name: loadout-group-scp-station-chef-jumpsuit
+  loadouts:
+  - SCPChefJumpsuit
+  - SCPChefJumpskirt
+
+- type: loadoutGroup
+  id: SCPChefOuterClothing
+  name: loadout-group-scp-station-chef-outerclothing
+  minLimit: 0
+  loadouts:
+  - SCPChefApron
+  - ChefJacket
+  - ChefWintercoat
+
+- type: loadoutGroup
+  id: SCPChefHead
+  name: loadout-group-scp-station-chef-head
+  minLimit: 0
+  loadouts:
+  - SCPChefHead
+  - ChefHead
+
+#Botanist
+- type: loadoutGroup
+  id: SCPBotanistJumpsuit
+  name: loadout-group-scp-station-botanist-jumpsuit
+  loadouts:
+  - SCPBotanistJumpsuit
+#  - SCPBotanistJumpskirt
+
+- type: loadoutGroup
+  id: SCPBotanistBackpack
+  name: loadout-group-scp-station-botanist-backpack
+  loadouts:
+  - SCPBotanistBackpack
+
+#Head
+- type: loadoutGroup
+  id: SCPHeadJumpsuit
+  name: loadout-group-scp-station-head-jumpsuit
+  loadouts:
+  - SCPHeadJumpsuit
+  - SCPHeadJumpskirt
+
+- type: loadoutGroup
+  id: SCPHeadBackpack
+  name: loadout-group-scp-station-head-backpack
+  loadouts:
+  - SCPHeadBackpack
+  - SCPHeadBackpackSatchel
+  - SCPHeadBackpackDuffel
+
+- type: loadoutGroup
+  id: SCPHeadShoes
+  name: loadout-group-scp-station-head-shoes
+  loadouts:
+  - SCPHeadShoes
+
+- type: loadoutGroup
+  id: SCPHeadOuterClothing
+  name: loadout-group-scp-station-head-outerclothing
+  minLimit: 0
+  loadouts:
+  - SCPHeadHardsuit
+
+- type: loadoutGroup
+  id: SCPHeadGloves
+  name: loadout-group-scp-station-head-gloves
+  minLimit: 0
+  loadouts:
+  - SCPHeadGloves
+
+- type: loadoutGroup
+  id: SCPHeadHead
+  name: loadout-group-scp-station-head-head
+  minLimit: 0
+  loadouts:
+  - SCPHeadHead
+
+- type: loadoutGroup
+  id: SCPHeadNeck
+  name: loadout-group-scp-station-head-neck
+  minLimit: 0
+  loadouts:
+  - SCPHeadNeck
+
+- type: loadoutGroup
+  id: SCPHeadEyes
+  name: loadout-group-scp-station-head-eyes
+  minLimit: 0
+  loadouts:
+  - SCPHeadEyes
+
+#Scientist
+- type: loadoutGroup
+  id: SCPScientistJumpsuit
+  name: loadout-group-scp-station-scientist-jumpsuit
+  loadouts:
+  - SCPScientistJumpsuit
+  - SCPScientistJumpskirt
+
+#Security
+- type: loadoutGroup
+  id: SCPSecurityJumpsuit
+  name: loadout-group-scp-station-security-jumpsuit
+  loadouts:
+  - SCPSecurityJumpsuit
+  - SCPSecurityJumpsuitNew
+  - SCPSecurityJumpskirt
+  - SCPSecurityJumpskirtNew
+
+- type: loadoutGroup
+  id: SCPSecurityHead
+  name: loadout-group-scp-station-security-head
+  loadouts:
+  - SCPSecurityHelmet
+  - SCPSecurityCap
+
+- type: loadoutGroup
+  id: SCPSecurityPda
+  name: loadout-group-scp-station-security-pda
+  loadouts:
+  - SCPSecurityPda
+  - SCPSecurityPdaNew
+
+- type: loadoutGroup
+  id: SCPSecurityGloves
+  name: loadout-group-scp-station-security-gloves
+  loadouts:
+  - SCPSecurityGloves
+
+- type: loadoutGroup
+  id: SCPSecurityBoots
+  name: loadout-group-scp-station-security-boots
+  loadouts:
+  - SCPSecurityBoots
+
+- type: loadoutGroup
+  id: SCPSecurityOuterClothing
+  name: loadout-group-scp-station-security-outerclothing
+  loadouts:
+  - SCPSecurityVest

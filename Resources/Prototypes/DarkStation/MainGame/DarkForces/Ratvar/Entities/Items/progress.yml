@@ -1,0 +1,5 @@
+﻿- type: entity
+  id: RatvarProgress
+  noSpawn: true
+  components:
+  - type: RatvarProgress

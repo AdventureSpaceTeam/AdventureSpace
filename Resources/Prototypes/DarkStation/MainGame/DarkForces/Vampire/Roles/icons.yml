@@ -1,0 +1,23 @@
+﻿- type: statusIcon
+  id: VampireIcon
+  priority: 11
+  showTo:
+    components:
+    - ShowAntagIcons
+    - Vampire
+    - VampireTrall
+  icon:
+    sprite: /Textures/DarkStation/MainGame/DarkForces/Vampire/icons.rsi
+    state: vampire
+
+- type: statusIcon
+  id: VampireTrallIcon
+  priority: 11
+  showTo:
+    components:
+    - ShowAntagIcons
+    - Vampire
+    - VampireTrall
+  icon:
+    sprite: /Textures/DarkStation/MainGame/DarkForces/Vampire/icons.rsi
+    state: trall

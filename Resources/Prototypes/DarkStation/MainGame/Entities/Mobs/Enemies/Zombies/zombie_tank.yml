@@ -1,0 +1,63 @@
+﻿- type: entity
+  name: "Танк"
+  id: MobZombieTank
+  parent: BaseZombie
+  description: "Беги, просто беги..."
+  components:
+    - type: ZombieTank
+    - type: Sprite
+      drawdepth: Mobs
+      sprite: DarkStation/MainGame/Mobs/Zombie/tank.rsi
+      layers:
+        - map: [ "enum.DamageStateVisualLayers.Base" ]
+          state: alive
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape: !type:PhysShapeCircle
+            radius: 0.75
+          density: 1000
+          mask:
+            - MobMask
+          layer:
+            - MobLayer
+    - type: MobThresholds
+      thresholds:
+        0: Alive
+        2000: Dead
+    - type: Stamina
+      excess: 400
+    - type: MeleeWeapon
+      hidden: true
+      soundHit:
+        collection: AlienClaw
+      damage:
+        groups:
+          Brute: 30
+      range: 3.5
+    - type: DamageStateVisuals
+      rotate: true
+      states:
+        Alive:
+          Base: alive
+        Dead:
+          Base: dead
+    - type: SlowOnDamage
+      speedModifierThresholds:
+        750: 0.9
+        1500: 0.8
+        1800: 0.7
+    - type: MovementSpeedModifier
+      baseWalkSpeed: 4
+      baseSprintSpeed: 4
+    - type: EmitSoundOnSpawn
+      sound:
+        path: /Audio/DarkStation/Mobs/Zombie/Tank/tank.ogg
+
+- type: entity
+  name: Танк
+  id: MobZombieTankResprite
+  parent: MobZombieTank
+  components:
+  - type: Sprite
+    sprite: DarkStation/MainGame/Mobs/Zombie/tank_resprite.rsi

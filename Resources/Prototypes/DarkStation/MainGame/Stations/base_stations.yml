@@ -1,0 +1,12 @@
+﻿- type: entity
+  id: BaseStationCrewMembersSalary
+  abstract: true
+  components:
+  - type: CrewMemberStationSalary
+    salaries: StandardNanoTrasenSalaries
+
+- type: entity
+  id: BaseCCOConsoleTargetStation
+  abstract: true
+  components:
+  - type: CCOConsoleTarget

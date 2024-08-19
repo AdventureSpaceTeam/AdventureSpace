@@ -1,0 +1,16 @@
+﻿- type: entity
+  id: CCOConsole
+  parent: BaseComputer
+  name: "Консоль ОЦК"
+  description: "Консоль оператора центрального командования. Используется для управления станцией на расстоянии"
+  components:
+    - type: CcoConsole
+      announcementDisplayName: ОЦК
+    - type: ActivatableUI
+      key: enum.CcoConsoleInterfaceKey.Key
+    - type: UserInterface
+      interfaces:
+        enum.CcoConsoleInterfaceKey.Key:
+          type: CcoConsoleBoundInterface
+    - type: AccessReader
+      access: [[ "CentCom" ]]

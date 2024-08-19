@@ -1,0 +1,56 @@
+{
+    "license": "Собственная лицензия. Полный запрет на копирование и использование вне проекта Dark Station без одобрения текущего владельца проекта",
+    "copyright": "Created by DarkStation Team",
+    "version": 1,
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "hunter",
+            "directions": 4
+        },
+        {
+            "name": "hunter-death"
+        },
+        {
+            "name": "hunter-fly",
+            "directions": 4
+        },
+        {
+            "name": "hunter-seat",
+            "directions": 4
+        },
+        {
+            "name": "hunter-attack",
+            "directions": 4,
+            "delays": [
+                [
+                    0.25,
+                    0.25,
+                    0.25,
+                    0.25
+                ],
+                [
+                    0.25,
+                    0.25,
+                    0.25,
+                    0.25
+                ],
+                [
+                    0.25,
+                    0.25,
+                    0.25,
+                    0.25
+                ],
+                [
+                    0.25,
+                    0.25,
+                    0.25,
+                    0.25
+                ]
+            ]
+        }
+    ]
+}

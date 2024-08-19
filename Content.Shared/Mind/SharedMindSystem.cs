@@ -552,6 +552,22 @@ public abstract class SharedMindSystem : EntitySystem
 
         return allHumans;
     }
+
+    public List<EntityUid> GetAliveHumans()
+    {
+        var allHumans = new List<EntityUid>();
+        var query = EntityQueryEnumerator<MindContainerComponent, MobStateComponent, HumanoidAppearanceComponent>();
+        while (query.MoveNext(out var uid, out var mc, out var mobState, out _))
+        {
+            if (mc.Mind == null)
+                continue;
+
+            if (_mobState.IsAlive(uid, mobState))
+                allHumans.Add(uid);
+        }
+
+        return allHumans;
+    }
 }
 
 /// <summary>

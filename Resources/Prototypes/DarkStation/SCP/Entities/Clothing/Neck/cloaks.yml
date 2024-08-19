@@ -1,0 +1,29 @@
+﻿- type: entity
+  id: ClothingNeckSCPGos
+  parent: ClothingNeckBase
+  name: "Плащ главы отдела SCP"
+  components:
+  - type: Sprite
+    sprite: DarkStation/SCP/Clothing/Neck/Cloaks/gos.rsi
+  - type: Clothing
+    sprite: DarkStation/SCP/Clothing/Neck/Cloaks/gos.rsi
+
+- type: entity
+  id: ClothingNeckMSCPGosWings
+  parent: ClothingNeckBase
+  name: "Плащ главы отдела SCP"
+  components:
+  - type: Sprite
+    sprite: DarkStation/SCP/Clothing/Neck/Cloaks/gos_wings.rsi
+  - type: Clothing
+    sprite: DarkStation/SCP/Clothing/Neck/Cloaks/gos_wings.rsi
+
+- type: entity
+  id: ClothingNeckMantleSCPGos
+  parent: ClothingNeckBase
+  name: "Мантия главы отдела SCP"
+  components:
+  - type: Sprite
+    sprite: DarkStation/SCP/Clothing/Neck/Mantles/gos.rsi
+  - type: Clothing
+    sprite: DarkStation/SCP/Clothing/Neck/Mantles/gos.rsi

@@ -1,0 +1,7 @@
+- type: accessLevel
+  id: SCP
+  name: Отдел SCP
+
+- type: accessLevel
+  id: SCPCommand
+  name: Глава отдела SCP

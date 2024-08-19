@@ -1,0 +1,55 @@
+<Control xmlns="https://spacestation14.io"
+         xmlns:sponsors1="clr-namespace:Content.Client._c4llv07e.Sponsors">
+    <BoxContainer Orientation="Vertical" HorizontalExpand="True">
+
+        <Label Text="Раундстартовые предметы" Align="Center" StyleClasses="LabelBig" Margin="8" />
+
+        <sponsors1:PatronCategoryNotAvailable Name="CPatronCategoryItems" Visible="False" />
+
+        <BoxContainer Name="CPatronItemsContainer" Orientation="Horizontal" SeparationOverride="5"
+                      HorizontalExpand="True">
+
+            <BoxContainer Orientation="Vertical" HorizontalExpand="True">
+                <BoxContainer Orientation="Horizontal" HorizontalExpand="True" Margin="8">
+                    <Label Text="{Loc 'Доступно предметов'}" HorizontalAlignment="Stretch" HorizontalExpand="True" />
+                    <Label Name="CPatronItemsAvailableCount" Text="0" HorizontalAlignment="Right" />
+                </BoxContainer>
+
+                <LineEdit Name="CSearch" PlaceHolder="{Loc 'Поиск'}" />
+
+                <ItemList Name="CPatronAvailableItems" VerticalExpand="True" MinSize="300 250" />
+                <Button Name="CPatronAddItem" Text="{Loc 'Добавить предмет'}" StyleClasses="OpenRight" />
+            </BoxContainer>
+
+
+            <BoxContainer Orientation="Vertical" HorizontalExpand="True">
+                <Label Text="{Loc 'Выбранные предметы'}" Margin="8" />
+
+                <ItemList Name="CPatronSelectedItems" VerticalExpand="True" MinSize="300 250" />
+
+                <Button Name="CPatronRemoveItem" Text="{Loc 'Убрать предмет'}" StyleClasses="OpenRight" />
+            </BoxContainer>
+        </BoxContainer>
+
+        <Label Text="Питомец" Align="Center" StyleClasses="LabelBig" Margin="8" />
+
+        <sponsors1:PatronCategoryNotAvailable Name="CPatronCategoryPet" Visible="False" />
+
+        <BoxContainer Name="CPatronPetContainer" Orientation="Horizontal" SeparationOverride="5"
+                      HorizontalExpand="True">
+
+            <BoxContainer Orientation="Vertical" HorizontalExpand="True">
+                <ItemList Name="CPetsList" VerticalExpand="True" MinSize="300 250" />
+            </BoxContainer>
+
+
+            <BoxContainer Orientation="Vertical" HorizontalExpand="True">
+                <LineEdit Name="CPetName" PlaceHolder="{Loc 'Имя'}" />
+
+                <SpriteView Name="CPetSpriteView" Scale="4 4" SizeFlagsStretchRatio="1" VerticalExpand="True"
+                            HorizontalExpand="True" />
+
+            </BoxContainer>
+        </BoxContainer>
+    </BoxContainer>
+</Control>
