@@ -1,0 +1,61 @@
+<controls:FancyWindow xmlns="https://spacestation14.io"
+                      xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+                      xmlns:graphics="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client">
+
+    <BoxContainer Orientation="Horizontal"
+                  HorizontalExpand="True"
+                  VerticalExpand="True">
+
+        <BoxContainer Orientation="Vertical" VerticalExpand="True" HorizontalExpand="True" Margin="8 8 8 8">
+            <LineEdit Name="SearchBar" PlaceHolder="{Loc 'vending-machine-component-search-filter'}"
+                      HorizontalExpand="True" Margin="0 4" Access="Public" />
+
+            <SplitContainer Name="SplitContainer" Orientation="Horizontal" VerticalExpand="True"
+                            HorizontalExpand="True">
+
+                <ItemList Name="VendingContents"
+                          SizeFlagsStretchRatio="8"
+                          VerticalExpand="True"
+                          SelectMode="Single"
+                          Margin="0 0 4 0"
+                          MaxWidth="180"
+                          MinWidth="180" />
+
+                <BoxContainer Orientation="Vertical"
+                              VerticalExpand="True"
+                              HorizontalExpand="True"
+                              Margin="4 0 0 0"
+                              MinWidth="320">
+
+                    <PanelContainer Margin="0 8 0 8">
+                        <PanelContainer.PanelOverride>
+                            <graphics:StyleBoxFlat BackgroundColor="#1B1B1E" />
+                        </PanelContainer.PanelOverride>
+
+                        <BoxContainer Orientation="Vertical">
+
+                            <Label Name="ProductNotSelected" Align="Center" HorizontalAlignment="Center" Text="{Loc 'vending-machine-component-choose-good'}" Margin="8 16 8 16"/>
+
+                            <TextureRect Name="ChosenProductIcon" MinSize="64 64" Stretch="KeepAspectCentered" Visible="False"/>
+
+                            <Label Name="ChosenProduct" Align="Center" HorizontalAlignment="Center" Margin="8 0 8 8" Visible="False"/>
+
+                            <BoxContainer Name="ChosenProductCountContainer" Orientation="Horizontal" Margin="8 0 8 0" Visible="False">
+                                <Label StyleClasses="StatusFieldTitle" Text="{Loc 'vending-machine-component-choose-count'}" />
+                                <Label Name="ChosenProductAmount" Margin="4 0 0 0"/>
+                            </BoxContainer>
+
+                            <BoxContainer Name="ChosenProductPriceContainer" Orientation="Horizontal" Margin="8 0 8 8" Visible="False">
+                                <Label StyleClasses="StatusFieldTitle" Text="{Loc 'vending-machine-component-choose-price'}" />
+                                <Label Name="ChosenProductPrice" Margin="4 0 0 0"/>
+                            </BoxContainer>
+
+                            <Label Name="ChosenProductEnd" Text="{Loc 'vending-machine-component-choose-end'}" Align="Center" HorizontalAlignment="Center" Margin="8 16 8 16" Visible="False"/>
+                        </BoxContainer>
+                    </PanelContainer>
+                    <Button Name="BuyButton" Text="{Loc 'vending-machine-component-buy'}" VerticalAlignment="Bottom" Visible="False"/>
+                </BoxContainer>
+            </SplitContainer>
+        </BoxContainer>
+    </BoxContainer>
+</controls:FancyWindow>
