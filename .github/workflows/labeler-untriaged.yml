@@ -1,6 +1,7 @@
 ﻿name: "Labels: Untriaged"
 
 on:
+  workflow_dispatch:
   # issues:
   #   types: [opened]
 
