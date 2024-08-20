@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    runs-on: c4llv07e
+    runs-on: self-hosted
 
     steps:
     - uses: actions/checkout@v4.1.1
