@@ -66,31 +66,33 @@ public sealed partial class ServerApi : IPostInjectInit
     {
         _sawmill = _logManager.GetSawmill("serverApi");
 
-        // Get
-        RegisterActorHandler(HttpMethod.Get, "/admin/info", InfoHandler);
-        RegisterHandler(HttpMethod.Get, "/admin/game_rules", GetGameRules);
-        RegisterHandler(HttpMethod.Get, "/admin/presets", GetPresets);
+        // c4llv07e adventure hardending begin
+        // // Get
+        // RegisterActorHandler(HttpMethod.Get, "/admin/info", InfoHandler);
+        // RegisterHandler(HttpMethod.Get, "/admin/game_rules", GetGameRules);
+        // RegisterHandler(HttpMethod.Get, "/admin/presets", GetPresets);
 
-        // Post
-        RegisterActorHandler(HttpMethod.Post, "/admin/actions/round/start", ActionRoundStart);
-        RegisterActorHandler(HttpMethod.Post, "/admin/actions/round/end", ActionRoundEnd);
-        RegisterActorHandler(HttpMethod.Post, "/admin/actions/round/restartnow", ActionRoundRestartNow);
-        RegisterActorHandler(HttpMethod.Post, "/admin/actions/kick", ActionKick);
-        RegisterActorHandler(HttpMethod.Post, "/admin/actions/add_game_rule", ActionAddGameRule);
-        RegisterActorHandler(HttpMethod.Post, "/admin/actions/end_game_rule", ActionEndGameRule);
-        RegisterActorHandler(HttpMethod.Post, "/admin/actions/force_preset", ActionForcePreset);
-        RegisterActorHandler(HttpMethod.Post, "/admin/actions/set_motd", ActionForceMotd);
-        RegisterActorHandler(HttpMethod.Patch, "/admin/actions/panic_bunker", ActionPanicPunker);
+        // // Post
+        // RegisterActorHandler(HttpMethod.Post, "/admin/actions/round/start", ActionRoundStart);
+        // RegisterActorHandler(HttpMethod.Post, "/admin/actions/round/end", ActionRoundEnd);
+        // RegisterActorHandler(HttpMethod.Post, "/admin/actions/round/restartnow", ActionRoundRestartNow);
+        // RegisterActorHandler(HttpMethod.Post, "/admin/actions/kick", ActionKick);
+        // RegisterActorHandler(HttpMethod.Post, "/admin/actions/add_game_rule", ActionAddGameRule);
+        // RegisterActorHandler(HttpMethod.Post, "/admin/actions/end_game_rule", ActionEndGameRule);
+        // RegisterActorHandler(HttpMethod.Post, "/admin/actions/force_preset", ActionForcePreset);
+        // RegisterActorHandler(HttpMethod.Post, "/admin/actions/set_motd", ActionForceMotd);
+        // RegisterActorHandler(HttpMethod.Patch, "/admin/actions/panic_bunker", ActionPanicPunker);
+        // c4llv07e adventure hardending end
     }
 
     public void Initialize()
     {
-        _config.OnValueChanged(CCVars.AdminApiToken, UpdateToken, true);
+        // _config.OnValueChanged(CCVars.AdminApiToken, UpdateToken, true); // c4llv07e adventure hardending
     }
 
     public void Shutdown()
     {
-        _config.UnsubValueChanged(CCVars.AdminApiToken, UpdateToken);
+        // _config.UnsubValueChanged(CCVars.AdminApiToken, UpdateToken); // c4llv07e adventure hardending
     }
 
     private void UpdateToken(string token)
