@@ -1,0 +1,29 @@
+#Job
+- type: job
+  id: SCPScientist
+  name: "Ученый SCP"
+  playTimeTracker: JobSCPScientist
+  requirements:
+    - !type:DepartmentTimeRequirement
+      department: Science
+      time: 10800
+  weight: 20
+  startingGear: SCPScientistGear
+  icon: "JobIconSCPScientist"
+  supervisors: "Главе отдела СЦП"
+  canBeAntag: false
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+  access:
+    - Research
+    - Maintenance
+    - External
+    - SCP
+
+#Gear
+- type: startingGear
+  id: SCPScientistGear
+  equipment:
+    id: SCPSciencePDA
+    ears: ClothingHeadsetSCPScience

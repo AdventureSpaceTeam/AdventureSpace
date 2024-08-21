@@ -1,0 +1,14 @@
+<Control xmlns="https://spacestation14.io"
+         xmlns:graphics="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client">
+
+    <PanelContainer Name="CPatronItemsNotAvailable" HorizontalExpand="True" VerticalExpand="True">
+        <PanelContainer.PanelOverride>
+            <graphics:StyleBoxFlat BackgroundColor="#25252AAA" />
+        </PanelContainer.PanelOverride>
+        <BoxContainer Orientation="Vertical" Margin="8">
+            <Label Text="На вашем уровне подписки данная категория недоступна" HorizontalAlignment="Center"/>
+
+            <Button Name="Boosty" Text="Приобрести подписку" Margin="8" HorizontalAlignment="Center" />
+        </BoxContainer>
+    </PanelContainer>
+</Control>

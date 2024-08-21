@@ -1,0 +1,92 @@
+﻿- type: entity
+  parent: ClothingBackpack
+  id: ClothingBackpackHydroponicsSCPFilled
+  name: hydroponics backpack
+  description: It's a backpack made of all-natural fibers.
+  components:
+  - type: Sprite
+    sprite: DarkStation/SCP/Clothing/Back/Backpacks/botanist.rsi
+  - type: StorageFill
+    contents:
+    - id: BoxSurvival
+
+# GOS
+## Backpack
+- type: entity
+  parent: ClothingBackpack
+  id: ClothingBackpackSCPGos
+  name: "Рюкзак главы отдела SCP"
+  description: "Самый обыкновенный рюкзак, для переноса различных вещей"
+  components:
+  - type: Sprite
+    sprite: DarkStation/SCP/Clothing/Back/Backpacks/gos.rsi
+
+- type: entity
+  noSpawn: true
+  parent: ClothingBackpackSCPGos
+  id: ClothingBackpackSCPGosFilled
+  components:
+  - type: StorageFill
+    contents:
+    - id: BoxSurvival
+
+## Satchel
+- type: entity
+  parent: ClothingBackpackSatchel
+  id: ClothingBackpackSatchelSCPGos
+  name: "Сумка главы отдела SCP"
+  description: "Самая обыкновенная сумка, для переноса различных вещей"
+  components:
+  - type: Sprite
+    sprite: DarkStation/SCP/Clothing/Back/Satchels/gos.rsi
+
+- type: entity
+  noSpawn: true
+  parent: ClothingBackpackSatchelSCPGos
+  id: ClothingBackpackSatchelSCPGosFilled
+  components:
+  - type: StorageFill
+    contents:
+    - id: BoxSurvival
+
+## Duffel
+- type: entity
+  parent: ClothingBackpack
+  id: ClothingBackpackSCPDuffel
+  name: "Вещмешок главы отдела SCP"
+  description: "Самый обыкновенный вещмешок, для переноса различных вещей"
+  components:
+  - type: Sprite
+    sprite: DarkStation/SCP/Clothing/Back/Duffels/gos.rsi
+
+- type: entity
+  noSpawn: true
+  parent: ClothingBackpackSCPDuffel
+  id: ClothingBackpackSCPGosDuffelFilled
+  components:
+  - type: StorageFill
+    contents:
+    - id: BoxSurvival
+
+# MOG
+- type: entity
+  parent: ClothingBackpackERTSecurity
+  id: ClothingBackpackMOG
+  name: "Рюкзак МОГ"
+  description: "Жаль туда не помещается клетка для объектов... Зато в него встроен джетпак"
+  components:
+  - type: Sprite
+    sprite: DarkStation/SCP/Clothing/Back/Backpacks/mog.rsi
+  - type: Clothing
+    sprite: DarkStation/SCP/Clothing/Back/Backpacks/mog.rsi
+  - type: GasTank
+    outputPressure: 42.6
+    air:
+      # 13 minutes of thrust
+      volume: 5
+      temperature: 293.15
+      moles:
+      - 1.025689525 # oxygen
+      - 1.025689525 # nitrogen
+  - type: Jetpack
+    moleUsage: 0.00085

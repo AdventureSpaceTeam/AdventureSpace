@@ -1,29 +1,12 @@
 ﻿- type: Tag
   id: Currency
 
-- type: Tag
-  id: CentComms
-
-- type: Tag
-  id: NanoTrasen
-
-#BorgModules
-- type: Tag
-  id: BorgModuleSecurity
-
 #Ratvar
 - type: Tag
   id: RatvarBorgModule
 
 - type: Tag
   id: RatvarDroneUsable
-
-- type: Tag
-  id: SamSword
-
-#Blob
-- type: Tag
-  id: BlobMob
 
 #Surgery
 - type: Tag
@@ -43,23 +26,6 @@
 
 - type: Tag
   id: Heart
-
-#Pets
-- type: Tag
-  id: PetsHardsuit
-
-- type: Tag
-  id: PetsBackpack
-
-#N7 (наконец-то)
-- type: Tag
-  id: ThermalChargeTag
-
-- type: Tag
-  id: SmallThermalChargeTag
-
-- type: Tag
-  id: PlushieKillawhale
 
 - type: Tag
   id: Dog

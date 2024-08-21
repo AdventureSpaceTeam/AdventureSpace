@@ -115,4 +115,7 @@ public enum LogType
     /// Storage & entity-storage related interactions
     /// </summary>
     Storage = 93,
+
+    ATMUsage = 1000,
+    Salary = 1001,
 }

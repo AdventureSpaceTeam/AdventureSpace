@@ -337,6 +337,12 @@ public sealed partial class PolymorphSystem : EntitySystem
                 ("parent", Identity.Entity(uid, EntityManager)),
                 ("child", Identity.Entity(parent, EntityManager))),
             parent);
+
+        var ev = new PolymorphRevertedEvent(parent, uid);
+
+        RaiseLocalEvent(uid, ev);
+        RaiseLocalEvent(parent, ev);
+
         QueueDel(uid);
 
         return parent;

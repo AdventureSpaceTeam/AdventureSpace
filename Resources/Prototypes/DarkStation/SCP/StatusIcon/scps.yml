@@ -1,0 +1,11 @@
+﻿- type: statusIcon
+  id: SCPPlagueZombie
+  priority: 11
+  showTo:
+    components:
+    - ShowAntagIcons
+    - SCP049
+    - SCP049Thrall
+  icon:
+    sprite: /Textures/DarkStation/SCP/Icons/scps.rsi
+    state: plague_zombie

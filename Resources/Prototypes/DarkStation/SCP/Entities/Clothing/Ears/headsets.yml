@@ -1,0 +1,104 @@
+﻿- type: entity
+  id: ClothingHeadsetSCPBasic
+  parent: ClothingHeadset
+  name: гарнитура сотрудника отдела SCP
+  description: Стандартная гарнитура сотрудника отдела SCP
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeySCP
+      - EncryptionKeyCommon
+  - type: Sprite
+    sprite: DarkStation/SCP/Clothing/Ears/Headsets/scientist.rsi
+  - type: Clothing
+    sprite: DarkStation/SCP/Clothing/Ears/Headsets/scientist.rsi
+
+- type: entity
+  id: ClothingHeadsetSCPHead
+  parent: ClothingHeadsetSCPBasic
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeySCP
+      - EncryptionKeyCommand
+      - EncryptionKeyCommon
+      - EncryptionKeyScience
+  - type: Sprite
+    sprite: DarkStation/SCP/Clothing/Ears/Headsets/gos.rsi
+  - type: Clothing
+    sprite: DarkStation/SCP/Clothing/Ears/Headsets/gos.rsi
+
+- type: entity
+  id: ClothingHeadsetSCPEngineer
+  parent: ClothingHeadsetSCPBasic
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeySCP
+      - EncryptionKeyCommon
+      - EncryptionKeyEngineering
+
+- type: entity
+  id: ClothingHeadsetSCPParamedic
+  parent: ClothingHeadsetSCPBasic
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeySCP
+      - EncryptionKeyMedical
+      - EncryptionKeyCommon
+
+- type: entity
+  id: ClothingHeadsetSCPScience
+  parent: ClothingHeadsetSCPBasic
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeySCP
+      - EncryptionKeyCommon
+      - EncryptionKeyScience
+
+- type: entity
+  id: ClothingHeadsetSCPSecurity
+  parent: ClothingHeadsetSCPBasic
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeySCP
+      - EncryptionKeyCommon
+      - EncryptionKeySecurity
+  - type: Sprite
+    sprite: DarkStation/SCP/Clothing/Ears/Headsets/security.rsi
+  - type: Clothing
+    sprite: DarkStation/SCP/Clothing/Ears/Headsets/security.rsi
+
+- type: entity
+  id: ClothingHeadsetSCPSecurityNew
+  parent: ClothingHeadsetSCPBasic
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeySCP
+      - EncryptionKeyCommon
+      - EncryptionKeySecurity
+  - type: Sprite
+    sprite: DarkStation/SCP/Clothing/Ears/Headsets/new_security.rsi
+  - type: Clothing
+    sprite: DarkStation/SCP/Clothing/Ears/Headsets/new_security.rsi
+
+- type: entity
+  id: ClothingHeadsetSCPMog
+  parent: ClothingHeadsetAltCentCom
+  components:
+  - type: Sprite
+    sprite: DarkStation/SCP/Clothing/Ears/Headsets/mog.rsi
+  - type: Clothing
+    sprite: DarkStation/SCP/Clothing/Ears/Headsets/mog.rsi
+

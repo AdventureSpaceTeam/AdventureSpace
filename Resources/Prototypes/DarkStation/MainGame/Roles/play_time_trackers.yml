@@ -1,0 +1,8 @@
+﻿- type: playTimeTracker
+  id: JobSpCCO
+
+- type: playTimeTracker
+  id: JobArmoredChaplain
+
+- type: playTimeTracker
+  id: JobSAI

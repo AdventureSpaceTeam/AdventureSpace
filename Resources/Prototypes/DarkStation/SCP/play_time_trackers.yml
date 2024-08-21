@@ -1,0 +1,23 @@
+﻿- type: playTimeTracker
+  id: JobSCPChef
+
+- type: playTimeTracker
+  id: JobSCPBotanist
+
+- type: playTimeTracker
+  id: JobSCPScientist
+
+- type: playTimeTracker
+  id: JobSCPSecurity
+
+- type: playTimeTracker
+  id: JobSCPHead
+
+- type: playTimeTracker
+  id: JobSCPDClass
+
+- type: playTimeTracker
+  id: JobSCPStationEngineer
+
+- type: playTimeTracker
+  id: JobSCPParamedic

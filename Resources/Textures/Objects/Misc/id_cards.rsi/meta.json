@@ -276,6 +276,24 @@
     {
       "name": "green-inhand-right",
       "directions": 4
-    }
+    },
+      {
+          "name": "idresearchdirector-scp"
+      },
+      {
+          "name": "idstationengineer-scp"
+      },
+      {
+          "name": "idscientist-scp"
+      },
+      {
+          "name": "idsecurityofficer-scp"
+      },
+      {
+          "name": "idsecurityofficer-scp-new"
+      },
+      {
+          "name": "idmog"
+      }
   ]
 }

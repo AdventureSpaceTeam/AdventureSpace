@@ -1,0 +1,25 @@
+{
+    "version": 1,
+    "license": "Собственная лицензия. Полный запрет на копирование и использование вне проекта Dark Station без одобрения текущего владельца проекта",
+    "copyright": "Ynotka DS",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "icon"
+        },
+        {
+            "name": "icon_alt"
+        },
+        {
+            "name": "equipped-EARS",
+            "directions": 4
+        },
+        {
+            "name": "alt-equipped-EARS",
+            "directions": 4
+        }
+    ]
+}

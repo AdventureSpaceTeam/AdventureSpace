@@ -1,0 +1,9 @@
+- type: cargoProduct
+  id: SCPContainer
+  icon:
+    sprite: DarkStation/MainGame/Objects/Misc/scp_container.rsi
+    state: base
+  product: SCPStock
+  cost: 3000
+  category: SCP
+  group: market

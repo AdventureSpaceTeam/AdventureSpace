@@ -1,0 +1,30 @@
+﻿- type: entity
+  parent: ClothingHeadHatChef
+  id: ClothingHeadHatChefSCP
+  components:
+  - type: Sprite
+    sprite: DarkStation/SCP/Clothing/Head/Helmets/chef.rsi
+  - type: Clothing
+    sprite: DarkStation/SCP/Clothing/Head/Helmets/chef.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadSCPHeadBeret
+  name: "Берет главы отдела SCP"
+  description: "Берет, чего вы еще тут ожидали?"
+  components:
+  - type: Sprite
+    sprite: DarkStation/SCP/Clothing/Head/Berets/head.rsi
+  - type: Clothing
+    sprite: DarkStation/SCP/Clothing/Head/Berets/head.rsi
+
+- type: entity
+  id: ClothingHeadSCPSecurityCap
+  parent: ClothingHeadBase
+  name: "кепка сотрудника безопасности отдела SCP"
+  description: "Удобная кепка. Строчка на ней сделана словно лучшими дизайнерами галактики"
+  components:
+  - type: Sprite
+    sprite: DarkStation/SCP/Clothing/Head/Caps/security.rsi
+  - type: Clothing
+    sprite: DarkStation/SCP/Clothing/Head/Caps/security.rsi

@@ -1144,6 +1144,15 @@ namespace Content.Client.Lobby.UI
             ReloadProfilePreview();
         }
 
+        private void OnPatronPetChange(string petId, string petName)
+        {
+            if (Profile == null)
+                return;
+
+            Profile = Profile.WithPatronPet(petId, petName);
+            IsDirty = true;
+        }
+
         protected override void Dispose(bool disposing)
         {
             base.Dispose(disposing);

@@ -1,0 +1,27 @@
+#Job
+- type: job
+  id: SCPChef
+  name: "Повар отдела SCP"
+  description: "Самый обыкновенный повар, но в отделе SCP"
+  playTimeTracker: JobSCPChef
+  requirements:
+    - !type:DepartmentTimeRequirement
+      department: Civilian
+      time: 3600
+  startingGear: SCPChefGear
+  icon: "JobIconSCPChef"
+  weight: 10
+  supervisors: Главе отдела SCP
+  access:
+  - Service
+  - Maintenance
+  - Kitchen
+  - SCP
+
+#Gear
+- type: startingGear
+  id: SCPChefGear
+  equipment:
+    id: SCPChefPDA
+    ears: ClothingHeadsetSCPBasic
+    shoes: ClothingShoesColorBlack

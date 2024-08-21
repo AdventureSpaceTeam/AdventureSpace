@@ -42,6 +42,7 @@ namespace Content.Server.Database
         public DbSet<AdminMessage> AdminMessages { get; set; } = null!;
         public DbSet<RoleWhitelist> RoleWhitelists { get; set; } = null!;
         public DbSet<BanTemplate> BanTemplate { get; set; } = null!;
+        public DbSet<PatronProfilePet> PatronProfilePets {get; set;} = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -326,6 +327,10 @@ namespace Content.Server.Database
                 .HasForeignKey(w => w.PlayerUserId)
                 .HasPrincipalKey(p => p.UserId)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<PatronProfilePet>()
+                .HasIndex(p => new { HumanoidProfileId = p.ProfileId, p.PetId })
+                .IsUnique();
         }
 
         public virtual IQueryable<AdminLog> SearchLogs(IQueryable<AdminLog> query, string searchText)
@@ -359,6 +364,7 @@ namespace Content.Server.Database
         public int Age { get; set; }
         public string Sex { get; set; } = null!;
         public string Gender { get; set; } = null!;
+        public int BankBalance { get; set; }
         public string Species { get; set; } = null!;
         public string Voice { get; set; } = null!; // Corvax-TTS
         [Column(TypeName = "jsonb")] public JsonDocument? Markings { get; set; } = null!;
@@ -369,6 +375,7 @@ namespace Content.Server.Database
         public string EyeColor { get; set; } = null!;
         public string SkinColor { get; set; } = null!;
         public int SpawnPriority { get; set; } = 0;
+        public PatronProfilePet PatronProfilePet { get; set; } = null!;
         public List<Job> Jobs { get; } = new();
         public List<Antag> Antags { get; } = new();
         public List<Trait> Traits { get; } = new();
@@ -379,6 +386,16 @@ namespace Content.Server.Database
 
         public int PreferenceId { get; set; }
         public Preference Preference { get; set; } = null!;
+    }
+
+    public class PatronProfilePet
+    {
+        public int Id { get; set; }
+        public string PetId { get; set; } = null!;
+        public string PetName { get; set; } = null!;
+
+        public Profile Profile { get; set; } = null!;
+        public int ProfileId { get; set; }
     }
 
     public class Job
@@ -904,7 +921,7 @@ namespace Content.Server.Database
         Panic = 3,
         /*
          * TODO: Remove baby jail code once a more mature gateway process is established. This code is only being issued as a stopgap to help with potential tiding in the immediate future.
-         * 
+         *
          * If baby jail is removed, please reserve this value for as long as can reasonably be done to prevent causing ambiguity in connection denial reasons.
          * Reservation by commenting out the value is likely sufficient for this purpose, but may impact projects which depend on SS14 like SS14.Admin.
          */

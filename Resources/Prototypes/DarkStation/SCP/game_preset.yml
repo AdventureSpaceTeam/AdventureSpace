@@ -1,0 +1,56 @@
+﻿- type: gamePreset
+  id: SCP
+  name: "SCP"
+  description: "Отдел исследований SCP объектов расположился рядом с одной из научных станций NT. Это же не приведет ни к чему плохому?"
+  showInVote: true
+  rules:
+  - SCP
+  - BasicStationEventScheduler
+  supportedMaps: SCPMapPool
+
+- type: entity
+  id: SCP
+  parent: BaseGameRule
+  noSpawn: true
+  components:
+  - type: SCPRule
+  - type: AntagSelection
+    selectionTime: PrePlayerSpawn
+    definitions:
+    - prefRoles: [ SCP173 ]
+      allowNonHumans: true
+    - prefRoles: [ SCPSoap ]
+      allowNonHumans: true
+    - prefRoles: [ SCP049 ]
+      allowNonHumans: true
+
+- type: antag
+  id: SCP173
+  name: "\"Статуя\" (SCP-173)"
+  antagonist: true
+  setPreference: true
+  objective: Сбегите из своей клетки и убейте ВСЁ живое
+
+- type: antag
+  id: SCP049
+  name: "Чумной Доктор (SCP-049)"
+  antagonist: true
+  setPreference: true
+  objective: Изучите новый для вас мир, и попробуйте в нём прижиться
+
+- type: antag
+  id: SCPSoap
+  name: "Странное мыло (SCP-UNKNOWN)"
+  antagonist: true
+  setPreference: true
+  objective: Принесите в этот мир чистоту и весёлые подскальзывания, в самые неудобные моменты
+
+- type: gameMapPool
+  id: SCPMapPool
+  maps:
+  - SCPAtlas
+  - SCPCluster
+  - SCPCore
+  - SCPOmega
+  - SCPPacked
+  - SCPSaltern

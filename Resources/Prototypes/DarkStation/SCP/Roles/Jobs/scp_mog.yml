@@ -1,0 +1,50 @@
+- type: entity
+  id: RandomHumanoidSpawnerMOGMember
+  name: "Отряд МОГ"
+  components:
+    - type: Sprite
+      sprite: Markers/jobs.rsi
+      state: cburn
+    - type: RandomHumanoidSpawner
+      settings: MOGSquadMember
+
+- type: randomHumanoidSettings
+  id: MOGSquadMember
+  components:
+    - type: Loadout
+      prototypes: [SCPMogGear]
+    - type: GhostRole
+      name: "Боец отряда МОГ"
+      description: "Решите проблемы отдела SCP"
+      isBlockedByAntagManager: true
+    - type: GhostTakeoverAvailable
+    - type: RandomMetadata
+      nameSegments:
+        - NamesFirstMilitary
+        - names_last
+#Gear
+- type: startingGear
+  id: SCPMogGear
+  equipment:
+    id: SCPMogPDA
+    jumpsuit: ClothingUniformJumpskirtSCPMog
+    back: ClothingBackpackMOG
+    shoes: ClothingShoesBootsMagBlindingMog
+    ears: ClothingHeadsetSCPMog
+    eyes: ClothingEyesGlassesSecurity
+    gloves: ClothingHandsGlovesMOG
+    mask: ClothingMaskGasSCPMog
+    belt: ClothingBeltSecurityWebbing
+    outerClothing: ClothingOuterHardsuitSCPMog
+    suitstorage: OxygenTankFilled
+    pocket1: WeaponPistolMk58
+    pocket2: FlashlightSeclite
+  storage:
+    back:
+    - BoxSurvivalSecurity
+    - WeaponDisabler
+    - MedicatedSuture
+    - RegenerativeMesh
+    - BoxZiptie
+    - CrowbarRed
+    - MagazinePistol

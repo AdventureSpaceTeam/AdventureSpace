@@ -1,0 +1,99 @@
+- type: entity
+  name: "Вампир"
+  id: MobVampire
+  parent: SimpleSpaceMobBase
+  description: "Судя по всему этот вампир невероятно силен!"
+  components:
+    - type: Insulated
+    - type: CombatMode
+    - type: InputMover
+    - type: MobMover
+    - type: Tool
+      speed: 1.5
+      qualities:
+        - Prying
+    - type: Prying
+      pryPowered: !type:Bool
+        true
+      force: !type:Bool
+        false
+      useSound:
+        path: /Audio/Items/crowbar.ogg
+    - type: Sprite
+      drawdepth: Mobs
+      sprite: DarkStation/MainGame/DarkForces/Vampire/Mobs/vampire.rsi
+      layers:
+        - map: ["enum.DamageStateVisualLayers.Base"]
+          state: standing
+    - type: Physics
+      bodyType: Dynamic
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape: !type:PhysShapeCircle
+            radius: 0.25
+          density: 230
+          mask:
+            - MobMask
+          layer:
+            - MobLayer
+    - type: MobState
+      allowedStates:
+        - Alive
+        - Dead
+    - type: MobThresholds
+      thresholds:
+        0: Alive
+        500: Dead
+    - type: MeleeWeapon
+      range: 2.0
+      hidden: true
+      angle: 0
+      soundHit:
+        collection: AlienClaw
+      animation: WeaponArcBite
+      damage:
+        groups:
+          Brute: 30
+    - type: DamageStateVisuals
+      rotate: true
+      states:
+        Alive:
+          Base: standing
+        Dead:
+          Base: dead
+    - type: Puller
+      needsHands: false
+    - type: Tag
+      tags:
+        - CannotSuicide
+        - DoorBumpOpener
+        - FootstepSound
+    - type: NoSlip
+    - type: SlowOnDamage
+      speedModifierThresholds:
+        100: 0.9
+        250: 0.8
+        350: 0.7
+        450: 0.5
+    - type: Damageable
+      damageContainer: Biological
+      damageModifierSet: VampireModiferSet
+    - type: MovementSpeedModifier
+      baseWalkSpeed: 5.00
+      baseSprintSpeed: 6.00
+    - type: Vampire
+      fullPower: true
+
+- type: damageModifierSet
+  id: VampireModiferSet
+  coefficients:
+    Blunt: 0.4
+    Slash: 0.4
+    Piercing: 0.4
+    Cold: 0.4
+    Poison: 0.4
+    Radiation: 0.4
+    Asphyxiation: 0.4
+    Bloodloss: 0.4
+    Cellular: 0.4

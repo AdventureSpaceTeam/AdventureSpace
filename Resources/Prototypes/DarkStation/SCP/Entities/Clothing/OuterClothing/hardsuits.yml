@@ -1,0 +1,103 @@
+﻿#Head
+- type: entity
+  id: ClothingOuterHardsuitSCPHead
+  parent: ClothingOuterHardsuitSecurity
+  name: "Скафандр руководителя отдела SCP"
+  description: "Скафандр имеет неплохую броню и хорошую защиту от разгерметизации"
+  components:
+  - type: Sprite
+    sprite: DarkStation/SCP/Clothing/OuterClothing/Hardsuits/Head/hardsuit.rsi
+  - type: Clothing
+    sprite: DarkStation/SCP/Clothing/OuterClothing/Hardsuits/Head/hardsuit.rsi
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitSCPHead
+
+- type: entity
+  id: ClothingHeadHelmetHardsuitSCPHead
+  parent: ClothingHeadHelmetHardsuitSecurity
+  noSpawn: true
+  name: "шлем скафандра главы отдела SCP"
+  components:
+  - type: Sprite
+    sprite: DarkStation/SCP/Clothing/OuterClothing/Hardsuits/Head/helmet.rsi
+  - type: Clothing
+    sprite: DarkStation/SCP/Clothing/OuterClothing/Hardsuits/Head/helmet.rsi
+  - type: PointLight
+    color: "#d6adff"
+
+#MOG
+- type: entity
+  id: ClothingOuterHardsuitSCPMog
+  parent: ClothingOuterHardsuitERTSecurity
+  name: "Скафандр отряда МОГ"
+  components:
+  - type: Sprite
+    sprite: DarkStation/SCP/Clothing/OuterClothing/Hardsuits/MOG/hardsuit.rsi
+  - type: Clothing
+    sprite: DarkStation/SCP/Clothing/OuterClothing/Hardsuits/MOG/hardsuit.rsi
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitMOGHead
+
+- type: entity
+  id: ClothingHeadHelmetHardsuitMOGHead
+  parent: ClothingHeadHelmetHardsuitERTSecurity
+  noSpawn: true
+  name: "шлем скафандра отряда MOG"
+  components:
+  - type: Sprite
+    sprite: DarkStation/SCP/Clothing/OuterClothing/Hardsuits/MOG/helmet.rsi
+  - type: Clothing
+    sprite: DarkStation/SCP/Clothing/OuterClothing/Hardsuits/MOG/helmet.rsi
+  - type: PointLight
+    color: "#d6adff"
+
+#Paramedic
+- type: entity
+  id: ClothingOuterHardsuitVoidSCPParamed
+  parent: ClothingOuterEVASuitBase
+  name: "Скафандр парамедика SCP"
+  components:
+  - type: Sprite
+    sprite: DarkStation/SCP/Clothing/OuterClothing/Hardsuits/Paramedic/hardsuit.rsi
+  - type: Clothing
+    sprite: DarkStation/SCP/Clothing/OuterClothing/Hardsuits/Paramedic/hardsuit.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 0.5
+    lowPressureMultiplier: 1000
+  - type: ClothingSpeedModifier
+    walkModifier: 0.9
+    sprintModifier: 0.9
+  - type: TemperatureProtection
+    coefficient: 0.1
+  - type: Armor
+    modifiers:
+      coefficients:
+        Slash: 0.95
+        Heat: 0.90
+        Radiation: 0.75
+        Caustic: 0.5
+      securePartTypes:
+        Leg: 0.7
+        Arm: 0.7
+  - type: GroupExamine
+
+- type: entity
+  id: ClothingHeadHelmetVoidSCPParamed
+  parent: ClothingHeadEVAHelmetBase
+  name: "Шлем парамедика SCP"
+  components:
+  - type: Sprite
+    sprite: DarkStation/SCP/Clothing/OuterClothing/Hardsuits/Paramedic/helmet.rsi
+  - type: Clothing
+    sprite: DarkStation/SCP/Clothing/OuterClothing/Hardsuits/Paramedic/helmet.rsi
+  - type: IngestionBlocker
+  - type: TemperatureProtection
+    coefficient: 0.1
+  - type: Armor
+    modifiers:
+      coefficients:
+        Slash: 0.95
+        Heat: 0.90
+        Radiation: 0.75
+      securePartTypes:
+        Head: 0.6

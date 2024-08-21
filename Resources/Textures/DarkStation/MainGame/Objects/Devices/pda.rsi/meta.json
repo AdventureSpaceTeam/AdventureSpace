@@ -1,0 +1,41 @@
+{
+    "version": 1,
+    "license": "Собственная лицензия. Полный запрет на копирование и использование вне проекта Dark Station без одобрения текущего владельца проекта",
+    "copyright": "by DarkStation Team",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "id_overlay"
+        },
+        {
+            "name": "equipped-BELT",
+            "directions": 4
+        },
+        {
+            "name": "inhand-left",
+            "directions": 4
+        },
+        {
+            "name": "inhand-right",
+            "directions": 4
+        },
+        {
+            "name": "insert_overlay"
+        },
+        {
+            "name": "light_overlay"
+        },
+        {
+            "name": "pda-blueshield"
+        },
+        {
+            "name": "pda-ABL"
+        },
+        {
+            "name": "pda-securitypilot"
+        }
+    ]
+}

@@ -1,0 +1,17 @@
+- type: entity
+  name: Теневые оковы
+  description: Что-то магическое связывает ваши руки
+  noSpawn: true
+  id: HandcuffsCult
+  parent: BaseItem
+  components:
+    - type: Item
+      size: Tiny
+    - type: Handcuff
+      cuffedRSI: DarkStation/MainGame/DarkForces/Cult/Entities/Items/shadow_handcuff.rsi
+      bodyIconState: body-overlay
+      state: handcuff
+      deleteOnRemove: true
+    - type: Tag
+      tags:
+      - Handcuffs

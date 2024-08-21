@@ -1,0 +1,140 @@
+﻿#Compound
+- type: htnCompound
+  id: PetCompound
+  branches:
+  - preconditions:
+    - !type:HasOrdersPrecondition
+      orders: enum.PetOrderType.Stay
+    tasks:
+    - !type:HTNCompoundTask
+      task: IdleCompound
+  - preconditions:
+    - !type:HasOrdersPrecondition
+      orders: enum.PetOrderType.Follow
+    tasks:
+    - !type:HTNCompoundTask
+      task: FollowCompound
+  - preconditions:
+    - !type:HasOrdersPrecondition
+      orders: enum.PetOrderType.Attack
+    tasks:
+    - !type:HTNCompoundTask
+      task: PetTargetAttackCompound
+
+- type: htnCompound
+  id: PetTargetAttackCompound
+  branches:
+  - tasks:
+    - !type:HTNCompoundTask
+      task: PetCombatCompound
+  - tasks:
+    - !type:HTNCompoundTask
+      task: IdleCompound
+
+- type: htnCompound
+  id: PetCombatCompound
+  branches:
+  - preconditions:
+    - !type:ActiveHandComponentPrecondition
+      components:
+      - type: MeleeWeapon
+        damage:
+          types:
+            Brute: 0
+      invert: true
+    tasks:
+    - !type:HTNCompoundTask
+      task: PickupMeleeCompound
+
+  - tasks:
+    - !type:HTNPrimitiveTask
+      operator: !type:UtilityOperator
+        proto: OrderedTargets
+    - !type:HTNCompoundTask
+      task: MeleeAttackOrderedTargetCompound
+
+#actions
+- type: entity
+  id: ActionPetOrderStay
+  name: "Остановиться"
+  description: "Приказать перестать следовать за вами"
+  noSpawn: true
+  components:
+  - type: InstantAction
+    useDelay: 1
+    icon:
+      sprite: DarkStation/MainGame/Mobs/Friendly/muhtar_actions.rsi
+      state: stayOff
+    iconOn:
+      sprite: DarkStation/MainGame/Mobs/Friendly/muhtar_actions.rsi
+      state: stay
+    event:
+      !type:PetOrderActionEvent
+      type: Stay
+    priority: 5
+
+- type: entity
+  id: ActionPetOrderFollow
+  name: "Следовать"
+  description: "Приказать следовать за вами"
+  noSpawn: true
+  components:
+  - type: InstantAction
+    useDelay: 1
+    icon:
+      sprite: DarkStation/MainGame/Mobs/Friendly/muhtar_actions.rsi
+      state: followOff
+    iconOn:
+      sprite: DarkStation/MainGame/Mobs/Friendly/muhtar_actions.rsi
+      state: follow
+    event:
+      !type:PetOrderActionEvent
+      type: Follow
+    priority: 6
+
+- type: entity
+  id: ActionPetOrderAttack
+  name: "Атаковать"
+  description: "Переводит в боевой режим. Атакует любого, на кого вы укажите"
+  noSpawn: true
+  components:
+  - type: InstantAction
+    useDelay: 1
+    icon:
+      sprite: DarkStation/MainGame/Mobs/Friendly/muhtar_actions.rsi
+      state: attackOff
+    iconOn:
+      sprite: DarkStation/MainGame/Mobs/Friendly/muhtar_actions.rsi
+      state: attack
+    event:
+      !type:PetOrderActionEvent
+      type: Attack
+    priority: 7
+
+- type: entity
+  id: ActionPetMakeGhostRole
+  name: "Сделать гостролью"
+  description: "Сделает питомца гостролью, его сможет занять любой призрак"
+  noSpawn: true
+  components:
+  - type: InstantAction
+    useDelay: 1
+    icon:
+      sprite: DarkStation/MainGame/Mobs/Friendly/muhtar_actions.rsi
+      state: make-ghost-role
+    event: !type:PetMakeGhostRoleEvent
+    priority: 8
+
+- type: entity
+  id: ActionPetRemoveGhostRole
+  name: "Убрать гостроль"
+  description: "Убирает гостроль и выгоняет игрока из нее"
+  noSpawn: true
+  components:
+  - type: InstantAction
+    useDelay: 1
+    icon:
+      sprite: DarkStation/MainGame/Mobs/Friendly/muhtar_actions.rsi
+      state: remove-ghost-role
+    event: !type:PetRemoveGhostRoleEvent
+    priority: 9

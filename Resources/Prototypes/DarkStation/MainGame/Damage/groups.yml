@@ -1,0 +1,20 @@
+﻿- type: damageGroup
+  id: DarkMagicDamageGroup
+  name: "Магический урон"
+  damageTypes:
+  - Fel
+  - Holiness
+
+- type: damageType
+  id: Fel
+  name: "Скверна"
+  armorCoefficientPrice: 0
+  armorFlatPrice: 0
+
+#Урон святостью (наносится нежити)
+- type: damageType
+  id: Holiness
+  name: "Святой урон"
+  armorCoefficientPrice: 0
+  armorFlatPrice: 0
+  shouldShowInAnalyzer: false

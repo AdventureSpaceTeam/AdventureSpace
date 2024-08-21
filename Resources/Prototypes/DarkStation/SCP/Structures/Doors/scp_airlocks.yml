@@ -1,0 +1,45 @@
+- type: entity
+  parent: AirlockGlass
+  id: AirlockGlassSCPLocked
+  suffix: SCP, Locked
+  components:
+  - type: Sprite
+    sprite: DarkStation/SCP/Structures/Doors/Airlocks/Glass/scp_door.rsi
+  - type: AccessReader
+    access: [["SCP"]]
+
+- type: entity
+  parent: AirlockGlass
+  id: AirlockGlassSCP
+  suffix: SCP
+  components:
+  - type: Sprite
+    sprite: DarkStation/SCP/Structures/Doors/Airlocks/Glass/scp_door.rsi
+
+- type: entity
+  parent: Airlock
+  id: AirlockSCPLocked
+  suffix: SCP, Locked
+  components:
+  - type: Sprite
+    sprite: DarkStation/SCP/Structures/Doors/Airlocks/Standard/scp_door.rsi
+  - type: AccessReader
+    access: [["SCP"]]
+
+- type: entity
+  parent: Airlock
+  id: AirlockSCP
+  suffix: SCP
+  components:
+  - type: Sprite
+    sprite: DarkStation/SCP/Structures/Doors/Airlocks/Standard/scp_door.rsi
+
+- type: entity
+  parent: Airlock
+  id: AirlockCommandSCP
+  suffix: SCP, Command, Locked
+  components:
+  - type: Sprite
+    sprite: Structures/Doors/Airlocks/Standard/command.rsi
+  - type: AccessReader
+    access: [["SCPCommand"]]

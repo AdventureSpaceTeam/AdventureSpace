@@ -1,0 +1,25 @@
+- type: statusIcon
+  id: NarsiCultistIcon
+  priority: 11
+  showTo:
+    components:
+    - ShowAntagIcons
+    - NarsiCultist
+    - NarsiCultistLeader
+    - NarsiCultCreature
+  icon:
+    sprite: /Textures/DarkStation/MainGame/DarkForces/Cult/Icons/cultist.rsi
+    state: cultist
+
+- type: statusIcon
+  id: NarsiCultistLeaderIcon
+  priority: 11
+  showTo:
+    components:
+    - ShowAntagIcons
+    - NarsiCultist
+    - NarsiCultistLeader
+    - NarsiCultCreature
+  icon:
+    sprite: /Textures/DarkStation/MainGame/DarkForces/Cult/Icons/cultist.rsi
+    state: cultistLeader

@@ -1,0 +1,31 @@
+﻿- type: alert
+  id: PontificFel
+  category: PontificFel
+  icons:
+    - sprite: /Textures/DarkStation/MainGame/DarkForces/Pontific/pontiff/interface/fel.rsi
+      state: fel0
+    - sprite: /Textures/DarkStation/MainGame/DarkForces/Pontific/pontiff/interface/fel.rsi
+      state: fel1
+    - sprite: /Textures/DarkStation/MainGame/DarkForces/Pontific/pontiff/interface/fel.rsi
+      state: fel2
+    - sprite: /Textures/DarkStation/MainGame/DarkForces/Pontific/pontiff/interface/fel.rsi
+      state: fel3
+    - sprite: /Textures/DarkStation/MainGame/DarkForces/Pontific/pontiff/interface/fel.rsi
+      state: fel4
+    - sprite: /Textures/DarkStation/MainGame/DarkForces/Pontific/pontiff/interface/fel.rsi
+      state: fel5
+    - sprite: /Textures/DarkStation/MainGame/DarkForces/Pontific/pontiff/interface/fel.rsi
+      state: fel6
+    - sprite: /Textures/DarkStation/MainGame/DarkForces/Pontific/pontiff/interface/fel.rsi
+      state: fel7
+    - sprite: /Textures/DarkStation/MainGame/DarkForces/Pontific/pontiff/interface/fel.rsi
+      state: fel8
+    - sprite: /Textures/DarkStation/MainGame/DarkForces/Pontific/pontiff/interface/fel.rsi
+      state: fel9
+    - sprite: /Textures/DarkStation/MainGame/DarkForces/Pontific/pontiff/interface/fel.rsi
+      state: fel10
+  name: Скверна
+  description: Количество накопленной скверны (нажмите чтобы увидеть подробнее)
+  minSeverity: 0
+  maxSeverity: 10
+  onClick: !type:PontificFelAlertClick  { }

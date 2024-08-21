@@ -1,0 +1,25 @@
+﻿- type: entity
+  name: Серебряный меч
+  parent: BaseItem
+  id: VampireHunterSword
+  suffix: VampireHunter
+  components:
+  - type: Sharp
+  - type: Sprite
+    sprite: DarkStation/MainGame/Objects/Weapons/Melee/vampire_hunter.rsi
+    state: icon
+  - type: MeleeWeapon
+    attackRate: 1.65
+    damage:
+      types:
+        Slash: 25
+        Holiness: 25
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Item
+    size: Huge
+  - type: Clothing
+    sprite: DarkStation/MainGame/Objects/Weapons/Melee/vampire_hunter.rsi
+    slots:
+    - back
+  - type: DisarmMalus

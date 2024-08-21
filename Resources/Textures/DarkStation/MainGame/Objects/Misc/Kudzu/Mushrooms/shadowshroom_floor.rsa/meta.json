@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "ss13 team",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "shadowshroomf"
+    },
+    {
+      "name": "shadowshroom1",
+      "directions": 4
+    },
+    {
+      "name": "shadowshroom2",
+      "directions": 4
+    },
+    {
+      "name": "shadowshroom3",
+      "directions": 4
+    }
+  ]
+}

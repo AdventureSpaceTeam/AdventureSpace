@@ -1,0 +1,59 @@
+- type: entity
+  id: SCPMobBase
+  parent: [ BaseMob, MobDamageable ]
+  abstract: true
+  suffix: SCP
+  components:
+  - type: ZombieImmune
+  - type: SCPMarker
+  - type: HTN
+    rootTask:
+      task: IdleCompound
+  - type: NpcFactionMember
+    factions:
+    - SimpleNeutral
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4
+    baseSprintSpeed: 4
+  - type: MobState
+    allowedStates:
+    - Alive
+    - Dead
+  - type: GhostTakeoverAvailable
+  - type: Climbing
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 185
+        restitution: 0.0
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+#  - type: LanguageSpeaker
+#    speaks:
+#    - GalacticCommon
+#    understands:
+#    - GalacticCommon
+  - type: Tag
+    tags:
+    - DoorBumpOpener
+    - CannotSuicide
+    - FootstepSound
+
+# immune to everything except physical and heat damage
+- type: damageModifierSet
+  id: SCPBaseModiferSet
+  coefficients:
+    Blunt: 1.1
+    Slash: 1.1
+    Piercing: 1.1
+    Cold: 0.0
+    Poison: 0.0
+    Radiation: 0.0
+    Asphyxiation: 0.0
+    Bloodloss: 0.0
+    Cellular: 0.0

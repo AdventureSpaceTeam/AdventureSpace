@@ -1,0 +1,15 @@
+﻿- type: entity
+  parent: CryogenicSleepUnit
+  id: CryogenicSleepUnitSpawnerSCP
+  suffix: Spawner, Roundstart, AllSCPJobs
+  components:
+  - type: ContainerSpawnPoint
+    containerId: storage
+    jobs:
+    - SCPHead
+    - SCPStationEngineer
+    - SCPChef
+    - SCPBotanist
+    - SCPParamedic
+    - SCPScientist
+    - SCPSecurity

@@ -1,0 +1,34 @@
+#Job
+- type: job
+  id: SCPSecurity
+  name: "Сотрудник безопасности SCP"
+  playTimeTracker: JobSCPSecurity
+  requirements:
+  - !type:DepartmentTimeRequirement
+    department: SCP
+    time: 10800
+  - !type:DepartmentTimeRequirement
+    department: Security
+    time: 10800
+  weight: 20
+  startingGear: SCPSecurityGear
+  icon: "JobIconSCPSecurity"
+  supervisors: "Главе отдела СЦП"
+  canBeAntag: false
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+  access:
+  - Security
+  - Maintenance
+  - External
+  - SCP
+
+#Gear
+- type: startingGear
+  id: SCPSecurityGear
+  equipment:
+    ears: ClothingHeadsetSCPSecurity
+
+
+

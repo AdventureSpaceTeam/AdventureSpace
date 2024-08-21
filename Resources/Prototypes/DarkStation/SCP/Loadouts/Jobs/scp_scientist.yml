@@ -1,0 +1,17 @@
+﻿- type: loadout
+  id: SCPScientistJumpsuit
+  equipment: SCPScientistJumpsuit
+
+- type: startingGear
+  id: SCPScientistJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSCPScientist
+
+- type: loadout
+  id: SCPScientistJumpskirt
+  equipment: SCPScientistJumpskirt
+
+- type: startingGear
+  id: SCPScientistJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformSkirtSCPScientist

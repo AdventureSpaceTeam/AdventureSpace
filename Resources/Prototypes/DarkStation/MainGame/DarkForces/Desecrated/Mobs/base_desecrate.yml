@@ -1,0 +1,88 @@
+﻿- type: entity
+  id: BaseDesecrate
+  abstract: true
+  parent: SimpleSpaceMobBase
+  components:
+  - type: ZombieImmune
+  - type: CombatMode
+  - type: InputMover
+  - type: MobMover
+  - type: ChaplainBarrierTarget
+  - type: TTS
+    voice: gman
+  - type: Tool
+    speed: 1.5
+    qualities:
+    - Prying
+  - type: Prying
+    pryPowered: !type:Bool
+      true
+    force: !type:Bool
+      false
+    useSound:
+      path: /Audio/Items/crowbar.ogg
+  - type: Reactive
+    groups:
+      Flammable: [ Touch ]
+      Extinguish: [ Touch ]
+  - type: NpcFactionMember
+    factions:
+    - Desecrate
+  - type: HTN
+    rootTask:
+      task: XenoCompound
+    blackboard:
+      NavClimb: !type:Bool
+        true
+      NavInteract: !type:Bool
+        true
+      NavPry: !type:Bool
+        true
+      NavSmash: !type:Bool
+        true
+  - type: Bloodstream
+    bloodReagent: DemonsBlood
+  - type: Physics
+    bodyType: Dynamic
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 300 #weighs more than humans because wood
+        restitution: 0.0
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: MobState
+    allowedStates:
+    - Alive
+    - Dead
+  - type: DamageStateVisuals
+    rotate: true
+    states:
+      Alive:
+        Base: base
+      Dead:
+        Base: dead
+  - type: Puller
+    needsHands: false
+  - type: NoSlip
+  - type: DesecratedMarker
+  - type: IntrinsicRadioReceiver
+  - type: IntrinsicRadioTransmitter
+    channels:
+    - Undead
+  - type: ActiveRadio
+    channels:
+    - Undead
+  - type: Speech
+  - type: TypingIndicator
+    proto: guardian
+  - type: Tag
+    tags:
+    - CannotSuicide
+    - DoorBumpOpener
+    - FootstepSound

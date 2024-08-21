@@ -1,0 +1,47 @@
+﻿- type: polymorph
+  id: ZombieSmokerPolymorph
+  configuration:
+    entity: MobZombieSmoker
+    forced: true
+    inventory: None
+    allowRepeatedMorphs: false
+    transferDamage: true
+    transferName: true
+    revertOnCrit: false
+    revertOnDeath: false
+
+- type: polymorph
+  id: ZombieHunterPolymorph
+  configuration:
+    entity: MobZombieHunter
+    forced: true
+    inventory: None
+    allowRepeatedMorphs: false
+    transferDamage: true
+    transferName: true
+    revertOnCrit: false
+    revertOnDeath: false
+
+- type: polymorph
+  id: ZombieHunterReSpritePolymorph
+  configuration:
+    entity: MobZombieHunterReSprite
+    forced: true
+    inventory: None
+    allowRepeatedMorphs: false
+    transferDamage: true
+    transferName: true
+    revertOnCrit: false
+    revertOnDeath: false
+
+- type: polymorph
+  id: ZombieTankPolymorph
+  configuration:
+    entity: MobZombieTankResprite
+    forced: true
+    inventory: None
+    allowRepeatedMorphs: false
+    transferDamage: true
+    transferName: true
+    revertOnCrit: false
+    revertOnDeath: false

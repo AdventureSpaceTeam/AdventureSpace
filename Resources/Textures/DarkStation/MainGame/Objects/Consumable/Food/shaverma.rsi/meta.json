@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "license": "Используется сервером DarkStation с прямого разрешения автора спрайта.",
+  "copyright": "by Вяч / Vyach / @otrezal_hui",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "icon"
+    }
+  ]
+}

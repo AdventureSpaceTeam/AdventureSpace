@@ -7,7 +7,7 @@ using Content.Server.Ghost;
 using Content.Server.Popups;
 using Content.Server.PowerCell;
 using Content.Server.Traits.Assorted;
-using Content.Shared.AdventurePrivate._Alteros.Medical.Surgery.Events.Organs;
+using Content.Shared.AdventureSpace.Medical.Surgery.Events.Organs;
 using Content.Shared.Damage;
 using Content.Shared.DoAfter;
 using Content.Shared.Interaction;

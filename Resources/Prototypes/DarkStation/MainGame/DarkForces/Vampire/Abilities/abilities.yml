@@ -1,0 +1,101 @@
+﻿- type: vampireAbility
+  id: VampireHypnosis
+  name: vampire-hypnosis
+  description: vampire-hypnosis-description
+  bloodCost: 100
+  icon:
+    sprite: DarkStation/MainGame/DarkForces/Vampire/actions.rsi
+    state: vampire_hypnotise
+  actionId: VampireHypnosisAction
+
+#- type: vampireAbility
+#  id: VampireGrasp
+#  name: vampire-grasp
+#  description: vampire-grasp-description
+#  bloodCost: 200
+#  icon:
+#    sprite: DarkStation/MainGame/DarkForces/Vampire/actions.rsi
+#    state: vampire_grasp
+#  actionId: "test"
+#
+#- type: vampireAbility
+#  id: VampireBloodRush
+#  name: vampire-bloodrush
+#  description: vampire-bloodrush-description
+#  bloodCost: 200
+#  icon:
+#    sprite: DarkStation/MainGame/DarkForces/Vampire/actions.rsi
+#    state: vampire_blood_rush
+#  actionId: "test"
+#
+
+#- type: vampireAbility
+#  id: VampireCharge
+#  name: vampire-charge
+#  description: vampire-charge-description
+#  bloodCost: 200
+#  icon:
+#    sprite: DarkStation/MainGame/DarkForces/Vampire/actions.rsi
+#    state: vampire_charge
+#  actionId: VampireChargeAction
+
+- type: vampireAbility
+  id: VampireShapeshift
+  name: vampire-shapeshift
+  description: vampire-shapeshift-description
+  bloodCost: 100
+  icon:
+    sprite: DarkStation/MainGame/DarkForces/Vampire/actions.rsi
+    state: vampire_shapeshift
+  actionId: VampireShapeshiftAction
+
+- type: vampireAbility
+  id: VampirePolymorph
+  name: vampire-polymorph
+  description: vampire-polymorph-description
+  bloodCost: 150
+  icon:
+    sprite: DarkStation/MainGame/DarkForces/Vampire/actions.rsi
+    state: vampire_poly
+  actionId: VampirePolymorphAction
+
+- type: vampireAbility
+  id: VampireRejuvenatePlus
+  name: vampire-rejuvenate-plus
+  description: vampire-rejuvenate-description
+  bloodCost: 250
+  icon:
+    sprite: DarkStation/MainGame/DarkForces/Vampire/actions.rsi
+    state: vampire_rejuvinate_plus
+  actionId: VampireRejuvenatePlusAction
+  replaceId: VampireRejuvenateAction
+
+- type: vampireAbility
+  id: VampireEnthrallScreech
+  name: vampire-enthrall-screech
+  description: vampire-enthrall-description
+  bloodCost: 250
+  icon:
+    sprite: DarkStation/MainGame/DarkForces/Vampire/actions.rsi
+    state: vampire_enthrall
+  actionId: VampireEnthrallAction
+
+- type: vampireAbility
+  id: VampireSummonBats
+  name: vampire-summon-bats
+  description: vampire-summon-bats-description
+  bloodCost: 450
+  icon:
+    sprite: DarkStation/MainGame/DarkForces/Vampire/actions.rsi
+    state: vampire_bats
+  actionId: VampireSummonBatsAction
+
+- type: vampireAbility
+  id: VampireChiropteanScreech
+  name: vampire-chiroptean-screech
+  description: vampire-chiroptean-screech-description
+  bloodCost: 700
+  icon:
+    sprite: DarkStation/MainGame/DarkForces/Vampire/actions.rsi
+    state: vampire_screech
+  actionId: VampireChiropteanScreechAction

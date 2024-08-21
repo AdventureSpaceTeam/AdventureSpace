@@ -1,0 +1,12 @@
+﻿- type: accent
+  id: boubly
+  fullReplacements:
+  - Бульк.
+  - Буль!
+  - Буль-буль.
+  - Блаб.
+
+- type: accent
+  id: mute
+  fullReplacements:
+  - "..."

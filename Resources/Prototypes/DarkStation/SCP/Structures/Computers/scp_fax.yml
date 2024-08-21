@@ -1,0 +1,34 @@
+﻿- type: entity
+  parent: FaxMachineBase
+  id: FaxMachineSCP
+  name: "факс отдела SCP"
+  suffix: SCP
+  components:
+    - type: FaxMachine
+      name: "Отдел SCP"
+      receiveStationGoal: false
+      receiveSCPGoal: true
+
+- type: entity
+  parent: FaxMachineBase
+  id: FaxMachineSCPCommand
+  name: "факс главы отдела SCP"
+  suffix: SCP, Command
+  components:
+    - type: FaxMachine
+      name: "Глава отдела SCP"
+      receiveStationGoal: false
+      receiveSCPGoal: true
+
+- type: entity
+  name: "печать главы отдела SCP"
+  parent: RubberStampMime
+  id: RubberStampSCP
+  suffix: SCP
+  components:
+    - type: Stamp
+      stampedName: "Глава отдела SCP"
+      stampState: "paper_stamp-ok"
+    - type: Sprite
+      sprite: Corvax/Objects/Misc/stamps.rsi
+      state: stamp-iaa

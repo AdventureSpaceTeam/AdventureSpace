@@ -1,0 +1,53 @@
+- type: entity
+  name: Проклятый монах
+  id: MobCursedMonk
+  parent: BaseDesecrate
+  description: Вот к чему приводит неправильная вера...
+  components:
+    - type: Sprite
+      drawdepth: Mobs
+      sprite: DarkStation/MainGame/DarkForces/Pontific/cursedmonk.rsi
+      layers:
+        - map: ["enum.DamageStateVisualLayers.Base"]
+          state: base
+    - type: MobThresholds
+      thresholds:
+        0: Alive
+        200: Dead
+    - type: MeleeWeapon
+      hidden: true
+      angle: 0
+      soundHit:
+        collection: AlienClaw
+      animation: WeaponArcBite
+      damage:
+        groups:
+          Brute: 5
+        types:
+          Fel: 5
+    - type: GhostRole
+      allowMovement: true
+      allowSpeech: true
+      makeSentient: true
+      name: Падший монах
+      description: Вы - падший монах, слушайтесь призвавшего вас Понтифика.
+      rules: Слушайтесь Понтифика!
+    - type: GhostTakeoverAvailable
+    - type: CursedMonk
+    - type: SlowOnDamage
+      speedModifierThresholds:
+        80: 0.9
+        120: 0.8
+        160: 0.5
+    - type: Damageable
+      damageContainer: Biological
+      damageModifierSet: CursedmonkModifierSet
+
+- type: damageModifierSet
+  id: CursedmonkModifierSet
+  coefficients:
+    Blunt: 0.9
+    Slash: 0.9
+    Piercing: 0.9
+    Caustic: 0.9
+    Fel: 0.0

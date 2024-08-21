@@ -1,0 +1,33 @@
+- type: entity
+  id: RandomDCLassItems
+  name: Рандомные вещи для Д класса
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: red
+      - sprite: Objects/Devices/communication.rsi
+        state: old-radio
+  - type: RandomSpawner
+    prototypes:
+      - Crowbar
+      - Welder
+      - EmergencyMedipen
+      - Brutepack
+    chance: 0.9
+    rarePrototypes:
+      - Machete
+      - BaseBallBat
+      - CombatKnife
+      - BaseUplinkRadio7TC
+    rareChance: 0.1
+
+- type: entity
+  parent: BaseUplinkRadio
+  id: BaseUplinkRadio7TC
+  suffix: 7 TC
+  components:
+  - type: Store
+    preset: StorePresetUplink
+    balance:
+      Telecrystal: 7

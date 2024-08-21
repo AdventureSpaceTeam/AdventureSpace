@@ -1,0 +1,33 @@
+﻿- type: entity
+  parent: VendingMachine
+  id: VendingMachineSCPDrobe
+  name: "SCPШкаф"
+  description: "Простой торговый автомат, предназначенный для выдачи одежды SCP отдела."
+  components:
+  - type: VendingMachine
+    pack: SCPDrobeInventory
+    offState: off
+    brokenState: broken
+    normalState: normal-unshaded
+  - type: Sprite
+    sprite: Structures/Machines/VendingMachines/scidrobe.rsi
+    layers:
+    - state: "off"
+      map: [ "enum.VendingMachineVisualLayers.Base" ]
+    - state: "off"
+      map: [ "enum.VendingMachineVisualLayers.BaseUnshaded" ]
+      shader: unshaded
+    - state: panel
+      map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+  - type: AccessReader
+    access: [ [ "SCPCommand" ] ]
+
+- type: vendingMachineInventory
+  id: SCPDrobeInventory
+  startingInventory:
+    ClothingUniformJumpsuitHydroponicsSCP: 2
+    ClothingUniformJumpsuitChefSCP: 2
+    ClothingUniformJumpskirtChefSCP: 2
+    ClothingUniformJumpsuitPrisoner: 3
+    ClothingUniformJumpskirtSCPScientist: 3
+    ClothingUniformJumpskirtSCPSecurity: 3

@@ -1,0 +1,32 @@
+- type: entity
+  parent: BaseItem
+  id: SilverCross
+  name: Серебряный крест
+  description: Серебро 960 пробы. Добыто рабами-унатхами с планеты Локсия. Для тёмной окантовки используется титановый сплав из метеоритных металлов и слёз унатхов. Но зачем вам это знать, если вы несёте Свет Божий?
+  components:
+  - type: Item
+    size: Small
+  - type: Clothing
+    quickEquip: true
+    sprite: DarkStation/MainGame/Objects/Specific/Chapel/silvercross.rsi
+    slots:
+    - neck
+  - type: Sprite
+    sprite: DarkStation/MainGame/Objects/Specific/Chapel/silvercross.rsi
+    state: icon
+  - type: PointLight
+    enabled: false
+  - type: Sainted
+    damageOnCollide:
+      types:
+        Holiness: 10
+    pushOnCollide: true
+  - type: SaintSilver
+    damageOnCollide:
+      types:
+        Holiness: 10
+    pushOnCollide: true
+  - type: SaintCross
+    enabled: true
+  - type: UseDelay
+    delay: 10.0

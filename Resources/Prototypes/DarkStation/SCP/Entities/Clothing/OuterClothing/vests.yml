@@ -1,0 +1,10 @@
+﻿- type: entity
+  parent: ClothingOuterArmorBasic
+  id: ClothingOuterSCPSecurityVest
+  name: Бронежилет
+  description: Тонкий бронежилет первого типа
+  components:
+  - type: Sprite
+    sprite: DarkStation/SCP/Clothing/OuterClothing/Vests/armor.rsi
+  - type: Clothing
+    sprite: DarkStation/SCP/Clothing/OuterClothing/Vests/armor.rsi

@@ -1,0 +1,52 @@
+- type: entity
+  name: Падший страж Траел
+  id: MobFallenGuard
+  parent: BaseDesecrate
+  description: Уверуй в бога моего...
+  components:
+    - type: Sprite
+      drawdepth: Mobs
+      sprite: DarkStation/MainGame/DarkForces/Pontific/fallenguardian.rsi
+      layers:
+        - map: [ "enum.DamageStateVisualLayers.Base" ]
+          state: base
+    - type: MobThresholds
+      thresholds:
+        0: Alive
+        200: Dead
+    - type: MeleeWeapon
+      range: 2.0
+      hidden: true
+      angle: 0
+      soundHit:
+        collection: AlienClaw
+      animation: WeaponArcBite
+      damage:
+        groups:
+          Brute: 7
+        types:
+          Fel: 7
+    - type: GhostRole
+      allowMovement: true
+      allowSpeech: true
+      makeSentient: true
+      name: Падший страж Траел
+      description: Вы - падший страж Траел, слушайтесь призвавшего вас Понтифика.
+      rules: Слушайтесь Понтифика!
+    - type: GhostTakeoverAvailable
+    - type: SlowOnDamage
+      speedModifierThresholds:
+        80: 0.9
+        140: 0.8
+    - type: Damageable
+      damageContainer: Biological
+      damageModifierSet: FallenGuardModifierSet
+
+- type: damageModifierSet
+  id: FallenGuardModifierSet
+  coefficients:
+    Blunt: 0.6
+    Slash: 0.6
+    Piercing: 0.6
+    Caustic: 0.7
+    Fel: 0.0

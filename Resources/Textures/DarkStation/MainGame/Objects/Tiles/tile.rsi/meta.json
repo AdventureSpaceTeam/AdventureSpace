@@ -1,0 +1,66 @@
+{
+  "version": 1,
+  "license": "Собственная лицензия. Полный запрет на копирование и использование вне проекта Dark Station без одобрения текущего владельца проекта",
+  "copyright": "M1and1B",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "carpet-cargo"
+    },
+    {
+      "name": "carpet-cargo-inhand-left",
+      "directions": 4
+    },
+    {
+      "name": "carpet-cargo-inhand-right",
+      "directions": 4
+    },
+    {
+      "name": "carpet-sec"
+    },
+    {
+      "name": "carpet-sec-inhand-left",
+      "directions": 4
+    },
+    {
+      "name": "carpet-sec-inhand-right",
+      "directions": 4
+    },
+    {
+      "name": "carpet-eng"
+    },
+    {
+      "name": "carpet-eng-inhand-left",
+      "directions": 4
+    },
+    {
+      "name": "carpet-eng-inhand-right",
+      "directions": 4
+    },
+    {
+      "name": "carpet-rnd"
+    },
+    {
+      "name": "carpet-rnd-inhand-left",
+      "directions": 4
+    },
+    {
+      "name": "carpet-rnd-inhand-right",
+      "directions": 4
+    },
+    {
+      "name": "carpet-med"
+    },
+    {
+      "name": "carpet-med-inhand-left",
+      "directions": 4
+    },
+    {
+      "name": "carpet-med-inhand-right",
+      "directions": 4
+    }
+  ]
+}

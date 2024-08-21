@@ -1,0 +1,98 @@
+﻿- type: loadout
+  id: SCPHeadJumpsuit
+  equipment: SCPHeadJumpsuit
+
+- type: startingGear
+  id: SCPHeadJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformSCPGos
+
+- type: loadout
+  id: SCPHeadJumpskirt
+  equipment: SCPHeadJumpskirt
+
+- type: startingGear
+  id: SCPHeadJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformSkirtSCPGos
+
+- type: loadout
+  id: SCPHeadBackpack
+  equipment: SCPHeadBackpack
+
+- type: startingGear
+  id: SCPHeadBackpack
+  equipment:
+    back: ClothingBackpackSCPGosFilled
+
+- type: loadout
+  id: SCPHeadBackpackSatchel
+  equipment: SCPHeadBackpackSatchel
+
+- type: startingGear
+  id: SCPHeadBackpackSatchel
+  equipment:
+    back: ClothingBackpackSatchelSCPGosFilled
+
+- type: loadout
+  id: SCPHeadBackpackDuffel
+  equipment: SCPHeadBackpackDuffel
+
+- type: startingGear
+  id: SCPHeadBackpackDuffel
+  equipment:
+    back: ClothingBackpackSCPGosDuffelFilled
+
+- type: loadout
+  id: SCPHeadShoes
+  equipment: SCPHeadShoes
+
+- type: startingGear
+  id: SCPHeadShoes
+  equipment:
+    shoes: ClothingShoesSCPGos
+
+- type: loadout
+  id: SCPHeadHardsuit
+  equipment: SCPHeadHardsuit
+
+- type: startingGear
+  id: SCPHeadHardsuit
+  equipment:
+    outerClothing: ClothingOuterHardsuitSCPHead
+
+- type: loadout
+  id: SCPHeadGloves
+  equipment: SCPHeadGloves
+
+- type: startingGear
+  id: SCPHeadGloves
+  equipment:
+    gloves: ClothingHandsGlovesSCPGos
+
+- type: loadout
+  id: SCPHeadHead
+  equipment: SCPHeadHead
+
+- type: startingGear
+  id: SCPHeadHead
+  equipment:
+    head: ClothingHeadHatSCP268
+
+- type: loadout
+  id: SCPHeadNeck
+  equipment: SCPHeadNeck
+
+- type: startingGear
+  id: SCPHeadNeck
+  equipment:
+    neck: ClothingNeckSCPGos
+
+- type: loadout
+  id: SCPHeadEyes
+  equipment: SCPHeadEyes
+
+- type: startingGear
+  id: SCPHeadEyes
+  equipment:
+    eyes: ClothingEyesSCPGos

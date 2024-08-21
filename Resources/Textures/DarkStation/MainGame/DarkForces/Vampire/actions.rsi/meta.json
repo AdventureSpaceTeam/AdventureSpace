@@ -1,0 +1,65 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Taken from ParadiseSS13 at https://github.com/ss220-space/Paradise/commit/095659de3db60373a0184906f6922b2815e6d3aa. Edited by Aurorablade.",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "vampire_rejuvinate"
+        },
+        {
+            "name": "vampire_rejuvinate_plus"
+        },
+        {
+            "name": "vampire_hypnotise"
+        },
+        {
+            "name": "vampire_disease"
+        },
+        {
+            "name": "vampire_glare"
+        },
+        {
+            "name": "vampire_screech"
+        },
+        {
+            "name": "vampire_enthrall"
+        },
+        {
+            "name": "vampire_cloak"
+        },
+        {
+            "name": "vampire_bats"
+        },
+        {
+            "name": "vampire_jaunt"
+        },
+        {
+            "name": "vampire_shapeshift"
+        },
+        {
+            "name": "blink"
+        },
+        {
+            "name": "vampire_grasp"
+        },
+        {
+            "name": "vampire_blood_rush"
+        },
+        {
+            "name": "vampire_charge"
+        },
+        {
+            "name": "vampire_statistic"
+        },
+        {
+            "name": "vampire_drink_blood"
+        },
+        {
+            "name": "vampire_poly"
+        }
+    ]
+}

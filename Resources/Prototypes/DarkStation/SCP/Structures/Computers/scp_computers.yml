@@ -1,0 +1,36 @@
+- type: entity
+  parent: BaseComputerShuttle
+  id: ComputerShuttleSCP
+  name: Консоль управления шаттлом SCP
+  description: Используется для управления шаттлом "Бегемот"
+  components:
+    - type: Sprite
+      layers:
+        - map: ["computerLayerBody"]
+          state: computer
+        - map: ["computerLayerKeyboard"]
+          state: generic_keyboard
+        - map: ["computerLayerScreen"]
+          state: shuttle
+        - map: ["computerLayerKeys"]
+          state: generic_keys
+    - type: DroneConsole
+      components:
+        - type: SCPShuttle
+    - type: RadarConsole
+      maxRange: 256
+    - type: PointLight
+      radius: 1.5
+      energy: 1.6
+      color: "#c94242"
+    - type: Computer
+      board: SCPShuttleConsoleCircuitboard
+
+- type: entity
+  parent: BaseComputerCircuitboard
+  id: SCPShuttleConsoleCircuitboard
+  name: Плата Консоли управления шаттлом SCP
+  description: Компьютерная плата дял консоли управления шаттлом SCP
+  components:
+    - type: ComputerBoard
+      prototype: ComputerShuttleSCP

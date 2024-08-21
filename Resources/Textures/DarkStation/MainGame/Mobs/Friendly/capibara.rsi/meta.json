@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "made in D1masina#9286",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "standing",
+      "directions": 4
+    },
+    {
+      "name": "dead"
+    }
+  ]
+}

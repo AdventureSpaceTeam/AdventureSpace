@@ -1,0 +1,22 @@
+- type: job
+  id: SCPBotanist
+  name: "Ботаник отдела SCP"
+  description: "Обычный ботаник, но в отделе SCP"
+  playTimeTracker: JobSCPBotanist
+  startingGear: SCPBotanistGear
+  icon: "JobIconSCPBotanist"
+  supervisors: Главе отдела SCP
+  weight: 10
+  access:
+  - Service
+  - Maintenance
+  - Hydroponics
+  - SCP
+
+#Gear
+- type: startingGear
+  id: SCPBotanistGear
+  equipment:
+    id: SCPBotanistPDA
+    ears: ClothingHeadsetSCPBasic
+    shoes: ClothingShoesColorBrown

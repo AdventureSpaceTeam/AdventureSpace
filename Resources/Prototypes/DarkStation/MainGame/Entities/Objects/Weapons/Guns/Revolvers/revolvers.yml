@@ -1,0 +1,19 @@
+- type: entity
+  name: Фабиан
+  parent: BaseWeaponRevolver
+  id: RevolverFabian
+  description: Револьвер, покрытый изящными серебряными гравировками со скрытым смыслом, понятным лишь капеллану. Использует патроны калибра .45 магнум.
+  components:
+  - type: Sprite
+    sprite: DarkStation/MainGame/Objects/Weapons/Guns/Revolvers/fabian.rsi
+  - type: Clothing
+    sprite: DarkStation/MainGame/Objects/Weapons/Guns/Revolvers/fabian.rsi
+  - type: Gun
+    selectedMode: SemiAuto
+    fireRate: 3
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/revolver.ogg
+      params:
+        volume: 2.25

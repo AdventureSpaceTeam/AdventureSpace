@@ -1,0 +1,226 @@
+- type: entity
+  id: VampireStatisticAction
+  name: Статистика
+  description: Узнайте о своих способностях и уровень вашей крови
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon:
+      sprite: DarkStation/MainGame/DarkForces/Vampire/actions.rsi
+      state: vampire_statistic
+    useDelay: 0
+    itemIconStyle: NoItem
+    event: !type:VampireOpenHelpDialogEvent
+      bloodCost: 0
+
+- type: entity
+  id: VampireDrinkBloodAction
+  name: Выпить кровь
+  description: Выпейте кровь вашей жертвы
+  noSpawn: true
+  components:
+  - type: EntityTargetAction
+    whitelist:
+      components:
+      - Body
+    canTargetSelf: false
+    interactOnMiss: false
+    icon:
+      sprite: DarkStation/MainGame/DarkForces/Vampire/actions.rsi
+      state: vampire_drink_blood
+    useDelay: 0
+    itemIconStyle: NoItem
+    sound: !type:SoundPathSpecifier
+      path: /Audio/DarkStation/Narsi/enter_blood.ogg
+    event: !type:VampireDrinkBloodAblityEvent
+      bloodCost: 0
+
+- type: entity
+  id: VampireRejuvenateAction
+  name: Восстановление
+  description: Снимает оглушение и восстанавливает выносливость
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon:
+      sprite: DarkStation/MainGame/DarkForces/Vampire/actions.rsi
+      state: vampire_rejuvinate
+    useDelay: 0
+    itemIconStyle: NoItem
+    checkCanInteract: false
+    sound: !type:SoundPathSpecifier
+      path: /Audio/DarkStation/Narsi/summon_karp.ogg
+    event: !type:VampireRejuvenateEvent
+      bloodCost: 30
+
+- type: entity
+  id: VampireFlashAction
+  name: Вспышка
+  description: Оглушает всех стоящих непосредственно рядом с вами
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon:
+      sprite: DarkStation/MainGame/DarkForces/Vampire/actions.rsi
+      state: vampire_glare
+    useDelay: 30
+    itemIconStyle: NoItem
+    event: !type:VampireFlashEvent
+      bloodCost: 30
+
+- type: entity
+  id: VampireHypnosisAction
+  name: Гипноз
+  description: Усыпляет жертву
+  noSpawn: true
+  components:
+  - type: EntityTargetAction
+    whitelist:
+      components:
+      - Body
+    canTargetSelf: false
+    interactOnMiss: false
+    icon:
+      sprite: DarkStation/MainGame/DarkForces/Vampire/actions.rsi
+      state: vampire_hypnotise
+    useDelay: 180
+    itemIconStyle: NoItem
+    event: !type:VampireHypnosisEvent
+      bloodCost: 50
+
+- type: entity
+  id: VampireChargeAction
+  name: Рывок
+  description: После активации, вы кинетесь на тот тайл, куда нажали
+  noSpawn: true
+  components:
+  - type: WorldTargetAction
+    useDelay: 1
+    range: 16
+    itemIconStyle: NoItem
+    sound: !type:SoundPathSpecifier
+      path: /Audio/DarkStation/Narsi/wand_teleport.ogg
+    icon:
+      sprite: DarkStation/MainGame/DarkForces/Vampire/actions.rsi
+      state: vampire_charge
+    event: !type:VampireChargeEvent
+      bloodCost: 100
+
+- type: entity
+  id: VampireShapeshiftAction
+  name: Превращение
+  description: Случайно меняет чертвы вашего тела
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon:
+      sprite: DarkStation/MainGame/DarkForces/Vampire/actions.rsi
+      state: vampire_shapeshift
+    useDelay: 10
+    itemIconStyle: NoItem
+    sound: !type:SoundPathSpecifier
+      path: /Audio/DarkStation/Narsi/wand_teleport.ogg
+    event: !type:VampireShapeshiftEvent
+      bloodCost: 100
+
+- type: entity
+  id: VampirePolymorphAction
+  name: Крылья
+  description: Превращает вас в летучую мышь на 1 минуту
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon:
+      sprite: DarkStation/MainGame/DarkForces/Vampire/actions.rsi
+      state: vampire_poly
+    useDelay: 60
+    itemIconStyle: NoItem
+    sound: !type:SoundPathSpecifier
+      path: /Audio/DarkStation/Narsi/summonitems_generic.ogg
+    event: !type:VampirePolymorphEvent
+      bloodCost: 50
+
+- type: entity
+  id: VampireRejuvenatePlusAction
+  name: Восстановление+
+  description: В дополнение к снятию оглушения также теперь дает вам кратковременную регенерацию.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon:
+      sprite: DarkStation/MainGame/DarkForces/Vampire/actions.rsi
+      state: vampire_rejuvinate_plus
+    useDelay: 40
+    itemIconStyle: NoItem
+    checkCanInteract: false
+    sound: !type:SoundPathSpecifier
+      path: /Audio/DarkStation/Narsi/summon_karp.ogg
+    event: !type:VampireRejuvenatePlusEvent
+      bloodCost: 50
+
+- type: entity
+  id: VampireSummonBatsAction
+  name: Дети ночи
+  description: Призывает две стаи летучих мышей, которые атакуют всех, кто не является вампиром или траллом
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon:
+      sprite: DarkStation/MainGame/DarkForces/Vampire/actions.rsi
+      state: vampire_bats
+    useDelay: 180
+    itemIconStyle: NoItem
+    event: !type:VampireSummonBatsEvent
+      bloodCost: 200
+
+- type: entity
+  id: VampireChiropteanScreechAction
+  name: Ультразвуковой визг
+  description: Оглушает всех людей в радиусе слышимости, а также ломает стекла. Может оглушить траллов вампиров, но не других вампиров.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon:
+      sprite: DarkStation/MainGame/DarkForces/Vampire/actions.rsi
+      state: vampire_screech
+    useDelay: 180
+    itemIconStyle: NoItem
+    sound: !type:SoundPathSpecifier
+      path: /Audio/DarkStation/creepyshriek.ogg
+    event: !type:VampireChiropteanScreechEvent
+      bloodCost: 200
+
+- type: entity
+  id: VampireEnthrallAction
+  name: Порабощение
+  description: Превращает жертву в вашего верного раба.
+  noSpawn: true
+  components:
+  - type: EntityTargetAction
+    whitelist:
+      components:
+      - Body
+    canTargetSelf: false
+    interactOnMiss: false
+    icon:
+      sprite: DarkStation/MainGame/DarkForces/Vampire/actions.rsi
+      state: vampire_enthrall
+    useDelay: 180
+    itemIconStyle: NoItem
+    event: !type:VampireEnthrallEvent
+      bloodCost: 100
+
+- type: entity
+  id: VampireFullPowerAction
+  name: Полная сила
+  description: Теперь вы величайший вампир! Святая вода для ваc как минералка. Пули легонько щекочат. Но серебряное оружие наносит существенный урон
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon:
+      sprite: DarkStation/MainGame/DarkForces/Vampire/actions.rsi
+      state: vampire_jaunt
+    useDelay: 0
+    itemIconStyle: NoItem
+    event: !type:VampireFullPowerEvent
+      bloodCost: 0

@@ -1,0 +1,12 @@
+﻿- type: construction
+  name: Крест
+  id: cross
+  graph: ChaplainCross
+  startNode: start
+  targetNode: cross
+  category: construction-category-misc
+  description: Используется для защиты от нечести (бесполезен, если не освятить библией)
+  icon:
+    sprite: DarkStation/MainGame/Objects/Specific/Chapel/cross.rsi
+    state: icon
+  objectType: Item

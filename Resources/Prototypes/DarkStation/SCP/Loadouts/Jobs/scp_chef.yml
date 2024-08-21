@@ -1,0 +1,38 @@
+﻿#Jumpsuit
+- type: loadout
+  id: SCPChefJumpsuit
+  equipment: SCPChefJumpsuit
+
+- type: startingGear
+  id: SCPChefJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitChefSCP
+
+- type: loadout
+  id: SCPChefJumpskirt
+  equipment: SCPChefJumpskirt
+
+- type: startingGear
+  id: SCPChefJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtChefSCP
+
+#Outer
+- type: loadout
+  id: SCPChefApron
+  equipment: SCPChefApron
+
+- type: startingGear
+  id: SCPChefApron
+  equipment:
+    outerClothing: ClothingOuterApronChefSCP
+
+#Head
+- type: loadout
+  id: SCPChefHead
+  equipment: SCPChefHead
+
+- type: startingGear
+  id: SCPChefHead
+  equipment:
+    head: ClothingHeadHatChefSCP

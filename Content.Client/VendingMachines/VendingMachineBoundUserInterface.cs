@@ -2,14 +2,19 @@ using Content.Client.VendingMachines.UI;
 using Content.Shared.VendingMachines;
 using Robust.Client.UserInterface.Controls;
 using System.Linq;
+using Content.Client.UserInterface.Controls;
+using Content.Shared.AdventureSpace.CCVars;
 using Robust.Client.UserInterface;
+using Robust.Shared.Configuration;
 
 namespace Content.Client.VendingMachines
 {
     public sealed class VendingMachineBoundUserInterface : BoundUserInterface
     {
+        [Dependency] private readonly IConfigurationManager _cfg = default!;
+
         [ViewVariables]
-        private VendingMachineMenu? _menu;
+        private FancyWindow? _menu;
 
         [ViewVariables]
         private List<VendingMachineInventoryEntry> _cachedInventory = new();
@@ -29,14 +34,48 @@ namespace Content.Client.VendingMachines
 
             _cachedInventory = vendingMachineSys.GetAllInventory(Owner);
 
-            _menu = this.CreateWindow<VendingMachineMenu>();
+            if (!_cfg.GetCVar(SecretCCVars.EconomyEnabled))
+            {
+                _menu = this.CreateWindow<VendingMachineMenu>();
+                _menu.Title = EntMan.GetComponent<MetaDataComponent>(Owner).EntityName;
+
+                SetupOldVendingMenu((VendingMachineMenu) _menu);
+            }
+            else
+            {
+                _menu = this.CreateWindow<EconomyVendingMachineMenu>();
+                _menu.Title = EntMan.GetComponent<MetaDataComponent>(Owner).EntityName;
+
+                SetupNewVendingMenu((EconomyVendingMachineMenu) _menu);
+            }
+
+            _menu.OnClose += Close;
             _menu.OpenCenteredLeft();
-            _menu.Title = EntMan.GetComponent<MetaDataComponent>(Owner).EntityName;
+        }
 
-            _menu.OnItemSelected += OnItemSelected;
-            _menu.OnSearchChanged += OnSearchChanged;
+        private void SetupOldVendingMenu(VendingMachineMenu menu)
+        {
+            menu.OnItemSelected += OnItemSelected;
+            menu.OnSearchChanged += OnSearchChanged;
+            menu.Populate(_cachedInventory, out _cachedFilteredIndex);
+        }
 
-            _menu.Populate(_cachedInventory, out _cachedFilteredIndex);
+        private void SetupNewVendingMenu(EconomyVendingMachineMenu menu)
+        {
+            menu.OnItemSelected += OnItemSelected;
+            menu.OnSearchChanged += OnSearchChanged;
+            menu.OnBuyButtonPressed += OnBuyButtonPressed;
+            menu.OnSelectedItemRequestUpdate += OnSelectedItemRequestUpdate;
+            menu.Populate(_cachedInventory, out _cachedFilteredIndex);
+        }
+
+        private void OnSelectedItemRequestUpdate(int index)
+        {
+            var selected = GetSelectedItem(index);
+            if (selected != null && _menu is EconomyVendingMachineMenu economyMenu)
+            {
+                economyMenu.SetSelectedProductState(selected, index);
+            }
         }
 
         protected override void UpdateState(BoundUserInterfaceState state)
@@ -48,21 +87,51 @@ namespace Content.Client.VendingMachines
 
             _cachedInventory = newState.Inventory;
 
-            _menu?.Populate(_cachedInventory, out _cachedFilteredIndex, _menu.SearchBar.Text);
+            switch (_menu)
+            {
+                case EconomyVendingMachineMenu economyMenu:
+                    economyMenu.Populate(_cachedInventory, out _cachedFilteredIndex, economyMenu.SearchBar.Text);
+                    economyMenu.UpdateSelectedProduct();
+                    break;
+                case VendingMachineMenu menu:
+                    menu.Populate(_cachedInventory, out _cachedFilteredIndex, menu.SearchBar.Text);
+                    break;
+            }
         }
 
         private void OnItemSelected(ItemList.ItemListSelectedEventArgs args)
         {
-            if (_cachedInventory.Count == 0)
+            var selectedItem = GetSelectedItem(args.ItemIndex);
+            if (selectedItem == null)
                 return;
 
-            var selectedItem = _cachedInventory.ElementAtOrDefault(_cachedFilteredIndex.ElementAtOrDefault(args.ItemIndex));
+            switch (_menu)
+            {
+                case EconomyVendingMachineMenu economyMenu:
+                    economyMenu.SetSelectedProductState(selectedItem, args.ItemIndex);
+                    break;
+                case VendingMachineMenu:
+                    SendMessage(new VendingMachineEjectMessage(selectedItem.Type, selectedItem.ID));
+                    break;
+            }
+        }
 
+        private void OnBuyButtonPressed(int index)
+        {
+            var selectedItem = GetSelectedItem(index);
             if (selectedItem == null)
                 return;
 
             SendMessage(new VendingMachineEjectMessage(selectedItem.Type, selectedItem.ID));
         }
+
+        private VendingMachineInventoryEntry? GetSelectedItem(int index)
+        {
+            return _cachedInventory.Count == 0
+                ? null
+                : _cachedInventory.ElementAtOrDefault(_cachedFilteredIndex.ElementAtOrDefault(index));
+        }
+
 
         protected override void Dispose(bool disposing)
         {
@@ -70,17 +139,35 @@ namespace Content.Client.VendingMachines
             if (!disposing)
                 return;
 
-            if (_menu == null)
-                return;
+            switch (_menu)
+            {
+                case null:
+                    return;
+                case EconomyVendingMachineMenu economyMenu:
+                    economyMenu.OnItemSelected -= OnItemSelected;
+                    break;
+                case VendingMachineMenu menu:
+                    menu.OnItemSelected -= OnItemSelected;
+                    break;
+            }
 
-            _menu.OnItemSelected -= OnItemSelected;
             _menu.OnClose -= Close;
             _menu.Dispose();
         }
 
         private void OnSearchChanged(string? filter)
         {
-            _menu?.Populate(_cachedInventory, out _cachedFilteredIndex, filter);
+            switch (_menu)
+            {
+                case null:
+                    return;
+                case EconomyVendingMachineMenu economyMenu:
+                    economyMenu.Populate(_cachedInventory, out _cachedFilteredIndex, filter);
+                    break;
+                case VendingMachineMenu menu:
+                    menu.Populate(_cachedInventory, out _cachedFilteredIndex, filter);
+                    break;
+            }
         }
     }
 }

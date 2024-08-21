@@ -1,0 +1,47 @@
+﻿- type: entity
+  name: "Курильщик"
+  id: MobZombieSmoker
+  parent: BaseZombie
+  description: "Убери его язык с меня, убери!!"
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: DarkStation/MainGame/Mobs/Zombie/Smoker/smoker.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: alive
+    - map: [ "smoke" ]
+      sprite: "DarkStation/MainGame/Mobs/Zombie/Smoker/smoke.rsi"
+      state: "smoke"
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      200: Dead
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      collection: AlienClaw
+    damage:
+      groups:
+        Brute: 15
+    range: 2
+  - type: DamageStateVisuals
+    rotate: true
+    states:
+      Alive:
+        Base: alive
+      Dead:
+        Base: dead
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 5
+    baseSprintSpeed: 5
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      100: 0.8
+      150: 0.7
+  - type: ZombieSmoker
+    tongue:
+      sprite: DarkStation/MainGame/Mobs/Zombie/Smoker/smoker_tongue.rsi
+      state: rope
+    attackSound:
+      path: /Audio/DarkStation/Mobs/Zombie/Smoker/alert.ogg

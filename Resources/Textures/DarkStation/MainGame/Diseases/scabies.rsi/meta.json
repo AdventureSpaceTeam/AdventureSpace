@@ -1,0 +1,48 @@
+{
+    "version": 1,
+    "license": "Собственная лицензия. Полный запрет на копирование и использование вне проекта Dark Station без одобрения текущего владельца проекта",
+    "copyright": "Ynotka DS",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "icon",
+            "delays": [
+                [
+                    0.2,
+                    0.3,
+                    0.4
+                ]
+            ]
+        },
+        {
+            "name": "broken"
+        },
+        {
+            "name": "scabies-HEAD",
+            "directions": 4
+        },
+        {
+            "name": "scabies-BODY",
+            "directions": 4
+        },
+        {
+            "name": "scabies-LEFT-HAND",
+            "directions": 4
+        },
+        {
+            "name": "scabies-LEFT-LEG",
+            "directions": 4
+        },
+        {
+            "name": "scabies-RIGHT-HAND",
+            "directions": 4
+        },
+        {
+            "name": "scabies-RIGHT-LEG",
+            "directions": 4
+        }
+    ]
+}

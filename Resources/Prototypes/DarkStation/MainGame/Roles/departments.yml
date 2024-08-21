@@ -1,0 +1,21 @@
+- type: department
+  id: SCP
+  description: department-Command-description
+  color: "#D381C9"
+  weight: 80
+  roles:
+  - SCPScientist
+  - SCPSecurity
+  - SCPDClass
+  - SCPHead
+  - SCPParamedic
+  - SCPChef
+  - SCPBotanist
+  - SCPStationEngineer
+
+- type: department
+  id: SpCentCommon
+  description: Надзор и управление, залог стабильности.
+  color: "#00842e"
+  roles:
+  - SpCCO

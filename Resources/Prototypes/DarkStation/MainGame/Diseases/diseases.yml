@@ -1,0 +1,53 @@
+﻿- type: disease
+  id: Cold
+  name: Простуда
+  immunityIncreaseType: Time
+  immunityIncreaseThreshold: 60
+  spreads:
+  - Contact
+  - Air
+  stages:
+  - ColdSneeze
+  - ColdCough
+
+- type: disease
+  id: BirdFlu
+  name: Птичий грипп
+  cure: BirdFlu
+  spreads:
+  - Contact
+  - Air
+  stages:
+  - BirdFluSneeze
+  - BirdFluCough
+  - BirdFluVomit
+
+- type: disease
+  id: Plague
+  name: Чума
+  cure: Plague
+  spreads:
+  - Contact
+  - Air
+  stages:
+  - PlagueCough
+  - PlagueAbscess
+
+- type: disease
+  id: Asthma
+  name: Астма
+  stages:
+  - AsthmaAttack
+
+- type: disease
+  id: Scabies
+  name: Чесотка
+  cure: Scabies
+  cureReagents:
+  - Aloe
+  - AloeCream
+  spreads:
+  - Contact
+  stages:
+  - ScabiesScratch
+  - ScabiesRash

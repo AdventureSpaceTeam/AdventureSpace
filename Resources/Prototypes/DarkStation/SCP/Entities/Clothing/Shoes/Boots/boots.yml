@@ -1,0 +1,40 @@
+﻿- type: entity
+  id: ClothingShoesBootsMagBlindingMog
+  parent: ClothingShoesBootsMagBlinding
+  name: "Экспериментальные ботинки МОГ"
+  description: "Изучение SCP объектов приносит свои плоды... Например эти ботинки"
+  components:
+  - type: Sprite
+    sprite: DarkStation/SCP/Clothing/Shoes/Boots/mog.rsi
+  - type: Clothing
+    sprite: DarkStation/SCP/Clothing/Shoes/Boots/mog.rsi
+
+- type: entity
+  id: ClothingShoesSCPGos
+  parent: ClothingShoesBaseButcherable
+  name: "ботинки главы отдела SCP"
+  description: "Стильные ботинки, для удобной ходьбы"
+  components:
+  - type: Sprite
+    sprite: DarkStation/SCP/Clothing/Shoes/Boots/gos.rsi
+  - type: Clothing
+    sprite: DarkStation/SCP/Clothing/Shoes/Boots/gos.rsi
+
+- type: entity
+  id: ClothingShoesSCPSecurityBoots
+  parent: ClothingShoesBootsJack
+  components:
+  - type: Sprite
+    sprite: DarkStation/SCP/Clothing/Shoes/Boots/security.rsi
+  - type: Clothing
+    sprite: DarkStation/SCP/Clothing/Shoes/Boots/security.rsi
+
+- type: entity
+  id: ClothingShoesSCPSecurityBootsFilled
+  parent: ClothingShoesSCPSecurityBoots
+  suffix: Filled
+  components:
+  - type: ContainerFill
+    containers:
+      item:
+      - CombatKnife

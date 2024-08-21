@@ -52,7 +52,7 @@ namespace Content.Server.Zombies
         public override void Initialize()
         {
             base.Initialize();
-
+            InitZombieTank();
             SubscribeLocalEvent<ZombieComponent, ComponentStartup>(OnStartup);
             SubscribeLocalEvent<ZombieComponent, EmoteEvent>(OnEmote, before:
                 new[] { typeof(VocalSystem), typeof(BodyEmotesSystem) });
@@ -230,7 +230,7 @@ namespace Content.Server.Zombies
                 if (!TryComp<MobStateComponent>(entity, out var mobState))
                     continue;
 
-                if (HasComp<ZombieComponent>(entity))
+                if (HasComp<ZombieComponent>(entity) || HasComp<ZombieTankComponent>(entity))
                 {
                     args.BonusDamage = -args.BaseDamage;
                 }

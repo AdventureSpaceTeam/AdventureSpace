@@ -1,0 +1,55 @@
+﻿- type: statusIcon
+  parent: JobIcon
+  id: JobIconSCPScientist
+  icon:
+    sprite: /Textures/Interface/Misc/job_icons.rsi
+    state: SCPScientist
+
+- type: statusIcon
+  parent: JobIcon
+  id: JobIconSCPBotanist
+  icon:
+    sprite: /Textures/Interface/Misc/job_icons.rsi
+    state: SCPBotanist
+
+- type: statusIcon
+  parent: JobIcon
+  id: JobIconSCPChef
+  icon:
+    sprite: /Textures/Interface/Misc/job_icons.rsi
+    state: SCPChef
+
+- type: statusIcon
+  parent: JobIcon
+  id: JobIconSCPDirector
+  icon:
+    sprite: /Textures/Interface/Misc/job_icons.rsi
+    state: ResearchDirector
+
+- type: statusIcon
+  parent: JobIcon
+  id: JobIconSCPDClass
+  icon:
+    sprite: /Textures/Interface/Misc/job_icons.rsi
+    state: SCPDClass
+
+- type: statusIcon
+  parent: JobIcon
+  id: JobIconSCPStationEngineer
+  icon:
+    sprite: /Textures/Interface/Misc/job_icons.rsi
+    state: SCPStationEngineer
+
+- type: statusIcon
+  parent: JobIcon
+  id: JobIconSCPParamedic
+  icon:
+    sprite: /Textures/Interface/Misc/job_icons.rsi
+    state: SCPParamedic
+
+- type: statusIcon
+  parent: JobIcon
+  id: JobIconSCPSecurity
+  icon:
+    sprite: /Textures/Interface/Misc/job_icons.rsi
+    state: SCPSecurity

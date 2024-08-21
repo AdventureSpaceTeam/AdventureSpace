@@ -1,0 +1,11 @@
+﻿- type: entity
+  parent: ClothingOuterStorageBase
+  id: ClothingOuterApronChefSCP
+  name: "Фартук повара SCP"
+  suffix: Chef
+  description: "Фартук, который используют первоклассные повара."
+  components:
+  - type: Sprite
+    sprite: DarkStation/SCP/Clothing/OuterClothing/Misc/chefapron.rsi
+  - type: Clothing
+    sprite: DarkStation/SCP/Clothing/OuterClothing/Misc/chefapron.rsi

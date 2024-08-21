@@ -1,0 +1,32 @@
+#job
+- type: job
+  id: SCPParamedic
+  name: "Парамедик отдела SCP"
+  playTimeTracker: JobSCPParamedic
+  requirements:
+  - !type:DepartmentTimeRequirement
+    department: Medical
+    time: 9000
+  - !type:OverallPlaytimeRequirement
+    time: 54000
+  icon: "JobIconSCPParamedic"
+  supervisors: "Главе отдела СЦП"
+  startingGear: SCPParamedicGear
+  weight: 20
+  canBeAntag: false
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+  access:
+  - Medical
+  - Maintenance
+  - External
+  - SCP
+  - Chemistry
+
+#Gear
+- type: startingGear
+  id: SCPParamedicGear
+  equipment:
+    id: SCPParamedicPDA
+    ears: ClothingHeadsetSCPParamedic

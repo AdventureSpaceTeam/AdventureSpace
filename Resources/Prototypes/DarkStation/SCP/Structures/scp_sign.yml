@@ -1,0 +1,20 @@
+- type: decal
+  id: SCPSignEuclid
+  tags: ["station"]
+  sprite:
+    sprite: DarkStation/MainGame/Objects/Misc/scp_sign/euclid_scp_sign.rsi
+    state: scp_logo_euclid
+
+- type: decal
+  id: SCPSignKeter
+  tags: ["station"]
+  sprite:
+    sprite: DarkStation/MainGame/Objects/Misc/scp_sign/keter_scp_sing.rsi
+    state: scp_logo_keter
+
+- type: decal
+  id: SCPSignSafe
+  tags: ["station"]
+  sprite:
+    sprite: DarkStation/MainGame/Objects/Misc/scp_sign/safe_scp_sign.rsi
+    state: scp_logo_safe

@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "license": "Собственная лицензия. Полный запрет на копирование и использование вне проекта Dark Station без одобрения текущего владельца проекта",
+  "copyright": "lukas DS",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "id_overlay" 
+    },
+    {
+      "name": "light_overlay" 
+    },
+    {
+      "name": "PDA-CSNAB" 
+    },
+    {
+      "name": "PDA-CSER" 
+    },
+    {
+      "name": "PDA-CRND" 
+    },
+    {
+      "name": "PDA-CPAS" 
+    },
+    {
+      "name": "PDA-CMIL" 
+    },
+    {
+      "name": "PDA-CMED" 
+    },
+    {
+      "name": "PDA-CENG" 
+    },
+    {
+      "name": "PDA-CADM" 
+    }
+  ]
+}

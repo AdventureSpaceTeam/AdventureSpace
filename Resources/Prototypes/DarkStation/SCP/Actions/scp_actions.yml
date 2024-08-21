@@ -1,0 +1,20 @@
+﻿- type: entity
+  id: SCPOpenDoorAction
+  name: "Вскрыть дверь"
+  description: "Вскройте дверь"
+  noSpawn: true
+  components:
+  - type: EntityTargetAction
+    whitelist:
+      components:
+      - Door
+    canTargetSelf: false
+    checkCanInteract: true
+    interactOnMiss: false
+    range: 1
+    icon:
+      sprite: DarkStation/SCP/Interface/actions.rsi
+      state: door
+    useDelay: 60
+    itemIconStyle: NoItem
+    event: !type:SCPOpenDoorEvent

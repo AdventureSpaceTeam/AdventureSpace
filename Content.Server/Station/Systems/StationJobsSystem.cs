@@ -508,7 +508,7 @@ public sealed partial class StationJobsSystem : EntitySystem
     /// <summary>
     /// Updates the cached available jobs. Moderately expensive.
     /// </summary>
-    private void UpdateJobsAvailable()
+    public void UpdateJobsAvailable()
     {
         _availableJobsDirty = true;
     }

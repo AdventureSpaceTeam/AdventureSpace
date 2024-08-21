@@ -1,0 +1,26 @@
+﻿- type: loadout
+  id: SCPBotanistJumpsuit
+  equipment: SCPBotanistJumpsuit
+
+- type: startingGear
+  id: SCPBotanistJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitHydroponicsSCP
+
+- type: loadout
+  id: SCPBotanistJumpskirt
+  equipment: SCPBotanistJumpskirt
+
+- type: startingGear
+  id: SCPBotanistJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitHydroponicsSCP
+
+- type: loadout
+  id: SCPBotanistBackpack
+  equipment: SCPBotanistBackpack
+
+- type: startingGear
+  id: SCPBotanistBackpack
+  equipment:
+    back: ClothingBackpackHydroponicsSCPFilled

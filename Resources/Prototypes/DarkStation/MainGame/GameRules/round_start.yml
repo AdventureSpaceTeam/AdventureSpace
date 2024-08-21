@@ -1,0 +1,116 @@
+- type: entity
+  id: PontificRule
+  parent: BaseGameRule
+  noSpawn: true
+  components:
+  - type: PontificRule
+  - type: AntagSelection
+    selectionTime: PrePlayerSpawn
+    definitions:
+    - prefRoles: [ Pontific ]
+      max: 1
+      playerRatio: 10
+      allowNonHumans: true
+
+- type: entity
+  id: NarsiCult
+  parent: BaseGameRule
+  noSpawn: true
+  components:
+  - type: NarsiRule
+  - type: AntagSelection
+    definitions:
+    - prefRoles: [ NarsiCultist ]
+      max: 4
+      playerRatio: 10
+      briefing:
+        text: narsi-cultist-briefing
+        color: CornflowerBlue
+        sound: "/Audio/DarkStation/Narsi/bloodcult.ogg"
+      startingGear: NarsiCultistGear
+      components:
+      - type: NarsiCultist
+      - type: NpcFactionMember
+        factions:
+        - NarsiCult
+      - type: IntrinsicRadioTransmitter
+        channels:
+        - NarsiCult
+      - type: ActiveRadio
+        channels:
+        - NarsiCult
+      - type: IntrinsicRadioReceiver
+      - type: Access
+        tags:
+        - NarsiCultAccess
+      mindComponents:
+      - type: NarsiCultRole
+        prototype: NarsiCultist
+      - type: RoleBriefing
+        briefingLoc: narsi-cultist-briefing
+      blacklist:
+        components:
+        - Chaplain
+
+- type: entity
+  id: Ratvar
+  parent: BaseGameRule
+  noSpawn: true
+  components:
+  - type: RatvarRule
+  - type: AntagSelection
+    definitions:
+    - prefRoles: [ RatvarRighteous ]
+      max: 3
+      playerRatio: 15
+      briefing:
+        text: ratvar-righteous-briefing
+        color: CornflowerBlue
+        sound: "/Audio/DarkStation/DarkForces/Ratvar/clockcult.ogg"
+      components:
+      - type: RatvarRighteous
+      - type: RatvarAbilities
+      - type: NpcFactionMember
+        factions:
+        - Ratvar
+      - type: IntrinsicRadioTransmitter
+        channels:
+        - Ratvar
+      - type: ActiveRadio
+        channels:
+        - Ratvar
+      - type: IntrinsicRadioReceiver
+      mindComponents:
+      - type: RatvarRole
+        prototype: RatvarRighteous
+      - type: RoleBriefing
+        briefingLoc: ratvar-righteous-briefing
+      blacklist:
+        components:
+        - Chaplain
+
+- type: entity
+  id: Vampire
+  parent: BaseGameRule
+  noSpawn: true
+  components:
+  - type: VampireRule
+  - type: AntagSelection
+    definitions:
+    - prefRoles: [ Vampire ]
+      max: 2
+      playerRation: 20
+      blacklist:
+        components:
+        - Chaplain
+      briefing:
+        text: vampire-briefing
+        color: Plum
+        sound: "/Audio/DarkStation/DarkForces/Vampire/vampalert.ogg"
+      components:
+      - type: Vampire
+      mindComponents:
+      - type: VampireRole
+        prototype: Vampire
+      - type: RoleBriefing
+        briefingLoc: vampire-briefing

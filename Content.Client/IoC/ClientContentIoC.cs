@@ -64,6 +64,8 @@ namespace Content.Client.IoC
             collection.Register<Content.Corvax.Interfaces.Client.IClientJoinQueueManager,JoinQueueManager>();
             collection.Register<Content.Corvax.Interfaces.Client.IClientDiscordAuthManager,DiscordAuthManager>();
             // Alteros-Sponsor
+
+            //TODO REPLACE THIS BY UR
             collection.RegisterInstance<ITargetDollWidgetBridge>(new StubTargetDollWidgetBridge());
         }
     }

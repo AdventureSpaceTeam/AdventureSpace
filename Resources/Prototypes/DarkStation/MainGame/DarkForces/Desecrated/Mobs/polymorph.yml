@@ -1,0 +1,12 @@
+﻿- type: polymorph
+  id: DesecrateMobDesecratedPolymorph
+  configuration:
+    entity: MobDesecrated
+    forced: true
+    inventory: None
+    allowRepeatedMorphs: false
+    transferDamage: true
+    transferName: true
+    revertOnCrit: false
+    revertOnDeath: false
+    revertOnSaint: true

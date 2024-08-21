@@ -1,0 +1,102 @@
+﻿- type: roleLoadout
+  id: JobSCPStationEngineer
+  groups:
+  - StationEngineerHead
+  - StationEngineerJumpsuit
+  - StationEngineerBackpack
+  - StationEngineerOuterClothing
+  - StationEngineerShoes
+  - SurvivalExtended
+  - GroupSpeciesBreathTool
+  - Trinkets
+
+- type: roleLoadout
+  id: JobSCPChef
+  groups:
+  - SCPChefJumpsuit
+  - ChefMask
+  - CommonBackpack
+  - Glasses
+  - Trinkets
+  - SCPChefOuterClothing
+  - SCPChefHead
+  - Survival
+  - GroupSpeciesBreathTool
+
+- type: roleLoadout
+  id: JobSCPBotanist
+  groups:
+  - SCPBotanistJumpsuit
+  - SCPBotanistBackpack
+  - BotanistHead
+  - BotanistOuterClothing
+  - Glasses
+  - Trinkets
+  - Survival
+  - GroupSpeciesBreathTool
+
+- type: roleLoadout
+  id: JobSCPHead
+  groups:
+  - SCPHeadJumpsuit
+  - SCPHeadBackpack
+  - SCPHeadShoes
+  - SCPHeadOuterClothing
+  - SCPHeadGloves
+  - SCPHeadHead
+  - SCPHeadNeck
+  - SCPHeadEyes
+  - SurvivalExtended
+  - GroupSpeciesBreathTool
+
+- type: roleLoadout
+  id: JobSCPParamedic
+  groups:
+  - ParamedicHead
+  - MedicalMask
+  - ParamedicJumpsuit
+  - MedicalGloves
+  - MedicalBackpack
+  - ParamedicOuterClothing
+  - ParamedicShoes
+  - Glasses
+  - Trinkets
+  - SurvivalMedical
+  - GroupSpeciesBreathToolMedical
+
+- type: roleLoadout
+  id: JobSCPScientist
+  groups:
+  - SCPScientistJumpsuit
+  - ScientistHead
+  - ScientistNeck
+  - ScientistBackpack
+  - ScientistOuterClothing
+  - ScientistGloves
+  - ScientistShoes
+  - ScientistPDA
+  - Glasses
+  - Trinkets
+  - SurvivalExtended
+  - GroupSpeciesBreathTool
+
+- type: roleLoadout
+  id: JobSCPSecurity
+  groups:
+  - SCPSecurityJumpsuit
+  - SCPSecurityHead
+  - SecurityBackpack
+  - SecurityShoes
+  - SCPSecurityGloves
+  - SCPSecurityPda
+  - SCPSecurityOuterClothing
+  - SecurityBelt
+  - Trinkets
+  - SurvivalSecurity
+  - GroupSpeciesBreathToolSecurity
+
+- type: roleLoadout
+  id: JobSCPDClass
+  groups:
+  - Survival
+  - GroupSpeciesBreathTool

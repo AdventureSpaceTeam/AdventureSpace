@@ -1,0 +1,41 @@
+﻿- type: entity
+  id: SpawnMobSCPSoap
+  parent: MarkerBase
+  name: "Спавнер Странного Мыла"
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: DarkStation/SCP/Mobs/ptrsoap.rsi
+      state: scp_soap
+  - type: ConditionalSpawner
+    prototypes:
+    - MobSCPSoap
+
+- type: entity
+  id: SpawnMobSCP173
+  parent: MarkerBase
+  name: "Спавнер SCP-173"
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+    - sprite: DarkStation/SCP/Mobs/scp173.rsi
+      state: alive
+  - type: ConditionalSpawner
+    prototypes:
+    - MobSCP173
+
+- type: entity
+  id: SpawnMobSCPPlagueDoctor
+  parent: MarkerBase
+  name: "Спавнер Чумного Доктора"
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: DarkStation/SCP/Mobs/scp049.rsi
+      state: alive
+  - type: ConditionalSpawner
+    prototypes:
+    - MobSCP049

@@ -1,0 +1,44 @@
+- type: entity
+  parent: CrateGeneric
+  id: SCPStock
+  name: Контейнер для SCP объектов
+  components:
+  - type: AccessReader
+    access: [ [ "SCP", "Command" ] ]
+  - type: Lock
+  - type: LockVisuals
+  - type: Sprite
+    sprite: DarkStation/SCP/Structures/Storage/Misc/scp_container.rsi
+    layers:
+    - state: base
+      map: [ "enum.StorageVisualLayers.Base" ]
+    - state: closed
+      map: [ "enum.StorageVisualLayers.Door" ]
+    - state: locked
+      map: [ "enum.LockVisualLayers.Lock" ]
+  - type: Icon
+    sprite: DarkStation/SCP/Structures/Storage/Misc/scp_container.rsi
+    state: closed
+  - type: Destructible
+    thresholds:
+    - trigger: !type:DamageTrigger
+        damage: 20000
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Physics
+    bodyType: Dynamic
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.45
+        density: 135
+        mask:
+        - LargeMobMask
+        layer:
+        - LargeMobLayer

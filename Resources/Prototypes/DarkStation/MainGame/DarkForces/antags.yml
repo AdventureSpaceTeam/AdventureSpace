@@ -1,0 +1,58 @@
+﻿# Narsie
+- type: antag
+  id: NarsiCultist
+  name: "Культист Нар'Си"
+  antagonist: true
+  setPreference: true
+  objective: "Призовите Нар'Си в этот мир"
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 72000 # 20h
+
+- type: startingGear
+  id: NarsiCultistGear
+  storage:
+    back:
+    - RitualDagger
+    - SheetRunicPlasteelTen
+
+#Ratvar
+- type: antag
+  id: RatvarRighteous
+  name: "Праведник Ратвара"
+  antagonist: true
+  setPreference: true
+  objective: "Освободите Ратвара из заточения"
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 72000 # 20h (need good RolePlay)
+
+- type: startingGear
+  id: RatvarWarriorGear
+  equipment:
+    head: ClothingHeadHelmetRatvar
+    shoes: ClothingShoesRatvar
+    outerClothing: ClothingOuterRobesRatvar
+    gloves: ClothingHandsRatvar
+
+#Pontific
+- type: antag
+  id: Pontific
+  name: Понтифик
+  antagonist: true
+  setPreference: true
+  objective: "Распространите свою веру на станции... Путем ее вырезания"
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 72000 # 20h
+
+#Vampire
+- type: antag
+  id: Vampire
+  name: Вампир
+  antagonist: true
+  setPreference: true
+  objective: "Станьте высшим вампиром и уничтожьте станцию"
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 72000 # 20h

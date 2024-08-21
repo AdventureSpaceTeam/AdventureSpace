@@ -1,0 +1,57 @@
+﻿- type: entity
+  id: BaseZombie
+  parent: SimpleSpaceMobBase
+  abstract: true
+  components:
+  - type: ZombieImmune
+  - type: Insulated
+  - type: CombatMode
+  - type: InputMover
+  - type: MobMover
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+  - type: NpcFactionMember
+    factions:
+    - Zombie
+    blackboard:
+      NavInteract: !type:Bool true
+      NavPry: !type:Bool true
+      NavSmash: !type:Bool true
+  - type: Tool
+    speed: 1.5
+    qualities:
+    - Prying
+  - type: Prying
+    pryPowered: !type:Bool
+      true
+    force: !type:Bool
+      false
+    useSound:
+      path: /Audio/Items/crowbar.ogg
+  - type: Hands
+  - type: Physics
+    bodyType: Dynamic
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape: !type:PhysShapeCircle
+          radius: 0.35
+        density: 185
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: MobState
+    allowedStates:
+    - Alive
+    - Dead
+  - type: Puller
+    needsHands: false
+  - type: Tag
+    tags:
+    - CannotSuicide
+    - DoorBumpOpener
+    - FootstepSound
+  - type: NoSlip
+  - type: SpecialZombie
