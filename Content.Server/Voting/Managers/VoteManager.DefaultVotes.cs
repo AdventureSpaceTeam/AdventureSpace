@@ -259,8 +259,7 @@ namespace Content.Server.Voting.Managers
                 options.Options.Add((v, k));
             }
 
-            var random_map_vote = new RandomMapVoteEntry(); // c4llv07e vote random map crash fix
-            options.Options.Add((Loc.GetString("random-map-vote"), random_map_vote)); // DTS
+            options.Options.Add((Loc.GetString("random-map-vote"), new RandomMapVoteEntry())); // DTS
 
             WirePresetVoteInitiator(options, initiator);
 
@@ -278,8 +277,7 @@ namespace Content.Server.Voting.Managers
                 } // DTS END
                 else if (args.Winner == null)
                 {
-                    args.Winners.Remove(random_map_vote); // c4llv07e vote random map crash fix
-                    picked = (GameMapPrototype) _random.Pick(args.Winners);
+                    picked = (GameMapPrototype) _random.Pick(args.Winners.Where(x => !(x is RandomMapVoteEntry)).ToList());
                     _chatManager.DispatchServerAnnouncement(
                         Loc.GetString("ui-vote-map-tie", ("picked", picked.MapName))); // c4llv07e less error-prone map vote
                 }
