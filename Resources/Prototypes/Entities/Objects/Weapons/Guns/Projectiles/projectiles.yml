@@ -392,6 +392,7 @@
     - state: chronobolt
       shader: unshaded
   - type: Projectile
+    damageBodyParts: true
     impactEffect: BulletImpactEffectKinetic
     damage:
       types:
@@ -414,6 +415,7 @@
     - state: chronobolt
       shader: unshaded
   - type: Projectile
+    damageBodyParts: true
     impactEffect: BulletImpactEffectKinetic
     damage:
       types:
