@@ -259,7 +259,8 @@ namespace Content.Server.Voting.Managers
                 options.Options.Add((v, k));
             }
 
-            options.Options.Add((Loc.GetString("random-map-vote"), new RandomMapVoteEntry())); // DTS
+            var random_map_vote = new RandomMapVoteEntry(); // c4llv07e vote random map crash fix
+            options.Options.Add((Loc.GetString("random-map-vote"), random_map_vote)); // DTS
 
             WirePresetVoteInitiator(options, initiator);
 
@@ -273,19 +274,20 @@ namespace Content.Server.Voting.Managers
                     _gameMapManager.SelectMapRandom();
                     picked = _gameMapManager.GetSelectedMap()!;
                     _chatManager.DispatchServerAnnouncement(
-                        Loc.GetString("ui-vote-map-random", ("winner", maps[picked])));
+                        Loc.GetString("ui-vote-map-random", ("winner", picked.MapName))); // c4llv07e less error-prone map vote
                 } // DTS END
                 else if (args.Winner == null)
                 {
+                    args.Winners.Remove(random_map_vote); // c4llv07e vote random map crash fix
                     picked = (GameMapPrototype) _random.Pick(args.Winners);
                     _chatManager.DispatchServerAnnouncement(
-                        Loc.GetString("ui-vote-map-tie", ("picked", maps[picked])));
+                        Loc.GetString("ui-vote-map-tie", ("picked", picked.MapName))); // c4llv07e less error-prone map vote
                 }
                 else
                 {
                     picked = (GameMapPrototype) args.Winner;
                     _chatManager.DispatchServerAnnouncement(
-                        Loc.GetString("ui-vote-map-win", ("winner", maps[picked])));
+                        Loc.GetString("ui-vote-map-win", ("winner", picked.MapName))); // c4llv07e less error-prone map vote
                 }
 
                 _adminLogger.Add(LogType.Vote, LogImpact.Medium, $"Map vote finished: {picked.MapName}");
