@@ -319,3 +319,11 @@ Resources/MapImages
 
 # Direnv stuff
 .direnv/
+Content.Shared/AdventurePrivate
+Content.Server/AdventurePrivate
+Content.Client/AdventurePrivate
+.gitmodules
+Content.Shared/AdventurePrivate
+Content.Server/AdventurePrivate
+Content.Client/AdventurePrivate
+.gitmodules
