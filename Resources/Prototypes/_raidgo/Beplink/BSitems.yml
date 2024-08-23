@@ -18,7 +18,7 @@
     reflectProb: .1
     spread: 90
   - type: Item
-    sprite: /Uploaded/Beplink/Sable.rsi
+    sprite: _raidgo/Sable.rsi
   - type: DisarmMalus
   - type: Tag
     tags:
