@@ -1,10 +1,36 @@
 - type: gameMapPool
   id: AdventureMapPool
   maps:
-  - AdventureAvrite
-  - AdventureBagel
-  - AdventureBox
-  - AdventureCluster
-  - AdventureDelta
-  - AdventureMaus
-  - Starquest
+  - AdventureAvrite     #min 40 max N/A
+  - AdventureBagel      #min 40 max 120
+  - AdventureBox        #min 15 max 120 #rework(too big, original min 50)
+  - AdventureCluster    #min 10 max 35
+  - AdventureDelta      #min 40 max N/A
+  - AdventureMaus       #min 0 max 40
+  - Starquest           #min 0 max 20
+  
+# original list
+#  - Bagel          #min 35 max 70
+#  - Box            #min 50 max N/A
+#  - Cog            #min 35 max 70
+#  - Core           #min 35 max 70
+#  - Fland          #min 70 max N/A
+#  - Marathon       #min 35 max 70
+#  - Meta           #min 50 max N/A
+#  - Oasis          #min 70 max N/A
+#  - Omega          #min 7 max 35
+#  - Packed         #min 7 max 35
+#  - Reach          #min 0 max 7
+
+# Corvax list
+#  - CorvaxDelta    #min 55 max N/A
+#  - CorvaxAvrite   #min 55 max N/A
+#  - CorvaxSilly    #min 0 max 30
+#  - CorvaxAstra    #min 55 max N/A
+#  - CorvaxMaus     #min 0 max 35
+#  - CorvaxPaper    #min 20 max 50
+#  - CorvaxPilgrim  #min 40 max N/A
+#  - CorvaxTerra    #min 0 max 30
+#  - CorvaxPearl    #min 20 max 50
+#  - Box            #min 50 max N/A
+#  - Train          #min 35 max 70
