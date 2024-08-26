@@ -5,9 +5,17 @@
   description: Защищайте командный состав и ВИП персон Центрального Командования
   playTimeTracker: JobBlueshield
   requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 18000 #5 hrs # Corvax-RoleTime
+    - !type:DepartmentTimeRequirement
+      department: Medical
+      time: 3600 #1 hrs # Corvax-RoleTime
     - !type:DepartmentTimeRequirement
       department: Security
-      time: 10800 #3 hrs
+      time: 10800 #3 hrs # Corvax-RoleTime
+    - !type:DepartmentTimeRequirement
+      department: Command
+      time: 3600 # 1 hours
   startingGear: BlueshieldGear
   icon: "JobIconBlueshield"
   requireAdminNotify: true

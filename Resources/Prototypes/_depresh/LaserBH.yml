@@ -1,0 +1,127 @@
+- type: entity
+  name: Х-2 Двухфазовый энергетический пистолет
+  parent: BaseWeaponBatterySmall
+  id: WeaponX2DualphaseEnergyLaserGun
+  description: Этот передовой и дорогой лазерный пистолет офицера "синий щит" был изготовлен на заказ. Он сочетает в себе мощь и функциональность. Пистолет имеет два режима стрельбы - лазер, который наносит урон ожогами на расстоянии, и станер, предназначенный для обезвреживания и задержания противников. Однако он не перезаряжается автоматически.
+  components:
+  - type: Sprite
+    sprite: _depresh/Objects/Weapons/Guns/Battery/DualphasBH.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-unshaded-4
+      map: ["enum.GunVisualLayers.MagUnshaded"]
+      shader: unshaded
+  - type: Gun
+    fireRate: 2
+    projectileSpeed: 50
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/_Depersh/BHWeapon.ogg
+  - type: Item
+    sprite: _depresh/Objects/Weapons/Guns/Battery/DualphasBH.rsi
+    size: Small
+  - type: ProjectileBatteryAmmoProvider
+    proto: LaserBulletForBH
+    fireCost: 200
+  - type: BatteryWeaponFireModes
+    fireModes:
+    - proto: LaserBulletForBH
+      fireCost: 200
+    - proto: stanerBullet
+      fireCost: 100
+  - type: Battery
+    maxCharge: 2800
+    startingCharge: 2800
+  - type: MagazineVisuals
+    magState: mag
+    steps: 5
+    zeroVisible: true
+  - type: Appearance
+  - type: StaticPrice
+    price: 1000
+
+# проджект лазера
+- type: entity
+  name: лазер
+  id: LaserBulletForBH
+  parent: EmitterBolt
+  noSpawn: true
+  components:
+  - type: Sprite
+    sprite: _depresh/Objects/Weapons/Guns/UnivProjectiles.rsi
+    layers:
+    - state: omnilaser_greyscale
+      shader: unshaded
+      color: blue
+  - type: Projectile
+    impactEffect: BulletImpactEffectLaserForBH
+    damage:
+      types:
+        Heat: 17
+
+# проджект станера
+- type: entity
+  name: станер
+  id: stanerBullet
+  parent: BulletDisabler
+  noSpawn: true
+  components:
+  - type: Sprite
+    sprite: _depresh/Objects/Weapons/Guns/UnivProjectiles.rsi
+    layers:
+    - state: omnilaser_greyscale
+      shader: unshaded
+      color: cyan
+  - type: StaminaDamageOnCollide
+    damage: 25
+  - type: Projectile
+    impactEffect: BulletImpactEffectDisablerBlue
+    damage:
+      types:
+        Heat: 3
+    soundHit:
+      collection: WeakHit
+    forceSound: true
+
+# эффект от станера
+- type: entity
+  id: BulletImpactEffectDisablerBlue
+  noSpawn: true
+  components:
+    - type: TimedDespawn
+      lifetime: 0.2
+    - type: Sprite
+      drawdepth: Effects
+      layers:
+        - shader: unshaded
+          map: ["enum.EffectLayers.Unshaded"]
+          sprite: _depresh/Objects/Weapons/Guns/UnivProjectiles.rsi
+          state: impact_laser_greyscale
+          color: cyan
+    - type: EffectVisuals
+    - type: Tag
+      tags:
+        - HideContextMenu
+
+# эффект от лазера
+- type: entity
+  id: BulletImpactEffectLaserForBH
+  noSpawn: true
+  components:
+    - type: TimedDespawn
+      lifetime: 0.2
+    - type: Sprite
+      drawdepth: Effects
+      layers:
+        - shader: unshaded
+          map: ["enum.EffectLayers.Unshaded"]
+          sprite: _depresh/Objects/Weapons/Guns/UnivProjectiles.rsi
+          state: impact_laser_greyscale
+          color: blue
+    - type: EffectVisuals
+    - type: Tag
+      tags:
+        - HideContextMenu
