@@ -1,7 +1,7 @@
 #Супер батарея свармеров
 - type: entity
   id: SwarmerSuperCell
-  name: S.W.A.R.M батарея 
+  name: S.W.A.R.M батарея
   description: Невероятно мощная батарея.
   suffix: BORK (Swarmer)
   parent: BasePowerCell
@@ -41,9 +41,9 @@
   parent: JobIcon
   id: JobIconSwarmerUnit
   icon:
-    sprite: _borkroman/Swarmers/MOB-MODULS/Icons.rsi
+    sprite: /Textures/_borkroman/Swarmers/MOB-MODULS/Icons.rsi
     state: SwarmUnit
-  jobName: U.N.I.T. 
+  jobName: U.N.I.T.
 
 - type: entity
   parent: IDCardStandard
@@ -59,7 +59,7 @@
     layers:
     - state: SwarmCard
   - type: IdCard
-    jobTitle: U.N.I.T. 
+    jobTitle: U.N.I.T.
     jobIcon: JobIconSwarmerUnit
 
 #Модуль Свармера
@@ -80,7 +80,7 @@
   parent: [ BaseModuleSwarmer, BaseProviderBorgModule ]
   description: Главный модуль свармеров
   suffix: BORK (Swarmer)
-  name: Инструментальный S.W.A.R.M модуль 
+  name: Инструментальный S.W.A.R.M модуль
   components:
   - type: Sprite
     sprite: _borkroman/Swarmers/MOB-MODULS/SwarmerModul.rsi
@@ -98,7 +98,7 @@
   parent: [ BaseModuleSwarmer, BaseProviderBorgModule ]
   description: Боевой модуль свармеров
   suffix: BORK (Swarmer)
-  name: Боевой  S.W.A.R.M модуль 
+  name: Боевой  S.W.A.R.M модуль
   components:
   - type: Sprite
     sprite: _borkroman/Swarmers/MOB-MODULS/SwarmerModul.rsi
@@ -327,7 +327,7 @@
   id: SwarmPortalGenerator
   parent: BaseItem
   name: Генератор порталов
-  description: 
+  description:
   components:
   - type: Sprite
     sprite: _borkroman/Swarmers/MOB-MODULS/SwarmerModul.rsi
@@ -428,6 +428,3 @@
     damage:
       types:
         Shock: 3
-
-
-
