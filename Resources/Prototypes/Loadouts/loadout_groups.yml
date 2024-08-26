@@ -418,13 +418,16 @@
   minLimit: 0
   loadouts:
   - JesterHat
+  - JesterAltHat
 
 - type: loadoutGroup
   id: ClownJumpsuit
   name: loadout-group-clown-jumpsuit
   loadouts:
   - ClownSuit
+  - ClownSkirt
   - JesterSuit
+  - JesterAltSuit
 
 - type: loadoutGroup
   id: ClownBackpack
@@ -1021,7 +1024,6 @@
   name: loadout-group-security-shoes
   loadouts:
   - JackSecBoots # Corvax
-  - CombatBoots
   - JackBoots
   - SecurityWinterBoots
 
