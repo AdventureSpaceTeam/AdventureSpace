@@ -1,0 +1,75 @@
+- type: entity
+  name: офицерский клинок
+  parent: BaseSword
+  id: BlueshieldSabre
+  suffix: Adventure
+  description: Церемониальное оружие, принадлежащее офицеру синего щита станции.
+  components:
+  - type: Sprite
+    sprite: _raidgo/Sable.rsi
+  - type: MeleeWeapon
+    attackRate: 1.5
+    damage:
+      types:
+        Slash: 15 #cmon, it has to be at least BETTER than the rest.
+    soundHit:
+        path: /Audio/Weapons/bladeslice.ogg
+  - type: Reflect
+    reflectProb: .1
+    spread: 90
+  - type: Item
+    sprite: _raidgo/Sable.rsi
+  - type: DisarmMalus
+  - type: Tag
+    tags:
+    - CaptainSabre
+
+- type: entity
+  parent: [ClothingBeltBase, ClothingSlotBase]
+  id: ClothingBeltSheathBS
+  name: офицерские сабельные ножны
+  suffix: Adventure
+  description: Удобное хранилище для клинка офицера синего щита.
+  components:
+  - type: Sprite
+    sprite: _raidgo/sheath.rsi
+    state: sheath
+  - type: Clothing
+    sprite: _raidgo/sheath.rsi
+  - type: Item
+    size: Ginormous
+  - type: ItemSlots
+    slots:
+      item:
+        name: Sabre
+        insertVerbText: sheath-insert-verb
+        ejectVerbText: sheath-eject-verb
+        insertSound: /Audio/Items/sheath.ogg
+        ejectSound: /Audio/Items/unsheath.ogg
+        whitelist:
+          tags:
+          - CaptainSabre
+  - type: ItemMapper
+    mapLayers:
+      sheath-sabre:
+        whitelist:
+          tags:
+          - CaptainSabre
+  - type: Appearance
+  - type: ContainerFill
+    containers:
+      item:
+      - BlueshieldSabre
+
+- type: entity
+  parent: ClothingBeltMilitaryWebbing
+  id: ClothingBeltMilitaryWebbingBlueshield
+  name: РПС офицера синего щита
+  description: Удобный и не сковывает движений.
+  components:
+  - type: Sprite
+    sprite: _borkroman/CLEA/CLEA_Webbing.rsi
+  - type: Clothing
+    sprite: _borkroman/CLEA/CLEA_Webbing.rsi
+  - type: ExplosionResistance
+    damageCoefficient: 0.5

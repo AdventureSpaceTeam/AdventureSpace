@@ -14,7 +14,7 @@
       shader: unshaded
   - type: Gun
     fireRate: 2
-    projectileSpeed: 75
+    projectileSpeed: 30
     selectedMode: SemiAuto
     availableModes:
     - SemiAuto
@@ -42,7 +42,7 @@
     price: 1000
 
 - type: entity
-  name: лазер
+  name: Лазер
   id: LaserBullet
   parent: EmitterBolt
   noSpawn: true
@@ -58,7 +58,7 @@
         Heat: 17
 
 - type: entity
-  name: Станер
+  name: Станнер
   id: BulletDisablerForEnergyGum
   parent: BaseBullet
   noSpawn: true
