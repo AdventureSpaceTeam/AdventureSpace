@@ -49,7 +49,6 @@
     outerClothing: ClothingOuterArmorBlueshield
     id: BlueshieldPDA
     ears: ClothingHeadsetAltCommand
-    belt: WeaponPistolN1984
     pocket1: BSuplink
 
 
