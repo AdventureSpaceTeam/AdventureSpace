@@ -17012,16 +17012,6 @@ entities:
       - 8143
       - 24217
       - 22613
-  - uid: 29744
-    components:
-    - type: Transform
-      pos: -4.5,-16.5
-      parent: 8364
-    - type: DeviceList
-      devices:
-      - 4057
-      - 29741
-      - 22423
 - proto: AirCanister
   entities:
   - uid: 444
@@ -20694,16 +20684,6 @@ entities:
     - type: Transform
       pos: 3.5,-66.5
       parent: 8364
-  - uid: 29741
-    components:
-    - type: Transform
-      pos: -0.5,-25.5
-      parent: 8364
-    - type: DeviceNetwork
-      configurators:
-      - invalid
-      deviceLists:
-      - 29744
 - proto: AltarConvertMaint
   entities:
   - uid: 20907
@@ -122643,19 +122623,6 @@ entities:
       parent: 8364
     - type: AtmosPipeColor
       color: '#0055CCFF'
-  - uid: 22423
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 1.5,-25.5
-      parent: 8364
-    - type: DeviceNetwork
-      configurators:
-      - invalid
-      deviceLists:
-      - 29744
-    - type: AtmosPipeColor
-      color: '#0055CCFF'
   - uid: 22458
     components:
     - type: Transform
@@ -123977,19 +123944,6 @@ entities:
       deviceLists:
       - 299
       - 29742
-    - type: AtmosPipeColor
-      color: '#990000FF'
-  - uid: 4057
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -2.5,-25.5
-      parent: 8364
-    - type: DeviceNetwork
-      configurators:
-      - invalid
-      deviceLists:
-      - 29744
     - type: AtmosPipeColor
       color: '#990000FF'
   - uid: 4547
