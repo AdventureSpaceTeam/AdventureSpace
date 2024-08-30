@@ -1,29 +1,31 @@
 Entries:
-- author: "c4llv07e"
+- author: "DTSpawn"
   changes:
-  - message: "Добавлен changelog adventure space!"
+  - message: "Исправили время на некоторые роли, а то оно снова стало больше, чем нужно."
     type: Add
   id: 1
-  time: 2024-05-09T10:57:26+03:00
-- author: "Totohka"
+  time: 2024-08-13T22:25:11+03:00
+- author: "DTSpawn"
   changes:
-  - message: "Добавлена роль Офицера синего щита!"
-    type: Add
-  - message: "Добавлена аптечка бригмедику!"
+  - message: "Обновили правила сервера. Теперь они стали красивее!"
     type: Add
   id: 2
-  time: 2024-05-12T00:58:28+03:00
-- author: "DTS"
+  time: 2024-08-21T23:23:23+03:00
+- author: "DTSpawn"
   changes:
-  - message: ""
+  - message: "Теперь точно поправили правила."
     type: Add
   id: 3
-  time: 2024-05-17T01:40:51+03:00
-- author: "DTS"
+  time: 2024-08-23T01:20:32+03:00
+- author: "DTSpawn"
   changes:
-  - message: "Добавлены комната для ОСЩ, его шкаф и шкаф для бригмедика на следующие карты:"
-    type: Add
-  - message: "Bagel, Box, Cluster, Core, Fland, Marathon, Meta, Oasis, Omega, Origin, Packed, Starquest"
+  - message: "изменили требуемое время для ролей АВД, Пилота, ОСЩ и Бригмедика"
     type: Add
   id: 4
-  time: 2024-05-17T01:40:51+03:00
+  time: 2024-08-23T12:58:30+03:00
+- author: "Mork-mic"
+  changes:
+  - message: "Исправлена ошибка, при которой АВД имел две аварийки"
+    type: Add
+  id: 5
+  time: 2024-08-23T22:55:45+03:00

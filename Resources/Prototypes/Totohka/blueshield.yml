@@ -49,8 +49,7 @@
     outerClothing: ClothingOuterArmorBlueshield
     id: BlueshieldPDA
     ears: ClothingHeadsetAltCommand
-    belt: WeaponPistolN1984
-    pocket1: WeaponTaser
+    pocket1: BSuplink
 
 
 #Карта
