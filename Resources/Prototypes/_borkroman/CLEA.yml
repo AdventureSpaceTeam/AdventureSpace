@@ -194,7 +194,7 @@
   parent: JobIcon
   id: JobIconCLEA
   icon:
-    sprite: _borkroman/CLEA/other/CLEA_icon.rsi
+    sprite: /Textures/_borkroman/CLEA/other/CLEA_icon.rsi
     state: CLEA
   jobName: ЦСС
 

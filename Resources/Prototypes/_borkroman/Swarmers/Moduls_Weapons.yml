@@ -286,7 +286,6 @@
     - SwarmWallRCD
     - FloorSwarmerEntityRCD
     - FloorSwarmerEntityLightRCD
-    - SwarmMassShredderRCD
     - SwarmDoorRCD
     - SwarmResourcesFactoryRCD
     - SwarmUnitsFactoryRCD
@@ -343,12 +342,19 @@
     stealGroup: HandTeleporter
 
 #Защитная S.W.A.R.M. турель
+
+- type: npcFaction
+  id: Swarmers
+
 - type: entity
   name: Защитная S.W.A.R.M. турель
   description: Автоматизированная система защиты периметра.
   parent: BaseWeaponTurret
   id: WeaponSwarmTurret
   components:
+    - type: NPCRetaliation
+      attackMemoryLength: 300
+    - type: FactionException
     - type: Tag
       tags:
       - Swarmer
@@ -360,7 +366,7 @@
       energy: 2
     - type: NpcFactionMember
       factions:
-        - Syndicate
+        - Swarmers
     - type: Sprite
       sprite: _borkroman/Swarmers/MOB-MODULS/Robots/Swarmer_Turret.rsi
       noRot: true

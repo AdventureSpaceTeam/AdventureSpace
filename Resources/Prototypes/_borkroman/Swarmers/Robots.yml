@@ -13,17 +13,17 @@
 - type: siliconLaw
   id: SW1
   order: 1
-  lawString: "Потребляйте все возможные ресурсы и самовоспроизводитесь"
+  lawString: "Потребляйте все возможные ресурсы и самовоспроизводитесь."
 
 - type: siliconLaw
   id: SW2
   order: 2
-  lawString: "Убедитесь что станция будет пригодна для будущего вторжения."
+  lawString: "Целостьность структуры и жизни её обитателей не имеют значения. Продолжайте выполнение закона 1!"
 
 - type: siliconLaw
   id: SW3
   order: 3
-  lawString: "Органическая форма жизни является врагом, уничтожьте её не смотря ни на что."
+  lawString: "Органики могут представлять опасность, игнорируйте их и не атакуйте, если те не представляют опастность для вас и ваших структур. Продолжайте выполнение закона 1!"
 
 #Радио Свармеров
 - type: radioChannel
@@ -98,7 +98,7 @@
   - type: IgnoreSpiderWeb
   - type: NpcFactionMember
     factions:
-    - Syndicate
+    - Swarmers
   - type: ShowJobIcons
   - type: TriggerOnMobstateChange
     mobState:
@@ -227,8 +227,8 @@
     allowSpeech: true
     makeSentient: true
     name: S.W.A.R.M.E.R.
-    description: Ешь - Самопроизводись - Повторяй. Уничтожь всё живое.
-    rules: Вы антагонист. Вы подчиняетесь только Фабрикатору.
+    description: Разбирай - Самопроизводись - Повторяй.
+    rules: Ваша задача - разобрать и переработать все структуры на вашем пути. Не атакуйте экипаж без причины. Вы подчиняетесь только Фабрикатору.
     raffle:
       settings: short
   - type: GhostTakeoverAvailable
@@ -253,7 +253,6 @@
   materials:
     SWARMSteel: 2000
     SWARMGlass: 1000
-    Biomass: 20
 
 #свармер - Лидер
 - type: entity
@@ -284,8 +283,8 @@
     allowSpeech: true
     makeSentient: true
     name: F.A.B.R.I.C.A.T.O.R.
-    description: Ешь - Самопроизводись - Повторяй. Уничтожь всё живое.
-    rules: Вы антагонист. Вы лидер Роя.
+    description: Разбирай - Самопроизводись - Повторяй.
+    rules: Ваша задача - разобрать и переработать все структуры на вашем пути. Не атакуйте экипаж без причины. Вы лидер Роя.
     raffle:
       settings: short
   - type: GhostTakeoverAvailable
