@@ -138,8 +138,6 @@
     contents:
       - id: BoxSurvivalSecurity
       - id: Flash
-      - id: MagazineMagnum
-      - id: MagazineMagnum
 
 #Шапка
 - type: entity
