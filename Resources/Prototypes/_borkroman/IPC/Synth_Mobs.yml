@@ -2,12 +2,12 @@
 - type: radioChannel
   id: Trio
   name: Троичный
-  keycode: '+' 
+  keycode: '+'
   frequency: 123
   color: "#4df9ef"
   longRange: true
 
-#Смерть 
+#Смерть
 - type: emote
   id: SynthDeathgasp
   name: chat-emote-name-deathgasp
@@ -121,7 +121,7 @@
       - !type:PlaySoundBehavior
         sound:
           collection: MetalSlam
-  - type: SlowOnDamage 
+  - type: SlowOnDamage
     speedModifierThresholds:
       60: 0.9
       80: 0.7
@@ -329,4 +329,5 @@
     tags:
       - PowerCellSynth
 
-
+- type: Tag
+  id: PowerCellSynth
