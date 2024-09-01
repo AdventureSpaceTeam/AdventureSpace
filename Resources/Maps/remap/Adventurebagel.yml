@@ -70401,21 +70401,11 @@ entities:
     - type: Transform
       pos: 2.5,-10.5
       parent: 60
-    - type: DeviceNetwork
-      configurators:
-      - invalid
-      deviceLists:
-      - 21483
   - uid: 24488
     components:
     - type: Transform
       pos: 6.5,-10.5
       parent: 60
-    - type: DeviceNetwork
-      configurators:
-      - invalid
-      deviceLists:
-      - 21483
 - proto: Fireplace
   entities:
   - uid: 1532
@@ -95983,11 +95973,6 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 4.5,-11.5
       parent: 60
-    - type: DeviceNetwork
-      configurators:
-      - invalid
-      deviceLists:
-      - 21483
     - type: AtmosPipeColor
       color: '#0335FCFF'
 - proto: GasVentScrubber
@@ -97326,11 +97311,6 @@ entities:
       rot: 3.141592653589793 rad
       pos: 4.5,-10.5
       parent: 60
-    - type: DeviceNetwork
-      configurators:
-      - invalid
-      deviceLists:
-      - 21483
     - type: AtmosPipeColor
       color: '#FF1212FF'
 - proto: GasVolumePump
