@@ -48,7 +48,7 @@
   - HeadOfSecurity
   - ResearchDirector
   - Quartermaster
-  - Blueshield
+  - Blueshield #Adventure
   primary: false
   weight: 100
 
@@ -89,7 +89,7 @@
   - Pilot # Corvax-Pilot
   - Detective
   - Warden
-  - Brigmedic
+  - Brigmedic #Adventure
 
 - type: department
   id: Science
@@ -122,4 +122,6 @@
   - Zookeeper
   - Psychologist
   - Pilot # Corvax-Pilot
+  - Brigmedic #Adventure
+  - Blueshield #Adventure
   primary: false
