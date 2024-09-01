@@ -6,6 +6,7 @@ using Content.Server.Afk;
 using Content.Server.Chat.Managers;
 using Content.Server.Connection;
 using Content.Server.Corvax.GuideGenerator;
+using Content.Server.Corvax.TTS;
 using Content.Server.Database;
 using Content.Server.EUI;
 using Content.Server.GameTicking;
@@ -22,7 +23,6 @@ using Content.Server.Players.RateLimiting;
 using Content.Server.Preferences.Managers;
 using Content.Server.ServerInfo;
 using Content.Server.ServerUpdates;
-using Content.Server.Corvax.TTS;
 using Content.Server.Voting.Managers;
 using Content.Shared.CCVar;
 using Content.Shared.Kitchen;
@@ -170,6 +170,7 @@ namespace Content.Server.Entry
                 IoCManager.Resolve<IGameMapManager>().Initialize();
                 IoCManager.Resolve<IEntitySystemManager>().GetEntitySystem<GameTicker>().PostInitialize();
                 IoCManager.Resolve<IBanManager>().Initialize();
+                IoCManager.Resolve<IConnectionManager>().PostInit();
                 // start-alteros: IoC
                 IoCManager.Resolve<Content.Corvax.Interfaces.Server.IServerJoinQueueManager>().PostInitialize();
                 // end-alteros: IoC
