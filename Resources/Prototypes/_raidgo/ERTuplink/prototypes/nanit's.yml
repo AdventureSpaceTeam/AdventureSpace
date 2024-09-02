@@ -18,10 +18,10 @@
       - !type:HealthChange
         damage:
           groups:
-            Burn: -20
-            Toxin: -16
-            Airloss: -16
-            Brute: -20
+            Burn: -5
+            Toxin: -5
+            Airloss: -5
+            Brute: -5
     Narcotic:
       effects:
       - !type:MovespeedModifier
@@ -51,10 +51,10 @@
       - !type:HealthChange
         damage:
           groups:
-            Burn: -10
-            Toxin: -8
-            Airloss: -8
-            Brute: -10
+            Burn: -2
+            Toxin: -2
+            Airloss: -2
+            Brute: -2
     Narcotic:
       effects:
       - !type:MovespeedModifier
@@ -84,10 +84,10 @@
       - !type:HealthChange
         damage:
           groups:
-            Burn: -6
-            Toxin: -4
-            Airloss: -4
-            Brute: -6
+            Burn: -0
+            Toxin: -0
+            Airloss: -0
+            Brute: -0
     Narcotic:
       effects:
       - !type:MovespeedModifier
