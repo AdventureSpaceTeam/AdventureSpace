@@ -1766,8 +1766,107 @@
     - pyrotton
   lifespan: 25
   maturation: 8
+  production: 3
+  yield: 3
+  potency: 5
+  idealLight: 8
+  growthStages: 3
+  waterConsumption: 0.60
+  chemicals:
+    Fiber:
+      Min: 5
+      Max: 10
+      PotencyDivisor: 20
+
+- type: seed
+  id: pyrotton
+  name: seeds-pyrotton-name
+  noun: seeds-noun-seeds
+  displayName: seeds-pyrotton-display-name
+  plantRsi: Objects/Specific/Hydroponics/pyrotton.rsi
+  packetPrototype: PyrottonSeeds
+  productPrototypes:
+    - PyrottonBol
+  lifespan: 25
+  maturation: 8
+  production: 3
+  yield: 2
+  potency: 5
+  idealLight: 8
+  growthStages: 3
+  waterConsumption: 0.80
+  chemicals:
+    Fiber:
+      Min: 5
+      Max: 10
+      PotencyDivisor: 20
+    Phlogiston:
+      Min: 4
+      Max: 8
+      PotencyDivisor: 30
+
+- type: seed
+  id: cherry
+  name: seeds-cherry-name
+  noun: seeds-noun-seeds
+  displayName: seeds-cherry-display-name
+  plantRsi: Objects/Specific/Hydroponics/cherry.rsi
+  packetPrototype: CherrySeeds
+  productPrototypes:
+    - FoodCherry
+  harvestRepeat: Repeat
+  lifespan: 55
+  maturation: 6
+  production: 6
+  yield: 5
+  potency: 10
+  idealLight: 6
+  chemicals:
+    Nutriment:
+      Min: 1
+      Max: 3
+      PotencyDivisor: 30
+    Vitamin:
+      Min: 1
+      Max: 3
+      PotencyDivisor: 40
+
+- type: seed
+  id: orhidea
+  name: семена орхидеи
+  noun: seeds-noun-seeds
+  displayName: орхидея
+  plantRsi: Objects/Specific/Hydroponics/Flovers/orhidea.rsi
+  packetPrototype: OrhideaSeeds
+  productPrototypes:
+    - Orhidea
+  lifespan: 25
+  maturation: 8
   production: 1
   yield: 1
+  potency: 5
+  idealLight: 8
+  growthStages: 3
+  waterConsumption: 0.60
+  chemicals:
+    Fiber:
+      Min: 5
+      Max: 10
+      PotencyDivisor: 20
+
+- type: seed
+  id: gvozdika
+  name: семена гвоздик
+  noun: seeds-noun-seeds
+  displayName: гвоздика
+  plantRsi: Objects/Specific/Hydroponics/Flovers/gvozdika.rsi
+  packetPrototype: GvozdikaSeeds
+  productPrototypes:
+    - Gvozdika
+  lifespan: 25
+  maturation: 8
+  production: 3
+  yield: 3
   potency: 5
   idealLight: 8
   growthStages: 3
@@ -1833,79 +1932,6 @@
   packetPrototype: TulpanSeeds
   productPrototypes:
     - Tulpan
-  lifespan: 25
-  maturation: 8
-  production: 3
-  yield: 3
-  potency: 5
-  idealLight: 8
-  growthStages: 3
-  waterConsumption: 0.60
-  chemicals:
-    Fiber:
-      Min: 5
-      Max: 10
-      PotencyDivisor: 20
-
-- type: seed
-  id: pyrotton
-  name: seeds-pyrotton-name
-  noun: seeds-noun-seeds
-  displayName: seeds-pyrotton-display-name
-  plantRsi: Objects/Specific/Hydroponics/pyrotton.rsi
-  packetPrototype: PyrottonSeeds
-  productPrototypes:
-    - PyrottonBol
-  lifespan: 25
-  maturation: 8
-  production: 3
-  yield: 2
-  potency: 5
-  idealLight: 8
-  growthStages: 3
-  waterConsumption: 0.80
-  chemicals:
-    Fiber:
-      Min: 5
-      Max: 10
-      PotencyDivisor: 20
-    Phlogiston:
-      Min: 4
-      Max: 8
-      PotencyDivisor: 30
-
-- type: seed
-  id: orhidea
-  name: семена орхидеи
-  noun: seeds-noun-seeds
-  displayName: орхидея
-  plantRsi: Objects/Specific/Hydroponics/Flovers/orhidea.rsi
-  packetPrototype: OrhideaSeeds
-  productPrototypes:
-    - Orhidea
-  lifespan: 25
-  maturation: 8
-  production: 1
-  yield: 1
-  potency: 5
-  idealLight: 8
-  growthStages: 3
-  waterConsumption: 0.60
-  chemicals:
-    Fiber:
-      Min: 5
-      Max: 10
-      PotencyDivisor: 20
-
-- type: seed
-  id: gvozdika
-  name: семена гвоздик
-  noun: seeds-noun-seeds
-  displayName: гвоздика
-  plantRsi: Objects/Specific/Hydroponics/Flovers/gvozdika.rsi
-  packetPrototype: GvozdikaSeeds
-  productPrototypes:
-    - Gvozdika
   lifespan: 25
   maturation: 8
   production: 3

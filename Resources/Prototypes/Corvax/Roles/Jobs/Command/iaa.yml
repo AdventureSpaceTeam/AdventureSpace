@@ -6,10 +6,12 @@
   requirements:
   - !type:DepartmentTimeRequirement
     department: Command
-    time: 72000
+    time: 36000 #10 hrs
   - !type:DepartmentTimeRequirement
     department: Security
-    time: 36000
+    time: 18000 #5 hrs
+  - !type:OverallPlaytimeRequirement
+    time: 72000 #20 hrs
   - !type:AgeRequirement
     requiredAge: 21
   startingGear: IAAGear
@@ -37,6 +39,4 @@
     pocket2: BookSpaceLaw
   inhand:
     - BriefcaseIAAFilled
-  storage:
-    back:
-    - BoxSurvival
+

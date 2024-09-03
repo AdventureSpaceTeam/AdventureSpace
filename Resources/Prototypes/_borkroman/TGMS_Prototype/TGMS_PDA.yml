@@ -19,7 +19,7 @@
   parent: JobIcon
   id: JobIconTGMSMarine
   icon:
-    sprite: _borkroman/TGMS_Sprite/TGMS_other/TGMS_icons.rsi
+    sprite: /Textures/_borkroman/TGMS_Sprite/TGMS_other/TGMS_icons.rsi
     state: Marine
   jobName: морпех
 
@@ -75,7 +75,7 @@
   parent: JobIcon
   id: JobIconTGMSMarineCommander
   icon:
-    sprite: _borkroman/TGMS_Sprite/TGMS_other/TGMS_icons.rsi
+    sprite: /Textures/_borkroman/TGMS_Sprite/TGMS_other/TGMS_icons.rsi
     state: Commander
   jobName: командир
 
@@ -119,7 +119,7 @@
   parent: JobIcon
   id: JobIconTGMSMarineMedical
   icon:
-    sprite: _borkroman/TGMS_Sprite/TGMS_other/TGMS_icons.rsi
+    sprite: /Textures/_borkroman/TGMS_Sprite/TGMS_other/TGMS_icons.rsi
     state: Medical
   jobName: полевой медик
 
@@ -167,7 +167,7 @@
   parent: JobIcon
   id: JobIconTGMSMarineSpec
   icon:
-    sprite: _borkroman/TGMS_Sprite/TGMS_other/TGMS_icons.rsi
+    sprite: /Textures/_borkroman/TGMS_Sprite/TGMS_other/TGMS_icons.rsi
     state: Spec
   jobName: специалист
 
