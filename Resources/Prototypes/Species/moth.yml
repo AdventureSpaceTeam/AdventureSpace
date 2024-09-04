@@ -12,6 +12,9 @@
   femaleFirstNames: names_moth_first_female
   maleLastNames: names_moth_last # Corvax-LastnameGender
   femaleLastNames: names_moth_last # Corvax-LastnameGender
+  youngAge: 10
+  oldAge: 40
+  maxAge: 70
 
 - type: speciesBaseSprites
   id: MobMothSprites

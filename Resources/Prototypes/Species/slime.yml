@@ -8,6 +8,9 @@
   markingLimits: MobSlimeMarkingLimits
   dollPrototype: MobSlimePersonDummy
   skinColoration: Hues
+  youngAge: 15
+  oldAge: 30
+  maxAge: 60
 
 - type: speciesBaseSprites
   id: MobSlimeSprites
