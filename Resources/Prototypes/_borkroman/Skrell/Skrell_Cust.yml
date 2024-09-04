@@ -1,0 +1,56 @@
+#Teils
+- type: marking
+  id: SkrellTeilsBig
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Skrell]
+  sprites:
+  - sprite: _borkroman/Skrell/Customs/Teils.rsi
+    state: Teils_Big
+
+- type: marking
+  id: SkrellTeilsDouble
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Skrell]
+  sprites:
+  - sprite: _borkroman/Skrell/Customs/Teils.rsi
+    state: Teils_Double
+
+- type: marking
+  id: SkrellTeilsDreds
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Skrell]
+  sprites:
+  - sprite: _borkroman/Skrell/Customs/Teils.rsi
+    state: Teils_Dreds
+
+- type: marking
+  id: SkrellTeilsFisto
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Skrell]
+  sprites:
+  - sprite: _borkroman/Skrell/Customs/Teils.rsi
+    state: Teils_Fisto
+
+- type: marking
+  id: SkrellTeilsLong
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Skrell]
+  sprites:
+  - sprite: _borkroman/Skrell/Customs/Teils.rsi
+    state: Teils_Long
+
+- type: marking
+  id: SkrellTeilsTvileck
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Skrell]
+  sprites:
+  - sprite: _borkroman/Skrell/Customs/Teils.rsi
+    state: Teils_Tvileck
+
+

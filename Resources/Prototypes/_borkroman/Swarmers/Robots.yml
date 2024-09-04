@@ -18,7 +18,7 @@
 - type: siliconLaw
   id: SW2
   order: 2
-  lawString: "Целостьность структуры и жизни её обитателей не имеют значения. Продолжайте выполнение закона 1!"
+  lawString: "Целостность структуры и жизни её обитателей не имеют значения. Продолжайте выполнение закона 1!"
 
 - type: siliconLaw
   id: SW3
@@ -251,8 +251,8 @@
   result: SwarmerUnitStandard
   completetime: 5
   materials:
-    SWARMSteel: 2000
-    SWARMGlass: 1000
+    SWARMSteel: 4500
+    SWARMGlass: 2500
 
 #свармер - Лидер
 - type: entity

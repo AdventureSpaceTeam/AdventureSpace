@@ -1,0 +1,186 @@
+﻿- type: entity
+  id: OrganPigManStomach
+  parent: OrganHumanStomach
+  name: Желудок троттина
+  components:
+  - type: Sprite
+    state: stomach
+  - type: Organ
+  - type: SolutionContainerManager
+    solutions:
+      stomach:
+        maxVol: 100
+      food:
+        maxVol: 5
+        reagents:
+        - ReagentId: UncookedAnimalProteins
+          Quantity: 7
+  - type: Stomach
+  - type: Metabolizer
+    maxReagents: 5
+    metabolizerTypes: [Animal]
+
+#Тело Троттина
+- type: body
+  name: "Троттин"
+  id: PigMan
+  root: torso
+  slots:
+    head:
+      part: HeadPigMan
+      connections:
+      - torso
+      organs:
+        brain: OrganHumanBrain
+        eyes: OrganHumanEyes
+    torso:
+      part: TorsoPigMan
+      connections:
+      - right arm
+      - left arm
+      - right leg
+      - left leg
+      organs:
+        heart: OrganHumanHeart
+        lungs: OrganHumanLungs
+        stomach: OrganPigManStomach
+        liver: OrganHumanLiver
+        kidneys: OrganHumanKidneys
+    right arm:
+      part: RightArmPigMan
+      connections:
+      - right hand
+    left arm:
+      part: LeftArmPigMan
+      connections:
+      - left hand
+    right hand:
+      part: RightHandPigMan
+    left hand:
+      part: LeftHandPigMan
+    right leg:
+      part: RightLegPigMan
+    left leg:
+      part: LeftLegPigMan
+
+#Части Троттина
+
+- type: entity
+  id: PartPigMan
+  parent: [BaseItem, BasePart]
+  name: "human body part"
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _borkroman/PigMan/parts.rsi
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: Blood
+        Quantity: 10
+      - ReagentId: Fat
+        Quantity: 10
+
+- type: entity
+  id: TorsoPigMan
+  name: "human torso"
+  parent: [PartPigMan, BaseTorso]
+  components:
+  - type: Sprite
+    sprite: _borkroman/PigMan/parts.rsi
+    state: "torso_m"
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: Blood
+        Quantity: 20
+      - ReagentId: Fat
+        Quantity: 20
+
+- type: entity
+  id: HeadPigMan
+  name: "human head"
+  parent: [PartPigMan, BaseHead]
+  components:
+  - type: Sprite
+    sprite: _borkroman/PigMan/parts.rsi
+    state: "head_m"
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: Blood
+        Quantity: 10
+      - ReagentId: Fat
+        Quantity: 10
+
+- type: entity
+  id: LeftArmPigMan
+  name: "left human arm"
+  parent: [PartPigMan, BaseLeftArm]
+  components:
+  - type: Sprite
+    sprite: _borkroman/PigMan/parts.rsi
+    state: "l_arm"
+
+- type: entity
+  id: RightArmPigMan
+  name: "right human arm"
+  parent: [PartPigMan, BaseRightArm]
+  components:
+  - type: Sprite
+    sprite: _borkroman/PigMan/parts.rsi
+    state: "r_arm"
+
+- type: entity
+  id: LeftHandPigMan
+  name: "left human hand"
+  parent: [PartPigMan, BaseLeftHand]
+  components:
+  - type: Sprite
+    sprite: _borkroman/PigMan/parts.rsi
+    state: "l_hand"
+
+- type: entity
+  id: RightHandPigMan
+  name: "right human hand"
+  parent: [PartPigMan, BaseRightHand]
+  components:
+  - type: Sprite
+    sprite: _borkroman/PigMan/parts.rsi
+    state: "r_hand"
+
+- type: entity
+  id: LeftLegPigMan
+  name: "left human leg"
+  parent: [PartPigMan, BaseLeftLeg]
+  components:
+  - type: Sprite
+    sprite: _borkroman/PigMan/parts.rsi
+    state: "l_leg"
+
+- type: entity
+  id: RightLegPigMan
+  name: "right human leg"
+  parent: [PartPigMan, BaseRightLeg]
+  components:
+  - type: Sprite
+    sprite: _borkroman/PigMan/parts.rsi
+    state: "r_leg"
+
+- type: entity
+  id: LeftFootPigMan
+  name: "left human foot"
+  parent: [PartPigMan, BaseLeftFoot]
+  components:
+  - type: Sprite
+    sprite: _borkroman/PigMan/parts.rsi
+    state: "l_foot"
+
+- type: entity
+  id: RightFootPigMan
+  name: "right human foot"
+  parent: [PartPigMan, BaseRightFoot]
+  components:
+  - type: Sprite
+    sprite: _borkroman/PigMan/parts.rsi
+    state: "r_foot"
