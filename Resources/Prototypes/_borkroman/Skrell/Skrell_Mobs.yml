@@ -1,0 +1,106 @@
+
+- type: entity
+  save: false
+  name: Урист макСкрелл
+  parent: BaseMobSkrell
+  id: MobSkrell
+
+- type: entity
+  abstract: true
+  save: false
+  parent: BaseMobSpeciesOrganic
+  id: BaseMobSkrell
+  name: Урист макСкрелл
+  components:
+  - type: Reactive
+    groups:
+      Flammable: [ Touch ]
+      Extinguish: [ Touch ]
+    reactions:
+    - reagents: [ Water, SpaceCleaner ]
+      methods: [ Touch ]
+      effects:
+      - !type:WashCreamPieReaction
+    - reagents: [ Water ]
+      methods: [ Touch ]
+      effects: 
+      - !type:HealthChange
+        scaleByQuantity: true
+        damage:
+          groups:
+            Burn: -1
+            Brute: -1
+            Airloss: -1
+      - !type:PopupMessage
+        type: Local
+        visualType: Large
+        messages: [ "Ваша кожа впитывает воду" ]
+        probability: 0.25
+  - type: DamageVisuals
+    damageOverlayGroups:
+      Brute:
+        sprite: Mobs/Effects/brute_damage.rsi
+        color: "#454078"
+  - type: Bloodstream
+    bloodReagent: SkrellBlood
+  - type: Vocal
+    sounds:
+      Male: MaleSkrell
+      Female: FemaleSkrell
+      Unsexed: MaleSkrell
+  - type: Speech
+    speechSounds: SkrellSpeach
+  - type: Temperature
+    heatDamageThreshold: 343.15
+    coldDamageThreshold: 303.15
+    currentTemperature: 310.15
+    coldDamage: 
+      types:
+        Cold : 1.5
+    specificHeat: 42
+    heatDamage: 
+      types:
+        Heat : 1.5
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: Scale
+  - type: Body
+    prototype: Skrell
+    requiredLegs: 2
+  - type: Hunger
+  - type: Icon 
+    sprite: _borkroman/Skrell/parts.rsi
+    state: full
+  - type: Thirst
+  - type: Butcherable
+    butcheringType: Spike
+    spawned:
+    - id: FoodMeatLizard
+      amount: 5
+  - type: HumanoidAppearance
+    species: Skrell
+    hideLayersOnEquip:
+    - HeadTop
+    - Snout
+  - type: Inventory
+    femaleDisplacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Human/displacement.rsi
+            state: jumpsuit-female
+
+- type: entity
+  parent: BaseSpeciesDummy
+  id: MobSkrellDummy
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HumanoidAppearance
+    species: Skrell
+  - type: Inventory
+    femaleDisplacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Human/displacement.rsi
+            state: jumpsuit-female

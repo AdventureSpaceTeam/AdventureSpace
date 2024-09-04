@@ -14,58 +14,40 @@
   icon: Interface/Emotes/deathgasp.png
   chatMessages: ["Замирает, его сенсоры отключаются, а модули перестают работать"]
 
-#Звуки
-- type: soundCollection
-  id: SynthDeadCollection
-  files:
-  - /Audio/_borkroman/IPC/SynthDead1.ogg
-  - /Audio/_borkroman/IPC/SynthDead2.ogg
-  - /Audio/_borkroman/IPC/SynthDead3.ogg
-
-- type: soundCollection
-  id: DroidScreamCollection
-  files:
-  - /Audio/_borkroman/IPC/Droid_Scream_1.ogg
-  - /Audio/_borkroman/IPC/Droid_Scream_2.ogg
-  - /Audio/_borkroman/IPC/Droid_Scream_3.ogg
-  - /Audio/_borkroman/IPC/Droid_Scream_4.ogg
-  - /Audio/_borkroman/IPC/Droid_Scream_5.ogg
-
-- type: soundCollection
-  id: SynthStepCollection
-  files:
-  - /Audio/_borkroman/IPC/SynthSteep1.ogg
-  - /Audio/_borkroman/IPC/SynthSteep2.ogg
-  - /Audio/_borkroman/IPC/SynthSteep3.ogg
-  - /Audio/_borkroman/IPC/SynthSteep4.ogg
-
-- type: emoteSounds
-  params:
-    variation: 0.125
-    volume: 3
-  id: DroidScream
-  sounds:
-    Scream:
-      collection: DroidScreamCollection
+- type: entity
+  save: false
+  name: Урист макКПБ
+  parent: BaseMobSynth
+  id: MobSynth
 
 - type: entity
+  abstract: true
   save: false
   name: Урист макКПБ
   parent:
   - MobFlammable
   - BaseMobSpecies
-  id: MobSynth
+  id: BaseMobSynth
   components:
+  - type: MovementSpeedModifier
+    baseSprintSpeed: 4
+    baseWalkSpeed : 2
+  - type: ApcPowerReceiver
+    powerLoad: 0
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 1000
+        restitution: 0.0
+        mask:
+          - MobMask
+        layer:
+          - MobLayer
   - type: Deathgasp
     prototype: SynthDeathgasp
-  - type: TriggerOnMobstateChange
-    mobState:
-    - Dead
-  - type: EmitSoundOnTrigger
-    sound:
-      collection: SynthDeadCollection
-      params:
-        volume: 2
   - type: MeleeWeapon
     soundHit:
       collection: Punch
@@ -130,21 +112,9 @@
   - type: ZombieImmune
   - type: Vocal
     sounds:
-      Male: DroidScream
-      Female: DroidScream
-      Unsexed: DroidScream
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PhysShapeCircle
-          radius: 0.35
-        density: 130
-        restitution: 0.0
-        mask:
-          - MobMask
-        layer:
-          - MobLayer
+      Male: SynthEmote
+      Female: SynthEmote
+      Unsexed: SynthEmote
   - type: FireVisuals
     alternateState: Standing
   - type: FlashImmunity

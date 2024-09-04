@@ -1,0 +1,63 @@
+﻿- type: soundCollection
+  id: PigManScreamCollection
+  files:
+  - /Audio/_borkroman/PigMan/PigScream1.ogg
+  - /Audio/_borkroman/PigMan/PigScream2.ogg
+  - /Audio/_borkroman/PigMan/PigScream3.ogg
+
+- type: speechSounds
+  id: PigManSpeach
+  saySound:
+    path: /Audio/_borkroman/PigMan/PigTalk3.ogg
+  askSound:
+    path: /Audio/_borkroman/PigMan/PigTalk2.ogg
+  exclaimSound:
+    path: /Audio/_borkroman/PigMan/PigTalk1.ogg
+
+- type: emoteSounds
+  id: MalePigMan
+  params:
+    variation: 0.125
+  sounds:
+    Snore:
+      collection: PigManSpeach
+    Scream:
+      collection: PigManScreamCollection
+    Laugh:
+      collection: MaleLaugh
+    Honk:
+      collection: BikeHorn
+    Whistle:
+      collection: Whistles
+    Crying:
+      collection: MaleCry
+    Weh:
+      collection: Weh
+    Gasp:
+      collection: MaleGasp
+    DefaultDeathgasp:
+      path: /Audio/_borkroman/PigMan/PigTalk2.ogg
+
+- type: emoteSounds
+  id: FemalePigMan
+  params:
+    variation: 0.125
+  sounds:
+    Snore:
+      collection: PigManSpeach
+    Scream:
+      collection: PigManScreamCollection
+    Laugh:
+      collection: FemaleLaugh
+    Honk:
+      collection: BikeHorn
+    Whistle:
+      collection: Whistles
+    Crying:
+      collection: FemaleCry
+    Weh:
+      collection: Weh
+    Gasp:
+      collection: FemaleGasp
+    DefaultDeathgasp:
+      path: /Audio/_borkroman/PigMan/PigTalk2.ogg

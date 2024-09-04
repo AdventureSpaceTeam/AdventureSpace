@@ -250,8 +250,8 @@
   - type: Projectile
     damage:
       types:
-        Shock: 8
-        Structural: 30
+        Shock: 3
+        Structural: 50
     ignoreWhitelist:
      tags:
      - Swarmer
@@ -397,7 +397,7 @@
       thresholds:
       - trigger:
           !type:DamageTrigger
-          damage: 50
+          damage: 100
         behaviors:
         - !type:DoActsBehavior
           acts: ["Destruction"]

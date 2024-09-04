@@ -8,9 +8,9 @@
   dollPrototype: MobSynthDummy
   skinColoration: Hues
   defaultSkinTone: "#ebebeb"
-  youngAge: 1500
-  oldAge: 4000
-  maxAge: 4500
+  youngAge: 25
+  oldAge: 25000
+  maxAge: 45000
   sexes:
     - Unsexed
   maleFirstNames: NamesSynth

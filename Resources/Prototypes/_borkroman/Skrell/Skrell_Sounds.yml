@@ -1,0 +1,85 @@
+﻿
+
+- type: soundCollection
+  id: SkrellScreamCollection
+  files:
+  - /Audio/_borkroman/Skrell/skrell_scream1.ogg
+  - /Audio/_borkroman/Skrell/skrell_scream2.ogg
+  - /Audio/_borkroman/Skrell/skrell_scream3.ogg
+
+- type: soundCollection
+  id: SkrellSleepingCollection
+  files:
+  - /Audio/_borkroman/Skrell/skrell_sleep1.ogg
+  - /Audio/_borkroman/Skrell/skrell_sleep2.ogg
+  - /Audio/_borkroman/Skrell/skrell_sleep3.ogg
+
+- type: soundCollection
+  id: SkrellLaughCollection
+  files:
+  - /Audio/_borkroman/Skrell/skrell_haha1.ogg
+  - /Audio/_borkroman/Skrell/skrell_haha2.ogg
+  - /Audio/_borkroman/Skrell/skrell_haha3.ogg
+  - /Audio/_borkroman/Skrell/skrell_haha4.ogg
+  - /Audio/_borkroman/Skrell/skrell_haha5.ogg
+  - /Audio/_borkroman/Skrell/skrell_haha6.ogg
+  - /Audio/_borkroman/Skrell/skrell_haha7.ogg
+
+- type: speechSounds
+  id: SkrellSpeach
+  saySound:
+    path: /Audio/_borkroman/Skrell/skrell_talk2.ogg
+  askSound:
+    path: /Audio/_borkroman/Skrell/skrell_talk1.ogg
+  exclaimSound:
+    path: /Audio/_borkroman/Skrell/skrell_talk3.ogg
+
+- type: emoteSounds
+  id: MaleSkrell
+  params:
+    variation: 0.125
+  sounds:
+    Snore:
+      collection: SkrellSleepingCollection
+    Scream:
+      collection: SkrellScreamCollection
+    Laugh:
+      collection: SkrellLaughCollection
+    Honk:
+      collection: BikeHorn
+    Whistle:
+      collection: Whistles
+    Crying:
+      collection: MaleCry
+    Weh:
+      collection: Weh
+    Gasp:
+      collection: MaleGasp
+    DefaultDeathgasp:
+      path: /Audio/_borkroman/Skrell/skrell_dead.ogg
+      params:
+        volume: 4
+
+- type: emoteSounds
+  id: FemaleSkrell
+  params:
+    variation: 0.125
+  sounds:
+    Snore:
+      collection: SkrellSleepingCollection
+    Scream:
+      collection: SkrellScreamCollection
+    Laugh:
+      collection: SkrellLaughCollection
+    Honk:
+      collection: BikeHorn
+    Whistle:
+      collection: Whistles
+    Crying:
+      collection: FemaleCry
+    Weh:
+      collection: Weh
+    Gasp:
+      collection: FemaleGasp
+    DefaultDeathgasp:
+      path: /Audio/_borkroman/Skrell/skrell_dead.ogg

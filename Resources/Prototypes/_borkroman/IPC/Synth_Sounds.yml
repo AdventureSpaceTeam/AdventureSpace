@@ -1,0 +1,36 @@
+﻿- type: soundCollection
+  id: SynthDeadCollection
+  files:
+  - /Audio/_borkroman/IPC/SynthDead1.ogg
+  - /Audio/_borkroman/IPC/SynthDead2.ogg
+  - /Audio/_borkroman/IPC/SynthDead3.ogg
+
+- type: soundCollection
+  id: DroidScreamCollection
+  files:
+  - /Audio/_borkroman/IPC/Droid_Scream_1.ogg
+  - /Audio/_borkroman/IPC/Droid_Scream_2.ogg
+  - /Audio/_borkroman/IPC/Droid_Scream_3.ogg
+  - /Audio/_borkroman/IPC/Droid_Scream_4.ogg
+  - /Audio/_borkroman/IPC/Droid_Scream_5.ogg
+
+- type: soundCollection
+  id: SynthStepCollection
+  files:
+  - /Audio/_borkroman/IPC/SynthSteep1.ogg
+  - /Audio/_borkroman/IPC/SynthSteep2.ogg
+  - /Audio/_borkroman/IPC/SynthSteep3.ogg
+  - /Audio/_borkroman/IPC/SynthSteep4.ogg
+
+#эмоции
+- type: emoteSounds
+  id: SynthEmote
+  params:
+    variation: 0.125
+  sounds:
+    Scream:
+      collection: DroidScreamCollection
+    DefaultDeathgasp:
+      collection: SynthDeadCollection
+    Whistle:
+      path: /Audio/Machines/twobeep.ogg
