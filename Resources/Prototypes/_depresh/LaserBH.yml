@@ -2,7 +2,7 @@
   name: Х-2 Двухфазовый энергетический пистолет
   parent: BaseWeaponBatterySmall
   id: WeaponX2DualphaseEnergyLaserGun
-  description: Этот передовой и дорогой лазерный пистолет офицера "синий щит" был изготовлен на заказ. Он сочетает в себе мощь и функциональность. Пистолет имеет два режима стрельбы - лазер, который наносит урон ожогами на расстоянии, и станер, предназначенный для обезвреживания и задержания противников. Однако он не перезаряжается автоматически.
+  description: Этот передовой и дорогой лазерный пистолет офицера "синий щит" был изготовлен на заказ. Он сочетает в себе мощь и функциональность. Пистолет имеет два режима стрельбы - лазер, который наносит урон ожогами на расстоянии, и станер, предназначенный для обезвреживания и задержания противников. Имеет слабую самозарядку.
   components:
   - type: Sprite
     sprite: _depresh/Objects/Weapons/Guns/Battery/DualphasBH.rsi
@@ -42,6 +42,8 @@
   - type: Appearance
   - type: StaticPrice
     price: 1000
+  - type: BatterySelfRecharger
+    autoRechargeRate: 10
 
 # проджект лазера
 - type: entity
@@ -64,7 +66,7 @@
 
 # проджект станера
 - type: entity
-  name: станер
+  name: станнер
   id: stanerBullet
   parent: BulletDisabler
   noSpawn: true
@@ -86,7 +88,7 @@
       collection: WeakHit
     forceSound: true
 
-# эффект от станера
+# эффект от станнера
 - type: entity
   id: BulletImpactEffectDisablerBlue
   noSpawn: true
