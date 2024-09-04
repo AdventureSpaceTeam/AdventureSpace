@@ -94,15 +94,6 @@
    stock: 1
 
 - type: listing
-  id: WeaponCrusherDaggershop
-  description: Небольшой кинжал, расчитан на скорость.
-  productEntity: WeaponCrusherDagger
-  cost:
-    ERTCrystal: 2
-  categories:
-  - BSweapons
-
-- type: listing
   id: WeaponPistolMk58Shop
   description: Небольшой маломощный пистолет. Производится на фабриках Nanotrasen.
   productEntity: WeaponPistolMk58
@@ -122,8 +113,7 @@
 
 - type: listing
   id: energygunShop
-  description: Лучший друг офицера синего щита. Имеет 2 режима стрельбы - Станнер и лазер.
-  productEntity: energygun
+  productEntity: WeaponX2DualphaseEnergyLaserGun
   cost:
     ERTCrystal: 8
   categories:
