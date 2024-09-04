@@ -13,6 +13,9 @@
   naming: First
   sexes:
   - Unsexed
+  youngAge: 20
+  oldAge: 40
+  maxAge: 65
 
 - type: speciesBaseSprites
   id: MobVoxSprites
