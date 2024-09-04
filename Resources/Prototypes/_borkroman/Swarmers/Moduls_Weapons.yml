@@ -1,7 +1,7 @@
 #Супер батарея свармеров
 - type: entity
   id: SwarmerSuperCell
-  name: S.W.A.R.M батарея
+  name: S.W.A.R.M батарея 
   description: Невероятно мощная батарея.
   suffix: BORK (Swarmer)
   parent: BasePowerCell
@@ -43,7 +43,7 @@
   icon:
     sprite: /Textures/_borkroman/Swarmers/MOB-MODULS/Icons.rsi
     state: SwarmUnit
-  jobName: U.N.I.T.
+  jobName: U.N.I.T. 
 
 - type: entity
   parent: IDCardStandard
@@ -59,7 +59,7 @@
     layers:
     - state: SwarmCard
   - type: IdCard
-    jobTitle: U.N.I.T.
+    jobTitle: U.N.I.T. 
     jobIcon: JobIconSwarmerUnit
 
 #Модуль Свармера
@@ -80,7 +80,7 @@
   parent: [ BaseModuleSwarmer, BaseProviderBorgModule ]
   description: Главный модуль свармеров
   suffix: BORK (Swarmer)
-  name: Инструментальный S.W.A.R.M модуль
+  name: Инструментальный S.W.A.R.M модуль 
   components:
   - type: Sprite
     sprite: _borkroman/Swarmers/MOB-MODULS/SwarmerModul.rsi
@@ -98,7 +98,7 @@
   parent: [ BaseModuleSwarmer, BaseProviderBorgModule ]
   description: Боевой модуль свармеров
   suffix: BORK (Swarmer)
-  name: Боевой  S.W.A.R.M модуль
+  name: Боевой  S.W.A.R.M модуль 
   components:
   - type: Sprite
     sprite: _borkroman/Swarmers/MOB-MODULS/SwarmerModul.rsi
@@ -250,8 +250,8 @@
   - type: Projectile
     damage:
       types:
-        Shock: 8
-        Structural: 30
+        Shock: 3
+        Structural: 50
     ignoreWhitelist:
      tags:
      - Swarmer
@@ -286,7 +286,6 @@
     - SwarmWallRCD
     - FloorSwarmerEntityRCD
     - FloorSwarmerEntityLightRCD
-    - SwarmMassShredderRCD
     - SwarmDoorRCD
     - SwarmResourcesFactoryRCD
     - SwarmUnitsFactoryRCD
@@ -327,7 +326,7 @@
   id: SwarmPortalGenerator
   parent: BaseItem
   name: Генератор порталов
-  description:
+  description: 
   components:
   - type: Sprite
     sprite: _borkroman/Swarmers/MOB-MODULS/SwarmerModul.rsi
@@ -343,12 +342,19 @@
     stealGroup: HandTeleporter
 
 #Защитная S.W.A.R.M. турель
+
+- type: npcFaction
+  id: Swarmers
+
 - type: entity
   name: Защитная S.W.A.R.M. турель
   description: Автоматизированная система защиты периметра.
   parent: BaseWeaponTurret
   id: WeaponSwarmTurret
   components:
+    - type: NPCRetaliation
+      attackMemoryLength: 300
+    - type: FactionException
     - type: Tag
       tags:
       - Swarmer
@@ -360,7 +366,7 @@
       energy: 2
     - type: NpcFactionMember
       factions:
-        - Syndicate
+        - Swarmers
     - type: Sprite
       sprite: _borkroman/Swarmers/MOB-MODULS/Robots/Swarmer_Turret.rsi
       noRot: true
@@ -391,7 +397,7 @@
       thresholds:
       - trigger:
           !type:DamageTrigger
-          damage: 50
+          damage: 100
         behaviors:
         - !type:DoActsBehavior
           acts: ["Destruction"]
@@ -428,3 +434,6 @@
     damage:
       types:
         Shock: 3
+
+
+

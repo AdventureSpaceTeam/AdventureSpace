@@ -1,0 +1,85 @@
+- type: damageModifierSet
+  id: PigArmIMBA
+  coefficients:
+    Blunt: 0.90
+    Slash: 0.90
+    Piercing: 0.90
+    Cold: 0.85
+    Heat: 0.85
+    Shock: 0.85
+
+- type: entity
+  save: false
+  name: Урист макСвин
+  parent: BaseMobPigMan
+  id: MobPigMan
+
+- type: entity
+  abstract: true
+  save: false
+  parent: BaseMobSpeciesOrganic
+  id: BaseMobPigMan
+  name: Урист макСвин
+  components:
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 600
+        restitution: 0.0
+        mask:
+          - MobMask
+        layer:
+          - MobLayer
+  - type: MovementSpeedModifier
+    baseSprintSpeed: 3.5
+    baseWalkSpeed: 1.5
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: PigArmIMBA
+  - type: Speech
+    speechSounds: PigManSpeach
+  - type: Vocal
+    sounds:
+      Male: MalePigMan
+      Female: FemalePigMan
+      Unsexed: MalePigMan
+  - type: Body
+    prototype: PigMan
+    requiredLegs: 2
+  - type: Hunger
+    baseDecayRate: 0.0333
+    thresholds:
+      Overfed: 100
+      Okay: 75
+      Peckish: 50
+      Starving: 25
+      Dead: 0
+  - type: Thirst
+    baseDecayRate: 0.0333
+  - type: Icon 
+    sprite: _borkroman/PigMan/parts.rsi
+    state: full
+  - type: Butcherable
+    butcheringType: Spike
+    spawned:
+    - id: FoodMeatBacon
+      amount: 8
+  - type: HumanoidAppearance
+    species: PigMan
+    hideLayersOnEquip:
+    - Hair
+    - Snout
+    - HeadSide
+
+- type: entity
+  parent: BaseSpeciesDummy
+  id: MobPigManDummy
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HumanoidAppearance
+    species: PigMan
+  - type: Body
+    prototype: PigMan

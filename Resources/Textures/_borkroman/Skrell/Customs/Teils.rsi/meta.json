@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "made by borkroman",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "Teils_Big",
+      "directions": 4
+    },
+    {
+      "name": "Teils_Double",
+      "directions": 4
+    },
+    {
+      "name": "Teils_Dreds",
+      "directions": 4
+    },
+    {
+      "name": "Teils_Fisto",
+      "directions": 4
+    },
+    {
+      "name": "Teils_Long",
+      "directions": 4
+    },
+    {
+      "name": "Teils_Tvileck",
+      "directions": 4
+    }
+  ]
+}
