@@ -29,3 +29,51 @@ Entries:
     type: Add
   id: 5
   time: 2024-08-23T22:55:45+03:00
+- author: "DTSpawn"
+  changes:
+  - message: "Теперь бригмедик и ОСЩ отображаются как роли для определённых станций"
+    type: Add
+  id: 6
+  time: 2024-09-02T00:28:40+03:00
+- author: "TheRaidGo"
+  changes:
+  - message: "Наниты больше не лечат."
+    type: Add
+  id: 7
+  time: 2024-09-02T14:27:56+06:00
+- author: "DTSpawn"
+  changes:
+  - message: "поправили проводку в медах на боксе"
+    type: Add
+  id: 8
+  time: 2024-09-02T14:39:32+03:00
+- author: "DTSpawn"
+  changes:
+  - message: "Багел и Дельта теперь от 30 игроков."
+    type: Add
+  id: 9
+  time: 2024-09-02T16:19:44+03:00
+- author: "DTSpawn"
+  changes:
+  - message: "Гриншифт добавлен в голосование за режим игры."
+    type: Add
+  id: 10
+  time: 2024-09-03T00:25:15+03:00
+- author: "borkroman"
+  changes:
+  - message: "Добавлены Скреллы."
+    type: Add
+  id: 11
+  time: 2024-09-05T21:17:21+03:00
+- author: "borkroman"
+  changes:
+  - message: "Добавлены Троттины."
+    type: Add
+  id: 12
+  time: 2024-09-05T21:18:05+03:00
+- author: "borkroman"
+  changes:
+  - message: "Добавлена система возраста."
+    type: Add
+  id: 13
+  time: 2024-09-05T21:18:29+03:00
