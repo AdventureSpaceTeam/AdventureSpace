@@ -3,7 +3,7 @@
   alias:
   - spokoini
   name: Спокойный
-  showInVote: false #4boring4vote
+  showInVote: true #RaidGocalmgamemode
   description: Режим игры без агрессивных событий.
   rules:
   - SpaceTrafficControlFriendlyEventScheduler 
