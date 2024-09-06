@@ -43,7 +43,7 @@
   - type: StaticPrice
     price: 1000
   - type: BatterySelfRecharger
-    autoRechargeRate: 10
+    autoRechargeRate: 5
 
 # проджект лазера
 - type: entity
