@@ -1,0 +1,10 @@
+- type: gamePreset
+  id: Calm
+  alias:
+  - spokoini
+  name: Спокойный
+  showInVote: true #RaidGocalmgamemode
+  description: Режим игры без агрессивных событий.
+  rules:
+  - SpaceTrafficControlFriendlyEventScheduler 
+  - BasicRoundstartVariation

@@ -88,7 +88,7 @@
   - greenshift
   - shittersafarideluxeedition
   name: greenshift-title
-  showInVote: true #4boring4vote
+  showInVote: false #RaidGoCalmgamemode
   description: greenshift-description
   rules:
   - SpaceTrafficControlFriendlyEventScheduler 
