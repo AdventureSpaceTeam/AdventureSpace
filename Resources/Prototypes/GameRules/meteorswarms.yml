@@ -59,8 +59,8 @@
   - type: BasicStationEventScheduler
     minimumTimeUntilFirstEvent: 300 # 5 min
     minMaxEventTiming:
-      min: 750 # 12.5 min
-      max: 930 # 17.5 min
+      min: 900 # 15 min #Adventure
+      max: 2100 # 35 min #Adventure
     scheduledGameRules: !type:NestedSelector
       tableId: BasicMeteorSwarmEventsTable
 
@@ -72,8 +72,8 @@
   - type: BasicStationEventScheduler
     minimumTimeUntilFirstEvent: 300 # 5 min 
     minMaxEventTiming:
-      min: 750 # 12.5 min
-      max: 930 # 17.5 min
+      min: 900 # 15 min #Adventure
+      max: 2100 # 35 min #Adventure
     scheduledGameRules: !type:NestedSelector
       tableId: MeteorSwarmMildTable
 
@@ -95,7 +95,7 @@
   components:
   - type: GameRule
   - type: StationEvent
-    reoccurrenceDelay: 10
+    reoccurrenceDelay: 1
     earliestStart: 12
     minimumPlayers: 25
   - type: MeteorSwarm
@@ -205,7 +205,7 @@
     startAudio:
       path: /Audio/Announcements/attention.ogg
     weight: 3.5
-    reoccurrenceDelay: 10
+    reoccurrenceDelay: 1
     duration: 1
     earliestStart: 30
     minimumPlayers: 25
