@@ -7777,16 +7777,16 @@ entities:
           id: docking847455
           localAnchorB: -0.5,0
           localAnchorA: -5.5,11
-          damping: 742.5105
-          stiffness: 6664.759
+          damping: 742.509
+          stiffness: 6664.7456
         docking847454: !type:WeldJoint
           bodyB: 17715
           bodyA: 2
           id: docking847454
           localAnchorB: 1.5,0
           localAnchorA: -3.5,11
-          damping: 742.5105
-          stiffness: 6664.759
+          damping: 742.509
+          stiffness: 6664.7456
   - uid: 16474
     components:
     - type: MetaData
@@ -93089,11 +93089,6 @@ entities:
     - type: Transform
       pos: -82.5,-60.5
       parent: 2
-  - uid: 10816
-    components:
-    - type: Transform
-      pos: -37.5,-3.5
-      parent: 2
 - proto: PottedPlantAlt3
   entities:
   - uid: 10817
@@ -96325,13 +96320,25 @@ entities:
       rot: 3.141592653589793 rad
       pos: -55.427597,-44.47368
       parent: 2
-- proto: PrinterDoc
+- proto: Printer
   entities:
-  - uid: 11297
+  - uid: 10816
+    components:
+    - type: Transform
+      pos: -37.5,-3.5
+      parent: 2
+  - uid: 20486
+    components:
+    - type: Transform
+      pos: -30.5,-14.5
+      parent: 2
+  - uid: 20487
     components:
     - type: Transform
       pos: -34.5,-18.5
       parent: 2
+- proto: PrinterDoc
+  entities:
   - uid: 11298
     components:
     - type: Transform
@@ -96343,12 +96350,6 @@ entities:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -53.5,-50.5
-      parent: 2
-  - uid: 11300
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -30.5,-14.5
       parent: 2
 - proto: Protolathe
   entities:
@@ -106857,6 +106858,11 @@ entities:
     - type: InsideEntityStorage
 - proto: Table
   entities:
+  - uid: 11300
+    components:
+    - type: Transform
+      pos: -30.5,-14.5
+      parent: 2
   - uid: 12759
     components:
     - type: Transform
@@ -107460,6 +107466,11 @@ entities:
     components:
     - type: Transform
       pos: -9.5,9.5
+      parent: 2
+  - uid: 13046
+    components:
+    - type: Transform
+      pos: -29.5,-14.5
       parent: 2
   - uid: 17469
     components:
@@ -108637,6 +108648,11 @@ entities:
       parent: 16884
 - proto: TableWood
   entities:
+  - uid: 11297
+    components:
+    - type: Transform
+      pos: -34.5,-18.5
+      parent: 2
   - uid: 13033
     components:
     - type: Transform
@@ -108705,11 +108721,6 @@ entities:
     components:
     - type: Transform
       pos: -37.5,-17.5
-      parent: 2
-  - uid: 13046
-    components:
-    - type: Transform
-      pos: -29.5,-14.5
       parent: 2
   - uid: 13047
     components:

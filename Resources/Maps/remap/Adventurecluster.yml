@@ -55116,7 +55116,7 @@ entities:
   - uid: 5063
     components:
     - type: Transform
-      pos: -0.47162104,32.53128
+      pos: -3.6348882,32.04531
       parent: 1
 - proto: HandheldGPSBasic
   entities:
@@ -56880,20 +56880,6 @@ entities:
     - type: Transform
       pos: 0.4215492,21.564632
       parent: 1
-- proto: MaterialReclaimer
-  entities:
-  - uid: 7289
-    components:
-    - type: Transform
-      pos: 21.5,-24.5
-      parent: 1
-- proto: MaterialReclaimerMachineCircuitboard
-  entities:
-  - uid: 9518
-    components:
-    - type: Transform
-      pos: -2.569489,-34.556107
-      parent: 1
 - proto: MaterialWoodPlank
   entities:
   - uid: 8495
@@ -57547,12 +57533,6 @@ entities:
     components:
     - type: Transform
       pos: -10.5,31.5
-      parent: 1
-  - uid: 5073
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -2.5,19.5
       parent: 1
   - uid: 5581
     components:
@@ -60580,6 +60560,18 @@ entities:
           ent: 12623
     - type: ApcPowerReceiver
       powerLoad: 0
+- proto: Printer
+  entities:
+  - uid: 5073
+    components:
+    - type: Transform
+      pos: -0.5,32.5
+      parent: 1
+  - uid: 7289
+    components:
+    - type: Transform
+      pos: -2.5,19.5
+      parent: 1
 - proto: Protolathe
   entities:
   - uid: 3806
