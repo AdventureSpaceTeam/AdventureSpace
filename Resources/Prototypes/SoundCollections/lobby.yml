@@ -1,6 +1,13 @@
 - type: soundCollection
   id: LobbyMusic
   files:
+# adventure new lobby music begin
+    - /Audio/Adventure/Lobby/Galaxies_and_echoes.ogg
+    - /Audio/Adventure/Lobby/Bluespace.ogg
+    - /Audio/Adventure/Lobby/Downtown.ogg
+    - /Audio/Adventure/Lobby/Metropolis.ogg
+    - /Audio/Adventure/Lobby/Runner_in_motion.ogg
+# adventure new lobby music end
     - /Audio/Lobby/thunderdome.ogg
     - /Audio/Lobby/absconditus.ogg
     - /Audio/Lobby/space_asshole.ogg
