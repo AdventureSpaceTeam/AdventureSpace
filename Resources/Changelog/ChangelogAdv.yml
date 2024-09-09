@@ -59,21 +59,69 @@ Entries:
     type: Add
   id: 10
   time: 2024-09-03T00:25:15+03:00
+- author: "TheRaidGo"
+  changes:
+  - message: "Обновлён старый энергетический пистолет офицера синего щита."
+    type: Add
+  id: 11
+  time: 2024-09-04T20:41:46+06:00
+- author: "TheRaidGo"
+  changes:
+  - message: "Добавлен спокойный режим игры на замену гриншифта."
+    type: Add
+  id: 12
+  time: 2024-09-05T22:48:24+06:00
+- author: "TheRaidGo"
+  changes:
+  - message: "Убран гриншифт из пула режимов"
+    type: Add
+  id: 13
+  time: 2024-09-05T22:50:25+06:00
+- author: "TheRaidGo"
+  changes:
+  - message: "Добавлен спокойный режим игры на замену гриншифту"
+    type: Add
+  id: 14
+  time: 2024-09-05T22:51:42+06:00
 - author: "borkroman"
   changes:
   - message: "Добавлены Скреллы."
     type: Add
-  id: 11
+  id: 15
   time: 2024-09-05T21:17:21+03:00
 - author: "borkroman"
   changes:
   - message: "Добавлены Троттины."
     type: Add
-  id: 12
+  id: 16
   time: 2024-09-05T21:18:05+03:00
 - author: "borkroman"
   changes:
   - message: "Добавлена система возраста."
     type: Add
-  id: 13
+  id: 17
   time: 2024-09-05T21:18:29+03:00
+- author: "DTSpawn"
+  changes:
+  - message: "Замена энергопистолета ОСЩ в аплинке"
+    type: Add
+  id: 18
+  time: 2024-09-05T22:46:36+03:00
+- author: "DTSpawn"
+  changes:
+  - message: "Обновление карт Bagel, Box и Maus"
+    type: Add
+  id: 19
+  time: 2024-09-07T12:04:16+03:00
+- author: "DTSpawn"
+  changes:
+  - message: "на карты из пула карт добавлены принтеры. Принтеры Корвакса заменили на принтеры Adventure Space."
+    type: Add
+  id: 20
+  time: 2024-09-08T18:08:34+03:00
+- author: "TheRaidGo"
+  changes:
+  - message: "Добавлена печать ОСЩ."
+    type: Add
+  id: 21
+  time: 2024-09-09T21:06:18+06:00
