@@ -247,6 +247,7 @@
       - id: ClothingOuterHardsuitBlueshield
       - id: TrackingImplanter
       - id: TrackingImplanter
+      - id: RubberStampblueshield
 
 #Броня
 - type: entity
@@ -268,3 +269,17 @@
         Heat: 0.5
   - type: ExplosionResistance
     damageCoefficient: 0.80
+
+#Печать ОСЩ by raidgo
+- type: entity
+  name: печать офицера синего щита
+  parent: RubberStampBase
+  id: RubberStampblueshield
+  suffix: Adventure
+  components:
+  - type: Stamp
+    stampedName: Синий Щит
+    stampedColor: "#233D57"
+    stampState: "paper_stamp-lawyer"
+  - type: Sprite
+    state: stamp-lawyer
