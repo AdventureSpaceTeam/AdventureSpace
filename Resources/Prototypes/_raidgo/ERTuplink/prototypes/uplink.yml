@@ -74,12 +74,11 @@
   - ERTweapons
 
 - type: listing
-  id: EnergySwordERT
+  id: EnergySwordERTs
   productEntity: EnergySwordERT
   cost:
     ERTCrystal: 12
   categories:
-  - ERTweapons
 
 - type: listing
   id: WeaponPlasmaGunERT
@@ -108,7 +107,7 @@
   - type: Sprite
     sprite: _raidgo/sprite/communication.rsi
     layers:
-    - state: old-radio
+    - state: ERT
   - type: Appearance
   - type: StaticPrice
     price: 100
@@ -456,7 +455,7 @@
   - type: Sprite
     sprite: _raidgo/sprite/communication.rsi
     layers:
-    - state: old-radio
+    - state: ERT
   - type: Appearance
   - type: StaticPrice
     price: 100
@@ -579,7 +578,7 @@
   - type: Sprite
     sprite: _raidgo/sprite/communication.rsi
     layers:
-    - state: old-radio
+    - state: ERT
   - type: Appearance
   - type: StaticPrice
     price: 100
@@ -663,7 +662,7 @@
   - type: Sprite
     sprite: _raidgo/sprite/communicationleader.rsi
     layers:
-    - state: old-radio
+    - state: ERT_L
   - type: Appearance
   - type: StaticPrice
     price: 100
@@ -788,7 +787,7 @@
   - type: Sprite
     sprite: _raidgo/sprite/communication.rsi
     layers:
-    - state: old-radio
+    - state: ERT
   - type: Appearance
   - type: StaticPrice
     price: 100
@@ -873,7 +872,7 @@
   - type: Sprite
     sprite: _raidgo/sprite/communication.rsi
     layers:
-    - state: old-radio
+    - state: ERT
   - type: Appearance
   - type: StaticPrice
     price: 100
@@ -970,7 +969,7 @@
   - type: Sprite
     sprite: _raidgo/sprite/communication.rsi
     layers:
-    - state: old-radio
+    - state: CBURN
   - type: Appearance
   - type: StaticPrice
     price: 100
@@ -1081,7 +1080,7 @@
   - type: Sprite
     sprite: _raidgo/sprite/communication.rsi
     layers:
-    - state: old-radio
+    - state: CBURN_L
   - type: Appearance
   - type: StaticPrice
     price: 100

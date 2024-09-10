@@ -1,25 +1,65 @@
 {
-  "version": 1,
-  "license": "CC-BY-SA-3.0",
-  "copyright": "",
-  "size": {
-    "x": 32,
-    "y": 32
-  },
-  "states": [
+    "version": 1,
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "license": "CC-BY-SA-3.0",
+    "copyright": "made by borkroman",
+    "states": [
     {
-      "name": "old-radio"
+      "name": "CBURN"
     },
     {
-      "name": "open"
+      "name": "CBURN_L"
     },
     {
-      "name": "old-radio-inhand-left",
-      "directions": 4
+      "name": "CBURN-unshaded",
+      "delays": [
+        [
+          0.1,
+          0.1
+        ]
+      ]
     },
     {
-      "name": "old-radio-inhand-right",
-      "directions": 4
+      "name": "CLEA"
+    },
+    {
+      "name": "CLEA_L"
+    },
+    {
+      "name": "CLEA-unshaded",
+      "delays": [
+        [
+          0.1,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "ERT"
+    },
+    {
+      "name": "ERT-unshaded",
+      "delays": [
+        [
+          0.1,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "ERT_L"
+    },
+    {
+      "name": "ERT_L-unshaded",
+      "delays": [
+        [
+          0.1,
+          0.1
+        ]
+      ]
     }
   ]
 }
