@@ -24,7 +24,7 @@
   id: PigMan
   name: Троттин
   sponsorOnly: true
-  roundStart: false
+  roundStart: true
   prototype: MobPigMan
   sprites: MobPigManSprites
   markingLimits: MobPigManMarkingLimits

@@ -10,7 +10,7 @@
 - type: species
   id: Skrell
   name: Скрелл
-  roundStart: false
+  roundStart: true
   sponsorOnly: true
   prototype: MobSkrell
   sprites: MobSkrellSprites
