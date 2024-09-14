@@ -37,6 +37,9 @@
 - type: markingPoints
   id: MobPigManMarkingLimits
   points:
+    FacialHair:
+      points: 1
+      required: false
     Hair:
       points: 1
       required: false
@@ -64,6 +67,7 @@
 - type: speciesBaseSprites
   id: MobPigManSprites
   sprites:
+    FacialHair: MobHumanoidAnyMarking
     HeadSide: MobHumanoidAnyMarking
     Hair: MobHumanoidAnyMarking
     Snout: MobHumanoidAnyMarking
