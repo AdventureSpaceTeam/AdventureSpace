@@ -21,13 +21,8 @@
   requireAdminNotify: true
   supervisors: job-supervisors-centcom
   canBeAntag: false
-  access:
-  - Command
-  - Security
-  - Maintenance
-  - Cryogenics
-  - External
-  - Brig
+  accessGroups:
+  - AllAccess
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
