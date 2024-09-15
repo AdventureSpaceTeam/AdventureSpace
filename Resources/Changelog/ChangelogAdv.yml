@@ -131,3 +131,21 @@ Entries:
     type: Add
   id: 22
   time: 2024-09-11T15:01:03+07:00
+- author: "Bork Roman"
+  changes:
+  - message: "Добавлена раса Зерах. Троттины теперь могут носить бороды."
+    type: Add
+  id: 23
+  time: 2024-09-14T15:48:13+07:00
+- author: "TheRaidGo"
+  changes:
+  - message: "Изменены спрайты скафандров."
+    type: Add
+  id: 24
+  time: 2024-09-15T17:59:44+03:00
+- author: "TheRaidGo"
+  changes:
+  - message: "Фул для ОСЩ. Теперь у офицера синего щита будет полный доступ."
+    type: Add
+  id: 25
+  time: 2024-09-14T22:14:29+06:00
