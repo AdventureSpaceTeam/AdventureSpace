@@ -30,7 +30,7 @@ echo Entries:
 for hash in $(git log --grep="${special_symbol}" --format=%H%n | tac); do
     echo "- author: \"$(git show --format=%an -s ${hash})\""
     echo "  changes:"
-    git log --format=%B -n 1 "${hash}" | awk "/${special_symbol}/,/^$/" | sed "s/${special_symbol}//" | xargs | awk NF |
+    git log --format=%B -n 1 "${hash}" | awk "/${special_symbol}/,/^$/" | tr -d "\r" | sed "s/${special_symbol}//" | xargs | awk NF |
     {
         while read message
         do
