@@ -61,6 +61,12 @@
             Borg: [ 1 , 1 ]
             #custom
             Blueshield: [ 1, 1 ]
+            # Bork
+            CargoBorg: [ 1, 1 ]
+            EngenerBorg: [ 1, 1 ]
+            JanitorBorg: [ 1, 1 ]
+            MedIcalBorg: [ 1, 1 ]
+            ServiceBorg: [ 1, 1 ]
 #            XO: [ 1, 1 ]
 #            Foreman: [ 1, 1 ]
 #            HeadDoctor: [ 1, 1 ]

@@ -39,6 +39,14 @@
   params:
     variation: 0.125
   sounds:
+    Yawn:
+      collection: MaleYawn
+    Sneeze:
+      collection: MaleSneezes
+    Cough:
+      collection: MaleCoughs
+    Sigh:
+      collection: MaleSigh
     Snore:
       collection: SkrellSleepingCollection
     Scream:
@@ -65,6 +73,12 @@
   params:
     variation: 0.125
   sounds:
+    Sneeze:
+      collection: FemaleSneezes
+    Cough:
+      collection: FemaleCoughs
+    Sigh:
+      collection: FemaleSigh
     Snore:
       collection: SkrellSleepingCollection
     Scream:
