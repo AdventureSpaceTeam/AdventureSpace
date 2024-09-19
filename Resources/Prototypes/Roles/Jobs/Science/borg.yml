@@ -7,7 +7,22 @@
   requirements:
   - !type:RoleTimeRequirement
     role: JobBorg
-    time: 18000  # 5 hrs
+    time: 3600 
+  - !type:RoleTimeRequirement
+    role: JobCargoBorg
+    time: 3600
+  - !type:RoleTimeRequirement
+    role: JobEngenerBorg
+    time: 3600
+  - !type:RoleTimeRequirement
+    role: JobJanitorBorg
+    time: 3600
+  - !type:RoleTimeRequirement
+    role: JobMedIcalBorg
+    time: 3600
+  - !type:RoleTimeRequirement
+    role: JobServiceBorg
+    time: 3600
   canBeAntag: false
   icon: JobIconStationAi
   supervisors: job-supervisors-rd

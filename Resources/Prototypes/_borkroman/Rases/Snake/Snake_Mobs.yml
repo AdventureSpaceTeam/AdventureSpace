@@ -45,7 +45,7 @@
     footstepSoundCollection:
       collection: SnakeStep
       params:
-        volume: -1
+        volume: -3
   - type: Fixtures
     fixtures: 
       fix1:
