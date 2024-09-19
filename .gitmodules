@@ -2,3 +2,12 @@
 	path = RobustToolbox
 	url = https://github.com/space-wizards/RobustToolbox.git
 	branch = master
+[submodule "Content.Client/AdventurePrivate"]
+	path = Content.Client/AdventurePrivate
+	url = git@github.com:AdventureSpaceTeam/PrivateClient.git
+[submodule "Content.Server/AdventurePrivate"]
+	path = Content.Server/AdventurePrivate
+	url = git@github.com:AdventureSpaceTeam/PrivateServer.git
+[submodule "Content.Shared/AdventurePrivate"]
+	path = Content.Shared/AdventurePrivate
+	url = git@github.com:AdventureSpaceTeam/PrivateShared.git

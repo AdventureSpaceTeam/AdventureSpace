@@ -61,6 +61,12 @@
             # remap
             Blueshield: [ 1, 1 ]
             Brigmedic: [ 1, 1 ]
+            # Bork
+            CargoBorg: [ 1, 1 ]
+            EngenerBorg: [ 1, 1 ]
+            JanitorBorg: [ 1, 1 ]
+            MedIcalBorg: [ 1, 1 ]
+            ServiceBorg: [ 1, 1 ]
         - type: StationGoal
           goals:
           - Shuttle
