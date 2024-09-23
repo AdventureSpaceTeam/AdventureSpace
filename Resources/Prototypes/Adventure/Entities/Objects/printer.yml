@@ -33,8 +33,9 @@
   - type: Machine
     board: PrinterMachineCircuitboard
   - type: Lathe
-    # idleState: icon
-    # runningState: building
+    producingSound: /Audio/Machines/scanning.ogg
+    idleState: icon
+    runningState: building
     staticRecipes:
       - Document0
       - Document1
