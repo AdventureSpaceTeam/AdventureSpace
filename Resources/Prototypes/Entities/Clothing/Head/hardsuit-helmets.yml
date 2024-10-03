@@ -54,8 +54,8 @@
       - state: equipped-head
       - state: equipped-head-unshaded
         shader: unshaded
-  - type: PointLight
-    color: "#adffe6"
+  - type: PointLight # Adventure-Resprite
+    color: "#a4fef4"
   - type: PressureProtection
     highPressureMultiplier: 0.08
     lowPressureMultiplier: 1000
@@ -77,7 +77,7 @@
   - type: Clothing
     sprite: Clothing/Head/Hardsuits/engineering.rsi
   - type: PointLight
-    color: "#ffdbad"
+    color: "#a4fef4" # Adventure-Resprite
   - type: PressureProtection
     highPressureMultiplier: 0.1
     lowPressureMultiplier: 1000
@@ -220,7 +220,7 @@
   - type: Clothing
     sprite: Clothing/Head/Hardsuits/security-warden.rsi
   - type: PointLight
-    color: cyan # Corvax-Resprite
+    color: "#ffeead" # Adventure-Resprite
   - type: PressureProtection
     highPressureMultiplier: 0.525
     lowPressureMultiplier: 1000
@@ -258,8 +258,8 @@
     sprite: Clothing/Head/Hardsuits/engineering-white.rsi
   - type: Clothing
     sprite: Clothing/Head/Hardsuits/engineering-white.rsi
-  - type: PointLight # Corvax-Resprite
-    color: "#e6aa5c"
+  - type: PointLight # Adventure-Resprite
+    color: "#a4fef4"
   - type: PressureProtection
     highPressureMultiplier: 0.08
     lowPressureMultiplier: 1000
@@ -312,7 +312,7 @@
   - type: Clothing
     sprite: Clothing/Head/Hardsuits/security-red.rsi
   - type: PointLight
-    color: "#ffeead"
+    color: "#ffeead" 
   - type: PressureProtection
     highPressureMultiplier: 0.45
     lowPressureMultiplier: 1000

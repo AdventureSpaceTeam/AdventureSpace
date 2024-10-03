@@ -28,7 +28,7 @@
     - !type:OverallPlaytimeRequirement
       time: 72000 #20 hrs # Corvax-RoleTime
     - !type:AgeRequirement
-      requiredAge: 21
+      requiredAge: 30
   weight: 20
   startingGear: CaptainGear
   icon: "JobIconCaptain"

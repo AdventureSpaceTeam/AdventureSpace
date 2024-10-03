@@ -21,6 +21,17 @@
   id: BaseMobPigMan
   name: Урист макСвин
   components:
+  - type: Temperature
+    heatDamageThreshold: 325
+    coldDamageThreshold: 243.15
+    currentTemperature: 310.15
+    coldDamage: 
+      types:
+        Cold : 0.1
+    specificHeat: 42
+    heatDamage: 
+      types:
+        Heat : 1.5
   - type: Fixtures
     fixtures:
       fix1:

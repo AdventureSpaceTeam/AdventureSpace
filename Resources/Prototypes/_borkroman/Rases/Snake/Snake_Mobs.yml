@@ -45,7 +45,7 @@
     footstepSoundCollection:
       collection: SnakeStep
       params:
-        volume: -3
+        volume: -5
   - type: Fixtures
     fixtures: 
       fix1:
@@ -132,7 +132,7 @@
     - HeadSide
   - type: Inventory
     templateId: Zerah
-    speciesId: Zerah
+    speciesId: reptilian
     femaleDisplacements:
       jumpsuit:
         sizeMaps:
