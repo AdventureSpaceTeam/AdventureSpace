@@ -1,4 +1,4 @@
-﻿namespace Content.Corvax.Interfaces.Client;
+﻿namespace Content.Alteros.Interfaces.Client;
 
 public interface IClientJoinQueueManager
 {

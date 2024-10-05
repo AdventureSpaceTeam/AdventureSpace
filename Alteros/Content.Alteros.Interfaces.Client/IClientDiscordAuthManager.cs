@@ -1,7 +1,7 @@
-using Content.Corvax.Interfaces.Shared;
+using Content.Alteros.Interfaces.Shared;
 using Robust.Client.Graphics;
 
-namespace Content.Corvax.Interfaces.Client;
+namespace Content.Alteros.Interfaces.Client;
 
 public interface IClientDiscordAuthManager : ISharedDiscordAuthManager
 {

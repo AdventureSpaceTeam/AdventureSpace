@@ -17,6 +17,8 @@
     <PackageReference Include="JetBrains.Annotations" PrivateAssets="All" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Alteros\Content.Alteros.Interfaces.Server\Content.Alteros.Interfaces.Server.csproj" />
+    <ProjectReference Include="..\Alteros\Content.Alteros.Interfaces.Shared\Content.Alteros.Interfaces.Shared.csproj" />
     <ProjectReference Include="..\Content.Packaging\Content.Packaging.csproj" />
     <ProjectReference Include="..\Content.Server.Database\Content.Server.Database.csproj" />
     <ProjectReference Include="..\Content.Shared.Database\Content.Shared.Database.csproj" />

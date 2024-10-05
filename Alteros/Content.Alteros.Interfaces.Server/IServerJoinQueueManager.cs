@@ -1,4 +1,4 @@
-namespace Content.Corvax.Interfaces.Server;
+﻿namespace Content.Alteros.Interfaces.Server;
 
 public interface IServerJoinQueueManager
 {

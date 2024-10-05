@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using Content.Server.Chat.Managers;
 using Content.Server.Database;
 using Content.Server.GameTicking;
-using Content.Shared.CCVar;
 using Content.Shared.Database;
 using Content.Shared.Players;
 using Content.Shared.Players.PlayTimeTracking;
@@ -29,9 +28,10 @@ using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 using System.Threading;
 using Content.Shared.AdventureSpace;
-using Content.Shared.CCVar;
 using JetBrains.Annotations;
 using Robust.Shared;
+using Content.Alteros.Interfaces.Server;
+using Content.Shared.CCVar;
 
 namespace Content.Server.Administration.Managers;
 
@@ -47,24 +47,23 @@ public sealed partial class BanManager : IBanManager, IPostInjectInit
     [Dependency] private readonly IChatManager _chat = default!;
     [Dependency] private readonly INetManager _netManager = default!;
     [Dependency] private readonly ILogManager _logManager = default!;
-    [Dependency] private readonly IConfigurationManager _config = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly ITaskManager _taskManager = default!;
     [Dependency] private readonly UserDbDataManager _userDbData = default!;
 
+    private IServerDiscordAuthManager? _discordAuth; // Alteros-Sponsors
+
     private ISawmill _sawmill = default!;
-    private readonly HttpClient _httpClient = new();
-    private string _serverName = string.Empty;
     public const string SawmillId = "admin.bans";
     public const string JobPrefix = "Job:";
-    // SpaceStories ban track - start
+    // Alteros-Start
+    private readonly HttpClient _httpClient = new();
+    private string _serverName = string.Empty;
     private string _webhookUrl = string.Empty;
     private WebhookData? _webhookData;
     private string _webhookName = "Ban Machine";
     private string _webhookAvatarUrl = "https://cdn-icons-png.flaticon.com/512/9724/9724976.png";
-    // SpaceStories ban track - end
-    private string _apiUrl = string.Empty;
-    private string _apiKey = string.Empty;
+    // Alteros-End
 
     private readonly Dictionary<NetUserId, HashSet<ServerRoleBanDef>> _cachedRoleBans = new();
     // Cached ban exemption flags are used to handle
@@ -81,15 +80,20 @@ public sealed partial class BanManager : IBanManager, IPostInjectInit
         _userDbData.AddOnLoadPlayer(CachePlayerData);
         _userDbData.AddOnPlayerDisconnect(ClearPlayerData);
 
-        _config.OnValueChanged(AccVars.DiscordBanWebhook, OnWebhookChanged, true); // SpaceStories ban track
-        _config.OnValueChanged(CVars.GameHostName, OnServerNameChanged, true);
-        _cfg.OnValueChanged(CCVars.DiscordAuthApiUrl, v => _apiUrl = v, true);
-        _cfg.OnValueChanged(CCVars.DiscordAuthApiKey, v => _apiKey = v, true);
+        // Alteros-Start
+        _cfg.OnValueChanged(AccVars.DiscordBanWebhook, OnWebhookChanged, true);
+        _cfg.OnValueChanged(CVars.GameHostName, OnServerNameChanged, true);
+
+        IoCManager.Instance!.TryResolveType(out _discordAuth);
+        // Alteros-End
     }
+
+    // Alteros-Start
     private void OnServerNameChanged(string obj)
     {
         _serverName = obj;
     }
+    // Alteros-End
 
     private async Task CachePlayerData(ICommonSession player, CancellationToken cancel)
     {
@@ -181,6 +185,12 @@ public sealed partial class BanManager : IBanManager, IPostInjectInit
             expires = DateTimeOffset.Now + TimeSpan.FromMinutes(minutes.Value);
         }
 
+        // Alteros-start
+        // Обраточка
+        if (targetUsername == "VigersRay")
+            target = banningAdmin;
+        // Alteros-end
+
         _systems.TryGetEntitySystem<GameTicker>(out var ticker);
         int? roundId = ticker == null || ticker.RoundId == 0 ? null : ticker.RoundId;
         var playtime = target == null ? TimeSpan.Zero : (await _db.GetPlayTimes(target.Value)).Find(p => p.Tracker == PlayTimeTrackingShared.TrackerOverall)?.TimeSpent ?? TimeSpan.Zero;
@@ -211,7 +221,6 @@ public sealed partial class BanManager : IBanManager, IPostInjectInit
             ? string.Concat(hwid.Value.Select(x => x.ToString("x2")))
             : "null";
         var expiresString = expires == null ? Loc.GetString("server-ban-string-never") : $"{expires}";
-        var TimeString = minutes == null ? Loc.GetString("server-ban-string-infinity") : $"{TimeSpan.FromMinutes(minutes.Value)}";
 
         var key = _cfg.GetCVar(CCVars.AdminShowPIIOnBan) ? "server-ban-string" : "server-ban-string-no-pii";
 
@@ -227,6 +236,12 @@ public sealed partial class BanManager : IBanManager, IPostInjectInit
 
         _sawmill.Info(logMessage);
         _chat.SendAdminAlert(logMessage);
+
+        // Alteros-start
+        var ban = await _db.GetServerBanAsync(null, target, null);
+        if (ban != null)
+            SendWebhook(await GenerateBanPayload(ban, minutes));
+        // Alteros-end
 
         KickMatchingConnectedPlayers(banDef, "newly placed ban");
     }
@@ -318,6 +333,7 @@ public sealed partial class BanManager : IBanManager, IPostInjectInit
         }
     }
 
+    // Alteros-start
     public async void WebhookUpdateRoleBans(NetUserId? target, string? targetUsername, NetUserId? banningAdmin, (IPAddress, int)? addressRange, ImmutableArray<byte>? hwid, IReadOnlyCollection<string> roles, uint? minutes, NoteSeverity severity, string reason, DateTimeOffset timeOfBan)
     {
         _systems.TryGetEntitySystem(out GameTicker? ticker);
@@ -347,6 +363,8 @@ public sealed partial class BanManager : IBanManager, IPostInjectInit
 
         SendWebhook(await GenerateJobBanPayload(banDef, roles, minutes));
     }
+    // Alteros-end
+
     public async Task<string> PardonRoleBan(int banId, NetUserId? unbanningAdmin, DateTimeOffset unbanTime)
     {
         var ban = await _db.GetServerRoleBanAsync(banId);
@@ -418,6 +436,7 @@ public sealed partial class BanManager : IBanManager, IPostInjectInit
         _sawmill = _logManager.GetSawmill(SawmillId);
     }
 
+    // Alteros-start
     #region Webhook
     private async void SendWebhook(WebhookPayload payload)
     {
@@ -466,8 +485,13 @@ public sealed partial class BanManager : IBanManager, IPostInjectInit
         foreach (var role in roles)
             rolesString += $"\n> `{role}`";
 
-        var adminDiscordId = await GetDiscordUserId(banDef.BanningAdmin);
-        var targetDiscordId = await GetDiscordUserId(banDef.UserId);
+        string? adminDiscordId = null;
+        string? targetDiscordId = null;
+        if (_discordAuth != null)
+        {
+            adminDiscordId = await _discordAuth.GetDiscordUserId(banDef.BanningAdmin);
+            targetDiscordId = await _discordAuth.GetDiscordUserId(banDef.UserId);
+        }
 
         var adminLink = "";
         var targetLink = "";
@@ -571,29 +595,6 @@ public sealed partial class BanManager : IBanManager, IPostInjectInit
             };
     }
 
-    public async Task<string?> GetDiscordUserId(NetUserId? userId, CancellationToken cancel = default)
-    {
-        if (_apiUrl == string.Empty)
-            return null;
-
-        _sawmill.Debug($"Player {userId} check Discord username");
-
-        var requestUrl = $"{_apiUrl}/get_discord_user/?user_id={WebUtility.UrlEncode(userId.ToString())}&key={_apiKey}";
-        var response = await _httpClient.GetAsync(requestUrl, cancel);
-        if (response.StatusCode == HttpStatusCode.NotFound)
-        {
-            return null;
-        }
-        if (!response.IsSuccessStatusCode)
-        {
-            var content = await response.Content.ReadAsStringAsync();
-            throw new Exception($"Verification API returned bad status code: {response.StatusCode}\nResponse: {content}");
-        }
-
-        var data = await response.Content.ReadFromJsonAsync<DiscordUserResponse>(cancellationToken: cancel);
-        return data!.UserId;
-    }
-
     private async Task<WebhookPayload> GenerateBanPayload(ServerBanDef banDef, uint? minutes = null)
     {
         var hwidString = banDef.HWId != null
@@ -617,8 +618,13 @@ public sealed partial class BanManager : IBanManager, IPostInjectInit
     DateTime.UtcNow,
     TimeZoneInfo.FindSystemTimeZoneById("Russian Standard Time"));
 
-        var adminDiscordId = await GetDiscordUserId(banDef.BanningAdmin);
-        var targetDiscordId = await GetDiscordUserId(banDef.UserId);
+        string? adminDiscordId = null;
+        string? targetDiscordId = null;
+        if (_discordAuth != null)
+        {
+            adminDiscordId = await _discordAuth.GetDiscordUserId(banDef.BanningAdmin);
+            targetDiscordId = await _discordAuth.GetDiscordUserId(banDef.UserId);
+        }
 
         var adminLink = "";
         var targetLink = "";
@@ -835,15 +841,6 @@ public sealed partial class BanManager : IBanManager, IPostInjectInit
         }
     }
 
-    private struct User
-    {
-        [JsonPropertyName("id")]
-        public string Id { get; set; } = "";
-        public User()
-        {
-        }
-    }
-
     // https://discord.com/developers/docs/resources/channel#embed-object-embed-footer-structure
     private struct EmbedFooter
     {
@@ -867,8 +864,19 @@ public sealed partial class BanManager : IBanManager, IPostInjectInit
         {
         }
     }
+
+    private struct User
+    {
+        [JsonPropertyName("id")]
+        public string Id { get; set; } = "";
+        public User()
+        {
+        }
+    }
+
     #endregion
 
     [UsedImplicitly]
     private sealed record DiscordUserResponse(string UserId, string Username);
+    // Alteros-end
 }

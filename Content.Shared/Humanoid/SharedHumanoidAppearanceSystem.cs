@@ -1,8 +1,6 @@
 using System.IO;
 using System.Linq;
-using Content.Corvax.Interfaces.Shared;
-using Content.Shared.CCVar;
-using Content.Shared.Decals;
+using Content.Alteros.Interfaces.Shared;
 using Content.Shared.Examine;
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.Humanoid.Prototypes;
@@ -88,7 +86,7 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
 
         var profile = export.Profile;
         var collection = IoCManager.Instance;
-        var sponsorPrototypes = _sponsors != null && _sponsors.TryGetServerPrototypes(session.UserId, out var prototypes) ? prototypes.ToArray() : []; // Corvax-Sponsors
+        var sponsorPrototypes = _sponsors?.GetClientPrototypes().ToArray() ?? []; // Alteros-Sponsors
         profile.EnsureValid(session, collection!, sponsorPrototypes);
         return profile;
     }

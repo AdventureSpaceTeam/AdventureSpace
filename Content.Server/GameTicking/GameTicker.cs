@@ -1,4 +1,3 @@
-using Content.Corvax.Interfaces.Server;
 using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
 using Content.Server.Chat.Managers;

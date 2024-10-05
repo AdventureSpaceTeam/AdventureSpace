@@ -101,7 +101,7 @@ public sealed class DepartmentBanCommand : IConsoleCommand
             _banManager.CreateRoleBan(targetUid, located.Username, shell.Player?.UserId, null, targetHWid, job, minutes, severity, reason, now);
             roles.Add(job.Id);
         }
-        _banManager.WebhookUpdateRoleBans(targetUid, located.Username, shell.Player?.UserId, null, targetHWid, roles, minutes, severity, reason, now); // Sunrise-Edit
+        _banManager.WebhookUpdateRoleBans(targetUid, located.Username, shell.Player?.UserId, null, targetHWid, roles, minutes, severity, reason, now); // Alteros-Edit
     }
 
     public CompletionResult GetCompletion(IConsoleShell shell, string[] args)

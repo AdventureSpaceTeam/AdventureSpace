@@ -12,6 +12,7 @@
     <PackageReference Include="JetBrains.Annotations" PrivateAssets="All" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Alteros\Content.Alteros.Interfaces.Shared\Content.Alteros.Interfaces.Shared.csproj" />
     <ProjectReference Include="..\Content.Shared.Database\Content.Shared.Database.csproj" />
     <ProjectReference Include="..\RobustToolbox\Lidgren.Network\Lidgren.Network.csproj">
       <Private>false</Private>
@@ -22,7 +23,7 @@
     <ProjectReference Include="..\RobustToolbox\Robust.Shared\Robust.Shared.csproj">
       <Private>false</Private>
     </ProjectReference>
-    <ProjectReference Include="..\Corvax\Content.Corvax.Interfaces.Shared\Content.Corvax.Interfaces.Shared.csproj" />
+    <ProjectReference Include="..\Corvax\Content.Alteros.Interfaces.Shared\Content.Alteros.Interfaces.Shared.csproj" />
   </ItemGroup>
   <Import Project="..\RobustToolbox\MSBuild\Robust.Properties.targets" />
   <Import Project="..\RobustToolbox\MSBuild\Robust.CompNetworkGenerator.targets" />

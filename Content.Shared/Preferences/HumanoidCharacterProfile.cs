@@ -1,12 +1,12 @@
 using System.Linq;
 using System.Text.RegularExpressions;
 using Content.Shared.CCVar;
+using Content.Shared.Corvax.TTS;
 using Content.Shared.GameTicking;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Preferences.Loadouts;
 using Content.Shared.Roles;
-using Content.Shared.Corvax.TTS;
 using Content.Shared.Traits;
 using Robust.Shared.Collections;
 using Robust.Shared.Configuration;
@@ -26,7 +26,7 @@ namespace Content.Shared.Preferences
     [Serializable, NetSerializable]
     public sealed partial class HumanoidCharacterProfile : ICharacterProfile
     {
-        private static readonly Regex RestrictedNameRegex = new("[^А-Яа-яёЁ0-9' -]"); // Corvax-Localization
+        private static readonly Regex RestrictedNameRegex = new("[^А-Яа-яA-Za-zёЁ0-9, ,\\-,'.]"); // Alteros-edit
         private static readonly Regex ICNameCaseRegex = new(@"^(?<word>\w)|\b(?<word>\w)(?=\w*$)");
 
         public const int MaxNameLength = 32;
@@ -127,13 +127,13 @@ namespace Content.Shared.Preferences
         /// </summary>
         [DataField]
         public PreferenceUnavailableMode PreferenceUnavailable { get; private set; } =
-            PreferenceUnavailableMode.SpawnAsOverflow;
+            PreferenceUnavailableMode.StayInLobby; // Alteros-Edit
 
         public HumanoidCharacterProfile(
             string name,
             string flavortext,
             string species,
-            string voice, // Corvax-TTS
+            string voice, // Alteros-TTS
             int age,
             Sex sex,
             Gender gender,
@@ -148,7 +148,7 @@ namespace Content.Shared.Preferences
             Name = name;
             FlavorText = flavortext;
             Species = species;
-            Voice = voice; // Corvax-TTS
+            Voice = voice; // Alteros-TTS
             Age = age;
             Sex = sex;
             Gender = gender;
@@ -244,12 +244,12 @@ namespace Content.Shared.Preferences
                 age = random.Next(speciesPrototype.MinAge, speciesPrototype.OldAge); // people don't look and keep making 119 year old characters with zero rp, cap it at middle aged
             }
 
-            // Corvax-TTS-Start
+            // Alteros-TTS-Start
             var voiceId = random.Pick(prototypeManager
                 .EnumeratePrototypes<TTSVoicePrototype>()
                 .Where(o => CanHaveVoice(o, sex)).ToArray()
             ).ID;
-            // Corvax-TTS-End
+            // Alteros-TTS-End
 
             var gender = Gender.Epicene;
 
@@ -272,7 +272,7 @@ namespace Content.Shared.Preferences
                 Age = age,
                 Gender = gender,
                 Species = species,
-                Voice = voiceId, // Corvax-TTS
+                Voice = voiceId, // Alteros-TTS
                 Appearance = HumanoidCharacterAppearance.Random(species, sex),
             };
         }
@@ -307,12 +307,12 @@ namespace Content.Shared.Preferences
             return new(this) { Species = species };
         }
 
-        // Corvax-TTS-Start
+        // Alteros-TTS-Start
         public HumanoidCharacterProfile WithVoice(string voice)
         {
             return new(this) { Voice = voice };
         }
-        // Corvax-TTS-End
+        // Alteros-TTS-End
 
         public HumanoidCharacterProfile WithCharacterAppearance(HumanoidCharacterAppearance appearance)
         {
@@ -504,13 +504,13 @@ namespace Content.Shared.Preferences
                 speciesPrototype = prototypeManager.Index(Species);
             }
 
-            // Corvax-Sponsors-Start: Reset to human if player not sponsor
+            // Alteros-Sponsors-Start: Reset to human if player not sponsor
             if (speciesPrototype.SponsorOnly && !sponsorPrototypes.Contains(Species.Id))
             {
                 Species = SharedHumanoidAppearanceSystem.DefaultSpecies;
-                speciesPrototype = prototypeManager.Index(Species);
+                speciesPrototype = prototypeManager.Index<SpeciesPrototype>(Species);
             }
-            // Corvax-Sponsors-End
+            // Alteros-Sponsors-End
 
             var sex = Sex switch
             {
@@ -582,7 +582,7 @@ namespace Content.Shared.Preferences
             var prefsUnavailableMode = PreferenceUnavailable switch
             {
                 PreferenceUnavailableMode.StayInLobby => PreferenceUnavailableMode.StayInLobby,
-                PreferenceUnavailableMode.SpawnAsOverflow => PreferenceUnavailableMode.SpawnAsOverflow,
+                //PreferenceUnavailableMode.SpawnAsOverflow => PreferenceUnavailableMode.SpawnAsOverflow, // Alteros-Edit
                 _ => PreferenceUnavailableMode.StayInLobby // Invalid enum values.
             };
 
@@ -646,11 +646,11 @@ namespace Content.Shared.Preferences
             _traitPreferences.Clear();
             _traitPreferences.UnionWith(GetValidTraits(traits, prototypeManager));
 
-            // Corvax-TTS-Start
+            // Alteros-TTS-Start
             prototypeManager.TryIndex<TTSVoicePrototype>(Voice, out var voice);
             if (voice is null || !CanHaveVoice(voice, Sex))
                 Voice = SharedHumanoidAppearanceSystem.DefaultSexVoice[sex];
-            // Corvax-TTS-End
+            // Alteros-TTS-End
 
             // Checks prototypes exist for all loadouts and dump / set to default if not.
             var toRemove = new ValueList<string>();
@@ -663,7 +663,7 @@ namespace Content.Shared.Preferences
                     continue;
                 }
 
-                loadouts.EnsureValid(this, session, collection);
+                loadouts.EnsureValid(this, session, collection, sponsorPrototypes); // Alteros-Sponsors
             }
 
             foreach (var value in toRemove)
@@ -711,13 +711,12 @@ namespace Content.Shared.Preferences
             return result;
         }
 
-        // Corvax-TTS-Start
-        // SHOULD BE NOT PUBLIC, BUT....
+        // Alteros-TTS-Start
         public static bool CanHaveVoice(TTSVoicePrototype voice, Sex sex)
         {
             return voice.RoundStart && sex == Sex.Unsexed || (voice.Sex == sex || voice.Sex == Sex.Unsexed);
         }
-        // Corvax-TTS-End
+        // Alteros-TTS-End
 
         public ICharacterProfile Validated(ICommonSession session, IDependencyCollection collection, string[] sponsorPrototypes)
         {
@@ -782,15 +781,15 @@ namespace Content.Shared.Preferences
             return profile;
         }
 
-        public RoleLoadout GetLoadoutOrDefault(string id, ICommonSession? session, ProtoId<SpeciesPrototype>? species, IEntityManager entManager, IPrototypeManager protoManager)
+        public RoleLoadout GetLoadoutOrDefault(string id, ICommonSession? session, ProtoId<SpeciesPrototype>? species, IEntityManager entManager, IPrototypeManager protoManager, string [] sponsorPrototypes)
         {
             if (!_loadouts.TryGetValue(id, out var loadout))
             {
                 loadout = new RoleLoadout(id);
-                loadout.SetDefault(this, session, protoManager, force: true);
+                loadout.SetDefault(this, session, protoManager, sponsorPrototypes, force: true);
             }
 
-            loadout.SetDefault(this, session, protoManager);
+            loadout.SetDefault(this, session, protoManager, sponsorPrototypes);
             return loadout;
         }
 

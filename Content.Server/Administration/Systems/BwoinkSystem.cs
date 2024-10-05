@@ -1,11 +1,10 @@
-using System.Linq;
+﻿using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using Content.Corvax.Interfaces.Shared;
 using Content.Server.Administration.Managers;
 using Content.Server.Afk;
 using Content.Server.Database;
@@ -25,6 +24,7 @@ using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
+using Content.Alteros.Interfaces.Shared; // Alteros-Sponsors
 
 namespace Content.Server.Administration.Systems
 {
@@ -43,6 +43,7 @@ namespace Content.Server.Administration.Systems
         [Dependency] private readonly IAfkManager _afkManager = default!;
         [Dependency] private readonly IServerDbManager _dbManager = default!;
         [Dependency] private readonly PlayerRateLimitManager _rateLimit = default!;
+        private ISharedSponsorsManager? _sponsorsManager; // Alteros-Sponsors
 
         [GeneratedRegex(@"^https://discord\.com/api/webhooks/(\d+)/((?!.*/).*)$")]
         private static partial Regex DiscordRegex();
@@ -565,38 +566,51 @@ namespace Content.Server.Administration.Systems
 
             var escapedText = FormattedMessage.EscapeText(message.Text);
 
-            // Alteros-Sponsors-start
+            // Alteros-Sponsors-Start
             string bwoinkText;
+            string adminPrefix = "";
 
-            var sponsors = IoCManager.Resolve<ISharedSponsorsManager>();
+            //Getting an administrator position
+            if (_config.GetCVar(CCVars.AhelpAdminPrefix) && senderAdmin is not null && senderAdmin.Title is not null)
+            {
+                adminPrefix = $"[bold]\\[{senderAdmin.Title}\\][/bold] ";
+            }
+
             if (senderAdmin is not null &&
                 senderAdmin.Flags ==
                 AdminFlags.Adminhelp) // Mentor. Not full admin. That's why it's colored differently.
             {
-                bwoinkText = $"[color=purple]\\[{senderAdmin.Title}\\] {senderSession.Name}[/color]: {escapedText}";
+                bwoinkText = $"[color=purple]{adminPrefix}{senderSession.Name}[/color]";
             }
             else if (senderAdmin is not null && senderAdmin.HasFlag(AdminFlags.Adminhelp))
             {
-                bwoinkText = $"[color=red]\\[{senderAdmin.Title}\\] {senderSession.Name}[/color]: {escapedText}";
+                bwoinkText = $"[color=red]{adminPrefix}{senderSession.Name}[/color]";
             }
-            else
+            else if (_sponsorsManager != null)
             {
-                sponsors.TryGetServerOocColor(message.UserId, out var oocColor);
-                sponsors.TryGetServerOocTitle(message.UserId, out var sponsorTitle);
+                _sponsorsManager.TryGetOocColor(message.UserId, out var oocColor);
+                _sponsorsManager.TryGetOocTitle(message.UserId, out var oocTitle);
+                var sponsorTitle = oocTitle is null ? "" : $"\\[{oocTitle}\\]";
                 if (oocColor != null)
                 {
-                    bwoinkText = $"[color={oocColor.Value.ToHex()}]\\[{sponsorTitle}\\] {senderSession.Name}[/color]: {escapedText}";
+                    bwoinkText = $"[color={oocColor.Value.ToHex()}]{sponsorTitle} {senderSession.Name}[/color]";
                 }
                 else
                 {
-                    bwoinkText = $"\\[{sponsorTitle}\\] {senderSession.Name}: {escapedText}";
+                    bwoinkText = $"{sponsorTitle} {senderSession.Name}";
                 }
             }
+            else
+            {
+                bwoinkText = $"{senderSession.Name}";
+            }
+
+            bwoinkText = $"{(message.PlaySound ? "" : "(S) ")}{bwoinkText}: {escapedText}";
 
             // If it's not an admin / admin chooses to keep the sound then play it.
             var playSound = !senderAHelpAdmin || message.PlaySound;
             var msg = new BwoinkTextMessage(message.UserId, senderSession.UserId, bwoinkText, playSound: playSound);
-            // Alteros-Sponsors-end
+            // Alteros-Sponsors-End
 
             LogBwoink(msg);
 
@@ -698,6 +712,7 @@ namespace Content.Server.Administration.Systems
                 .ToList();
         }
 
+        // Returns all online admins with AHelp access
         public IList<INetChannel> GetTargetAdmins()
         {
             return _adminManager.ActiveAdmins

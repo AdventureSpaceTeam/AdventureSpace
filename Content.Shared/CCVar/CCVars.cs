@@ -2225,11 +2225,17 @@ namespace Content.Shared.CCVar
             CVarDef.Create("news.content_limit", 2048, CVar.SERVER | CVar.REPLICATED);
 
         /*
-        * New Life
-        */
+         * New Life
+         */
+
+        public static readonly CVarDef<bool> NewLifeEnable =
+            CVarDef.Create("newlife.enable", true, CVar.SERVER | CVar.REPLICATED);
+
+        public static readonly CVarDef<bool> NewLifeSponsorOnly =
+            CVarDef.Create("newlife.sponsor_only", false, CVar.SERVER | CVar.REPLICATED);
 
         public static readonly CVarDef<int> NewLifeTimeout =
-            CVarDef.Create("newlife.timeout", 30);
+            CVarDef.Create("newlife.timeout", 30, CVar.SERVERONLY);
 
         /*
          * Discord Auth
@@ -2244,8 +2250,8 @@ namespace Content.Shared.CCVar
         public static readonly CVarDef<bool> DiscordAuthCheckMember =
             CVarDef.Create("discord_auth.check_member", false, CVar.SERVERONLY);
 
-        public static readonly CVarDef<string> DiscordAuthApiKey =
-            CVarDef.Create("discord_auth.api_key", "", CVar.SERVERONLY | CVar.CONFIDENTIAL);
+        public static readonly CVarDef<string> DiscordAuthApiToken =
+            CVarDef.Create("discord_auth.api_token", "", CVar.SERVERONLY | CVar.CONFIDENTIAL);
 
         /*
          * Queue
@@ -2258,8 +2264,11 @@ namespace Content.Shared.CCVar
          * Sponsor API
          */
 
-        public static readonly CVarDef<string> SponsorsApiUrl =
+        public static readonly CVarDef<string> SponsorApiUrl =
             CVarDef.Create("sponsor.api_url", "", CVar.SERVERONLY);
+
+        public static readonly CVarDef<string> SponsorApiToken =
+            CVarDef.Create("sponsor.api_token", "", CVar.SERVERONLY | CVar.CONFIDENTIAL);
 
         /*
          *  Greetings

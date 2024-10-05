@@ -1,6 +1,5 @@
 using System.Numerics;
 using System.Threading;
-using Content.Server._Sunrise.Shuttles;
 using Content.Server.Access.Systems;
 using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
@@ -39,6 +38,7 @@ using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
+using EvacShuttleComponent = Content.Server.AdventurePrivate._Alteros.Shuttles.EvacShuttleComponent;
 
 namespace Content.Server.Shuttles.Systems;
 

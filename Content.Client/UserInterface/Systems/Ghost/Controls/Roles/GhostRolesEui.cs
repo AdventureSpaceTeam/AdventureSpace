@@ -1,12 +1,12 @@
 using System.Linq;
 using Content.Client.Eui;
 using Content.Client.Players.PlayTimeTracking;
-using Content.Corvax.Interfaces.Shared;
 using Content.Shared.Eui;
 using Content.Shared.Ghost.Roles;
 using JetBrains.Annotations;
 using Robust.Client.GameObjects;
 using Robust.Shared.Utility;
+using Content.Alteros.Interfaces.Shared; // Alteros-Sponsors
 
 namespace Content.Client.UserInterface.Systems.Ghost.Controls.Roles
 {
@@ -17,8 +17,12 @@ namespace Content.Client.UserInterface.Systems.Ghost.Controls.Roles
         private GhostRoleRulesWindow? _windowRules = null;
         private uint _windowRulesId = 0;
 
+        private ISharedSponsorsManager? _sponsorsManager; // Alteros-Sponsors
+
         public GhostRolesEui()
         {
+            IoCManager.Instance!.TryResolveType(out _sponsorsManager); // Alteros-Sponsors
+
             _window = new GhostRolesWindow();
 
             _window.OnRoleRequestButtonClicked += info =>
@@ -84,10 +88,9 @@ namespace Content.Client.UserInterface.Systems.Ghost.Controls.Roles
             var sysManager = entityManager.EntitySysManager;
             var spriteSystem = sysManager.GetEntitySystem<SpriteSystem>();
             var requirementsManager = IoCManager.Resolve<JobRequirementsManager>();
-            var sponsors = IoCManager.Resolve<ISharedSponsorsManager>(); // Alteros-Sponsors
 
             var groupedRoles = ghostState.GhostRoles.GroupBy(
-                role => (role.Name, role.Description, role.Requirements));
+                role => (role.Name, role.Description, role.Requirements, role.PrototypeId));
             foreach (var group in groupedRoles)
             {
                 var name = group.Key.Name;
@@ -95,7 +98,7 @@ namespace Content.Client.UserInterface.Systems.Ghost.Controls.Roles
                 bool hasAccess = true;
                 FormattedMessage? reason;
 
-                if (!requirementsManager.CheckRoleRequirements(group.Key.Requirements, null, out reason))
+                if (!requirementsManager.CheckRoleRequirements(group.Key.Requirements, group.Key.PrototypeId, null, out reason)) // Alteros-Edit
                 {
                     hasAccess = false;
                 }

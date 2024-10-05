@@ -1,11 +1,14 @@
-using Content.Client.NewLife;
-using Content.Client.Gameplay;
+﻿using Content.Client.Gameplay;
 using Content.Client.Ghost;
 using Content.Client.UserInterface.Systems.Gameplay;
 using Content.Client.UserInterface.Systems.Ghost.Widgets;
 using Content.Shared.Ghost;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controllers;
+using Content.Alteros.Interfaces.Shared;
+using Robust.Shared.Configuration;
+using Content.Shared.CCVar;
+using Content.Shared.NewLife; // Alteros-Edit
 
 namespace Content.Client.UserInterface.Systems.Ghost;
 
@@ -13,9 +16,10 @@ namespace Content.Client.UserInterface.Systems.Ghost;
 public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSystem>
 {
     [Dependency] private readonly IEntityNetworkManager _net = default!;
+    [Dependency] private readonly IConfigurationManager _cfg = default!;
+    private ISharedSponsorsManager? _sponsorsManager; // Alteros-Sponsors
 
     [UISystemDependency] private readonly GhostSystem? _system = default;
-    [UISystemDependency] private readonly NewLifeSystem? _respawnMenu = default;
 
     private GhostGui? Gui => UIManager.GetActiveUIWidgetOrNull<GhostGui>();
 
@@ -26,6 +30,8 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
         var gameplayStateLoad = UIManager.GetUIController<GameplayStateLoadController>();
         gameplayStateLoad.OnScreenLoad += OnScreenLoad;
         gameplayStateLoad.OnScreenUnload += OnScreenUnload;
+
+        IoCManager.Instance!.TryResolveType(out _sponsorsManager); // Alteros-Sponsors
     }
 
     private void OnScreenLoad()
@@ -66,7 +72,32 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
         }
 
         Gui.Visible = _system?.IsGhost ?? false;
-        Gui.Update(_system?.AvailableGhostRoleCount, _system?.Player?.CanReturnToBody);
+
+        // Alteros-Start
+        var newLifeEnable = _cfg.GetCVar(CCVars.NewLifeEnable);
+        var canRespawn = false;
+        if (newLifeEnable)
+        {
+            var sponsorOnly = _cfg.GetCVar(CCVars.NewLifeSponsorOnly);
+            if (sponsorOnly && _sponsorsManager != null)
+            {
+                if (_sponsorsManager.ClientAllowedRespawn() || !sponsorOnly)
+                {
+                    canRespawn = true;
+                }
+                else
+                {
+                    canRespawn = false;
+                }
+            }
+            else
+            {
+                canRespawn = true;
+            }
+        }
+        // Alteros-End
+
+        Gui.Update(_system?.AvailableGhostRoleCount, _system?.Player?.CanReturnToBody, canRespawn);
     }
 
     private void OnPlayerRemoved(GhostComponent component)
@@ -127,9 +158,7 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
         Gui.RequestWarpsPressed += RequestWarps;
         Gui.ReturnToBodyPressed += ReturnToBody;
         Gui.GhostRolesPressed += GhostRolesPressed;
-        // Alteros-Sponsors-start
-        Gui.RespawnPressed += Respawn;
-        // Alteros-Sponsors-end
+        Gui.RespawnPressed += Respawn; // Alteros-Sponsors
         Gui.TargetWindow.WarpClicked += OnWarpClicked;
         Gui.TargetWindow.OnGhostnadoClicked += OnGhostnadoClicked;
 
@@ -144,6 +173,7 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
         Gui.RequestWarpsPressed -= RequestWarps;
         Gui.ReturnToBodyPressed -= ReturnToBody;
         Gui.GhostRolesPressed -= GhostRolesPressed;
+        Gui.RespawnPressed -= Respawn; // Alteros-Sponsors
         Gui.TargetWindow.WarpClicked -= OnWarpClicked;
 
         Gui.Hide();
@@ -154,12 +184,13 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
         _system?.ReturnToBody();
     }
 
-    // Alteros-Sponsors-start
+    // Alteros-Sponsors-Start
     private void Respawn()
     {
-        _respawnMenu?.OpenRespawnMenu();
+        var msg = new NewLifeOpenRequest();
+        _net.SendSystemNetworkMessage(msg);
     }
-    // Alteros-Sponsors-end
+    // Alteros-Sponsors-End
 
     private void RequestWarps()
     {

@@ -1,6 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using Content.Shared.Players.PlayTimeTracking;
 using Content.Shared.Roles;
+using Content.Alteros.Interfaces.Shared;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
@@ -15,7 +16,7 @@ public sealed partial class JobRequirementLoadoutEffect : LoadoutEffect
     [DataField(required: true)]
     public JobRequirement Requirement = default!;
 
-    public override bool Validate(HumanoidCharacterProfile profile, RoleLoadout loadout, LoadoutPrototype proto, ICommonSession? session, IDependencyCollection collection, [NotNullWhen(false)] out FormattedMessage? reason)
+    public override bool Validate(HumanoidCharacterProfile profile, RoleLoadout loadout, ICommonSession? session, IDependencyCollection collection, [NotNullWhen(false)] out FormattedMessage? reason)
     {
         if (session == null)
         {
@@ -23,12 +24,23 @@ public sealed partial class JobRequirementLoadoutEffect : LoadoutEffect
             return true;
         }
 
+        // Alteros-Sponsors-Start
+        string[] sponsorPrototypes = [];
+        if (collection.TryResolveType<ISharedSponsorsManager>(out var sponsorsManager))
+        {
+            sponsorPrototypes = sponsorsManager?.GetClientPrototypes().ToArray() ?? [];
+        }
+        // Alteros-Sponsors-End
+
         var manager = collection.Resolve<ISharedPlaytimeManager>();
         var playtimes = manager.GetPlayTimes(session);
+
         return Requirement.Check(collection.Resolve<IEntityManager>(),
             collection.Resolve<IPrototypeManager>(),
             profile,
             playtimes,
+            null, // Alteros-Sponsors
+            sponsorPrototypes, // Alteros-Sponsors
             out reason);
     }
 }

@@ -1,7 +1,7 @@
 using System.Text.Json.Nodes;
-using Content.Corvax.Interfaces.Server;
 using Content.Shared.CCVar;
 using Content.Shared.GameTicking;
+using Content.Alteros.Interfaces.Server;
 using Robust.Server.ServerStatus;
 using Robust.Shared.Configuration;
 
@@ -29,10 +29,6 @@ namespace Content.Server.GameTicking
         /// </summary>
         [Dependency] private readonly SharedGameTicker _gameTicker = default!;
 
-        // Corvax-Queue-Start
-        [Dependency] private readonly IServerJoinQueueManager _joinQueueManager = default!;
-        // Corvax-Queue-End
-
         private void InitializeStatusShell()
         {
             IoCManager.Resolve<IStatusHost>().OnStatusRequest += GetStatusResponse;
@@ -45,16 +41,16 @@ namespace Content.Server.GameTicking
             // This method is raised from another thread, so this better be thread safe!
             lock (_statusShellLock)
             {
-                // Corvax-Queue-Start
+                // Alteros-Start
                 var players = IoCManager.Instance?.TryResolveType<IServerJoinQueueManager>(out var joinQueueManager) ?? false
                     ? joinQueueManager.ActualPlayersCount
                     : _playerManager.PlayerCount;
-                // Corvax-Queue-End
+                // Alteros-End
 
                 jObject["name"] = _baseServer.ServerName;
                 jObject["map"] = _gameMapManager.GetSelectedMap()?.MapName;
                 jObject["round_id"] = _gameTicker.RoundId;
-                jObject["players"] = players; // Corvax-Queue
+                jObject["players"] = players; // Alteros-Queue
                 jObject["soft_max_players"] = _cfg.GetCVar(CCVars.SoftMaxPlayers);
                 jObject["panic_bunker"] = _cfg.GetCVar(CCVars.PanicBunkerEnabled);
 

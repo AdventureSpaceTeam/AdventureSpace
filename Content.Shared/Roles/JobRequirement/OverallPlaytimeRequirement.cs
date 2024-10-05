@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using Content.Shared.Players.PlayTimeTracking;
 using Content.Shared.Preferences;
 using JetBrains.Annotations;
@@ -20,9 +21,16 @@ public sealed partial class OverallPlaytimeRequirement : JobRequirement
         IPrototypeManager protoManager,
         HumanoidCharacterProfile? profile,
         IReadOnlyDictionary<string, TimeSpan> playTimes,
+        string? protoId, // Alteros-Sponsors
+        string[] sponsorPrototypes, // Alteros-Sponsors
         [NotNullWhen(false)] out FormattedMessage? reason)
     {
         reason = new FormattedMessage();
+
+        // Alteros-Sponsors-Start
+        if (sponsorPrototypes.Contains(protoId))
+            return true;
+        // Alteros-Sponsors-End
 
         var overallTime = playTimes.GetValueOrDefault(PlayTimeTrackingShared.TrackerOverall);
         var overallDiff = Time.TotalMinutes - overallTime.TotalMinutes;

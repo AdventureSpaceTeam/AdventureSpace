@@ -38,4 +38,9 @@ public sealed partial class LoadoutPrototype : IPrototype, IEquipmentLoadout
     /// <inheritdoc />
     [DataField]
     public Dictionary<string, List<EntProtoId>> Storage { get; set; } = new();
+
+    // Alteros-Sponsors-Start
+    [DataField]
+    public bool SponsorOnly;
+    // Alteros-Sponsors-End
 }

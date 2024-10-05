@@ -9,24 +9,19 @@ using Content.Server.Chat.Managers;
 using Content.Server.Connection;
 using Content.Server.Database;
 using Content.Server.Discord;
-using Content.Server.DiscordAuth;
 using Content.Server.EUI;
 using Content.Server.GhostKick;
 using Content.Server.Info;
 using Content.Server.Mapping;
-using Content.Server.JoinQueue;
 using Content.Server.Maps;
 using Content.Server.MoMMI;
 using Content.Server.NodeContainer.NodeGroups;
-using Content.Server.Objectives;
-using Content.Server.Players;
 using Content.Server.Players.JobWhitelist;
 using Content.Server.Players.PlayTimeTracking;
 using Content.Server.Players.RateLimiting;
 using Content.Server.Preferences.Managers;
 using Content.Server.ServerInfo;
 using Content.Server.ServerUpdates;
-using Content.Server.Sponsors;
 using Content.Server.Corvax.TTS;
 using Content.Server.Voting.Managers;
 using Content.Server.Worldgen.Tools;
@@ -34,10 +29,12 @@ using Content.Shared.Administration.Logs;
 using Content.Shared.Administration.Managers;
 using Content.Shared.Kitchen;
 using Content.Shared.Players.PlayTimeTracking;
-using Content.Corvax.Interfaces.Shared;
-using Content.Corvax.Interfaces.Server;
-using Content.Server._c4llv07e.VpnGuard; // c4llv07e vpn guard
-using Content.Server.Adventure.Config; // c4llv07e adventure config
+using Content.Server.Adventure.Config;
+using Content.Server.AdventurePrivate._Alteros.DiscordAuth;
+using Content.Server.AdventurePrivate._Alteros.JoinQueue;
+using Content.Server.AdventurePrivate._Alteros.Sponsors;
+using Content.Alteros.Interfaces.Server;
+using Content.Alteros.Interfaces.Shared; // c4llv07e adventure config
 
 namespace Content.Server.IoC
 {
@@ -82,13 +79,12 @@ namespace Content.Server.IoC
             IoCManager.Register<PlayerRateLimitManager>();
             IoCManager.Register<MappingManager>();
 
-            // Alteros-Sponsor
-            IoCManager.Register<Content.Corvax.Interfaces.Shared.ISharedSponsorsManager, SponsorsManager>();
-            IoCManager.Register<Content.Corvax.Interfaces.Server.IServerDiscordAuthManager, DiscordAuthManager>();
-            IoCManager.Register<Content.Corvax.Interfaces.Server.IServerJoinQueueManager, JoinQueueManager>();
-            // Alteros-Sponsor
+            // Alteros-Sponsors-Start
+            IoCManager.Register<ISharedSponsorsManager, ServerSponsorsManager>();
+            IoCManager.Register<IServerDiscordAuthManager, DiscordAuthManager>();
+            IoCManager.Register<IServerJoinQueueManager, JoinQueueManager>();
+            // Alteros-Sponsors-End
 
-            IoCManager.Register<IServerVPNGuardManager, VpnGuardFile>(); // c4llv07e vpn ban
             IoCManager.Register<AdventureConfigManager>(); // c4llv07e config manager
         }
     }

@@ -1,14 +1,15 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Shared.Humanoid.Prototypes;
-using Content.Corvax.Interfaces.Shared;
 using Content.Shared.Random;
+using Content.Alteros.Interfaces.Shared;
 using Robust.Shared.Collections;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using Robust.Shared.Utility;
+using Robust.Shared.Localization;
 
 namespace Content.Shared.Preferences.Loadouts;
 
@@ -50,11 +51,10 @@ public sealed partial class RoleLoadout : IEquatable<RoleLoadout>
     /// <summary>
     /// Ensures all prototypes exist and effects can be applied.
     /// </summary>
-    public void EnsureValid(HumanoidCharacterProfile profile, ICommonSession session, IDependencyCollection collection)
+    public void EnsureValid(HumanoidCharacterProfile profile, ICommonSession session, IDependencyCollection collection, string[] sponsorPrototypes) // Alteros-Sponsors
     {
         var groupRemove = new ValueList<string>();
         var protoManager = collection.Resolve<IPrototypeManager>();
-        var netManager = collection.Resolve<INetManager>(); // Corvax-Loadouts
 
         if (!protoManager.TryIndex(Role, out var roleProto))
         {
@@ -91,24 +91,6 @@ public sealed partial class RoleLoadout : IEquatable<RoleLoadout>
                 continue;
             }
 
-            // Corvax-Loadouts-Start
-            var groupProtoLoadouts = groupProto.Loadouts;
-            if (collection.TryResolveType<ISharedLoadoutsManager>(out var loadoutsManager) && group.Id == "Inventory")
-            {
-                var prototypes = new List<string>();
-                if (netManager.IsClient)
-                {
-                    prototypes = loadoutsManager.GetClientPrototypes();
-                }
-                else if (loadoutsManager.TryGetServerPrototypes(session.UserId, out var protos))
-                {
-                    prototypes = protos;
-                }
-
-                groupProtoLoadouts = prototypes.Select(id => (ProtoId<LoadoutPrototype>)id).ToList();
-            }
-            // Corvax-Loadouts-End
-
             var loadouts = groupLoadouts[..Math.Min(groupLoadouts.Count, groupProto.MaxLimit)];
 
             // Validate first
@@ -131,7 +113,7 @@ public sealed partial class RoleLoadout : IEquatable<RoleLoadout>
                 }
 
                 // Validate the loadout can be applied (e.g. points).
-                if (!IsValid(profile, session, loadout.Prototype, collection, out _))
+                if (!IsValid(profile, session, loadout.Prototype, collection, sponsorPrototypes, out _)) // Alteros-Sponsors
                 {
                     loadouts.RemoveAt(i);
                     continue;
@@ -145,7 +127,7 @@ public sealed partial class RoleLoadout : IEquatable<RoleLoadout>
             // If you put invalid ones first but that's your fault for not using sensible defaults
             if (loadouts.Count < groupProto.MinLimit)
             {
-                foreach (var protoId in groupProtoLoadouts) // Corvax-Loadout: Use groupProtoLoadouts instead of groupProto.Loadouts
+                foreach (var protoId in groupProto.Loadouts)
                 {
                     if (loadouts.Count >= groupProto.MinLimit)
                         break;
@@ -162,7 +144,7 @@ public sealed partial class RoleLoadout : IEquatable<RoleLoadout>
                         continue;
 
                     // Not valid so don't default to it anyway.
-                    if (!IsValid(profile, session, defaultLoadout.Prototype, collection, out _))
+                    if (!IsValid(profile, session, defaultLoadout.Prototype, collection, sponsorPrototypes, out _))
                         continue;
 
                     loadouts.Add(defaultLoadout);
@@ -190,7 +172,7 @@ public sealed partial class RoleLoadout : IEquatable<RoleLoadout>
     /// <summary>
     /// Resets the selected loadouts to default if no data is present.
     /// </summary>
-    public void SetDefault(HumanoidCharacterProfile? profile, ICommonSession? session, IPrototypeManager protoManager, bool force = false)
+    public void SetDefault(HumanoidCharacterProfile? profile, ICommonSession? session, IPrototypeManager protoManager, string[] sponsorPrototypes, bool force = false)
     {
         if (profile == null)
             return;
@@ -232,7 +214,7 @@ public sealed partial class RoleLoadout : IEquatable<RoleLoadout>
                     };
 
                     // Not valid so don't default to it anyway.
-                    if (!IsValid(profile, session, defaultLoadout.Prototype, collection, out _))
+                    if (!IsValid(profile, session, defaultLoadout.Prototype, collection, sponsorPrototypes, out _))
                         continue;
 
                     loadouts.Add(defaultLoadout);
@@ -245,7 +227,7 @@ public sealed partial class RoleLoadout : IEquatable<RoleLoadout>
     /// <summary>
     /// Returns whether a loadout is valid or not.
     /// </summary>
-    public bool IsValid(HumanoidCharacterProfile profile, ICommonSession? session, ProtoId<LoadoutPrototype> loadout, IDependencyCollection collection, [NotNullWhen(false)] out FormattedMessage? reason)
+    public bool IsValid(HumanoidCharacterProfile profile, ICommonSession? session, ProtoId<LoadoutPrototype> loadout, IDependencyCollection collection, string[] sponsorPrototypes, [NotNullWhen(false)] out FormattedMessage? reason)
     {
         reason = null;
 
@@ -264,11 +246,19 @@ public sealed partial class RoleLoadout : IEquatable<RoleLoadout>
             return false;
         }
 
+        // Alteros-Sponsots-Start
+        if (loadoutProto.SponsorOnly && !sponsorPrototypes.Contains(loadout.Id))
+        {
+            reason = FormattedMessage.FromUnformatted(Loc.GetString("loadout-sponsor-only"));
+            return false;
+        }
+        // Alteros-Sponsots-End
+
         var valid = true;
 
         foreach (var effect in loadoutProto.Effects)
         {
-            valid = valid && effect.Validate(profile, this, loadoutProto, session, collection, out reason);
+            valid = valid && effect.Validate(profile, this, session, collection, out reason);
         }
 
         return valid;

@@ -1,11 +1,10 @@
 ﻿using Content.Client.Administration.Managers;
+using Content.Client.AdventurePrivate._Alteros.DiscordAuth;
+using Content.Client.AdventurePrivate._Alteros.JoinQueue;
 using Content.Client.Changelog;
 using Content.Client.Chat.Managers;
 using Content.Client.Clickable;
 using Content.Client.DebugMon;
-using Content.Client.Corvax.TTS;
-using Content.Client.Options;
-using Content.Client.DiscordAuth;
 using Content.Client.Eui;
 using Content.Client.Fullscreen;
 using Content.Client.GhostKick;
@@ -21,11 +20,11 @@ using Content.Client.Viewport;
 using Content.Client.Voting;
 using Content.Shared.Administration.Logs;
 using Content.Client.Lobby;
-using Content.Client.JoinQueue;
-using Content.Client.Replay;
-using Content.Client.Sponsors;
 using Content.Shared.Administration.Managers;
 using Content.Shared.Players.PlayTimeTracking;
+using Content.Alteros.Interfaces.Client;
+using Content.Alteros.Interfaces.Shared;
+using Content.Client.AdventurePrivate._Alteros.Sponsors;
 
 namespace Content.Client.IoC
 {
@@ -58,11 +57,11 @@ namespace Content.Client.IoC
             collection.Register<MappingManager>();
             collection.Register<DebugMonitorManager>();
 
-            // Alteros-Sponsor
-            collection.Register<Content.Corvax.Interfaces.Shared.ISharedSponsorsManager,SponsorsManager>();
-            collection.Register<Content.Corvax.Interfaces.Client.IClientJoinQueueManager,JoinQueueManager>();
-            collection.Register<Content.Corvax.Interfaces.Client.IClientDiscordAuthManager,DiscordAuthManager>();
-            // Alteros-Sponsor
+            // Alteros-Sponsors-Start
+            collection.Register<ISharedSponsorsManager, ClientSponsorsManager>();
+            collection.Register<IClientJoinQueueManager, JoinQueueManager>();
+            collection.Register<IClientDiscordAuthManager, DiscordAuthManager>();
+            // Alteros-Sponsors-End
         }
     }
 }

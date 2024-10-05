@@ -1,7 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Runtime.InteropServices;
-using Content.Corvax.Interfaces.Shared;
 using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
 using Content.Server.Administration.Systems;
@@ -13,6 +12,7 @@ using Content.Shared.CCVar;
 using Content.Shared.Chat;
 using Content.Shared.Database;
 using Content.Shared.Mind;
+using Content.Alteros.Interfaces.Shared;
 using Robust.Shared.Configuration;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
@@ -258,24 +258,18 @@ internal sealed partial class ChatManager : IChatManager
             wrappedMessage = Loc.GetString("chat-manager-send-ooc-patron-wrap-message", ("patronColor", patronColor),("playerName", player.Name), ("message", FormattedMessage.EscapeText(message)));
         }
 
-        // Corvax-Sponsors-Start
-        if (_sponsorsManager != null && _sponsorsManager.TryGetServerOocColor(player.UserId, out var oocColor))
+        // Alteros-start
+        if (_sponsorsManager != null && _sponsorsManager.TryGetOocColor(player.UserId, out var oocColor) && _sponsorsManager.TryGetOocTitle(player.UserId, out var sponsorTitle))
         {
-            wrappedMessage = Loc.GetString("chat-manager-send-ooc-patron-wrap-message", ("patronColor", oocColor),("playerName", player.Name), ("message", FormattedMessage.EscapeText(message)));
+            wrappedMessage = Loc.GetString("chat-manager-send-ooc-patron-wrap-message", ("patronColor", oocColor), ("patronTitle", $"\\[{sponsorTitle}\\] "),("playerName", player.Name), ("message", FormattedMessage.EscapeText(message)));
         }
-        // Corvax-Sponsors-End
 
-        // c4llv07e fix admins OOC names {{
-        var adminData = _adminManager.GetAdminData(player);
-        if (adminData != null)
+        var data = _adminManager.GetAdminData(player);
+        if (data != null && data.Title != null)
         {
-          var title = adminData.Title ?? "Admin";
-          // We don't use admin color here because it will be overrided anyway
-          wrappedMessage = Loc.GetString(
-            "chat-manager-send-ooc-admin-wrap-message", ("adminTitle", title),
-            ("playerName", player.Name), ("message", FormattedMessage.EscapeText(message)));
+            wrappedMessage = Loc.GetString("chat-manager-send-ooc-admin-wrap-message", ("patronTitle", $"\\[{data.Title}\\] "),("playerName", player.Name), ("message", FormattedMessage.EscapeText(message)));
         }
-        // c4llv07e }}
+        // Alteros-end
 
         //TODO: player.Name color, this will need to change the structure of the MsgChatMessage
         ChatMessageToAll(ChatChannel.OOC, message, wrappedMessage, EntityUid.Invalid, hideChat: false, recordReplay: true, colorOverride: colorOverride, author: player.UserId);

@@ -1,5 +1,4 @@
 using System.Linq;
-using Content.Corvax.Interfaces.Shared;
 using Content.Server.Administration.Managers;
 using Content.Server.Chat.Managers;
 using Content.Server.Forensics;
@@ -12,7 +11,6 @@ using Content.Server.StationRecords.Systems;
 using Content.Shared.Administration;
 using Content.Shared.Administration.Events;
 using Content.Shared.CCVar;
-using Content.Shared.Corvax.CCCVars;
 using Content.Shared.GameTicking;
 using Content.Shared.Hands.Components;
 using Content.Shared.IdentityManagement;
@@ -34,6 +32,7 @@ using Robust.Shared.Configuration;
 using Robust.Shared.Enums;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
+using Content.Alteros.Interfaces.Shared; // Alteros-Sponsors
 
 namespace Content.Server.Administration.Systems;
 
@@ -67,6 +66,8 @@ public sealed class AdminSystem : EntitySystem
     public readonly PanicBunkerStatus PanicBunker = new();
     public readonly BabyJailStatus BabyJail = new();
 
+    private ISharedSponsorsManager? _sponsorsManager; // Alteros-Sponsors
+
     public override void Initialize()
     {
         base.Initialize();
@@ -83,7 +84,6 @@ public sealed class AdminSystem : EntitySystem
         Subs.CVar(_config, CCVars.PanicBunkerShowReason, OnPanicBunkerShowReasonChanged, true);
         Subs.CVar(_config, CCVars.PanicBunkerMinAccountAge, OnPanicBunkerMinAccountAgeChanged, true);
         Subs.CVar(_config, CCVars.PanicBunkerMinOverallMinutes, OnPanicBunkerMinOverallMinutesChanged, true);
-        Subs.CVar(_config, CCCVars.PanicBunkerDenyVPN, OnPanicBunkerDenyVpnChanged, true); // Corvax-VPNGuard
 
         /*
          * TODO: Remove baby jail code once a more mature gateway process is established. This code is only being issued as a stopgap to help with potential tiding in the immediate future.
@@ -101,6 +101,9 @@ public sealed class AdminSystem : EntitySystem
         SubscribeLocalEvent<RoleAddedEvent>(OnRoleEvent);
         SubscribeLocalEvent<RoleRemovedEvent>(OnRoleEvent);
         SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundRestartCleanup);
+        SubscribeLocalEvent<ActorComponent, EntityRenamedEvent>(OnPlayerRenamed);
+
+        IoCManager.Instance!.TryResolveType(out _sponsorsManager); // Alteros-Sponsors
     }
 
     private void OnRoundRestartCleanup(RoundRestartCleanupEvent ev)
@@ -125,6 +128,11 @@ public sealed class AdminSystem : EntitySystem
         {
             RaiseNetworkEvent(updateEv, admin.Channel);
         }
+    }
+
+    private void OnPlayerRenamed(Entity<ActorComponent> ent, ref EntityRenamedEvent args)
+    {
+        UpdatePlayerList(ent.Comp.PlayerSession);
     }
 
     public void UpdatePlayerList(ICommonSession player)
@@ -252,14 +260,18 @@ public sealed class AdminSystem : EntitySystem
             overallPlaytime = playTime;
         }
 
-        // Alteros-Sponsors-start
-        var sponsors = IoCManager.Resolve<ISharedSponsorsManager>();
-        var isSponsor = sponsors.IsSponsor(data.UserId);
-        sponsors.TryGetServerOocTitle(data.UserId, out var sponsorTitle);
+        // Alteros-Sponsors-Start
+        var isSponsor = false;
+        var sponsorTitle = "";
+        if (_sponsorsManager != null)
+        {
+            isSponsor = _sponsorsManager.IsSponsor(data.UserId);
+            _sponsorsManager.TryGetOocTitle(data.UserId, out sponsorTitle);
+        }
+        // Alteros-Sponsors-End
 
         return new PlayerInfo(name, entityName, identityName, startingRole, antag, GetNetEntity(session?.AttachedEntity), data.UserId,
-                              connected, _roundActivePlayers.Contains(data.UserId), overallPlaytime, isSponsor, sponsorTitle);
-        // Alteros-Sponsors-end
+            connected, _roundActivePlayers.Contains(data.UserId), overallPlaytime, isSponsor, sponsorTitle); // Alteros-Sponsors
     }
 
     private void OnPanicBunkerChanged(bool enabled)
@@ -337,14 +349,6 @@ public sealed class AdminSystem : EntitySystem
         BabyJail.MaxOverallMinutes = minutes;
         SendBabyJailStatusAll();
     }
-
-    // Corvax-VPNGuard-Start
-    private void OnPanicBunkerDenyVpnChanged(bool deny)
-    {
-        PanicBunker.DenyVpn = deny;
-        SendPanicBunkerStatusAll();
-    }
-    // Corvax-VPNGuard-End
 
     private void UpdatePanicBunker()
     {

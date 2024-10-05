@@ -135,13 +135,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Roslyn", "Roslyn", "{7844DA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Robust.Xaml", "RobustToolbox\Robust.Xaml\Robust.Xaml.csproj", "{5C05B9B4-6AFE-4884-AA6A-5A26C0FFF2F6}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Corvax Interfaces", "Corvax Interfaces", "{DA6E23AF-5AC1-43C8-831D-812A2A758731}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Alteros Interfaces", "Alteros Interfaces", "{DA6E23AF-5AC1-43C8-831D-812A2A758731}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Content.Corvax.Interfaces.Shared", "Corvax\Content.Corvax.Interfaces.Shared\Content.Corvax.Interfaces.Shared.csproj", "{F9F78EE1-1FBE-43F9-8E86-78327FE330DB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Content.Alteros.Interfaces.Shared", "Alteros\Content.Alteros.Interfaces.Shared\Content.Alteros.Interfaces.Shared.csproj", "{F9F78EE1-1FBE-43F9-8E86-78327FE330DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Content.Corvax.Interfaces.Server", "Corvax\Content.Corvax.Interfaces.Server\Content.Corvax.Interfaces.Server.csproj", "{21D609DE-FD15-4A7E-8541-B003DB6FFC62}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Content.Alteros.Interfaces.Server", "Alteros\Content.Alteros.Interfaces.Server\Content.Alteros.Interfaces.Server.csproj", "{21D609DE-FD15-4A7E-8541-B003DB6FFC62}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Content.Corvax.Interfaces.Client", "Corvax\Content.Corvax.Interfaces.Client\Content.Corvax.Interfaces.Client.csproj", "{B63ADCCD-FA56-4114-9E14-E0793802557E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Content.Alteros.Interfaces.Client", "Alteros\Content.Alteros.Interfaces.Client\Content.Alteros.Interfaces.Client.csproj", "{B63ADCCD-FA56-4114-9E14-E0793802557E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

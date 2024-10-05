@@ -1,8 +1,7 @@
 using System.Linq;
 using System.Numerics;
-using Content.Client._Sunrise.StatsBoard;
+using Content.Client._Alteros.StatsBoard;
 using Content.Client.Message;
-using Content.Client.Players;
 using Content.Shared.StatsBoard;
 using Content.Shared.GameTicking;
 using Robust.Client.UserInterface.Controls;

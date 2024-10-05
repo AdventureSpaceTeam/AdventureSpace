@@ -1,7 +1,5 @@
 using System.Linq;
-using Content.Corvax.Interfaces.Shared;
 using Content.Server.Administration.Managers;
-using Content.Server.Players.PlayTimeTracking;
 using Content.Server.Station.Components;
 using Content.Server.Station.Events;
 using Content.Shared.Preferences;
@@ -10,6 +8,7 @@ using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
+using Content.Alteros.Interfaces.Shared; // Alteros-Sponsors
 
 namespace Content.Server.Station.Systems;
 
@@ -18,6 +17,7 @@ public sealed partial class StationJobsSystem
 {
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly IBanManager _banManager = default!;
+    private ISharedSponsorsManager? _sponsorsManager; // Alteros-Sponsors
 
     private Dictionary<int, HashSet<string>> _jobsByWeight = default!;
     private List<int> _orderedWeights = default!;
@@ -37,6 +37,8 @@ public sealed partial class StationJobsSystem
         }
 
         _orderedWeights = _jobsByWeight.Keys.OrderByDescending(i => i).ToList();
+
+        IoCManager.Instance!.TryResolveType(out _sponsorsManager); // Alteros-Sponsors
     }
 
     /// <summary>
@@ -245,11 +247,15 @@ public sealed partial class StationJobsSystem
                             if (!jobPlayerOptions.ContainsKey(job))
                                 continue;
 
-                            var sponsors = IoCManager.Resolve<ISharedSponsorsManager>(); // Alteros-Sponsors
+                            // Alteros-Sponsors-Start
+                            // Picking players it finds that have the job set.\
+                            var player = _sponsorsManager != null ? _sponsorsManager.PickRoleSession(jobPlayerOptions[job], job) : _random.Pick(jobPlayerOptions[job]);
 
-                            // Picking players it finds that have the job set.
-                            var player = sponsors.PickRoleSession(jobPlayerOptions[job], job);
-                            AssignPlayer(player, job, station);
+                            if (player == null)
+                                continue;
+
+                            // Alteros-Sponsors-End
+                            AssignPlayer(player.Value, job, station);
                             stationShares[station]--;
 
                             if (currStationSelectingJobs[job] != null)
@@ -292,12 +298,13 @@ public sealed partial class StationJobsSystem
                 continue;
             }
 
-            var profile = profiles[player];
-            if (profile.PreferenceUnavailable != PreferenceUnavailableMode.SpawnAsOverflow)
-            {
-                assignedJobs.Add(player, (null, EntityUid.Invalid));
-                continue;
-            }
+            // Alteros-Edit
+            //var profile = profiles[player];
+            // if (profile.PreferenceUnavailable != PreferenceUnavailableMode.SpawnAsOverflow)
+            // {
+            //     assignedJobs.Add(player, (null, EntityUid.Invalid));
+            //     continue;
+            // }
 
             _random.Shuffle(givenStations);
 

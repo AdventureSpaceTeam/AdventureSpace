@@ -17,13 +17,14 @@
     <PackageReference Include="JetBrains.Annotations" PrivateAssets="All" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Alteros\Content.Alteros.Interfaces.Client\Content.Alteros.Interfaces.Client.csproj" />
     <ProjectReference Include="..\RobustToolbox\Lidgren.Network\Lidgren.Network.csproj" />
     <ProjectReference Include="..\RobustToolbox\Robust.Shared.Maths\Robust.Shared.Maths.csproj" />
     <ProjectReference Include="..\RobustToolbox\Robust.Shared\Robust.Shared.csproj" />
     <ProjectReference Include="..\RobustToolbox\Robust.Client\Robust.Client.csproj" />
     <ProjectReference Include="..\Content.Shared\Content.Shared.csproj" />
-    <ProjectReference Include="..\Corvax\Content.Corvax.Interfaces.Shared\Content.Corvax.Interfaces.Shared.csproj" />
-    <ProjectReference Include="..\Corvax\Content.Corvax.Interfaces.Client\Content.Corvax.Interfaces.Client.csproj" />
+    <ProjectReference Include="..\Corvax\Content.Alteros.Interfaces.Shared\Content.Alteros.Interfaces.Shared.csproj" />
+    <ProjectReference Include="..\Corvax\Content.Alteros.Interfaces.Client\Content.Alteros.Interfaces.Client.csproj" />
   </ItemGroup>
   <Import Project="..\RobustToolbox\MSBuild\Robust.Properties.targets" />
   <Import Project="..\RobustToolbox\MSBuild\XamlIL.targets" />

@@ -2,16 +2,14 @@ using System.Collections.Immutable;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices;
-using Content.Corvax.Interfaces.Server;
-using Content.Corvax.Interfaces.Shared;
 using Content.Server.Chat.Managers;
 using Content.Server.Database;
 using Content.Server.GameTicking;
 using Content.Server.Preferences.Managers;
 using Content.Shared.CCVar;
-using Content.Shared.Corvax.CCCVars;
 using Content.Shared.GameTicking;
 using Content.Shared.Players.PlayTimeTracking;
+using Content.Alteros.Interfaces.Server;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
 using Robust.Shared.Enums;
@@ -19,6 +17,7 @@ using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Player;
 using Robust.Shared.Timing;
+using Content.Alteros.Interfaces.Shared; // Alteros-Sponsors
 
 /*
  * TODO: Remove baby jail code once a more mature gateway process is established. This code is only being issued as a stopgap to help with potential tiding in the immediate future.
@@ -30,7 +29,7 @@ namespace Content.Server.Connection
     {
         void Initialize();
         void PostInit();
-        Task<bool> HavePrivilegedJoin(NetUserId userId); // Corvax-Queue
+        Task<bool> HavePrivilegedJoin(NetUserId userId); // Alteros-Sponsors
 
         /// <summary>
         /// Temporarily allow a user to bypass regular connection requirements.
@@ -50,7 +49,6 @@ namespace Content.Server.Connection
     /// </summary>
     public sealed partial class ConnectionManager : IConnectionManager
     {
-        [Dependency] private readonly IServerDbManager _dbManager = default!;
         [Dependency] private readonly IPlayerManager _plyMgr = default!;
         [Dependency] private readonly IServerNetManager _netMgr = default!;
         [Dependency] private readonly IServerDbManager _db = default!;
@@ -61,8 +59,7 @@ namespace Content.Server.Connection
         [Dependency] private readonly IGameTiming _gameTiming = default!;
         [Dependency] private readonly ILogManager _logManager = default!;
         [Dependency] private readonly IChatManager _chatManager = default!;
-        private ISharedSponsorsManager? _sponsorsMgr; // Corvax-Sponsors
-        private IServerVPNGuardManager? _vpnGuardMgr; // Corvax-VPNGuard
+        private ISharedSponsorsManager? _sponsorsMgr; // Alteros-Sponsors
 
         private ISawmill _sawmill = default!;
         private readonly Dictionary<NetUserId, TimeSpan> _temporaryBypasses = [];
@@ -72,7 +69,7 @@ namespace Content.Server.Connection
         {
             _sawmill = _logManager.GetSawmill("connections");
 
-            IoCManager.Instance!.TryResolveType(out _sponsorsMgr); // Corvax-Sponsors
+            IoCManager.Instance!.TryResolveType(out _sponsorsMgr); // Alteros-Sponsors
             _netMgr.Connecting += NetMgrOnConnecting;
             _netMgr.AssignUserIdCallback = AssignUserIdCallback;
             _plyMgr.PlayerStatusChanged += PlayerStatusChanged;
@@ -212,18 +209,18 @@ namespace Content.Server.Connection
                 return null;
             }
 
-            var adminData = await _dbManager.GetAdminDataForAsync(e.UserId);
+            var adminData = await _db.GetAdminDataForAsync(e.UserId);
 
-            // Corvax-Start: Allow privileged players bypass bunker
+            // Alteros-Sponsors-Start
             var isPrivileged = await HavePrivilegedJoin(e.UserId);
             if (_cfg.GetCVar(CCVars.PanicBunkerEnabled) && adminData == null && !isPrivileged)
-            // Corvax-End
+            // Alteros-Sponsors-End
             {
                 var showReason = _cfg.GetCVar(CCVars.PanicBunkerShowReason);
                 var customReason = _cfg.GetCVar(CCVars.PanicBunkerCustomReason);
 
                 var minMinutesAge = _cfg.GetCVar(CCVars.PanicBunkerMinAccountAge);
-                var record = await _dbManager.GetPlayerRecordByUserId(userId);
+                var record = await _db.GetPlayerRecordByUserId(userId);
                 var validAccountAge = record != null &&
                                       record.FirstSeenTime.CompareTo(DateTimeOffset.UtcNow - TimeSpan.FromMinutes(minMinutesAge)) <= 0;
                 var bypassAllowed = _cfg.GetCVar(CCVars.BypassBunkerWhitelist) && await _db.GetWhitelistStatusAsync(userId);
@@ -258,28 +255,11 @@ namespace Content.Server.Connection
                             ("reason", Loc.GetString("panic-bunker-account-reason-overall", ("minutes", minOverallMinutes)))), null);
                 }
 
-                if ((!validAccountAge || !haveMinOverallTime) && !bypassAllowed)
+                if (!validAccountAge || !haveMinOverallTime && !bypassAllowed)
                 {
                     return (ConnectionDenyReason.Panic, Loc.GetString("panic-bunker-account-denied"), null);
                 }
             }
-
-            // c4llv07e vpn {{
-            if (_vpnGuardMgr == null) // "lazyload" because of problems with dependency resolve order
-                IoCManager.Instance!.TryResolveType(out _vpnGuardMgr);
-
-            var denyVpn = false;
-            if (_cfg.GetCVar(CCCVars.PanicBunkerDenyVPN) && _vpnGuardMgr != null)
-            {
-                denyVpn = await _vpnGuardMgr.IsConnectionVpn(e.IP.Address);
-                if (denyVpn)
-                {
-                    return (ConnectionDenyReason.Panic,
-                            Loc.GetString("panic-bunker-account-denied-reason",
-                                          ("reason", Loc.GetString("panic-bunker-account-reason-vpn"))), null);
-                }
-            }
-            // c4llv07e vpn }}
 
             if (_cfg.GetCVar(CCVars.BabyJailEnabled) && adminData == null)
             {
@@ -292,11 +272,10 @@ namespace Content.Server.Connection
             var wasInGame = EntitySystem.TryGet<GameTicker>(out var ticker) &&
                             ticker.PlayerGameStatuses.TryGetValue(userId, out var status) &&
                             status == PlayerGameStatus.JoinedGame;
-            var adminBypass = _cfg.GetCVar(CCVars.AdminBypassMaxPlayers) && adminData != null;
-            // Corvax-Queue-Start
+            // Alteros-Queue-Start
             var isQueueEnabled = IoCManager.Instance!.TryResolveType<IServerJoinQueueManager>(out var mgr) && mgr.IsEnabled;
-            if ((_plyMgr.PlayerCount >= _cfg.GetCVar(CCVars.SoftMaxPlayers) && !adminBypass) && !wasInGame && !isQueueEnabled)
-            // Corvax-Queue-End
+            if (_plyMgr.PlayerCount >= _cfg.GetCVar(CCVars.SoftMaxPlayers) && !isPrivileged && !isQueueEnabled && !wasInGame)
+                // Alteros-Queue-End
             {
                 return (ConnectionDenyReason.Full, Loc.GetString("soft-player-cap-full"), null);
             }
@@ -347,7 +326,7 @@ namespace Content.Server.Connection
             var maxPlaytimeMinutes = _cfg.GetCVar(CCVars.BabyJailMaxOverallMinutes);
 
             // Wait some time to lookup data
-            var record = await _dbManager.GetPlayerRecordByUserId(userId);
+            var record = await _db.GetPlayerRecordByUserId(userId);
 
             // No player record = new account or the DB is having a skill issue
             if (record == null)
@@ -423,18 +402,18 @@ namespace Content.Server.Connection
             return assigned;
         }
 
-        // Corvax-Queue-Start: Make these conditions in one place, for checks in the connection and in the queue
+        // Alteros-Sponsors-Start
         public async Task<bool> HavePrivilegedJoin(NetUserId userId)
         {
-            var adminBypass = _cfg.GetCVar(CCVars.AdminBypassMaxPlayers) && await _dbManager.GetAdminDataForAsync(userId) != null;
-            var havePriorityJoin = _sponsorsMgr != null && _sponsorsMgr.HaveServerPriorityJoin(userId); // Corvax-Sponsors
+            var adminBypass = _cfg.GetCVar(CCVars.AdminBypassMaxPlayers) && await _db.GetAdminDataForAsync(userId) != null;
+            var havePriorityJoin = _sponsorsMgr != null && _sponsorsMgr.HavePriorityJoin(userId); // Alteros-Sponsors
             var wasInGame = EntitySystem.TryGet<GameTicker>(out var ticker) &&
                             ticker.PlayerGameStatuses.TryGetValue(userId, out var status) &&
                             status == PlayerGameStatus.JoinedGame;
             return adminBypass ||
-                   havePriorityJoin || // Corvax-Sponsors
+                   havePriorityJoin || // Alteros-Sponsors
                    wasInGame;
         }
-        // Corvax-Queue-End
+        // Alteros-Sponsors-End
     }
 }

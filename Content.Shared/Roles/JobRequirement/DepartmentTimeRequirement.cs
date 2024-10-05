@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using Content.Shared.Preferences;
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
@@ -27,9 +28,17 @@ public sealed partial class DepartmentTimeRequirement : JobRequirement
         IPrototypeManager protoManager,
         HumanoidCharacterProfile? profile,
         IReadOnlyDictionary<string, TimeSpan> playTimes,
+        string? protoId, // Alteros-Sponsors
+        string[] sponsorPrototypes, // Alteros-Sponsors
         [NotNullWhen(false)] out FormattedMessage? reason)
     {
         reason = new FormattedMessage();
+
+        // Alteros-Sponsors-Start
+        if (sponsorPrototypes.Contains(protoId))
+            return true;
+        // Alteros-Sponsors-End
+
         var playtime = TimeSpan.Zero;
 
         // Check all jobs' departments

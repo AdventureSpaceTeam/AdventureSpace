@@ -185,7 +185,7 @@ namespace Content.Server.GameTicking
 
         public bool UserHasJoinedGame(NetUserId userId)
         {
-            // Sunrise-Edit: Я не понимаю почему, но PlayerGameStatuses[userId] может вернуть ошибку.
+            // Alteros-Edit: Я не понимаю почему, но PlayerGameStatuses[userId] может вернуть ошибку.
             if (!PlayerGameStatuses.TryGetValue(userId, out var status))
                 return false;
 

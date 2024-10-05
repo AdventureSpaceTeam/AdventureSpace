@@ -1,11 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using Content.Shared.Preferences;
-using Content.Shared.Players.PlayTimeTracking;
-using Content.Shared.Roles.Jobs;
-using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 using Robust.Shared.Utility;
 
 namespace Content.Shared.Roles;
@@ -18,7 +14,8 @@ public static class JobRequirements
         [NotNullWhen(false)] out FormattedMessage? reason,
         IEntityManager entManager,
         IPrototypeManager protoManager,
-        HumanoidCharacterProfile? profile)
+        HumanoidCharacterProfile? profile,
+        string[] sponsorPrototypes) // Alteros-Sponsors
     {
         var sys = entManager.System<SharedRoleSystem>();
         var requirements = sys.GetJobRequirement(job);
@@ -28,7 +25,7 @@ public static class JobRequirements
 
         foreach (var requirement in requirements)
         {
-            if (!requirement.Check(entManager, protoManager, profile, playTimes, out reason))
+            if (!requirement.Check(entManager, protoManager, profile, playTimes, job.ID, sponsorPrototypes, out reason)) // Alteros-Sponsors
                 return false;
         }
 
@@ -51,5 +48,7 @@ public abstract partial class JobRequirement
         IPrototypeManager protoManager,
         HumanoidCharacterProfile? profile,
         IReadOnlyDictionary<string, TimeSpan> playTimes,
+        string? protoId, // Alteros-Sponsors
+        string[] sponsorPrototypes, // Alteros-Sponsors
         [NotNullWhen(false)] out FormattedMessage? reason);
 }
