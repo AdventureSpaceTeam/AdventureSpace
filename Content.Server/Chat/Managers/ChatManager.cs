@@ -267,7 +267,7 @@ internal sealed partial class ChatManager : IChatManager
         var data = _adminManager.GetAdminData(player);
         if (data != null && data.Title != null)
         {
-            wrappedMessage = Loc.GetString("chat-manager-send-ooc-admin-wrap-message", ("patronTitle", $"\\[{data.Title}\\] "),("playerName", player.Name), ("message", FormattedMessage.EscapeText(message)));
+            wrappedMessage = Loc.GetString("chat-manager-send-ooc-admin-wrap-message", ("dataTitle", $"\\[{data.Title}\\] "),("playerName", player.Name), ("message", FormattedMessage.EscapeText(message)));
         }
         // Alteros-end
 
