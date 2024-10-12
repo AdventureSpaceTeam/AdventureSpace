@@ -620,6 +620,8 @@
   - type: Clothing
     sprite: Clothing/Belt/securitywebbing.rsi
   - type: Storage
+    grid:
+    - 0,0,7,3
     whitelist:
       tags:
         - CigPack
@@ -636,6 +638,7 @@
         - FlashOnTrigger
         - SmokeOnTrigger
         - Flash
+        - Ammo
         - Handcuff
         - BallisticAmmoProvider
         - CartridgeAmmo
@@ -655,6 +658,8 @@
   - type: Clothing
     sprite: Clothing/Belt/mercwebbing.rsi
   - type: Storage
+    grid:
+    - 0,0,7,3
     whitelist:
       tags:
         - CigPack
@@ -671,6 +676,7 @@
         - FlashOnTrigger
         - SmokeOnTrigger
         - Flash
+        - Ammo
         - Handcuff
         - BallisticAmmoProvider
         - CartridgeAmmo
