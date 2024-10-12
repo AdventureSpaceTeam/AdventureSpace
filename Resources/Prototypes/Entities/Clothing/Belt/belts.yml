@@ -621,7 +621,31 @@
     sprite: Clothing/Belt/securitywebbing.rsi
   - type: Storage
     grid:
-    - 0,0,3,1
+    - 0,0,7,3
+    whitelist:
+      tags:
+        - CigPack
+        - Taser
+        - SecBeltEquip
+        - Radio
+        - Sidearm
+        - MagazinePistol
+        - MagazineMagnum
+        - CombatKnife
+        - Truncheon
+      components:
+        - Stunbaton
+        - FlashOnTrigger
+        - SmokeOnTrigger
+        - Flash
+        - Ammo
+        - Handcuff
+        - BallisticAmmoProvider
+        - CartridgeAmmo
+        - DoorRemote
+        - Whistle
+        - HolosignProjector
+        - BalloonPopper
 
 - type: entity
   parent: ClothingBeltStorageBase
@@ -635,7 +659,31 @@
     sprite: Clothing/Belt/mercwebbing.rsi
   - type: Storage
     grid:
-    - 0,0,3,1
+    - 0,0,7,3
+    whitelist:
+      tags:
+        - CigPack
+        - Taser
+        - SecBeltEquip
+        - Radio
+        - Sidearm
+        - MagazinePistol
+        - MagazineMagnum
+        - CombatKnife
+        - Truncheon
+      components:
+        - Stunbaton
+        - FlashOnTrigger
+        - SmokeOnTrigger
+        - Flash
+        - Ammo
+        - Handcuff
+        - BallisticAmmoProvider
+        - CartridgeAmmo
+        - DoorRemote
+        - Whistle
+        - HolosignProjector
+        - BalloonPopper
 
 - type: entity
   parent: ClothingBeltStorageBase
