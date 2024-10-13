@@ -621,7 +621,7 @@
     sprite: Clothing/Belt/securitywebbing.rsi
   - type: Storage
     grid:
-    - 0,0,7,3
+    - 0,0,7,1
     whitelist:
       tags:
         - CigPack
@@ -659,7 +659,7 @@
     sprite: Clothing/Belt/mercwebbing.rsi
   - type: Storage
     grid:
-    - 0,0,7,3
+    - 0,0,7,1
     whitelist:
       tags:
         - CigPack
